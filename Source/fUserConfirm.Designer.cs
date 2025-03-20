@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMessage = new DaekhonSystem.Label();
-            this.btnOK = new DaekhonSystem.BitBtn();
-            this.btnCancel = new DaekhonSystem.BitBtn();
-            this.AutoThread = new DaekhonSystem.Thread();
+            this.lblMessage = new YujinTechnology.Label();
+            this.btnOK = new YujinTechnology.BitBtn();
+            this.btnCancel = new YujinTechnology.BitBtn();
+            this.AutoThread = new YujinTechnology.Thread();
             this.SuspendLayout();
             // 
             // lblMessage
             // 
             this.lblMessage.BackColor = System.Drawing.Color.LightGray;
             this.lblMessage.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblMessage.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblMessage.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.lblMessage.Font = new System.Drawing.Font("Tahoma", 23F);
             this.lblMessage.ForeColor = System.Drawing.Color.Red;
             this.lblMessage.Location = new System.Drawing.Point(12, 9);
@@ -105,9 +105,9 @@
 
         #endregion
 
-        public DaekhonSystem.Label lblMessage;
-        private DaekhonSystem.BitBtn btnOK;
-        private DaekhonSystem.BitBtn btnCancel;
-        private DaekhonSystem.Thread AutoThread;
+        public YujinTechnology.Label lblMessage;
+        private YujinTechnology.BitBtn btnOK;
+        private YujinTechnology.BitBtn btnCancel;
+        private YujinTechnology.Thread AutoThread;
     }
 }

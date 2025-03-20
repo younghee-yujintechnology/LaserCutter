@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 
 namespace LaserCutter
 {
@@ -30,93 +30,93 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {  
-            this.dataServer1 = new DaekhonSystem.DataServer();
-            this.Comm = new DaekhonSystem.Comm();
-            this.propSaver1 = new DaekhonSystem.PropSaver();
-            this.ReadThread = new DaekhonSystem.Thread();
+            this.dataServer1 = new YujinTechnology.DataServer();
+            this.Comm = new YujinTechnology.Comm();
+            this.propSaver1 = new YujinTechnology.PropSaver();
+            this.ReadThread = new YujinTechnology.Thread();
             this.panClient = new LaserCutter.sjPanel();
-            this.gradientLabel5 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel4 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel3 = new DaekhonSystem.GradientLabel();
-            this.btnSelectTable1 = new DaekhonSystem.LEDButton();
-            this.btnSelectTable2 = new DaekhonSystem.LEDButton();
-            this.ledTX = new DaekhonSystem.LEDLabel();
-            this.ledRX = new DaekhonSystem.LEDLabel();
-            this.lblVersion = new DaekhonSystem.GradientLabel();
-            this.gradientLabel2 = new DaekhonSystem.GradientLabel();
-            this.viGetBoundMode = new DaekhonSystem.ValueIndicator();
-            this.viGetOperating = new DaekhonSystem.ValueIndicator();
-            this.viGetM2Pitch = new DaekhonSystem.ValueIndicator();
-            this.viTrigger = new DaekhonSystem.ValueIndicator();
-            this.viGetMode = new DaekhonSystem.ValueIndicator();
-            this.viGetM0PW = new DaekhonSystem.ValueIndicator();
-            this.viEnc1 = new DaekhonSystem.ValueIndicator();
-            this.viGetM2PW = new DaekhonSystem.ValueIndicator();
-            this.viGetM0Period = new DaekhonSystem.ValueIndicator();
-            this.viEnc0 = new DaekhonSystem.ValueIndicator();
-            this.gradLabel11 = new DaekhonSystem.GradientLabel();
-            this.gradLabel10 = new DaekhonSystem.GradientLabel();
-            this.gradLabel3 = new DaekhonSystem.GradientLabel();
-            this.gradLabel75 = new DaekhonSystem.GradientLabel();
-            this.gradLabel5 = new DaekhonSystem.GradientLabel();
-            this.gradLabel2 = new DaekhonSystem.GradientLabel();
-            this.gradLabel73 = new DaekhonSystem.GradientLabel();
-            this.gradLabel4 = new DaekhonSystem.GradientLabel();
-            this.gradLabel1 = new DaekhonSystem.GradientLabel();
-            this.gradLabel72 = new DaekhonSystem.GradientLabel();
-            this.viBaudRate = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
-            this.btnResetEncoder = new DaekhonSystem.BitBtn();
-            this.btnGetEncorderY = new DaekhonSystem.BitBtn();
-            this.btnGetEncorderX = new DaekhonSystem.BitBtn();
-            this.btnGetTrigger = new DaekhonSystem.BitBtn();
+            this.gradientLabel5 = new YujinTechnology.GradientLabel();
+            this.gradientLabel4 = new YujinTechnology.GradientLabel();
+            this.gradientLabel3 = new YujinTechnology.GradientLabel();
+            this.btnSelectTable1 = new YujinTechnology.LEDButton();
+            this.btnSelectTable2 = new YujinTechnology.LEDButton();
+            this.ledTX = new YujinTechnology.LEDLabel();
+            this.ledRX = new YujinTechnology.LEDLabel();
+            this.lblVersion = new YujinTechnology.GradientLabel();
+            this.gradientLabel2 = new YujinTechnology.GradientLabel();
+            this.viGetBoundMode = new YujinTechnology.ValueIndicator();
+            this.viGetOperating = new YujinTechnology.ValueIndicator();
+            this.viGetM2Pitch = new YujinTechnology.ValueIndicator();
+            this.viTrigger = new YujinTechnology.ValueIndicator();
+            this.viGetMode = new YujinTechnology.ValueIndicator();
+            this.viGetM0PW = new YujinTechnology.ValueIndicator();
+            this.viEnc1 = new YujinTechnology.ValueIndicator();
+            this.viGetM2PW = new YujinTechnology.ValueIndicator();
+            this.viGetM0Period = new YujinTechnology.ValueIndicator();
+            this.viEnc0 = new YujinTechnology.ValueIndicator();
+            this.gradLabel11 = new YujinTechnology.GradientLabel();
+            this.gradLabel10 = new YujinTechnology.GradientLabel();
+            this.gradLabel3 = new YujinTechnology.GradientLabel();
+            this.gradLabel75 = new YujinTechnology.GradientLabel();
+            this.gradLabel5 = new YujinTechnology.GradientLabel();
+            this.gradLabel2 = new YujinTechnology.GradientLabel();
+            this.gradLabel73 = new YujinTechnology.GradientLabel();
+            this.gradLabel4 = new YujinTechnology.GradientLabel();
+            this.gradLabel1 = new YujinTechnology.GradientLabel();
+            this.gradLabel72 = new YujinTechnology.GradientLabel();
+            this.viBaudRate = new YujinTechnology.ValueIndicator();
+            this.gradientLabel1 = new YujinTechnology.GradientLabel();
+            this.btnResetEncoder = new YujinTechnology.BitBtn();
+            this.btnGetEncorderY = new YujinTechnology.BitBtn();
+            this.btnGetEncorderX = new YujinTechnology.BitBtn();
+            this.btnGetTrigger = new YujinTechnology.BitBtn();
             this.listBox = new System.Windows.Forms.ListBox();
-            this.btnMode2Set = new DaekhonSystem.BitBtn();
-            this.btnMode0Set = new DaekhonSystem.BitBtn();
-            this.edMode0Period = new DaekhonSystem.KeypadEdit();
-            this.edMode0PulseWidth = new DaekhonSystem.KeypadEdit();
-            this.edMode2PulseWidth = new DaekhonSystem.KeypadEdit();
-            this.edMode2PulsePitch = new DaekhonSystem.KeypadEdit();
-            this.gradLabel53 = new DaekhonSystem.GradientLabel();
-            this.gradLabel54 = new DaekhonSystem.GradientLabel();
-            this.uiLine17 = new DaekhonSystem.SunnyLine();
-            this.gradLabel60 = new DaekhonSystem.GradientLabel();
-            this.gradLabel47 = new DaekhonSystem.GradientLabel();
-            this.btnConnect = new DaekhonSystem.LEDButton();
-            this.btnClearList = new DaekhonSystem.BitBtn();
-            this.gradLabel74 = new DaekhonSystem.GradientLabel();
-            this.cbComPort = new DaekhonSystem.ComboBox();
-            this.uiLine2 = new DaekhonSystem.SunnyLine();
-            this.btnGetVersion = new DaekhonSystem.BitBtn();
-            this.btnResetTrigger = new DaekhonSystem.BitBtn();
-            this.btnOperatingOn = new DaekhonSystem.LEDButton();
+            this.btnMode2Set = new YujinTechnology.BitBtn();
+            this.btnMode0Set = new YujinTechnology.BitBtn();
+            this.edMode0Period = new YujinTechnology.KeypadEdit();
+            this.edMode0PulseWidth = new YujinTechnology.KeypadEdit();
+            this.edMode2PulseWidth = new YujinTechnology.KeypadEdit();
+            this.edMode2PulsePitch = new YujinTechnology.KeypadEdit();
+            this.gradLabel53 = new YujinTechnology.GradientLabel();
+            this.gradLabel54 = new YujinTechnology.GradientLabel();
+            this.uiLine17 = new YujinTechnology.SunnyLine();
+            this.gradLabel60 = new YujinTechnology.GradientLabel();
+            this.gradLabel47 = new YujinTechnology.GradientLabel();
+            this.btnConnect = new YujinTechnology.LEDButton();
+            this.btnClearList = new YujinTechnology.BitBtn();
+            this.gradLabel74 = new YujinTechnology.GradientLabel();
+            this.cbComPort = new YujinTechnology.ComboBox();
+            this.uiLine2 = new YujinTechnology.SunnyLine();
+            this.btnGetVersion = new YujinTechnology.BitBtn();
+            this.btnResetTrigger = new YujinTechnology.BitBtn();
+            this.btnOperatingOn = new YujinTechnology.LEDButton();
             this.panClient.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataServer1
             // 
-            this.dataServer1.OnError += new DaekhonSystem.ErrorEventHandler(this.dataServer1_OnError);
+            this.dataServer1.OnError += new YujinTechnology.ErrorEventHandler(this.dataServer1_OnError);
             // 
             // Comm
             // 
-            this.Comm.BaudRate = DaekhonSystem.BaudRate._115200;
+            this.Comm.BaudRate = YujinTechnology.BaudRate._115200;
             this.Comm.BinaryMode = false;
-            this.Comm.ByteSize = DaekhonSystem.ByteSize._8;
+            this.Comm.ByteSize = YujinTechnology.ByteSize._8;
             this.Comm.CheckParity = false;
-            this.Comm.CommEvents = new DaekhonSystem.CommEvent[] {
-        DaekhonSystem.CommEvent.EV_RXCHAR,
-        DaekhonSystem.CommEvent.EV_RXFLAG,
-        DaekhonSystem.CommEvent.EV_TXEMPTY};
+            this.Comm.CommEvents = new YujinTechnology.CommEvent[] {
+        YujinTechnology.CommEvent.EV_RXCHAR,
+        YujinTechnology.CommEvent.EV_RXFLAG,
+        YujinTechnology.CommEvent.EV_TXEMPTY};
             this.Comm.DiscardNull = false;
             this.Comm.EventChar = "0x0D";
-            this.Comm.FlowControl = DaekhonSystem.FlowControl.FC_XONXOFF;
+            this.Comm.FlowControl = YujinTechnology.FlowControl.FC_XONXOFF;
             this.Comm.MaxInQueue = 4096;
             this.Comm.MaxOutQueue = 2048;
-            this.Comm.Parity = DaekhonSystem.Parity.NONE;
-            this.Comm.Port = DaekhonSystem.Port.COM08;
+            this.Comm.Parity = YujinTechnology.Parity.NONE;
+            this.Comm.Port = YujinTechnology.Port.COM08;
             this.Comm.Priority = System.Threading.ThreadPriority.Normal;
             this.Comm.RS485Mode = false;
-            this.Comm.StopBits = DaekhonSystem.StopBits._1;
+            this.Comm.StopBits = YujinTechnology.StopBits._1;
             this.Comm.TimeOut = ((uint)(1000u));
             // 
             // propSaver1
@@ -131,7 +131,7 @@ namespace LaserCutter
         "edMode0PulseWidth;Text;Mode0PulseWidth;Text;0",
         "edMode2PulseWidth;Text;Mode2PulseWidth;Text;2",
         "edMode2PulsePitch;Text;Mode2PulsePitch;Text;0"};
-            this.propSaver1.RootKey = DaekhonSystem.RootKey.artHKEY_CURRENT_USER;
+            this.propSaver1.RootKey = YujinTechnology.RootKey.artHKEY_CURRENT_USER;
             // 
             // ReadThread
             // 
@@ -212,7 +212,7 @@ namespace LaserCutter
             this.gradientLabel5.BackColor = System.Drawing.Color.Transparent;
             this.gradientLabel5.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.gradientLabel5.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.gradientLabel5.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.gradientLabel5.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.gradientLabel5.Font = new System.Drawing.Font("Tahoma", 10F);
             this.gradientLabel5.ForeColor = System.Drawing.Color.Red;
             this.gradientLabel5.Frame.Visible = false;
@@ -303,7 +303,7 @@ namespace LaserCutter
             this.ledTX.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ledTX.Frame.Visible = false;
             this.ledTX.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ledTX.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.ledTX.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.ledTX.LED.OffColor = System.Drawing.Color.Gray;
             this.ledTX.Location = new System.Drawing.Point(910, 12);
             this.ledTX.Name = "ledTX";
@@ -318,7 +318,7 @@ namespace LaserCutter
             this.ledRX.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ledRX.Frame.Visible = false;
             this.ledRX.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ledRX.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.ledRX.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.ledRX.LED.OffColor = System.Drawing.Color.Gray;
             this.ledRX.LED.OnColor = System.Drawing.Color.Red;
             this.ledRX.Location = new System.Drawing.Point(892, 12);
@@ -810,7 +810,7 @@ namespace LaserCutter
             // 
             this.edMode0Period.BackColor = System.Drawing.Color.White;
             this.edMode0Period.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edMode0Period.DataType = DaekhonSystem.DataType.Double;
+            this.edMode0Period.DataType = YujinTechnology.DataType.Double;
             this.edMode0Period.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edMode0Period.ForeColor = System.Drawing.Color.Black;
             this.edMode0Period.Frame.CornerRound = 1;
@@ -831,7 +831,7 @@ namespace LaserCutter
             // 
             this.edMode0PulseWidth.BackColor = System.Drawing.Color.White;
             this.edMode0PulseWidth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edMode0PulseWidth.DataType = DaekhonSystem.DataType.Double;
+            this.edMode0PulseWidth.DataType = YujinTechnology.DataType.Double;
             this.edMode0PulseWidth.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edMode0PulseWidth.ForeColor = System.Drawing.Color.Black;
             this.edMode0PulseWidth.Frame.CornerRound = 1;
@@ -852,7 +852,7 @@ namespace LaserCutter
             // 
             this.edMode2PulseWidth.BackColor = System.Drawing.Color.White;
             this.edMode2PulseWidth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edMode2PulseWidth.DataType = DaekhonSystem.DataType.Double;
+            this.edMode2PulseWidth.DataType = YujinTechnology.DataType.Double;
             this.edMode2PulseWidth.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edMode2PulseWidth.ForeColor = System.Drawing.Color.Black;
             this.edMode2PulseWidth.Frame.CornerRound = 1;
@@ -873,7 +873,7 @@ namespace LaserCutter
             // 
             this.edMode2PulsePitch.BackColor = System.Drawing.Color.White;
             this.edMode2PulsePitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edMode2PulsePitch.DataType = DaekhonSystem.DataType.Double;
+            this.edMode2PulsePitch.DataType = YujinTechnology.DataType.Double;
             this.edMode2PulsePitch.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edMode2PulsePitch.ForeColor = System.Drawing.Color.Black;
             this.edMode2PulsePitch.Frame.CornerRound = 1;
@@ -928,22 +928,22 @@ namespace LaserCutter
             // 
             this.uiLine17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine17.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine17.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine17.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine17.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine17.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine17.Font = new System.Drawing.Font("Tahoma", 11F);
             this.uiLine17.ForeColor = System.Drawing.Color.Black;
             this.uiLine17.Frame.Visible = false;
             this.uiLine17.Hint = null;
             this.uiLine17.LineCapSize = 4;
             this.uiLine17.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine17.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine17.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine17.LineWidth = 1F;
             this.uiLine17.Location = new System.Drawing.Point(69, 185);
             this.uiLine17.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine17.Name = "uiLine17";
             this.uiLine17.ShowHint = false;
             this.uiLine17.Size = new System.Drawing.Size(183, 17);
-            this.uiLine17.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine17.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine17.TabIndex = 1312;
             this.uiLine17.Text = "Mode 0 (Int - Encoder)";
             this.uiLine17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -991,7 +991,7 @@ namespace LaserCutter
             this.btnConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnect.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnConnect.ForeColor = System.Drawing.Color.Black;
-            this.btnConnect.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnConnect.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnConnect.LED.Size = new System.Drawing.Size(70, 26);
             this.btnConnect.Location = new System.Drawing.Point(823, 79);
             this.btnConnect.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1074,22 +1074,22 @@ namespace LaserCutter
             // 
             this.uiLine2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine2.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine2.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine2.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine2.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine2.Font = new System.Drawing.Font("Tahoma", 11F);
             this.uiLine2.ForeColor = System.Drawing.Color.Black;
             this.uiLine2.Frame.Visible = false;
             this.uiLine2.Hint = null;
             this.uiLine2.LineCapSize = 4;
             this.uiLine2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine2.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine2.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine2.LineWidth = 1F;
             this.uiLine2.Location = new System.Drawing.Point(440, 185);
             this.uiLine2.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine2.Name = "uiLine2";
             this.uiLine2.ShowHint = false;
             this.uiLine2.Size = new System.Drawing.Size(183, 17);
-            this.uiLine2.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine2.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine2.TabIndex = 1299;
             this.uiLine2.Text = "Mode 2 (Ext - Encoder)";
             this.uiLine2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1162,7 +1162,7 @@ namespace LaserCutter
         }
 
         #endregion
-        private DaekhonSystem.DataServer dataServer1;
+        private YujinTechnology.DataServer dataServer1;
         private sjPanel panClient;
         private BitBtn btnResetEncoder;
         private BitBtn btnGetEncorderY;
@@ -1180,7 +1180,7 @@ namespace LaserCutter
         private LEDButton btnConnect;
         private BitBtn btnClearList;
         private GradientLabel gradLabel74;
-        private DaekhonSystem.ComboBox cbComPort;
+        private YujinTechnology.ComboBox cbComPort;
         private SunnyLine uiLine2;
         private BitBtn btnGetVersion;
         private BitBtn btnResetTrigger;

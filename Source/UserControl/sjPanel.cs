@@ -17,12 +17,12 @@ namespace LaserCutter
 {
     public partial class sjPanel : System.Windows.Forms.Panel
     {
-        DaekhonSystem.GradientLabel lblTitle;
+        YujinTechnology.GradientLabel lblTitle;
         System.Windows.Forms.Label lblBorder;
 
         public sjPanel()
         {
-            lblTitle = new DaekhonSystem.GradientLabel();
+            lblTitle = new YujinTechnology.GradientLabel();
             lblBorder = new System.Windows.Forms.Label();
 
             lblBorder.BackColor = System.Drawing.SystemColors.ActiveCaption;

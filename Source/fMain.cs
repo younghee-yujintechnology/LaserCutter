@@ -23,7 +23,7 @@ using Cognex.VisionPro;
 using MvCameraControl;
 
 using Raize.CodeSiteLogging;
-using DaekhonSystem;
+using YujinTechnology;
 
 //using IniP
 
@@ -105,15 +105,19 @@ namespace LaserCutter
 
             SetBuildVersion();
 
-            String szStr = String.Format("{0}UTI_Logo.png", dkCommon.AppPath());
-            pictureBox1.BackgroundImage = Image.FromFile(szStr);
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            String szStr = String.Format("{0}UTI_Logo.png", yjCommon.AppPath());
+
+            if (yjCommon.FileExists(szStr))
+            {
+                pictureBox1.BackgroundImage = Image.FromFile(szStr);
+                pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
 
             SetCodeSitelogger();
 
             szStr = String.Format("LaserCutter - Start: {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-            szStr = String.Format("{0}Dll\\", dkCommon.AppPath());
+            szStr = String.Format("{0}Dll\\", yjCommon.AppPath());
             Lcad.SetDllPath(szStr);
             PowerPMac.SetDllPath(szStr);
 
@@ -121,8 +125,8 @@ namespace LaserCutter
              * yhbyun 20240805.001
              * dll Version이 다를때 운전이 안되도록 수정해야 함.
              */
-            szStr = String.Format("{0}Dll\\PowerPmac64.dll", dkCommon.AppPath());
-            Version currentVersion = dkCommon.GetDllVersion(szStr);
+            szStr = String.Format("{0}Dll\\PowerPmac64.dll", yjCommon.AppPath());
+            Version currentVersion = yjCommon.GetDllVersion(szStr);
 
             Version expectedVersion = new Version(2, 3, 16, 25);
             if (currentVersion.CompareTo(expectedVersion) < 0)
@@ -198,7 +202,7 @@ namespace LaserCutter
             logger.Category = "Main";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -222,27 +226,27 @@ namespace LaserCutter
         /// </summary>
         private void RegisterHotKey()
         {
-            atomChannelSpy = dkCommon.GlobalAddAtom("MyAtom");
-            dkCommon.RegisterHotKey(this.Handle, atomChannelSpy, MOD_CONTROL, VK_F1);
+            atomChannelSpy = yjCommon.GlobalAddAtom("MyAtom");
+            yjCommon.RegisterHotKey(this.Handle, atomChannelSpy, MOD_CONTROL, VK_F1);
 
-            atomCarbide = dkCommon.GlobalAddAtom("Carbide");
-            dkCommon.RegisterHotKey(this.Handle, atomCarbide, MOD_CONTROL, VK_F2);
+            atomCarbide = yjCommon.GlobalAddAtom("Carbide");
+            yjCommon.RegisterHotKey(this.Handle, atomCarbide, MOD_CONTROL, VK_F2);
 
-            atomDownload = dkCommon.GlobalAddAtom("Download");
-            dkCommon.RegisterHotKey(this.Handle, atomDownload, MOD_CONTROL, 'D');
+            atomDownload = yjCommon.GlobalAddAtom("Download");
+            yjCommon.RegisterHotKey(this.Handle, atomDownload, MOD_CONTROL, 'D');
         }
 
         private void UnregisterHotKey()
         {
             // 등록된 핫키를 해제합니다.
-            dkCommon.UnregisterHotKey(this.Handle, atomChannelSpy);
-            dkCommon.GlobalDeleteAtom(atomChannelSpy);
+            yjCommon.UnregisterHotKey(this.Handle, atomChannelSpy);
+            yjCommon.GlobalDeleteAtom(atomChannelSpy);
 
-            dkCommon.UnregisterHotKey(this.Handle, atomCarbide);
-            dkCommon.GlobalDeleteAtom(atomCarbide);
+            yjCommon.UnregisterHotKey(this.Handle, atomCarbide);
+            yjCommon.GlobalDeleteAtom(atomCarbide);
 
-            dkCommon.UnregisterHotKey(this.Handle, atomDownload);
-            dkCommon.GlobalDeleteAtom(atomDownload);
+            yjCommon.UnregisterHotKey(this.Handle, atomDownload);
+            yjCommon.GlobalDeleteAtom(atomDownload);
         }
 
         // Ctrl + I 키가 눌리면 호출되는 이벤트 핸들러입니다.
@@ -277,7 +281,7 @@ namespace LaserCutter
 
                     case PowerPMac.DT_StringA:
                         string s = Marshal.PtrToStringAnsi(cds.lpData);
-                        s = dkCommon.RemoveCRLF(s);
+                        s = yjCommon.RemoveCRLF(s);
                         frmMotionFile.Memo1.AppendText(s + Environment.NewLine);
                         logger.SendMsg(s + Environment.NewLine);
                         break;
@@ -428,10 +432,8 @@ namespace LaserCutter
             /*
              * 8. MVS
              */
-
-#if _VISION
             SDKSystem.Initialize();
-#endif
+
             frmMVS = frmMVS.StaticInstance;
             frmMVS.InitializeCamera();
 
@@ -472,24 +474,24 @@ namespace LaserCutter
             String szStr;
             bool result = true;
 
-            szStr = String.Format("{0}Config", dkCommon.AppPath());
-            if (!dkCommon.DirectoryExists(szStr))
+            szStr = String.Format("{0}Config", yjCommon.AppPath());
+            if (!yjCommon.DirectoryExists(szStr))
             {
-                dkCommon.CreateDirectory(szStr);
+                yjCommon.CreateDirectory(szStr);
                 result = false;
             }
 
-            szStr = String.Format("{0}Model", dkCommon.AppPath());
-            if (!dkCommon.DirectoryExists(szStr))
+            szStr = String.Format("{0}Model", yjCommon.AppPath());
+            if (!yjCommon.DirectoryExists(szStr))
             {
-                dkCommon.CreateDirectory(szStr);
+                yjCommon.CreateDirectory(szStr);
                 result = false;
             }
 
-            szStr = String.Format("{0}Log", dkCommon.AppPath());
-            if (!dkCommon.DirectoryExists(szStr))
+            szStr = String.Format("{0}Log", yjCommon.AppPath());
+            if (!yjCommon.DirectoryExists(szStr))
             {
-                dkCommon.CreateDirectory(szStr);
+                yjCommon.CreateDirectory(szStr);
                 result = false;
             }
 
@@ -525,12 +527,12 @@ namespace LaserCutter
         private void frmMain_Load(object sender, EventArgs e)
         {
             //ConfigCommon
-            Config.Common.propSaver1.INIFileName = dkCommon.AppPath() + "Config\\LaserCutter.INI";
+            Config.Common.propSaver1.INIFileName = yjCommon.AppPath() + "Config\\LaserCutter.INI";
             Config.Common.propSaver1.SaveToRegistry = false;
             Config.Common.propSaver1.LoadProperty();
 
             //SideMenu
-            SideMenu.PropSaver.INIFileName = dkCommon.AppPath() + "Config\\SideMenu.INI";
+            SideMenu.PropSaver.INIFileName = yjCommon.AppPath() + "Config\\SideMenu.INI";
             SideMenu.PropSaver.SaveToRegistry = false;
             SideMenu.PropSaver.LoadProperty();
 
@@ -554,7 +556,7 @@ namespace LaserCutter
                 frmVision.Top = sencondScreen.WorkingArea.Top;
 
 #if _VISION
-                String visionfile = String.Format("{0}Vision\\CogPMAlignTool(4Align).vpp", dkCommon.AppPath());
+                String visionfile = String.Format("{0}Vision\\CogPMAlignTool(4Align).vpp", yjCommon.AppPath());
                 frmVision.Vision1.cogJobManager = (CogJobManager)CogSerializer.LoadObjectFromFile(visionfile);
                 frmVision.Vision2.cogJobManager = (CogJobManager)CogSerializer.LoadObjectFromFile(visionfile);
 #endif
@@ -580,7 +582,7 @@ namespace LaserCutter
 
         private void ChangeMainPanel(object sender, EventArgs e)
         {
-            if (sender is DaekhonSystem.BitBtn aButton)
+            if (sender is YujinTechnology.BitBtn aButton)
             {
                 ChangeMainPanel(aButton);
             }
@@ -638,7 +640,7 @@ namespace LaserCutter
             }
         }
 
-        public void ChangeMainPanel(DaekhonSystem.BitBtn aButton)
+        public void ChangeMainPanel(YujinTechnology.BitBtn aButton)
         {
             if (MenuIndex == Convert.ToInt32(aButton.Tag)) return;
 
@@ -781,7 +783,7 @@ namespace LaserCutter
                 // 날짜가 변경되었으므로 Logger를 새로 초기화
                 currentDate = DateTime.Now;
 
-                String szStr = String.Format("{0}Log", dkCommon.AppPath());
+                String szStr = String.Format("{0}Log", yjCommon.AppPath());
                 szStr = CreateDailyFolder(szStr);
 
                 ChangeLogFilePath(szStr);
@@ -802,7 +804,7 @@ namespace LaserCutter
 
         private void lblMainTitle_MouseMove(object sender, MouseEventArgs e)
         {
-            if (dkCommon.IsCtrlKeyDown())
+            if (yjCommon.IsCtrlKeyDown())
             {
                 if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
                 {
@@ -813,7 +815,7 @@ namespace LaserCutter
 
         private void lblMainTitle_MouseDown(object sender, MouseEventArgs e)
         {
-            if (dkCommon.IsCtrlKeyDown())
+            if (yjCommon.IsCtrlKeyDown())
             {
                 mMousePoint = new Point(e.X, e.Y);
             }
@@ -888,12 +890,12 @@ namespace LaserCutter
         {
             //motionParameters.Clear();
 
-            String szFileName = String.Format("{0}Config\\Language_English.ini", dkCommon.AppPath());
+            String szFileName = String.Format("{0}Config\\Language_English.ini", yjCommon.AppPath());
 
-            Global.iniEng = new DaekhonSystem.IniFile(szFileName);
+            Global.iniEng = new YujinTechnology.IniFile(szFileName);
 
 
-            szFileName = String.Format("{0}Config\\Language_Korea.ini", dkCommon.AppPath());
+            szFileName = String.Format("{0}Config\\Language_Korea.ini", yjCommon.AppPath());
 
             var parser = new FileIniDataParser();
 
@@ -904,7 +906,7 @@ namespace LaserCutter
             }
 
 
-            szFileName = String.Format("{0}Config\\Language_Vietnam.ini", dkCommon.AppPath());
+            szFileName = String.Format("{0}Config\\Language_Vietnam.ini", yjCommon.AppPath());
 
             parser = new FileIniDataParser();
 
@@ -1047,7 +1049,7 @@ namespace LaserCutter
 
         private void lblMainTitle_DoubleClick(object sender, EventArgs e)
         {
-            if (dkCommon.IsCtrlKeyDown())
+            if (yjCommon.IsCtrlKeyDown())
             {
                 if (Screen.AllScreens.Length > 1)
                 {

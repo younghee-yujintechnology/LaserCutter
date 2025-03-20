@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMessage = new DaekhonSystem.Label();
-            this.AutoThread = new DaekhonSystem.Thread();
-            this.btnStop = new DaekhonSystem.BitBtn();
+            this.lblMessage = new YujinTechnology.Label();
+            this.AutoThread = new YujinTechnology.Thread();
+            this.btnStop = new YujinTechnology.BitBtn();
             this.SuspendLayout();
             // 
             // lblMessage
             // 
             this.lblMessage.BackColor = System.Drawing.Color.LightGray;
             this.lblMessage.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblMessage.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblMessage.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.lblMessage.Font = new System.Drawing.Font("Tahoma", 23F);
             this.lblMessage.ForeColor = System.Drawing.Color.Red;
             this.lblMessage.Location = new System.Drawing.Point(12, 9);
@@ -85,8 +85,8 @@
 
         #endregion
 
-        public DaekhonSystem.Label lblMessage;
-        private DaekhonSystem.Thread AutoThread;
-        private DaekhonSystem.BitBtn btnStop;
+        public YujinTechnology.Label lblMessage;
+        private YujinTechnology.Thread AutoThread;
+        private YujinTechnology.BitBtn btnStop;
     }
 }

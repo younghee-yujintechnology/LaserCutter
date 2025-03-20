@@ -20,7 +20,7 @@ using System.Linq;
 
 using RestSharp;
 using Raize.CodeSiteLogging;
-using DaekhonSystem;
+using YujinTechnology;
 using static LaserCutter.Advanced;
 
 namespace LaserCutter
@@ -80,7 +80,7 @@ namespace LaserCutter
             logger.Category = "Manual.Laser";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -444,7 +444,7 @@ namespace LaserCutter
                         break;
                 }
 
-                dkCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
+                yjCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
             }
         }
         #endregion
@@ -967,7 +967,7 @@ namespace LaserCutter
         private void GetPower()
         {
             string strValue = frmCarbide.Basic.Read("ActualOutputPower");
-            frmCarbide.Basic.ActualOutputPower = dkCommon.StrToDoubleDef(strValue, 0.0);
+            frmCarbide.Basic.ActualOutputPower = yjCommon.StrToDoubleDef(strValue, 0.0);
         }
 
         private void GetShutterState()
@@ -980,33 +980,33 @@ namespace LaserCutter
         {
             if (Global.chLaserActualEnvelopeParameterN != null)
             {
-                Global.chLaserActualEnvelopeParameterN.AsDouble = dkCommon.StrToDoubleDef(frmCarbide.Burst.ActualEnvelopeParameterN, 0.0);
+                Global.chLaserActualEnvelopeParameterN.AsDouble = yjCommon.StrToDoubleDef(frmCarbide.Burst.ActualEnvelopeParameterN, 0.0);
             }
         }
 
         private void GetTargetBurstEnvelopeParameterN()
         {
-            edBurstEnvelopeControlN.Value = dkCommon.StrToDoubleDef(frmCarbide.Burst.TargetEnvelopeParameterN, 0.0); 
+            edBurstEnvelopeControlN.Value = yjCommon.StrToDoubleDef(frmCarbide.Burst.TargetEnvelopeParameterN, 0.0); 
         }
 
 
         private void GetAttenuator()
         {
             string strValue = frmCarbide.Basic.Read("ActualAttenuatorPercentage");
-            frmCarbide.Basic.ActualAttenuatorPercentage = dkCommon.StrToDoubleDef(strValue, 0.0);
+            frmCarbide.Basic.ActualAttenuatorPercentage = yjCommon.StrToDoubleDef(strValue, 0.0);
         }
 
         //chLaserFreq
         private void GetFreq()
         {
             string strValue = frmCarbide.Basic.Read("ActualOutputFrequency");
-            frmCarbide.Basic.ActualOutputFrequency = dkCommon.StrToDoubleDef(strValue, 0.0);
+            frmCarbide.Basic.ActualOutputFrequency = yjCommon.StrToDoubleDef(strValue, 0.0);
         }
 
         private void GetPPDivider()
         {
             string strValue = frmCarbide.Basic.Read("ActualPpDivider");
-            frmCarbide.Basic.ActualPpDivider = dkCommon.StrToIntDef(strValue, 0);
+            frmCarbide.Basic.ActualPpDivider = yjCommon.StrToIntDef(strValue, 0);
         }
 
         private void Burst_GetBurstControl()
@@ -1025,33 +1025,33 @@ namespace LaserCutter
         {
             string strValue;
             strValue = frmCarbide.Basic.Read("ActualPulseDuration");
-            frmCarbide.Basic.ActualPulseDuration = dkCommon.StrToDoubleDef(strValue, 0.0);           
+            frmCarbide.Basic.ActualPulseDuration = yjCommon.StrToDoubleDef(strValue, 0.0);           
         }
 
         private void Chiller_GetChillerTemp()
         {
             string strValue = frmCarbide.Chiller.Read("ActualTemperature");
-            frmCarbide.Chiller.ActualTemperature = dkCommon.StrToDoubleDef(strValue, 0.0);            
+            frmCarbide.Chiller.ActualTemperature = yjCommon.StrToDoubleDef(strValue, 0.0);            
         }
 
         private void GetChillerTargetTemp()
         {
             string strValue = frmCarbide.Chiller.Read("TargetTemperature");
-            frmCarbide.Chiller.TargetTemperature = dkCommon.StrToDoubleDef(strValue, 0.0); 
-            edTargetTemp.Value = dkCommon.StrToDoubleDef(strValue, 0.0);
+            frmCarbide.Chiller.TargetTemperature = yjCommon.StrToDoubleDef(strValue, 0.0); 
+            edTargetTemp.Value = yjCommon.StrToDoubleDef(strValue, 0.0);
         }
 
         private void Chiller_GetChillerStatus()
         {
             string strValue = frmCarbide.Chiller.Read("IsOn");
-            frmCarbide.Chiller.IsOn = dkCommon.StrToIntDef(strValue, 0) == 1;  // yhbyun 나중에 값이 맞게 들어오는지 확인할것.
+            frmCarbide.Chiller.IsOn = yjCommon.StrToIntDef(strValue, 0) == 1;  // yhbyun 나중에 값이 맞게 들어오는지 확인할것.
         }
 
         private void GetTagetAttenuator()
         {
             string strValue = frmCarbide.Basic.Read("TargetAttenuatorPercentage");
-            frmCarbide.Basic.TargetAttenuatorPercentage = dkCommon.StrToDoubleDef(strValue, 0.0);
-            edAttenuator.Value = dkCommon.StrToDoubleDef(strValue, 0.0);
+            frmCarbide.Basic.TargetAttenuatorPercentage = yjCommon.StrToDoubleDef(strValue, 0.0);
+            edAttenuator.Value = yjCommon.StrToDoubleDef(strValue, 0.0);
         }
 
         private void GetIsEmissionWarning()
@@ -1066,26 +1066,26 @@ namespace LaserCutter
         private void GetTagetPpDivider()
         {
             string strValue = frmCarbide.Basic.Read("TargetPpDivider");
-            frmCarbide.Basic.TargetPpDivider = dkCommon.StrToIntDef(strValue, 0);
-            edPPDivider.AsInteger = dkCommon.StrToIntDef(strValue, 0);
+            frmCarbide.Basic.TargetPpDivider = yjCommon.StrToIntDef(strValue, 0);
+            edPPDivider.AsInteger = yjCommon.StrToIntDef(strValue, 0);
         }
         private void GetTagetBurstControl()
         {
             string strValue = frmCarbide.Burst.Read("TargetParameterN");
-            edBurstControlN.AsInteger = dkCommon.StrToIntDef(frmCarbide.Burst.TargetParameterN, 0);
+            edBurstControlN.AsInteger = yjCommon.StrToIntDef(frmCarbide.Burst.TargetParameterN, 0);
             
         }
         private void GetTargetEnvelopeParameterN()
         {
             string strValue = frmCarbide.Burst.Read("TargetParameterN");
-            frmCarbide.Basic.TargetBurstPulseCount = dkCommon.StrToIntDef(strValue, 0);
-            edBurstControlN.AsInteger = dkCommon.StrToIntDef(strValue, 0);
+            frmCarbide.Basic.TargetBurstPulseCount = yjCommon.StrToIntDef(strValue, 0);
+            edBurstControlN.AsInteger = yjCommon.StrToIntDef(strValue, 0);
         }
 
         private void GetTagetPulseDuration()
         {
             string strValue = frmCarbide.Basic.Read("TargetPulseDuration");
-            frmCarbide.Basic.TargetPulseDuration = dkCommon.StrToDoubleDef(strValue, 0.0);
+            frmCarbide.Basic.TargetPulseDuration = yjCommon.StrToDoubleDef(strValue, 0.0);
             edPulseduration.Text = string.Format("{0:F1}", Math.Abs(frmCarbide.Basic.TargetPulseDuration)); 
 
         }

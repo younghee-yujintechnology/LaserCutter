@@ -29,281 +29,281 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.propSaver1 = new DaekhonSystem.PropSaver();
-            this.DataServer = new DaekhonSystem.DataServer();
+            this.propSaver1 = new YujinTechnology.PropSaver();
+            this.DataServer = new YujinTechnology.DataServer();
             this.tmr_SearchOffset = new System.Windows.Forms.Timer(this.components);
-            this.multiLanguage1 = new DaekhonSystem.MultiLanguage();
-            this.AutoThread = new DaekhonSystem.Thread();
+            this.multiLanguage1 = new YujinTechnology.MultiLanguage();
+            this.AutoThread = new YujinTechnology.Thread();
             this.panClient = new LaserCutter.sjPanel();
-            this.btnCancel = new DaekhonSystem.BitBtn();
-            this.btnSet = new DaekhonSystem.BitBtn();
-            this.tabControl1 = new DaekhonSystem.TabControl();
+            this.btnCancel = new YujinTechnology.BitBtn();
+            this.btnSet = new YujinTechnology.BitBtn();
+            this.tabControl1 = new YujinTechnology.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.gradientLabel63 = new DaekhonSystem.GradientLabel();
-            this.edAutoRunSpeedZ = new DaekhonSystem.KeypadEdit();
-            this.edAutoRunTA = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel64 = new DaekhonSystem.GradientLabel();
-            this.edAutoRunSpeedStage = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel65 = new DaekhonSystem.GradientLabel();
-            this.edJumpTA = new DaekhonSystem.KeypadEdit();
-            this.edArcTA = new DaekhonSystem.KeypadEdit();
-            this.edLineTA = new DaekhonSystem.KeypadEdit();
-            this.gradLabel52 = new DaekhonSystem.GradientLabel();
-            this.gradLabel50 = new DaekhonSystem.GradientLabel();
-            this.gradLabel22 = new DaekhonSystem.GradientLabel();
-            this.edJumpSpeed = new DaekhonSystem.KeypadEdit();
-            this.edArcSpeed = new DaekhonSystem.KeypadEdit();
-            this.edLineSpeed = new DaekhonSystem.KeypadEdit();
-            this.gradLabel51 = new DaekhonSystem.GradientLabel();
-            this.gradLabel35 = new DaekhonSystem.GradientLabel();
-            this.gradLabel29 = new DaekhonSystem.GradientLabel();
+            this.gradientLabel63 = new YujinTechnology.GradientLabel();
+            this.edAutoRunSpeedZ = new YujinTechnology.KeypadEdit();
+            this.edAutoRunTA = new YujinTechnology.KeypadEdit();
+            this.gradientLabel64 = new YujinTechnology.GradientLabel();
+            this.edAutoRunSpeedStage = new YujinTechnology.KeypadEdit();
+            this.gradientLabel65 = new YujinTechnology.GradientLabel();
+            this.edJumpTA = new YujinTechnology.KeypadEdit();
+            this.edArcTA = new YujinTechnology.KeypadEdit();
+            this.edLineTA = new YujinTechnology.KeypadEdit();
+            this.gradLabel52 = new YujinTechnology.GradientLabel();
+            this.gradLabel50 = new YujinTechnology.GradientLabel();
+            this.gradLabel22 = new YujinTechnology.GradientLabel();
+            this.edJumpSpeed = new YujinTechnology.KeypadEdit();
+            this.edArcSpeed = new YujinTechnology.KeypadEdit();
+            this.edLineSpeed = new YujinTechnology.KeypadEdit();
+            this.gradLabel51 = new YujinTechnology.GradientLabel();
+            this.gradLabel35 = new YujinTechnology.GradientLabel();
+            this.gradLabel29 = new YujinTechnology.GradientLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.sunnyLine4 = new DaekhonSystem.SunnyLine();
-            this.btnSetLoadPos = new DaekhonSystem.BitBtn();
-            this.btnMoveLoadPos = new DaekhonSystem.BitBtn();
-            this.uiLine17 = new DaekhonSystem.SunnyLine();
-            this.edMode0Period = new DaekhonSystem.KeypadEdit();
-            this.edMode0PulseWidth = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel60 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel61 = new DaekhonSystem.GradientLabel();
-            this.btnSetMeasurePos = new DaekhonSystem.BitBtn();
-            this.btnMoveMeasurePos = new DaekhonSystem.BitBtn();
-            this.gradientLabel8 = new DaekhonSystem.GradientLabel();
-            this.btnMark = new DaekhonSystem.LEDButton();
-            this.gradientLabel29 = new DaekhonSystem.GradientLabel();
-            this.edTable2YOffset = new DaekhonSystem.KeypadEdit();
-            this.edTable2XOffset = new DaekhonSystem.KeypadEdit();
-            this.btnMove = new DaekhonSystem.BitBtn();
-            this.gradientLabel6 = new DaekhonSystem.GradientLabel();
-            this.edTable2MarkCenterY = new DaekhonSystem.KeypadEdit();
-            this.edTable2MarkCenterX = new DaekhonSystem.KeypadEdit();
-            this.btnMeasure = new DaekhonSystem.LEDButton();
-            this.gradientLabel14 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel15 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel16 = new DaekhonSystem.GradientLabel();
-            this.edHomeOffsetPosZ = new DaekhonSystem.KeypadEdit();
-            this.edHomeOffsetPosY1 = new DaekhonSystem.KeypadEdit();
-            this.edHomeOffsetPosY2 = new DaekhonSystem.KeypadEdit();
-            this.edHomeOffsetPosX = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel17 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel18 = new DaekhonSystem.GradientLabel();
-            this.sunnyLine1 = new DaekhonSystem.SunnyLine();
-            this.gradientLabel7 = new DaekhonSystem.GradientLabel();
-            this.edPowerMeterZPos = new DaekhonSystem.KeypadEdit();
-            this.edPowerMeterXPos = new DaekhonSystem.KeypadEdit();
-            this.gradLabel28 = new DaekhonSystem.GradientLabel();
-            this.gradLabel30 = new DaekhonSystem.GradientLabel();
-            this.edTable2NozzleYOffset = new DaekhonSystem.KeypadEdit();
-            this.edTable2NozzleXOffset = new DaekhonSystem.KeypadEdit();
-            this.sunnyLine3 = new DaekhonSystem.SunnyLine();
-            this.gradLabel39 = new DaekhonSystem.GradientLabel();
-            this.gradLabel15 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel3 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel2 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
-            this.edLoadPosZ = new DaekhonSystem.KeypadEdit();
-            this.edLoadPosY1 = new DaekhonSystem.KeypadEdit();
-            this.edLoadPosY2 = new DaekhonSystem.KeypadEdit();
-            this.edLoadPosX = new DaekhonSystem.KeypadEdit();
-            this.uiLine5 = new DaekhonSystem.SunnyLine();
-            this.gradLabel7 = new DaekhonSystem.GradientLabel();
-            this.gradLabel6 = new DaekhonSystem.GradientLabel();
+            this.sunnyLine4 = new YujinTechnology.SunnyLine();
+            this.btnSetLoadPos = new YujinTechnology.BitBtn();
+            this.btnMoveLoadPos = new YujinTechnology.BitBtn();
+            this.uiLine17 = new YujinTechnology.SunnyLine();
+            this.edMode0Period = new YujinTechnology.KeypadEdit();
+            this.edMode0PulseWidth = new YujinTechnology.KeypadEdit();
+            this.gradientLabel60 = new YujinTechnology.GradientLabel();
+            this.gradientLabel61 = new YujinTechnology.GradientLabel();
+            this.btnSetMeasurePos = new YujinTechnology.BitBtn();
+            this.btnMoveMeasurePos = new YujinTechnology.BitBtn();
+            this.gradientLabel8 = new YujinTechnology.GradientLabel();
+            this.btnMark = new YujinTechnology.LEDButton();
+            this.gradientLabel29 = new YujinTechnology.GradientLabel();
+            this.edTable2YOffset = new YujinTechnology.KeypadEdit();
+            this.edTable2XOffset = new YujinTechnology.KeypadEdit();
+            this.btnMove = new YujinTechnology.BitBtn();
+            this.gradientLabel6 = new YujinTechnology.GradientLabel();
+            this.edTable2MarkCenterY = new YujinTechnology.KeypadEdit();
+            this.edTable2MarkCenterX = new YujinTechnology.KeypadEdit();
+            this.btnMeasure = new YujinTechnology.LEDButton();
+            this.gradientLabel14 = new YujinTechnology.GradientLabel();
+            this.gradientLabel15 = new YujinTechnology.GradientLabel();
+            this.gradientLabel16 = new YujinTechnology.GradientLabel();
+            this.edHomeOffsetPosZ = new YujinTechnology.KeypadEdit();
+            this.edHomeOffsetPosY1 = new YujinTechnology.KeypadEdit();
+            this.edHomeOffsetPosY2 = new YujinTechnology.KeypadEdit();
+            this.edHomeOffsetPosX = new YujinTechnology.KeypadEdit();
+            this.gradientLabel17 = new YujinTechnology.GradientLabel();
+            this.gradientLabel18 = new YujinTechnology.GradientLabel();
+            this.sunnyLine1 = new YujinTechnology.SunnyLine();
+            this.gradientLabel7 = new YujinTechnology.GradientLabel();
+            this.edPowerMeterZPos = new YujinTechnology.KeypadEdit();
+            this.edPowerMeterXPos = new YujinTechnology.KeypadEdit();
+            this.gradLabel28 = new YujinTechnology.GradientLabel();
+            this.gradLabel30 = new YujinTechnology.GradientLabel();
+            this.edTable2NozzleYOffset = new YujinTechnology.KeypadEdit();
+            this.edTable2NozzleXOffset = new YujinTechnology.KeypadEdit();
+            this.sunnyLine3 = new YujinTechnology.SunnyLine();
+            this.gradLabel39 = new YujinTechnology.GradientLabel();
+            this.gradLabel15 = new YujinTechnology.GradientLabel();
+            this.gradientLabel3 = new YujinTechnology.GradientLabel();
+            this.gradientLabel2 = new YujinTechnology.GradientLabel();
+            this.gradientLabel1 = new YujinTechnology.GradientLabel();
+            this.edLoadPosZ = new YujinTechnology.KeypadEdit();
+            this.edLoadPosY1 = new YujinTechnology.KeypadEdit();
+            this.edLoadPosY2 = new YujinTechnology.KeypadEdit();
+            this.edLoadPosX = new YujinTechnology.KeypadEdit();
+            this.uiLine5 = new YujinTechnology.SunnyLine();
+            this.gradLabel7 = new YujinTechnology.GradientLabel();
+            this.gradLabel6 = new YujinTechnology.GradientLabel();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.chkAreaSensorVacuumUse = new DaekhonSystem.CheckBox();
-            this.chkAreaSensorUse = new DaekhonSystem.CheckBox();
-            this.chkVacuumAutoRelease = new DaekhonSystem.CheckBox();
-            this.chkVacAlarmUse = new DaekhonSystem.CheckBox();
-            this.chkDoorAlarmUse = new DaekhonSystem.CheckBox();
-            this.chkIOnizoerAutoRun = new DaekhonSystem.CheckBox();
-            this.chkDustCollectorAutoRun = new DaekhonSystem.CheckBox();
-            this.gradientLabel38 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel39 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel33 = new DaekhonSystem.GradientLabel();
-            this.cbTable2UseVacuumCount = new DaekhonSystem.ComboBox();
-            this.edTable2VacuumDelay = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel34 = new DaekhonSystem.GradientLabel();
-            this.cbTable1UseVacuumCount = new DaekhonSystem.ComboBox();
-            this.edTable1VacuumDelay = new DaekhonSystem.KeypadEdit();
-            this.sunnyLine6 = new DaekhonSystem.SunnyLine();
-            this.edAccelerationG = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel27 = new DaekhonSystem.GradientLabel();
-            this.sunnyLine5 = new DaekhonSystem.SunnyLine();
-            this.gradientLabel26 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel25 = new DaekhonSystem.GradientLabel();
-            this.sunnyLine2 = new DaekhonSystem.SunnyLine();
-            this.uiLine2 = new DaekhonSystem.SunnyLine();
-            this.gradLabel3 = new DaekhonSystem.GradientLabel();
-            this.uiLine3 = new DaekhonSystem.SunnyLine();
-            this.gradLabel38 = new DaekhonSystem.GradientLabel();
-            this.gradLabel37 = new DaekhonSystem.GradientLabel();
-            this.edTableSizeX = new DaekhonSystem.KeypadEdit();
-            this.edTableSizeY = new DaekhonSystem.KeypadEdit();
-            this.gradLabel5 = new DaekhonSystem.GradientLabel();
-            this.gradLabel2 = new DaekhonSystem.GradientLabel();
-            this.uiLine1 = new DaekhonSystem.SunnyLine();
+            this.chkAreaSensorVacuumUse = new YujinTechnology.CheckBox();
+            this.chkAreaSensorUse = new YujinTechnology.CheckBox();
+            this.chkVacuumAutoRelease = new YujinTechnology.CheckBox();
+            this.chkVacAlarmUse = new YujinTechnology.CheckBox();
+            this.chkDoorAlarmUse = new YujinTechnology.CheckBox();
+            this.chkIOnizoerAutoRun = new YujinTechnology.CheckBox();
+            this.chkDustCollectorAutoRun = new YujinTechnology.CheckBox();
+            this.gradientLabel38 = new YujinTechnology.GradientLabel();
+            this.gradientLabel39 = new YujinTechnology.GradientLabel();
+            this.gradientLabel33 = new YujinTechnology.GradientLabel();
+            this.cbTable2UseVacuumCount = new YujinTechnology.ComboBox();
+            this.edTable2VacuumDelay = new YujinTechnology.KeypadEdit();
+            this.gradientLabel34 = new YujinTechnology.GradientLabel();
+            this.cbTable1UseVacuumCount = new YujinTechnology.ComboBox();
+            this.edTable1VacuumDelay = new YujinTechnology.KeypadEdit();
+            this.sunnyLine6 = new YujinTechnology.SunnyLine();
+            this.edAccelerationG = new YujinTechnology.KeypadEdit();
+            this.gradientLabel27 = new YujinTechnology.GradientLabel();
+            this.sunnyLine5 = new YujinTechnology.SunnyLine();
+            this.gradientLabel26 = new YujinTechnology.GradientLabel();
+            this.gradientLabel25 = new YujinTechnology.GradientLabel();
+            this.sunnyLine2 = new YujinTechnology.SunnyLine();
+            this.uiLine2 = new YujinTechnology.SunnyLine();
+            this.gradLabel3 = new YujinTechnology.GradientLabel();
+            this.uiLine3 = new YujinTechnology.SunnyLine();
+            this.gradLabel38 = new YujinTechnology.GradientLabel();
+            this.gradLabel37 = new YujinTechnology.GradientLabel();
+            this.edTableSizeX = new YujinTechnology.KeypadEdit();
+            this.edTableSizeY = new YujinTechnology.KeypadEdit();
+            this.gradLabel5 = new YujinTechnology.GradientLabel();
+            this.gradLabel2 = new YujinTechnology.GradientLabel();
+            this.uiLine1 = new YujinTechnology.SunnyLine();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label3 = new DaekhonSystem.Label();
-            this.gradientLabel10 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel35 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel37 = new DaekhonSystem.GradientLabel();
-            this.edTable2LoadingPosX = new DaekhonSystem.NumberEdit();
-            this.edTable2LoadingPosY = new DaekhonSystem.NumberEdit();
+            this.label3 = new YujinTechnology.Label();
+            this.gradientLabel10 = new YujinTechnology.GradientLabel();
+            this.gradientLabel35 = new YujinTechnology.GradientLabel();
+            this.gradientLabel37 = new YujinTechnology.GradientLabel();
+            this.edTable2LoadingPosX = new YujinTechnology.NumberEdit();
+            this.edTable2LoadingPosY = new YujinTechnology.NumberEdit();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ledTable2Center = new DaekhonSystem.LEDLabel();
-            this.cbTable2LoadDir = new DaekhonSystem.ComboBox();
-            this.ledTable2RightBottom = new DaekhonSystem.LEDLabel();
-            this.ledTable2RightTop = new DaekhonSystem.LEDLabel();
-            this.ledTable2LeftBottom = new DaekhonSystem.LEDLabel();
-            this.ledTable2LeftTop = new DaekhonSystem.LEDLabel();
-            this.gradientLabel11 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel12 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel13 = new DaekhonSystem.GradientLabel();
-            this.edTable1LoadingPosX = new DaekhonSystem.NumberEdit();
-            this.edTable1LoadingPosY = new DaekhonSystem.NumberEdit();
+            this.ledTable2Center = new YujinTechnology.LEDLabel();
+            this.cbTable2LoadDir = new YujinTechnology.ComboBox();
+            this.ledTable2RightBottom = new YujinTechnology.LEDLabel();
+            this.ledTable2RightTop = new YujinTechnology.LEDLabel();
+            this.ledTable2LeftBottom = new YujinTechnology.LEDLabel();
+            this.ledTable2LeftTop = new YujinTechnology.LEDLabel();
+            this.gradientLabel11 = new YujinTechnology.GradientLabel();
+            this.gradientLabel12 = new YujinTechnology.GradientLabel();
+            this.gradientLabel13 = new YujinTechnology.GradientLabel();
+            this.edTable1LoadingPosX = new YujinTechnology.NumberEdit();
+            this.edTable1LoadingPosY = new YujinTechnology.NumberEdit();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.ledTable1Center = new DaekhonSystem.LEDLabel();
-            this.cbTable1LoadDir = new DaekhonSystem.ComboBox();
-            this.ledTable1RightBottom = new DaekhonSystem.LEDLabel();
-            this.ledTable1RightTop = new DaekhonSystem.LEDLabel();
-            this.ledTable1LeftBottom = new DaekhonSystem.LEDLabel();
-            this.ledTable1LeftTop = new DaekhonSystem.LEDLabel();
+            this.ledTable1Center = new YujinTechnology.LEDLabel();
+            this.cbTable1LoadDir = new YujinTechnology.ComboBox();
+            this.ledTable1RightBottom = new YujinTechnology.LEDLabel();
+            this.ledTable1RightTop = new YujinTechnology.LEDLabel();
+            this.ledTable1LeftBottom = new YujinTechnology.LEDLabel();
+            this.ledTable1LeftTop = new YujinTechnology.LEDLabel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lblInfom = new DaekhonSystem.Label();
+            this.lblInfom = new YujinTechnology.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnMoveTable2Pos5 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable2Pos4 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable2Pos3 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable2Pos2 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable2Pos1 = new DaekhonSystem.BitBtn();
-            this.btnSetTable2Pos5 = new DaekhonSystem.BitBtn();
-            this.btnSetTable2Pos4 = new DaekhonSystem.BitBtn();
-            this.btnSetTable2Pos3 = new DaekhonSystem.BitBtn();
-            this.btnSetTable2Pos2 = new DaekhonSystem.BitBtn();
-            this.btnSetTable2Pos1 = new DaekhonSystem.BitBtn();
-            this.gradientLabel19 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel21 = new DaekhonSystem.GradientLabel();
-            this.edTable2CenterYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2CenterXPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2RightBottomYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2RightBottomXPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2RightTopYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2RightTopXPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2LeftTopYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2LeftTopXPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2LeftBottomYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable2LeftBottomXPos = new DaekhonSystem.KeypadEdit();
+            this.btnMoveTable2Pos5 = new YujinTechnology.BitBtn();
+            this.btnMoveTable2Pos4 = new YujinTechnology.BitBtn();
+            this.btnMoveTable2Pos3 = new YujinTechnology.BitBtn();
+            this.btnMoveTable2Pos2 = new YujinTechnology.BitBtn();
+            this.btnMoveTable2Pos1 = new YujinTechnology.BitBtn();
+            this.btnSetTable2Pos5 = new YujinTechnology.BitBtn();
+            this.btnSetTable2Pos4 = new YujinTechnology.BitBtn();
+            this.btnSetTable2Pos3 = new YujinTechnology.BitBtn();
+            this.btnSetTable2Pos2 = new YujinTechnology.BitBtn();
+            this.btnSetTable2Pos1 = new YujinTechnology.BitBtn();
+            this.gradientLabel19 = new YujinTechnology.GradientLabel();
+            this.gradientLabel21 = new YujinTechnology.GradientLabel();
+            this.edTable2CenterYPos = new YujinTechnology.KeypadEdit();
+            this.edTable2CenterXPos = new YujinTechnology.KeypadEdit();
+            this.edTable2RightBottomYPos = new YujinTechnology.KeypadEdit();
+            this.edTable2RightBottomXPos = new YujinTechnology.KeypadEdit();
+            this.edTable2RightTopYPos = new YujinTechnology.KeypadEdit();
+            this.edTable2RightTopXPos = new YujinTechnology.KeypadEdit();
+            this.edTable2LeftTopYPos = new YujinTechnology.KeypadEdit();
+            this.edTable2LeftTopXPos = new YujinTechnology.KeypadEdit();
+            this.edTable2LeftBottomYPos = new YujinTechnology.KeypadEdit();
+            this.edTable2LeftBottomXPos = new YujinTechnology.KeypadEdit();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.gradientLabel23 = new DaekhonSystem.GradientLabel();
-            this.btnMoveTable1Pos5 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable1Pos4 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable1Pos3 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable1Pos2 = new DaekhonSystem.BitBtn();
-            this.btnMoveTable1Pos1 = new DaekhonSystem.BitBtn();
-            this.btnSetTable1Pos5 = new DaekhonSystem.BitBtn();
-            this.btnSetTable1Pos4 = new DaekhonSystem.BitBtn();
-            this.btnSetTable1Pos3 = new DaekhonSystem.BitBtn();
-            this.btnSetTable1Pos2 = new DaekhonSystem.BitBtn();
-            this.btnSetTable1Pos1 = new DaekhonSystem.BitBtn();
-            this.gradientLabel36 = new DaekhonSystem.GradientLabel();
-            this.edTable1CenterYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable1CenterXPos = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel32 = new DaekhonSystem.GradientLabel();
-            this.edTable1RightBottomYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable1RightBottomXPos = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel20 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel22 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel24 = new DaekhonSystem.GradientLabel();
-            this.edTable1RightTopYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable1RightTopXPos = new DaekhonSystem.KeypadEdit();
-            this.edTable1LeftTopYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable1LeftTopXPos = new DaekhonSystem.KeypadEdit();
-            this.edTable1LeftBottomYPos = new DaekhonSystem.KeypadEdit();
-            this.edTable1LeftBottomXPos = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel28 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel30 = new DaekhonSystem.GradientLabel();
+            this.gradientLabel23 = new YujinTechnology.GradientLabel();
+            this.btnMoveTable1Pos5 = new YujinTechnology.BitBtn();
+            this.btnMoveTable1Pos4 = new YujinTechnology.BitBtn();
+            this.btnMoveTable1Pos3 = new YujinTechnology.BitBtn();
+            this.btnMoveTable1Pos2 = new YujinTechnology.BitBtn();
+            this.btnMoveTable1Pos1 = new YujinTechnology.BitBtn();
+            this.btnSetTable1Pos5 = new YujinTechnology.BitBtn();
+            this.btnSetTable1Pos4 = new YujinTechnology.BitBtn();
+            this.btnSetTable1Pos3 = new YujinTechnology.BitBtn();
+            this.btnSetTable1Pos2 = new YujinTechnology.BitBtn();
+            this.btnSetTable1Pos1 = new YujinTechnology.BitBtn();
+            this.gradientLabel36 = new YujinTechnology.GradientLabel();
+            this.edTable1CenterYPos = new YujinTechnology.KeypadEdit();
+            this.edTable1CenterXPos = new YujinTechnology.KeypadEdit();
+            this.gradientLabel32 = new YujinTechnology.GradientLabel();
+            this.edTable1RightBottomYPos = new YujinTechnology.KeypadEdit();
+            this.edTable1RightBottomXPos = new YujinTechnology.KeypadEdit();
+            this.gradientLabel20 = new YujinTechnology.GradientLabel();
+            this.gradientLabel22 = new YujinTechnology.GradientLabel();
+            this.gradientLabel24 = new YujinTechnology.GradientLabel();
+            this.edTable1RightTopYPos = new YujinTechnology.KeypadEdit();
+            this.edTable1RightTopXPos = new YujinTechnology.KeypadEdit();
+            this.edTable1LeftTopYPos = new YujinTechnology.KeypadEdit();
+            this.edTable1LeftTopXPos = new YujinTechnology.KeypadEdit();
+            this.edTable1LeftBottomYPos = new YujinTechnology.KeypadEdit();
+            this.edTable1LeftBottomXPos = new YujinTechnology.KeypadEdit();
+            this.gradientLabel28 = new YujinTechnology.GradientLabel();
+            this.gradientLabel30 = new YujinTechnology.GradientLabel();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabControl2 = new DaekhonSystem.TabControl();
+            this.tabControl2 = new YujinTechnology.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.gradientLabel67 = new DaekhonSystem.GradientLabel();
-            this.edTable1VisionFocusLightValue = new DaekhonSystem.KeypadEdit();
-            this.edTable1LaserFocusLightValue = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel62 = new DaekhonSystem.GradientLabel();
+            this.gradientLabel67 = new YujinTechnology.GradientLabel();
+            this.edTable1VisionFocusLightValue = new YujinTechnology.KeypadEdit();
+            this.edTable1LaserFocusLightValue = new YujinTechnology.KeypadEdit();
+            this.gradientLabel62 = new YujinTechnology.GradientLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.gradientLabel57 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel58 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel59 = new DaekhonSystem.GradientLabel();
-            this.btnMoveTable1LaserZFocus = new DaekhonSystem.BitBtn();
-            this.keypadEdit2 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit1 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit6 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit7 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit5 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit4 = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel46 = new DaekhonSystem.GradientLabel();
-            this.edTable1StartX = new DaekhonSystem.KeypadEdit();
-            this.btnTable1Start = new DaekhonSystem.BitBtn();
-            this.edTable1DrawX = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel43 = new DaekhonSystem.GradientLabel();
-            this.edTable1StepZ = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel42 = new DaekhonSystem.GradientLabel();
-            this.edTable1PitchZ = new DaekhonSystem.KeypadEdit();
-            this.edTable1PitchY = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel41 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel40 = new DaekhonSystem.GradientLabel();
-            this.edTable1StartZ = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel31 = new DaekhonSystem.GradientLabel();
-            this.btnSetTable1StartPos = new DaekhonSystem.BitBtn();
-            this.btnMoveTable1StartPos = new DaekhonSystem.BitBtn();
-            this.edTable1StartY = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel9 = new DaekhonSystem.GradientLabel();
-            this.btnSetTable1VisionZFocus = new DaekhonSystem.BitBtn();
-            this.btnSetTable1LaserZFocus = new DaekhonSystem.BitBtn();
-            this.btnMoveTable1VisionZFocus = new DaekhonSystem.BitBtn();
-            this.gradientLabel4 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel5 = new DaekhonSystem.GradientLabel();
-            this.edTable1VisionZFocus = new DaekhonSystem.KeypadEdit();
-            this.edTable1LaserZFocus = new DaekhonSystem.KeypadEdit();
+            this.gradientLabel57 = new YujinTechnology.GradientLabel();
+            this.gradientLabel58 = new YujinTechnology.GradientLabel();
+            this.gradientLabel59 = new YujinTechnology.GradientLabel();
+            this.btnMoveTable1LaserZFocus = new YujinTechnology.BitBtn();
+            this.keypadEdit2 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit1 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit6 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit7 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit5 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit4 = new YujinTechnology.KeypadEdit();
+            this.gradientLabel46 = new YujinTechnology.GradientLabel();
+            this.edTable1StartX = new YujinTechnology.KeypadEdit();
+            this.btnTable1Start = new YujinTechnology.BitBtn();
+            this.edTable1DrawX = new YujinTechnology.KeypadEdit();
+            this.gradientLabel43 = new YujinTechnology.GradientLabel();
+            this.edTable1StepZ = new YujinTechnology.KeypadEdit();
+            this.gradientLabel42 = new YujinTechnology.GradientLabel();
+            this.edTable1PitchZ = new YujinTechnology.KeypadEdit();
+            this.edTable1PitchY = new YujinTechnology.KeypadEdit();
+            this.gradientLabel41 = new YujinTechnology.GradientLabel();
+            this.gradientLabel40 = new YujinTechnology.GradientLabel();
+            this.edTable1StartZ = new YujinTechnology.KeypadEdit();
+            this.gradientLabel31 = new YujinTechnology.GradientLabel();
+            this.btnSetTable1StartPos = new YujinTechnology.BitBtn();
+            this.btnMoveTable1StartPos = new YujinTechnology.BitBtn();
+            this.edTable1StartY = new YujinTechnology.KeypadEdit();
+            this.gradientLabel9 = new YujinTechnology.GradientLabel();
+            this.btnSetTable1VisionZFocus = new YujinTechnology.BitBtn();
+            this.btnSetTable1LaserZFocus = new YujinTechnology.BitBtn();
+            this.btnMoveTable1VisionZFocus = new YujinTechnology.BitBtn();
+            this.gradientLabel4 = new YujinTechnology.GradientLabel();
+            this.gradientLabel5 = new YujinTechnology.GradientLabel();
+            this.edTable1VisionZFocus = new YujinTechnology.KeypadEdit();
+            this.edTable1LaserZFocus = new YujinTechnology.KeypadEdit();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.gradientLabel68 = new DaekhonSystem.GradientLabel();
-            this.edTable2VisionFocusLightValue = new DaekhonSystem.KeypadEdit();
-            this.edTable2LaserFocusLightValue = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel66 = new DaekhonSystem.GradientLabel();
+            this.gradientLabel68 = new YujinTechnology.GradientLabel();
+            this.edTable2VisionFocusLightValue = new YujinTechnology.KeypadEdit();
+            this.edTable2LaserFocusLightValue = new YujinTechnology.KeypadEdit();
+            this.gradientLabel66 = new YujinTechnology.GradientLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.gradientLabel54 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel55 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel56 = new DaekhonSystem.GradientLabel();
-            this.keypadEdit3 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit12 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit8 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit9 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit10 = new DaekhonSystem.KeypadEdit();
-            this.keypadEdit11 = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel48 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel49 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel50 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel51 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel52 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel53 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel47 = new DaekhonSystem.GradientLabel();
-            this.edTable2StartX = new DaekhonSystem.KeypadEdit();
-            this.btnTable2Start = new DaekhonSystem.BitBtn();
-            this.edTable2DrawX = new DaekhonSystem.KeypadEdit();
-            this.edTable2StepZ = new DaekhonSystem.KeypadEdit();
-            this.edTable2PitchZ = new DaekhonSystem.KeypadEdit();
-            this.edTable2PitchY = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel44 = new DaekhonSystem.GradientLabel();
-            this.edTable2StartZ = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel45 = new DaekhonSystem.GradientLabel();
-            this.btnSetTable2StartPos = new DaekhonSystem.BitBtn();
-            this.btnMoveTable2StartPos = new DaekhonSystem.BitBtn();
-            this.edTable2StartY = new DaekhonSystem.KeypadEdit();
-            this.btnSetTable2VisionZFocus = new DaekhonSystem.BitBtn();
-            this.btnSetTable2LaserZFocus = new DaekhonSystem.BitBtn();
-            this.btnMoveTable2VisionZFocus = new DaekhonSystem.BitBtn();
-            this.btnMoveTable2LaserZFocus = new DaekhonSystem.BitBtn();
-            this.edTable2VisionZFocus = new DaekhonSystem.KeypadEdit();
-            this.edTable2LaserZFocus = new DaekhonSystem.KeypadEdit();
-            this.btnAllSave = new DaekhonSystem.BitBtn();
+            this.gradientLabel54 = new YujinTechnology.GradientLabel();
+            this.gradientLabel55 = new YujinTechnology.GradientLabel();
+            this.gradientLabel56 = new YujinTechnology.GradientLabel();
+            this.keypadEdit3 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit12 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit8 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit9 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit10 = new YujinTechnology.KeypadEdit();
+            this.keypadEdit11 = new YujinTechnology.KeypadEdit();
+            this.gradientLabel48 = new YujinTechnology.GradientLabel();
+            this.gradientLabel49 = new YujinTechnology.GradientLabel();
+            this.gradientLabel50 = new YujinTechnology.GradientLabel();
+            this.gradientLabel51 = new YujinTechnology.GradientLabel();
+            this.gradientLabel52 = new YujinTechnology.GradientLabel();
+            this.gradientLabel53 = new YujinTechnology.GradientLabel();
+            this.gradientLabel47 = new YujinTechnology.GradientLabel();
+            this.edTable2StartX = new YujinTechnology.KeypadEdit();
+            this.btnTable2Start = new YujinTechnology.BitBtn();
+            this.edTable2DrawX = new YujinTechnology.KeypadEdit();
+            this.edTable2StepZ = new YujinTechnology.KeypadEdit();
+            this.edTable2PitchZ = new YujinTechnology.KeypadEdit();
+            this.edTable2PitchY = new YujinTechnology.KeypadEdit();
+            this.gradientLabel44 = new YujinTechnology.GradientLabel();
+            this.edTable2StartZ = new YujinTechnology.KeypadEdit();
+            this.gradientLabel45 = new YujinTechnology.GradientLabel();
+            this.btnSetTable2StartPos = new YujinTechnology.BitBtn();
+            this.btnMoveTable2StartPos = new YujinTechnology.BitBtn();
+            this.edTable2StartY = new YujinTechnology.KeypadEdit();
+            this.btnSetTable2VisionZFocus = new YujinTechnology.BitBtn();
+            this.btnSetTable2LaserZFocus = new YujinTechnology.BitBtn();
+            this.btnMoveTable2VisionZFocus = new YujinTechnology.BitBtn();
+            this.btnMoveTable2LaserZFocus = new YujinTechnology.BitBtn();
+            this.edTable2VisionZFocus = new YujinTechnology.KeypadEdit();
+            this.edTable2LaserZFocus = new YujinTechnology.KeypadEdit();
+            this.btnAllSave = new YujinTechnology.BitBtn();
             this.panClient.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -422,7 +422,7 @@
         "edTable2LaserFocusLightValue;Text;LightValue;Table2LaserFocusLightValue;100",
         "chkDustCollectorAutoRun;Checked;Option;DustCollectorAutoRun;true",
         "chkIOnizoerAutoRun;Checked;Option;IonizierAutoRun;true"};
-            this.propSaver1.RootKey = DaekhonSystem.RootKey.artHKEY_CURRENT_USER;
+            this.propSaver1.RootKey = YujinTechnology.RootKey.artHKEY_CURRENT_USER;
             this.propSaver1.SaveToRegistry = false;
             // 
             // tmr_SearchOffset
@@ -565,7 +565,7 @@
             // edAutoRunSpeedZ
             // 
             this.edAutoRunSpeedZ.BackColor = System.Drawing.Color.White;
-            this.edAutoRunSpeedZ.DataType = DaekhonSystem.DataType.Double;
+            this.edAutoRunSpeedZ.DataType = YujinTechnology.DataType.Double;
             this.edAutoRunSpeedZ.Frame.CornerRound = 1;
             this.edAutoRunSpeedZ.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edAutoRunSpeedZ.Hint = null;
@@ -584,7 +584,7 @@
             // edAutoRunTA
             // 
             this.edAutoRunTA.BackColor = System.Drawing.Color.White;
-            this.edAutoRunTA.DataType = DaekhonSystem.DataType.Double;
+            this.edAutoRunTA.DataType = YujinTechnology.DataType.Double;
             this.edAutoRunTA.Frame.CornerRound = 1;
             this.edAutoRunTA.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edAutoRunTA.Hint = null;
@@ -621,7 +621,7 @@
             // edAutoRunSpeedStage
             // 
             this.edAutoRunSpeedStage.BackColor = System.Drawing.Color.White;
-            this.edAutoRunSpeedStage.DataType = DaekhonSystem.DataType.Double;
+            this.edAutoRunSpeedStage.DataType = YujinTechnology.DataType.Double;
             this.edAutoRunSpeedStage.Frame.CornerRound = 1;
             this.edAutoRunSpeedStage.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edAutoRunSpeedStage.Hint = null;
@@ -658,7 +658,7 @@
             // edJumpTA
             // 
             this.edJumpTA.BackColor = System.Drawing.Color.White;
-            this.edJumpTA.DataType = DaekhonSystem.DataType.Double;
+            this.edJumpTA.DataType = YujinTechnology.DataType.Double;
             this.edJumpTA.Frame.CornerRound = 1;
             this.edJumpTA.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edJumpTA.Hint = null;
@@ -677,7 +677,7 @@
             // edArcTA
             // 
             this.edArcTA.BackColor = System.Drawing.Color.White;
-            this.edArcTA.DataType = DaekhonSystem.DataType.Double;
+            this.edArcTA.DataType = YujinTechnology.DataType.Double;
             this.edArcTA.Frame.CornerRound = 1;
             this.edArcTA.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edArcTA.Hint = null;
@@ -696,7 +696,7 @@
             // edLineTA
             // 
             this.edLineTA.BackColor = System.Drawing.Color.White;
-            this.edLineTA.DataType = DaekhonSystem.DataType.Double;
+            this.edLineTA.DataType = YujinTechnology.DataType.Double;
             this.edLineTA.Frame.CornerRound = 1;
             this.edLineTA.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edLineTA.Hint = null;
@@ -769,7 +769,7 @@
             // edJumpSpeed
             // 
             this.edJumpSpeed.BackColor = System.Drawing.Color.White;
-            this.edJumpSpeed.DataType = DaekhonSystem.DataType.Double;
+            this.edJumpSpeed.DataType = YujinTechnology.DataType.Double;
             this.edJumpSpeed.Frame.CornerRound = 1;
             this.edJumpSpeed.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edJumpSpeed.Hint = null;
@@ -788,7 +788,7 @@
             // edArcSpeed
             // 
             this.edArcSpeed.BackColor = System.Drawing.Color.White;
-            this.edArcSpeed.DataType = DaekhonSystem.DataType.Double;
+            this.edArcSpeed.DataType = YujinTechnology.DataType.Double;
             this.edArcSpeed.Frame.CornerRound = 1;
             this.edArcSpeed.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edArcSpeed.Hint = null;
@@ -807,7 +807,7 @@
             // edLineSpeed
             // 
             this.edLineSpeed.BackColor = System.Drawing.Color.White;
-            this.edLineSpeed.DataType = DaekhonSystem.DataType.Double;
+            this.edLineSpeed.DataType = YujinTechnology.DataType.Double;
             this.edLineSpeed.Frame.CornerRound = 1;
             this.edLineSpeed.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edLineSpeed.Hint = null;
@@ -940,22 +940,22 @@
             // sunnyLine4
             // 
             this.sunnyLine4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.sunnyLine4.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine4.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine4.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine4.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine4.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine4.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine4.Frame.Visible = false;
             this.sunnyLine4.Hint = null;
             this.sunnyLine4.LineCapSize = 4;
             this.sunnyLine4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine4.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine4.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine4.LineWidth = 1F;
             this.sunnyLine4.Location = new System.Drawing.Point(746, 272);
             this.sunnyLine4.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine4.Name = "sunnyLine4";
             this.sunnyLine4.ShowHint = false;
             this.sunnyLine4.Size = new System.Drawing.Size(243, 17);
-            this.sunnyLine4.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine4.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine4.TabIndex = 1683;
             this.sunnyLine4.Text = "Table2번 전용";
             this.sunnyLine4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -991,22 +991,22 @@
             // 
             this.uiLine17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine17.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine17.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine17.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine17.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine17.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine17.Font = new System.Drawing.Font("Tahoma", 11F);
             this.uiLine17.ForeColor = System.Drawing.Color.Black;
             this.uiLine17.Frame.Visible = false;
             this.uiLine17.Hint = null;
             this.uiLine17.LineCapSize = 4;
             this.uiLine17.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine17.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine17.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine17.LineWidth = 1F;
             this.uiLine17.Location = new System.Drawing.Point(260, 373);
             this.uiLine17.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine17.Name = "uiLine17";
             this.uiLine17.ShowHint = false;
             this.uiLine17.Size = new System.Drawing.Size(183, 17);
-            this.uiLine17.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine17.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine17.TabIndex = 1680;
             this.uiLine17.Text = "Mode 0 (Int - Encoder)";
             this.uiLine17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1016,7 +1016,7 @@
             // 
             this.edMode0Period.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.edMode0Period.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edMode0Period.DataType = DaekhonSystem.DataType.Double;
+            this.edMode0Period.DataType = YujinTechnology.DataType.Double;
             this.edMode0Period.Enabled = false;
             this.edMode0Period.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edMode0Period.ForeColor = System.Drawing.Color.Black;
@@ -1039,7 +1039,7 @@
             // 
             this.edMode0PulseWidth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.edMode0PulseWidth.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edMode0PulseWidth.DataType = DaekhonSystem.DataType.Double;
+            this.edMode0PulseWidth.DataType = YujinTechnology.DataType.Double;
             this.edMode0PulseWidth.Enabled = false;
             this.edMode0PulseWidth.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edMode0PulseWidth.ForeColor = System.Drawing.Color.Black;
@@ -1176,7 +1176,7 @@
             // edTable2YOffset
             // 
             this.edTable2YOffset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.edTable2YOffset.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2YOffset.DataType = YujinTechnology.DataType.Double;
             this.edTable2YOffset.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2YOffset.Frame.CornerRound = 1;
             this.edTable2YOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1196,7 +1196,7 @@
             // edTable2XOffset
             // 
             this.edTable2XOffset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.edTable2XOffset.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2XOffset.DataType = YujinTechnology.DataType.Double;
             this.edTable2XOffset.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2XOffset.Frame.CornerRound = 1;
             this.edTable2XOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1246,7 +1246,7 @@
             // edTable2MarkCenterY
             // 
             this.edTable2MarkCenterY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.edTable2MarkCenterY.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2MarkCenterY.DataType = YujinTechnology.DataType.Double;
             this.edTable2MarkCenterY.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2MarkCenterY.Frame.CornerRound = 1;
             this.edTable2MarkCenterY.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1266,7 +1266,7 @@
             // edTable2MarkCenterX
             // 
             this.edTable2MarkCenterX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.edTable2MarkCenterX.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2MarkCenterX.DataType = YujinTechnology.DataType.Double;
             this.edTable2MarkCenterX.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2MarkCenterX.Frame.CornerRound = 1;
             this.edTable2MarkCenterX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1300,7 +1300,7 @@
             this.btnMeasure.TabIndex = 1656;
             this.btnMeasure.Text = "Measure";
             this.btnMeasure.UseVisualStyleBackColor = false;
-            this.btnMeasure.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.btnMeasure_LEDValueChanged);
+            this.btnMeasure.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.btnMeasure_LEDValueChanged);
             this.btnMeasure.Click += new System.EventHandler(this.btnMeasure_Click);
             // 
             // gradientLabel14
@@ -1357,7 +1357,7 @@
             // edHomeOffsetPosZ
             // 
             this.edHomeOffsetPosZ.BackColor = System.Drawing.Color.White;
-            this.edHomeOffsetPosZ.DataType = DaekhonSystem.DataType.Double;
+            this.edHomeOffsetPosZ.DataType = YujinTechnology.DataType.Double;
             this.edHomeOffsetPosZ.Enabled = false;
             this.edHomeOffsetPosZ.Frame.CornerRound = 1;
             this.edHomeOffsetPosZ.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1377,7 +1377,7 @@
             // edHomeOffsetPosY1
             // 
             this.edHomeOffsetPosY1.BackColor = System.Drawing.Color.White;
-            this.edHomeOffsetPosY1.DataType = DaekhonSystem.DataType.Double;
+            this.edHomeOffsetPosY1.DataType = YujinTechnology.DataType.Double;
             this.edHomeOffsetPosY1.Enabled = false;
             this.edHomeOffsetPosY1.Frame.CornerRound = 1;
             this.edHomeOffsetPosY1.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1397,7 +1397,7 @@
             // edHomeOffsetPosY2
             // 
             this.edHomeOffsetPosY2.BackColor = System.Drawing.Color.White;
-            this.edHomeOffsetPosY2.DataType = DaekhonSystem.DataType.Double;
+            this.edHomeOffsetPosY2.DataType = YujinTechnology.DataType.Double;
             this.edHomeOffsetPosY2.Enabled = false;
             this.edHomeOffsetPosY2.Frame.CornerRound = 1;
             this.edHomeOffsetPosY2.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1417,7 +1417,7 @@
             // edHomeOffsetPosX
             // 
             this.edHomeOffsetPosX.BackColor = System.Drawing.Color.White;
-            this.edHomeOffsetPosX.DataType = DaekhonSystem.DataType.Double;
+            this.edHomeOffsetPosX.DataType = YujinTechnology.DataType.Double;
             this.edHomeOffsetPosX.Enabled = false;
             this.edHomeOffsetPosX.Frame.CornerRound = 1;
             this.edHomeOffsetPosX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1471,22 +1471,22 @@
             // sunnyLine1
             // 
             this.sunnyLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.sunnyLine1.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine1.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine1.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine1.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine1.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine1.Frame.Visible = false;
             this.sunnyLine1.Hint = null;
             this.sunnyLine1.LineCapSize = 4;
             this.sunnyLine1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine1.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine1.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine1.LineWidth = 1F;
             this.sunnyLine1.Location = new System.Drawing.Point(222, 61);
             this.sunnyLine1.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine1.Name = "sunnyLine1";
             this.sunnyLine1.ShowHint = false;
             this.sunnyLine1.Size = new System.Drawing.Size(183, 17);
-            this.sunnyLine1.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine1.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine1.TabIndex = 1646;
             this.sunnyLine1.Text = "Home Offset Position";
             this.sunnyLine1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1512,7 +1512,7 @@
             // edPowerMeterZPos
             // 
             this.edPowerMeterZPos.BackColor = System.Drawing.Color.White;
-            this.edPowerMeterZPos.DataType = DaekhonSystem.DataType.Double;
+            this.edPowerMeterZPos.DataType = YujinTechnology.DataType.Double;
             this.edPowerMeterZPos.Frame.CornerRound = 1;
             this.edPowerMeterZPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edPowerMeterZPos.Hint = null;
@@ -1531,7 +1531,7 @@
             // edPowerMeterXPos
             // 
             this.edPowerMeterXPos.BackColor = System.Drawing.Color.White;
-            this.edPowerMeterXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edPowerMeterXPos.DataType = YujinTechnology.DataType.Double;
             this.edPowerMeterXPos.Frame.CornerRound = 1;
             this.edPowerMeterXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edPowerMeterXPos.Hint = null;
@@ -1584,7 +1584,7 @@
             // edTable2NozzleYOffset
             // 
             this.edTable2NozzleYOffset.BackColor = System.Drawing.Color.White;
-            this.edTable2NozzleYOffset.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2NozzleYOffset.DataType = YujinTechnology.DataType.Double;
             this.edTable2NozzleYOffset.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2NozzleYOffset.Frame.CornerRound = 1;
             this.edTable2NozzleYOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1604,7 +1604,7 @@
             // edTable2NozzleXOffset
             // 
             this.edTable2NozzleXOffset.BackColor = System.Drawing.Color.White;
-            this.edTable2NozzleXOffset.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2NozzleXOffset.DataType = YujinTechnology.DataType.Double;
             this.edTable2NozzleXOffset.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2NozzleXOffset.Frame.CornerRound = 1;
             this.edTable2NozzleXOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -1624,22 +1624,22 @@
             // sunnyLine3
             // 
             this.sunnyLine3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.sunnyLine3.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine3.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine3.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine3.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine3.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine3.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine3.Frame.Visible = false;
             this.sunnyLine3.Hint = null;
             this.sunnyLine3.LineCapSize = 4;
             this.sunnyLine3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine3.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine3.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine3.LineWidth = 1F;
             this.sunnyLine3.Location = new System.Drawing.Point(744, 309);
             this.sunnyLine3.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine3.Name = "sunnyLine3";
             this.sunnyLine3.ShowHint = false;
             this.sunnyLine3.Size = new System.Drawing.Size(243, 17);
-            this.sunnyLine3.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine3.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine3.TabIndex = 1600;
             this.sunnyLine3.Text = "Vision Center To Nozzle Center Offset";
             this.sunnyLine3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1733,7 +1733,7 @@
             // edLoadPosZ
             // 
             this.edLoadPosZ.BackColor = System.Drawing.Color.White;
-            this.edLoadPosZ.DataType = DaekhonSystem.DataType.Double;
+            this.edLoadPosZ.DataType = YujinTechnology.DataType.Double;
             this.edLoadPosZ.Frame.CornerRound = 1;
             this.edLoadPosZ.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edLoadPosZ.Hint = null;
@@ -1752,7 +1752,7 @@
             // edLoadPosY1
             // 
             this.edLoadPosY1.BackColor = System.Drawing.Color.White;
-            this.edLoadPosY1.DataType = DaekhonSystem.DataType.Double;
+            this.edLoadPosY1.DataType = YujinTechnology.DataType.Double;
             this.edLoadPosY1.Frame.CornerRound = 1;
             this.edLoadPosY1.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edLoadPosY1.Hint = null;
@@ -1771,7 +1771,7 @@
             // edLoadPosY2
             // 
             this.edLoadPosY2.BackColor = System.Drawing.Color.White;
-            this.edLoadPosY2.DataType = DaekhonSystem.DataType.Double;
+            this.edLoadPosY2.DataType = YujinTechnology.DataType.Double;
             this.edLoadPosY2.Frame.CornerRound = 1;
             this.edLoadPosY2.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edLoadPosY2.Hint = null;
@@ -1790,7 +1790,7 @@
             // edLoadPosX
             // 
             this.edLoadPosX.BackColor = System.Drawing.Color.White;
-            this.edLoadPosX.DataType = DaekhonSystem.DataType.Double;
+            this.edLoadPosX.DataType = YujinTechnology.DataType.Double;
             this.edLoadPosX.Frame.CornerRound = 1;
             this.edLoadPosX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edLoadPosX.Hint = null;
@@ -1809,22 +1809,22 @@
             // uiLine5
             // 
             this.uiLine5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLine5.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine5.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine5.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine5.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine5.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine5.ForeColor = System.Drawing.Color.Black;
             this.uiLine5.Frame.Visible = false;
             this.uiLine5.Hint = null;
             this.uiLine5.LineCapSize = 4;
             this.uiLine5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine5.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine5.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine5.LineWidth = 1F;
             this.uiLine5.Location = new System.Drawing.Point(222, 150);
             this.uiLine5.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine5.Name = "uiLine5";
             this.uiLine5.ShowHint = false;
             this.uiLine5.Size = new System.Drawing.Size(183, 17);
-            this.uiLine5.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine5.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine5.TabIndex = 1586;
             this.uiLine5.Text = "Loading Position";
             this.uiLine5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2062,7 +2062,7 @@
             // edTable2VacuumDelay
             // 
             this.edTable2VacuumDelay.BackColor = System.Drawing.Color.White;
-            this.edTable2VacuumDelay.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2VacuumDelay.DataType = YujinTechnology.DataType.Double;
             this.edTable2VacuumDelay.Frame.CornerRound = 1;
             this.edTable2VacuumDelay.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2VacuumDelay.Hint = null;
@@ -2123,7 +2123,7 @@
             // edTable1VacuumDelay
             // 
             this.edTable1VacuumDelay.BackColor = System.Drawing.Color.White;
-            this.edTable1VacuumDelay.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1VacuumDelay.DataType = YujinTechnology.DataType.Double;
             this.edTable1VacuumDelay.Frame.CornerRound = 1;
             this.edTable1VacuumDelay.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable1VacuumDelay.Hint = null;
@@ -2142,22 +2142,22 @@
             // sunnyLine6
             // 
             this.sunnyLine6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.sunnyLine6.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine6.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine6.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine6.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine6.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine6.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine6.Frame.Visible = false;
             this.sunnyLine6.Hint = null;
             this.sunnyLine6.LineCapSize = 4;
             this.sunnyLine6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine6.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine6.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine6.LineWidth = 1F;
             this.sunnyLine6.Location = new System.Drawing.Point(682, 302);
             this.sunnyLine6.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine6.Name = "sunnyLine6";
             this.sunnyLine6.ShowHint = false;
             this.sunnyLine6.Size = new System.Drawing.Size(183, 17);
-            this.sunnyLine6.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine6.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine6.TabIndex = 1676;
             this.sunnyLine6.Text = "Vacuum Option";
             this.sunnyLine6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2166,7 +2166,7 @@
             // edAccelerationG
             // 
             this.edAccelerationG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.edAccelerationG.DataType = DaekhonSystem.DataType.Double;
+            this.edAccelerationG.DataType = YujinTechnology.DataType.Double;
             this.edAccelerationG.Frame.CornerRound = 1;
             this.edAccelerationG.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edAccelerationG.Hint = null;
@@ -2202,22 +2202,22 @@
             // sunnyLine5
             // 
             this.sunnyLine5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.sunnyLine5.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine5.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine5.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine5.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine5.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine5.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine5.Frame.Visible = false;
             this.sunnyLine5.Hint = null;
             this.sunnyLine5.LineCapSize = 4;
             this.sunnyLine5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine5.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine5.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine5.LineWidth = 1F;
             this.sunnyLine5.Location = new System.Drawing.Point(684, 152);
             this.sunnyLine5.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine5.Name = "sunnyLine5";
             this.sunnyLine5.ShowHint = false;
             this.sunnyLine5.Size = new System.Drawing.Size(183, 17);
-            this.sunnyLine5.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine5.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine5.TabIndex = 1673;
             this.sunnyLine5.Text = "Equip Acceleration";
             this.sunnyLine5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2260,22 +2260,22 @@
             // sunnyLine2
             // 
             this.sunnyLine2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.sunnyLine2.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine2.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine2.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine2.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine2.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine2.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine2.Frame.Visible = false;
             this.sunnyLine2.Hint = null;
             this.sunnyLine2.LineCapSize = 4;
             this.sunnyLine2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine2.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine2.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine2.LineWidth = 1F;
             this.sunnyLine2.Location = new System.Drawing.Point(692, 59);
             this.sunnyLine2.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine2.Name = "sunnyLine2";
             this.sunnyLine2.ShowHint = false;
             this.sunnyLine2.Size = new System.Drawing.Size(183, 17);
-            this.sunnyLine2.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine2.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine2.TabIndex = 1668;
             this.sunnyLine2.Text = "Area Sensor";
             this.sunnyLine2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2284,22 +2284,22 @@
             // uiLine2
             // 
             this.uiLine2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLine2.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine2.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine2.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine2.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine2.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine2.ForeColor = System.Drawing.Color.Black;
             this.uiLine2.Frame.Visible = false;
             this.uiLine2.Hint = null;
             this.uiLine2.LineCapSize = 4;
             this.uiLine2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine2.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine2.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine2.LineWidth = 1F;
             this.uiLine2.Location = new System.Drawing.Point(369, 152);
             this.uiLine2.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine2.Name = "uiLine2";
             this.uiLine2.ShowHint = false;
             this.uiLine2.Size = new System.Drawing.Size(183, 17);
-            this.uiLine2.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine2.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine2.TabIndex = 1639;
             this.uiLine2.Text = "Release";
             this.uiLine2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2325,22 +2325,22 @@
             // uiLine3
             // 
             this.uiLine3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLine3.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine3.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine3.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine3.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine3.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine3.ForeColor = System.Drawing.Color.Black;
             this.uiLine3.Frame.Visible = false;
             this.uiLine3.Hint = null;
             this.uiLine3.LineCapSize = 4;
             this.uiLine3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine3.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine3.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine3.LineWidth = 1F;
             this.uiLine3.Location = new System.Drawing.Point(369, 59);
             this.uiLine3.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine3.Name = "uiLine3";
             this.uiLine3.ShowHint = false;
             this.uiLine3.Size = new System.Drawing.Size(183, 17);
-            this.uiLine3.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine3.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine3.TabIndex = 1634;
             this.uiLine3.Text = "Alarm";
             this.uiLine3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2383,7 +2383,7 @@
             // edTableSizeX
             // 
             this.edTableSizeX.BackColor = System.Drawing.Color.White;
-            this.edTableSizeX.DataType = DaekhonSystem.DataType.Double;
+            this.edTableSizeX.DataType = YujinTechnology.DataType.Double;
             this.edTableSizeX.Frame.CornerRound = 1;
             this.edTableSizeX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTableSizeX.Hint = null;
@@ -2402,7 +2402,7 @@
             // edTableSizeY
             // 
             this.edTableSizeY.BackColor = System.Drawing.Color.White;
-            this.edTableSizeY.DataType = DaekhonSystem.DataType.Double;
+            this.edTableSizeY.DataType = YujinTechnology.DataType.Double;
             this.edTableSizeY.Frame.CornerRound = 1;
             this.edTableSizeY.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTableSizeY.Hint = null;
@@ -2455,22 +2455,22 @@
             // uiLine1
             // 
             this.uiLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.uiLine1.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine1.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine1.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine1.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine1.ForeColor = System.Drawing.Color.Black;
             this.uiLine1.Frame.Visible = false;
             this.uiLine1.Hint = null;
             this.uiLine1.LineCapSize = 4;
             this.uiLine1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine1.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine1.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine1.LineWidth = 1F;
             this.uiLine1.Location = new System.Drawing.Point(357, 334);
             this.uiLine1.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine1.Name = "uiLine1";
             this.uiLine1.ShowHint = false;
             this.uiLine1.Size = new System.Drawing.Size(183, 17);
-            this.uiLine1.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine1.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine1.TabIndex = 1624;
             this.uiLine1.Text = "Table Size";
             this.uiLine1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2504,8 +2504,8 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
             this.label3.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.label3.CaptionStyle.ShadowDirection = DaekhonSystem.ShadowDirection.BottomRight;
-            this.label3.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.label3.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
+            this.label3.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.label3.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Red;
             this.label3.Frame.Visible = false;
@@ -2579,7 +2579,7 @@
             // 
             this.edTable2LoadingPosX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.edTable2LoadingPosX.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edTable2LoadingPosX.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2LoadingPosX.DataType = YujinTechnology.DataType.Double;
             this.edTable2LoadingPosX.Enabled = false;
             this.edTable2LoadingPosX.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2LoadingPosX.Frame.Bottom = false;
@@ -2605,7 +2605,7 @@
             // 
             this.edTable2LoadingPosY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.edTable2LoadingPosY.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edTable2LoadingPosY.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2LoadingPosY.DataType = YujinTechnology.DataType.Double;
             this.edTable2LoadingPosY.Enabled = false;
             this.edTable2LoadingPosY.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2LoadingPosY.Frame.Bottom = false;
@@ -2660,7 +2660,7 @@
             this.ledTable2Center.TabIndex = 1656;
             this.ledTable2Center.Text = "중앙";
             this.ledTable2Center.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ledTable2Center.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable2Center_LEDValueChanged);
+            this.ledTable2Center.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable2Center_LEDValueChanged);
             this.ledTable2Center.Click += new System.EventHandler(this.ledTable2Center_Click);
             // 
             // cbTable2LoadDir
@@ -2694,7 +2694,7 @@
             this.ledTable2RightBottom.Enabled = false;
             this.ledTable2RightBottom.Font = new System.Drawing.Font("Tahoma", 11F);
             this.ledTable2RightBottom.ForeColor = System.Drawing.Color.Silver;
-            this.ledTable2RightBottom.LED.Layout = DaekhonSystem.LEDLayout.Right;
+            this.ledTable2RightBottom.LED.Layout = YujinTechnology.LEDLayout.Right;
             this.ledTable2RightBottom.LED.Size = new System.Drawing.Size(16, 26);
             this.ledTable2RightBottom.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
             this.ledTable2RightBottom.Location = new System.Drawing.Point(374, 332);
@@ -2706,7 +2706,7 @@
             this.ledTable2RightBottom.TabIndex = 1655;
             this.ledTable2RightBottom.Text = "우측, 하단";
             this.ledTable2RightBottom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ledTable2RightBottom.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable2RightBottom_LEDValueChanged);
+            this.ledTable2RightBottom.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable2RightBottom_LEDValueChanged);
             this.ledTable2RightBottom.Click += new System.EventHandler(this.ledTable2RightBottom_Click);
             // 
             // ledTable2RightTop
@@ -2717,7 +2717,7 @@
             this.ledTable2RightTop.Enabled = false;
             this.ledTable2RightTop.Font = new System.Drawing.Font("Tahoma", 11F);
             this.ledTable2RightTop.ForeColor = System.Drawing.Color.Silver;
-            this.ledTable2RightTop.LED.Layout = DaekhonSystem.LEDLayout.Right;
+            this.ledTable2RightTop.LED.Layout = YujinTechnology.LEDLayout.Right;
             this.ledTable2RightTop.LED.Size = new System.Drawing.Size(16, 26);
             this.ledTable2RightTop.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
             this.ledTable2RightTop.Location = new System.Drawing.Point(374, 40);
@@ -2729,7 +2729,7 @@
             this.ledTable2RightTop.TabIndex = 1654;
             this.ledTable2RightTop.Text = "우측, 상단";
             this.ledTable2RightTop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ledTable2RightTop.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable2RightTop_LEDValueChanged);
+            this.ledTable2RightTop.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable2RightTop_LEDValueChanged);
             this.ledTable2RightTop.Click += new System.EventHandler(this.ledTable2RightTop_Click);
             // 
             // ledTable2LeftBottom
@@ -2750,7 +2750,7 @@
             this.ledTable2LeftBottom.TabIndex = 1653;
             this.ledTable2LeftBottom.Text = "좌측, 하단";
             this.ledTable2LeftBottom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ledTable2LeftBottom.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable2LeftBottom_LEDValueChanged);
+            this.ledTable2LeftBottom.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable2LeftBottom_LEDValueChanged);
             this.ledTable2LeftBottom.Click += new System.EventHandler(this.ledTable2LeftBottom_Click);
             // 
             // ledTable2LeftTop
@@ -2772,7 +2772,7 @@
             this.ledTable2LeftTop.TabIndex = 1651;
             this.ledTable2LeftTop.Text = "좌측, 상단";
             this.ledTable2LeftTop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ledTable2LeftTop.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable2LeftTop_LEDValueChanged);
+            this.ledTable2LeftTop.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable2LeftTop_LEDValueChanged);
             this.ledTable2LeftTop.Click += new System.EventHandler(this.ledTable2LeftTop_Click);
             // 
             // gradientLabel11
@@ -2836,7 +2836,7 @@
             // 
             this.edTable1LoadingPosX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.edTable1LoadingPosX.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edTable1LoadingPosX.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1LoadingPosX.DataType = YujinTechnology.DataType.Double;
             this.edTable1LoadingPosX.Enabled = false;
             this.edTable1LoadingPosX.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1LoadingPosX.Frame.Bottom = false;
@@ -2862,7 +2862,7 @@
             // 
             this.edTable1LoadingPosY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.edTable1LoadingPosY.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.edTable1LoadingPosY.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1LoadingPosY.DataType = YujinTechnology.DataType.Double;
             this.edTable1LoadingPosY.Enabled = false;
             this.edTable1LoadingPosY.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1LoadingPosY.Frame.Bottom = false;
@@ -2917,7 +2917,7 @@
             this.ledTable1Center.TabIndex = 1656;
             this.ledTable1Center.Text = "중앙";
             this.ledTable1Center.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ledTable1Center.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable1Center_LEDValueChanged);
+            this.ledTable1Center.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable1Center_LEDValueChanged);
             this.ledTable1Center.Click += new System.EventHandler(this.ledCenter_Click);
             // 
             // cbTable1LoadDir
@@ -2951,7 +2951,7 @@
             this.ledTable1RightBottom.Enabled = false;
             this.ledTable1RightBottom.Font = new System.Drawing.Font("Tahoma", 11F);
             this.ledTable1RightBottom.ForeColor = System.Drawing.Color.Silver;
-            this.ledTable1RightBottom.LED.Layout = DaekhonSystem.LEDLayout.Right;
+            this.ledTable1RightBottom.LED.Layout = YujinTechnology.LEDLayout.Right;
             this.ledTable1RightBottom.LED.Size = new System.Drawing.Size(16, 26);
             this.ledTable1RightBottom.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
             this.ledTable1RightBottom.Location = new System.Drawing.Point(374, 332);
@@ -2963,7 +2963,7 @@
             this.ledTable1RightBottom.TabIndex = 1655;
             this.ledTable1RightBottom.Text = "우측, 하단";
             this.ledTable1RightBottom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ledTable1RightBottom.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable1RightBottom_LEDValueChanged);
+            this.ledTable1RightBottom.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable1RightBottom_LEDValueChanged);
             this.ledTable1RightBottom.Click += new System.EventHandler(this.ledRightBottom_Click);
             // 
             // ledTable1RightTop
@@ -2974,7 +2974,7 @@
             this.ledTable1RightTop.Enabled = false;
             this.ledTable1RightTop.Font = new System.Drawing.Font("Tahoma", 11F);
             this.ledTable1RightTop.ForeColor = System.Drawing.Color.Silver;
-            this.ledTable1RightTop.LED.Layout = DaekhonSystem.LEDLayout.Right;
+            this.ledTable1RightTop.LED.Layout = YujinTechnology.LEDLayout.Right;
             this.ledTable1RightTop.LED.Size = new System.Drawing.Size(16, 26);
             this.ledTable1RightTop.LiveSetting = System.Windows.Forms.Automation.AutomationLiveSetting.Polite;
             this.ledTable1RightTop.Location = new System.Drawing.Point(374, 40);
@@ -2986,7 +2986,7 @@
             this.ledTable1RightTop.TabIndex = 1654;
             this.ledTable1RightTop.Text = "우측, 상단";
             this.ledTable1RightTop.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ledTable1RightTop.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable1RightTop_LEDValueChanged);
+            this.ledTable1RightTop.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable1RightTop_LEDValueChanged);
             this.ledTable1RightTop.Click += new System.EventHandler(this.ledRightTop_Click);
             // 
             // ledTable1LeftBottom
@@ -3007,7 +3007,7 @@
             this.ledTable1LeftBottom.TabIndex = 1653;
             this.ledTable1LeftBottom.Text = "좌측, 하단";
             this.ledTable1LeftBottom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ledTable1LeftBottom.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable1LeftBottom_LEDValueChanged);
+            this.ledTable1LeftBottom.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable1LeftBottom_LEDValueChanged);
             this.ledTable1LeftBottom.Click += new System.EventHandler(this.ledLeftBottom_Click);
             // 
             // ledTable1LeftTop
@@ -3029,7 +3029,7 @@
             this.ledTable1LeftTop.TabIndex = 1651;
             this.ledTable1LeftTop.Text = "좌측, 상단";
             this.ledTable1LeftTop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ledTable1LeftTop.LEDValueChanged += new System.EventHandler<DaekhonSystem.LEDValueChangedEventArgs>(this.ledTable1LeftTop_LEDValueChanged);
+            this.ledTable1LeftTop.LEDValueChanged += new System.EventHandler<YujinTechnology.LEDValueChangedEventArgs>(this.ledTable1LeftTop_LEDValueChanged);
             this.ledTable1LeftTop.Click += new System.EventHandler(this.ledLeftTop_Click);
             // 
             // tabPage3
@@ -3050,8 +3050,8 @@
             this.lblInfom.BackColor = System.Drawing.Color.Transparent;
             this.lblInfom.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
             this.lblInfom.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblInfom.CaptionStyle.ShadowDirection = DaekhonSystem.ShadowDirection.BottomRight;
-            this.lblInfom.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblInfom.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
+            this.lblInfom.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.lblInfom.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.lblInfom.ForeColor = System.Drawing.Color.Red;
             this.lblInfom.Frame.Visible = false;
@@ -3300,7 +3300,7 @@
             // edTable2CenterYPos
             // 
             this.edTable2CenterYPos.BackColor = System.Drawing.Color.White;
-            this.edTable2CenterYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2CenterYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2CenterYPos.Frame.CornerRound = 1;
             this.edTable2CenterYPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2CenterYPos.Hint = null;
@@ -3319,7 +3319,7 @@
             // edTable2CenterXPos
             // 
             this.edTable2CenterXPos.BackColor = System.Drawing.Color.White;
-            this.edTable2CenterXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2CenterXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2CenterXPos.Frame.CornerRound = 1;
             this.edTable2CenterXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2CenterXPos.Hint = null;
@@ -3338,7 +3338,7 @@
             // edTable2RightBottomYPos
             // 
             this.edTable2RightBottomYPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable2RightBottomYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2RightBottomYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2RightBottomYPos.Enabled = false;
             this.edTable2RightBottomYPos.Frame.CornerRound = 1;
             this.edTable2RightBottomYPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3358,7 +3358,7 @@
             // edTable2RightBottomXPos
             // 
             this.edTable2RightBottomXPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable2RightBottomXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2RightBottomXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2RightBottomXPos.Enabled = false;
             this.edTable2RightBottomXPos.Frame.CornerRound = 1;
             this.edTable2RightBottomXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3378,7 +3378,7 @@
             // edTable2RightTopYPos
             // 
             this.edTable2RightTopYPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable2RightTopYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2RightTopYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2RightTopYPos.Enabled = false;
             this.edTable2RightTopYPos.Frame.CornerRound = 1;
             this.edTable2RightTopYPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3398,7 +3398,7 @@
             // edTable2RightTopXPos
             // 
             this.edTable2RightTopXPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable2RightTopXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2RightTopXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2RightTopXPos.Enabled = false;
             this.edTable2RightTopXPos.Frame.CornerRound = 1;
             this.edTable2RightTopXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3418,7 +3418,7 @@
             // edTable2LeftTopYPos
             // 
             this.edTable2LeftTopYPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable2LeftTopYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2LeftTopYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2LeftTopYPos.Enabled = false;
             this.edTable2LeftTopYPos.Frame.CornerRound = 1;
             this.edTable2LeftTopYPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3438,7 +3438,7 @@
             // edTable2LeftTopXPos
             // 
             this.edTable2LeftTopXPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable2LeftTopXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2LeftTopXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2LeftTopXPos.Enabled = false;
             this.edTable2LeftTopXPos.Frame.CornerRound = 1;
             this.edTable2LeftTopXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3458,7 +3458,7 @@
             // edTable2LeftBottomYPos
             // 
             this.edTable2LeftBottomYPos.BackColor = System.Drawing.Color.White;
-            this.edTable2LeftBottomYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2LeftBottomYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2LeftBottomYPos.Frame.CornerRound = 1;
             this.edTable2LeftBottomYPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2LeftBottomYPos.Hint = null;
@@ -3477,7 +3477,7 @@
             // edTable2LeftBottomXPos
             // 
             this.edTable2LeftBottomXPos.BackColor = System.Drawing.Color.White;
-            this.edTable2LeftBottomXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2LeftBottomXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable2LeftBottomXPos.Frame.CornerRound = 1;
             this.edTable2LeftBottomXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2LeftBottomXPos.Hint = null;
@@ -3734,7 +3734,7 @@
             // edTable1CenterYPos
             // 
             this.edTable1CenterYPos.BackColor = System.Drawing.Color.White;
-            this.edTable1CenterYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1CenterYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1CenterYPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1CenterYPos.Frame.CornerRound = 1;
             this.edTable1CenterYPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3754,7 +3754,7 @@
             // edTable1CenterXPos
             // 
             this.edTable1CenterXPos.BackColor = System.Drawing.Color.White;
-            this.edTable1CenterXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1CenterXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1CenterXPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1CenterXPos.Frame.CornerRound = 1;
             this.edTable1CenterXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3792,7 +3792,7 @@
             // edTable1RightBottomYPos
             // 
             this.edTable1RightBottomYPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable1RightBottomYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1RightBottomYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1RightBottomYPos.Enabled = false;
             this.edTable1RightBottomYPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1RightBottomYPos.Frame.CornerRound = 1;
@@ -3813,7 +3813,7 @@
             // edTable1RightBottomXPos
             // 
             this.edTable1RightBottomXPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable1RightBottomXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1RightBottomXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1RightBottomXPos.Enabled = false;
             this.edTable1RightBottomXPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1RightBottomXPos.Frame.CornerRound = 1;
@@ -3888,7 +3888,7 @@
             // edTable1RightTopYPos
             // 
             this.edTable1RightTopYPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable1RightTopYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1RightTopYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1RightTopYPos.Enabled = false;
             this.edTable1RightTopYPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1RightTopYPos.Frame.CornerRound = 1;
@@ -3909,7 +3909,7 @@
             // edTable1RightTopXPos
             // 
             this.edTable1RightTopXPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable1RightTopXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1RightTopXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1RightTopXPos.Enabled = false;
             this.edTable1RightTopXPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1RightTopXPos.Frame.CornerRound = 1;
@@ -3930,7 +3930,7 @@
             // edTable1LeftTopYPos
             // 
             this.edTable1LeftTopYPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable1LeftTopYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1LeftTopYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1LeftTopYPos.Enabled = false;
             this.edTable1LeftTopYPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1LeftTopYPos.Frame.CornerRound = 1;
@@ -3951,7 +3951,7 @@
             // edTable1LeftTopXPos
             // 
             this.edTable1LeftTopXPos.BackColor = System.Drawing.Color.Gray;
-            this.edTable1LeftTopXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1LeftTopXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1LeftTopXPos.Enabled = false;
             this.edTable1LeftTopXPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1LeftTopXPos.Frame.CornerRound = 1;
@@ -3972,7 +3972,7 @@
             // edTable1LeftBottomYPos
             // 
             this.edTable1LeftBottomYPos.BackColor = System.Drawing.Color.White;
-            this.edTable1LeftBottomYPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1LeftBottomYPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1LeftBottomYPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1LeftBottomYPos.Frame.CornerRound = 1;
             this.edTable1LeftBottomYPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -3992,7 +3992,7 @@
             // edTable1LeftBottomXPos
             // 
             this.edTable1LeftBottomXPos.BackColor = System.Drawing.Color.White;
-            this.edTable1LeftBottomXPos.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1LeftBottomXPos.DataType = YujinTechnology.DataType.Double;
             this.edTable1LeftBottomXPos.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1LeftBottomXPos.Frame.CornerRound = 1;
             this.edTable1LeftBottomXPos.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4189,7 +4189,7 @@
             this.gradientLabel62.BackColor = System.Drawing.Color.Transparent;
             this.gradientLabel62.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.gradientLabel62.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.gradientLabel62.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.gradientLabel62.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.gradientLabel62.Font = new System.Drawing.Font("Tahoma", 11F);
             this.gradientLabel62.ForeColor = System.Drawing.Color.Red;
             this.gradientLabel62.Frame.Visible = false;
@@ -4281,7 +4281,7 @@
             // keypadEdit2
             // 
             this.keypadEdit2.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit2.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit2.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit2.Enabled = false;
             this.keypadEdit2.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit2.ForeColor = System.Drawing.Color.Gray;
@@ -4302,7 +4302,7 @@
             // keypadEdit1
             // 
             this.keypadEdit1.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit1.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit1.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit1.Enabled = false;
             this.keypadEdit1.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit1.ForeColor = System.Drawing.Color.Gray;
@@ -4323,7 +4323,7 @@
             // keypadEdit6
             // 
             this.keypadEdit6.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit6.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit6.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit6.Enabled = false;
             this.keypadEdit6.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit6.ForeColor = System.Drawing.Color.Gray;
@@ -4344,7 +4344,7 @@
             // keypadEdit7
             // 
             this.keypadEdit7.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit7.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit7.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit7.Enabled = false;
             this.keypadEdit7.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit7.ForeColor = System.Drawing.Color.Gray;
@@ -4365,7 +4365,7 @@
             // keypadEdit5
             // 
             this.keypadEdit5.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit5.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit5.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit5.Enabled = false;
             this.keypadEdit5.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit5.ForeColor = System.Drawing.Color.Gray;
@@ -4386,7 +4386,7 @@
             // keypadEdit4
             // 
             this.keypadEdit4.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit4.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit4.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit4.Enabled = false;
             this.keypadEdit4.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit4.ForeColor = System.Drawing.Color.Gray;
@@ -4424,7 +4424,7 @@
             // edTable1StartX
             // 
             this.edTable1StartX.BackColor = System.Drawing.Color.White;
-            this.edTable1StartX.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1StartX.DataType = YujinTechnology.DataType.Double;
             this.edTable1StartX.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1StartX.Frame.CornerRound = 1;
             this.edTable1StartX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4456,7 +4456,7 @@
             // edTable1DrawX
             // 
             this.edTable1DrawX.BackColor = System.Drawing.Color.White;
-            this.edTable1DrawX.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1DrawX.DataType = YujinTechnology.DataType.Double;
             this.edTable1DrawX.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1DrawX.Frame.CornerRound = 1;
             this.edTable1DrawX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4529,7 +4529,7 @@
             // edTable1PitchZ
             // 
             this.edTable1PitchZ.BackColor = System.Drawing.Color.White;
-            this.edTable1PitchZ.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1PitchZ.DataType = YujinTechnology.DataType.Double;
             this.edTable1PitchZ.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1PitchZ.Frame.CornerRound = 1;
             this.edTable1PitchZ.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4549,7 +4549,7 @@
             // edTable1PitchY
             // 
             this.edTable1PitchY.BackColor = System.Drawing.Color.White;
-            this.edTable1PitchY.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1PitchY.DataType = YujinTechnology.DataType.Double;
             this.edTable1PitchY.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1PitchY.Frame.CornerRound = 1;
             this.edTable1PitchY.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4603,7 +4603,7 @@
             // edTable1StartZ
             // 
             this.edTable1StartZ.BackColor = System.Drawing.Color.White;
-            this.edTable1StartZ.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1StartZ.DataType = YujinTechnology.DataType.Double;
             this.edTable1StartZ.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1StartZ.Frame.CornerRound = 1;
             this.edTable1StartZ.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4666,7 +4666,7 @@
             // edTable1StartY
             // 
             this.edTable1StartY.BackColor = System.Drawing.Color.White;
-            this.edTable1StartY.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1StartY.DataType = YujinTechnology.DataType.Double;
             this.edTable1StartY.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1StartY.Frame.CornerRound = 1;
             this.edTable1StartY.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4776,7 +4776,7 @@
             // edTable1VisionZFocus
             // 
             this.edTable1VisionZFocus.BackColor = System.Drawing.Color.White;
-            this.edTable1VisionZFocus.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1VisionZFocus.DataType = YujinTechnology.DataType.Double;
             this.edTable1VisionZFocus.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable1VisionZFocus.Frame.CornerRound = 1;
             this.edTable1VisionZFocus.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -4796,7 +4796,7 @@
             // edTable1LaserZFocus
             // 
             this.edTable1LaserZFocus.BackColor = System.Drawing.Color.White;
-            this.edTable1LaserZFocus.DataType = DaekhonSystem.DataType.Double;
+            this.edTable1LaserZFocus.DataType = YujinTechnology.DataType.Double;
             this.edTable1LaserZFocus.Frame.CornerRound = 1;
             this.edTable1LaserZFocus.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable1LaserZFocus.Hint = null;
@@ -4920,7 +4920,7 @@
             this.gradientLabel66.BackColor = System.Drawing.Color.Transparent;
             this.gradientLabel66.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.gradientLabel66.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.gradientLabel66.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.gradientLabel66.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.gradientLabel66.Font = new System.Drawing.Font("Tahoma", 11F);
             this.gradientLabel66.ForeColor = System.Drawing.Color.Red;
             this.gradientLabel66.Frame.Visible = false;
@@ -4999,7 +4999,7 @@
             // keypadEdit3
             // 
             this.keypadEdit3.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit3.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit3.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit3.Enabled = false;
             this.keypadEdit3.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit3.ForeColor = System.Drawing.Color.Gray;
@@ -5020,7 +5020,7 @@
             // keypadEdit12
             // 
             this.keypadEdit12.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit12.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit12.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit12.Enabled = false;
             this.keypadEdit12.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit12.ForeColor = System.Drawing.Color.Gray;
@@ -5041,7 +5041,7 @@
             // keypadEdit8
             // 
             this.keypadEdit8.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit8.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit8.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit8.Enabled = false;
             this.keypadEdit8.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit8.ForeColor = System.Drawing.Color.Gray;
@@ -5062,7 +5062,7 @@
             // keypadEdit9
             // 
             this.keypadEdit9.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit9.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit9.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit9.Enabled = false;
             this.keypadEdit9.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit9.ForeColor = System.Drawing.Color.Gray;
@@ -5083,7 +5083,7 @@
             // keypadEdit10
             // 
             this.keypadEdit10.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit10.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit10.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit10.Enabled = false;
             this.keypadEdit10.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit10.ForeColor = System.Drawing.Color.Gray;
@@ -5104,7 +5104,7 @@
             // keypadEdit11
             // 
             this.keypadEdit11.BackColor = System.Drawing.Color.LightGray;
-            this.keypadEdit11.DataType = DaekhonSystem.DataType.Double;
+            this.keypadEdit11.DataType = YujinTechnology.DataType.Double;
             this.keypadEdit11.Enabled = false;
             this.keypadEdit11.Font = new System.Drawing.Font("Tahoma", 11F);
             this.keypadEdit11.ForeColor = System.Drawing.Color.Gray;
@@ -5244,7 +5244,7 @@
             // edTable2StartX
             // 
             this.edTable2StartX.BackColor = System.Drawing.Color.White;
-            this.edTable2StartX.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2StartX.DataType = YujinTechnology.DataType.Double;
             this.edTable2StartX.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2StartX.Frame.CornerRound = 1;
             this.edTable2StartX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -5276,7 +5276,7 @@
             // edTable2DrawX
             // 
             this.edTable2DrawX.BackColor = System.Drawing.Color.White;
-            this.edTable2DrawX.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2DrawX.DataType = YujinTechnology.DataType.Double;
             this.edTable2DrawX.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2DrawX.Frame.CornerRound = 1;
             this.edTable2DrawX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -5315,7 +5315,7 @@
             // edTable2PitchZ
             // 
             this.edTable2PitchZ.BackColor = System.Drawing.Color.White;
-            this.edTable2PitchZ.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2PitchZ.DataType = YujinTechnology.DataType.Double;
             this.edTable2PitchZ.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2PitchZ.Frame.CornerRound = 1;
             this.edTable2PitchZ.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -5335,7 +5335,7 @@
             // edTable2PitchY
             // 
             this.edTable2PitchY.BackColor = System.Drawing.Color.White;
-            this.edTable2PitchY.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2PitchY.DataType = YujinTechnology.DataType.Double;
             this.edTable2PitchY.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2PitchY.Frame.CornerRound = 1;
             this.edTable2PitchY.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -5372,7 +5372,7 @@
             // edTable2StartZ
             // 
             this.edTable2StartZ.BackColor = System.Drawing.Color.White;
-            this.edTable2StartZ.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2StartZ.DataType = YujinTechnology.DataType.Double;
             this.edTable2StartZ.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2StartZ.Frame.CornerRound = 1;
             this.edTable2StartZ.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -5435,7 +5435,7 @@
             // edTable2StartY
             // 
             this.edTable2StartY.BackColor = System.Drawing.Color.White;
-            this.edTable2StartY.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2StartY.DataType = YujinTechnology.DataType.Double;
             this.edTable2StartY.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2StartY.Frame.CornerRound = 1;
             this.edTable2StartY.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -5507,7 +5507,7 @@
             // edTable2VisionZFocus
             // 
             this.edTable2VisionZFocus.BackColor = System.Drawing.Color.White;
-            this.edTable2VisionZFocus.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2VisionZFocus.DataType = YujinTechnology.DataType.Double;
             this.edTable2VisionZFocus.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edTable2VisionZFocus.Frame.CornerRound = 1;
             this.edTable2VisionZFocus.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
@@ -5527,7 +5527,7 @@
             // edTable2LaserZFocus
             // 
             this.edTable2LaserZFocus.BackColor = System.Drawing.Color.White;
-            this.edTable2LaserZFocus.DataType = DaekhonSystem.DataType.Double;
+            this.edTable2LaserZFocus.DataType = YujinTechnology.DataType.Double;
             this.edTable2LaserZFocus.Frame.CornerRound = 1;
             this.edTable2LaserZFocus.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2LaserZFocus.Hint = null;
@@ -5587,280 +5587,280 @@
         #endregion
 
         private sjPanel panClient;
-        private DaekhonSystem.BitBtn btnAllSave;
-        public DaekhonSystem.PropSaver propSaver1;
-        private DaekhonSystem.DataServer DataServer;
-        private DaekhonSystem.TabControl tabControl1;
+        private YujinTechnology.BitBtn btnAllSave;
+        public YujinTechnology.PropSaver propSaver1;
+        private YujinTechnology.DataServer DataServer;
+        private YujinTechnology.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private DaekhonSystem.KeypadEdit edPowerMeterZPos;
-        private DaekhonSystem.KeypadEdit edPowerMeterXPos;
-        private DaekhonSystem.GradientLabel gradLabel28;
-        private DaekhonSystem.GradientLabel gradLabel30;
-        private DaekhonSystem.SunnyLine sunnyLine3;
-        private DaekhonSystem.GradientLabel gradLabel39;
-        private DaekhonSystem.GradientLabel gradLabel15;
-        private DaekhonSystem.GradientLabel gradientLabel3;
-        private DaekhonSystem.GradientLabel gradientLabel2;
-        private DaekhonSystem.GradientLabel gradientLabel1;
-        private DaekhonSystem.GradientLabel gradLabel7;
-        private DaekhonSystem.GradientLabel gradLabel6;
-        private DaekhonSystem.BitBtn btnSet;
-        private DaekhonSystem.GradientLabel gradientLabel14;
-        private DaekhonSystem.GradientLabel gradientLabel15;
-        private DaekhonSystem.GradientLabel gradientLabel16;
-        private DaekhonSystem.KeypadEdit edHomeOffsetPosZ;
-        private DaekhonSystem.KeypadEdit edHomeOffsetPosY1;
-        private DaekhonSystem.KeypadEdit edHomeOffsetPosY2;
-        private DaekhonSystem.KeypadEdit edHomeOffsetPosX;
-        private DaekhonSystem.GradientLabel gradientLabel17;
-        private DaekhonSystem.GradientLabel gradientLabel18;
-        private DaekhonSystem.SunnyLine sunnyLine1;
-        private DaekhonSystem.SunnyLine uiLine5;
+        private YujinTechnology.KeypadEdit edPowerMeterZPos;
+        private YujinTechnology.KeypadEdit edPowerMeterXPos;
+        private YujinTechnology.GradientLabel gradLabel28;
+        private YujinTechnology.GradientLabel gradLabel30;
+        private YujinTechnology.SunnyLine sunnyLine3;
+        private YujinTechnology.GradientLabel gradLabel39;
+        private YujinTechnology.GradientLabel gradLabel15;
+        private YujinTechnology.GradientLabel gradientLabel3;
+        private YujinTechnology.GradientLabel gradientLabel2;
+        private YujinTechnology.GradientLabel gradientLabel1;
+        private YujinTechnology.GradientLabel gradLabel7;
+        private YujinTechnology.GradientLabel gradLabel6;
+        private YujinTechnology.BitBtn btnSet;
+        private YujinTechnology.GradientLabel gradientLabel14;
+        private YujinTechnology.GradientLabel gradientLabel15;
+        private YujinTechnology.GradientLabel gradientLabel16;
+        private YujinTechnology.KeypadEdit edHomeOffsetPosZ;
+        private YujinTechnology.KeypadEdit edHomeOffsetPosY1;
+        private YujinTechnology.KeypadEdit edHomeOffsetPosY2;
+        private YujinTechnology.KeypadEdit edHomeOffsetPosX;
+        private YujinTechnology.GradientLabel gradientLabel17;
+        private YujinTechnology.GradientLabel gradientLabel18;
+        private YujinTechnology.SunnyLine sunnyLine1;
+        private YujinTechnology.SunnyLine uiLine5;
         private System.Windows.Forms.TabPage tabPage4;
-        private DaekhonSystem.SunnyLine uiLine2;
-        private DaekhonSystem.GradientLabel gradLabel3;
-        private DaekhonSystem.SunnyLine uiLine3;
-        private DaekhonSystem.GradientLabel gradLabel38;
-        private DaekhonSystem.GradientLabel gradLabel37;
-        private DaekhonSystem.KeypadEdit edTableSizeX;
-        private DaekhonSystem.KeypadEdit edTableSizeY;
-        private DaekhonSystem.GradientLabel gradLabel5;
-        private DaekhonSystem.GradientLabel gradLabel2;
-        private DaekhonSystem.SunnyLine uiLine1;
+        private YujinTechnology.SunnyLine uiLine2;
+        private YujinTechnology.GradientLabel gradLabel3;
+        private YujinTechnology.SunnyLine uiLine3;
+        private YujinTechnology.GradientLabel gradLabel38;
+        private YujinTechnology.GradientLabel gradLabel37;
+        private YujinTechnology.KeypadEdit edTableSizeX;
+        private YujinTechnology.KeypadEdit edTableSizeY;
+        private YujinTechnology.GradientLabel gradLabel5;
+        private YujinTechnology.GradientLabel gradLabel2;
+        private YujinTechnology.SunnyLine uiLine1;
         private System.Windows.Forms.TabPage tabPage3;
-        private DaekhonSystem.GradientLabel gradientLabel19;
-        private DaekhonSystem.GradientLabel gradientLabel21;
-        private DaekhonSystem.GradientLabel gradientLabel36;
+        private YujinTechnology.GradientLabel gradientLabel19;
+        private YujinTechnology.GradientLabel gradientLabel21;
+        private YujinTechnology.GradientLabel gradientLabel36;
 
-        private DaekhonSystem.GradientLabel gradientLabel32;
-        private DaekhonSystem.GradientLabel gradientLabel20;
-        private DaekhonSystem.GradientLabel gradientLabel22;
-        private DaekhonSystem.GradientLabel gradientLabel24;
-        private DaekhonSystem.KeypadEdit edTable2RightBottomYPos;
-        private DaekhonSystem.KeypadEdit edTable2RightBottomXPos;
-        private DaekhonSystem.KeypadEdit edTable1RightBottomYPos;
-        private DaekhonSystem.KeypadEdit edTable1RightBottomXPos;
-        private DaekhonSystem.KeypadEdit edTable2CenterYPos;
-        private DaekhonSystem.KeypadEdit edTable2CenterXPos;
-        private DaekhonSystem.KeypadEdit edTable1CenterYPos;
-        private DaekhonSystem.KeypadEdit edTable1CenterXPos;
-        private DaekhonSystem.KeypadEdit edTable2RightTopYPos;
-        private DaekhonSystem.KeypadEdit edTable2RightTopXPos;
-        private DaekhonSystem.KeypadEdit edTable1RightTopYPos;
-        private DaekhonSystem.KeypadEdit edTable1RightTopXPos;
-        private DaekhonSystem.KeypadEdit edTable2LeftTopYPos;
-        private DaekhonSystem.KeypadEdit edTable2LeftTopXPos;
-        private DaekhonSystem.KeypadEdit edTable1LeftTopYPos;
-        private DaekhonSystem.KeypadEdit edTable1LeftTopXPos;
-        private DaekhonSystem.KeypadEdit edTable2LeftBottomYPos;
-        private DaekhonSystem.KeypadEdit edTable2LeftBottomXPos;
-        private DaekhonSystem.KeypadEdit edTable1LeftBottomYPos;
-        private DaekhonSystem.KeypadEdit edTable1LeftBottomXPos;
-        private DaekhonSystem.GradientLabel gradientLabel28;
-        private DaekhonSystem.GradientLabel gradientLabel30;
+        private YujinTechnology.GradientLabel gradientLabel32;
+        private YujinTechnology.GradientLabel gradientLabel20;
+        private YujinTechnology.GradientLabel gradientLabel22;
+        private YujinTechnology.GradientLabel gradientLabel24;
+        private YujinTechnology.KeypadEdit edTable2RightBottomYPos;
+        private YujinTechnology.KeypadEdit edTable2RightBottomXPos;
+        private YujinTechnology.KeypadEdit edTable1RightBottomYPos;
+        private YujinTechnology.KeypadEdit edTable1RightBottomXPos;
+        private YujinTechnology.KeypadEdit edTable2CenterYPos;
+        private YujinTechnology.KeypadEdit edTable2CenterXPos;
+        private YujinTechnology.KeypadEdit edTable1CenterYPos;
+        private YujinTechnology.KeypadEdit edTable1CenterXPos;
+        private YujinTechnology.KeypadEdit edTable2RightTopYPos;
+        private YujinTechnology.KeypadEdit edTable2RightTopXPos;
+        private YujinTechnology.KeypadEdit edTable1RightTopYPos;
+        private YujinTechnology.KeypadEdit edTable1RightTopXPos;
+        private YujinTechnology.KeypadEdit edTable2LeftTopYPos;
+        private YujinTechnology.KeypadEdit edTable2LeftTopXPos;
+        private YujinTechnology.KeypadEdit edTable1LeftTopYPos;
+        private YujinTechnology.KeypadEdit edTable1LeftTopXPos;
+        private YujinTechnology.KeypadEdit edTable2LeftBottomYPos;
+        private YujinTechnology.KeypadEdit edTable2LeftBottomXPos;
+        private YujinTechnology.KeypadEdit edTable1LeftBottomYPos;
+        private YujinTechnology.KeypadEdit edTable1LeftBottomXPos;
+        private YujinTechnology.GradientLabel gradientLabel28;
+        private YujinTechnology.GradientLabel gradientLabel30;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private DaekhonSystem.BitBtn btnMoveTable2Pos5;
-        private DaekhonSystem.BitBtn btnMoveTable2Pos4;
-        private DaekhonSystem.BitBtn btnMoveTable2Pos3;
-        private DaekhonSystem.BitBtn btnMoveTable2Pos2;
-        private DaekhonSystem.BitBtn btnMoveTable2Pos1;
-        private DaekhonSystem.BitBtn btnSetTable2Pos5;
-        private DaekhonSystem.BitBtn btnSetTable2Pos4;
-        private DaekhonSystem.BitBtn btnSetTable2Pos3;
-        private DaekhonSystem.BitBtn btnSetTable2Pos2;
-        private DaekhonSystem.BitBtn btnSetTable2Pos1;
-        private DaekhonSystem.BitBtn btnMoveTable1Pos5;
-        private DaekhonSystem.BitBtn btnMoveTable1Pos4;
-        private DaekhonSystem.BitBtn btnMoveTable1Pos3;
-        private DaekhonSystem.BitBtn btnMoveTable1Pos2;
-        private DaekhonSystem.BitBtn btnMoveTable1Pos1;
-        private DaekhonSystem.BitBtn btnSetTable1Pos5;
-        private DaekhonSystem.BitBtn btnSetTable1Pos4;
-        private DaekhonSystem.BitBtn btnSetTable1Pos3;
-        private DaekhonSystem.BitBtn btnSetTable1Pos2;
-        private DaekhonSystem.BitBtn btnSetTable1Pos1;
-        private DaekhonSystem.GradientLabel gradientLabel23;
+        private YujinTechnology.BitBtn btnMoveTable2Pos5;
+        private YujinTechnology.BitBtn btnMoveTable2Pos4;
+        private YujinTechnology.BitBtn btnMoveTable2Pos3;
+        private YujinTechnology.BitBtn btnMoveTable2Pos2;
+        private YujinTechnology.BitBtn btnMoveTable2Pos1;
+        private YujinTechnology.BitBtn btnSetTable2Pos5;
+        private YujinTechnology.BitBtn btnSetTable2Pos4;
+        private YujinTechnology.BitBtn btnSetTable2Pos3;
+        private YujinTechnology.BitBtn btnSetTable2Pos2;
+        private YujinTechnology.BitBtn btnSetTable2Pos1;
+        private YujinTechnology.BitBtn btnMoveTable1Pos5;
+        private YujinTechnology.BitBtn btnMoveTable1Pos4;
+        private YujinTechnology.BitBtn btnMoveTable1Pos3;
+        private YujinTechnology.BitBtn btnMoveTable1Pos2;
+        private YujinTechnology.BitBtn btnMoveTable1Pos1;
+        private YujinTechnology.BitBtn btnSetTable1Pos5;
+        private YujinTechnology.BitBtn btnSetTable1Pos4;
+        private YujinTechnology.BitBtn btnSetTable1Pos3;
+        private YujinTechnology.BitBtn btnSetTable1Pos2;
+        private YujinTechnology.BitBtn btnSetTable1Pos1;
+        private YujinTechnology.GradientLabel gradientLabel23;
         private System.Windows.Forms.TabPage tabPage5;
-        private DaekhonSystem.GradientLabel gradientLabel11;
-        private DaekhonSystem.GradientLabel gradientLabel12;
-        private DaekhonSystem.GradientLabel gradientLabel13;
-        public DaekhonSystem.NumberEdit edTable1LoadingPosX;
-        public DaekhonSystem.NumberEdit edTable1LoadingPosY;
+        private YujinTechnology.GradientLabel gradientLabel11;
+        private YujinTechnology.GradientLabel gradientLabel12;
+        private YujinTechnology.GradientLabel gradientLabel13;
+        public YujinTechnology.NumberEdit edTable1LoadingPosX;
+        public YujinTechnology.NumberEdit edTable1LoadingPosY;
         private System.Windows.Forms.GroupBox groupBox6;
-        private DaekhonSystem.LEDLabel ledTable1Center;
-        private DaekhonSystem.LEDLabel ledTable1RightBottom;
-        private DaekhonSystem.LEDLabel ledTable1RightTop;
-        private DaekhonSystem.LEDLabel ledTable1LeftBottom;
-        private DaekhonSystem.LEDLabel ledTable1LeftTop;
-        private DaekhonSystem.GradientLabel gradientLabel25;
-        private DaekhonSystem.SunnyLine sunnyLine2;
-        private DaekhonSystem.GradientLabel gradientLabel27;
-        private DaekhonSystem.SunnyLine sunnyLine5;
-        private DaekhonSystem.GradientLabel gradientLabel26;
-        private DaekhonSystem.KeypadEdit edAccelerationG;
-        private DaekhonSystem.KeypadEdit edTable1VacuumDelay;
-        private DaekhonSystem.GradientLabel gradientLabel33;
-        public DaekhonSystem.ComboBox cbTable2UseVacuumCount;
-        private DaekhonSystem.KeypadEdit edTable2VacuumDelay;
-        private DaekhonSystem.GradientLabel gradientLabel34;
-        public DaekhonSystem.ComboBox cbTable1UseVacuumCount;
-        private DaekhonSystem.BitBtn btnCancel;
-        private DaekhonSystem.GradientLabel gradientLabel10;
-        private DaekhonSystem.GradientLabel gradientLabel35;
-        private DaekhonSystem.GradientLabel gradientLabel37;
-        public DaekhonSystem.NumberEdit edTable2LoadingPosX;
-        public DaekhonSystem.NumberEdit edTable2LoadingPosY;
+        private YujinTechnology.LEDLabel ledTable1Center;
+        private YujinTechnology.LEDLabel ledTable1RightBottom;
+        private YujinTechnology.LEDLabel ledTable1RightTop;
+        private YujinTechnology.LEDLabel ledTable1LeftBottom;
+        private YujinTechnology.LEDLabel ledTable1LeftTop;
+        private YujinTechnology.GradientLabel gradientLabel25;
+        private YujinTechnology.SunnyLine sunnyLine2;
+        private YujinTechnology.GradientLabel gradientLabel27;
+        private YujinTechnology.SunnyLine sunnyLine5;
+        private YujinTechnology.GradientLabel gradientLabel26;
+        private YujinTechnology.KeypadEdit edAccelerationG;
+        private YujinTechnology.KeypadEdit edTable1VacuumDelay;
+        private YujinTechnology.GradientLabel gradientLabel33;
+        public YujinTechnology.ComboBox cbTable2UseVacuumCount;
+        private YujinTechnology.KeypadEdit edTable2VacuumDelay;
+        private YujinTechnology.GradientLabel gradientLabel34;
+        public YujinTechnology.ComboBox cbTable1UseVacuumCount;
+        private YujinTechnology.BitBtn btnCancel;
+        private YujinTechnology.GradientLabel gradientLabel10;
+        private YujinTechnology.GradientLabel gradientLabel35;
+        private YujinTechnology.GradientLabel gradientLabel37;
+        public YujinTechnology.NumberEdit edTable2LoadingPosX;
+        public YujinTechnology.NumberEdit edTable2LoadingPosY;
         private System.Windows.Forms.GroupBox groupBox3;
-        private DaekhonSystem.LEDLabel ledTable2Center;
-        private DaekhonSystem.LEDLabel ledTable2RightBottom;
-        private DaekhonSystem.LEDLabel ledTable2RightTop;
-        private DaekhonSystem.LEDLabel ledTable2LeftBottom;
-        private DaekhonSystem.LEDLabel ledTable2LeftTop;
-        private DaekhonSystem.ComboBox cbTable2LoadDir;
-        private DaekhonSystem.ComboBox cbTable1LoadDir;
-        private DaekhonSystem.LEDButton btnMeasure;
+        private YujinTechnology.LEDLabel ledTable2Center;
+        private YujinTechnology.LEDLabel ledTable2RightBottom;
+        private YujinTechnology.LEDLabel ledTable2RightTop;
+        private YujinTechnology.LEDLabel ledTable2LeftBottom;
+        private YujinTechnology.LEDLabel ledTable2LeftTop;
+        private YujinTechnology.ComboBox cbTable2LoadDir;
+        private YujinTechnology.ComboBox cbTable1LoadDir;
+        private YujinTechnology.LEDButton btnMeasure;
         private System.Windows.Forms.Timer tmr_SearchOffset;
-        private DaekhonSystem.MultiLanguage multiLanguage1;
-        private DaekhonSystem.GradientLabel gradientLabel38;
-        private DaekhonSystem.GradientLabel gradientLabel39;
-        private DaekhonSystem.GradientLabel gradientLabel7;
-        private DaekhonSystem.GradientLabel gradientLabel6;
-        private DaekhonSystem.KeypadEdit edTable2MarkCenterY;
-        private DaekhonSystem.KeypadEdit edTable2MarkCenterX;
-        private DaekhonSystem.BitBtn btnMove;
-        private DaekhonSystem.GradientLabel gradientLabel29;
-        private DaekhonSystem.KeypadEdit edTable2YOffset;
-        private DaekhonSystem.KeypadEdit edTable2XOffset;
-        private DaekhonSystem.LEDButton btnMark;
-        public DaekhonSystem.KeypadEdit edTable2NozzleYOffset;
-        public DaekhonSystem.KeypadEdit edTable2NozzleXOffset;
-        private DaekhonSystem.BitBtn btnMoveMeasurePos;
-        private DaekhonSystem.GradientLabel gradientLabel8;
-        private DaekhonSystem.BitBtn btnSetMeasurePos;
+        private YujinTechnology.MultiLanguage multiLanguage1;
+        private YujinTechnology.GradientLabel gradientLabel38;
+        private YujinTechnology.GradientLabel gradientLabel39;
+        private YujinTechnology.GradientLabel gradientLabel7;
+        private YujinTechnology.GradientLabel gradientLabel6;
+        private YujinTechnology.KeypadEdit edTable2MarkCenterY;
+        private YujinTechnology.KeypadEdit edTable2MarkCenterX;
+        private YujinTechnology.BitBtn btnMove;
+        private YujinTechnology.GradientLabel gradientLabel29;
+        private YujinTechnology.KeypadEdit edTable2YOffset;
+        private YujinTechnology.KeypadEdit edTable2XOffset;
+        private YujinTechnology.LEDButton btnMark;
+        public YujinTechnology.KeypadEdit edTable2NozzleYOffset;
+        public YujinTechnology.KeypadEdit edTable2NozzleXOffset;
+        private YujinTechnology.BitBtn btnMoveMeasurePos;
+        private YujinTechnology.GradientLabel gradientLabel8;
+        private YujinTechnology.BitBtn btnSetMeasurePos;
         private System.Windows.Forms.TabPage tabPage6;
-        private DaekhonSystem.Thread AutoThread;
-        private DaekhonSystem.TabControl tabControl2;
+        private YujinTechnology.Thread AutoThread;
+        private YujinTechnology.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.TabPage tabPage8;
-        private DaekhonSystem.BitBtn btnMoveTable1LaserZFocus;
-        private DaekhonSystem.KeypadEdit keypadEdit2;
-        private DaekhonSystem.KeypadEdit keypadEdit1;
-        private DaekhonSystem.KeypadEdit keypadEdit6;
-        private DaekhonSystem.KeypadEdit keypadEdit7;
-        private DaekhonSystem.KeypadEdit keypadEdit5;
-        private DaekhonSystem.KeypadEdit keypadEdit4;
-        private DaekhonSystem.GradientLabel gradientLabel46;
-        private DaekhonSystem.KeypadEdit edTable1StartX;
-        private DaekhonSystem.BitBtn btnTable1Start;
-        private DaekhonSystem.KeypadEdit edTable1DrawX;
-        private DaekhonSystem.GradientLabel gradientLabel43;
-        private DaekhonSystem.KeypadEdit edTable1StepZ;
-        private DaekhonSystem.GradientLabel gradientLabel42;
-        private DaekhonSystem.KeypadEdit edTable1PitchZ;
-        private DaekhonSystem.KeypadEdit edTable1PitchY;
-        private DaekhonSystem.GradientLabel gradientLabel41;
-        private DaekhonSystem.GradientLabel gradientLabel40;
-        private DaekhonSystem.KeypadEdit edTable1StartZ;
-        private DaekhonSystem.GradientLabel gradientLabel31;
-        private DaekhonSystem.BitBtn btnSetTable1StartPos;
-        private DaekhonSystem.BitBtn btnMoveTable1StartPos;
-        private DaekhonSystem.KeypadEdit edTable1StartY;
-        private DaekhonSystem.GradientLabel gradientLabel9;
-        private DaekhonSystem.BitBtn btnSetTable1VisionZFocus;
-        private DaekhonSystem.BitBtn btnSetTable1LaserZFocus;
-        private DaekhonSystem.BitBtn btnMoveTable1VisionZFocus;
-        private DaekhonSystem.GradientLabel gradientLabel4;
-        private DaekhonSystem.GradientLabel gradientLabel5;
-        private DaekhonSystem.KeypadEdit keypadEdit3;
-        private DaekhonSystem.KeypadEdit keypadEdit12;
-        private DaekhonSystem.KeypadEdit keypadEdit8;
-        private DaekhonSystem.KeypadEdit keypadEdit9;
-        private DaekhonSystem.KeypadEdit keypadEdit10;
-        private DaekhonSystem.KeypadEdit keypadEdit11;
-        private DaekhonSystem.GradientLabel gradientLabel48;
-        private DaekhonSystem.GradientLabel gradientLabel49;
-        private DaekhonSystem.GradientLabel gradientLabel50;
-        private DaekhonSystem.GradientLabel gradientLabel51;
-        private DaekhonSystem.GradientLabel gradientLabel52;
-        private DaekhonSystem.GradientLabel gradientLabel53;
-        private DaekhonSystem.GradientLabel gradientLabel47;
-        private DaekhonSystem.KeypadEdit edTable2StartX;
-        private DaekhonSystem.BitBtn btnTable2Start;
-        private DaekhonSystem.KeypadEdit edTable2DrawX;
-        private DaekhonSystem.KeypadEdit edTable2StepZ;
-        private DaekhonSystem.KeypadEdit edTable2PitchZ;
-        private DaekhonSystem.KeypadEdit edTable2PitchY;
-        private DaekhonSystem.GradientLabel gradientLabel44;
-        private DaekhonSystem.KeypadEdit edTable2StartZ;
-        private DaekhonSystem.GradientLabel gradientLabel45;
-        private DaekhonSystem.BitBtn btnSetTable2StartPos;
-        private DaekhonSystem.BitBtn btnMoveTable2StartPos;
-        private DaekhonSystem.KeypadEdit edTable2StartY;
-        private DaekhonSystem.BitBtn btnSetTable2VisionZFocus;
-        private DaekhonSystem.BitBtn btnSetTable2LaserZFocus;
-        private DaekhonSystem.BitBtn btnMoveTable2VisionZFocus;
-        private DaekhonSystem.BitBtn btnMoveTable2LaserZFocus;
-        private DaekhonSystem.GradientLabel gradientLabel57;
-        private DaekhonSystem.GradientLabel gradientLabel58;
-        private DaekhonSystem.GradientLabel gradientLabel59;
-        private DaekhonSystem.GradientLabel gradientLabel54;
-        private DaekhonSystem.GradientLabel gradientLabel55;
-        private DaekhonSystem.GradientLabel gradientLabel56;
-        private DaekhonSystem.GradientLabel gradientLabel60;
-        private DaekhonSystem.GradientLabel gradientLabel61;
-        private DaekhonSystem.SunnyLine uiLine17;
-        public DaekhonSystem.KeypadEdit edMode0Period;
-        public DaekhonSystem.KeypadEdit edMode0PulseWidth;
-        private DaekhonSystem.KeypadEdit edAutoRunTA;
-        private DaekhonSystem.GradientLabel gradientLabel64;
-        private DaekhonSystem.GradientLabel gradientLabel65;
-        private DaekhonSystem.KeypadEdit edJumpTA;
-        private DaekhonSystem.KeypadEdit edArcTA;
-        private DaekhonSystem.KeypadEdit edLineTA;
-        private DaekhonSystem.GradientLabel gradLabel52;
-        private DaekhonSystem.GradientLabel gradLabel50;
-        private DaekhonSystem.GradientLabel gradLabel22;
-        private DaekhonSystem.KeypadEdit edArcSpeed;
-        private DaekhonSystem.KeypadEdit edLineSpeed;
-        private DaekhonSystem.GradientLabel gradLabel51;
-        private DaekhonSystem.GradientLabel gradLabel35;
-        private DaekhonSystem.GradientLabel gradLabel29;
+        private YujinTechnology.BitBtn btnMoveTable1LaserZFocus;
+        private YujinTechnology.KeypadEdit keypadEdit2;
+        private YujinTechnology.KeypadEdit keypadEdit1;
+        private YujinTechnology.KeypadEdit keypadEdit6;
+        private YujinTechnology.KeypadEdit keypadEdit7;
+        private YujinTechnology.KeypadEdit keypadEdit5;
+        private YujinTechnology.KeypadEdit keypadEdit4;
+        private YujinTechnology.GradientLabel gradientLabel46;
+        private YujinTechnology.KeypadEdit edTable1StartX;
+        private YujinTechnology.BitBtn btnTable1Start;
+        private YujinTechnology.KeypadEdit edTable1DrawX;
+        private YujinTechnology.GradientLabel gradientLabel43;
+        private YujinTechnology.KeypadEdit edTable1StepZ;
+        private YujinTechnology.GradientLabel gradientLabel42;
+        private YujinTechnology.KeypadEdit edTable1PitchZ;
+        private YujinTechnology.KeypadEdit edTable1PitchY;
+        private YujinTechnology.GradientLabel gradientLabel41;
+        private YujinTechnology.GradientLabel gradientLabel40;
+        private YujinTechnology.KeypadEdit edTable1StartZ;
+        private YujinTechnology.GradientLabel gradientLabel31;
+        private YujinTechnology.BitBtn btnSetTable1StartPos;
+        private YujinTechnology.BitBtn btnMoveTable1StartPos;
+        private YujinTechnology.KeypadEdit edTable1StartY;
+        private YujinTechnology.GradientLabel gradientLabel9;
+        private YujinTechnology.BitBtn btnSetTable1VisionZFocus;
+        private YujinTechnology.BitBtn btnSetTable1LaserZFocus;
+        private YujinTechnology.BitBtn btnMoveTable1VisionZFocus;
+        private YujinTechnology.GradientLabel gradientLabel4;
+        private YujinTechnology.GradientLabel gradientLabel5;
+        private YujinTechnology.KeypadEdit keypadEdit3;
+        private YujinTechnology.KeypadEdit keypadEdit12;
+        private YujinTechnology.KeypadEdit keypadEdit8;
+        private YujinTechnology.KeypadEdit keypadEdit9;
+        private YujinTechnology.KeypadEdit keypadEdit10;
+        private YujinTechnology.KeypadEdit keypadEdit11;
+        private YujinTechnology.GradientLabel gradientLabel48;
+        private YujinTechnology.GradientLabel gradientLabel49;
+        private YujinTechnology.GradientLabel gradientLabel50;
+        private YujinTechnology.GradientLabel gradientLabel51;
+        private YujinTechnology.GradientLabel gradientLabel52;
+        private YujinTechnology.GradientLabel gradientLabel53;
+        private YujinTechnology.GradientLabel gradientLabel47;
+        private YujinTechnology.KeypadEdit edTable2StartX;
+        private YujinTechnology.BitBtn btnTable2Start;
+        private YujinTechnology.KeypadEdit edTable2DrawX;
+        private YujinTechnology.KeypadEdit edTable2StepZ;
+        private YujinTechnology.KeypadEdit edTable2PitchZ;
+        private YujinTechnology.KeypadEdit edTable2PitchY;
+        private YujinTechnology.GradientLabel gradientLabel44;
+        private YujinTechnology.KeypadEdit edTable2StartZ;
+        private YujinTechnology.GradientLabel gradientLabel45;
+        private YujinTechnology.BitBtn btnSetTable2StartPos;
+        private YujinTechnology.BitBtn btnMoveTable2StartPos;
+        private YujinTechnology.KeypadEdit edTable2StartY;
+        private YujinTechnology.BitBtn btnSetTable2VisionZFocus;
+        private YujinTechnology.BitBtn btnSetTable2LaserZFocus;
+        private YujinTechnology.BitBtn btnMoveTable2VisionZFocus;
+        private YujinTechnology.BitBtn btnMoveTable2LaserZFocus;
+        private YujinTechnology.GradientLabel gradientLabel57;
+        private YujinTechnology.GradientLabel gradientLabel58;
+        private YujinTechnology.GradientLabel gradientLabel59;
+        private YujinTechnology.GradientLabel gradientLabel54;
+        private YujinTechnology.GradientLabel gradientLabel55;
+        private YujinTechnology.GradientLabel gradientLabel56;
+        private YujinTechnology.GradientLabel gradientLabel60;
+        private YujinTechnology.GradientLabel gradientLabel61;
+        private YujinTechnology.SunnyLine uiLine17;
+        public YujinTechnology.KeypadEdit edMode0Period;
+        public YujinTechnology.KeypadEdit edMode0PulseWidth;
+        private YujinTechnology.KeypadEdit edAutoRunTA;
+        private YujinTechnology.GradientLabel gradientLabel64;
+        private YujinTechnology.GradientLabel gradientLabel65;
+        private YujinTechnology.KeypadEdit edJumpTA;
+        private YujinTechnology.KeypadEdit edArcTA;
+        private YujinTechnology.KeypadEdit edLineTA;
+        private YujinTechnology.GradientLabel gradLabel52;
+        private YujinTechnology.GradientLabel gradLabel50;
+        private YujinTechnology.GradientLabel gradLabel22;
+        private YujinTechnology.KeypadEdit edArcSpeed;
+        private YujinTechnology.KeypadEdit edLineSpeed;
+        private YujinTechnology.GradientLabel gradLabel51;
+        private YujinTechnology.GradientLabel gradLabel35;
+        private YujinTechnology.GradientLabel gradLabel29;
         private System.Windows.Forms.Label label1;
-        private DaekhonSystem.GradientLabel gradientLabel62;
-        private DaekhonSystem.GradientLabel gradientLabel63;
-        public DaekhonSystem.KeypadEdit edAutoRunSpeedStage;
-        public DaekhonSystem.KeypadEdit edAutoRunSpeedZ;
-        private DaekhonSystem.BitBtn btnSetLoadPos;
-        private DaekhonSystem.BitBtn btnMoveLoadPos;
-        public DaekhonSystem.KeypadEdit edLoadPosZ;
-        public DaekhonSystem.KeypadEdit edLoadPosY1;
-        public DaekhonSystem.KeypadEdit edLoadPosY2;
-        public DaekhonSystem.KeypadEdit edLoadPosX;
-        private DaekhonSystem.SunnyLine sunnyLine6;
-        private DaekhonSystem.SunnyLine sunnyLine4;
-        private DaekhonSystem.GradientLabel gradientLabel66;
+        private YujinTechnology.GradientLabel gradientLabel62;
+        private YujinTechnology.GradientLabel gradientLabel63;
+        public YujinTechnology.KeypadEdit edAutoRunSpeedStage;
+        public YujinTechnology.KeypadEdit edAutoRunSpeedZ;
+        private YujinTechnology.BitBtn btnSetLoadPos;
+        private YujinTechnology.BitBtn btnMoveLoadPos;
+        public YujinTechnology.KeypadEdit edLoadPosZ;
+        public YujinTechnology.KeypadEdit edLoadPosY1;
+        public YujinTechnology.KeypadEdit edLoadPosY2;
+        public YujinTechnology.KeypadEdit edLoadPosX;
+        private YujinTechnology.SunnyLine sunnyLine6;
+        private YujinTechnology.SunnyLine sunnyLine4;
+        private YujinTechnology.GradientLabel gradientLabel66;
         private System.Windows.Forms.Label label2;
-        public DaekhonSystem.Label lblInfom;
-        public DaekhonSystem.Label label3;
-        public DaekhonSystem.KeypadEdit edJumpSpeed;
-        private DaekhonSystem.GradientLabel gradientLabel67;
-        private DaekhonSystem.GradientLabel gradientLabel68;
-        public DaekhonSystem.KeypadEdit edTable1VisionFocusLightValue;
-        public DaekhonSystem.KeypadEdit edTable1LaserFocusLightValue;
-        public DaekhonSystem.KeypadEdit edTable2VisionFocusLightValue;
-        public DaekhonSystem.KeypadEdit edTable2LaserFocusLightValue;
-        public DaekhonSystem.KeypadEdit edTable1VisionZFocus;
-        public DaekhonSystem.KeypadEdit edTable1LaserZFocus;
-        public DaekhonSystem.KeypadEdit edTable2VisionZFocus;
-        public DaekhonSystem.KeypadEdit edTable2LaserZFocus;
-        public DaekhonSystem.CheckBox chkDustCollectorAutoRun;
-        public DaekhonSystem.CheckBox chkIOnizoerAutoRun;
-        public DaekhonSystem.CheckBox chkAreaSensorVacuumUse;
-        public DaekhonSystem.CheckBox chkAreaSensorUse;
-        public DaekhonSystem.CheckBox chkVacuumAutoRelease;
-        public DaekhonSystem.CheckBox chkVacAlarmUse;
-        public DaekhonSystem.CheckBox chkDoorAlarmUse;
+        public YujinTechnology.Label lblInfom;
+        public YujinTechnology.Label label3;
+        public YujinTechnology.KeypadEdit edJumpSpeed;
+        private YujinTechnology.GradientLabel gradientLabel67;
+        private YujinTechnology.GradientLabel gradientLabel68;
+        public YujinTechnology.KeypadEdit edTable1VisionFocusLightValue;
+        public YujinTechnology.KeypadEdit edTable1LaserFocusLightValue;
+        public YujinTechnology.KeypadEdit edTable2VisionFocusLightValue;
+        public YujinTechnology.KeypadEdit edTable2LaserFocusLightValue;
+        public YujinTechnology.KeypadEdit edTable1VisionZFocus;
+        public YujinTechnology.KeypadEdit edTable1LaserZFocus;
+        public YujinTechnology.KeypadEdit edTable2VisionZFocus;
+        public YujinTechnology.KeypadEdit edTable2LaserZFocus;
+        public YujinTechnology.CheckBox chkDustCollectorAutoRun;
+        public YujinTechnology.CheckBox chkIOnizoerAutoRun;
+        public YujinTechnology.CheckBox chkAreaSensorVacuumUse;
+        public YujinTechnology.CheckBox chkAreaSensorUse;
+        public YujinTechnology.CheckBox chkVacuumAutoRelease;
+        public YujinTechnology.CheckBox chkVacAlarmUse;
+        public YujinTechnology.CheckBox chkDoorAlarmUse;
     }
 }

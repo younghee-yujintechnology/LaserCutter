@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -63,7 +63,7 @@ namespace LaserCutter
             tvModel.BeginUpdate();
             tvModel.Nodes.Clear();
 
-            string modelPath = String.Format("{0}Model", dkCommon.AppPath());
+            string modelPath = String.Format("{0}Model", yjCommon.AppPath());
             string[] szDirectories = Directory.GetDirectories(modelPath);
 
             foreach (string szDir in szDirectories)
@@ -100,7 +100,7 @@ namespace LaserCutter
          */
         public void LoadRecentList(System.Windows.Forms.ListView listview, TableNo tableNo)
         {
-            String szStr = String.Format("{0}RecentList{1}.txt", dkCommon.AppPath(), (int)tableNo);
+            String szStr = String.Format("{0}RecentList{1}.txt", yjCommon.AppPath(), (int)tableNo);
             LoadRecentList(listview, szStr);
         }
 
@@ -140,7 +140,7 @@ namespace LaserCutter
          */
         public void SaveRecentList(System.Windows.Forms.ListView listview, TableNo tableNo)
         {
-            String szStr = String.Format("{0}RecentList{1}.txt", dkCommon.AppPath(), (int)tableNo);
+            String szStr = String.Format("{0}RecentList{1}.txt", yjCommon.AppPath(), (int)tableNo);
 
             SaveRecentList(listview, szStr);
         }
@@ -234,7 +234,7 @@ namespace LaserCutter
             {
                 try
                 {
-                    szDir = String.Format("{0}Model\\{1}", dkCommon.AppPath(), frmGroupName.edName.Text);
+                    szDir = String.Format("{0}Model\\{1}", yjCommon.AppPath(), frmGroupName.edName.Text);
                     Directory.CreateDirectory(szDir);
 
                     TreeNode rootNode;
@@ -248,7 +248,7 @@ namespace LaserCutter
 
                 catch (Exception)
                 {
-                    dkCommon.Warning("그룹 폴더를 생성하는데 실패했습니다.", dkCommon.MESSAGE_BOX_TITLE);
+                    yjCommon.Warning("그룹 폴더를 생성하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
                 }
 
                 finally { }
@@ -263,12 +263,12 @@ namespace LaserCutter
             // 선택된 노드가 없는 경우 경고 메시지를 표시합니다.
             if (selectedNode == null)
             {
-                dkCommon.Warning("이름을 변경할 그룹을 선택하세요.", dkCommon.MESSAGE_BOX_TITLE);
+                yjCommon.Warning("이름을 변경할 그룹을 선택하세요.", yjCommon.MESSAGE_BOX_TITLE);
                 return;
             }
 
             String oldGroupName = selectedNode.Text;
-            String oldDir = String.Format("{0}Model\\{1}", dkCommon.AppPath(), oldGroupName);
+            String oldDir = String.Format("{0}Model\\{1}", yjCommon.AppPath(), oldGroupName);
 
             frmGroupName frmGroupName = new frmGroupName();
             frmGroupName.Text = "변경할 그룹의 이름을 입력합니다.";
@@ -280,7 +280,7 @@ namespace LaserCutter
                 try
                 {
                     String newGroupName = frmGroupName.edName.Text;
-                    String newDir = String.Format("{0}Model\\{1}", dkCommon.AppPath(), newGroupName);
+                    String newDir = String.Format("{0}Model\\{1}", yjCommon.AppPath(), newGroupName);
 
                     // 폴더 이름을 변경합니다.
                     if (Directory.Exists(oldDir))
@@ -293,7 +293,7 @@ namespace LaserCutter
                 }
                 catch (Exception)
                 {
-                    dkCommon.Warning("그룹 폴더 이름을 변경하는데 실패했습니다.", dkCommon.MESSAGE_BOX_TITLE);
+                    yjCommon.Warning("그룹 폴더 이름을 변경하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
                 }
                 finally { }
             }
@@ -334,10 +334,10 @@ namespace LaserCutter
                         /*
                          * 1. Project파일 생성
                          */
-                        szDir = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        szDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
                         Directory.CreateDirectory(szDir);
 
-                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table1", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table1", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
                         //Directory.CreateDirectory(szDir);
 
                         szFileName = String.Format("{0}\\[{1}][{2}][Table1].prj", szDir, szGroupName, frmModelName.edName.Text);
@@ -357,7 +357,7 @@ namespace LaserCutter
                         /*
                          * 1. Project파일 생성
                          */
-                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table2", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table2", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
                         //Directory.CreateDirectory(szDir);
 
                         szFileName = String.Format("{0}\\[{1}][{2}][Table2].prj", szDir, szGroupName, frmModelName.edName.Text);
@@ -369,9 +369,9 @@ namespace LaserCutter
                         /*
                          * 2. Vision 파일을 복사, 가져오기
                          */
-                        szDir = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        szDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
 
-                        string srcPath = String.Format("{0}Vision\\CogPMAlignTool(4Align).vpp", dkCommon.AppPath());
+                        string srcPath = String.Format("{0}Vision\\CogPMAlignTool(4Align).vpp", yjCommon.AppPath());
                         string DestPath = String.Format("{0}\\CogPMAlignTool(4Align).vpp", szDir);
 
                         File.Copy(srcPath, DestPath, true);
@@ -379,7 +379,7 @@ namespace LaserCutter
 
                     catch (Exception)
                     {
-                        dkCommon.Warning("모델 폴더를 생성하는 과정에서 에러가 발생했습니다.", dkCommon.MESSAGE_BOX_TITLE);
+                        yjCommon.Warning("모델 폴더를 생성하는 과정에서 에러가 발생했습니다.", yjCommon.MESSAGE_BOX_TITLE);
                     }
 
                     finally { }
@@ -387,7 +387,7 @@ namespace LaserCutter
             }
             else
             {
-                dkCommon.Warning("먼저 모델을 등록할 그룹을 선택합니다.", dkCommon.MESSAGE_BOX_TITLE);
+                yjCommon.Warning("먼저 모델을 등록할 그룹을 선택합니다.", yjCommon.MESSAGE_BOX_TITLE);
             }
         }
 
@@ -399,14 +399,14 @@ namespace LaserCutter
             // 선택된 노드가 없는 경우 경고 메시지를 표시합니다.
             if (selectedNode == null || selectedNode.Level != 1)
             {
-                dkCommon.Warning("이름을 변경할 모델을 선택하세요.", dkCommon.MESSAGE_BOX_TITLE);
+                yjCommon.Warning("이름을 변경할 모델을 선택하세요.", yjCommon.MESSAGE_BOX_TITLE);
                 return;
             }
 
             // 현재 모델의 그룹 이름과 모델 이름을 가져옵니다.
             String groupName = selectedNode.Parent.Text;
             String oldModelName = selectedNode.Text;
-            String oldDir = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), groupName, oldModelName);
+            String oldDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), groupName, oldModelName);
 
             // 새로운 모델 이름을 입력받기 위해 폼을 엽니다.
             frmModelName frmModelName = new frmModelName();
@@ -420,7 +420,7 @@ namespace LaserCutter
                 try
                 {
                     String newModelName = frmModelName.edName.Text;
-                    String newDir = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), groupName, newModelName);
+                    String newDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), groupName, newModelName);
 
                     // 프로젝트 파일 이름을 변경합니다.
                     String oldFileName = String.Format("{0}\\[{1}][{2}][Table1].prj", oldDir, groupName, oldModelName);
@@ -448,7 +448,7 @@ namespace LaserCutter
                 }
                 catch (Exception)
                 {
-                    dkCommon.Warning("모델 폴더 이름을 변경하는데 실패했습니다.", dkCommon.MESSAGE_BOX_TITLE);
+                    yjCommon.Warning("모델 폴더 이름을 변경하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
                 }
                 finally { }
             }
@@ -462,7 +462,7 @@ namespace LaserCutter
             // 선택된 노드가 없는 경우 경고 메시지를 표시합니다.
             if (selectedNode == null)
             {
-                dkCommon.Warning("삭제할 그룹을 선택하세요.", dkCommon.MESSAGE_BOX_TITLE);
+                yjCommon.Warning("삭제할 그룹을 선택하세요.", yjCommon.MESSAGE_BOX_TITLE);
                 return;
             }
 
@@ -471,7 +471,7 @@ namespace LaserCutter
             if (result == DialogResult.Yes)
             {
                 String groupName = selectedNode.Text;
-                String groupDir = String.Format("{0}Model\\{1}", dkCommon.AppPath(), groupName);
+                String groupDir = String.Format("{0}Model\\{1}", yjCommon.AppPath(), groupName);
 
                 try
                 {
@@ -486,7 +486,7 @@ namespace LaserCutter
                 }
                 catch (Exception)
                 {
-                    dkCommon.Warning("그룹 폴더를 삭제하는데 실패했습니다.", dkCommon.MESSAGE_BOX_TITLE);
+                    yjCommon.Warning("그룹 폴더를 삭제하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
                 }
                 finally { }
             }
@@ -500,14 +500,14 @@ namespace LaserCutter
             // 선택된 노드가 없는 경우 또는 선택된 노드가 그룹 노드인 경우 경고 메시지를 표시합니다.
             if (selectedNode == null || selectedNode.Level != 1)
             {
-                dkCommon.Warning("삭제할 모델을 선택하세요.", dkCommon.MESSAGE_BOX_TITLE);
+                yjCommon.Warning("삭제할 모델을 선택하세요.", yjCommon.MESSAGE_BOX_TITLE);
                 return;
             }
 
             // 현재 모델의 그룹 이름과 모델 이름을 가져옵니다.
             String groupName = selectedNode.Parent.Text;
             String modelName = selectedNode.Text;
-            String modelDir = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), groupName, modelName);
+            String modelDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), groupName, modelName);
 
             // 사용자에게 삭제 확인 메시지를 표시합니다.
             DialogResult result = MessageBox.Show("정말로 선택한 모델을 삭제하시겠습니까?", "모델 삭제", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -526,7 +526,7 @@ namespace LaserCutter
                 }
                 catch (Exception)
                 {
-                    dkCommon.Warning("모델 폴더를 삭제하는데 실패했습니다.", dkCommon.MESSAGE_BOX_TITLE);
+                    yjCommon.Warning("모델 폴더를 삭제하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
                 }
                 finally { }
             }
@@ -582,7 +582,7 @@ namespace LaserCutter
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("\"최근 사용 목록\"을 삭제 합니다.", "삭제") == DialogResult.Yes)
+            if (yjCommon.Confirm("\"최근 사용 목록\"을 삭제 합니다.", "삭제") == DialogResult.Yes)
             {
                 lvRecentModel.Items.Clear();
 
@@ -613,7 +613,7 @@ namespace LaserCutter
                         // 두 번째 대괄호 안의 값: ModelName
                         string modelName = match.Groups[2].Value;
 
-                        String szPath = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), groupName, modelName);
+                        String szPath = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), groupName, modelName);
 
                         if (!string.IsNullOrEmpty(szPath) && System.IO.Directory.Exists(szPath))
                         {
@@ -638,7 +638,7 @@ namespace LaserCutter
                 TreeNode selectedNode = tvModel.SelectedNode;
                 if (selectedNode != null)
                 {
-                    String szPath = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), GroupName, ModelName);
+                    String szPath = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), GroupName, ModelName);
 
                     if (!string.IsNullOrEmpty(szPath) && System.IO.Directory.Exists(szPath))
                     {
@@ -666,12 +666,12 @@ namespace LaserCutter
                     subItemText = subItemText.Substring(1, subItemText.Length - 2);
                     subItemText = subItemText.Replace("][", "@");
 
-                    string szGroupName = dkCommon.GetWord(subItemText, 0, '@');
-                    string szModelName = dkCommon.GetWord(subItemText, 1, '@');
+                    string szGroupName = yjCommon.GetWord(subItemText, 0, '@');
+                    string szModelName = yjCommon.GetWord(subItemText, 1, '@');
 
-                    String szPath = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), szGroupName, szModelName);
+                    String szPath = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), szGroupName, szModelName);
 
-                    if (dkCommon.DirectoryExists(szPath))
+                    if (yjCommon.DirectoryExists(szPath))
                     {
                         GroupName = szGroupName;
                         ModelName = szModelName;
@@ -694,7 +694,7 @@ namespace LaserCutter
                     }
                     else
                     {
-                        dkCommon.Warning("해당 디렉토리가 존재하지 않습니다.", "오류");
+                        yjCommon.Warning("해당 디렉토리가 존재하지 않습니다.", "오류");
                     }
                 }
             }
@@ -709,7 +709,7 @@ namespace LaserCutter
         {
             if ((e.KeyCode == Keys.Delete) && (lvRecentModel.SelectedItems.Count > 0))
             {
-                if (dkCommon.Confirm("삭제 합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("삭제 합니다.", "확인") == DialogResult.Yes)
                 {
                     // 선택된 모든 항목 삭제
                     foreach (ListViewItem selectedItem in lvRecentModel.SelectedItems)

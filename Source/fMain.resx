@@ -169,7 +169,7 @@
     <value>btnAuto</value>
   </data>
   <data name="&gt;&gt;btnAuto.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAuto.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -181,7 +181,7 @@
     <value>btnManual</value>
   </data>
   <data name="&gt;&gt;btnManual.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnManual.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -193,7 +193,7 @@
     <value>btnConfig</value>
   </data>
   <data name="&gt;&gt;btnConfig.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnConfig.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -205,7 +205,7 @@
     <value>btnAlarm</value>
   </data>
   <data name="&gt;&gt;btnAlarm.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAlarm.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -217,7 +217,7 @@
     <value>btnJobFile</value>
   </data>
   <data name="&gt;&gt;btnJobFile.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnJobFile.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -229,7 +229,7 @@
     <value>btnVision</value>
   </data>
   <data name="&gt;&gt;btnVision.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnVision.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -241,7 +241,7 @@
     <value>btnLog</value>
   </data>
   <data name="&gt;&gt;btnLog.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLog.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -253,7 +253,7 @@
     <value>btnExit</value>
   </data>
   <data name="&gt;&gt;btnExit.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnExit.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -280,7 +280,7 @@
     <value>panBottom</value>
   </data>
   <data name="&gt;&gt;panBottom.Type" xml:space="preserve">
-    <value>DaekhonSystem.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panBottom.Parent" xml:space="preserve">
     <value>$this</value>
@@ -447,7 +447,7 @@
     <value>btnAuto</value>
   </data>
   <data name="&gt;&gt;btnAuto.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAuto.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -522,7 +522,7 @@
     <value>btnManual</value>
   </data>
   <data name="&gt;&gt;btnManual.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnManual.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -601,7 +601,7 @@
     <value>btnConfig</value>
   </data>
   <data name="&gt;&gt;btnConfig.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnConfig.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -637,7 +637,7 @@
     <value>btnAlarm</value>
   </data>
   <data name="&gt;&gt;btnAlarm.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAlarm.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -710,7 +710,7 @@
     <value>btnJobFile</value>
   </data>
   <data name="&gt;&gt;btnJobFile.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnJobFile.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -746,7 +746,7 @@
     <value>btnVision</value>
   </data>
   <data name="&gt;&gt;btnVision.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnVision.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -782,7 +782,7 @@
     <value>btnLog</value>
   </data>
   <data name="&gt;&gt;btnLog.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLog.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -843,7 +843,7 @@
     <value>btnExit</value>
   </data>
   <data name="&gt;&gt;btnExit.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnExit.Parent" xml:space="preserve">
     <value>panBottom</value>
@@ -867,7 +867,7 @@
     <value>metroPanel1</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
-    <value>DaekhonSystem.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
     <value>panTop</value>
@@ -879,7 +879,7 @@
     <value>panEqpTitle</value>
   </data>
   <data name="&gt;&gt;panEqpTitle.Type" xml:space="preserve">
-    <value>DaekhonSystem.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panEqpTitle.Parent" xml:space="preserve">
     <value>panTop</value>
@@ -903,7 +903,7 @@
     <value>panTop</value>
   </data>
   <data name="&gt;&gt;panTop.Type" xml:space="preserve">
-    <value>DaekhonSystem.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
     <value>$this</value>
@@ -939,7 +939,7 @@
     <value>btnLogIn</value>
   </data>
   <data name="&gt;&gt;btnLogIn.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLogIn.Parent" xml:space="preserve">
     <value>metroPanel1</value>
@@ -987,7 +987,7 @@
     <value>lblDateTime</value>
   </data>
   <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
-    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
     <value>metroPanel1</value>
@@ -1008,7 +1008,7 @@
     <value>metroPanel1</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
-    <value>DaekhonSystem.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
     <value>panTop</value>
@@ -1044,7 +1044,7 @@
     <value>btnLogIn</value>
   </data>
   <data name="&gt;&gt;btnLogIn.Type" xml:space="preserve">
-    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLogIn.Parent" xml:space="preserve">
     <value>metroPanel1</value>
@@ -1164,7 +1164,7 @@
     <value>lblDateTime</value>
   </data>
   <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
-    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
     <value>metroPanel1</value>
@@ -1176,7 +1176,7 @@
     <value>lblVersion</value>
   </data>
   <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
-    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -1188,7 +1188,7 @@
     <value>lblBuildVersion</value>
   </data>
   <data name="&gt;&gt;lblBuildVersion.Type" xml:space="preserve">
-    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblBuildVersion.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -1200,7 +1200,7 @@
     <value>lblMainTitle</value>
   </data>
   <data name="&gt;&gt;lblMainTitle.Type" xml:space="preserve">
-    <value>DaekhonSystem.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblMainTitle.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -1227,7 +1227,7 @@
     <value>panEqpTitle</value>
   </data>
   <data name="&gt;&gt;panEqpTitle.Type" xml:space="preserve">
-    <value>DaekhonSystem.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panEqpTitle.Parent" xml:space="preserve">
     <value>panTop</value>
@@ -1257,7 +1257,7 @@
     <value>lblVersion</value>
   </data>
   <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
-    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -1287,7 +1287,7 @@
     <value>lblBuildVersion</value>
   </data>
   <data name="&gt;&gt;lblBuildVersion.Type" xml:space="preserve">
-    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblBuildVersion.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -1320,7 +1320,7 @@
     <value>lblMainTitle</value>
   </data>
   <data name="&gt;&gt;lblMainTitle.Type" xml:space="preserve">
-    <value>DaekhonSystem.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblMainTitle.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -1401,7 +1401,7 @@
     <value>AutoThread</value>
   </data>
   <data name="&gt;&gt;AutoThread.Type" xml:space="preserve">
-    <value>DaekhonSystem.Thread, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Thread, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmMain</value>

@@ -115,10 +115,6 @@
       <HintPath>Embeded Dll\Cognex.VisionPro.ToolGroup.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DaekhonSystem">
-      <HintPath>Embeded Dll\DaekhonSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
       <HintPath>Embeded Dll\FirebirdSql.Data.FirebirdClient.dll</HintPath>
       <Private>False</Private>
@@ -166,6 +162,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="YujinTechnology, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\YujinTechnology.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="fCarbide.cs">
@@ -186,6 +186,12 @@
     <Compile Include="fMain.Designer.cs">
       <DependentUpon>fMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="fMVS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fMVS.Designer.cs">
+      <DependentUpon>fMVS.cs</DependentUpon>
+    </Compile>
     <Compile Include="fRestart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,12 @@
     </Compile>
     <Compile Include="fUserConfirm.Designer.cs">
       <DependentUpon>fUserConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fVision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fVision.Designer.cs">
+      <DependentUpon>fVision.cs</DependentUpon>
     </Compile>
     <Compile Include="PanUnits\fScanner.cs">
       <SubType>Form</SubType>
@@ -408,6 +420,10 @@
       <DependentUpon>fMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="fMVS.resx">
+      <DependentUpon>fMVS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="fRestart.resx">
       <DependentUpon>fRestart.cs</DependentUpon>
     </EmbeddedResource>
@@ -416,6 +432,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fUserConfirm.resx">
       <DependentUpon>fUserConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fVision.resx">
+      <DependentUpon>fVision.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\fScanner.resx">
       <DependentUpon>fScanner.cs</DependentUpon>
@@ -556,6 +576,17 @@
     <None Include="Resources\Auto.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.Core.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.CorePlus.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.Display.Controls.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.ImageFile.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.PMAlign.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.QuickBuild.Controls.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.QuickBuild.Core.dll" />
+    <EmbeddedResource Include="Embeded Dll\Cognex.VisionPro.ToolGroup.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\UTI_LOGO.png" />
   </ItemGroup>
   <ItemGroup>
@@ -592,7 +623,7 @@
     <None Include="Resources\Image12.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Embeded Dll\YujinTechnology.dll" />
+    <Content Include="Embeded Dll\YujinTechnology.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

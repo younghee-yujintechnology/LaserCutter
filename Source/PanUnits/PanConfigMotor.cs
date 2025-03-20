@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 
 using System;
 using System.Collections.Generic;
@@ -105,8 +105,8 @@ namespace LaserCutter
         private void LoadMotorParamInfo()
         {
             //motionParameters.Clear();
-            String szPath = String.Format("{0}Config\\ConfigMotorParam.INI", dkCommon.AppPath());
-            if (dkCommon.FileExists(szPath))
+            String szPath = String.Format("{0}Config\\ConfigMotorParam.INI", yjCommon.AppPath());
+            if (yjCommon.FileExists(szPath))
             {
                 Global.MotionParameters = ParseINIFile(szPath);
                 UpdatAxisConfig();
@@ -232,7 +232,7 @@ namespace LaserCutter
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            String szPath = String.Format("{0}Config\\ConfigMotorParam.INI", dkCommon.AppPath());
+            String szPath = String.Format("{0}Config\\ConfigMotorParam.INI", yjCommon.AppPath());
             SaveDataGridViewToIni(szPath);
             LoadMotorParamInfo();
         }    

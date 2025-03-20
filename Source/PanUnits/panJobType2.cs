@@ -13,7 +13,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter
@@ -47,7 +47,7 @@ namespace LaserCutter
 
             InitializeComponent();
 
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(DaekhonSystem.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeDaekhonControlColor(this.Controls, typeof(YujinTechnology.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(KeypadEdit), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
@@ -187,7 +187,7 @@ namespace LaserCutter
 
             Table.SaveJobFile();
 
-            DaekhonSystem.StringList ss = LaserProject.Model2.ToStringList();
+            YujinTechnology.StringList ss = LaserProject.Model2.ToStringList();
 
             GetWorkCenter(0);
 
@@ -568,7 +568,7 @@ namespace LaserCutter
 
             ledLabel.LED.Value = !ledLabel.LED.Value;
 
-            int nIndex = dkCommon.StrToIntDef(ledLabel.Text, -1);
+            int nIndex = yjCommon.StrToIntDef(ledLabel.Text, -1);
 
             if (nIndex > -1)
             {
@@ -945,8 +945,8 @@ namespace LaserCutter
             /* 
             * Layer에 ALign 정보가 있는지 확인 
             */
-            DaekhonSystem.StringList szList1 = new DaekhonSystem.StringList();
-            DaekhonSystem.StringList szList2 = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList1 = new YujinTechnology.StringList();
+            YujinTechnology.StringList szList2 = new YujinTechnology.StringList();
 
             for (int nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
             {
@@ -1269,7 +1269,7 @@ namespace LaserCutter
         {
             GetWorkCenter(ACellIndex);
 
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Add("undefine all");
 
@@ -1397,7 +1397,7 @@ namespace LaserCutter
 
             Cad2.CurLayerName = "";
 
-            String szStr = String.Format("{0}Program{1}.pmc", dkCommon.AppPath(), (int)tableNo);
+            String szStr = String.Format("{0}Program{1}.pmc", yjCommon.AppPath(), (int)tableNo);
             szList.SaveToFile(szStr);
             szList.Clear();
         }
@@ -1443,8 +1443,8 @@ namespace LaserCutter
                     LaserProject.Model2.Layers[nRowIndex].Direction = Direction.CW;
                 }
 
-                LaserProject.Model2.Layers[nRowIndex].LaserPower = dkCommon.StrToDoubleDef(dataGridView2.Rows[nRowIndex].Cells[4].Value.ToString(), 0.0);
-                LaserProject.Model2.Layers[nRowIndex].ZOffset = dkCommon.StrToDoubleDef(dataGridView2.Rows[nRowIndex].Cells[5].Value.ToString(), 0.0);
+                LaserProject.Model2.Layers[nRowIndex].LaserPower = yjCommon.StrToDoubleDef(dataGridView2.Rows[nRowIndex].Cells[4].Value.ToString(), 0.0);
+                LaserProject.Model2.Layers[nRowIndex].ZOffset = yjCommon.StrToDoubleDef(dataGridView2.Rows[nRowIndex].Cells[5].Value.ToString(), 0.0);
             }
 
             IntPtr hEnt = IntPtr.Zero;
@@ -1684,11 +1684,11 @@ namespace LaserCutter
         {
             if (cbCellIndex.ItemIndex < 0)
             {
-                dkCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
+                yjCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
                 return;
             }
 
-            if (dkCommon.Confirm("Align1위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align1위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 GetWorkCenter(cbCellIndex.SelectedIndex);
                 Pmac.XMoveAbs(WorkCenter.x + (viAlign1PosX.AsDouble - CenterPos.x));
@@ -1711,11 +1711,11 @@ namespace LaserCutter
         {
             if (cbCellIndex.ItemIndex < 0)
             {
-                dkCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
+                yjCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
                 return;
             }
 
-            if (dkCommon.Confirm("Align2위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align2위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 GetWorkCenter(cbCellIndex.SelectedIndex);
                 Pmac.XMoveAbs(WorkCenter.x + (viAlign2PosX.AsDouble - CenterPos.x));
@@ -1738,11 +1738,11 @@ namespace LaserCutter
         {
             if (cbCellIndex.ItemIndex < 0)
             {
-                dkCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
+                yjCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
                 return;
             }
 
-            if (dkCommon.Confirm("Align3위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align3위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 GetWorkCenter(cbCellIndex.SelectedIndex);
                 Pmac.XMoveAbs(WorkCenter.x + viAlign3PosX.AsDouble);
@@ -1765,11 +1765,11 @@ namespace LaserCutter
         {
             if (cbCellIndex.ItemIndex < 0)
             {
-                dkCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
+                yjCommon.Inform("이동 하고자 하는 CellIndex를 선택합니다.", "확인");
                 return;
             }
 
-            if (dkCommon.Confirm("Align4위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align4위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 GetWorkCenter(cbCellIndex.SelectedIndex);
                 Pmac.XMoveAbs(WorkCenter.x + viAlign4PosX.AsDouble);
@@ -1792,7 +1792,7 @@ namespace LaserCutter
         {
             if (lblDxfPath.Text != "")
             {
-                if (System.Windows.Forms.DialogResult.Yes != dkCommon.Confirm("도면 파일을 변경 하면 기존 데이타를 삭제합니다. 진행하시겠습니까?.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes != yjCommon.Confirm("도면 파일을 변경 하면 기존 데이타를 삭제합니다. 진행하시겠습니까?.", "확인"))
                 {
                     return;
                 }
@@ -1807,7 +1807,7 @@ namespace LaserCutter
 
                 Cad2.Visible = true;
 
-                szFileName = dkCommon.ExtractFileName(Cad2.FileName);
+                szFileName = yjCommon.ExtractFileName(Cad2.FileName);
 
                 String szNewPath = String.Format("{0}{1}", Table.GetModelPath(), szFileName);
 

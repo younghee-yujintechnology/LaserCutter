@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.propSaver1 = new DaekhonSystem.PropSaver();
+            this.propSaver1 = new YujinTechnology.PropSaver();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabConfig = new DaekhonSystem.TabControl();
+            this.tabConfig = new YujinTechnology.TabControl();
             this.tabConfig.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,7 +92,7 @@
         "edTable1GuideCornerYPos;Text;Table1;GuideCornerYPos;0",
         "edTable2GuideCornerXPos;Text;Table2;GuideCornerXPos;0",
         "edTable2GuideCornerYPos;Text;Table2;GuideCornerYPos;0"};
-            this.propSaver1.RootKey = DaekhonSystem.RootKey.artHKEY_CURRENT_USER;
+            this.propSaver1.RootKey = YujinTechnology.RootKey.artHKEY_CURRENT_USER;
             this.propSaver1.SaveToRegistry = false;
             // 
             // tabPage2
@@ -163,8 +163,8 @@
 
         #endregion
         
-        public DaekhonSystem.PropSaver propSaver1;
-        private DaekhonSystem.TabControl tabConfig;
+        public YujinTechnology.PropSaver propSaver1;
+        private YujinTechnology.TabControl tabConfig;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
     }

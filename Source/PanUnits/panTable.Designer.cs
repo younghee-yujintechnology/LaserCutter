@@ -30,11 +30,11 @@
         {
             this.panClient = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblGroupName = new DaekhonSystem.Label();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
-            this.btnClose = new DaekhonSystem.BitBtn();
-            this.btnOpenJobFile = new DaekhonSystem.BitBtn();
-            this.lblModelName = new DaekhonSystem.Label();
+            this.lblGroupName = new YujinTechnology.Label();
+            this.gradientLabel1 = new YujinTechnology.GradientLabel();
+            this.btnClose = new YujinTechnology.BitBtn();
+            this.btnOpenJobFile = new YujinTechnology.BitBtn();
+            this.lblModelName = new YujinTechnology.Label();
             this.panClient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,11 +160,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panClient;
-        private DaekhonSystem.GradientLabel gradientLabel1;
+        private YujinTechnology.GradientLabel gradientLabel1;
         private System.Windows.Forms.Label label1;
-        public DaekhonSystem.BitBtn btnOpenJobFile;
-        public DaekhonSystem.BitBtn btnClose;
-        public DaekhonSystem.Label lblModelName;
-        public DaekhonSystem.Label lblGroupName;
+        public YujinTechnology.BitBtn btnOpenJobFile;
+        public YujinTechnology.BitBtn btnClose;
+        public YujinTechnology.Label lblModelName;
+        public YujinTechnology.Label lblGroupName;
     }
 }

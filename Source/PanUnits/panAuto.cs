@@ -15,7 +15,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter
@@ -155,8 +155,8 @@ namespace LaserCutter
             Vision1 = Table1.Vision;
             Vision2 = Table2.Vision;
 
-            String szFileName = String.Format("{0}ErrorList.txt", dkCommon.AppPath());
-            if (dkCommon.FileExists(szFileName))
+            String szFileName = String.Format("{0}ErrorList.txt", yjCommon.AppPath());
+            if (yjCommon.FileExists(szFileName))
             {
                 errorProcessor1.LoadFromFile(szFileName);
                 errorProcessor1.Monitor = true;
@@ -190,7 +190,7 @@ namespace LaserCutter
             logger.Category = "Auto";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -308,7 +308,7 @@ namespace LaserCutter
 
                     case PowerPMac.DT_StringA:
                         string s = Marshal.PtrToStringAnsi(cds.lpData);
-                        s = dkCommon.RemoveCRLF(s);
+                        s = yjCommon.RemoveCRLF(s);
                         frmMotionFile.Memo1.AppendText(s + Environment.NewLine);
                         logger.SendMsg("        " + s + Environment.NewLine);
                         break;
@@ -1424,8 +1424,8 @@ namespace LaserCutter
 
                         logger.SendMsg(String.Format("        Table1.CenterPos = {0:F3}, {1:F3}", Table1.CenterPos.x, Table1.CenterPos.y));
 
-                        dkCommon.GetRotatorPos(CenterPos, Table1.Align1Pos, -Vision1.viAngleDiff.AsDouble, ref NewAlign1Pos);
-                        dkCommon.GetRotatorPos(CenterPos, Table1.Align2Pos, -Vision1.viAngleDiff.AsDouble, ref NewAlign2Pos);
+                        yjCommon.GetRotatorPos(CenterPos, Table1.Align1Pos, -Vision1.viAngleDiff.AsDouble, ref NewAlign1Pos);
+                        yjCommon.GetRotatorPos(CenterPos, Table1.Align2Pos, -Vision1.viAngleDiff.AsDouble, ref NewAlign2Pos);
 
                         logger.SendMsg(String.Format("        Table1.NewAlign1Pos = ({0:F3})", NewAlign1Pos));
                         logger.SendMsg(String.Format("        Table1.NewAlign2Pos = ({0:F3})", NewAlign2Pos));
@@ -2727,8 +2727,8 @@ namespace LaserCutter
 
                         logger.SendMsg(String.Format("        Table2.CenterPos = {0:F3}, {1:F3}", Table2.CenterPos.x, Table2.CenterPos.y));
 
-                        dkCommon.GetRotatorPos(CenterPos, Table2.Align1Pos, -Vision2.viAngleDiff.AsDouble, ref NewAlign1Pos);
-                        dkCommon.GetRotatorPos(CenterPos, Table2.Align2Pos, -Vision2.viAngleDiff.AsDouble, ref NewAlign2Pos);
+                        yjCommon.GetRotatorPos(CenterPos, Table2.Align1Pos, -Vision2.viAngleDiff.AsDouble, ref NewAlign1Pos);
+                        yjCommon.GetRotatorPos(CenterPos, Table2.Align2Pos, -Vision2.viAngleDiff.AsDouble, ref NewAlign2Pos);
 
                         logger.SendMsg(String.Format("        Table2.NewAlign1Pos = ({0:F3})", NewAlign1Pos));
                         logger.SendMsg(String.Format("        Table2.NewAlign2Pos = ({0:F3})", NewAlign2Pos));
@@ -3770,7 +3770,7 @@ namespace LaserCutter
 
         private void btnTable1New_Click(object sender, EventArgs e)
         {
-            if (dkCommon.IsCtrlKeyDown())
+            if (yjCommon.IsCtrlKeyDown())
             {
                 if (ledTable1JobFileLoad.LED.Value && btnAutoReady.LED.Value && btnStart.LED.Value)
                 {
@@ -3913,7 +3913,7 @@ namespace LaserCutter
 
         private void btnTable2New_Click(object sender, EventArgs e)
         {
-            if (dkCommon.IsCtrlKeyDown())
+            if (yjCommon.IsCtrlKeyDown())
             {
                 if (ledTable2JobFileLoad.LED.Value && btnAutoReady.LED.Value && btnStart.LED.Value)
                 {
@@ -3991,7 +3991,7 @@ namespace LaserCutter
             {
                 if (!string.IsNullOrWhiteSpace(newError))
                 {
-                    int code = dkCommon.StrToIntDef(newError, 0);
+                    int code = yjCommon.StrToIntDef(newError, 0);
                     string szDesc = errorProcessor1.ErrorCode2Desc(code);
                     if (szDesc == "") szDesc = "(no error desc)";
 
@@ -4003,7 +4003,7 @@ namespace LaserCutter
                     bool inserted = false;
                     for (int j = 0; j < listView1.Items.Count; j++)
                     {
-                        int existingCode = dkCommon.StrToIntDef(listView1.Items[j].SubItems[1].Text, 0);
+                        int existingCode = yjCommon.StrToIntDef(listView1.Items[j].SubItems[1].Text, 0);
                         if (code < existingCode)
                         {
                             listView1.Items.Insert(j, item);

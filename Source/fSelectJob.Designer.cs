@@ -63,8 +63,8 @@
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FORD");
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("대우");
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.btnOK = new DaekhonSystem.BitBtn();
-            this.btnCancel = new DaekhonSystem.BitBtn();
+            this.btnOK = new YujinTechnology.BitBtn();
+            this.btnCancel = new YujinTechnology.BitBtn();
             this.tabControlSelectJobFile = new System.Windows.Forms.TabControl();
             this.tabPageRecentModel = new System.Windows.Forms.TabPage();
             this.lvRecentModel = new System.Windows.Forms.ListView();
@@ -72,7 +72,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClear = new DaekhonSystem.BitBtn();
+            this.btnClear = new YujinTechnology.BitBtn();
             this.tabPageRegisteredModel = new System.Windows.Forms.TabPage();
             this.tvModel = new System.Windows.Forms.TreeView();
             this.tabControlSelectJobFile.SuspendLayout();
@@ -314,8 +314,8 @@
 
         #endregion
         private System.Windows.Forms.ImageList imageList1;
-        private DaekhonSystem.BitBtn btnOK;
-        private DaekhonSystem.BitBtn btnCancel;
+        private YujinTechnology.BitBtn btnOK;
+        private YujinTechnology.BitBtn btnCancel;
         public System.Windows.Forms.TabControl tabControlSelectJobFile;
         public System.Windows.Forms.TabPage tabPageRecentModel;
         private System.Windows.Forms.ListView lvRecentModel;
@@ -323,7 +323,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Panel panel1;
-        private DaekhonSystem.BitBtn btnClear;
+        private YujinTechnology.BitBtn btnClear;
         private System.Windows.Forms.TabPage tabPageRegisteredModel;
         private System.Windows.Forms.TreeView tvModel;
     }

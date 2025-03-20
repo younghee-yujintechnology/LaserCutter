@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter
@@ -41,7 +41,7 @@ namespace LaserCutter
 
             InitializeComponent();
 
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(DaekhonSystem.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeDaekhonControlColor(this.Controls, typeof(YujinTechnology.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(KeypadEdit), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
@@ -145,7 +145,7 @@ namespace LaserCutter
         {
             if (lblDxfPath.Text != "")
             {
-                if (System.Windows.Forms.DialogResult.Yes != dkCommon.Confirm("도면 파일을 변경 하면 기존 데이타를 삭제합니다. 진행하시겠습니까?.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes != yjCommon.Confirm("도면 파일을 변경 하면 기존 데이타를 삭제합니다. 진행하시겠습니까?.", "확인"))
                 {
                     return;
                 }
@@ -160,7 +160,7 @@ namespace LaserCutter
 
                 Cad1.Visible = true;
 
-                szFileName = dkCommon.ExtractFileName(Cad1.FileName);
+                szFileName = yjCommon.ExtractFileName(Cad1.FileName);
 
                 String szNewPath = String.Format("{0}{1}", Table.GetModelPath(), szFileName);
 
@@ -287,8 +287,8 @@ namespace LaserCutter
             /* 
              * Layer에 ALign 정보가 있는지 확인 
              */
-            DaekhonSystem.StringList szList1 = new DaekhonSystem.StringList();
-            DaekhonSystem.StringList szList2 = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList1 = new YujinTechnology.StringList();
+            YujinTechnology.StringList szList2 = new YujinTechnology.StringList();
 
             for (int nIndex = 0; nIndex < LaserProject.Model1.Layers.Count; nIndex++)
             {
@@ -706,7 +706,7 @@ namespace LaserCutter
         {
             GetWorkCenter();
 
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Add("undefine all");
 
@@ -832,7 +832,7 @@ namespace LaserCutter
 
             Cad1.CurLayerName = "";
 
-            String szStr = String.Format("{0}Program{1}.pmc", dkCommon.AppPath(), (int)tableNo);
+            String szStr = String.Format("{0}Program{1}.pmc", yjCommon.AppPath(), (int)tableNo);
             szList.SaveToFile(szStr);
             szList.Clear();
         }
@@ -878,8 +878,8 @@ namespace LaserCutter
                     LaserProject.Model1.Layers[nRowIndex].Direction = Direction.CW;
                 }
 
-                LaserProject.Model1.Layers[nRowIndex].LaserPower = dkCommon.StrToDoubleDef(dataGridView1.Rows[nRowIndex].Cells[4].Value.ToString(), 0.0);
-                LaserProject.Model1.Layers[nRowIndex].ZOffset = dkCommon.StrToDoubleDef(dataGridView1.Rows[nRowIndex].Cells[5].Value.ToString(), 0.0);
+                LaserProject.Model1.Layers[nRowIndex].LaserPower = yjCommon.StrToDoubleDef(dataGridView1.Rows[nRowIndex].Cells[4].Value.ToString(), 0.0);
+                LaserProject.Model1.Layers[nRowIndex].ZOffset = yjCommon.StrToDoubleDef(dataGridView1.Rows[nRowIndex].Cells[5].Value.ToString(), 0.0);
             }
 
             IntPtr hEnt = IntPtr.Zero;
@@ -984,7 +984,7 @@ namespace LaserCutter
 
             Table.SaveJobFile();
 
-            DaekhonSystem.StringList ss = LaserProject.Model1.ToStringList();
+            YujinTechnology.StringList ss = LaserProject.Model1.ToStringList();
 
             GetWorkCenter();
 
@@ -1105,7 +1105,7 @@ namespace LaserCutter
 
         private void btnMoveAlign1Pos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Align1위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align1위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 if (ledAlign1Pos.LED.Value)
                 {
@@ -1126,14 +1126,14 @@ namespace LaserCutter
                 }
                 else
                 {
-                    dkCommon.Inform("ALIGN1 마크 설정 오류로 이동할수 없습니다..", "오류");
+                    yjCommon.Inform("ALIGN1 마크 설정 오류로 이동할수 없습니다..", "오류");
                 }
             }
         }
 
         private void btnMoveAlign2Pos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Align2위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align2위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 if (ledAlign2Pos.LED.Value)
                 {
@@ -1153,14 +1153,14 @@ namespace LaserCutter
                 }
                 else
                 {
-                    dkCommon.Inform("ALIGN2 마크 설정 오류로 이동할수 없습니다..", "오류");
+                    yjCommon.Inform("ALIGN2 마크 설정 오류로 이동할수 없습니다..", "오류");
                 }
             }
         }
 
         private void btnMoveAlign3Pos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Align3위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align3위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 if (ledAlign3Pos.LED.Value)
                 {
@@ -1180,14 +1180,14 @@ namespace LaserCutter
                 }
                 else
                 {
-                    dkCommon.Inform("ALIGN3 마크 설정 오류로 이동할수 없습니다..", "오류");
+                    yjCommon.Inform("ALIGN3 마크 설정 오류로 이동할수 없습니다..", "오류");
                 }
             }
         }
 
         private void btnMoveAlign4Pos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Align4위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Align4위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 if (ledAlign4Pos.LED.Value)
                 {
@@ -1207,7 +1207,7 @@ namespace LaserCutter
                 }
                 else
                 {
-                    dkCommon.Inform("ALIGN4 마크 설정 오류로 이동할수 없습니다..", "오류");
+                    yjCommon.Inform("ALIGN4 마크 설정 오류로 이동할수 없습니다..", "오류");
                 }
             }
         }

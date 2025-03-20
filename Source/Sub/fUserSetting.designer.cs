@@ -34,19 +34,19 @@
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnCanecl = new DaekhonSystem.BitBtn();
-            this.btnOk = new DaekhonSystem.BitBtn();
-            this.btnAdd = new DaekhonSystem.BitBtn();
-            this.edName = new DaekhonSystem.Edit();
-            this.gradLabel8 = new DaekhonSystem.GradientLabel();
-            this.edit1 = new DaekhonSystem.Edit();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
+            this.btnCanecl = new YujinTechnology.BitBtn();
+            this.btnOk = new YujinTechnology.BitBtn();
+            this.btnAdd = new YujinTechnology.BitBtn();
+            this.edName = new YujinTechnology.Edit();
+            this.gradLabel8 = new YujinTechnology.GradientLabel();
+            this.edit1 = new YujinTechnology.Edit();
+            this.gradientLabel1 = new YujinTechnology.GradientLabel();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAuthority = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbUserName = new DaekhonSystem.ComboBox();
-            this.gradientLabel2 = new DaekhonSystem.GradientLabel();
-            this.userList1 = new DaekhonSystem.UserList();
+            this.cbUserName = new YujinTechnology.ComboBox();
+            this.gradientLabel2 = new YujinTechnology.GradientLabel();
+            this.userList1 = new YujinTechnology.UserList();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -290,18 +290,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewComboBoxColumn Author;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private DaekhonSystem.BitBtn btnCanecl;
-        private DaekhonSystem.BitBtn btnOk;
+        private YujinTechnology.BitBtn btnCanecl;
+        private YujinTechnology.BitBtn btnOk;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAuthority;
-        private DaekhonSystem.BitBtn btnAdd;
-        private DaekhonSystem.Edit edName;
-        private DaekhonSystem.GradientLabel gradLabel8;
-        private DaekhonSystem.Edit edit1;
-        private DaekhonSystem.GradientLabel gradientLabel1;
-        private DaekhonSystem.ComboBox cbUserName;
-        private DaekhonSystem.GradientLabel gradientLabel2;
-        private DaekhonSystem.UserList userList1;
+        private YujinTechnology.BitBtn btnAdd;
+        private YujinTechnology.Edit edName;
+        private YujinTechnology.GradientLabel gradLabel8;
+        private YujinTechnology.Edit edit1;
+        private YujinTechnology.GradientLabel gradientLabel1;
+        private YujinTechnology.ComboBox cbUserName;
+        private YujinTechnology.GradientLabel gradientLabel2;
+        private YujinTechnology.UserList userList1;
     }
 }

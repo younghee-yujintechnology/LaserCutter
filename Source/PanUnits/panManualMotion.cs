@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Newtonsoft.Json.Linq;
 using Raize.CodeSiteLogging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
@@ -45,7 +45,7 @@ namespace LaserCutter
             Global.ChangeDaekhonControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(KeypadEdit), System.Drawing.Color.FromArgb(80, 160, 255));
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(DaekhonSystem.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeDaekhonControlColor(this.Controls, typeof(YujinTechnology.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
 
             logger.Category = "Manual.Motion";
 
@@ -78,7 +78,7 @@ namespace LaserCutter
             logger.Category = "Manual.Motion";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -126,9 +126,9 @@ namespace LaserCutter
                     ((LEDLabel)control).DataServer = dsMotion;
                 }
                 else
-                if (control is DaekhonSystem.ComboBox)
+                if (control is YujinTechnology.ComboBox)
                 {
-                    ((DaekhonSystem.ComboBox)control).DataServer = dsMotion;
+                    ((YujinTechnology.ComboBox)control).DataServer = dsMotion;
                 }
                 if (control.HasChildren)
                 {
@@ -221,8 +221,8 @@ namespace LaserCutter
                 frmChannelSpy.propGridIO.Active = true;
 
                 // 
-                String szPath = String.Format("{0}Config\\MotionChannels.csv", dkCommon.AppPath());
-                if (dkCommon.FileExists(szPath))
+                String szPath = String.Format("{0}Config\\MotionChannels.csv", yjCommon.AppPath());
+                if (yjCommon.FileExists(szPath))
                 {
                     dsMotion.LoadFromCSV(szPath);
 
@@ -323,8 +323,8 @@ namespace LaserCutter
                 frmChannelSpy.propGridIO.Active = true;
 
                 // 
-                String szPath = String.Format("{0}Config\\MotionChannels.csv", dkCommon.AppPath());
-                if (dkCommon.FileExists(szPath))
+                String szPath = String.Format("{0}Config\\MotionChannels.csv", yjCommon.AppPath());
+                if (yjCommon.FileExists(szPath))
                 {
                     dsMotion.LoadFromCSV(szPath);
 
@@ -416,8 +416,8 @@ namespace LaserCutter
                 frmChannelSpy.propGridIO.Active = true;
 
                 // 
-                String szPath = String.Format("{0}Config\\MotionChannels.csv", dkCommon.AppPath());
-                if (dkCommon.FileExists(szPath))
+                String szPath = String.Format("{0}Config\\MotionChannels.csv", yjCommon.AppPath());
+                if (yjCommon.FileExists(szPath))
                 {
                     dsMotion.LoadFromCSV(szPath);
 
@@ -1664,7 +1664,7 @@ namespace LaserCutter
         private void ReadVersion1Input()
         {
 #if _PMAC
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Text = Pmac.QueryCommand("M7000, 48");
 
@@ -1720,7 +1720,7 @@ namespace LaserCutter
         private void ReadVersion2Input()
         {
 #if _PMAC
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Text = Pmac.QueryCommand("M7000, 48");
 
@@ -1776,7 +1776,7 @@ namespace LaserCutter
         {
 
 #if _PMAC
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Text = Pmac.QueryCommand("M7100, 48");
             {
@@ -1828,7 +1828,7 @@ namespace LaserCutter
         {
 
 #if _PMAC
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Text = Pmac.QueryCommand("M7100, 48");
             {
@@ -1907,7 +1907,7 @@ namespace LaserCutter
             }
 
             // '=' 이후의 문자열을 추출한 후 double로 변환
-            double value = dkCommon.StrToDoubleDef(str.Substring(nIdx), 0.0);
+            double value = yjCommon.StrToDoubleDef(str.Substring(nIdx), 0.0);
             // 소수점 3자리까지 포맷팅하여 문자열로 변환 후 반환
             return value.ToString("F3");
         }
@@ -1952,21 +1952,21 @@ namespace LaserCutter
         private void ReadMotorStatus()
         {
 #if _PMAC
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
             szList.Text = Pmac.QueryCommand("XVelocity XCurPos Y1Velocity Y1CurPos Y2Velocity Y2CurPos ZVelocity ZCurPos ");
             if (szList.Count == 8)
             {
-                Global.chXActualVel.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[0]), 0.0);
-                Global.chXActualPos.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[1]), 0.0) / Const.XY_LINEAR_SCALE;
+                Global.chXActualVel.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[0]), 0.0);
+                Global.chXActualPos.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[1]), 0.0) / Const.XY_LINEAR_SCALE;
 
-                Global.chY1ActualVel.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[2]), 0.0);
-                Global.chY1ActualPos.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[3]), 0.0) / Const.XY_LINEAR_SCALE;
+                Global.chY1ActualVel.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[2]), 0.0);
+                Global.chY1ActualPos.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[3]), 0.0) / Const.XY_LINEAR_SCALE;
 
-                Global.chY2ActualVel.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[4]), 0.0);
-                Global.chY2ActualPos.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[5]), 0.0) / Const.XY_LINEAR_SCALE;
+                Global.chY2ActualVel.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[4]), 0.0);
+                Global.chY2ActualPos.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[5]), 0.0) / Const.XY_LINEAR_SCALE;
 
-                Global.chZActualVel.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[6]), 0.0);
-                Global.chZActualPos.AsDouble = dkCommon.StrToDoubleDef(PassingFunc(szList[7]), 0.0) / Const.Z_AXIS_SCALE;
+                Global.chZActualVel.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[6]), 0.0);
+                Global.chZActualPos.AsDouble = yjCommon.StrToDoubleDef(PassingFunc(szList[7]), 0.0) / Const.Z_AXIS_SCALE;
             }
 #else
             Global.chXActualVel.AsDouble = 98.0;
@@ -2088,23 +2088,23 @@ namespace LaserCutter
         private void ReadAAA()
         {
 #if _PMAC
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Text = Pmac.QueryCommand("Table1New Table2New Plc[15].Running Plc[16].Running Plc[17].Running Plc[18].Running Coord[1].ProgRunning Table1CycleStop Table2CycleStop Table1Stop Table2Stop");
 
             if (szList.Count == 11)
             {
-                Global.Table1New            = (dkCommon.StrToIntDef(GetValue(szList[0]), 0) == 1);
-                Global.Table2New            = (dkCommon.StrToIntDef(GetValue(szList[1]), 0) == 1);
-                Global.XHoming            = (dkCommon.StrToIntDef(GetValue(szList[2]), 0) == 1);
-                Global.Y1Homing           = (dkCommon.StrToIntDef(GetValue(szList[3]), 0) == 1);
-                Global.Y2Homing           = (dkCommon.StrToIntDef(GetValue(szList[4]), 0) == 1);
-                Global.ZHoming            = (dkCommon.StrToIntDef(GetValue(szList[5]), 0) == 1);
-                Global.chCoord1Running      = (dkCommon.StrToIntDef(GetValue(szList[6]), 0) == 1);
-                Global.diTable1CycleStop    = (dkCommon.StrToIntDef(GetValue(szList[7]), 0) == 1);
-                Global.diTable2CycleStop    = (dkCommon.StrToIntDef(GetValue(szList[8]), 0) == 1);
-                Global.diTable1Stop         = (dkCommon.StrToIntDef(GetValue(szList[9]), 0) == 1);
-                Global.diTable2Stop         = (dkCommon.StrToIntDef(GetValue(szList[10]), 0) == 1);
+                Global.Table1New            = (yjCommon.StrToIntDef(GetValue(szList[0]), 0) == 1);
+                Global.Table2New            = (yjCommon.StrToIntDef(GetValue(szList[1]), 0) == 1);
+                Global.XHoming            = (yjCommon.StrToIntDef(GetValue(szList[2]), 0) == 1);
+                Global.Y1Homing           = (yjCommon.StrToIntDef(GetValue(szList[3]), 0) == 1);
+                Global.Y2Homing           = (yjCommon.StrToIntDef(GetValue(szList[4]), 0) == 1);
+                Global.ZHoming            = (yjCommon.StrToIntDef(GetValue(szList[5]), 0) == 1);
+                Global.chCoord1Running      = (yjCommon.StrToIntDef(GetValue(szList[6]), 0) == 1);
+                Global.diTable1CycleStop    = (yjCommon.StrToIntDef(GetValue(szList[7]), 0) == 1);
+                Global.diTable2CycleStop    = (yjCommon.StrToIntDef(GetValue(szList[8]), 0) == 1);
+                Global.diTable1Stop         = (yjCommon.StrToIntDef(GetValue(szList[9]), 0) == 1);
+                Global.diTable2Stop         = (yjCommon.StrToIntDef(GetValue(szList[10]), 0) == 1);
             }
 #endif
         }
@@ -2133,7 +2133,7 @@ namespace LaserCutter
 
                 }
 
-                dkCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
+                yjCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
             }
         }
         #endregion
@@ -2161,7 +2161,7 @@ namespace LaserCutter
 
                 }
 
-                dkCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
+                yjCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
             }
         }
         #endregion
@@ -2508,7 +2508,7 @@ namespace LaserCutter
         private void btnServoOff_Click(object sender, EventArgs e)
         {
 #if _PMAC
-            if (dkCommon.Confirm("해당 축을 SERVO OFF 합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("해당 축을 SERVO OFF 합니다.", "확인") == DialogResult.Yes)
             {
 
                 switch (CurrentAxis())
@@ -2791,7 +2791,7 @@ namespace LaserCutter
 
         private void btnOrigin_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("해당 축을 초기화 합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("해당 축을 초기화 합니다.", "확인") == DialogResult.Yes)
             {
 #if _PMAC
                 switch (CurrentAxis())
@@ -3217,7 +3217,7 @@ namespace LaserCutter
 #endif
 
         static CodeSiteLogger logger;
-        static public DaekhonSystem.Thread ReadThread;
+        static public YujinTechnology.Thread ReadThread;
 
         static Pmac()
         {
@@ -3231,7 +3231,7 @@ namespace LaserCutter
             logger.Category = "Pmac";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -3257,7 +3257,7 @@ namespace LaserCutter
             UInt32 uIPAddress;
             bool bConnected = false;
 
-            uIPAddress = dkCommon.IPAddress2Integer(szAddress);
+            uIPAddress = yjCommon.IPAddress2Integer(szAddress);
             mPMacID = PowerPMac.DTKPowerPmacOpen(uIPAddress, PowerPMac.DM_GPASCII);
 
             uRet2 = PowerPMac.DTKIsConnected(mPMacID, out bConnected);
@@ -3659,7 +3659,7 @@ namespace LaserCutter
         }
         public static void AllOrigin()
         {
-            if (dkCommon.Confirm("설비를 초기화 합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("설비를 초기화 합니다.", "확인") == DialogResult.Yes)
             {
                 QueryCommand(String.Format("enable plc 15"));
                 QueryCommand(String.Format("enable plc 16"));
@@ -3722,7 +3722,7 @@ namespace LaserCutter
          */
         public static uint DownloadFile1(IntPtr hDownloadWnd)
         {
-            String szStr = String.Format("{0}program1.pmc", dkCommon.AppPath());
+            String szStr = String.Format("{0}program1.pmc", yjCommon.AppPath());
 #if _PMAC
             return PowerPMac.DTKDownloadA(mPMacID, szStr, true, hDownloadWnd, IntPtr.Zero, IntPtr.Zero);
 #else
@@ -3732,7 +3732,7 @@ namespace LaserCutter
 
         public static uint DownloadFile2(IntPtr hDownloadWnd)
         {
-            String szStr = String.Format("{0}program2.pmc", dkCommon.AppPath());
+            String szStr = String.Format("{0}program2.pmc", yjCommon.AppPath());
 #if _PMAC
             return PowerPMac.DTKDownloadA(mPMacID, szStr, true, hDownloadWnd, IntPtr.Zero, IntPtr.Zero);
 #else

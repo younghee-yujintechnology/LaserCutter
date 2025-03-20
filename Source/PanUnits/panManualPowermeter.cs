@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 using Raize.CodeSiteLogging;
 using System;
 using System.Collections.Generic;
@@ -198,7 +198,7 @@ namespace LaserCutter
         public void Connect()
         {
 #if _POWERMETER
-            Comm.Port = (DaekhonSystem.Port)cbComPort.SelectedIndex;
+            Comm.Port = (YujinTechnology.Port)cbComPort.SelectedIndex;
             btnConnect.LED.Value = Comm.OpenComm();
 #endif
         }
@@ -219,7 +219,7 @@ namespace LaserCutter
             double dPower = 0.0;
 
             string szStr = String.Format("$SP\r");
-            szStr = String.Format("{0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("{0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
 
             if (szStr.IndexOf("OVER") > 0)
             {

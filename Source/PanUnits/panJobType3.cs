@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 using Raize.CodeSiteLogging;
 using System;
 using System.Collections.Generic;
@@ -36,7 +36,7 @@ namespace LaserCutter
 
             InitializeComponent();
 
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(DaekhonSystem.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeDaekhonControlColor(this.Controls, typeof(YujinTechnology.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(KeypadEdit), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
             Global.ChangeDaekhonControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
@@ -673,7 +673,7 @@ namespace LaserCutter
         {
             GetWorkCenter(ACellIndex);
 
-            DaekhonSystem.StringList szList = new DaekhonSystem.StringList();
+            YujinTechnology.StringList szList = new YujinTechnology.StringList();
 
             szList.Add("undefine all");
 
@@ -797,7 +797,7 @@ namespace LaserCutter
 
             Cad3.CurLayerName = "";
 
-            String szStr = String.Format("{0}Program{1}.pmc", dkCommon.AppPath(), (int)tableNo);
+            String szStr = String.Format("{0}Program{1}.pmc", yjCommon.AppPath(), (int)tableNo);
             szList.SaveToFile(szStr);
             szList.Clear();
         }
@@ -960,7 +960,7 @@ namespace LaserCutter
 
             Table.SaveJobFile();
 
-            DaekhonSystem.StringList ss = LaserProject.Model3.ToStringList();
+            YujinTechnology.StringList ss = LaserProject.Model3.ToStringList();
 
             GetWorkCenter(0);
 
@@ -1265,7 +1265,7 @@ namespace LaserCutter
 
             ledLabel.LED.Value = !ledLabel.LED.Value;
 
-            int nIndex = dkCommon.StrToIntDef(ledLabel.Text, -1);
+            int nIndex = yjCommon.StrToIntDef(ledLabel.Text, -1);
             if (nIndex > -1)
             {
                 var Item = PageList[nIndex - 1];

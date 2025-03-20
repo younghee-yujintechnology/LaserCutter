@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 
 namespace LaserCutter
 {
