@@ -763,7 +763,7 @@ namespace LaserCutter
         //
         // NumberEditControl.Frame.FrameColor를 지정색으로 변경
         //
-        public static void ChangeDaekhonControlColor(Control.ControlCollection controls, Type targetType, Color color)
+        public static void ChangeControlColor(Control.ControlCollection controls, Type targetType, Color color)
         {
             foreach (Control control in controls)
             {
@@ -799,18 +799,18 @@ namespace LaserCutter
                 {
                     foreach (TabPage tabPage in tabControl.TabPages)
                     {
-                        ChangeDaekhonControlColor(control.Controls, targetType, color);
+                        ChangeControlColor(control.Controls, targetType, color);
                     }
                 }
                 else 
                 if (control is TabPage tabPage)
                 {
-                    ChangeDaekhonControlColor(control.Controls, targetType, color);
+                    ChangeControlColor(control.Controls, targetType, color);
                 }
                 else
                 if (control.HasChildren)
                 {
-                    ChangeDaekhonControlColor(control.Controls, targetType, color);
+                    ChangeControlColor(control.Controls, targetType, color);
                 }
             }
         }

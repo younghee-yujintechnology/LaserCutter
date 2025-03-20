@@ -304,7 +304,7 @@
     <value>lblDateTime</value>
   </data>
   <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
-    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
     <value>metroPanel1</value>
@@ -325,7 +325,7 @@
     <value>metroPanel1</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
-    <value>YujinTechnology.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Panel, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
     <value>panTop</value>
@@ -358,7 +358,7 @@
     <value>lblVersion</value>
   </data>
   <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
-    <value>YujinTechnology.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Label, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -394,7 +394,7 @@
     <value>lblTitle</value>
   </data>
   <data name="&gt;&gt;lblTitle.Type" xml:space="preserve">
-    <value>YujinTechnology.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientLabel, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblTitle.Parent" xml:space="preserve">
     <value>panEqpTitle</value>
@@ -421,7 +421,7 @@
     <value>panEqpTitle</value>
   </data>
   <data name="&gt;&gt;panEqpTitle.Type" xml:space="preserve">
-    <value>YujinTechnology.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientPanel, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panEqpTitle.Parent" xml:space="preserve">
     <value>panTop</value>
@@ -445,7 +445,7 @@
     <value>panTop</value>
   </data>
   <data name="&gt;&gt;panTop.Type" xml:space="preserve">
-    <value>YujinTechnology.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Panel, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
     <value>$this</value>
@@ -481,7 +481,7 @@
     <value>gradLabel14</value>
   </data>
   <data name="&gt;&gt;gradLabel14.Type" xml:space="preserve">
-    <value>YujinTechnology.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.GradientLabel, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;gradLabel14.Parent" xml:space="preserve">
     <value>panClient</value>
@@ -508,7 +508,7 @@
     <value>panClient</value>
   </data>
   <data name="&gt;&gt;panClient.Type" xml:space="preserve">
-    <value>YujinTechnology.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Panel, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panClient.Parent" xml:space="preserve">
     <value>$this</value>
@@ -538,7 +538,7 @@
     <value>AutoThread</value>
   </data>
   <data name="&gt;&gt;AutoThread.Type" xml:space="preserve">
-    <value>YujinTechnology.Thread, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>YujinTechnology.Thread, YujinTechnology, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmVision</value>

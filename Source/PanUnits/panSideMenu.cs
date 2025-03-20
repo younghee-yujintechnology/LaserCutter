@@ -43,8 +43,8 @@ namespace LaserCutter
 
             cbSpeed.SelectedIndex = 2;
 
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
 
             uiTabControl1.ItemSize = new Size(100, 40);
         }

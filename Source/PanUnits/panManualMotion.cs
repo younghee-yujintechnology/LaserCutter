@@ -42,10 +42,10 @@ namespace LaserCutter
             frmMain = frmMain.StaticInstance;
             frmChannelSpy = frmChannelSpy.StaticInstance;
 
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(KeypadEdit), System.Drawing.Color.FromArgb(80, 160, 255));
-            Global.ChangeDaekhonControlColor(this.Controls, typeof(YujinTechnology.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeControlColor(this.Controls, typeof(NumberEdit), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeControlColor(this.Controls, typeof(LEDLabel), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeControlColor(this.Controls, typeof(KeypadEdit), System.Drawing.Color.FromArgb(80, 160, 255));
+            Global.ChangeControlColor(this.Controls, typeof(YujinTechnology.ComboBox), System.Drawing.Color.FromArgb(80, 160, 255));
 
             logger.Category = "Manual.Motion";
 
