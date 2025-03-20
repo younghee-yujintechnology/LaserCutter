@@ -12,7 +12,7 @@ using Cognex.VisionPro.QuickBuild;
 using Cognex.VisionPro.ToolGroup;
 using Cognex.VisionPro;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter
@@ -80,7 +80,7 @@ namespace LaserCutter
             logger.Category = "Vision1";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -352,7 +352,7 @@ namespace LaserCutter
         public void btnLoadProject_Click(object sender, EventArgs e)
         {
 #if _VISION
-            if (dkCommon.FileExists(DefaultVisionFile))
+            if (yjCommon.FileExists(DefaultVisionFile))
             {
                 DestroyCognexToolGroup();
 
@@ -381,27 +381,27 @@ namespace LaserCutter
         {
             if (LoadDefaultVisionFile)
             {
-                if (dkCommon.FileExists(DefaultVisionFile))
+                if (yjCommon.FileExists(DefaultVisionFile))
                 {
                     logger.SendMsg(String.Format("    Vision1.SaveDefaultProject({0})", DefaultVisionFile));
                     CogSerializer.SaveObjectToFile(cogJobManager, DefaultVisionFile);
                 }
                 else
                 {
-                    dkCommon.Inform("Default Vision File 경로가 올바르지 않습니다.", "오류");
+                    yjCommon.Inform("Default Vision File 경로가 올바르지 않습니다.", "오류");
                 }
             }
             else
             if (LoadNewVisionFile)
             {
-                if (dkCommon.FileExists(NewVisionFile))
+                if (yjCommon.FileExists(NewVisionFile))
                 {
                     logger.SendMsg(String.Format("    Vision1.SaveNewProject({0})", NewVisionFile));
                     CogSerializer.SaveObjectToFile(cogJobManager, NewVisionFile);
                 }
                 else
                 {
-                    dkCommon.Inform("New Vision File의 경로가 올바르지 않습니다.", "오류");
+                    yjCommon.Inform("New Vision File의 경로가 올바르지 않습니다.", "오류");
                 }
             }
         }
@@ -461,7 +461,7 @@ namespace LaserCutter
         {
             if (!LoadDefaultVisionFile && !LoadNewVisionFile)
             {
-                dkCommon.Inform("Vision Project File Loading 오류", "Error");
+                yjCommon.Inform("Vision Project File Loading 오류", "Error");
                 return;
             }
 
@@ -546,7 +546,7 @@ namespace LaserCutter
         {
             if (!LoadDefaultVisionFile && !LoadNewVisionFile)
             {
-                dkCommon.Inform("Vision Project File Loading 오류", "Error");
+                yjCommon.Inform("Vision Project File Loading 오류", "Error");
                 return;
             }
 

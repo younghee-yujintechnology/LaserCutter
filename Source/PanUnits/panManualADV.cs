@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter
@@ -22,21 +22,21 @@ namespace LaserCutter
 
             cbComPort.Items.Clear();
 
-            cbComPort.Items.Add(DaekhonSystem.Port.COM01.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM02.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM03.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM04.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM05.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM06.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM07.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM08.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM09.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM10.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM11.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM12.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM13.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM14.ToString());
-            cbComPort.Items.Add(DaekhonSystem.Port.COM15.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM01.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM02.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM03.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM04.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM05.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM06.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM07.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM08.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM09.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM10.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM11.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM12.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM13.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM14.ToString());
+            cbComPort.Items.Add(YujinTechnology.Port.COM15.ToString());
 
             cbComPort.ItemIndex = 7;
 
@@ -69,7 +69,7 @@ namespace LaserCutter
 
                 }
 
-                dkCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
+                yjCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
             }
         }
         #endregion
@@ -90,11 +90,11 @@ namespace LaserCutter
             edMode0PulseWidth.Apply();
 
             string szStr = String.Format("/tm0/");
-            szStr = String.Format("Command Mode = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Command Mode = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Add(szStr);
 
             szStr = String.Format("/s00/");
-            szStr = String.Format("Command Trigger Mode = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Command Trigger Mode = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
 
 
@@ -108,7 +108,7 @@ namespace LaserCutter
 
             string strValue = Convert.ToString(period_1, 16);
             szStr = string.Format("/0d{0}/", strValue.PadLeft(8, '0'));
-            szStr = String.Format("Period = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Period = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
 
             long pulse_1 = 0;
@@ -123,7 +123,7 @@ namespace LaserCutter
             
             strValue = Convert.ToString(pulse_1, 16);
             szStr = string.Format("/0w{0}/", strValue.PadLeft(8, '0'));
-            szStr = String.Format("Pulse Width = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Pulse Width = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -142,11 +142,11 @@ namespace LaserCutter
             edMode2PulsePitch.Apply();
 
             string szStr = String.Format("/tm2/");
-            szStr = String.Format("Command Mode = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Command Mode = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Add(szStr);
 
             szStr = String.Format("/s02/");
-            szStr = String.Format("Command Trigger Mode = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Command Trigger Mode = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
 
             long pulse_1 = 0;
@@ -158,7 +158,7 @@ namespace LaserCutter
             szStr = Convert.ToString(pulse_1, 16);
 
             szStr = string.Format("/2w{0}/", szStr.PadLeft(8, '0'));
-            szStr = String.Format("Pulse Width = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Pulse Width = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
 
             SetMode2Pitch(dPitch);
@@ -180,11 +180,11 @@ namespace LaserCutter
             n_SquarePitchCntLow = (uint)(PitchSquare & 0xffffffff);
 
             szStr = string.Format("/2p1{0}/", n_SquarePitchCntHigh.ToString("X").PadLeft(8, pad));
-            szStr = String.Format("PulsePicth High = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("PulsePicth High = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
 
             szStr = string.Format("/2p0{0}/", n_SquarePitchCntLow.ToString("X").PadLeft(8, pad));
-            szStr = String.Format("PulsePitch Low = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("PulsePitch Low = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -197,7 +197,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/giff/");
 
-            return dkCommon.RemoveCRLF(Comm.QueryCommand(szStr));
+            return yjCommon.RemoveCRLF(Comm.QueryCommand(szStr));
         }
 
         private void btnResetTrigger_Click(object sender, EventArgs e)
@@ -208,7 +208,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/rt/");
 
-            szStr = String.Format("Reset Trigger = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Reset Trigger = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
   
@@ -216,7 +216,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/gia1/");
 
-            szStr = String.Format("Get Encorder Y = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get Encorder Y = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -224,7 +224,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/gib0/");
 
-            szStr = String.Format("Get Trigger = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get Trigger = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -232,7 +232,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/gia0/");
 
-            szStr = String.Format("Get Encorder X = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get Encorder X = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -245,7 +245,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/re/");
 
-            szStr = String.Format("Reset Encoder = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Reset Encoder = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -267,7 +267,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/on/");
 
-            szStr = String.Format("Operation On = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Operation On = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -275,7 +275,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/off/");
 
-            szStr = String.Format("Operation Off = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Operation Off = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             listBox.Items.Insert(0, szStr);
         }
 
@@ -297,7 +297,7 @@ namespace LaserCutter
         public void Connect()
         {
 #if _ADV
-            Comm.Port = (DaekhonSystem.Port)cbComPort.SelectedIndex;
+            Comm.Port = (YujinTechnology.Port)cbComPort.SelectedIndex;
             btnConnect.LED.Value = Comm.OpenComm();
 
             ReadThread.Enabled = true;
@@ -322,7 +322,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/giff/");
 
-            szStr = String.Format("Version = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Version = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             logger.SendMsg(szStr);
         }
 
@@ -416,7 +416,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/gia1/");
 
-            szStr = String.Format("Get Encorder Y = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get Encorder Y = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
 
             if (szStr.Length < 18 )
                 return;
@@ -440,7 +440,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/gib0/");
 
-            szStr = String.Format("Get Trigger = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get Trigger = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             if (szStr.Length < 15)
                 return;
             long longData = Convert.ToInt64(szStr.Substring(szStr.Length - 8), 16);
@@ -451,7 +451,7 @@ namespace LaserCutter
         {
             string szStr = String.Format("/gia0/");
 
-            szStr = String.Format("Get Encorder X = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get Encorder X = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             int a = szStr.Length;
             if (szStr.Length != 28 && szStr.Contains("ec") == false)
                 return;
@@ -472,7 +472,7 @@ namespace LaserCutter
         {           
             string szStr = String.Format("/gi52/");
       
-            szStr = String.Format("Get M0 PW = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get M0 PW = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             if (szStr.Length < 14) return;
 
             long longData = Convert.ToInt64(szStr.Substring(szStr.Length - 8), 16) / 100;  
@@ -482,7 +482,7 @@ namespace LaserCutter
         public void GetMode0Period()
         {
             string szStr = String.Format("/gi51/");
-            szStr = String.Format("Get M0 Period = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get M0 Period = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             if (szStr.Length < 17) return;
 
             long longData = Convert.ToInt64(szStr.Substring(szStr.Length - 8), 16) / 100;
@@ -492,7 +492,7 @@ namespace LaserCutter
         public void GetMode2PulseWidth()
         {
             string szStr = String.Format("/gi65/");
-            szStr = String.Format("Get M2 PW = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get M2 PW = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             if (szStr.Length < 13)return;
 
             long longData = Convert.ToInt64(szStr.Substring(szStr.Length - 8), 16)/100;
@@ -502,7 +502,7 @@ namespace LaserCutter
         public void GetMode2PulsePitch()
         {
             string szStr = String.Format("/gi61/");
-            szStr = String.Format("Get M2 Pitch = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get M2 Pitch = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             if (szStr.Length < 16)
                 return;
 
@@ -530,7 +530,7 @@ namespace LaserCutter
         public void ParsingCrtStatus()
         {
             string szStr = String.Format("/gi00/");
-            szStr = String.Format("Get Status = {0}", dkCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
+            szStr = String.Format("Get Status = {0}", yjCommon.RemoveCRLF(Comm.QueryCommand(szStr)));
             if (szStr.Length < 15) return;
 
             string data = szStr.Substring(szStr.Length - 14); // "ss" 제거

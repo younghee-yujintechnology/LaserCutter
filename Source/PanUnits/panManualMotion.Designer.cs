@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 using System.Collections.Generic;
 
 namespace LaserCutter
@@ -34,211 +34,211 @@ namespace LaserCutter
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ImageList imageList2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(panManualMotion));
-            this.dsIO = new DaekhonSystem.DataServer();
-            this.dsMotion = new DaekhonSystem.DataServer();
-            this.ReadThread = new DaekhonSystem.Thread();
+            this.dsIO = new YujinTechnology.DataServer();
+            this.dsMotion = new YujinTechnology.DataServer();
+            this.ReadThread = new YujinTechnology.Thread();
             this.panJogMove = new LaserCutter.sjPanel();
-            this.btnJogMinus = new DaekhonSystem.BitBtn();
-            this.btnReset = new DaekhonSystem.BitBtn();
-            this.uiLine22 = new DaekhonSystem.SunnyLine();
-            this.uiLine6 = new DaekhonSystem.SunnyLine();
-            this.uiLine5 = new DaekhonSystem.SunnyLine();
-            this.viCurPosition = new DaekhonSystem.ValueIndicator();
-            this.gradLabel7 = new DaekhonSystem.GradientLabel();
-            this.gradLabel9 = new DaekhonSystem.GradientLabel();
-            this.gradLabel8 = new DaekhonSystem.GradientLabel();
-            this.cbSpeed = new DaekhonSystem.ComboBox();
-            this.edMovePos = new DaekhonSystem.NumberEdit();
-            this.btnABS = new DaekhonSystem.BitBtn();
-            this.btnStop = new DaekhonSystem.BitBtn();
-            this.btnRelPlus = new DaekhonSystem.BitBtn();
-            this.btnOrigin = new DaekhonSystem.BitBtn();
-            this.btnRelMinus = new DaekhonSystem.BitBtn();
-            this.btnServoOff = new DaekhonSystem.BitBtn();
-            this.btnServoOn = new DaekhonSystem.BitBtn();
-            this.btnJogPlus = new DaekhonSystem.BitBtn();
-            this.btnAllAxis = new DaekhonSystem.LEDButton();
-            this.btnZAxis = new DaekhonSystem.LEDButton();
-            this.btnY2Axis = new DaekhonSystem.LEDButton();
-            this.btnY1Axis = new DaekhonSystem.LEDButton();
-            this.btnXAxis = new DaekhonSystem.LEDButton();
+            this.btnJogMinus = new YujinTechnology.BitBtn();
+            this.btnReset = new YujinTechnology.BitBtn();
+            this.uiLine22 = new YujinTechnology.SunnyLine();
+            this.uiLine6 = new YujinTechnology.SunnyLine();
+            this.uiLine5 = new YujinTechnology.SunnyLine();
+            this.viCurPosition = new YujinTechnology.ValueIndicator();
+            this.gradLabel7 = new YujinTechnology.GradientLabel();
+            this.gradLabel9 = new YujinTechnology.GradientLabel();
+            this.gradLabel8 = new YujinTechnology.GradientLabel();
+            this.cbSpeed = new YujinTechnology.ComboBox();
+            this.edMovePos = new YujinTechnology.NumberEdit();
+            this.btnABS = new YujinTechnology.BitBtn();
+            this.btnStop = new YujinTechnology.BitBtn();
+            this.btnRelPlus = new YujinTechnology.BitBtn();
+            this.btnOrigin = new YujinTechnology.BitBtn();
+            this.btnRelMinus = new YujinTechnology.BitBtn();
+            this.btnServoOff = new YujinTechnology.BitBtn();
+            this.btnServoOn = new YujinTechnology.BitBtn();
+            this.btnJogPlus = new YujinTechnology.BitBtn();
+            this.btnAllAxis = new YujinTechnology.LEDButton();
+            this.btnZAxis = new YujinTechnology.LEDButton();
+            this.btnY2Axis = new YujinTechnology.LEDButton();
+            this.btnY1Axis = new YujinTechnology.LEDButton();
+            this.btnXAxis = new YujinTechnology.LEDButton();
             this.panIOMap = new LaserCutter.sjPanel();
-            this.uiTabControl1 = new DaekhonSystem.TabControl();
+            this.uiTabControl1 = new YujinTechnology.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.ledIn31 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn30 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn29 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn28 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn27 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn26 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn25 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn24 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn23 = new DaekhonSystem.LEDImageLabel();
-            this.ledDoor5 = new DaekhonSystem.LEDImageLabel();
-            this.ledDoor4 = new DaekhonSystem.LEDImageLabel();
-            this.ledDoor3 = new DaekhonSystem.LEDImageLabel();
-            this.ledDoor2 = new DaekhonSystem.LEDImageLabel();
-            this.ledDoor1 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn17 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn16 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn15 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn14 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn13 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn12 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn11 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn10 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn09 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn08 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn07 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn06 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn05 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn04 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn03 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn02 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn01 = new DaekhonSystem.LEDImageLabel();
-            this.ledIn00 = new DaekhonSystem.LEDImageLabel();
-            this.ledArray8 = new DaekhonSystem.LEDImageArray();
-            this.ledArray7 = new DaekhonSystem.LEDImageArray();
-            this.ledArray6 = new DaekhonSystem.LEDImageArray();
-            this.ledArray5 = new DaekhonSystem.LEDImageArray();
-            this.lblInputPort7 = new DaekhonSystem.Label();
-            this.lblInputPort3 = new DaekhonSystem.Label();
-            this.lblInputPort6 = new DaekhonSystem.Label();
-            this.lblInputPort2 = new DaekhonSystem.Label();
-            this.lblInputPort5 = new DaekhonSystem.Label();
-            this.lblInputPort1 = new DaekhonSystem.Label();
-            this.lblInputPort4 = new DaekhonSystem.Label();
-            this.lblInputPort0 = new DaekhonSystem.Label();
+            this.ledIn31 = new YujinTechnology.LEDImageLabel();
+            this.ledIn30 = new YujinTechnology.LEDImageLabel();
+            this.ledIn29 = new YujinTechnology.LEDImageLabel();
+            this.ledIn28 = new YujinTechnology.LEDImageLabel();
+            this.ledIn27 = new YujinTechnology.LEDImageLabel();
+            this.ledIn26 = new YujinTechnology.LEDImageLabel();
+            this.ledIn25 = new YujinTechnology.LEDImageLabel();
+            this.ledIn24 = new YujinTechnology.LEDImageLabel();
+            this.ledIn23 = new YujinTechnology.LEDImageLabel();
+            this.ledDoor5 = new YujinTechnology.LEDImageLabel();
+            this.ledDoor4 = new YujinTechnology.LEDImageLabel();
+            this.ledDoor3 = new YujinTechnology.LEDImageLabel();
+            this.ledDoor2 = new YujinTechnology.LEDImageLabel();
+            this.ledDoor1 = new YujinTechnology.LEDImageLabel();
+            this.ledIn17 = new YujinTechnology.LEDImageLabel();
+            this.ledIn16 = new YujinTechnology.LEDImageLabel();
+            this.ledIn15 = new YujinTechnology.LEDImageLabel();
+            this.ledIn14 = new YujinTechnology.LEDImageLabel();
+            this.ledIn13 = new YujinTechnology.LEDImageLabel();
+            this.ledIn12 = new YujinTechnology.LEDImageLabel();
+            this.ledIn11 = new YujinTechnology.LEDImageLabel();
+            this.ledIn10 = new YujinTechnology.LEDImageLabel();
+            this.ledIn09 = new YujinTechnology.LEDImageLabel();
+            this.ledIn08 = new YujinTechnology.LEDImageLabel();
+            this.ledIn07 = new YujinTechnology.LEDImageLabel();
+            this.ledIn06 = new YujinTechnology.LEDImageLabel();
+            this.ledIn05 = new YujinTechnology.LEDImageLabel();
+            this.ledIn04 = new YujinTechnology.LEDImageLabel();
+            this.ledIn03 = new YujinTechnology.LEDImageLabel();
+            this.ledIn02 = new YujinTechnology.LEDImageLabel();
+            this.ledIn01 = new YujinTechnology.LEDImageLabel();
+            this.ledIn00 = new YujinTechnology.LEDImageLabel();
+            this.ledArray8 = new YujinTechnology.LEDImageArray();
+            this.ledArray7 = new YujinTechnology.LEDImageArray();
+            this.ledArray6 = new YujinTechnology.LEDImageArray();
+            this.ledArray5 = new YujinTechnology.LEDImageArray();
+            this.lblInputPort7 = new YujinTechnology.Label();
+            this.lblInputPort3 = new YujinTechnology.Label();
+            this.lblInputPort6 = new YujinTechnology.Label();
+            this.lblInputPort2 = new YujinTechnology.Label();
+            this.lblInputPort5 = new YujinTechnology.Label();
+            this.lblInputPort1 = new YujinTechnology.Label();
+            this.lblInputPort4 = new YujinTechnology.Label();
+            this.lblInputPort0 = new YujinTechnology.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.switchOut63 = new DaekhonSystem.SunnySwitch();
-            this.switchOut62 = new DaekhonSystem.SunnySwitch();
-            this.switchOut61 = new DaekhonSystem.SunnySwitch();
-            this.switchOut60 = new DaekhonSystem.SunnySwitch();
-            this.switchOut59 = new DaekhonSystem.SunnySwitch();
-            this.switchOut58 = new DaekhonSystem.SunnySwitch();
-            this.switchOut57 = new DaekhonSystem.SunnySwitch();
-            this.switchOut56 = new DaekhonSystem.SunnySwitch();
-            this.switchOut55 = new DaekhonSystem.SunnySwitch();
-            this.switchOut54 = new DaekhonSystem.SunnySwitch();
-            this.switchOut53 = new DaekhonSystem.SunnySwitch();
-            this.switchOut52 = new DaekhonSystem.SunnySwitch();
-            this.switchOut51 = new DaekhonSystem.SunnySwitch();
-            this.switchOut50 = new DaekhonSystem.SunnySwitch();
-            this.switchOut49 = new DaekhonSystem.SunnySwitch();
-            this.switchOut48 = new DaekhonSystem.SunnySwitch();
-            this.switchOut47 = new DaekhonSystem.SunnySwitch();
-            this.switchOut46 = new DaekhonSystem.SunnySwitch();
-            this.switchOut45 = new DaekhonSystem.SunnySwitch();
-            this.switchOut44 = new DaekhonSystem.SunnySwitch();
-            this.switchOut43 = new DaekhonSystem.SunnySwitch();
-            this.switchOut42 = new DaekhonSystem.SunnySwitch();
-            this.switchOut41 = new DaekhonSystem.SunnySwitch();
-            this.switchOut40 = new DaekhonSystem.SunnySwitch();
-            this.switchOut39 = new DaekhonSystem.SunnySwitch();
-            this.switchOut38 = new DaekhonSystem.SunnySwitch();
-            this.switchOut37 = new DaekhonSystem.SunnySwitch();
-            this.switchOut36 = new DaekhonSystem.SunnySwitch();
-            this.switchOut35 = new DaekhonSystem.SunnySwitch();
-            this.switchOut34 = new DaekhonSystem.SunnySwitch();
-            this.switchOut33 = new DaekhonSystem.SunnySwitch();
-            this.switchOut32 = new DaekhonSystem.SunnySwitch();
-            this.switchOut31 = new DaekhonSystem.SunnySwitch();
-            this.switchOut30 = new DaekhonSystem.SunnySwitch();
-            this.switchOut29 = new DaekhonSystem.SunnySwitch();
-            this.switchOut28 = new DaekhonSystem.SunnySwitch();
-            this.switchOut27 = new DaekhonSystem.SunnySwitch();
-            this.switchOut26 = new DaekhonSystem.SunnySwitch();
-            this.switchOut25 = new DaekhonSystem.SunnySwitch();
-            this.switchOut24 = new DaekhonSystem.SunnySwitch();
-            this.switchOut23 = new DaekhonSystem.SunnySwitch();
-            this.switchOut22 = new DaekhonSystem.SunnySwitch();
-            this.switchOut21 = new DaekhonSystem.SunnySwitch();
-            this.switchOut20 = new DaekhonSystem.SunnySwitch();
-            this.switchOut19 = new DaekhonSystem.SunnySwitch();
-            this.switchOut18 = new DaekhonSystem.SunnySwitch();
-            this.switchOut17 = new DaekhonSystem.SunnySwitch();
-            this.switchOut16 = new DaekhonSystem.SunnySwitch();
-            this.switchOut15 = new DaekhonSystem.SunnySwitch();
-            this.switchOut14 = new DaekhonSystem.SunnySwitch();
-            this.switchOut13 = new DaekhonSystem.SunnySwitch();
-            this.switchOut12 = new DaekhonSystem.SunnySwitch();
-            this.switchOut11 = new DaekhonSystem.SunnySwitch();
-            this.switchOut10 = new DaekhonSystem.SunnySwitch();
-            this.switchOut9 = new DaekhonSystem.SunnySwitch();
-            this.switchOut8 = new DaekhonSystem.SunnySwitch();
-            this.switchOut7 = new DaekhonSystem.SunnySwitch();
-            this.switchOut6 = new DaekhonSystem.SunnySwitch();
-            this.switchOut5 = new DaekhonSystem.SunnySwitch();
-            this.switchOut4 = new DaekhonSystem.SunnySwitch();
-            this.switchOut3 = new DaekhonSystem.SunnySwitch();
-            this.switchOut2 = new DaekhonSystem.SunnySwitch();
-            this.switchOut1 = new DaekhonSystem.SunnySwitch();
-            this.switchOut0 = new DaekhonSystem.SunnySwitch();
-            this.lblOutputPort7 = new DaekhonSystem.Label();
-            this.lblOutputPort3 = new DaekhonSystem.Label();
-            this.lblOutputPort6 = new DaekhonSystem.Label();
-            this.lblOutputPort2 = new DaekhonSystem.Label();
-            this.lblOutputPort5 = new DaekhonSystem.Label();
-            this.lblOutputPort1 = new DaekhonSystem.Label();
-            this.lblOutputPort4 = new DaekhonSystem.Label();
-            this.lblOutputPort0 = new DaekhonSystem.Label();
+            this.switchOut63 = new YujinTechnology.SunnySwitch();
+            this.switchOut62 = new YujinTechnology.SunnySwitch();
+            this.switchOut61 = new YujinTechnology.SunnySwitch();
+            this.switchOut60 = new YujinTechnology.SunnySwitch();
+            this.switchOut59 = new YujinTechnology.SunnySwitch();
+            this.switchOut58 = new YujinTechnology.SunnySwitch();
+            this.switchOut57 = new YujinTechnology.SunnySwitch();
+            this.switchOut56 = new YujinTechnology.SunnySwitch();
+            this.switchOut55 = new YujinTechnology.SunnySwitch();
+            this.switchOut54 = new YujinTechnology.SunnySwitch();
+            this.switchOut53 = new YujinTechnology.SunnySwitch();
+            this.switchOut52 = new YujinTechnology.SunnySwitch();
+            this.switchOut51 = new YujinTechnology.SunnySwitch();
+            this.switchOut50 = new YujinTechnology.SunnySwitch();
+            this.switchOut49 = new YujinTechnology.SunnySwitch();
+            this.switchOut48 = new YujinTechnology.SunnySwitch();
+            this.switchOut47 = new YujinTechnology.SunnySwitch();
+            this.switchOut46 = new YujinTechnology.SunnySwitch();
+            this.switchOut45 = new YujinTechnology.SunnySwitch();
+            this.switchOut44 = new YujinTechnology.SunnySwitch();
+            this.switchOut43 = new YujinTechnology.SunnySwitch();
+            this.switchOut42 = new YujinTechnology.SunnySwitch();
+            this.switchOut41 = new YujinTechnology.SunnySwitch();
+            this.switchOut40 = new YujinTechnology.SunnySwitch();
+            this.switchOut39 = new YujinTechnology.SunnySwitch();
+            this.switchOut38 = new YujinTechnology.SunnySwitch();
+            this.switchOut37 = new YujinTechnology.SunnySwitch();
+            this.switchOut36 = new YujinTechnology.SunnySwitch();
+            this.switchOut35 = new YujinTechnology.SunnySwitch();
+            this.switchOut34 = new YujinTechnology.SunnySwitch();
+            this.switchOut33 = new YujinTechnology.SunnySwitch();
+            this.switchOut32 = new YujinTechnology.SunnySwitch();
+            this.switchOut31 = new YujinTechnology.SunnySwitch();
+            this.switchOut30 = new YujinTechnology.SunnySwitch();
+            this.switchOut29 = new YujinTechnology.SunnySwitch();
+            this.switchOut28 = new YujinTechnology.SunnySwitch();
+            this.switchOut27 = new YujinTechnology.SunnySwitch();
+            this.switchOut26 = new YujinTechnology.SunnySwitch();
+            this.switchOut25 = new YujinTechnology.SunnySwitch();
+            this.switchOut24 = new YujinTechnology.SunnySwitch();
+            this.switchOut23 = new YujinTechnology.SunnySwitch();
+            this.switchOut22 = new YujinTechnology.SunnySwitch();
+            this.switchOut21 = new YujinTechnology.SunnySwitch();
+            this.switchOut20 = new YujinTechnology.SunnySwitch();
+            this.switchOut19 = new YujinTechnology.SunnySwitch();
+            this.switchOut18 = new YujinTechnology.SunnySwitch();
+            this.switchOut17 = new YujinTechnology.SunnySwitch();
+            this.switchOut16 = new YujinTechnology.SunnySwitch();
+            this.switchOut15 = new YujinTechnology.SunnySwitch();
+            this.switchOut14 = new YujinTechnology.SunnySwitch();
+            this.switchOut13 = new YujinTechnology.SunnySwitch();
+            this.switchOut12 = new YujinTechnology.SunnySwitch();
+            this.switchOut11 = new YujinTechnology.SunnySwitch();
+            this.switchOut10 = new YujinTechnology.SunnySwitch();
+            this.switchOut9 = new YujinTechnology.SunnySwitch();
+            this.switchOut8 = new YujinTechnology.SunnySwitch();
+            this.switchOut7 = new YujinTechnology.SunnySwitch();
+            this.switchOut6 = new YujinTechnology.SunnySwitch();
+            this.switchOut5 = new YujinTechnology.SunnySwitch();
+            this.switchOut4 = new YujinTechnology.SunnySwitch();
+            this.switchOut3 = new YujinTechnology.SunnySwitch();
+            this.switchOut2 = new YujinTechnology.SunnySwitch();
+            this.switchOut1 = new YujinTechnology.SunnySwitch();
+            this.switchOut0 = new YujinTechnology.SunnySwitch();
+            this.lblOutputPort7 = new YujinTechnology.Label();
+            this.lblOutputPort3 = new YujinTechnology.Label();
+            this.lblOutputPort6 = new YujinTechnology.Label();
+            this.lblOutputPort2 = new YujinTechnology.Label();
+            this.lblOutputPort5 = new YujinTechnology.Label();
+            this.lblOutputPort1 = new YujinTechnology.Label();
+            this.lblOutputPort4 = new YujinTechnology.Label();
+            this.lblOutputPort0 = new YujinTechnology.Label();
             this.panStatus = new LaserCutter.sjPanel();
-            this.ledZMotionDone = new DaekhonSystem.LEDLabel();
-            this.ledY2MotionDone = new DaekhonSystem.LEDLabel();
-            this.ledY1MotionDone = new DaekhonSystem.LEDLabel();
-            this.ledXMotionDone = new DaekhonSystem.LEDLabel();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
-            this.ledXServo = new DaekhonSystem.LEDLabel();
-            this.gradLabel26 = new DaekhonSystem.GradientLabel();
-            this.gradLabel24 = new DaekhonSystem.GradientLabel();
-            this.gradLabel31 = new DaekhonSystem.GradientLabel();
-            this.gradLabel19 = new DaekhonSystem.GradientLabel();
-            this.gradLabel40 = new DaekhonSystem.GradientLabel();
-            this.gradLabel32 = new DaekhonSystem.GradientLabel();
-            this.gradLabel21 = new DaekhonSystem.GradientLabel();
-            this.gradLabel33 = new DaekhonSystem.GradientLabel();
-            this.gradLabel34 = new DaekhonSystem.GradientLabel();
-            this.gradLabel28 = new DaekhonSystem.GradientLabel();
-            this.gradLabel35 = new DaekhonSystem.GradientLabel();
-            this.gradLabel17 = new DaekhonSystem.GradientLabel();
-            this.gradLabel36 = new DaekhonSystem.GradientLabel();
-            this.gradLabel41 = new DaekhonSystem.GradientLabel();
-            this.ledZHome = new DaekhonSystem.LEDLabel();
-            this.gradLabel39 = new DaekhonSystem.GradientLabel();
-            this.ledZAlarm = new DaekhonSystem.LEDLabel();
-            this.gradLabel42 = new DaekhonSystem.GradientLabel();
-            this.gradLabel29 = new DaekhonSystem.GradientLabel();
-            this.ledZInposition = new DaekhonSystem.LEDLabel();
-            this.gradLabel37 = new DaekhonSystem.GradientLabel();
-            this.viZVelocity = new DaekhonSystem.ValueIndicator();
-            this.ledZCW = new DaekhonSystem.LEDLabel();
-            this.ledZServo = new DaekhonSystem.LEDLabel();
-            this.ledXCCW = new DaekhonSystem.LEDLabel();
-            this.ledZCCW = new DaekhonSystem.LEDLabel();
-            this.ledY1CCW = new DaekhonSystem.LEDLabel();
-            this.ledY2Home = new DaekhonSystem.LEDLabel();
-            this.ledY2Alarm = new DaekhonSystem.LEDLabel();
-            this.ledXCW = new DaekhonSystem.LEDLabel();
-            this.ledY1Home = new DaekhonSystem.LEDLabel();
-            this.viXVelocity = new DaekhonSystem.ValueIndicator();
-            this.ledY1Alarm = new DaekhonSystem.LEDLabel();
-            this.ledY1Servo = new DaekhonSystem.LEDLabel();
-            this.ledY2Inposition = new DaekhonSystem.LEDLabel();
-            this.viXPosition = new DaekhonSystem.ValueIndicator();
-            this.viY1Position = new DaekhonSystem.ValueIndicator();
-            this.viY2Position = new DaekhonSystem.ValueIndicator();
-            this.viZPosition = new DaekhonSystem.ValueIndicator();
-            this.ledY2CW = new DaekhonSystem.LEDLabel();
-            this.ledY2CCW = new DaekhonSystem.LEDLabel();
-            this.ledY1Inposition = new DaekhonSystem.LEDLabel();
-            this.viY1Velocity = new DaekhonSystem.ValueIndicator();
-            this.ledY1CW = new DaekhonSystem.LEDLabel();
-            this.ledXInposition = new DaekhonSystem.LEDLabel();
-            this.ledXHome = new DaekhonSystem.LEDLabel();
-            this.ledY2Servo = new DaekhonSystem.LEDLabel();
-            this.viY2Velocity = new DaekhonSystem.ValueIndicator();
-            this.ledXAlarm = new DaekhonSystem.LEDLabel();
-            this.uiLine20 = new DaekhonSystem.SunnyLine();
+            this.ledZMotionDone = new YujinTechnology.LEDLabel();
+            this.ledY2MotionDone = new YujinTechnology.LEDLabel();
+            this.ledY1MotionDone = new YujinTechnology.LEDLabel();
+            this.ledXMotionDone = new YujinTechnology.LEDLabel();
+            this.gradientLabel1 = new YujinTechnology.GradientLabel();
+            this.ledXServo = new YujinTechnology.LEDLabel();
+            this.gradLabel26 = new YujinTechnology.GradientLabel();
+            this.gradLabel24 = new YujinTechnology.GradientLabel();
+            this.gradLabel31 = new YujinTechnology.GradientLabel();
+            this.gradLabel19 = new YujinTechnology.GradientLabel();
+            this.gradLabel40 = new YujinTechnology.GradientLabel();
+            this.gradLabel32 = new YujinTechnology.GradientLabel();
+            this.gradLabel21 = new YujinTechnology.GradientLabel();
+            this.gradLabel33 = new YujinTechnology.GradientLabel();
+            this.gradLabel34 = new YujinTechnology.GradientLabel();
+            this.gradLabel28 = new YujinTechnology.GradientLabel();
+            this.gradLabel35 = new YujinTechnology.GradientLabel();
+            this.gradLabel17 = new YujinTechnology.GradientLabel();
+            this.gradLabel36 = new YujinTechnology.GradientLabel();
+            this.gradLabel41 = new YujinTechnology.GradientLabel();
+            this.ledZHome = new YujinTechnology.LEDLabel();
+            this.gradLabel39 = new YujinTechnology.GradientLabel();
+            this.ledZAlarm = new YujinTechnology.LEDLabel();
+            this.gradLabel42 = new YujinTechnology.GradientLabel();
+            this.gradLabel29 = new YujinTechnology.GradientLabel();
+            this.ledZInposition = new YujinTechnology.LEDLabel();
+            this.gradLabel37 = new YujinTechnology.GradientLabel();
+            this.viZVelocity = new YujinTechnology.ValueIndicator();
+            this.ledZCW = new YujinTechnology.LEDLabel();
+            this.ledZServo = new YujinTechnology.LEDLabel();
+            this.ledXCCW = new YujinTechnology.LEDLabel();
+            this.ledZCCW = new YujinTechnology.LEDLabel();
+            this.ledY1CCW = new YujinTechnology.LEDLabel();
+            this.ledY2Home = new YujinTechnology.LEDLabel();
+            this.ledY2Alarm = new YujinTechnology.LEDLabel();
+            this.ledXCW = new YujinTechnology.LEDLabel();
+            this.ledY1Home = new YujinTechnology.LEDLabel();
+            this.viXVelocity = new YujinTechnology.ValueIndicator();
+            this.ledY1Alarm = new YujinTechnology.LEDLabel();
+            this.ledY1Servo = new YujinTechnology.LEDLabel();
+            this.ledY2Inposition = new YujinTechnology.LEDLabel();
+            this.viXPosition = new YujinTechnology.ValueIndicator();
+            this.viY1Position = new YujinTechnology.ValueIndicator();
+            this.viY2Position = new YujinTechnology.ValueIndicator();
+            this.viZPosition = new YujinTechnology.ValueIndicator();
+            this.ledY2CW = new YujinTechnology.LEDLabel();
+            this.ledY2CCW = new YujinTechnology.LEDLabel();
+            this.ledY1Inposition = new YujinTechnology.LEDLabel();
+            this.viY1Velocity = new YujinTechnology.ValueIndicator();
+            this.ledY1CW = new YujinTechnology.LEDLabel();
+            this.ledXInposition = new YujinTechnology.LEDLabel();
+            this.ledXHome = new YujinTechnology.LEDLabel();
+            this.ledY2Servo = new YujinTechnology.LEDLabel();
+            this.viY2Velocity = new YujinTechnology.ValueIndicator();
+            this.ledXAlarm = new YujinTechnology.LEDLabel();
+            this.uiLine20 = new YujinTechnology.SunnyLine();
             imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.panJogMove.SuspendLayout();
             this.panIOMap.SuspendLayout();
@@ -258,11 +258,11 @@ namespace LaserCutter
             // 
             // dsIO
             // 
-            this.dsIO.OnError += new DaekhonSystem.ErrorEventHandler(this.dsIO_OnError);
+            this.dsIO.OnError += new YujinTechnology.ErrorEventHandler(this.dsIO_OnError);
             // 
             // dsMotion
             // 
-            this.dsMotion.OnError += new DaekhonSystem.ErrorEventHandler(this.dsMotion_OnError);
+            this.dsMotion.OnError += new YujinTechnology.ErrorEventHandler(this.dsMotion_OnError);
             // 
             // ReadThread
             // 
@@ -347,22 +347,22 @@ namespace LaserCutter
             // 
             this.uiLine22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine22.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine22.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine22.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine22.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine22.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine22.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine22.ForeColor = System.Drawing.Color.Black;
             this.uiLine22.Frame.Visible = false;
             this.uiLine22.Hint = null;
             this.uiLine22.LineCapSize = 4;
             this.uiLine22.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine22.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine22.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine22.LineWidth = 1F;
             this.uiLine22.Location = new System.Drawing.Point(5, 231);
             this.uiLine22.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine22.Name = "uiLine22";
             this.uiLine22.ShowHint = false;
             this.uiLine22.Size = new System.Drawing.Size(476, 17);
-            this.uiLine22.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine22.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine22.TabIndex = 722;
             this.uiLine22.Text = "Control";
             this.uiLine22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -372,22 +372,22 @@ namespace LaserCutter
             // 
             this.uiLine6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine6.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine6.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine6.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine6.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine6.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine6.ForeColor = System.Drawing.Color.Black;
             this.uiLine6.Frame.Visible = false;
             this.uiLine6.Hint = null;
             this.uiLine6.LineCapSize = 4;
             this.uiLine6.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine6.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine6.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine6.LineWidth = 1F;
             this.uiLine6.Location = new System.Drawing.Point(4, 165);
             this.uiLine6.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine6.Name = "uiLine6";
             this.uiLine6.ShowHint = false;
             this.uiLine6.Size = new System.Drawing.Size(478, 17);
-            this.uiLine6.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine6.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine6.TabIndex = 722;
             this.uiLine6.Text = "ABS & REL";
             this.uiLine6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -397,22 +397,22 @@ namespace LaserCutter
             // 
             this.uiLine5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine5.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine5.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine5.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine5.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine5.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine5.ForeColor = System.Drawing.Color.Black;
             this.uiLine5.Frame.Visible = false;
             this.uiLine5.Hint = null;
             this.uiLine5.LineCapSize = 4;
             this.uiLine5.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine5.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine5.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine5.LineWidth = 1F;
             this.uiLine5.Location = new System.Drawing.Point(4, 52);
             this.uiLine5.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine5.Name = "uiLine5";
             this.uiLine5.ShowHint = false;
             this.uiLine5.Size = new System.Drawing.Size(478, 17);
-            this.uiLine5.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine5.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine5.TabIndex = 722;
             this.uiLine5.Text = "Axis Select";
             this.uiLine5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -681,7 +681,7 @@ namespace LaserCutter
             this.btnAllAxis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAllAxis.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnAllAxis.ForeColor = System.Drawing.Color.Black;
-            this.btnAllAxis.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnAllAxis.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnAllAxis.LED.Size = new System.Drawing.Size(68, 24);
             this.btnAllAxis.Location = new System.Drawing.Point(385, 75);
             this.btnAllAxis.MinimumSize = new System.Drawing.Size(1, 1);
@@ -700,7 +700,7 @@ namespace LaserCutter
             this.btnZAxis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnZAxis.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnZAxis.ForeColor = System.Drawing.Color.Black;
-            this.btnZAxis.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnZAxis.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnZAxis.LED.Size = new System.Drawing.Size(68, 24);
             this.btnZAxis.Location = new System.Drawing.Point(290, 75);
             this.btnZAxis.MinimumSize = new System.Drawing.Size(1, 1);
@@ -719,7 +719,7 @@ namespace LaserCutter
             this.btnY2Axis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnY2Axis.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnY2Axis.ForeColor = System.Drawing.Color.Black;
-            this.btnY2Axis.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnY2Axis.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnY2Axis.LED.Size = new System.Drawing.Size(68, 24);
             this.btnY2Axis.Location = new System.Drawing.Point(195, 75);
             this.btnY2Axis.MinimumSize = new System.Drawing.Size(1, 1);
@@ -738,7 +738,7 @@ namespace LaserCutter
             this.btnY1Axis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnY1Axis.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnY1Axis.ForeColor = System.Drawing.Color.Black;
-            this.btnY1Axis.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnY1Axis.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnY1Axis.LED.Size = new System.Drawing.Size(68, 24);
             this.btnY1Axis.Location = new System.Drawing.Point(100, 75);
             this.btnY1Axis.MinimumSize = new System.Drawing.Size(1, 1);
@@ -757,7 +757,7 @@ namespace LaserCutter
             this.btnXAxis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXAxis.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnXAxis.ForeColor = System.Drawing.Color.Black;
-            this.btnXAxis.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnXAxis.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnXAxis.LED.Size = new System.Drawing.Size(68, 24);
             this.btnXAxis.Location = new System.Drawing.Point(5, 75);
             this.btnXAxis.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1718,7 +1718,7 @@ namespace LaserCutter
             this.switchOut63.Name = "switchOut63";
             this.switchOut63.ShowHint = false;
             this.switchOut63.Size = new System.Drawing.Size(200, 38);
-            this.switchOut63.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut63.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut63.TabIndex = 794;
             this.switchOut63.Text = "uiSwitch5";
             // 
@@ -1733,7 +1733,7 @@ namespace LaserCutter
             this.switchOut62.Name = "switchOut62";
             this.switchOut62.ShowHint = false;
             this.switchOut62.Size = new System.Drawing.Size(200, 38);
-            this.switchOut62.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut62.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut62.TabIndex = 793;
             this.switchOut62.Text = "uiSwitch6";
             // 
@@ -1748,7 +1748,7 @@ namespace LaserCutter
             this.switchOut61.Name = "switchOut61";
             this.switchOut61.ShowHint = false;
             this.switchOut61.Size = new System.Drawing.Size(200, 38);
-            this.switchOut61.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut61.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut61.TabIndex = 792;
             this.switchOut61.Text = "uiSwitch7";
             // 
@@ -1763,7 +1763,7 @@ namespace LaserCutter
             this.switchOut60.Name = "switchOut60";
             this.switchOut60.ShowHint = false;
             this.switchOut60.Size = new System.Drawing.Size(200, 38);
-            this.switchOut60.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut60.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut60.TabIndex = 791;
             this.switchOut60.Text = "uiSwitch8";
             // 
@@ -1778,7 +1778,7 @@ namespace LaserCutter
             this.switchOut59.Name = "switchOut59";
             this.switchOut59.ShowHint = false;
             this.switchOut59.Size = new System.Drawing.Size(200, 38);
-            this.switchOut59.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut59.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut59.TabIndex = 790;
             this.switchOut59.Text = "uiSwitch3";
             // 
@@ -1793,7 +1793,7 @@ namespace LaserCutter
             this.switchOut58.Name = "switchOut58";
             this.switchOut58.ShowHint = false;
             this.switchOut58.Size = new System.Drawing.Size(200, 38);
-            this.switchOut58.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut58.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut58.TabIndex = 789;
             this.switchOut58.Text = "uiSwitch4";
             // 
@@ -1808,7 +1808,7 @@ namespace LaserCutter
             this.switchOut57.Name = "switchOut57";
             this.switchOut57.ShowHint = false;
             this.switchOut57.Size = new System.Drawing.Size(200, 38);
-            this.switchOut57.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut57.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut57.TabIndex = 788;
             this.switchOut57.Text = "uiSwitch2";
             // 
@@ -1823,7 +1823,7 @@ namespace LaserCutter
             this.switchOut56.Name = "switchOut56";
             this.switchOut56.ShowHint = false;
             this.switchOut56.Size = new System.Drawing.Size(200, 38);
-            this.switchOut56.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut56.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut56.TabIndex = 787;
             this.switchOut56.Text = "uiSwitch1";
             // 
@@ -1838,7 +1838,7 @@ namespace LaserCutter
             this.switchOut55.Name = "switchOut55";
             this.switchOut55.ShowHint = false;
             this.switchOut55.Size = new System.Drawing.Size(200, 38);
-            this.switchOut55.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut55.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut55.TabIndex = 778;
             this.switchOut55.Text = "uiSwitch5";
             // 
@@ -1853,7 +1853,7 @@ namespace LaserCutter
             this.switchOut54.Name = "switchOut54";
             this.switchOut54.ShowHint = false;
             this.switchOut54.Size = new System.Drawing.Size(200, 38);
-            this.switchOut54.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut54.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut54.TabIndex = 777;
             this.switchOut54.Text = "uiSwitch6";
             // 
@@ -1868,7 +1868,7 @@ namespace LaserCutter
             this.switchOut53.Name = "switchOut53";
             this.switchOut53.ShowHint = false;
             this.switchOut53.Size = new System.Drawing.Size(200, 38);
-            this.switchOut53.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut53.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut53.TabIndex = 776;
             this.switchOut53.Text = "uiSwitch7";
             // 
@@ -1883,7 +1883,7 @@ namespace LaserCutter
             this.switchOut52.Name = "switchOut52";
             this.switchOut52.ShowHint = false;
             this.switchOut52.Size = new System.Drawing.Size(200, 38);
-            this.switchOut52.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut52.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut52.TabIndex = 775;
             this.switchOut52.Text = "uiSwitch8";
             // 
@@ -1898,7 +1898,7 @@ namespace LaserCutter
             this.switchOut51.Name = "switchOut51";
             this.switchOut51.ShowHint = false;
             this.switchOut51.Size = new System.Drawing.Size(200, 38);
-            this.switchOut51.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut51.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut51.TabIndex = 774;
             this.switchOut51.Text = "uiSwitch3";
             // 
@@ -1913,7 +1913,7 @@ namespace LaserCutter
             this.switchOut50.Name = "switchOut50";
             this.switchOut50.ShowHint = false;
             this.switchOut50.Size = new System.Drawing.Size(200, 38);
-            this.switchOut50.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut50.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut50.TabIndex = 773;
             this.switchOut50.Text = "uiSwitch4";
             // 
@@ -1928,7 +1928,7 @@ namespace LaserCutter
             this.switchOut49.Name = "switchOut49";
             this.switchOut49.ShowHint = false;
             this.switchOut49.Size = new System.Drawing.Size(200, 38);
-            this.switchOut49.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut49.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut49.TabIndex = 772;
             this.switchOut49.Text = "uiSwitch2";
             // 
@@ -1943,7 +1943,7 @@ namespace LaserCutter
             this.switchOut48.Name = "switchOut48";
             this.switchOut48.ShowHint = false;
             this.switchOut48.Size = new System.Drawing.Size(200, 38);
-            this.switchOut48.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut48.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut48.TabIndex = 771;
             this.switchOut48.Text = "uiSwitch1";
             // 
@@ -1958,7 +1958,7 @@ namespace LaserCutter
             this.switchOut47.Name = "switchOut47";
             this.switchOut47.ShowHint = false;
             this.switchOut47.Size = new System.Drawing.Size(200, 38);
-            this.switchOut47.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut47.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut47.TabIndex = 786;
             this.switchOut47.Text = "uiSwitch5";
             // 
@@ -1973,7 +1973,7 @@ namespace LaserCutter
             this.switchOut46.Name = "switchOut46";
             this.switchOut46.ShowHint = false;
             this.switchOut46.Size = new System.Drawing.Size(200, 38);
-            this.switchOut46.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut46.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut46.TabIndex = 785;
             this.switchOut46.Text = "uiSwitch6";
             // 
@@ -1988,7 +1988,7 @@ namespace LaserCutter
             this.switchOut45.Name = "switchOut45";
             this.switchOut45.ShowHint = false;
             this.switchOut45.Size = new System.Drawing.Size(200, 38);
-            this.switchOut45.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut45.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut45.TabIndex = 784;
             this.switchOut45.Text = "uiSwitch7";
             // 
@@ -2003,7 +2003,7 @@ namespace LaserCutter
             this.switchOut44.Name = "switchOut44";
             this.switchOut44.ShowHint = false;
             this.switchOut44.Size = new System.Drawing.Size(200, 38);
-            this.switchOut44.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut44.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut44.TabIndex = 783;
             this.switchOut44.Text = "uiSwitch8";
             // 
@@ -2018,7 +2018,7 @@ namespace LaserCutter
             this.switchOut43.Name = "switchOut43";
             this.switchOut43.ShowHint = false;
             this.switchOut43.Size = new System.Drawing.Size(200, 38);
-            this.switchOut43.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut43.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut43.TabIndex = 782;
             this.switchOut43.Text = "uiSwitch3";
             // 
@@ -2033,7 +2033,7 @@ namespace LaserCutter
             this.switchOut42.Name = "switchOut42";
             this.switchOut42.ShowHint = false;
             this.switchOut42.Size = new System.Drawing.Size(200, 38);
-            this.switchOut42.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut42.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut42.TabIndex = 781;
             this.switchOut42.Text = "uiSwitch4";
             // 
@@ -2048,7 +2048,7 @@ namespace LaserCutter
             this.switchOut41.Name = "switchOut41";
             this.switchOut41.ShowHint = false;
             this.switchOut41.Size = new System.Drawing.Size(200, 38);
-            this.switchOut41.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut41.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut41.TabIndex = 780;
             this.switchOut41.Text = "uiSwitch2";
             // 
@@ -2063,7 +2063,7 @@ namespace LaserCutter
             this.switchOut40.Name = "switchOut40";
             this.switchOut40.ShowHint = false;
             this.switchOut40.Size = new System.Drawing.Size(200, 38);
-            this.switchOut40.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut40.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut40.TabIndex = 779;
             this.switchOut40.Text = "uiSwitch1";
             // 
@@ -2078,7 +2078,7 @@ namespace LaserCutter
             this.switchOut39.Name = "switchOut39";
             this.switchOut39.ShowHint = false;
             this.switchOut39.Size = new System.Drawing.Size(200, 38);
-            this.switchOut39.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut39.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut39.TabIndex = 770;
             this.switchOut39.Text = "uiSwitch5";
             // 
@@ -2093,7 +2093,7 @@ namespace LaserCutter
             this.switchOut38.Name = "switchOut38";
             this.switchOut38.ShowHint = false;
             this.switchOut38.Size = new System.Drawing.Size(200, 38);
-            this.switchOut38.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut38.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut38.TabIndex = 769;
             this.switchOut38.Text = "uiSwitch6";
             // 
@@ -2108,7 +2108,7 @@ namespace LaserCutter
             this.switchOut37.Name = "switchOut37";
             this.switchOut37.ShowHint = false;
             this.switchOut37.Size = new System.Drawing.Size(200, 38);
-            this.switchOut37.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut37.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut37.TabIndex = 768;
             this.switchOut37.Text = "uiSwitch7";
             // 
@@ -2123,7 +2123,7 @@ namespace LaserCutter
             this.switchOut36.Name = "switchOut36";
             this.switchOut36.ShowHint = false;
             this.switchOut36.Size = new System.Drawing.Size(200, 38);
-            this.switchOut36.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut36.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut36.TabIndex = 767;
             this.switchOut36.Text = "uiSwitch8";
             // 
@@ -2138,7 +2138,7 @@ namespace LaserCutter
             this.switchOut35.Name = "switchOut35";
             this.switchOut35.ShowHint = false;
             this.switchOut35.Size = new System.Drawing.Size(200, 38);
-            this.switchOut35.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut35.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut35.TabIndex = 766;
             this.switchOut35.Text = "uiSwitch3";
             // 
@@ -2153,7 +2153,7 @@ namespace LaserCutter
             this.switchOut34.Name = "switchOut34";
             this.switchOut34.ShowHint = false;
             this.switchOut34.Size = new System.Drawing.Size(200, 38);
-            this.switchOut34.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut34.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut34.TabIndex = 765;
             this.switchOut34.Text = "uiSwitch4";
             // 
@@ -2168,7 +2168,7 @@ namespace LaserCutter
             this.switchOut33.Name = "switchOut33";
             this.switchOut33.ShowHint = false;
             this.switchOut33.Size = new System.Drawing.Size(200, 38);
-            this.switchOut33.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut33.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut33.TabIndex = 764;
             this.switchOut33.Text = "uiSwitch2";
             // 
@@ -2183,7 +2183,7 @@ namespace LaserCutter
             this.switchOut32.Name = "switchOut32";
             this.switchOut32.ShowHint = false;
             this.switchOut32.Size = new System.Drawing.Size(200, 38);
-            this.switchOut32.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut32.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut32.TabIndex = 763;
             this.switchOut32.Text = "uiSwitch1";
             // 
@@ -2198,7 +2198,7 @@ namespace LaserCutter
             this.switchOut31.Name = "switchOut31";
             this.switchOut31.ShowHint = false;
             this.switchOut31.Size = new System.Drawing.Size(200, 38);
-            this.switchOut31.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut31.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut31.TabIndex = 762;
             this.switchOut31.Text = "uiSwitch5";
             // 
@@ -2213,7 +2213,7 @@ namespace LaserCutter
             this.switchOut30.Name = "switchOut30";
             this.switchOut30.ShowHint = false;
             this.switchOut30.Size = new System.Drawing.Size(200, 38);
-            this.switchOut30.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut30.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut30.TabIndex = 761;
             this.switchOut30.Text = "uiSwitch6";
             // 
@@ -2228,7 +2228,7 @@ namespace LaserCutter
             this.switchOut29.Name = "switchOut29";
             this.switchOut29.ShowHint = false;
             this.switchOut29.Size = new System.Drawing.Size(200, 38);
-            this.switchOut29.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut29.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut29.TabIndex = 760;
             this.switchOut29.Text = "uiSwitch7";
             // 
@@ -2243,7 +2243,7 @@ namespace LaserCutter
             this.switchOut28.Name = "switchOut28";
             this.switchOut28.ShowHint = false;
             this.switchOut28.Size = new System.Drawing.Size(200, 38);
-            this.switchOut28.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut28.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut28.TabIndex = 759;
             this.switchOut28.Text = "uiSwitch8";
             // 
@@ -2258,7 +2258,7 @@ namespace LaserCutter
             this.switchOut27.Name = "switchOut27";
             this.switchOut27.ShowHint = false;
             this.switchOut27.Size = new System.Drawing.Size(200, 38);
-            this.switchOut27.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut27.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut27.TabIndex = 758;
             this.switchOut27.Text = "uiSwitch3";
             // 
@@ -2273,7 +2273,7 @@ namespace LaserCutter
             this.switchOut26.Name = "switchOut26";
             this.switchOut26.ShowHint = false;
             this.switchOut26.Size = new System.Drawing.Size(200, 38);
-            this.switchOut26.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut26.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut26.TabIndex = 757;
             this.switchOut26.Text = "uiSwitch4";
             // 
@@ -2288,7 +2288,7 @@ namespace LaserCutter
             this.switchOut25.Name = "switchOut25";
             this.switchOut25.ShowHint = false;
             this.switchOut25.Size = new System.Drawing.Size(200, 38);
-            this.switchOut25.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut25.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut25.TabIndex = 756;
             this.switchOut25.Text = "uiSwitch2";
             // 
@@ -2303,7 +2303,7 @@ namespace LaserCutter
             this.switchOut24.Name = "switchOut24";
             this.switchOut24.ShowHint = false;
             this.switchOut24.Size = new System.Drawing.Size(200, 38);
-            this.switchOut24.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut24.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut24.TabIndex = 755;
             this.switchOut24.Text = "uiSwitch1";
             // 
@@ -2318,7 +2318,7 @@ namespace LaserCutter
             this.switchOut23.Name = "switchOut23";
             this.switchOut23.ShowHint = false;
             this.switchOut23.Size = new System.Drawing.Size(200, 38);
-            this.switchOut23.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut23.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut23.TabIndex = 746;
             this.switchOut23.Text = "uiSwitch5";
             // 
@@ -2333,7 +2333,7 @@ namespace LaserCutter
             this.switchOut22.Name = "switchOut22";
             this.switchOut22.ShowHint = false;
             this.switchOut22.Size = new System.Drawing.Size(200, 38);
-            this.switchOut22.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut22.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut22.TabIndex = 745;
             this.switchOut22.Text = "uiSwitch6";
             // 
@@ -2348,7 +2348,7 @@ namespace LaserCutter
             this.switchOut21.Name = "switchOut21";
             this.switchOut21.ShowHint = false;
             this.switchOut21.Size = new System.Drawing.Size(200, 38);
-            this.switchOut21.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut21.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut21.TabIndex = 744;
             this.switchOut21.Text = "uiSwitch7";
             // 
@@ -2363,7 +2363,7 @@ namespace LaserCutter
             this.switchOut20.Name = "switchOut20";
             this.switchOut20.ShowHint = false;
             this.switchOut20.Size = new System.Drawing.Size(200, 38);
-            this.switchOut20.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut20.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut20.TabIndex = 743;
             this.switchOut20.Text = "uiSwitch8";
             // 
@@ -2378,7 +2378,7 @@ namespace LaserCutter
             this.switchOut19.Name = "switchOut19";
             this.switchOut19.ShowHint = false;
             this.switchOut19.Size = new System.Drawing.Size(200, 38);
-            this.switchOut19.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut19.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut19.TabIndex = 742;
             this.switchOut19.Text = "uiSwitch3";
             // 
@@ -2393,7 +2393,7 @@ namespace LaserCutter
             this.switchOut18.Name = "switchOut18";
             this.switchOut18.ShowHint = false;
             this.switchOut18.Size = new System.Drawing.Size(200, 38);
-            this.switchOut18.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut18.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut18.TabIndex = 741;
             this.switchOut18.Text = "uiSwitch4";
             // 
@@ -2408,7 +2408,7 @@ namespace LaserCutter
             this.switchOut17.Name = "switchOut17";
             this.switchOut17.ShowHint = false;
             this.switchOut17.Size = new System.Drawing.Size(200, 38);
-            this.switchOut17.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut17.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut17.TabIndex = 740;
             this.switchOut17.Text = "uiSwitch2";
             // 
@@ -2423,7 +2423,7 @@ namespace LaserCutter
             this.switchOut16.Name = "switchOut16";
             this.switchOut16.ShowHint = false;
             this.switchOut16.Size = new System.Drawing.Size(200, 38);
-            this.switchOut16.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut16.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut16.TabIndex = 739;
             this.switchOut16.Text = "uiSwitch1";
             // 
@@ -2438,7 +2438,7 @@ namespace LaserCutter
             this.switchOut15.Name = "switchOut15";
             this.switchOut15.ShowHint = false;
             this.switchOut15.Size = new System.Drawing.Size(200, 38);
-            this.switchOut15.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut15.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut15.TabIndex = 754;
             this.switchOut15.Text = "uiSwitch5";
             // 
@@ -2453,7 +2453,7 @@ namespace LaserCutter
             this.switchOut14.Name = "switchOut14";
             this.switchOut14.ShowHint = false;
             this.switchOut14.Size = new System.Drawing.Size(200, 38);
-            this.switchOut14.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut14.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut14.TabIndex = 753;
             this.switchOut14.Text = "uiSwitch6";
             // 
@@ -2468,7 +2468,7 @@ namespace LaserCutter
             this.switchOut13.Name = "switchOut13";
             this.switchOut13.ShowHint = false;
             this.switchOut13.Size = new System.Drawing.Size(200, 38);
-            this.switchOut13.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut13.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut13.TabIndex = 752;
             this.switchOut13.Text = "uiSwitch7";
             // 
@@ -2483,7 +2483,7 @@ namespace LaserCutter
             this.switchOut12.Name = "switchOut12";
             this.switchOut12.ShowHint = false;
             this.switchOut12.Size = new System.Drawing.Size(200, 38);
-            this.switchOut12.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut12.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut12.TabIndex = 751;
             this.switchOut12.Text = "uiSwitch8";
             // 
@@ -2498,7 +2498,7 @@ namespace LaserCutter
             this.switchOut11.Name = "switchOut11";
             this.switchOut11.ShowHint = false;
             this.switchOut11.Size = new System.Drawing.Size(200, 38);
-            this.switchOut11.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut11.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut11.TabIndex = 750;
             this.switchOut11.Text = "uiSwitch3";
             // 
@@ -2513,7 +2513,7 @@ namespace LaserCutter
             this.switchOut10.Name = "switchOut10";
             this.switchOut10.ShowHint = false;
             this.switchOut10.Size = new System.Drawing.Size(200, 38);
-            this.switchOut10.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut10.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut10.TabIndex = 749;
             this.switchOut10.Text = "uiSwitch4";
             // 
@@ -2528,7 +2528,7 @@ namespace LaserCutter
             this.switchOut9.Name = "switchOut9";
             this.switchOut9.ShowHint = false;
             this.switchOut9.Size = new System.Drawing.Size(200, 38);
-            this.switchOut9.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut9.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut9.TabIndex = 748;
             this.switchOut9.Text = "uiSwitch2";
             // 
@@ -2543,7 +2543,7 @@ namespace LaserCutter
             this.switchOut8.Name = "switchOut8";
             this.switchOut8.ShowHint = false;
             this.switchOut8.Size = new System.Drawing.Size(200, 38);
-            this.switchOut8.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut8.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut8.TabIndex = 747;
             this.switchOut8.Text = "uiSwitch1";
             // 
@@ -2558,7 +2558,7 @@ namespace LaserCutter
             this.switchOut7.Name = "switchOut7";
             this.switchOut7.ShowHint = false;
             this.switchOut7.Size = new System.Drawing.Size(200, 38);
-            this.switchOut7.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut7.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut7.TabIndex = 738;
             this.switchOut7.Text = "uiSwitch７";
             // 
@@ -2573,7 +2573,7 @@ namespace LaserCutter
             this.switchOut6.Name = "switchOut6";
             this.switchOut6.ShowHint = false;
             this.switchOut6.Size = new System.Drawing.Size(200, 38);
-            this.switchOut6.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut6.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut6.TabIndex = 737;
             this.switchOut6.Text = "uiSwitch6";
             // 
@@ -2588,7 +2588,7 @@ namespace LaserCutter
             this.switchOut5.Name = "switchOut5";
             this.switchOut5.ShowHint = false;
             this.switchOut5.Size = new System.Drawing.Size(200, 38);
-            this.switchOut5.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut5.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut5.TabIndex = 736;
             this.switchOut5.Text = "uiSwitch５";
             // 
@@ -2603,7 +2603,7 @@ namespace LaserCutter
             this.switchOut4.Name = "switchOut4";
             this.switchOut4.ShowHint = false;
             this.switchOut4.Size = new System.Drawing.Size(200, 38);
-            this.switchOut4.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut4.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut4.TabIndex = 735;
             this.switchOut4.Text = "uiSwitch４";
             // 
@@ -2618,7 +2618,7 @@ namespace LaserCutter
             this.switchOut3.Name = "switchOut3";
             this.switchOut3.ShowHint = false;
             this.switchOut3.Size = new System.Drawing.Size(200, 38);
-            this.switchOut3.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut3.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut3.TabIndex = 734;
             this.switchOut3.Text = "uiSwitch3";
             // 
@@ -2633,7 +2633,7 @@ namespace LaserCutter
             this.switchOut2.Name = "switchOut2";
             this.switchOut2.ShowHint = false;
             this.switchOut2.Size = new System.Drawing.Size(200, 38);
-            this.switchOut2.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut2.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut2.TabIndex = 733;
             this.switchOut2.Text = "uiSwitch２";
             // 
@@ -2648,7 +2648,7 @@ namespace LaserCutter
             this.switchOut1.Name = "switchOut1";
             this.switchOut1.ShowHint = false;
             this.switchOut1.Size = new System.Drawing.Size(200, 38);
-            this.switchOut1.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut1.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut1.TabIndex = 732;
             this.switchOut1.Text = "uiSwitch１";
             // 
@@ -2663,7 +2663,7 @@ namespace LaserCutter
             this.switchOut0.Name = "switchOut0";
             this.switchOut0.ShowHint = false;
             this.switchOut0.Size = new System.Drawing.Size(200, 38);
-            this.switchOut0.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchOut0.SwitchShape = YujinTechnology.SwitchShape.Square;
             this.switchOut0.TabIndex = 731;
             this.switchOut0.Text = "uiSwitch０";
             // 
@@ -3797,22 +3797,22 @@ namespace LaserCutter
             // 
             this.uiLine20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine20.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine20.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine20.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine20.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.uiLine20.EndCap = YujinTechnology.UILineCap.None;
             this.uiLine20.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine20.ForeColor = System.Drawing.Color.Black;
             this.uiLine20.Frame.Visible = false;
             this.uiLine20.Hint = null;
             this.uiLine20.LineCapSize = 4;
             this.uiLine20.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine20.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine20.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.uiLine20.LineWidth = 1F;
             this.uiLine20.Location = new System.Drawing.Point(9, 49);
             this.uiLine20.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine20.Name = "uiLine20";
             this.uiLine20.ShowHint = false;
             this.uiLine20.Size = new System.Drawing.Size(459, 17);
-            this.uiLine20.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine20.StartCap = YujinTechnology.UILineCap.None;
             this.uiLine20.TabIndex = 722;
             this.uiLine20.Text = "Vel & Pos";
             this.uiLine20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3922,8 +3922,8 @@ namespace LaserCutter
         private BitBtn btnReset;
         private BitBtn btnJogMinus;
         private sjPanel panJogMove;
-        public DaekhonSystem.ComboBox cbSpeed;
-        private DaekhonSystem.TabControl uiTabControl1;
+        public YujinTechnology.ComboBox cbSpeed;
+        private YujinTechnology.TabControl uiTabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private LEDImageArray ledArray8;

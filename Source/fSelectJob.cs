@@ -6,7 +6,7 @@ using System.IO;
 
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 
 namespace LaserCutter
 {
@@ -78,7 +78,7 @@ namespace LaserCutter
             tvModel.BeginUpdate();
             tvModel.Nodes.Clear();
 
-            string modelPath = String.Format("{0}Model", dkCommon.AppPath());
+            string modelPath = String.Format("{0}Model", yjCommon.AppPath());
             string[] szDirectories = Directory.GetDirectories(modelPath);
 
             foreach (string szDir in szDirectories)
@@ -111,7 +111,7 @@ namespace LaserCutter
 
         public string GetModelPath()
         {
-            return String.Format("{0}Model\\{1}\\{2}\\", dkCommon.AppPath(), GroupName, ModelName);
+            return String.Format("{0}Model\\{1}\\{2}\\", yjCommon.AppPath(), GroupName, ModelName);
         }
 
         private void lvRecentModel_MouseDown(object sender, MouseEventArgs e)
@@ -127,18 +127,18 @@ namespace LaserCutter
                     subItemText = subItemText.Substring(1, subItemText.Length - 2);
                     subItemText = subItemText.Replace("][", "@");
 
-                    string szGroupName = dkCommon.GetWord(subItemText, 0, '@');
-                    string szModelName = dkCommon.GetWord(subItemText, 1, '@');
+                    string szGroupName = yjCommon.GetWord(subItemText, 0, '@');
+                    string szModelName = yjCommon.GetWord(subItemText, 1, '@');
 
-                    String szStr = String.Format("{0}Model\\{1}\\{2}\\", dkCommon.AppPath(), szGroupName, szModelName);
-                    if (dkCommon.DirectoryExists(szStr))
+                    String szStr = String.Format("{0}Model\\{1}\\{2}\\", yjCommon.AppPath(), szGroupName, szModelName);
+                    if (yjCommon.DirectoryExists(szStr))
                     {
                         GroupName = szGroupName;
                         ModelName = szModelName;
                     }
                     else
                     {
-                        dkCommon.Warning("해당 디렉토리가 존재하지 않습니다.", "오류");
+                        yjCommon.Warning("해당 디렉토리가 존재하지 않습니다.", "오류");
                     }
                 }
             }
@@ -210,7 +210,7 @@ namespace LaserCutter
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("최근 List를 삭제 합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("최근 List를 삭제 합니다.", "확인") == DialogResult.Yes)
             {
                 lvRecentModel.Items.Clear();
 
@@ -222,7 +222,7 @@ namespace LaserCutter
         {
             if ((e.KeyCode == Keys.Delete) && (lvRecentModel.SelectedItems.Count > 0))
             {
-                if (dkCommon.Confirm("삭제 합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("삭제 합니다.", "확인") == DialogResult.Yes)
                 {
                     // 선택된 모든 항목 삭제
                     foreach (ListViewItem selectedItem in lvRecentModel.SelectedItems)

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 
 namespace LaserCutter
 {
@@ -38,14 +38,14 @@ namespace LaserCutter
             // 특수 문자 공백이 있는지 확인
             if (edName.Text == "")
             {
-                dkCommon.Inform("모델명이 올바르지 않습니다.", "입력 오류");
+                yjCommon.Inform("모델명이 올바르지 않습니다.", "입력 오류");
             };
 
             // 폴더명 중복 확인
-            szDir = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), Group, edName.Text);
+            szDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), Group, edName.Text);
             if (Directory.Exists(szDir))
             {
-                dkCommon.Inform("중복되는 모델명이 존재합니다.", "입력 오류");
+                yjCommon.Inform("중복되는 모델명이 존재합니다.", "입력 오류");
             }
             else
             {

@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Windows.Forms;
  
-using DaekhonSystem;
+using YujinTechnology;
 using IniParser.Model;
 using Raize.CodeSiteLogging;
 
@@ -754,7 +754,7 @@ namespace LaserCutter
 
         public static List<MotionParameter> MotionParameters;
 
-        public static DaekhonSystem.IniFile iniEng;
+        public static YujinTechnology.IniFile iniEng;
         public static IniData iniKor;
         public static IniData iniVie;
 
@@ -789,13 +789,13 @@ namespace LaserCutter
                         keypadEdit.Frame.FlatColor = color;
                     }
                     else
-                    if (control is DaekhonSystem.ComboBox comboBox)
+                    if (control is YujinTechnology.ComboBox comboBox)
                     {
                         comboBox.Frame.FlatColor = color;
                     }
                 }
 
-                if (control is DaekhonSystem.TabControl tabControl)
+                if (control is YujinTechnology.TabControl tabControl)
                 {
                     foreach (TabPage tabPage in tabControl.TabPages)
                     {

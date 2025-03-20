@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 using Newtonsoft.Json.Linq;
 using Raize.CodeSiteLogging;
 using System;
@@ -58,7 +58,7 @@ namespace LaserCutter
             logger.Category = "Manual.Laser";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -510,7 +510,7 @@ namespace LaserCutter
 
                         bool bClosed;
                         string result = PassingReadData(receivedValue1);
-                        bClosed = (dkCommon.StrToIntDef(result, 0) == 0);
+                        bClosed = (yjCommon.StrToIntDef(result, 0) == 0);
 
                         Global.chLaserShutterOpen.AsBoolean = !bClosed;
                         Global.chLaserShutterClose.AsBoolean = bClosed;
@@ -541,7 +541,7 @@ namespace LaserCutter
 
                         bool bPulsingOff;
                         string result = PassingReadData(receivedValue1);
-                        bPulsingOff = (dkCommon.StrToIntDef(result, 0) == 0);
+                        bPulsingOff = (yjCommon.StrToIntDef(result, 0) == 0);
                         
                         Global.chLaserPulsingOn.AsBoolean = !bPulsingOff;
                         Global.chLaserPulsingOff.AsBoolean = bPulsingOff;
@@ -651,7 +651,7 @@ namespace LaserCutter
                         
                         bool bKeyOff;
                         string result = PassingReadData(receivedValue1);
-                        bKeyOff = (dkCommon.StrToIntDef(result, 0) == 0);
+                        bKeyOff = (yjCommon.StrToIntDef(result, 0) == 0);
 
                         Global.chLaserKeyOn.AsBoolean = !bKeyOff;
 
@@ -996,7 +996,7 @@ namespace LaserCutter
 
                 }
 
-                dkCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
+                yjCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
             }
         }
         #endregion
@@ -1141,7 +1141,7 @@ namespace LaserCutter
 
             viRRD.AsInteger = nRRD;
             //strCurrLaserSet = string.Format("")
-            //String.Format("{0}Config\\LaserChannels.csv", dkCommon.AppPath());
+            //String.Format("{0}Config\\LaserChannels.csv", yjCommon.AppPath());
             if(bPulseEQMode)
             {
                 strParam = string.Format("{0} kHz {1}x80 uj Burst{2} PulseEQ", nRRD, nPulseWidth, nBusrt);

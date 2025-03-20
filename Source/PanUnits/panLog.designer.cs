@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panClient = new LaserCutter.sjPanel();
-            this.btnSelectFolder = new DaekhonSystem.BitBtn();
-            this.btnCollapse = new DaekhonSystem.BitBtn();
+            this.btnSelectFolder = new YujinTechnology.BitBtn();
+            this.btnCollapse = new YujinTechnology.BitBtn();
             this.ListView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnExpand = new DaekhonSystem.BitBtn();
-            this.TreeViewLog = new DaekhonSystem.TreeView();
+            this.btnExpand = new YujinTechnology.BitBtn();
+            this.TreeViewLog = new YujinTechnology.TreeView();
             this.panClient.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,13 +164,13 @@
         #endregion
 
         private sjPanel panClient;
-        private DaekhonSystem.BitBtn btnSelectFolder;
-        private DaekhonSystem.BitBtn btnCollapse;
+        private YujinTechnology.BitBtn btnSelectFolder;
+        private YujinTechnology.BitBtn btnCollapse;
         private System.Windows.Forms.ListView ListView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private DaekhonSystem.BitBtn btnExpand;
-        private DaekhonSystem.TreeView TreeViewLog;
+        private YujinTechnology.BitBtn btnExpand;
+        private YujinTechnology.TreeView TreeViewLog;
     }
 }

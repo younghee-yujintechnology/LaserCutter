@@ -230,7 +230,7 @@
         }
 
         #endregion
-        public DaekhonSystem.Thread ReadThread;
+        public YujinTechnology.Thread ReadThread;
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -243,7 +243,7 @@
         private System.Windows.Forms.PropertyGrid propertyGrid4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.PropertyGrid propertyGrid5;
-        private DaekhonSystem.LEDLabel ledRX;
-        private DaekhonSystem.LEDLabel ledTX;
+        private YujinTechnology.LEDLabel ledRX;
+        private YujinTechnology.LEDLabel ledTX;
     }
 }

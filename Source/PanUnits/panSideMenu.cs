@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 using System.Reflection;
 using System.Diagnostics.Eventing.Reader;
@@ -56,7 +56,7 @@ namespace LaserCutter
             logger.Category = "SideMenu";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -374,7 +374,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("X축을 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("X축을 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    SideMenu.btnXMoveAbs");
 
@@ -389,7 +389,7 @@ namespace LaserCutter
         {
             if (Global.chY1ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Y1축을 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Y1축을 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    SideMenu.btnY1MoveAbs");
                     
@@ -404,7 +404,7 @@ namespace LaserCutter
         {
             if (Global.chY2ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Y2축을 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Y2축을 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    SideMenu.btnY2MoveAbs");
 
@@ -419,7 +419,7 @@ namespace LaserCutter
         {
             if (Global.chZServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Z축을 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Z축을 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    SideMenu.btnZMoveAbs");
 
@@ -712,7 +712,7 @@ namespace LaserCutter
             {
                 logger.SendMsg("    btnTable1MoveLoadPos.Click");
 
-                if (dkCommon.Confirm("Table1 LoadPos으로 이동합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("Table1 LoadPos으로 이동합니다.", "확인") == DialogResult.Yes)
                 {
                     SetVelocity(X_AXIS_NO);
                     SetVelocity(Y1_AXIS_NO);
@@ -730,7 +730,7 @@ namespace LaserCutter
             {
                 logger.SendMsg("    btnMoveTable2Save2Pos.Click");
                 
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table#2 저장위치#2 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table#2 저장위치#2 로 이동합니다.", "확인"))
                 {
                     SetVelocity(X_AXIS_NO);
                     SetVelocity(Y2_AXIS_NO);
@@ -747,7 +747,7 @@ namespace LaserCutter
             {
                 logger.SendMsg("    btnMoveTable2Save3Pos.Click");
                 
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table#2 저장위치#3 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table#2 저장위치#3 로 이동합니다.", "확인"))
                 {
                     SetVelocity(X_AXIS_NO);
                     SetVelocity(Y2_AXIS_NO);
@@ -764,7 +764,7 @@ namespace LaserCutter
             {
                 logger.SendMsg("    btnMoveTable2Save4Pos.Click");
 
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table#2 저장위치#4 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table#2 저장위치#4 로 이동합니다.", "확인"))
                 {
                     SetVelocity(X_AXIS_NO);
                     SetVelocity(Y2_AXIS_NO);
@@ -781,7 +781,7 @@ namespace LaserCutter
             {
                 logger.SendMsg("    btnMoveTable2Save5Pos.Click");
 
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table#2 저장위치#5 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table#2 저장위치#5 로 이동합니다.", "확인"))
                 {
                     SetVelocity(X_AXIS_NO);
                     SetVelocity(Y2_AXIS_NO);
@@ -983,7 +983,7 @@ namespace LaserCutter
         {
             logger.SendMsg("    btnSetTable1Save1Pos.Click");
 
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table1 저장위치1로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table1 저장위치1로 지정합니다.", "확인"))
             {
                 edTable1Save1XPos.Value = Global.chXActualPos.AsDouble;
                 edTable1Save1YPos.Value = Global.chY1ActualPos.AsDouble;
@@ -995,7 +995,7 @@ namespace LaserCutter
 
         private void btnSetTable1Save2Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table1 저장위치2로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table1 저장위치2로 지정합니다.", "확인"))
             {
                 edTable1Save2XPos.Value = Global.chXActualPos.AsDouble;
                 edTable1Save2YPos.Value = Global.chY1ActualPos.AsDouble;
@@ -1009,7 +1009,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY1ServoOn.AsBoolean && Global.chZServoOn.AsBoolean)
             {
-                if (dkCommon.Confirm("Table1 Nozzle 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("Table1 Nozzle 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
                 {
                     logger.SendMsg("    btnTable1VisionToNozzle.Click()");
 
@@ -1027,7 +1027,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY2ServoOn.AsBoolean && Global.chZServoOn.AsBoolean)
             {
-                if (dkCommon.Confirm("Table2 Nozzle 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("Table2 Nozzle 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
                 {
                     logger.SendMsg("    btnTable2VisionToNozzle.Click()");
 
@@ -1045,7 +1045,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY1ServoOn.AsBoolean && Global.chZServoOn.AsBoolean)
             {
-                if (dkCommon.Confirm("Table1 Vision 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("Table1 Vision 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
                 {
                     logger.SendMsg("    btnTable1NozzleToVision.Click()");
 
@@ -1063,7 +1063,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY2ServoOn.AsBoolean && Global.chZServoOn.AsBoolean)
             {
-                if (dkCommon.Confirm("Table2 Vision 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("Table2 Vision 기점 위치로 이동합니다.", "확인") == DialogResult.Yes)
                 {
                     SetVelocity(X_AXIS_NO);
                     SetVelocity(Y2_AXIS_NO);
@@ -1076,7 +1076,7 @@ namespace LaserCutter
 
         private void btnSetTable1Save3Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table1 저장위치3로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table1 저장위치3로 지정합니다.", "확인"))
             {
                 edTable1Save3XPos.Value = Global.chXActualPos.AsDouble;
                 edTable1Save3YPos.Value = Global.chY1ActualPos.AsDouble;
@@ -1088,7 +1088,7 @@ namespace LaserCutter
 
         private void btnSetTable1Save4Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table1 저장위치4로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table1 저장위치4로 지정합니다.", "확인"))
             {
                 edTable1Save4XPos.Value = Global.chXActualPos.AsDouble;
                 edTable1Save4YPos.Value = Global.chY1ActualPos.AsDouble;
@@ -1100,7 +1100,7 @@ namespace LaserCutter
 
         private void btnSetTable1Save5Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table1 저장위치5로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table1 저장위치5로 지정합니다.", "확인"))
             {
                 edTable1Save5XPos.Value = Global.chXActualPos.AsDouble;
                 edTable1Save5YPos.Value = Global.chY1ActualPos.AsDouble;
@@ -1114,7 +1114,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY1ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table1 저장위치1로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table1 저장위치1로 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    btnMoveTable1Save1Pos");
 
@@ -1131,7 +1131,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY1ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table1 저장위치2로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table1 저장위치2로 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    btnMoveTable1Save2Pos");
 
@@ -1148,7 +1148,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY1ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table1 저장위치3 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table1 저장위치3 로 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    btnMoveTable1Save3Pos");
                     
@@ -1165,7 +1165,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY1ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table1 저장위치4 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table1 저장위치4 로 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    btnMoveTable1Save4Pos");
 
@@ -1182,7 +1182,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY1ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table1 저장위치5 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table1 저장위치5 로 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    btnMoveTable1Save5Pos");
 
@@ -1197,7 +1197,7 @@ namespace LaserCutter
 
         private void btnSetTable2Save1Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table2 저장위치1로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table2 저장위치1로 지정합니다.", "확인"))
             {
                 edTable2Save1XPos.Value = Global.chXActualPos.AsDouble;
                 edTable2Save1YPos.Value = Global.chY2ActualPos.AsDouble;
@@ -1209,7 +1209,7 @@ namespace LaserCutter
 
         private void btnSetTable2Save2Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table2 저장위치2로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table2 저장위치2로 지정합니다.", "확인"))
             {
                 edTable2Save2XPos.Value = Global.chXActualPos.AsDouble;
                 edTable2Save2YPos.Value = Global.chY2ActualPos.AsDouble;
@@ -1221,7 +1221,7 @@ namespace LaserCutter
 
         private void btnSetTable2Save3Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table2 저장위치3로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table2 저장위치3로 지정합니다.", "확인"))
             {
                 edTable2Save3XPos.Value = Global.chXActualPos.AsDouble;
                 edTable2Save3YPos.Value = Global.chY2ActualPos.AsDouble;
@@ -1233,7 +1233,7 @@ namespace LaserCutter
 
         private void btnSetTable2Save4Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table2 저장위치4로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table2 저장위치4로 지정합니다.", "확인"))
             {
                 edTable2Save4XPos.Value = Global.chXActualPos.AsDouble;
                 edTable2Save4YPos.Value = Global.chY2ActualPos.AsDouble;
@@ -1245,7 +1245,7 @@ namespace LaserCutter
 
         private void btnSetTable2Save5Pos_Click(object sender, EventArgs e)
         {
-            if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("현재 위치를 Table2 저장위치5로 지정합니다.", "확인"))
+            if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("현재 위치를 Table2 저장위치5로 지정합니다.", "확인"))
             {
                 edTable2Save5XPos.Value = Global.chXActualPos.AsDouble;
                 edTable2Save5YPos.Value = Global.chY2ActualPos.AsDouble;
@@ -1259,7 +1259,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY2ServoOn.AsBoolean)
             {
-                if (System.Windows.Forms.DialogResult.Yes == dkCommon.Confirm("Table#2 저장위치#1 로 이동합니다.", "확인"))
+                if (System.Windows.Forms.DialogResult.Yes == yjCommon.Confirm("Table#2 저장위치#1 로 이동합니다.", "확인"))
                 {
                     logger.SendMsg("    btnMoveTable2Save1Pos");
                     
@@ -1319,7 +1319,7 @@ namespace LaserCutter
         {
             if (Global.chXServoOn.AsBoolean && Global.chY2ServoOn.AsBoolean)
             {
-                if (dkCommon.Confirm("Table2 LoadPos으로 이동합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("Table2 LoadPos으로 이동합니다.", "확인") == DialogResult.Yes)
                 {
                     SetVelocity(X_AXIS_NO);
                     SetVelocity(Y2_AXIS_NO);

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.ComponentModel;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter
@@ -1225,7 +1225,7 @@ namespace LaserCutter
     #endregion
 
     #region public class LaserProject : dkProject 
-    public class LaserProject : dkProject
+    public class LaserProject : yjProject
     {
         private Model1 mModel1 = new Model1();
         private Model2 mModel2 = new Model2();

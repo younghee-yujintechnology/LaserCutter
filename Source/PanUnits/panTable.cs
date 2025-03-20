@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter
@@ -74,7 +74,7 @@ namespace LaserCutter
             logger.Category = String.Format("{0}", TableNo.ToString());
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -218,7 +218,7 @@ namespace LaserCutter
                 }
 
                 Vision.DefaultVisionFile = String.Format("{0}CogPMAlignTool(4Align).vpp", frmSelectJob.GetModelPath());
-                Vision.ledCogPMAlignTool.LED.Value = dkCommon.FileExists(Vision.DefaultVisionFile);
+                Vision.ledCogPMAlignTool.LED.Value = yjCommon.FileExists(Vision.DefaultVisionFile);
                 Vision.btnLoadProject.Enabled = Vision.ledCogPMAlignTool.LED.Value;
 
                 if (Vision.ledCogPMAlignTool.LED.Value)
@@ -226,7 +226,7 @@ namespace LaserCutter
                     Vision.btnLoadProject_Click(null, null);
                 }
 
-                DaekhonSystem.StringList ss;
+                YujinTechnology.StringList ss;
                 ss = LaserProject.Model1.ToStringList();
 
                 CodeSite.SendMsg("");
@@ -265,13 +265,13 @@ namespace LaserCutter
 
             bool Result = false;
 
-            String szPath = String.Format("{0}Model\\{1}\\{2}", dkCommon.AppPath(), aGroupName, aModelName);
+            String szPath = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), aGroupName, aModelName);
             String szName = String.Empty;
 
             szName = String.Format("[{0}][{1}][Table{2}].prj", aGroupName, aModelName, (int)TableNo);
             szPath = String.Format("{0}\\{1}", szPath, szName);
 
-            if (dkCommon.FileExists(szPath))
+            if (yjCommon.FileExists(szPath))
             {
                 Result = true;
 
@@ -303,7 +303,7 @@ namespace LaserCutter
             JobInfo.Type1.ClearControlValue();
             if (!String.IsNullOrEmpty(LaserProject.CadFile))
             {
-                if (dkCommon.FileExists(GetModelPath() + LaserProject.CadFile))
+                if (yjCommon.FileExists(GetModelPath() + LaserProject.CadFile))
                 {
                     JobInfo.Type1.Cad1.Visible = true;
                     JobInfo.Type1.Cad1.Open(GetModelPath() + LaserProject.CadFile);
@@ -375,7 +375,7 @@ namespace LaserCutter
 
             if (!String.IsNullOrEmpty(GetModelPath() + LaserProject.CadFile))
             {
-                if (dkCommon.FileExists(GetModelPath() + LaserProject.CadFile))
+                if (yjCommon.FileExists(GetModelPath() + LaserProject.CadFile))
                 {
                     JobInfo.Type2.Cad2.Visible = true;
                     JobInfo.Type2.Cad2.Open(GetModelPath() + LaserProject.CadFile);
@@ -636,7 +636,7 @@ namespace LaserCutter
 
         public string GetModelPath()
         {
-            return String.Format("{0}Model\\{1}\\{2}\\", dkCommon.AppPath(), GroupName, ModelName);
+            return String.Format("{0}Model\\{1}\\{2}\\", yjCommon.AppPath(), GroupName, ModelName);
         }
 
         public bool isStartAble()

@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uiPanel1 = new DaekhonSystem.GradientPanel();
+            this.uiPanel1 = new YujinTechnology.GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cbUserName = new DaekhonSystem.ComboBox();
-            this.cbUserMode = new DaekhonSystem.ComboBox();
+            this.cbUserName = new YujinTechnology.ComboBox();
+            this.cbUserMode = new YujinTechnology.ComboBox();
             this.LabelUserMode = new System.Windows.Forms.Label();
             this.LabelPassword = new System.Windows.Forms.Label();
             this.LabelUserName = new System.Windows.Forms.Label();
             this.btnSetting = new System.Windows.Forms.PictureBox();
             this.panLogin = new System.Windows.Forms.Panel();
-            this.edPassword = new DaekhonSystem.Edit();
+            this.edPassword = new YujinTechnology.Edit();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.panLogout = new System.Windows.Forms.Panel();
-            this.edit2 = new DaekhonSystem.Edit();
-            this.edit1 = new DaekhonSystem.Edit();
+            this.edit2 = new YujinTechnology.Edit();
+            this.edit1 = new YujinTechnology.Edit();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -298,10 +298,10 @@
         }
 
         #endregion
-        private DaekhonSystem.GradientPanel uiPanel1;
+        private YujinTechnology.GradientPanel uiPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private DaekhonSystem.ComboBox cbUserName;
-        private DaekhonSystem.ComboBox cbUserMode;
+        private YujinTechnology.ComboBox cbUserName;
+        private YujinTechnology.ComboBox cbUserMode;
         private System.Windows.Forms.Label LabelUserMode;
         private System.Windows.Forms.Label LabelPassword;
         private System.Windows.Forms.Label LabelUserName;
@@ -310,10 +310,10 @@
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Panel panLogout;
         private System.Windows.Forms.Button btnLogOut;
-        private DaekhonSystem.Edit edPassword;
+        private YujinTechnology.Edit edPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private DaekhonSystem.Edit edit2;
-        private DaekhonSystem.Edit edit1;
+        private YujinTechnology.Edit edit2;
+        private YujinTechnology.Edit edit1;
     }
 }

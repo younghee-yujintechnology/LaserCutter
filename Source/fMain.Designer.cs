@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.panBottom = new DaekhonSystem.GradientPanel();
+            this.panBottom = new YujinTechnology.GradientPanel();
             this.lblSelectedMenu = new System.Windows.Forms.Label();
             this.btnVietnam = new System.Windows.Forms.Button();
             this.btnKorea = new System.Windows.Forms.Button();
             this.btnEnglish = new System.Windows.Forms.Button();
-            this.btnAuto = new DaekhonSystem.BitBtn();
-            this.btnManual = new DaekhonSystem.BitBtn();
-            this.btnConfig = new DaekhonSystem.BitBtn();
-            this.btnAlarm = new DaekhonSystem.BitBtn();
-            this.btnJobFile = new DaekhonSystem.BitBtn();
-            this.btnVision = new DaekhonSystem.BitBtn();
-            this.btnLog = new DaekhonSystem.BitBtn();
-            this.btnExit = new DaekhonSystem.BitBtn();
-            this.panTop = new DaekhonSystem.Panel();
+            this.btnAuto = new YujinTechnology.BitBtn();
+            this.btnManual = new YujinTechnology.BitBtn();
+            this.btnConfig = new YujinTechnology.BitBtn();
+            this.btnAlarm = new YujinTechnology.BitBtn();
+            this.btnJobFile = new YujinTechnology.BitBtn();
+            this.btnVision = new YujinTechnology.BitBtn();
+            this.btnLog = new YujinTechnology.BitBtn();
+            this.btnExit = new YujinTechnology.BitBtn();
+            this.panTop = new YujinTechnology.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.metroPanel1 = new DaekhonSystem.Panel();
-            this.btnLogIn = new DaekhonSystem.BitBtn();
+            this.metroPanel1 = new YujinTechnology.Panel();
+            this.btnLogIn = new YujinTechnology.BitBtn();
             this.lblUser = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblDateTime = new DaekhonSystem.Label();
-            this.panEqpTitle = new DaekhonSystem.GradientPanel();
-            this.lblVersion = new DaekhonSystem.Label();
-            this.lblBuildVersion = new DaekhonSystem.Label();
-            this.lblMainTitle = new DaekhonSystem.GradientLabel();
-            this.AutoThread = new DaekhonSystem.Thread();
+            this.lblDateTime = new YujinTechnology.Label();
+            this.panEqpTitle = new YujinTechnology.GradientPanel();
+            this.lblVersion = new YujinTechnology.Label();
+            this.lblBuildVersion = new YujinTechnology.Label();
+            this.lblMainTitle = new YujinTechnology.GradientLabel();
+            this.AutoThread = new YujinTechnology.Thread();
             this.panRight = new System.Windows.Forms.Panel();
             this.panClient = new System.Windows.Forms.Panel();
             this.panBottom.SuspendLayout();
@@ -279,8 +279,8 @@
             this.lblDateTime.BackColor = System.Drawing.Color.LightGray;
             this.lblDateTime.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
             this.lblDateTime.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblDateTime.CaptionStyle.ShadowDirection = DaekhonSystem.ShadowDirection.BottomRight;
-            this.lblDateTime.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblDateTime.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
+            this.lblDateTime.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             resources.ApplyResources(this.lblDateTime, "lblDateTime");
             this.lblDateTime.ForeColor = System.Drawing.Color.Red;
             this.lblDateTime.Name = "lblDateTime";
@@ -292,8 +292,8 @@
             this.panEqpTitle.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.panEqpTitle.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
             this.panEqpTitle.CaptionStyle.ShadowDepth = 3;
-            this.panEqpTitle.CaptionStyle.ShadowDirection = DaekhonSystem.ShadowDirection.BottomRight;
-            this.panEqpTitle.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.panEqpTitle.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
+            this.panEqpTitle.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.panEqpTitle.Controls.Add(this.lblVersion);
             this.panEqpTitle.Controls.Add(this.lblBuildVersion);
             this.panEqpTitle.Controls.Add(this.lblMainTitle);
@@ -310,8 +310,8 @@
             this.lblVersion.BackColor = System.Drawing.Color.Transparent;
             this.lblVersion.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
             this.lblVersion.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblVersion.CaptionStyle.ShadowDirection = DaekhonSystem.ShadowDirection.BottomRight;
-            this.lblVersion.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblVersion.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
+            this.lblVersion.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             resources.ApplyResources(this.lblVersion, "lblVersion");
             this.lblVersion.ForeColor = System.Drawing.Color.Red;
             this.lblVersion.Frame.Visible = false;
@@ -324,8 +324,8 @@
             this.lblBuildVersion.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
             this.lblBuildVersion.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
             this.lblBuildVersion.CaptionStyle.ShadowDepth = 2;
-            this.lblBuildVersion.CaptionStyle.ShadowDirection = DaekhonSystem.ShadowDirection.BottomRight;
-            this.lblBuildVersion.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblBuildVersion.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
+            this.lblBuildVersion.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             resources.ApplyResources(this.lblBuildVersion, "lblBuildVersion");
             this.lblBuildVersion.ForeColor = System.Drawing.Color.Gold;
             this.lblBuildVersion.Frame.Visible = false;
@@ -338,8 +338,8 @@
             this.lblMainTitle.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.lblMainTitle.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
             this.lblMainTitle.CaptionStyle.ShadowDepth = 3;
-            this.lblMainTitle.CaptionStyle.ShadowDirection = DaekhonSystem.ShadowDirection.BottomRight;
-            this.lblMainTitle.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblMainTitle.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
+            this.lblMainTitle.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.lblMainTitle.CausesValidation = false;
             resources.ApplyResources(this.lblMainTitle, "lblMainTitle");
             this.lblMainTitle.ForeColor = System.Drawing.Color.Lime;
@@ -393,34 +393,34 @@
         }
 
         #endregion
-        private DaekhonSystem.GradientPanel panBottom;
-        private DaekhonSystem.Panel panTop;
+        private YujinTechnology.GradientPanel panBottom;
+        private YujinTechnology.Panel panTop;
         private System.Windows.Forms.Label lblSelectedMenu;
-        private DaekhonSystem.BitBtn btnAuto;
-        private DaekhonSystem.BitBtn btnAlarm;
-        private DaekhonSystem.BitBtn btnManual;
-        private DaekhonSystem.Thread AutoThread;
-        private DaekhonSystem.Panel metroPanel1;
-        private DaekhonSystem.Label lblDateTime;
-        private DaekhonSystem.GradientPanel panEqpTitle;
+        private YujinTechnology.BitBtn btnAuto;
+        private YujinTechnology.BitBtn btnAlarm;
+        private YujinTechnology.BitBtn btnManual;
+        private YujinTechnology.Thread AutoThread;
+        private YujinTechnology.Panel metroPanel1;
+        private YujinTechnology.Label lblDateTime;
+        private YujinTechnology.GradientPanel panEqpTitle;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panRight;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private DaekhonSystem.Label lblBuildVersion;
+        private YujinTechnology.Label lblBuildVersion;
         private System.Windows.Forms.Button btnVietnam;
         private System.Windows.Forms.Button btnKorea;
         private System.Windows.Forms.Button btnEnglish;
         public System.Windows.Forms.Panel panClient;
-        public DaekhonSystem.GradientLabel lblMainTitle;
-        private DaekhonSystem.Label lblVersion;
-        private DaekhonSystem.BitBtn btnJobFile;
-        private DaekhonSystem.BitBtn btnConfig;
-        private DaekhonSystem.BitBtn btnExit;
-        private DaekhonSystem.BitBtn btnLog;
-        private DaekhonSystem.BitBtn btnVision;
-        private DaekhonSystem.BitBtn btnLogIn;
+        public YujinTechnology.GradientLabel lblMainTitle;
+        private YujinTechnology.Label lblVersion;
+        private YujinTechnology.BitBtn btnJobFile;
+        private YujinTechnology.BitBtn btnConfig;
+        private YujinTechnology.BitBtn btnExit;
+        private YujinTechnology.BitBtn btnLog;
+        private YujinTechnology.BitBtn btnVision;
+        private YujinTechnology.BitBtn btnLogIn;
     }
 }
 

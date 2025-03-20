@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 
 namespace LaserCutter
 {
@@ -30,59 +30,59 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {
-            this.Comm = new DaekhonSystem.Comm();
-            this.MeasureThread = new DaekhonSystem.Thread();
+            this.Comm = new YujinTechnology.Comm();
+            this.MeasureThread = new YujinTechnology.Thread();
             this.sjPanel1 = new LaserCutter.sjPanel();
-            this.gradientLabel10 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel9 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel8 = new DaekhonSystem.GradientLabel();
-            this.viLastStep = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel7 = new DaekhonSystem.GradientLabel();
-            this.viCurrentStep = new DaekhonSystem.ValueIndicator();
-            this.valueIndicator1 = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel2 = new DaekhonSystem.GradientLabel();
-            this.viReadCount = new DaekhonSystem.ValueIndicator();
-            this.bitClear = new DaekhonSystem.BitBtn();
-            this.viCurrentValue = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
-            this.viAverage = new DaekhonSystem.ValueIndicator();
-            this.viMax = new DaekhonSystem.ValueIndicator();
-            this.viMin = new DaekhonSystem.ValueIndicator();
-            this.btnMeasureStart = new DaekhonSystem.LEDButton();
-            this.btnConnect = new DaekhonSystem.LEDButton();
-            this.gradientLabel5 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel6 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel3 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel4 = new DaekhonSystem.GradientLabel();
-            this.sunnyLine3 = new DaekhonSystem.SunnyLine();
-            this.btnRead = new DaekhonSystem.BitBtn();
-            this.sunnyLine1 = new DaekhonSystem.SunnyLine();
-            this.edScanTime = new DaekhonSystem.KeypadEdit();
-            this.gradLabel53 = new DaekhonSystem.GradientLabel();
-            this.cbComPort = new DaekhonSystem.ComboBox();
+            this.gradientLabel10 = new YujinTechnology.GradientLabel();
+            this.gradientLabel9 = new YujinTechnology.GradientLabel();
+            this.gradientLabel8 = new YujinTechnology.GradientLabel();
+            this.viLastStep = new YujinTechnology.ValueIndicator();
+            this.gradientLabel7 = new YujinTechnology.GradientLabel();
+            this.viCurrentStep = new YujinTechnology.ValueIndicator();
+            this.valueIndicator1 = new YujinTechnology.ValueIndicator();
+            this.gradientLabel2 = new YujinTechnology.GradientLabel();
+            this.viReadCount = new YujinTechnology.ValueIndicator();
+            this.bitClear = new YujinTechnology.BitBtn();
+            this.viCurrentValue = new YujinTechnology.ValueIndicator();
+            this.gradientLabel1 = new YujinTechnology.GradientLabel();
+            this.viAverage = new YujinTechnology.ValueIndicator();
+            this.viMax = new YujinTechnology.ValueIndicator();
+            this.viMin = new YujinTechnology.ValueIndicator();
+            this.btnMeasureStart = new YujinTechnology.LEDButton();
+            this.btnConnect = new YujinTechnology.LEDButton();
+            this.gradientLabel5 = new YujinTechnology.GradientLabel();
+            this.gradientLabel6 = new YujinTechnology.GradientLabel();
+            this.gradientLabel3 = new YujinTechnology.GradientLabel();
+            this.gradientLabel4 = new YujinTechnology.GradientLabel();
+            this.sunnyLine3 = new YujinTechnology.SunnyLine();
+            this.btnRead = new YujinTechnology.BitBtn();
+            this.sunnyLine1 = new YujinTechnology.SunnyLine();
+            this.edScanTime = new YujinTechnology.KeypadEdit();
+            this.gradLabel53 = new YujinTechnology.GradientLabel();
+            this.cbComPort = new YujinTechnology.ComboBox();
             this.sjPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Comm
             // 
-            this.Comm.BaudRate = DaekhonSystem.BaudRate._9600;
+            this.Comm.BaudRate = YujinTechnology.BaudRate._9600;
             this.Comm.BinaryMode = false;
-            this.Comm.ByteSize = DaekhonSystem.ByteSize._8;
+            this.Comm.ByteSize = YujinTechnology.ByteSize._8;
             this.Comm.CheckParity = false;
-            this.Comm.CommEvents = new DaekhonSystem.CommEvent[] {
-        DaekhonSystem.CommEvent.EV_RXCHAR,
-        DaekhonSystem.CommEvent.EV_RXFLAG,
-        DaekhonSystem.CommEvent.EV_TXEMPTY};
+            this.Comm.CommEvents = new YujinTechnology.CommEvent[] {
+        YujinTechnology.CommEvent.EV_RXCHAR,
+        YujinTechnology.CommEvent.EV_RXFLAG,
+        YujinTechnology.CommEvent.EV_TXEMPTY};
             this.Comm.DiscardNull = false;
             this.Comm.EventChar = "0x0D";
-            this.Comm.FlowControl = DaekhonSystem.FlowControl.FC_XONXOFF;
+            this.Comm.FlowControl = YujinTechnology.FlowControl.FC_XONXOFF;
             this.Comm.MaxInQueue = 4096;
             this.Comm.MaxOutQueue = 2048;
-            this.Comm.Parity = DaekhonSystem.Parity.NONE;
-            this.Comm.Port = DaekhonSystem.Port.COM03;
+            this.Comm.Parity = YujinTechnology.Parity.NONE;
+            this.Comm.Port = YujinTechnology.Port.COM03;
             this.Comm.Priority = System.Threading.ThreadPriority.Normal;
             this.Comm.RS485Mode = false;
-            this.Comm.StopBits = DaekhonSystem.StopBits._1;
+            this.Comm.StopBits = YujinTechnology.StopBits._1;
             this.Comm.TimeOut = ((uint)(1000u));
             // 
             // MeasureThread
@@ -392,7 +392,7 @@ namespace LaserCutter
             this.btnMeasureStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMeasureStart.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnMeasureStart.ForeColor = System.Drawing.Color.Black;
-            this.btnMeasureStart.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnMeasureStart.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnMeasureStart.LED.Size = new System.Drawing.Size(70, 26);
             this.btnMeasureStart.Location = new System.Drawing.Point(286, 353);
             this.btnMeasureStart.MinimumSize = new System.Drawing.Size(1, 1);
@@ -411,7 +411,7 @@ namespace LaserCutter
             this.btnConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnect.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnConnect.ForeColor = System.Drawing.Color.Black;
-            this.btnConnect.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnConnect.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnConnect.LED.Size = new System.Drawing.Size(70, 26);
             this.btnConnect.Location = new System.Drawing.Point(282, 64);
             this.btnConnect.MinimumSize = new System.Drawing.Size(1, 1);
@@ -502,20 +502,20 @@ namespace LaserCutter
             // 
             this.sunnyLine3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.sunnyLine3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.sunnyLine3.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine3.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine3.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine3.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine3.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine3.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine3.Frame.Visible = false;
             this.sunnyLine3.LineCapSize = 4;
             this.sunnyLine3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine3.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine3.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine3.LineWidth = 1F;
             this.sunnyLine3.Location = new System.Drawing.Point(46, 570);
             this.sunnyLine3.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine3.Name = "sunnyLine3";
             this.sunnyLine3.Size = new System.Drawing.Size(250, 17);
-            this.sunnyLine3.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine3.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine3.TabIndex = 1363;
             this.sunnyLine3.Text = "Result";
             this.sunnyLine3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -542,20 +542,20 @@ namespace LaserCutter
             // 
             this.sunnyLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.sunnyLine1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.sunnyLine1.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine1.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine1.Direction = YujinTechnology.LineDirection.Horizontal;
+            this.sunnyLine1.EndCap = YujinTechnology.UILineCap.None;
             this.sunnyLine1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine1.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine1.Frame.Visible = false;
             this.sunnyLine1.LineCapSize = 4;
             this.sunnyLine1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine1.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine1.LineDashStyle = YujinTechnology.UILineDashStyle.Solid;
             this.sunnyLine1.LineWidth = 1F;
             this.sunnyLine1.Location = new System.Drawing.Point(690, 539);
             this.sunnyLine1.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine1.Name = "sunnyLine1";
             this.sunnyLine1.Size = new System.Drawing.Size(269, 17);
-            this.sunnyLine1.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine1.StartCap = YujinTechnology.UILineCap.None;
             this.sunnyLine1.TabIndex = 1332;
             this.sunnyLine1.Text = "Laser Set";
             this.sunnyLine1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -565,7 +565,7 @@ namespace LaserCutter
             // 
             this.edScanTime.BackColor = System.Drawing.Color.White;
             this.edScanTime.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edScanTime.DataType = DaekhonSystem.DataType.Integer;
+            this.edScanTime.DataType = YujinTechnology.DataType.Integer;
             this.edScanTime.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edScanTime.ForeColor = System.Drawing.Color.Black;
             this.edScanTime.Frame.CornerRound = 1;

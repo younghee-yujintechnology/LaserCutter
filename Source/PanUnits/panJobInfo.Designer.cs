@@ -57,8 +57,8 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {
-            this.panClient = new DaekhonSystem.Panel();
-            this.TabControl2 = new DaekhonSystem.TabControl();
+            this.panClient = new YujinTechnology.Panel();
+            this.TabControl2 = new YujinTechnology.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -161,8 +161,8 @@ namespace LaserCutter
 
         #endregion
 
-        private DaekhonSystem.Panel panClient;
-        public DaekhonSystem.TabControl TabControl2;
+        private YujinTechnology.Panel panClient;
+        public YujinTechnology.TabControl TabControl2;
         public System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TabPage tabPage2;
         public System.Windows.Forms.TabPage tabPage3;

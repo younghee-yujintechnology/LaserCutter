@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 using Raize.CodeSiteLogging;
 using System;
 using System.Windows.Forms;
@@ -240,8 +240,8 @@ namespace LaserCutter
         #region public void LoadChannelInfo()
         public void LoadChannelInfo()
         {
-            String szPath = String.Format("{0}Config\\ConfigCommonChannels.csv", dkCommon.AppPath());
-            if (dkCommon.FileExists(szPath))
+            String szPath = String.Format("{0}Config\\ConfigCommonChannels.csv", yjCommon.AppPath());
+            if (yjCommon.FileExists(szPath))
             {
                 DataServer.LoadFromCSV(szPath);
 
@@ -292,11 +292,11 @@ namespace LaserCutter
         }
         public void InitControls()
         {
-            Auto.Table1.LaserProject.Model1.UseVacuumCount = dkCommon.StrToIntDef(cbTable1UseVacuumCount.Text, 0);
-            cbTable1UseVacuumCount.SelectedIndex = dkCommon.StrToIntDef(cbTable1UseVacuumCount.Text, 0) - 1;
+            Auto.Table1.LaserProject.Model1.UseVacuumCount = yjCommon.StrToIntDef(cbTable1UseVacuumCount.Text, 0);
+            cbTable1UseVacuumCount.SelectedIndex = yjCommon.StrToIntDef(cbTable1UseVacuumCount.Text, 0) - 1;
 
-            Auto.Table2.LaserProject.Model1.UseVacuumCount = dkCommon.StrToIntDef(cbTable2UseVacuumCount.Text, 0);
-            cbTable2UseVacuumCount.SelectedIndex = dkCommon.StrToIntDef(cbTable2UseVacuumCount.Text, 0) - 1;
+            Auto.Table2.LaserProject.Model1.UseVacuumCount = yjCommon.StrToIntDef(cbTable2UseVacuumCount.Text, 0);
+            cbTable2UseVacuumCount.SelectedIndex = yjCommon.StrToIntDef(cbTable2UseVacuumCount.Text, 0) - 1;
 
             OptionApply();
         }
@@ -544,7 +544,7 @@ namespace LaserCutter
 
         private void btnSetTable1Pos1_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 Left Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 Left Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable1LeftBottomXPos.Value = Global.chXActualPos.AsDouble;
                 edTable1LeftBottomYPos.Value = Global.chY1ActualPos.AsDouble;
@@ -553,7 +553,7 @@ namespace LaserCutter
 
         private void btnMoveTable1Pos1_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y1_AXIS_NO);
@@ -567,7 +567,7 @@ namespace LaserCutter
 
         private void btnSetTable1Pos2_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 Left Top 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 Left Top 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable1LeftTopXPos.Value = Global.chXActualPos.AsDouble;
                 edTable1LeftTopYPos.Value = Global.chY1ActualPos.AsDouble;
@@ -575,7 +575,7 @@ namespace LaserCutter
         }
         private void btnMoveTable1Pos2_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y1_AXIS_NO);
@@ -590,7 +590,7 @@ namespace LaserCutter
 
         private void btnSetTable1Pos3_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 Right Top 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 Right Top 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable1RightTopXPos.Value = Global.chXActualPos.AsDouble;
                 edTable1RightTopYPos.Value = Global.chY1ActualPos.AsDouble;
@@ -599,7 +599,7 @@ namespace LaserCutter
 
         private void btnMoveTable1Pos3_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y1_AXIS_NO);
@@ -614,7 +614,7 @@ namespace LaserCutter
 
         private void btnSetTable1Pos4_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 Right Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 Right Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable1RightBottomXPos.Value = Global.chXActualPos.AsDouble;
                 edTable1RightBottomYPos.Value = Global.chY1ActualPos.AsDouble;
@@ -623,7 +623,7 @@ namespace LaserCutter
 
         private void btnMoveTable1Pos4_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y1_AXIS_NO);
@@ -637,7 +637,7 @@ namespace LaserCutter
 
         private void btnSetTable1Pos5_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 Center 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 Center 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable1CenterXPos.Value = Global.chXActualPos.AsDouble;
                 edTable1CenterYPos.Value = Global.chY1ActualPos.AsDouble;
@@ -646,7 +646,7 @@ namespace LaserCutter
 
         private void btnMoveTable1Pos5_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y1_AXIS_NO);
@@ -660,7 +660,7 @@ namespace LaserCutter
 
         private void btnSetTable2Pos1_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 Left Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 Left Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable2LeftBottomXPos.Value = Global.chXActualPos.AsDouble;
                 edTable2LeftBottomYPos.Value = Global.chY2ActualPos.AsDouble;
@@ -669,7 +669,7 @@ namespace LaserCutter
 
         private void btnMoveTable2Pos1_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
@@ -683,7 +683,7 @@ namespace LaserCutter
 
         private void btnSetTable2Pos2_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 Left Top 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 Left Top 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable2LeftTopXPos.Value = Global.chXActualPos.AsDouble;
                 edTable2LeftTopYPos.Value = Global.chY2ActualPos.AsDouble;
@@ -691,7 +691,7 @@ namespace LaserCutter
         }
         private void btnMoveTable2Pos2_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
@@ -705,7 +705,7 @@ namespace LaserCutter
 
         private void btnSetTable2Pos3_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 Right Top 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 Right Top 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable2RightTopXPos.Value = Global.chXActualPos.AsDouble;
                 edTable2RightTopYPos.Value = Global.chY2ActualPos.AsDouble;
@@ -714,7 +714,7 @@ namespace LaserCutter
 
         private void btnMoveTable2Pos3_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
@@ -728,7 +728,7 @@ namespace LaserCutter
 
         private void btnSetTable2Pos4_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 Right Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 Right Bottom 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable2RightBottomXPos.Value = Global.chXActualPos.AsDouble;
                 edTable2RightBottomYPos.Value = Global.chY2ActualPos.AsDouble;
@@ -737,7 +737,7 @@ namespace LaserCutter
 
         private void btnMoveTable2Pos4_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
@@ -751,7 +751,7 @@ namespace LaserCutter
 
         private void btnSetTable2Pos5_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 Center 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 Center 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 edTable2CenterXPos.Value = Global.chXActualPos.AsDouble;
                 edTable2CenterYPos.Value = Global.chY2ActualPos.AsDouble;
@@ -760,7 +760,7 @@ namespace LaserCutter
 
         private void btnMoveTable2Pos5_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 위치를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
@@ -1065,7 +1065,7 @@ namespace LaserCutter
 
             if (!btnMeasure.LED.Value)
             {
-                if (dkCommon.Confirm("Nozzle Offset을 변경합니다.", "확인") == DialogResult.Yes)
+                if (yjCommon.Confirm("Nozzle Offset을 변경합니다.", "확인") == DialogResult.Yes)
                 {
                     edTable2NozzleXOffset.Value = edTable2XOffset.Value;
                     edTable2NozzleYOffset.Value = edTable2YOffset.Value;
@@ -1088,7 +1088,7 @@ namespace LaserCutter
 
         private void btnMove_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("측정 시작 위치로 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("측정 시작 위치로 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
@@ -1100,7 +1100,7 @@ namespace LaserCutter
 
         private void btnMark_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Mark표시를 진행합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Mark표시를 진행합니다.", "확인") == DialogResult.Yes)
             {
                 CurrentStep = 3000;
                 AutoThread.Enabled = true;             
@@ -1109,7 +1109,7 @@ namespace LaserCutter
 
         private void btnMoveTable1LaserZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(Z_AXIS_NO);
 
@@ -1119,7 +1119,7 @@ namespace LaserCutter
 
         private void btnMoveTable1VisionZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(Z_AXIS_NO);
 
@@ -1129,7 +1129,7 @@ namespace LaserCutter
 
         private void btnMoveTable2LaserZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 Pmac.ZMoveAbs(edTable2LaserZFocus.Value);
             }
@@ -1137,7 +1137,7 @@ namespace LaserCutter
 
         private void btnMoveTable2VisionZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
             {
                 Pmac.ZMoveAbs(edTable2VisionZFocus.Value);
             }
@@ -1145,7 +1145,7 @@ namespace LaserCutter
 
         private void btnMoveMeasurePos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Measure Pos위치 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Measure Pos위치 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
@@ -1157,7 +1157,7 @@ namespace LaserCutter
 
         private void btnSetTable1LaserZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 LaserFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 LaserFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 Global.chTable1LaserZFocus.AsDouble = Global.chZActualPos.AsDouble;
 
@@ -1167,7 +1167,7 @@ namespace LaserCutter
 
         private void btnSetTable2LaserZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 LaserFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 LaserFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 Global.chTable2LaserZFocus.AsDouble = Global.chZActualPos.AsDouble;
 
@@ -1177,7 +1177,7 @@ namespace LaserCutter
 
         private void btnSetTable1VisionZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table1의 VisionFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table1의 VisionFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 Global.chTable1VisionZFocus.AsDouble = Global.chZActualPos.AsDouble;
 
@@ -1187,7 +1187,7 @@ namespace LaserCutter
 
         private void btnSetTable2VisionZFocus_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Table2의 VisionFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Table2의 VisionFocus 위치를 변경합니다", "확인") == DialogResult.Yes)
             {
                 Global.chTable2VisionZFocus.AsDouble = Global.chZActualPos.AsDouble;
 
@@ -1197,7 +1197,7 @@ namespace LaserCutter
 
         private void btnSetMeasurePos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("현재 위치를 Powermeter Measuer Pos로 지정합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("현재 위치를 Powermeter Measuer Pos로 지정합니다.", "확인") == DialogResult.Yes)
             {
                 edPowerMeterXPos.Value = Global.chXActualPos.AsDouble;
                 edPowerMeterZPos.Value = Global.chZActualPos.AsDouble;
@@ -1339,7 +1339,7 @@ namespace LaserCutter
 
         private void btnTable1Start_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("가공을 시작합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("가공을 시작합니다.", "확인") == DialogResult.Yes)
             {
                 frmRunStatus.Abort = false;
 
@@ -1375,7 +1375,7 @@ namespace LaserCutter
 
         private void btnTable2Start_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("가공을 시작합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("가공을 시작합니다.", "확인") == DialogResult.Yes)
             {
                 edTable2StartX.Apply();
                 edTable2StartY.Apply();
@@ -1401,7 +1401,7 @@ namespace LaserCutter
 
         private void btnSetTable1StartPos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("현재의 위치를 가공 시작 위치로 변경합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("현재의 위치를 가공 시작 위치로 변경합니다.", "확인") == DialogResult.Yes)
             {
                 edTable1StartX.Value = Global.chXActualPos.AsDouble;
                 edTable1StartY.Value = Global.chY1ActualPos.AsDouble;
@@ -1411,7 +1411,7 @@ namespace LaserCutter
 
         private void btnSetTable2StartPos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("현재의 위치를 가공 시작 위치로 변경합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("현재의 위치를 가공 시작 위치로 변경합니다.", "확인") == DialogResult.Yes)
             {
                 edTable2StartX.Value = Global.chXActualPos.AsDouble;
                 edTable2StartY.Value = Global.chY2ActualPos.AsDouble;
@@ -1421,7 +1421,7 @@ namespace LaserCutter
 
         private void btnMoveTable1StartPos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("가공 시작 위치로 이동합니다..", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("가공 시작 위치로 이동합니다..", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y1_AXIS_NO);
@@ -1435,7 +1435,7 @@ namespace LaserCutter
 
         private void btnMoveTable2StartPos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("가공 시작 위치로 이동합니다..", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("가공 시작 위치로 이동합니다..", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
@@ -1454,7 +1454,7 @@ namespace LaserCutter
 
         private void btnSetLoadPos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("현재 위치를 시스템의 LoadPos로 지정합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("현재 위치를 시스템의 LoadPos로 지정합니다.", "확인") == DialogResult.Yes)
             {
                 edLoadPosX.Value = Global.chXActualPos.AsDouble;
                 edLoadPosY1.Value = Global.chY1ActualPos.AsDouble;
@@ -1467,7 +1467,7 @@ namespace LaserCutter
 
         private void btnMoveLoadPos_Click(object sender, EventArgs e)
         {
-            if (dkCommon.Confirm("Load Pos위치 이동합니다.", "확인") == DialogResult.Yes)
+            if (yjCommon.Confirm("Load Pos위치 이동합니다.", "확인") == DialogResult.Yes)
             {
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y1_AXIS_NO);

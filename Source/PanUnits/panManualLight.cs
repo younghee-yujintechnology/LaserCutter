@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 using Newtonsoft.Json.Linq;
 using Raize.CodeSiteLogging;
 using System;
@@ -37,7 +37,7 @@ namespace LaserCutter
             logger.Category = "Manual.Light";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -93,7 +93,7 @@ namespace LaserCutter
 #elif _VERSION2
             cbComPort.SelectedIndex = 0;
 #endif
-            Comm.Port = (DaekhonSystem.Port)cbComPort.SelectedIndex;
+            Comm.Port = (YujinTechnology.Port)cbComPort.SelectedIndex;
 
             btnConnect.LED.Value = Comm.OpenComm();
 

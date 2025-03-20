@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 
 namespace LaserCutter
 {
@@ -67,16 +67,16 @@ namespace LaserCutter
 
             //if (cbUserName.SelectedIndex < 0)
             //{
-            //    dkCommon.Warning("로그인 실패", "사용자 이름을 선택해 주세요!");
+            //    yjCommon.Warning("로그인 실패", "사용자 이름을 선택해 주세요!");
             //}
             //else if (tbPass.Text.Length == 0)
             //{
-            //    dkCommon.Warning("로그인 실패", "패스워드를 입력해 주세요!");
+            //    yjCommon.Warning("로그인 실패", "패스워드를 입력해 주세요!");
             //}
             //else 
             //if (false == obj.Loggin(cbUserName.Text.ToString(), tbPass.Text.ToString()))
             //{
-            //    dkCommon.Warning("로그인 실패", "로그인 정보가 일치 하지 않습니다!");
+            //    yjCommon.Warning("로그인 실패", "로그인 정보가 일치 하지 않습니다!");
             //}
 
             //else

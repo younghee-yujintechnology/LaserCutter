@@ -7,7 +7,7 @@ using FirebirdSql.Data.FirebirdClient;
 using System.Collections.Generic;
 using System.Transactions;
 using System.Data;
-using DaekhonSystem;
+using YujinTechnology;
 
 using Raize.CodeSiteLogging;
 using System.Linq;
@@ -61,7 +61,7 @@ namespace LaserCutter
 
         private void bitBtn1_Click(object sender, EventArgs e)
         {
-            string databaseFilePath = String.Format("{0}Error.fdb", dkCommon.AppPath());
+            string databaseFilePath = String.Format("{0}Error.fdb", yjCommon.AppPath());
 
             CheckDatabase(databaseFilePath);
             CheckTable();

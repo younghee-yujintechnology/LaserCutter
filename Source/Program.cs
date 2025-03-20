@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using YujinTechnology;
 
 namespace LaserCutter
 {

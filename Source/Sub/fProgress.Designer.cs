@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblMessage = new DaekhonSystem.Label();
+            this.lblMessage = new YujinTechnology.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
@@ -36,7 +36,7 @@
             // 
             this.lblMessage.BackColor = System.Drawing.Color.LightGray;
             this.lblMessage.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblMessage.CaptionStyle.TextStyle = DaekhonSystem.TextStyle.Shadow;
+            this.lblMessage.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
             this.lblMessage.Font = new System.Drawing.Font("Tahoma", 11F);
             this.lblMessage.ForeColor = System.Drawing.Color.Red;
             this.lblMessage.Location = new System.Drawing.Point(44, 28);
@@ -69,7 +69,7 @@
 
         #endregion
 
-        public DaekhonSystem.Label lblMessage;
+        public YujinTechnology.Label lblMessage;
         public System.Windows.Forms.ProgressBar progressBar1;
     }
 }

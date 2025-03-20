@@ -33,15 +33,15 @@ namespace LaserCutter
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.propGridIO = new DaekhonSystem.PropertyGrid();
+            this.propGridIO = new YujinTechnology.PropertyGrid();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.propGridMotion = new DaekhonSystem.PropertyGrid();
+            this.propGridMotion = new YujinTechnology.PropertyGrid();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.propGridADV = new DaekhonSystem.PropertyGrid();
+            this.propGridADV = new YujinTechnology.PropertyGrid();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.propGridLaser = new DaekhonSystem.PropertyGrid();
+            this.propGridLaser = new YujinTechnology.PropertyGrid();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.propGridConfig = new DaekhonSystem.PropertyGrid();
+            this.propGridConfig = new YujinTechnology.PropertyGrid();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -191,10 +191,10 @@ namespace LaserCutter
         private System.Windows.Forms.TabPage tabPage2;
         public YujinTechnology.PropertyGrid propGridIO;
         private System.Windows.Forms.TabPage tabPage3;
-        public DaekhonSystem.PropertyGrid propGridMotion;
-        public DaekhonSystem.PropertyGrid propGridADV;
+        public YujinTechnology.PropertyGrid propGridMotion;
+        public YujinTechnology.PropertyGrid propGridADV;
         private System.Windows.Forms.TabPage tabPage4;
-        public DaekhonSystem.PropertyGrid propGridLaser;
+        public YujinTechnology.PropertyGrid propGridLaser;
         private System.Windows.Forms.TabPage tabPage5;
         public PropertyGrid propGridConfig;
     }

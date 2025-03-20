@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using YujinTechnology;
 
 namespace LaserCutter
 {
@@ -30,43 +30,43 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {  
-            this.Comm = new DaekhonSystem.Comm();
-            this.ReadThread = new DaekhonSystem.Thread();
+            this.Comm = new YujinTechnology.Comm();
+            this.ReadThread = new YujinTechnology.Thread();
             this.panClient = new LaserCutter.sjPanel();
-            this.ledTX = new DaekhonSystem.LEDLabel();
-            this.ledRX = new DaekhonSystem.LEDLabel();
-            this.btnLightOn = new DaekhonSystem.LEDButton();
-            this.viCurrentValue = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel4 = new DaekhonSystem.GradientLabel();
-            this.btnConnect = new DaekhonSystem.LEDButton();
-            this.btnSet = new DaekhonSystem.BitBtn();
-            this.edLightValue = new DaekhonSystem.KeypadEdit();
-            this.gradientLabel2 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel3 = new DaekhonSystem.GradientLabel();
-            this.cbComPort = new DaekhonSystem.ComboBox();
+            this.ledTX = new YujinTechnology.LEDLabel();
+            this.ledRX = new YujinTechnology.LEDLabel();
+            this.btnLightOn = new YujinTechnology.LEDButton();
+            this.viCurrentValue = new YujinTechnology.ValueIndicator();
+            this.gradientLabel4 = new YujinTechnology.GradientLabel();
+            this.btnConnect = new YujinTechnology.LEDButton();
+            this.btnSet = new YujinTechnology.BitBtn();
+            this.edLightValue = new YujinTechnology.KeypadEdit();
+            this.gradientLabel2 = new YujinTechnology.GradientLabel();
+            this.gradientLabel3 = new YujinTechnology.GradientLabel();
+            this.cbComPort = new YujinTechnology.ComboBox();
             this.panClient.SuspendLayout();
             this.SuspendLayout();
             // 
             // Comm
             // 
-            this.Comm.BaudRate = DaekhonSystem.BaudRate._19200;
+            this.Comm.BaudRate = YujinTechnology.BaudRate._19200;
             this.Comm.BinaryMode = false;
-            this.Comm.ByteSize = DaekhonSystem.ByteSize._8;
+            this.Comm.ByteSize = YujinTechnology.ByteSize._8;
             this.Comm.CheckParity = false;
-            this.Comm.CommEvents = new DaekhonSystem.CommEvent[] {
-        DaekhonSystem.CommEvent.EV_RXCHAR,
-        DaekhonSystem.CommEvent.EV_RXFLAG,
-        DaekhonSystem.CommEvent.EV_TXEMPTY};
+            this.Comm.CommEvents = new YujinTechnology.CommEvent[] {
+        YujinTechnology.CommEvent.EV_RXCHAR,
+        YujinTechnology.CommEvent.EV_RXFLAG,
+        YujinTechnology.CommEvent.EV_TXEMPTY};
             this.Comm.DiscardNull = false;
             this.Comm.EventChar = "0x0D";
-            this.Comm.FlowControl = DaekhonSystem.FlowControl.FC_XONXOFF;
+            this.Comm.FlowControl = YujinTechnology.FlowControl.FC_XONXOFF;
             this.Comm.MaxInQueue = 4096;
             this.Comm.MaxOutQueue = 2048;
-            this.Comm.Parity = DaekhonSystem.Parity.NONE;
-            this.Comm.Port = DaekhonSystem.Port.COM03;
+            this.Comm.Parity = YujinTechnology.Parity.NONE;
+            this.Comm.Port = YujinTechnology.Port.COM03;
             this.Comm.Priority = System.Threading.ThreadPriority.Normal;
             this.Comm.RS485Mode = false;
-            this.Comm.StopBits = DaekhonSystem.StopBits._1;
+            this.Comm.StopBits = YujinTechnology.StopBits._1;
             this.Comm.TimeOut = ((uint)(1000u));
             // 
             // ReadThread
@@ -104,7 +104,7 @@ namespace LaserCutter
             this.ledTX.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ledTX.Frame.Visible = false;
             this.ledTX.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ledTX.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.ledTX.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.ledTX.LED.OffColor = System.Drawing.Color.Gray;
             this.ledTX.Location = new System.Drawing.Point(402, 12);
             this.ledTX.Name = "ledTX";
@@ -119,7 +119,7 @@ namespace LaserCutter
             this.ledRX.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ledRX.Frame.Visible = false;
             this.ledRX.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ledRX.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.ledRX.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.ledRX.LED.OffColor = System.Drawing.Color.Gray;
             this.ledRX.LED.OnColor = System.Drawing.Color.Red;
             this.ledRX.Location = new System.Drawing.Point(384, 12);
@@ -137,7 +137,7 @@ namespace LaserCutter
             this.btnLightOn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLightOn.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnLightOn.ForeColor = System.Drawing.Color.Black;
-            this.btnLightOn.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnLightOn.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnLightOn.LED.Size = new System.Drawing.Size(70, 26);
             this.btnLightOn.Location = new System.Drawing.Point(282, 340);
             this.btnLightOn.MinimumSize = new System.Drawing.Size(1, 1);
@@ -187,7 +187,7 @@ namespace LaserCutter
             this.btnConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnect.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnConnect.ForeColor = System.Drawing.Color.Black;
-            this.btnConnect.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnConnect.LED.Layout = YujinTechnology.LEDLayout.Center;
             this.btnConnect.LED.Size = new System.Drawing.Size(70, 26);
             this.btnConnect.Location = new System.Drawing.Point(282, 64);
             this.btnConnect.MinimumSize = new System.Drawing.Size(1, 1);
@@ -219,7 +219,7 @@ namespace LaserCutter
             // 
             this.edLightValue.BackColor = System.Drawing.Color.White;
             this.edLightValue.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edLightValue.DataType = DaekhonSystem.DataType.Integer;
+            this.edLightValue.DataType = YujinTechnology.DataType.Integer;
             this.edLightValue.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edLightValue.ForeColor = System.Drawing.Color.Black;
             this.edLightValue.Frame.CornerRound = 1;

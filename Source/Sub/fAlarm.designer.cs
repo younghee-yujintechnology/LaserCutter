@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.txbContent = new System.Windows.Forms.TextBox();
-            this.lblTitle = new DaekhonSystem.GradientLabel();
-            this.btOk = new DaekhonSystem.BitBtn();
-            this.lblBottom = new DaekhonSystem.GradientLabel();
+            this.lblTitle = new YujinTechnology.GradientLabel();
+            this.btOk = new YujinTechnology.BitBtn();
+            this.lblBottom = new YujinTechnology.GradientLabel();
             this.timer1 = new System.Windows.Forms.Timer();
             this.SuspendLayout();
             // 
@@ -115,9 +115,9 @@
 
         #endregion
         private System.Windows.Forms.TextBox txbContent;
-        private DaekhonSystem.GradientLabel lblTitle;
-        private DaekhonSystem.BitBtn btOk;
-        private DaekhonSystem.GradientLabel lblBottom;
+        private YujinTechnology.GradientLabel lblTitle;
+        private YujinTechnology.BitBtn btOk;
+        private YujinTechnology.GradientLabel lblBottom;
         private System.Windows.Forms.Timer timer1;
     }
 }
