@@ -1,0 +1,137 @@
+//PLC 번호
+#define PLC_00_PRIMARY_PLC												0  //우선 순위 구동 PLC
+#define PLC_01_SYS_INIT													1  //초기화
+#define PLC_02_PROG_ALARM												2  //알람 프로그램
+#define PLC_03_PROG_INTERFACE											3  //외부 연결 시퀀스 프로그램
+#define PLC_04_PROG_ALLHOME												4  //전체 홈 프로그램
+#define PLC_05_PROG_MACH_AUTO											5  //장비 자동 프로그램
+#define PLC_06_PROG_AUTO_SEQ											6  //장비 자동 시퀀스 프로그램
+#define PLC_07_PROG_UNIT_SEQ											7  //장비 유닛 시퀀스 프로그램
+
+#define PLC_10_PROG_MANUAL_IN											10 //Manual 입력 프로그램 
+#define PLC_11_PROG_MANUAL_OUT											11 //Manual 출력 프로그램 
+#define PLC_12_PROG_SEN_SAFTY											12 //에어리어, 도어 센서 관련 프로그램
+#define PLC_13_PROG_IO_OUT												13 //io 입출력 관련 프로그램
+  
+#define PLC_21_MT_PROG_BASIC_MOVE										21 //Motor 기본 프로그램
+#define PLC_22_MT_PROG_BASIC_ERROR										22 //Motor 기본 프로그램(Heavy Alarm)
+#define PLC_23_MT_PROG_BASIC_STAT_UPDATE								23 //Motor 기본 상태 업데이트
+																	   
+#define PLC25_MACH_STAT_UPDATE										25 //설비 기본 상태 업데이트
+
+//사용/미사용
+#define Use															1
+#define UnUse														0
+
+//파트 번호
+#define PART_MACH													1
+//유닛 번호
+#define AllUnit														1
+#define LSTAGE														2
+#define RSTAGE														3
+
+//Bit 값
+#define Bit00														00	//2^Bit00 = 01
+#define Bit01														01	//2^Bit01 = 02
+#define Bit02														02	//2^Bit02 = 04
+#define Bit03														03	//2^Bit03 = 08
+#define Bit04														04	//2^Bit04 = 16
+#define Bit05														05	//2^Bit05 = 32
+#define Bit06														06	//2^Bit06 = 64
+#define Bit07														07	//2^Bit07 = 128
+#define Bit08														08	//2^Bit08 = 256
+#define Bit09														09	//2^Bit09 = 512
+#define Bit10														10	//2^Bit10 = 1024
+#define Bit11														11	//2^Bit11 = 2048
+#define Bit12														12	//2^Bit12 = 4096
+#define Bit13														13	//2^Bit13 = 8192  
+#define Bit14														14	//2^Bit14 = 16384
+#define Bit15														15	//2^Bit15 = 32768
+
+//모터 번호 선언
+#define LinearX														1  //#1,  Linear X
+#define LStageY														2  //#2,  Left Stage Y
+#define RStageY														3  //#3,  Right Stage Y
+#define MOTOR_4														4  //#4,  Spare
+#define ServoZ														5  //#5,  Servo Z
+
+//타이머 번호 선언
+#define LSTAGE_T													50  //좌측 스테이지 유닛용 타이머
+#define RSTAGE_T													51  //우측 스테이지 유닛용 타이머
+#define MDOWNL_T													60  //모션 다운로드 타이머
+#define MACHSEQ_T													61  //장비 시퀀스 타이머
+#define ResetLamp_T													63  //리셋 램프 점멸 타이머
+#define L_StartLamp_T												64  //좌측 스타트 램프 점멸 타이머
+#define R_startLamp_T												65  //우측 스타트 램프 점멸 타이머
+#define L_PressureSen_T												66	//좌측 프레셔 센서 감지 딜레이 타이머
+#define R_PressureSen_T												67	//우측 프레셔 센서 감지 딜레이 타이머
+#define Pause_T														70  //일시 정지 시퀀스 타이머
+#define LSTAGE_WAIT_T												71	//좌측 스테이지 대기 타이머
+#define RSTAGE_WAIT_T												72	//우측 스테이지 대기 타이머
+#define L_STOP_T													80  //좌측 정지 버튼 타이머
+#define R_STOP_T													81  //우측 정지 버튼 타이머
+
+//모터 명령
+#define MTR_210_EXE_AUTO_RUN											210 //모터 자동 구동
+#define MTR_230_EXE_AUTO_READY											230 //모터 자동 대기 위치 구동
+#define MTR_270_EXE_AUTO_STOP											270 //모터 자동 정지
+
+#define MTR_510_StAutoRun											510 //모터 자동(Seq) 구동 상태
+#define MTR_530_CompAutoRdyRun										530 //모터 자동 대기 구동 완료
+
+//장비 명령
+#define MACH_000_STAT_READY											000 //장비 대기 상태
+#define MACH_210_EXE_AUTO_RUN										210 //장비 자동(Seq) 구동 실행
+#define MACH_220_EXE_1CYCLE_RUN										220 //장비 자동(Seq) 1사이클 구동 실행
+#define MACH_240_EXE_AUTO_READY										240 //장비 자동(Seq) 준비 실행
+#define MACH_250_EXE_AUTO_CYCLESTOP									250 //장비 자동(Seq) 사이클 정지 실행
+#define MACH_260_EXE_PAUSE											260 //장비 일시 정지 실행
+#define MACH_270_EXE_AUTO_STOP										270 //장비 자동(Seq) 정지 실행
+
+#define MACH_510_STAT_AUTORUN										510 //장비 자동(Seq) 구동 상태
+#define MACH_520_STAT_AUTO_1CYCLE_RUN								520 //장비 자동(Seq) 1사이클 구동 상태
+#define MACH_530_STAT_1STACK_RUN									530 //장비 자동(Seq) 1스택 구동 상태
+#define MACH_540_STAT_AUTO_READY									540 //장비 자동(Seq) 준비 구동 상태
+#define MACH_550_STAT_AUTO_CYCLE_STOP								550 //장비 자동(Seq) 사이클 정지 구동 상태	
+#define MACH_560_STAT_PAUSE											560 //장비 일시 정지 상태
+#define MACH_570_STAT_AUTO_STOP										570 //장비 자동(Seq) 정지 구동 상태
+
+#define MACH_010_EXE_SERVO_ON										010 //장비 서보 온
+#define MACH_020_EXE_SERV_OOFF										020 //장비 서보 오프
+#define MACH_030_EXE_HOME											030 //장비 홈구동
+#define MACH_080_EXE_STOP											080 //장비 정지
+#define MACH_090_EXE_ERROR_CLEAR									090 //장비 에러 클리어
+#define MACH_200_EXE_AUTO_READY										200 //장비 대기위치 이송
+#define MACH_300_ADDCHANGEEXETORUN									300 //장비 자동 구동 상태로 전환
+
+#define MACH_290_EXE_EMS											290 //장비 EMS 실행
+#define MACH_590_STAT_EMS											590 //장비 EMS 실행 중
+
+#define MACH_1000_EXE_ALL_HOME										1000 //장비 전체 홈 실행
+
+//시퀀스 명령
+#define SEQ_2000_LSTAGE_AUTO										2000 // 좌측 스테이지 자동 구동 시퀀스
+#define SEQ_3000_RSTAGE_AUTO										3000 // 우측 스테이지 자동 구동 시퀀스
+
+//유닛 명령
+#define UNIT_100_EXE_TABLEVAC										100 // 테이블 진공 시퀀스 실행
+#define UNIT_200_EXE_TABLEVENT										200 // 테이블 파기 시퀀스 실행
+#define UNIT_300_EXE_READYCHECK										300 // 유닛 실행 전 상태 체크
+#define UNIT_400_EXE_WORKSTARTMV									400 // 작업 시작 위치 이동
+#define UNIT_500_EXE_ROADMV											500 // 스테이지 로딩 위치 이동 시퀀스 실행
+#define UNIT_600_EXE_POWERMETERMV									600 // 장비 파워미터 측정 위치 이동 시퀀스 실행
+#define UNIT_700_EXE_READYPOSMV										700 // 유닛 대기 위치 이동 시퀀스 실행
+#define UNIT_800_EXE_ALLREADYPOSMV									800 // 장비 전체 준비 위치 이동 시퀀스 실행
+#define UNIT_1000_EXE_ALIGNMV										1000 // 비전 얼라인 촬영 시퀀스 실행
+
+//Timer
+#define AlignVisionExeTrigTime										80
+#define AlignVisionFeedBackTime										60000 //1분
+#define FeedBackP2UTimeOut											30000 // 30초
+#define ResetLampFlickTime											2000  // 0.5초
+#define ResetLampRdyFlickTime										500	  // 0.5초
+#define ErrResetDelayTime											2000  //2초
+#define PressureSenDelayTime										5000	//5초
+global MotionDownloadTimeOut=										30000 // 30초
+
+MotionDownloadTimeOut = 600000

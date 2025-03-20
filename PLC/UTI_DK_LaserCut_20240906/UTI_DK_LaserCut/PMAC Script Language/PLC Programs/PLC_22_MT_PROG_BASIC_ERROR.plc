@@ -1,0 +1,52 @@
+
+//Motor 기본 알람 업데이트 프로그램
+
+Open plc PLC_22_MT_PROG_BASIC_ERROR
+//- 기본 모터 알람
+Local L_CtsMotorNum
+if(L_CtsMotorNum > MAX_USE_MOTOR_COUNT || L_CtsMotorNum < 1)
+{
+	L_CtsMotorNum = 1
+}
+Else If(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+{
+	//- 모터 리밋 감지 정지 확인(리밋 에러 사용 모터 만)
+	If(Mtr_SetUSE_LIMIT_ERR(L_CtsMotorNum) == USE_LIMIT_ERR)
+	{
+		Call MTR_Err.LimitErr(L_CtsMotorNum)
+	}
+	//- 모터 중알람 확인(과부하 알람, 추종 오차 알람, 엠프 알람 발생)
+	Call MTR_Err.HeavyErr(L_CtsMotorNum)
+	L_CtsMotorNum++
+}
+// 중알람 에러 알람 비트 생성
+if(Temp_AreaSenErrStatus == 1 || Temp_SideDooerSenErrStatus ==1 || Temp_MainDoorSenErrStatus == 1 || Temp_PressureSenErrStatus == 1 || Temp_LeakSenErrStatus == 1 || Temp_LstageSaftyMvErrStatus == 1 || Temp_RstageSaftyMvErrStatus == 1)
+{
+	Safety_ErrorCheck = 1
+	if(Temp_SideDooerSenErrStatus ==1 || Temp_MainDoorSenErrStatus == 1 || Temp_PressureSenErrStatus == 1 || Temp_LeakSenErrStatus == 1)
+	{
+		Temp_SafetyEMOErrNotClearStatus = 1
+	}
+	ELSE IF(Temp_AreaSenErrStatus == 1 || Temp_RstageSaftyMvErrStatus == 1 || Temp_LstageSaftyMvErrStatus == 1)
+	{
+		IF(Temp_AreaSenErrStatus == 1)
+		{
+			Temp_SafetyStopErrNotClearStatus = 1
+		}
+		ELSE if(Temp_LstageSaftyMvErrStatus == 1 || Temp_RstageSaftyMvErrStatus == 1)
+		{
+			Temp_SafetyStopErrNotClearStatus = 0
+		}
+	}
+	Else
+	{
+		Temp_SafetyEMOErrNotClearStatus = 0
+		Temp_SafetyStopErrNotClearStatus = 0
+	}
+}
+else if(Temp_AreaSenErrStatus == 0 && Temp_SideDooerSenErrStatus ==0 && Temp_MainDoorSenErrStatus == 0 && Temp_PressureSenErrStatus == 0 && Temp_LeakSenErrStatus == 0 && Temp_LstageSaftyMvErrStatus == 0 && Temp_RstageSaftyMvErrStatus == 0)
+{
+	Temp_SafetyEMOErrNotClearStatus = 0
+	Temp_SafetyStopErrNotClearStatus = 0	
+}
+Close

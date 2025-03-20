@@ -1,0 +1,43 @@
+
+//모터 기본 상태 업데이트 프로그램
+
+Open Plc PLC_23_MT_PROG_BASIC_STAT_UPDATE
+
+//- 모터 상태 업데이트
+Local L_CtsMotorNum
+if(L_CtsMotorNum > MAX_USE_MOTOR_COUNT || L_CtsMotorNum < 1)
+{
+	L_CtsMotorNum = 1
+}
+Else If(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+{
+	Mtr_CalDivFactVel(L_CtsMotorNum) = 16*Sys.ServoPeriod*Mtr_SetScale(L_CtsMotorNum)/1000					//Motor 속도 계산 상수 값 업데이트
+	Mtr_CalDacOut(L_CtsMotorNum) = Motor[L_CtsMotorNum].ServoOut/32767*100
+	call Mtr_Chk.GetVel(L_CtsMotorNum)																		//모터 속도 업데이트
+	call Mtr_Chk.GetDesVel(L_CtsMotorNum)																	//모터 커맨드 속도 업데이트
+	call Mtr_Chk.GetActPos(L_CtsMotorNum)																	//모터 위치 업데이트
+	call Mtr_Chk.GetDesPos(L_CtsMotorNum)																	//모터 커맨드 위치 업데이트
+	call Mtr_Chk.IngHome(L_CtsMotorNum)																		//홈 구동 중 상태 확인 프로그램 호출
+	call Mtr_Chk.IngMove(L_CtsMotorNum)																		//모터 구동 중 상태 확인
+	call Mtr_ChkPos.ChkHomePos(L_CtsMotorNum)																//원점 위치 확인
+	call Mtr_ChkPos.ChkRdyPos(L_CtsMotorNum)																//모터 대기 위치 확인
+	call Mtr_ChkPos.ChkWorkPos(L_CtsMotorNum)																//모터 작업 위치 확인
+	call Mtr_ChkPos.ChkLoadPos(L_CtsMotorNum)																//모터 로딩 위치 확인
+	call Mtr_ChkPos.ChkPowerMeterPos(L_CtsMotorNum)															//모터 파워미터 위치 확인
+	call Mtr_ChkPos.ChkReadyPos(L_CtsMotorNum)																//모터 준비 위치 확인
+	call Mtr_ChkPos.ChkAilgnPos(L_CtsMotorNum)																//모터 얼라인 비전 위치 확인
+	if(Mtr_SetMotor_Type(L_CtsMotorNum) == TYPE_INF_ROT)
+	{
+		Mtr_StCompHome(L_CtsMotorNum) = 1
+	}
+
+	//모터 서보 Off 시 원점 완료 신호 초기화
+	If(Motor[L_CtsMotorNum].AmpEna == 0)
+	{
+		Mtr_StCompHome(L_CtsMotorNum) = 0
+	}
+	L_CtsMotorNum++
+}
+Close
+
+

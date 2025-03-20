@@ -1,0 +1,568 @@
+open plc PLC_03_PROG_INTERFACE
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 좌측 스테이지 시작 버튼
+if((In_LeftUnit_Start_Btn == 1 || P2U_Mach_LstageProgStart == 1) && Temp_In_LeftUnit_Start_Btn == 0)                         // 장비 시작 버튼 입력
+{
+	Temp_In_LeftUnit_Start_Btn = 1                                                         // 재진입 방지 셋팅
+	if(Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90)						// 시작 준비 시퀀스 확인
+	{
+		if(Temp_Mach_ReserveUnUse == Use)
+		{	
+			Unit_ExeCmdStep(LSTAGE) = UNIT_300_EXE_READYCHECK									 // 시작 준비 시퀀스 실행
+		}
+		else
+		{
+			if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)									// 장비 구동중이 아닐 때
+			{
+				Unit_ExeCmdStep(LSTAGE) = UNIT_300_EXE_READYCHECK									 // 시작 준비 시퀀스 실행
+			}
+		}
+	}
+}
+else if((In_LeftUnit_Start_Btn == 0 && P2U_Mach_LstageProgStart == 0) && Temp_In_LeftUnit_Start_Btn ==1)                    // 장비 시작 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Out_LeftUnit_Start_Btn_Lamp = 0
+	Temp_In_LeftUnit_Start_Btn = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 우측 스테이지 시작 버튼
+if((In_RightUnit_Start_Btn == 1 || P2U_Mach_RstageProgStart == 1) && Temp_In_RightUnit_Start_Btn == 0)                           // 장비 시작 버튼 입력
+{
+	Temp_In_RightUnit_Start_Btn = 1                                                           // 재진입 방지 셋팅
+	if(Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90)						// 시작 준비 시퀀스 확인
+	{
+		if(Temp_Mach_ReserveUnUse == Use)
+		{	
+			Unit_ExeCmdStep(RSTAGE) = UNIT_300_EXE_READYCHECK									 // 시작 준비 시퀀스 실행
+		}
+		else
+		{
+			if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)									// 장비 구동중이 아닐 때
+			{
+				Unit_ExeCmdStep(RSTAGE) = UNIT_300_EXE_READYCHECK									 // 시작 준비 시퀀스 실행
+			}
+		}
+	}
+}
+else if((In_RightUnit_Start_Btn == 0 && P2U_Mach_RstageProgStart == 0) && Temp_In_RightUnit_Start_Btn ==1)                  // 장비 시작 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Out_RightUnit_Start_Btn_Lamp = 0
+	Temp_In_RightUnit_Start_Btn = 0                                                               // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//정지 버튼
+if((In_LeftUnit_Stop_Btn == 1 || In_RightUnit_Stop_Btn == 1  || P2U_Mach_AutoStop == 1) && Temp_In_LeftUnit_Stop_Btn == 0)                           // 장비 정지 버튼 입력
+{
+	Temp_In_LeftUnit_Stop_Btn = 1                                                            // 재진입 방지 셋팅
+	Mach_ExeCmdStep(PART_MACH) = MACH_270_EXE_AUTO_STOP
+}
+else if((In_LeftUnit_Stop_Btn == 0 && In_RightUnit_Stop_Btn == 0 && P2U_Mach_AutoStop == 0) && Temp_In_LeftUnit_Stop_Btn ==1)                  // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_LeftUnit_Stop_Btn = 0                                                             // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//전체 원점 시작 버튼
+if(P2U_Mach_AllHomeExe == 1 && Temp_Mach_AllHomeExe == 0)                           // 전체 원점 시작 버튼 입력
+{
+	Temp_Mach_AllHomeExe = 1                                                                // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)         // 장비 구동 상태 확인
+	{
+		if(Part_ExeCmdReadyStep(PART_MACH) <= 0 || Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+990)            // 전체 원점 시퀀스 구동 확인
+		{
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME            // 전체 원점 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Mach_AllHomeExe == 0 && Temp_Mach_AllHomeExe == 1)                  // 전체 원점 시작 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Mach_AllHomeExe = 0                                                                // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//리셋 버튼
+if((In_LeftUnit_ReSet_Btn == 1 || In_RightUnit_ReSet_Btn == 1 || P2U_Mach_ReSetStart == 1) && Temp_In_LeftUnit_ReSet_Btn == 0)                            // 장비 리셋 버튼 입력
+{
+	Temp_In_LeftUnit_ReSet_Btn = 1                                                               // 재진입 방지 셋팅
+}
+else if((In_LeftUnit_ReSet_Btn == 0 && In_RightUnit_ReSet_Btn == 0 && P2U_Mach_ReSetStart == 0) && Temp_In_LeftUnit_ReSet_Btn ==1)                   // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	if (In_Main_PowerOn == 0)
+	{
+		call Timer.msec(ErrResetDelayTime)
+	}
+	Mach_ExeCmdErrorReset = 1
+	Temp_In_LeftUnit_ReSet_Btn = 0                                                              // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//장비 EMO 버튼
+if((In_EMO01_Btn == 1 || In_EMO02_Btn == 1 || In_EMO03_Btn == 1) && Temp_In_RightUnit_ReSet_Btn == 0)                         // 장비 리셋 버튼 입력
+{
+	Temp_In_RightUnit_ReSet_Btn = 1                                                              // 재진입 방지 셋팅
+	Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+}
+else if(In_RightUnit_ReSet_Btn == 0 && Temp_In_RightUnit_ReSet_Btn ==1)                  // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_RightUnit_ReSet_Btn = 0                                                               // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//장비 준비 위치 이동 버튼
+if(P2U_Mach_ReadyExe == 1 && Temp_Mach_ReadyExe == 0)                         // 장비 리셋 버튼 입력
+{
+	Temp_Mach_ReadyExe = 1																					// 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)	// 장비 구동 중에는 준비위치 이동 불가
+	{
+		if((Unit_ExeCmdStep(AllUnit) <= 0 ||Unit_ExeCmdStep(AllUnit)%100 == 90) &&(Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90) && (Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90))
+		{                                                       
+			Unit_ExeCmdStep(AllUnit) = UNIT_800_EXE_ALLREADYPOSMV
+		}
+	}
+}
+else if(P2U_Mach_ReadyExe == 1 && Temp_Mach_ReadyExe == 1)                    // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Mach_ReadyExe = 0                                                              // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//좌측 진공 버튼
+if((In_LeftUnit_Vac_Btn == 1 || P2U_Lstage_VacStart == 1) && Temp_In_LeftUnit_Vac_Btn == 0)                         // 장비 리셋 버튼 입력
+{
+	Temp_In_LeftUnit_Vac_Btn = 1																					// 재진입 방지 셋팅
+	if(Seq_ExeCmdStep(PART_MACH) < SEQ_2000_LSTAGE_AUTO || Seq_ExeCmdStep(PART_MACH) >= SEQ_2000_LSTAGE_AUTO+990)	// 좌측 가동 중에는 수동 입력 불가
+	{
+		if(U2P_Lstage_VacReadySt == 1 || (Unit_ExeCmdStep(LSTAGE) >= UNIT_100_EXE_TABLEVAC && Unit_ExeCmdStep(LSTAGE) <= UNIT_100_EXE_TABLEVAC+90))
+		{                                                       
+			Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT
+		}
+		else if(U2P_Lstage_VacReadySt == 0)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC
+		}
+	}
+}
+else if((In_LeftUnit_Vac_Btn == 0 && P2U_Lstage_VacStart == 0) && Temp_In_LeftUnit_Vac_Btn ==1)                    // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_LeftUnit_Vac_Btn = 0                                                              // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//우측 진공 버튼
+if((In_RightUnit_Vac_Btn == 1 || P2U_Rstage_VacStart == 1) && Temp_In_RightUnit_Vac_Btn == 0)                           // 장비 리셋 버튼 입력
+{
+	Temp_In_RightUnit_Vac_Btn = 1
+	if(Seq_ExeCmdStep(PART_MACH) < SEQ_3000_RSTAGE_AUTO || Seq_ExeCmdStep(PART_MACH) >= SEQ_3000_RSTAGE_AUTO+990)
+	{
+		if(U2P_Rstage_VacReadySt == 1 || (Unit_ExeCmdStep(RSTAGE) >= UNIT_100_EXE_TABLEVAC && Unit_ExeCmdStep(RSTAGE) <= UNIT_100_EXE_TABLEVAC+90))
+		{                                                               // 재진입 방지 셋팅
+			Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT
+		}
+		else if(U2P_Rstage_VacReadySt == 0)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC
+		}
+	}
+}
+else if((In_RightUnit_Vac_Btn == 0 && P2U_Rstage_VacStart == 0) && Temp_In_RightUnit_Vac_Btn ==1)                  // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_RightUnit_Vac_Btn = 0                                                             // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 좌측 스테이지 작업위치 이동 버튼
+if(P2U_Lstage_WorkPosMvStart == 1 && Temp_Lstage_WorkPosMvStart == 0)                         // 장비 시작 버튼 입력
+{
+	Temp_Lstage_WorkPosMvStart = 1
+	IF(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{                                                         // 재진입 방지 셋팅
+		if((Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90) && (Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_400_EXE_WORKSTARTMV                                               // 시작 준비 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Lstage_WorkPosMvStart == 0 && Temp_Lstage_WorkPosMvStart ==1)                    // 장비 시작 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Lstage_WorkPosMvStart = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 우측 스테이지 작업위치 이동 버튼
+if(P2U_Rstage_WorkPosMvStart == 1 && Temp_Rstage_WorkPosMvStart == 0)                         // 장비 시작 위치 이동 버튼 입력
+{
+	Temp_Rstage_WorkPosMvStart = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90) && (Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_400_EXE_WORKSTARTMV                                               // 시작 위치 이동 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Rstage_WorkPosMvStart == 0 && Temp_Rstage_WorkPosMvStart ==1)                    // 장비 시작 위치 이동 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Rstage_WorkPosMvStart = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 좌측 스테이지 얼라인 비전 시퀀스 시작 버튼
+if(P2U_Lstage_AilgnMvStart == 1 && Temp_Lstage_AilgnMvStart == 0)                         // 장비 시작 위치 이동 버튼 입력
+{
+	Temp_Lstage_AilgnMvStart = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90) && (Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_1000_EXE_ALIGNMV                                               // 시작 위치 이동 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Lstage_AilgnMvStart == 0 && Temp_Lstage_AilgnMvStart ==1)                    // 장비 시작 위치 이동 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Lstage_AilgnMvStart = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 우측 스테이지 얼라인 비전 시퀀스 시작 버튼
+if(P2U_Rstage_AilgnMvStart == 1 && Temp_Rstage_AilgnMvStart == 0)                         //  얼라인 비전 시퀀스 실행 버튼 입력 버튼 입력
+{
+	Temp_Rstage_AilgnMvStart = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90) && (Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_1000_EXE_ALIGNMV                                               /// 얼라인 비전 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Rstage_AilgnMvStart == 0 && Temp_Rstage_AilgnMvStart ==1)                    // 얼라인 비전 시퀀스 실행 버튼 입력 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Rstage_AilgnMvStart = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 좌측 스테이지 로딩 위치 이동 버튼
+if(P2U_Lstage_LoadingPosMvStart == 1 && Temp_Lstage_LoadingPosMvStart == 0)                         // 얼라인 비전 시퀀스 실행 버튼 입력
+{
+	Temp_Lstage_LoadingPosMvStart = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90) && (Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_500_EXE_ROADMV                                               // 얼라인 비전 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Lstage_LoadingPosMvStart == 0 && Temp_Lstage_LoadingPosMvStart ==1)                    //  얼라인 비전 시퀀스 실행 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Lstage_LoadingPosMvStart = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 우측 스테이지 로딩 위치 이동 버튼
+if(P2U_Rstage_LoadingPosMvStart == 1 && Temp_Rstage_LoadingPosMvStart == 0)                         // 로딩 위치 이동 버튼 입력
+{
+	Temp_Rstage_LoadingPosMvStart = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90) && (Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_500_EXE_ROADMV                                              // 로딩 위치 이동 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Rstage_LoadingPosMvStart == 0 && Temp_Rstage_LoadingPosMvStart ==1)                    // 로딩 위치 이동 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Rstage_LoadingPosMvStart = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 장비 파워 미터 측정 위치 이동 버튼
+if(P2U_Mach_PowerMeterChk == 1 && Temp_Mach_PowerMeterChk == 0)                         // 파워 미터 위치 이동 버튼 입력
+{
+	Temp_Mach_PowerMeterChk = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90) && (Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_500_EXE_ROADMV                                              // 파워 미터 위치 이동 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Mach_PowerMeterChk == 0 && Temp_Mach_PowerMeterChk ==1)                    // 파워 미터 위치 이동 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Mach_PowerMeterChk = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 장비 좌측 스테이지 대기 위치 이동 버튼
+if(P2U_Lstage_ReadyMvStart == 1 && Temp_Lstage_ReadyMvStart == 0)                         // 대기 위치 이동 버튼 입력
+{
+	Temp_Lstage_ReadyMvStart = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90) && (Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_700_EXE_READYPOSMV                                              // 대기 위치 이동 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Lstage_ReadyMvStart == 0 && Temp_Lstage_ReadyMvStart ==1)                    // 대기 위치 이동 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Lstage_ReadyMvStart = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// 장비 우측 스테이지 대기 위치 이동 버튼
+if(P2U_Rstage_ReadyMvStart == 1 && Temp_Rstage_ReadyMvStart == 0)                         // 대기 위치 이동 버튼 입력
+{
+	Temp_Rstage_ReadyMvStart = 1                                                             // 재진입 방지 셋팅
+	if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+	{
+		if((Unit_ExeCmdStep(RSTAGE) <= 0 ||Unit_ExeCmdStep(RSTAGE)%100 == 90) && (Unit_ExeCmdStep(LSTAGE) <= 0 ||Unit_ExeCmdStep(LSTAGE)%100 == 90))						// 시작 준비 시퀀스 확인
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_700_EXE_READYPOSMV                                              // 대기 위치 이동 시퀀스 실행
+		}
+	}
+}
+else if(P2U_Rstage_ReadyMvStart == 0 && Temp_Rstage_ReadyMvStart ==1)                    // 대기 위치 이동 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Rstage_ReadyMvStart = 0                                                                // 재진입 방지 OFF
+}
+//장비 부저 정지 버튼
+if(P2U_Mach_BuzzerStopExe == 1 && Temp_Mach_BuzzerStopExe == 0)                         // 부저 정지 이동 버튼 입력
+{
+	Temp_Mach_BuzzerStopExe = 1                                                             // 재진입 방지 셋팅
+	Temp_SinalTower_Buzzer = 1																// 부저 정지 실행
+}
+else if(P2U_Mach_BuzzerStopExe == 0 && Temp_Mach_BuzzerStopExe ==1)                    // 부저 정지 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Mach_BuzzerStopExe = 0                                                                // 재진입 방지 OFF
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 장비 상태 업데이트
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+IF(Mach_StError == 1)
+{
+	U2P_Mach_Status = 2 // 장비 에러 상태
+}
+else if(Mach_ExeCmdStep(PART_MACH) == MACH_510_STAT_AUTORUN && Part_ExeCmdStep(PART_MACH) == MACH_510_STAT_AUTORUN)
+{
+	U2P_Mach_Status = 1 // 장비 가동 상태
+}
+else if(Mach_ExeCmdStep(PART_MACH) == MACH_000_STAT_READY && Part_ExeCmdStep(PART_MACH) == MACH_000_STAT_READY)
+{
+	U2P_Mach_Status = 0 // 장비 대기 상태
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 파라미터 데이터 취득
+//IF(Mach_ExeRcpDataUpdate == 1)
+//{
+Mtr_SetHomeOffsetPos(LinearX)	=	LinearX_Mtr_HomeOffset	
+Mtr_SetHomeOffsetPos(LStageY)	=	LStageY_Mtr_HomeOffset	
+Mtr_SetHomeOffsetPos(RStageY)	=	RStageY_Mtr_HomeOffset	
+Mtr_SetHomeOffsetPos(ServoZ)	=	ServoZ_Mtr_HomeOffset	
+
+Temp_Mach_MotionTimeOut 		=		P2U_Mach_MotionTimeOut			//장비 모션 구동 타임 아웃 시간 값
+Temp_Lstage_ViAilgnUnUse 		=		P2U_Lstage_ViAilgnUnUse			//Ailgn 비전 사용/미사용
+Temp_Mach_MainDoorUnUse			=		P2U_Mach_MainDoorUnUse			//메인 도어 센서 사용/미사용 
+Temp_Mach_AreaSenUnUse			=		P2U_Mach_AreaSenUnUse			//에어리어 센서 사용/미사용
+Temp_Mach_SideDoorUnUse 		=		P2U_Mach_SideDoorUnUse			//사이드 도어 센서 사용/미사용
+Temp_Mach_BuzzerUnUse			=		P2U_Mach_BuzzerUnUse			//부저 사용/미사용
+
+Temp_Mach_UnitStartDelayTime	=		P2U_Mach_UnitStartDelayTime		//장비 구동 중 유닛 대기상태 딜레이 시간
+
+Temp_Mach_ReserveUnUse			=		P2U_Mach_ReserveUnUse			//장비 예약 기능 사용 / 미사용
+
+Temp_Mach_AutoCompVentUnUse		=		P2U_Mach_AutoCompVentUnUse		//장비 구동 완료 시 벤트 시퀀스 진행 사용/미사용
+Temp_Mach_VacErrCheckUnUse 		=		P2U_Mach_VacErrCheckUnUse		//장비 진공 에러 알람 사용/미사용
+Temp_Mach_AreaSenVentUnUse 		=		P2U_Mach_AreaSenVentUnUse		//장비 에어리어 센서 감지 시 파기 사용/미사용
+
+Temp_Lstage_Glessthickness		=		P2U_Lstage_Glessthickness		//좌측 스테이지 글라스 두께
+Temp_Rstage_Glessthickness		=		P2U_Rstage_Glessthickness		//좌측 스테이지 글라스 두께
+
+Temp_Lstage_ViAilgnCts 			=		P2U_Lstage_ViAilgnCts			//Ailgn 비전 촬영 위치 수
+Temp_Lstage_VacUseCts 			=		P2U_Lstage_VacUseCts			//진공 패드 사용 수(1차~4차)
+Temp_Lstage_Vac01Time 			=		P2U_Lstage_Vac01Time			//진공 패드 1차 인터벌 타임
+Temp_Lstage_Vac02Time 			=		P2U_Lstage_Vac02Time			//진공 패드 2차 인터벌 타임
+Temp_Lstage_Vac03Time 			=		P2U_Lstage_Vac03Time			//진공 패드 3차 인터벌 타임
+Temp_Lstage_Vac04Time 			=		P2U_Lstage_Vac04Time			//진공 패드 4차 인터벌 타임
+Temp_Rstage_ViAilgnUnUse 		=		P2U_Rstage_ViAilgnUnUse			//Ailgn 비전 사용/미사용
+Temp_Rstage_ViAilgnCts 			=		P2U_Rstage_ViAilgnCts			//Ailgn 비전 촬영 위치 수
+Temp_Rstage_VacUseCts 			=		P2U_Rstage_VacUseCts			//진공 패드 사용 수(1차~4차)
+Temp_Rstage_Vac01Time 			=		P2U_Rstage_Vac01Time			//진공 패드 1차 인터벌 타임
+Temp_Rstage_Vac02Time 			=		P2U_Rstage_Vac02Time			//진공 패드 2차 인터벌 타임
+Temp_Rstage_Vac03Time 			=		P2U_Rstage_Vac03Time			//진공 패드 3차 인터벌 타임
+Temp_Rstage_Vac04Time 			=		P2U_Rstage_Vac04Time			//진공 패드 4차 인터벌 타임
+//#1
+Temp_LinearX_SetMtReadyPos			 =       LinearX_SetMtReadyPos				//모터 대기 위치
+Temp_LinearX_SetMtLWorkStartPos		 =       LinearX_SetMtLWorkStartPos			//모터 Left 작업 시작 위치
+Temp_LinearX_SetMtRWorkStartPos		 =       LinearX_SetMtRWorkStartPos			//모터 Right 작업 시작 위치
+Temp_LinearX_SetMtLLoadingPos		 =       LinearX_SetMtLLoadingPos			//모터 Left 로딩 위치
+Temp_LinearX_SetMtRLoadingPos		 =       LinearX_SetMtRLoadingPos			//모터 Right 로딩 위치
+Temp_LinearX_SetMtLViAilgn01Pos		 =       LinearX_SetMtLViAilgn01Pos			//Left Align01 촬영 위치
+Temp_LinearX_SetMtLViAilgn02Pos		 =       LinearX_SetMtLViAilgn02Pos			//Left Align02 촬영 위치
+Temp_LinearX_SetMtLViAilgn03Pos		 =       LinearX_SetMtLViAilgn03Pos			//Left Align03 촬영 위치
+Temp_LinearX_SetMtLViAilgn04Pos		 =       LinearX_SetMtLViAilgn04Pos			//Left Align04 촬영 위치
+Temp_LinearX_SetMtRViAilgn01Pos		 =       LinearX_SetMtRViAilgn01Pos			//Right Align01 촬영 위치
+Temp_LinearX_SetMtRViAilgn02Pos		 =       LinearX_SetMtRViAilgn02Pos			//Right Align02 촬영 위치
+Temp_LinearX_SetMtRViAilgn03Pos		 =       LinearX_SetMtRViAilgn03Pos			//Right Align03 촬영 위치
+Temp_LinearX_SetMtRViAilgn04Pos		 =       LinearX_SetMtRViAilgn04Pos			//Right Align04 촬영 위치
+Temp_LinearX_SetMtPowerMeterPos		 =       LinearX_SetMtPowerMeterPos			//파워 미터 측정 포지션 위치   
+Temp_LinearX_SetMtSpare10Pos		 =       LinearX_SetMtSpare10Pos			//Spare Pos10   
+Temp_LinearX_SetMtPosMvSpd			 =       LinearX_SetMtPosMvSpd				//좌표 이동 시 속도
+Temp_LinearX_SetMtPosMvTA			 =       LinearX_SetMtPosMvTA				//좌표 이동 시 가속시간
+Temp_LinearX_SetReadyPosMvSpd		 =		 LinearX_SetReadyPosMvSpd			//대기 위치 이동 시 속도	
+Temp_LinearX_SetReadyPosMvTA		 =		 LinearX_SetReadyPosMvTA			//대기 위치 이동 시 가속시간		
+Temp_LinearX_SetMtWorkStartPosMvSpd  =		 LinearX_SetMtWorkStartPosMvSpd	    //작업 시작 위치 이동 시 속도		
+Temp_LinearX_SetMtWorkStartPosMvTA	 =		 LinearX_SetMtWorkStartPosMvTA		//작업 시작 위치 이동 시 가속시간	
+Temp_LinearX_SetAlignPosMvSpd		 =		 LinearX_SetAlignPosMvSpd			//얼라인 비전 위치 이동 시 속도	
+Temp_LinearX_SetAlignPosMvTA		 =		 LinearX_SetAlignPosMvTA			//얼라인 비전 위치 이동 시 가속시간		
+Temp_LinearX_SetLoadingPosMvSpd		 =		 LinearX_SetLoadingPosMvSpd			//로딩 위치 이동 시 속도	
+Temp_LinearX_SetLoadingPosMvTA		 =		 LinearX_SetLoadingPosMvTA			//로딩 위치 이동 시 가속시간	
+Temp_LinearX_SetPowerMeterPosMvSpd	 =		 LinearX_SetPowerMeterPosMvSpd		//파워 미터 측정 이동 시 속도	
+Temp_LinearX_SetPowerMeterPosMvTA	 =		 LinearX_SetPowerMeterPosMvTA		//파워 미터 측정 이동 시 가속시간	
+
+Temp_Mtr_CheckReadyPos(LinearX)		 =		 LinearX_SetMtReadyPos				//모터 대기 위치
+Temp_Mtr_CheckLAlign01Pos(LinearX)	 =		 LinearX_SetMtLViAilgn01Pos
+Temp_Mtr_CheckLAlign02Pos(LinearX)	 =		 LinearX_SetMtLViAilgn02Pos
+Temp_Mtr_CheckLAlign03Pos(LinearX)	 =		 LinearX_SetMtLViAilgn03Pos
+Temp_Mtr_CheckLAlign04Pos(LinearX)	 =		 LinearX_SetMtLViAilgn04Pos
+Temp_Mtr_CheckRAlign01Pos(LinearX)	 =		 LinearX_SetMtRViAilgn01Pos
+Temp_Mtr_CheckRAlign02Pos(LinearX)	 =		 LinearX_SetMtRViAilgn02Pos
+Temp_Mtr_CheckRAlign03Pos(LinearX)	 =		 LinearX_SetMtRViAilgn03Pos
+Temp_Mtr_CheckRAlign04Pos(LinearX)	 =		 LinearX_SetMtRViAilgn04Pos		
+Temp_Mtr_CheckPowerMeterPos(LinearX) =		 LinearX_SetMtPowerMeterPos
+Temp_Mtr_CheckLLoadingPos(LinearX)   =		 LinearX_SetMtLLoadingPos	
+Temp_Mtr_CheckRLoadingPos(LinearX)	 =		 LinearX_SetMtRLoadingPos	
+Temp_Mtr_CheckLWorkStartPos(LinearX) =		 LinearX_SetMtLWorkStartPos		
+Temp_Mtr_CheckRWorkStartPos(LinearX) =		 LinearX_SetMtRWorkStartPos	
+
+//#2
+Temp_LStageY_SetMtReadyPos			 =       LStageY_SetMtReadyPos				//모터 대기 위치
+Temp_LStageY_SetMtWorkStartPos		 =       LStageY_SetMtWorkStartPos			//모터 작업 시작 위치
+Temp_LStageY_SetMtSpare03Pos		 =       LStageY_SetMtSpare03Pos			//Spare Pos03   
+Temp_LStageY_SetMtLoadingPos		 =       LStageY_SetMtLoadingPos			//모터 로딩 위치  
+Temp_LStageY_SetMtSpare04Pos		 =       LStageY_SetMtSpare04Pos			//Spare Pos04   
+Temp_LStageY_SetMtViAilgn01Pos		 =       LStageY_SetMtViAilgn01Pos			//Align01 촬영 위치
+Temp_LStageY_SetMtViAilgn02Pos		 =       LStageY_SetMtViAilgn02Pos			//Align02 촬영 위치
+Temp_LStageY_SetMtViAilgn03Pos		 =       LStageY_SetMtViAilgn03Pos			//Align03 촬영 위치
+Temp_LStageY_SetMtViAilgn04Pos		 =       LStageY_SetMtViAilgn04Pos			//Align04 촬영 위치
+Temp_LStageY_SetMtSpare05Pos		 =       LStageY_SetMtSpare05Pos			//Spare Pos05   
+Temp_LStageY_SetMtSpare06Pos		 =       LStageY_SetMtSpare06Pos			//Spare Pos06   
+Temp_LStageY_SetMtSpare07Pos		 =       LStageY_SetMtSpare07Pos			//Spare Pos07   
+Temp_LStageY_SetMtSpare08Pos		 =       LStageY_SetMtSpare08Pos			//Spare Pos08   
+Temp_LStageY_SetMtSpare09Pos		 =       LStageY_SetMtSpare09Pos			//Spare Pos09   
+Temp_LStageY_SetMtSafePos			 =       -1*(Mtr_SetHomeOffsetPos(LStageY)+LStageY_SetMtSafePos) //스테이지 안전 위치
+Temp_LStageY_SetMtPosMvSpd			 =       LStageY_SetMtPosMvSpd				//좌표 이동 시 속도
+Temp_LStageY_SetMtPosMvTA			 =       LStageY_SetMtPosMvTA				//좌표 이동 시 가속시간
+Temp_LStageY_SetReadyPosMvSpd		 =		 LStageY_SetReadyPosMvSpd			//대기 위치 이동 시 속도	
+Temp_LStageY_SetReadyPosMvTA		 =		 LStageY_SetReadyPosMvTA			//대기 위치 이동 시 가속시간		
+Temp_LStageY_SetMtWorkStartPosMvSpd  =		 LStageY_SetMtWorkStartPosMvSpd		//작업 시작 위치 이동 시 속도
+Temp_LStageY_SetMtWorkStartPosMvTA	 =		 LStageY_SetMtWorkStartPosMvTA		//작업 시작 위치 이동 시 가속시간
+Temp_LStageY_SetAlignPosMvSpd		 =		 LStageY_SetAlignPosMvSpd			//얼라인 비전 위치 이동 시 속도
+Temp_LStageY_SetAlignPosMvTA		 =		 LStageY_SetAlignPosMvTA			//얼라인 비전 위치 이동 시 가속시간
+Temp_LStageY_SetLoadingPosMvSpd		 =		 LStageY_SetLoadingPosMvSpd			//로딩 위치 이동 시 속도
+Temp_LStageY_SetLoadingPosMvTA		 =		 LStageY_SetLoadingPosMvTA			//로딩 위치 이동 시 가속시간
+
+Temp_Mtr_CheckReadyPos(LStageY)		 =		 LStageY_SetMtReadyPos
+Temp_Mtr_CheckAlign01Pos(LStageY)	 =		 LStageY_SetMtViAilgn01Pos
+Temp_Mtr_CheckAlign02Pos(LStageY)	 =		 LStageY_SetMtViAilgn02Pos
+Temp_Mtr_CheckAlign03Pos(LStageY)	 =		 LStageY_SetMtViAilgn03Pos
+Temp_Mtr_CheckAlign04Pos(LStageY)	 =		 LStageY_SetMtViAilgn04Pos
+Temp_Mtr_CheckLoadingPos(LStageY)	 =		 LStageY_SetMtLoadingPos
+Temp_Mtr_CheckWorkStartPos(LStageY)	 =		 LStageY_SetMtWorkStartPos
+
+//#3
+Temp_RStageY_SetMtReadyPos			 =       RStageY_SetMtReadyPos				//모터 대기 위치
+Temp_RStageY_SetMtWorkStartPos		 =       RStageY_SetMtWorkStartPos			//모터 작업 시작 위치
+Temp_RStageY_SetMtSpare03Pos		 =       RStageY_SetMtSpare03Pos			//Spare Pos03   
+Temp_RStageY_SetMtLoadingPos		 =       RStageY_SetMtLoadingPos			//모터 로딩 위치  
+Temp_RStageY_SetMtSpare04Pos		 =       RStageY_SetMtSpare04Pos			//Spare Pos04   
+Temp_RStageY_SetMtViAilgn01Pos		 =       RStageY_SetMtViAilgn01Pos			//Align01 촬영 위치
+Temp_RStageY_SetMtViAilgn02Pos		 =       RStageY_SetMtViAilgn02Pos			//Align02 촬영 위치
+Temp_RStageY_SetMtViAilgn03Pos		 =       RStageY_SetMtViAilgn03Pos			//Align03 촬영 위치
+Temp_RStageY_SetMtViAilgn04Pos		 =       RStageY_SetMtViAilgn04Pos			//Align04 촬영 위치
+Temp_RStageY_SetMtSpare05Pos		 =       RStageY_SetMtSpare05Pos			//Spare Pos05   
+Temp_RStageY_SetMtSpare06Pos		 =       RStageY_SetMtSpare06Pos			//Spare Pos06   
+Temp_RStageY_SetMtSpare07Pos		 =       RStageY_SetMtSpare07Pos			//Spare Pos07   
+Temp_RStageY_SetMtSpare08Pos		 =       RStageY_SetMtSpare08Pos			//Spare Pos08   
+Temp_RStageY_SetMtSpare09Pos		 =       RStageY_SetMtSpare09Pos			//Spare Pos09   
+Temp_RStageY_SetMtSafePos			 =       -1*(Mtr_SetHomeOffsetPos(RStageY)+RStageY_SetMtSafePos) //스테이지 안전 위치				//스테이지 안전 위치 
+Temp_RStageY_SetMtPosMvSpd			 =       RStageY_SetMtPosMvSpd				//좌표 이동 시 속도
+Temp_RStageY_SetMtPosMvTA			 =       RStageY_SetMtPosMvTA				//좌표 이동 시 가속시간
+Temp_RStageY_SetReadyPosMvSpd		 =		 RStageY_SetReadyPosMvSpd			//대기 위치 이동 시 속도
+Temp_RStageY_SetReadyPosMvTA		 =		 RStageY_SetReadyPosMvTA			//대기 위치 이동 시 가속시간
+Temp_RStageY_SetMtWorkStartPosMvSpd  =		 RStageY_SetMtWorkStartPosMvSpd	//작업 시작 위치 이동 시 속도
+Temp_RStageY_SetMtWorkStartPosMvTA	 =		 RStageY_SetMtWorkStartPosMvTA		//작업 시작 위치 이동 시 가속시간
+Temp_RStageY_SetAlignPosMvSpd		 =		 RStageY_SetAlignPosMvSpd			//얼라인 비전 위치 이동 시 속도
+Temp_RStageY_SetAlignPosMvTA		 =		 RStageY_SetAlignPosMvTA			//얼라인 비전 위치 이동 시 가속시간
+Temp_RStageY_SetLoadingPosMvSpd		 =		 RStageY_SetLoadingPosMvSpd			//로딩 위치 이동 시 속도
+Temp_RStageY_SetLoadingPosMvTA		 =		 RStageY_SetLoadingPosMvTA			//로딩 위치 이동 시 가속시간
+
+Temp_Mtr_CheckReadyPos(RStageY)		 =		 RStageY_SetMtReadyPos
+Temp_Mtr_CheckAlign01Pos(RStageY)	 =		 RStageY_SetMtViAilgn01Pos
+Temp_Mtr_CheckAlign02Pos(RStageY)	 =		 RStageY_SetMtViAilgn02Pos
+Temp_Mtr_CheckAlign03Pos(RStageY)	 =		 RStageY_SetMtViAilgn03Pos
+Temp_Mtr_CheckAlign04Pos(RStageY)	 =		 RStageY_SetMtViAilgn04Pos
+Temp_Mtr_CheckLoadingPos(RStageY)	 =		 RStageY_SetMtLoadingPos
+Temp_Mtr_CheckWorkStartPos(RStageY)	 =		 RStageY_SetMtWorkStartPos
+
+//#5
+Temp_ServoZ_SetMtReadyPos				=       ServoZ_SetMtReadyPos			//모터 대기 위치
+Temp_ServoZ_SetMtWorkStartPos			=       ServoZ_SetMtWorkStartPos		//모터 작업 시작 위치
+Temp_ServoZ_SetMtSpare03Pos				=       ServoZ_SetMtSpare03Pos			//Spare Pos03
+Temp_ServoZ_SetMtLoadingPos				=       ServoZ_SetMtLoadingPos			//모터 로딩 위치
+Temp_ServoZ_SetMtSpare04Pos				=       ServoZ_SetMtSpare04Pos			//Spare Pos04
+Temp_ServoZ_SetMtViAilgn01Pos			=       ServoZ_SetMtViAilgn01Pos		//Align01 촬영 위치
+Temp_ServoZ_SetMtViAilgn02Pos			=       ServoZ_SetMtViAilgn02Pos		//Align02 촬영 위치
+Temp_ServoZ_SetMtViAilgn03Pos			=       ServoZ_SetMtViAilgn03Pos		//Align03 촬영 위치
+Temp_ServoZ_SetMtViAilgn04Pos			=       ServoZ_SetMtViAilgn04Pos		//Align04 촬영 위치
+Temp_ServoZ_SetMtSpare05Pos				=       ServoZ_SetMtSpare05Pos			//Spare Pos05
+Temp_ServoZ_SetMtSpare06Pos				=       ServoZ_SetMtSpare06Pos			//Spare Pos06
+Temp_ServoZ_SetMtSpare07Pos				=       ServoZ_SetMtSpare07Pos			//Spare Pos07
+Temp_ServoZ_SetMtSpare08Pos				=       ServoZ_SetMtSpare08Pos			//Spare Pos08
+Temp_ServoZ_SetMtPowerMeterPos			=       ServoZ_SetMtPowerMeterPos		//파워 미터 측정 포지션 위치   
+Temp_ServoZ_SetMtSpare10Pos				=       ServoZ_SetMtSpare10Pos			//Spare Pos10
+Temp_ServoZ_SetMtPosMvSpd				=       ServoZ_SetMtPosMvSpd			//좌표 이동 시 속도
+Temp_ServoZ_SetMtPosMvTA				=       ServoZ_SetMtPosMvTA				//좌표 이동 시 가속시간      
+Temp_ServoZ_SetReadyPosMvSpd			=		ServoZ_SetReadyPosMvSpd			//대기 위치 이동 시 속도
+Temp_ServoZ_SetReadyPosMvTA				=		ServoZ_SetReadyPosMvTA			//대기 위치 이동 시 가속시간
+Temp_ServoZ_SetMtWorkStartPosMvSpd		=		ServoZ_SetMtWorkStartPosMvSpd	//작업 시작 위치 이동 시 속도
+Temp_ServoZ_SetMtWorkStartPosMvTA		=		ServoZ_SetMtWorkStartPosMvTA	//작업 시작 위치 이동 시 가속시간
+Temp_ServoZ_SetAlignPosMvSpd			=		ServoZ_SetAlignPosMvSpd			//얼라인 비전 위치 이동 시 속도
+Temp_ServoZ_SetAlignPosMvTA				=		ServoZ_SetAlignPosMvTA			//얼라인 비전 위치 이동 시 가속시간
+Temp_ServoZ_SetLoadingPosMvSpd			=		ServoZ_SetLoadingPosMvSpd		//로딩 위치 이동 시 속도
+Temp_ServoZ_SetLoadingPosMvTA			=		ServoZ_SetLoadingPosMvTA		//로딩 위치 이동 시 가속시간
+Temp_ServoZ_SetPowerMeterPosMvSpd		=		ServoZ_SetPowerMeterPosMvSpd	//파워 미터 측정 이동 시 속도
+Temp_ServoZ_SetPowerMeterPosMvTA		=		ServoZ_SetPowerMeterPosMvTA		//파워 미터 측정 이동 시 가속시간
+
+Temp_Mtr_CheckReadyPos(ServoZ)			=		ServoZ_SetMtReadyPos
+Temp_Mtr_CheckAlign01Pos(ServoZ)		=		ServoZ_SetMtViAilgn01Pos
+Temp_Mtr_CheckAlign02Pos(ServoZ)		=		ServoZ_SetMtViAilgn02Pos
+Temp_Mtr_CheckAlign03Pos(ServoZ)		=		ServoZ_SetMtViAilgn03Pos
+Temp_Mtr_CheckAlign04Pos(ServoZ)		=		ServoZ_SetMtViAilgn04Pos
+Temp_Mtr_CheckLoadingPos(ServoZ)		=		ServoZ_SetMtLoadingPos
+Temp_Mtr_CheckWorkStartPos(ServoZ)		=		ServoZ_SetMtWorkStartPos
+Temp_Mtr_CheckPowerMeterPos(ServoZ)	    =		ServoZ_SetMtPowerMeterPos
+
+Temp_MaxAccData = P2U_Mach_LookAheadAcc
+Motor[1].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+Motor[1].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+Motor[2].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LStageY))/1000/1000)
+Motor[2].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LStageY))/1000/1000)
+Motor[3].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(RStageY))/1000/1000)
+Motor[3].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(RStageY))/1000/1000)
+
+//}
+//PMAC ->PC  변수 데이터 입력
+U2P_Mach_AllHomeComp = HomeAllComplete
+// 파라미터 데이터 Bit 업로드
+U2P_Mach_BitData01 = (U2P_Mach_AllHomming<<0|(U2P_Mach_AllHomeComp<<1)|(U2P_Mach_PowerMoterChkComp<<3)|(U2P_Mach_ReadyPosComp<<4))
+U2P_Lstage_BitData01 = (U2P_Lstage_VacReadySt<<0|(U2P_Lstage_AutoReadySt<<1)|(U2P_Lstage_MotionDownroadExe<<2)|(U2P_Lstage_Motioning<<3)|(U2P_Lstage_MotionComp<<4)|(U2P_Lstage_AutoRunComp<<5)|(U2P_Lstage_AilgnMvComp<<6)|(U2P_Lstage_WorkPosMvComp<<7)|(U2P_Lstage_LoadingPosMvComp<<8)|(U2P_Lstage_ReadyMvComp<<11))
+U2P_Lstage_BitData02 = (U2P_Lstage_ViAilgnSeqComp<<0|(U2P_Lstage_ViAilgn01TrigExe<<1)|(U2P_Lstage_ViAilgn02TrigExe<<2)|(U2P_Lstage_ViAilgn03TrigExe<<3)|(U2P_Lstage_ViAilgn04TrigExe<<4))
+U2P_Rstage_BitData01 = (U2P_Rstage_VacReadySt<<0|(U2P_Rstage_AutoReadySt<<1)|(U2P_Rstage_MotionDownroadExe<<2)|(U2P_Rstage_Motioning<<3)|(U2P_Rstage_MotionComp<<4)|(U2P_Rstage_AutoRunComp<<5)|(U2P_Rstage_AilgnMvComp<<6)|(U2P_Rstage_WorkPosMvComp<<7)|(U2P_Rstage_LoadingPosMvComp<<8)|(U2P_Rstage_ReadyMvComp<<11))
+U2P_Rstage_BitData02 = (U2P_Rstage_ViAilgnSeqComp<<0|(U2P_Rstage_ViAilgn01TrigExe<<1)|(U2P_Rstage_ViAilgn02TrigExe<<2)|(U2P_Rstage_ViAilgn03TrigExe<<3)|(U2P_Rstage_ViAilgn04TrigExe<<4))
+
+//에러 코드 전달
+iF(Part_CmdErrorCode(PART_MACH) != 0)
+{
+	U2P_Mach_ErrCode = Part_CmdErrorCode(PART_MACH)
+}
+ELSE iF(Unit_CmdErrorCode(LSTAGE) != 0)
+{
+	U2P_Mach_ErrCode = Unit_CmdErrorCode(LSTAGE)
+}
+ELSE iF(Unit_CmdErrorCode(RSTAGE) != 0)
+{
+	U2P_Mach_ErrCode = Unit_CmdErrorCode(RSTAGE)
+}
+
+close

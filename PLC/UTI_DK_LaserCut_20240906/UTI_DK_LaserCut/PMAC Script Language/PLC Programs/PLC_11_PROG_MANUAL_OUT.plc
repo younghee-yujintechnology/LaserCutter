@@ -1,0 +1,80 @@
+//Manual 출력 프로그램
+Open Plc PLC_11_PROG_MANUAL_OUT
+
+Local L_CtsMotorNum
+If(MAX_USE_MOTOR_COUNT < L_CtsMotorNum || L_CtsMotorNum < 0)
+{
+	L_CtsMotorNum = 1
+}
+If(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+{
+	//모터 상태 업데이트
+	if(Motor[L_CtsMotorNum].ServoCtrl == 1)
+	{
+		//비트 출력
+		Local L_StServoOn = UtoP_BIT_STAT_SERVO_ON+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StCompMov = UtoP_BIT_STAT_COMP_MOVE+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StMoving = UtoP_BIT_STAT_ING_MOVE+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StHoming = UtoP_BIT_STAT_ING_HOME+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StCompHome = UtoP_BIT_STAT_COMP_HOME+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StErrAmpF = UtoP_BIT_STAT_ERR_AMP_FAULT+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StErrFollowE = UtoP_BIT_STAT_ERR_FE_FATAL+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StErrLimP = UtoP_BIT_STAT_ERR_PLUS_LIMIT+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StErrLimN = UtoP_BIT_STAT_ERR_MINUS_LIMIT+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_StErrI2T = UtoP_BIT_STAT_ERR_I2T_FAULT+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		//데이터 출력
+		Local L_GetActSpd = UtoP_GET_ACT_SPEED+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_GetActPos = UtoP_GET_ACT_POS+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		Local L_GetDacOut = UtoP_GET_DAC_OUT+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		//상태 업데이트
+		P(L_StServoOn) = Motor[L_CtsMotorNum].AmpEna
+		P(L_StCompMov) = (Mtr_StIngMove(L_CtsMotorNum)^1)&Motor[L_CtsMotorNum].AmpEna
+		P(L_StMoving) = Mtr_StIngMove(L_CtsMotorNum)
+		P(L_StHoming) = Mtr_StIngHome(L_CtsMotorNum)
+		P(L_StCompHome) = Mtr_StCompHome(L_CtsMotorNum)
+		P(L_StErrAmpF) = Motor[L_CtsMotorNum].AmpFault
+		P(L_StErrFollowE) =	Motor[L_CtsMotorNum].FeFatal
+		P(L_StErrLimP) =  Motor[L_CtsMotorNum].PlusLimit
+		P(L_StErrLimN) = Motor[L_CtsMotorNum].MinusLimit
+		P(L_StErrI2T) = Motor[L_CtsMotorNum].I2tFault
+		P(L_GetActSpd) = Mtr_GetActSpd(L_CtsMotorNum)
+		P(L_GetActPos) = Mtr_GetActPos(L_CtsMotorNum)
+		P(L_GetDacOut) = 0
+		if(Motor[L_CtsMotorNum].AmpEna == 0 && Mtr_SetMotor_Type(L_CtsMotorNum) != TYPE_INF_ROT)
+		{
+			Mtr_StCompHome(L_CtsMotorNum) = 0
+		}
+	}
+	L_CtsMotorNum++
+}
+// 좌측 스테이지 정지
+if(LeftStopSwitchCts == 1)
+{
+	call Timer.msec(1000)
+	if(LeftStopSwitchCts == 1)
+	{
+		Table1StopSwitch = 1
+		LeftStopSwitchCts = 0
+	}
+	else if(LeftStopSwitchCts > 1)
+	{
+		Table1EMOStopSwitch = 1
+		LeftStopSwitchCts = 0
+	}
+}
+// 우측 스테이지 정지
+if(RightStopSwitchCts == 1)
+{
+	call Timer.msec(1000)
+	if(RightStopSwitchCts == 1)
+	{
+		Table2StopSwitch = 1
+		RightStopSwitchCts = 0
+	}
+	else if(RightStopSwitchCts > 1)
+	{
+		Table2EMOStopSwitch = 1
+		RightStopSwitchCts = 0
+	}
+}
+Close

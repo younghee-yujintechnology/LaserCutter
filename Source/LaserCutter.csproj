@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E340F523-0D80-4EBB-BC87-69667CF71C00}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LaserCutter</RootNamespace>
+    <AssemblyName>LaserCutter</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '시뮬레이션|AnyCPU'">
+    <OutputPath>..\Bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '시뮬레이션|x64'">
+    <OutputPath>..\bin\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cognex.VisionPro, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Core, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.CorePlus, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.CorePlus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.Display.Controls, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.Display.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ImageFile, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.ImageFile.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.PMAlign, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.PMAlign.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.QuickBuild.Controls, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.QuickBuild.Controls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.QuickBuild.Core, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.QuickBuild.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cognex.VisionPro.ToolGroup, Version=63.0.0.0, Culture=neutral, PublicKeyToken=ef0f902af9dee505, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Cognex.VisionPro.ToolGroup.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DaekhonSystem">
+      <HintPath>Embeded Dll\DaekhonSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FirebirdSql.Data.FirebirdClient">
+      <HintPath>Embeded Dll\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="INIFileParserDotNetCore, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\INIFileParserDotNetCore.2.5.2\lib\net40\INIFileParserDotNetCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MvCameraControl.Net">
+      <HintPath>Embeded Dll\MvCameraControl.Net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Embeded Dll\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Raize.CodeSiteLogging, Version=5.4.3.0, Culture=neutral, PublicKeyToken=5979856d688ff136, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\Raize.CodeSiteLogging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>Embeded Dll\RestSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Embeded Dll\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fCarbide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCarbide.Designer.cs">
+      <DependentUpon>fCarbide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fChannelSpy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fChannelSpy.Designer.cs">
+      <DependentUpon>fChannelSpy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fMain.Designer.cs">
+      <DependentUpon>fMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fRestart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fRestart.Designer.cs">
+      <DependentUpon>fRestart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fRunStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fRunStatus.Designer.cs">
+      <DependentUpon>fRunStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fUserConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fUserConfirm.Designer.cs">
+      <DependentUpon>fUserConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\fScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PanUnits\fScanner.Designer.cs">
+      <DependentUpon>fScanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panConfigMotor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panConfigMotor.Designer.cs">
+      <DependentUpon>panConfigMotor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panAuto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panAuto.Designer.cs">
+      <DependentUpon>panAuto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panConfigCommon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panConfigCommon.Designer.cs">
+      <DependentUpon>panConfigCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualCoherent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualCoherent.Designer.cs">
+      <DependentUpon>panManualCoherent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panJobInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panJobInfo.Designer.cs">
+      <DependentUpon>panJobInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panJobType1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panJobType1.Designer.cs">
+      <DependentUpon>panJobType1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panJobFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panJobFile.Designer.cs">
+      <DependentUpon>panJobFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panJobType2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panJobType2.Designer.cs">
+      <DependentUpon>panJobType2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panJobType3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panJobType3.Designer.cs">
+      <DependentUpon>panJobType3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManual.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManual.Designer.cs">
+      <DependentUpon>panManual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualADV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualADV.Designer.cs">
+      <DependentUpon>panManualADV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualCarbide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualCarbide.Designer.cs">
+      <DependentUpon>panManualCarbide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualLight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualLight.Designer.cs">
+      <DependentUpon>panManualLight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualMotion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualMotion.Designer.cs">
+      <DependentUpon>panManualMotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualPowermeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualPowermeter.Designer.cs">
+      <DependentUpon>panManualPowermeter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panTable.Designer.cs">
+      <DependentUpon>panTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panVision.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panVision.Designer.cs">
+      <DependentUpon>panVision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RTC5Wrap.cs" />
+    <Compile Include="Sub\fMotionFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sub\fMotionFile.Designer.cs">
+      <DependentUpon>fMotionFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sub\fProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sub\fProgress.Designer.cs">
+      <DependentUpon>fProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fGroupName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fGroupName.Designer.cs">
+      <DependentUpon>fGroupName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fModelName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fModelName.Designer.cs">
+      <DependentUpon>fModelName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fSelectJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSelectJob.Designer.cs">
+      <DependentUpon>fSelectJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panAlarm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panAlarm.designer.cs">
+      <DependentUpon>panAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panConfig.Designer.cs">
+      <DependentUpon>panConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panLog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panLog.designer.cs">
+      <DependentUpon>panLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panSideMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panSideMenu.Designer.cs">
+      <DependentUpon>panSideMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sub\fAlarm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sub\fAlarm.designer.cs">
+      <DependentUpon>fAlarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sub\fLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sub\fLogin.designer.cs">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sub\fUserSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sub\fUserSetting.designer.cs">
+      <DependentUpon>fUserSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uGlobal.cs" />
+    <Compile Include="uPowerPmac.cs" />
+    <Compile Include="uProject.cs" />
+    <Compile Include="UserControl\sjPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="fCarbide.resx">
+      <DependentUpon>fCarbide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fChannelSpy.resx">
+      <DependentUpon>fChannelSpy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fMain.resx">
+      <DependentUpon>fMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fRestart.resx">
+      <DependentUpon>fRestart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fRunStatus.resx">
+      <DependentUpon>fRunStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fUserConfirm.resx">
+      <DependentUpon>fUserConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\fScanner.resx">
+      <DependentUpon>fScanner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\PanConfigMotor.resx">
+      <DependentUpon>PanConfigMotor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panAuto.resx">
+      <DependentUpon>panAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panConfigCommon.resx">
+      <DependentUpon>panConfigCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualCoherent.resx">
+      <DependentUpon>panManualCoherent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panJobInfo.resx">
+      <DependentUpon>panJobInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panJobType1.resx">
+      <DependentUpon>panJobType1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panJobFile.resx">
+      <DependentUpon>panJobFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panJobType2.resx">
+      <DependentUpon>panJobType2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panJobType3.resx">
+      <DependentUpon>panJobType3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManual.resx">
+      <DependentUpon>panManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualADV.resx">
+      <DependentUpon>panManualADV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualCarbide.resx">
+      <DependentUpon>panManualCarbide.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualLight.resx">
+      <DependentUpon>panManualLight.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualMotion.resx">
+      <DependentUpon>panManualMotion.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualPowermeter.resx">
+      <DependentUpon>panManualPowermeter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panTable.resx">
+      <DependentUpon>panTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panVision.resx">
+      <DependentUpon>panVision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sub\fMotionFile.resx">
+      <DependentUpon>fMotionFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sub\fProgress.resx">
+      <DependentUpon>fProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fGroupName.resx">
+      <DependentUpon>fGroupName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fModelName.resx">
+      <DependentUpon>fModelName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSelectJob.resx">
+      <DependentUpon>fSelectJob.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panAlarm.resx">
+      <DependentUpon>panAlarm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panConfig.resx">
+      <DependentUpon>panConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panLog.resx">
+      <DependentUpon>panLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panSideMenu.resx">
+      <DependentUpon>panSideMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sub\fAlarm.resx">
+      <DependentUpon>fAlarm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sub\fLogin.resx">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sub\fUserSetting.resx">
+      <DependentUpon>fUserSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\Raize.CodeSiteLogging.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\System.Runtime.CompilerServices.Unsafe.dll" />
+    <EmbeddedResource Include="Embeded Dll\System.Threading.Tasks.Extensions.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\FirebirdSql.Data.FirebirdClient.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\MvCameraControl.Net.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\RestSharp.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Auto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UTI_LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\INIFileParserDotNetCore.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image12.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embeded Dll\YujinTechnology.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

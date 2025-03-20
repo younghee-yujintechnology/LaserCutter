@@ -1,0 +1,68 @@
+<CustomMotorDatabase>
+  <CustomMotor>
+    <manufacturer Value="Parker" />
+    <partnumber Value="410-3N-NC-WD3P-8-KC" />
+    <voltage Value="330" />
+    <contcurrent Value="5.9" />
+    <peakcurrent Value="23.6" />
+    <allowedtime Value="1" />
+    <motortype Value="1" />
+    <linear Value="1" />
+    <inductance Value="3.8" />
+    <resistance Value="3" />
+    <deltawinding Value="0" />
+    <polepairnum Value="85.34" />
+    <hall Value="0" />
+    <enctype Value="0" />
+    <resolution Value="0" />
+    <absolute Value="0" />
+    <nominalrpm Value="0" />
+    <maxrpm Value="3000" />
+    <peakcurrenttype Value="0" />
+    <instpeakcurrenttype Value="0" />
+  </CustomMotor>
+  <CustomMotor>
+    <manufacturer Value="Parker" />
+    <partnumber Value="410-4P" />
+    <voltage Value="330" />
+    <contcurrent Value="5.8" />
+    <peakcurrent Value="26" />
+    <allowedtime Value="1" />
+    <motortype Value="1" />
+    <linear Value="1" />
+    <inductance Value="5" />
+    <resistance Value="4" />
+    <deltawinding Value="0" />
+    <polepairnum Value="85.34" />
+    <hall Value="0" />
+    <enctype Value="0" />
+    <resolution Value="0" />
+    <absolute Value="0" />
+    <nominalrpm Value="0" />
+    <maxrpm Value="2000" />
+    <peakcurrenttype Value="0" />
+    <instpeakcurrenttype Value="0" />
+  </CustomMotor>
+  <CustomMotor>
+    <manufacturer Value="Analog Torque" />
+    <partnumber Value="Analog Torque" />
+    <voltage Value="220" />
+    <contcurrent Value="5" />
+    <peakcurrent Value="10" />
+    <allowedtime Value="1" />
+    <motortype Value="1" />
+    <linear Value="1" />
+    <inductance Value="10" />
+    <resistance Value="5" />
+    <deltawinding Value="0" />
+    <polepairnum Value="4" />
+    <hall Value="0" />
+    <enctype Value="0" />
+    <resolution Value="0" />
+    <absolute Value="0" />
+    <nominalrpm Value="0" />
+    <maxrpm Value="6000" />
+    <peakcurrenttype Value="0" />
+    <instpeakcurrenttype Value="0" />
+  </CustomMotor>
+</CustomMotorDatabase>

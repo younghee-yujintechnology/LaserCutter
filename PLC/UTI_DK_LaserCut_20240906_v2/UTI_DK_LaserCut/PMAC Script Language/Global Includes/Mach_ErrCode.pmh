@@ -1,0 +1,85 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//모터
+#define	U2P_Mt01_ErrCode	P3550	// 모터 1번 에러 코드
+#define	U2P_Mt02_ErrCode	P3551	// 모터 2번 에러 코드
+#define	U2P_Mt03_ErrCode	P3552	// 모터 3번 에러 코드
+
+#define	U2P_Mt05_ErrCode	P3554	// 모터 5번 에러 코드
+
+//유닛
+#define	U2P_AllUnit_ErrCode	P3650	// 유닛 전체 에러 코드
+#define	U2P_LStage_ErrCode	P3651	// 좌측 스테이지 에러 코드
+#define	U2P_RStage_ErrCode	P3652	// 우측 스테이지 에러 코드
+
+//장비
+#define	U2P_Mach_ErrCode	P3750	// 장비 전체 에러 코드
+#define	U2P_Part_ErrCode	P3751	// 파트 에러 코드
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//모터 알람 리스트(모터번호*100+알람 번호)
+#define ERROR_CODE_0100_CMD_LOCK											0100 //명령 인터락이 걸려있음
+#define ERROR_CODE_0150_SAFTYERRNOTCLEARSTAUS								0150 //세이프티 에러가 클리어 되지않음
+#define ERROR_CODE_0200_FE_FATAL											0200 //(중알람)모터 추종오차 알람
+#define ERROR_CODE_0300_AMP_FALUT											0300 //(중알람)모터 엠프알람 알람
+#define ERROR_CODE_0400_SEN_PLUS_LIMIT										0400 //모터 플러스 리밋 감지 알람
+#define ERROR_CODE_0500_SEN_MINUS_LIMIT										0500 //모터 마이너스 리밋 감지 알람
+#define ERROR_CODE_0600_PHASE_SEARCH_FAILT									0600 //(중알람)모터 페이징 실패 알람
+#define ERROR_CODE_0700_I2T_FALUT											0700 //(중알람)모터 과부하 알람
+
+//데이터 문제 알람
+#define ERROR_CODE_0800_WORNG_DATA_SPEED									0800 //속도 데이터 입력 에러
+#define ERROR_CODE_0800_WORNG_DATA_POS										0800 //위치 데이터 입력 에러
+#define ERROR_CODE_0850_WORNG_DATA_SAFTYERR									0850 //위치 데이터 세이프티 위치값 초과
+
+//원점 검색 실패
+#define ERROR_CODE_0900_FAIL_CMD_HOME_SERCH_LIMIT							0900 //홈구동 리밋 센서 검색 실패
+#define ERROR_CODE_1000_FAIL_CMD_HOME_SERCH_HOME							1000 //홈구동 홈 센서 검색 실패
+
+//준비 상태 알람
+#define ERROR_CODE_1100_NOT_REDAY_SERVO_ON									1100 //서보온이 되어있지 않음.
+#define ERROR_CODE_1200_NOT_READY_COMP_HOME									1200 //홈완료가 되어있지 않음.
+#define ERROR_CODE_1300_NOT_READY_ON_HOME_POS								1300 //홈 위치가 아님.
+#define ERROR_CODE_1400_NOT_READY_STOP										1400 //모터 정지 상태가 아님.
+#define ERROR_CODE_1500_ING_MOVE_SERVO_OFF									1500 //위치 구동중 Servo Off
+
+// 장비 에러
+#define ERROR_CODE_2000_AUTORUNFAIL											2000	// 장비 자동 구동 실패
+#define ERROR_CODE_2100_EMOSTATUS											2100	// EMO 스위치 입력
+#define ERROR_CODE_2200_AUTORUNERROR										2200	// 장비 자동 구동 중 에러 발생
+#define ERROR_CODE_2300_ALLHOMEFAIL											2300	// 장비 전체 홈 실패
+		
+// 유닛 구동 에러	
+#define ERROR_CODE_5000_ALIGNVISIONFAIL										5000	// 얼라인 비전 구동 실패
+#define ERROR_CODE_5100_WORKSTARTPOSFAIL									5100	// 작업 시작 위치 이동 실패
+#define EEROR_CODE_5200_MOTIONDOWNLOADFAIL									5200	// 모션 다운로드 실패(타임아웃)
+#define EEROR_CODE_5300_MOTIONENDTIMEOUT									5300	// 모션 구동 실패(타임아웃)
+#define EEROR_CODE_5400_ROADPOSMVFAIL										5400	// 로딩 위치 이동 실패
+#define EEROR_CODE_5500_TABLEVACFAIL										5500	// 테이블 진공 실패
+#define EEROR_CODE_5500_TABLEVENTFAIL										5600	// 테이블 파기 실패
+#define EEROR_CODE_5600_TABLEAUTOREADYFAIL									5700	// 테이블 자동 구동 준비 실패
+#define EEROR_CODE_5700_READYPOSMVFAIL										5800	// 대기 위치 이동 실패
+
+		
+// 세이프티 에러				
+#define EEROR_CODE_7000_MAINDOOROPEN										7000	// 메인 도어 오픈 상태
+#define EEROR_CODE_7100_SIDEDOOROPEN										7100	// 사이드 도어 오픈 상태
+#define EEROR_CODE_7200_TABLEAREASEN										7200	// 모터 구동 중 테이블 에어리어 센서 감지
+#define EEROR_CODE_7300_PRESSURESENERR										7300	// 메인 프레셔 압력 저하
+#define EEROR_CODE_7400_EMOSWITCH											7400	// EMO 스위치 입력
+#define EEROR_CODE_7500_LEAKSENERR											7500	// LEAK 센서 입력
+#define EEROR_CODE_7600_SAFTYMVERR											7600	// 모터 구동 중 세이프 위치 초과 구동
+#define EEROR_CODE_7700_SAFTYVALUEERR										7700	// 모터 이동 값 세이프티 위치 초과 입력
+
+
+//명령 실패 알람(프로그램 오류, 디버깅 용)
+#define ERROR_CODE_12100_FAIL_CMD_SERVO_ON									12100 //서보 온 명령실패
+#define ERROR_CODE_12200_FAIL_CMD_SERVO_OFF									12200 //서보 오프 명령실패
+#define ERROR_CODE_12300_FAIL_CMD_HOME										12300 //홈 구동 명령실패
+#define ERROR_CODE_12400_FAIL_CMD_JOG_PLUS									12400 //조그 플러스 명령실패
+#define ERROR_CODE_12500_FAIL_CMD_JOG_MINUS									12500 //조그 마이너스 명령실패
+#define ERROR_CODE_12600_FAIL_CMD_MOVE_ABS									12600 //절대위치 이송 명령실패
+#define ERROR_CODE_12700_FAIL_CMD_MOVE_INC									12700 //상대위치 이송 명령실패
+#define ERROR_CODE_12800_FAIL_CMD_STOP										12800 //정지 명령실패
+#define ERROR_CODE_12900_FAIL_CMD_ERROR_CLEAER								12900 //에러 클리어 명령실패
+#define ERROR_CODE_12900_FAIL_CMD_MOVE_SOFT_PLUS_LIMIT						13000 //정방향 소프트 웨어 리밋 감지 이송 실패
+#define ERROR_CODE_13100_FAIL_CMD_MOVE_SOFT_MINUS_LIMIT						13100 //역방향 소프트 웨어 리밋 감지 이송 실패

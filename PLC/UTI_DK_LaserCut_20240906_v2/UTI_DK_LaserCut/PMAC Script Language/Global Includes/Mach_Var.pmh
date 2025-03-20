@@ -1,0 +1,272 @@
+#define MAX_PART_COUNT												70	//파트 수량
+#define MAX_UNIT_COUNT												70	//유닛 수량
+
+//설비 상태
+global Mach_GetStatus = 0											//설비 상태 업데이트
+#define Mach_StStop													0	//설비 정지 상태
+#define Mach_StAutoRun												1	//설비 자동 구동 상태
+#define Mach_StAlarm												2	//설비 알람 상태
+
+//모터 메뉴얼 명령
+global Mtr_ExeManualCmd(MAX_MOTOR_COUNT)								//모터 구동 명령 실행 변수
+global Temp_Mtr_ExeManualCmd(MAX_MOTOR_COUNT)							//모터 구동 명령 실행 임시 변수
+global Part_StAutoReady(MAX_MOTOR_COUNT)								//파트 준비 상태 (0: 미 준비, 1: 준비 완료)
+global Part_BitStNotAutoReady(MAX_MOTOR_COUNT)						//파트 미 준비 에러 비트(0: 준비 완료, 숫자: 비트 열에 따라 에러 확인)
+
+//설비 자동 스탭 명령(자동 구동 시퀀스 실행)
+global Mach_ExeCmdStep(MAX_PART_COUNT)								//설비 자동 구동 스탭 명령
+global Mach_Chk1CycleCmd(MAX_PART_COUNT)								//설비 자동 구동 1사이클 명령확인
+global Mach_ChkCmdStepReady(MAX_PART_COUNT)							//설비 자동 구동 스탭 명령 준비 확인
+global Mach_CmdErrorCode(MAX_PART_COUNT)								//설비 자동 구동 에러코드
+
+global Mach_CtsChkPartError = 0										//설비 자동 구동 파트 에러 수량 카운터
+global Mach_CtsChkMtrError = 0										//설비 자동 구동 모터 에러 수량 카운터
+global Mach_CtsChkUnitError = 0										//설비 자동 구동 유닛 에러 수량 카운터
+global Mach_CtsChkSeqError = 0										//설비 자동 구동 시퀀스 에러 수량 카운터
+global Mach_CtsChkRobotPosError = 0									//설비 자동 구동 로봇 동작 위치 에러 수량 카운터
+global Mach_ExeCmdErrorReset = 0									//설비 자동 구동 알람 리셋
+global Mach_ExeCmdReset = 0											//설비 자동 구동 명령 리셋
+global Mach_ExeRcpDataUpdate = 0									//설비 자동 구동 레시피 업데이트 실행
+
+global Seq_ExeCmdStep(MAX_PART_COUNT)									//시퀀스 스탭 변수
+global Temp_Seq_ExeCmdStep(MAX_PART_COUNT)							//임시 시퀀스 스탭 변수
+global Test_Seq_ExeCmdStep(MAX_PART_COUNT)							//테스트 시퀀스 스탭 변수
+	
+//파트 자동 스탭 명령(설비 파트 별 자동 구동 실행)
+global Part_ExeCmdStep(MAX_PART_COUNT)								//파트 별 자동 스탭 명령
+global Part_ChkCmdStepReady(MAX_PART_COUNT)							//파트 별 자동 스탭 명령 준비 확인
+global Part_BitCmdStepNotReady(MAX_PART_COUNT)						//파트 별 자동 스탭 명령 미준비 에러 비트(0: 준비 완료, 숫자: 비트 열에 따라 에러 확인)
+global Part_CmdErrorCode(MAX_PART_COUNT)								//파트 별 에러 코드
+
+//파트 상태 업데이트
+global Part_StAmpEnable(MAX_PART_COUNT)								//파트 별 모터 서보 온 상태 업데이트
+global Part_StCompHome(MAX_PART_COUNT)								//파트 별 모터 원점 완료 업데이트
+global Part_StCompServoRdy(MAX_PART_COUNT)							//파트 별 모터 준비 상태 업데이트
+global Part_StCompAutoRdy(MAX_PART_COUNT)								//파트 별 자동 준비 상태 업데이트
+
+global Temp_Part_StAmpEnable(MAX_PART_COUNT)							//파트 별 모터 서보 온 상태 업데이트 임시 변수
+global Temp_Part_StCompHome(MAX_PART_COUNT)							//파트 별 모터 원점 완료 업데이트 임시 변수
+global Temp_Part_StCompServoRdy(MAX_PART_COUNT)						//파트 별 모터 준비 상태 업데이트 임시 변수
+global Temp_Part_StCompAutoRdy(MAX_PART_COUNT)						//파트 별 자동 준비 상태 업데이트 임시 변수
+
+//유닛 자동 스탭 명령(설비 파트 별 자동 구동 실행)
+global Unit_ExeCmdStep(MAX_UNIT_COUNT)								//유닛 별 자동 스탭 명령
+global Temp_Unit_ExeCmdStep(MAX_UNIT_COUNT)							//유닛 별 자동 스탭 명령 임시 변수
+global Unit_ReqCmd(MAX_UNIT_COUNT)									//유닛 별 자동 요청 명령
+global Unit_LockCmd(MAX_UNIT_COUNT)									//유닛 별 인터락 상태
+global Unit_StErrorStatus(MAX_UNIT_COUNT)							//유닛 에러 상태
+global Temp_Unit_StErrorStatus(MAX_UNIT_COUNT)						//유닛 에러 상태 임시 변수
+global Unit_CmdErrorCode(MAX_UNIT_COUNT)							//유닛 별 에러 코드
+global Ready_ExeCmdStep(MAX_UNIT_COUNT)								//유닛 별 시작 전 준비 스탭 명령
+global Temp_Ready_ExeCmdStep(MAX_UNIT_COUNT)						//유닛 별 시작 전 준비 스탭 명령 임시 변수
+
+//파트 상태
+global Part_StAutoRdy(MAX_PART_COUNT)									//파트 모터 자동 구동 준비 완료 상태(0: 완료, 0 != 미준비 Bit)
+global Part_StMtrServoRdy(MAX_PART_COUNT)								//파트 모터 준비 완료 상태(0: 완료, 0 != 미준비 Bit, 원점 검색 완료, 서보 에러 없음)
+global Part_StErrorStatus(MAX_PART_COUNT)								//파트 에러 상태
+global Temp_Part_StErrorStatus(MAX_PART_COUNT)						//파트 에러 상태 임시 변수
+
+//파트 레디 스탭 명령(설비 파트 별 자동 구동 실행)
+global Part_ExeCmdReadyStep(MAX_PART_COUNT)							//파트별 레디 스탭 명령
+global Temp_Part_ExeCmdReadyStep(MAX_PART_COUNT)							//파트별 레디 스탭 명령 임시변수
+global Part_CmdReadyError(MAX_PART_COUNT)								//파트별 에러 코드
+global Temp_CtsStCompHome = 0
+global Temp_ChkMotorErr = 0
+global Temp_CtsStCompReady = 1
+global Temp_ChkReadyMotorErr = 0
+
+//장비 유닛 별 시작 대기 변수
+global Unit_AutoStartReadySt(MAX_UNIT_COUNT)
+
+//장비 모터 전체 서보 온/ 오프 관련 변수
+global Mach_MotorAllServoOn			= 0
+global Mach_MotorAllServoOff		= 0
+
+//램프 점멸 관련 변수
+// 준비 상태
+global Mach_ReadyStatus				 = 0
+
+// 리셋 버튼
+global Exe_ResetLamp_On				= 0
+global Exe_ResetLamp_FlickOn		= 0
+global Temp_Exe_ResetLamp_FlickOn	= 0
+
+// 좌측 시작 버튼
+global Exe_LeftStartLamp_On				= 0
+global Exe_LeftStartLamp_FlickOn		= 0
+global Temp_Exe_LeftStartLamp_FlickOn	= 0
+global Exe_LeftStartLamp_RdyFlickOn		= 0
+global Temp_Exe_LeftStartLamp_RdyFlickOn	= 0
+// 우측 시작 버튼
+global Exe_RightStartLamp_On			= 0
+global Exe_RightStartLamp_FlickOn		= 0
+global Temp_Exe_RightStartLamp_FlickOn	= 0
+global Exe_RightStartLamp_RdyFlickOn		= 0
+global Temp_Exe_RightStartLamp_RdyFlickOn	= 0
+
+//부저 관련 변수
+global Temp_SinalTower_Buzzer	= 0
+
+//에러 관련 변수
+global Temp_AreaSenErrStatus			= 0
+global Temp_MainDoorSenErrStatus		= 0
+global Temp_SideDooerSenErrStatus		= 0
+global Temp_LeftPressureSenErrStatus	= 0
+global Temp_RightPressureSenErrStatus	= 0
+global Temp_PressureSenErrStatus		= 0
+global Temp_LeakSenErrStatus			= 0
+global Temp_LstageSaftyMvErrStatus		= 0
+global Temp_LstageSaftyValueErrStatus	= 0
+global Temp_RstageSaftyMvErrStatus		= 0
+global Temp_RstageSaftyValueErrStatus	= 0
+global Safety_ErrorCheck				= 0
+global AutoRun_NotStopErrBit			= 0
+
+//모터 명령 시 에러 상태일 때, 서보 구동 불가 상태
+global Temp_SafetyStopErrNotClearStatus		= 0		// 세이프티 에러 중 모터 정지 에러가 클리어 되지않았을 때
+global Temp_SafetyEMOErrNotClearStatus		= 0		// 세이프티 에러 중 EMO(모터 Kill)에러가 클리어 되지않았을 때
+
+// 인터락 사용 / 미사용
+global Temp_PressureSenUnUse			 = 1 // 프레셔 센서 임시 처리
+global Temp_LeakSenUnUse				 = 0 // 리크 센서 임시 처리
+global Temp_SaftyPosCheckUnUse			 = 1
+
+//테스트 모드
+global test_Mode = 0
+global Half_test_Mode = 0 
+global test_ModeDataUndate = 0
+
+//모션 구동 시 가속 시간 관련
+global Temp_MaxAccData = 0
+
+//스테이지 세이프티 위치 관련
+global Temp_Lstage_SaftyMvCheck	= 0
+global Temp_Rstage_SaftyMvCheck	= 0
+global Temp_Lstage_SaftyValueCheck	= 0
+global Temp_Rstage_SaftyValueCheck	= 0
+
+//유닛 가동 확인 변수
+global Temp_Lstage_AutoRunStatus = 0
+global Temp_Rstage_AutoRunStatus = 0
+
+//장비 자동 구동 중 Z축 대기 위치 입력용 변수
+global Temp_Lstage_AutoRdyServoZPos = 0
+global Temp_Rstage_AutoRdyServoZPos = 0
+
+//모터 위치별 포지션 확인 용 변수
+global Temp_Mtr_CheckReadyPos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckLAlign01Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckLAlign02Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckLAlign03Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckLAlign04Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckRAlign01Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckRAlign02Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckRAlign03Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckRAlign04Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckAlign01Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckAlign02Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckAlign03Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckAlign04Pos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckPowerMeterPos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckLoadingPos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckWorkStartPos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckLLoadingPos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckRLoadingPos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckLWorkStartPos(MAX_MOTOR_COUNT)
+global Temp_Mtr_CheckRWorkStartPos(MAX_MOTOR_COUNT)
+
+global LeftStopSwitchCts = 0
+global RightStopSwitchCts = 0
+global OldLeftStopSwitchCts = 0
+global OldRightStopSwitchCts = 0
+
+//모터 메뉴얼 명령
+Mtr_ExeManualCmd(0),MAX_MOTOR_COUNT = 0									//모터 구동 명령 실행 변수
+Temp_Mtr_ExeManualCmd(0),MAX_MOTOR_COUNT = 0							//모터 구동 명령 실행 임시 변수
+Part_StAutoReady(0),MAX_MOTOR_COUNT = 0								//파트 준비 상태 (0: 미 준비, 1: 준비 완료)
+Part_BitStNotAutoReady(0),MAX_MOTOR_COUNT = 0						//파트 미 준비 에러 비트(0: 준비 완료, 숫자: 비트 열에 따라 에러 확인)
+
+//설비 자동 스탭 명령(자동 구동 시퀀스 실행)
+Mach_ExeCmdStep(0),MAX_PART_COUNT = 0								//설비 자동 구동 스탭 명령
+Mach_Chk1CycleCmd(0),MAX_PART_COUNT = 0								//설비 자동 구동 1사이클 명령확인
+Mach_ChkCmdStepReady(0),MAX_PART_COUNT = 0							//설비 자동 구동 스탭 명령 준비 확인
+Mach_CmdErrorCode(0),MAX_PART_COUNT = 0								//설비 자동 구동 에러코드
+
+Mach_CtsChkPartError = 0										//설비 자동 구동 파트 에러 수량 카운터
+Mach_CtsChkMtrError = 0										//설비 자동 구동 모터 에러 수량 카운터
+Mach_CtsChkUnitError = 0										//설비 자동 구동 유닛 에러 수량 카운터
+Mach_CtsChkSeqError = 0										//설비 자동 구동 시퀀스 에러 수량 카운터
+Mach_CtsChkRobotPosError = 0									//설비 자동 구동 로봇 동작 위치 에러 수량 카운터
+Mach_ExeCmdErrorReset = 0									//설비 자동 구동 알람 리셋
+Mach_ExeCmdReset = 0											//설비 자동 구동 명령 리셋
+Mach_ExeRcpDataUpdate = 0									//설비 자동 구동 레시피 업데이트 실행
+
+Seq_ExeCmdStep(0),MAX_PART_COUNT = 0									//시퀀스 스탭 변수
+Temp_Seq_ExeCmdStep(0),MAX_PART_COUNT = 0							//임시 시퀀스 스탭 변수
+Test_Seq_ExeCmdStep(0),MAX_PART_COUNT = 0							//테스트 시퀀스 스탭 변수
+	
+//파트 자동 스탭 명령(설비 파트 별 자동 구동 실행)
+Part_ExeCmdStep(0),MAX_PART_COUNT = 0								//파트 별 자동 스탭 명령
+Part_ChkCmdStepReady(0),MAX_PART_COUNT = 0							//파트 별 자동 스탭 명령 준비 확인
+Part_BitCmdStepNotReady(0),MAX_PART_COUNT = 0						//파트 별 자동 스탭 명령 미준비 에러 비트(0: 준비 완료, 숫자: 비트 열에 따라 에러 확인)
+Part_CmdErrorCode(0),MAX_PART_COUNT = 0								//파트 별 에러 코드
+
+//파트 상태 업데이트
+Part_StAmpEnable(0),MAX_PART_COUNT = 0								//파트 별 모터 서보 온 상태 업데이트
+Part_StCompHome(0),MAX_PART_COUNT = 0								//파트 별 모터 원점 완료 업데이트
+Part_StCompServoRdy(0),MAX_PART_COUNT = 0							//파트 별 모터 준비 상태 업데이트
+Part_StCompAutoRdy(0),MAX_PART_COUNT = 0								//파트 별 자동 준비 상태 업데이트
+
+Temp_Part_StAmpEnable(0),MAX_PART_COUNT = 0							//파트 별 모터 서보 온 상태 업데이트 임시 변수
+Temp_Part_StCompHome(0),MAX_PART_COUNT = 0							//파트 별 모터 원점 완료 업데이트 임시 변수
+Temp_Part_StCompServoRdy(0),MAX_PART_COUNT = 0						//파트 별 모터 준비 상태 업데이트 임시 변수
+Temp_Part_StCompAutoRdy(0),MAX_PART_COUNT = 0						//파트 별 자동 준비 상태 업데이트 임시 변수
+
+//유닛 자동 스탭 명령(설비 파트 별 자동 구동 실행)
+Unit_ExeCmdStep(0),MAX_UNIT_COUNT = 0								//유닛 별 자동 스탭 명령
+Temp_Unit_ExeCmdStep(0),MAX_UNIT_COUNT = 0							//유닛 별 자동 스탭 명령 임시 변수
+Unit_ReqCmd(0),MAX_UNIT_COUNT = 0									//유닛 별 자동 요청 명령
+Unit_LockCmd(0),MAX_UNIT_COUNT = 0									//유닛 별 인터락 상태
+Unit_StErrorStatus(0),MAX_UNIT_COUNT = 0								//유닛 에러 상태
+Temp_Unit_StErrorStatus(0),MAX_UNIT_COUNT = 0						//유닛 에러 상태 임시 변수
+Unit_CmdErrorCode(0),MAX_UNIT_COUNT = 0								//유닛 별 에러 코드
+
+//파트 상태
+Part_StAutoRdy(0),MAX_PART_COUNT = 0									//파트 모터 자동 구동 준비 완료 상태(0: 완료, 0 != 미준비 Bit)
+Part_StMtrServoRdy(0),MAX_PART_COUNT = 0								//파트 모터 준비 완료 상태(0: 완료, 0 != 미준비 Bit, 원점 검색 완료, 서보 에러 없음)
+Part_StErrorStatus(0),MAX_PART_COUNT = 0								//파트 에러 상태
+Temp_Part_StErrorStatus(0),MAX_PART_COUNT = 0						//파트 에러 상태 임시 변수
+
+//파트 레디 스탭 명령(설비 파트 별 자동 구동 실행)
+Part_ExeCmdReadyStep(0),MAX_PART_COUNT = 0							//파트별 레디 스탭 명령
+Temp_Part_ExeCmdReadyStep(0), MAX_PART_COUNT = 0
+Part_CmdReadyError(0),MAX_PART_COUNT = 0								//파트별 에러 코드
+Temp_CtsStCompHome = 0
+Temp_ChkMotorErr = 0
+Temp_CtsStCompReady = 1
+Temp_ChkReadyMotorErr = 0
+
+Temp_Mtr_CheckReadyPos(0),MAX_MOTOR_COUNT = 0	
+Temp_Mtr_CheckAlign01Pos(0),MAX_MOTOR_COUNT = 0	
+Temp_Mtr_CheckAlign02Pos(0),MAX_MOTOR_COUNT = 0	
+Temp_Mtr_CheckAlign03Pos(0),MAX_MOTOR_COUNT = 0	
+Temp_Mtr_CheckAlign04Pos(0),MAX_MOTOR_COUNT = 0	
+Temp_Mtr_CheckPowerMeterPos(0),MAX_MOTOR_COUNT = 0	
+Temp_Mtr_CheckLoadingPos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckWorkStartPos(0),MAX_MOTOR_COUNT = 0
+
+Temp_Mtr_CheckLAlign01Pos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckLAlign02Pos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckLAlign03Pos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckLAlign04Pos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckRAlign01Pos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckRAlign02Pos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckRAlign03Pos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckRAlign04Pos(0),MAX_MOTOR_COUNT = 0
+
+Temp_Mtr_CheckLLoadingPos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckRLoadingPos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckLWorkStartPos(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_CheckRWorkStartPos(0),MAX_MOTOR_COUNT = 0
+
+Unit_AutoStartReadySt(0),MAX_UNIT_COUNT = 0

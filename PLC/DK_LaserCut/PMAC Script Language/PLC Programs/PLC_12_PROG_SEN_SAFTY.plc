@@ -1,0 +1,341 @@
+open plc PLC_12_PROG_SEN_SAFTY
+
+// --------------------User Code Goes Here------------------------
+local L_CtsMtrNum
+
+// 메인 도어 센서
+if(In_Door01_Sen == 0 && Temp_In_Door01_Sen == 0)
+{
+	Temp_In_Door01_Sen = 1
+	if(Temp_Mach_MainDoorUnUse == Use)
+	{
+		Temp_MainDoorSenErrStatus = 1
+		Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+		//에러 코드
+		Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7000_MAINDOOROPEN		//메인 도어 오픈 에러
+	}
+}
+else if((In_Door01_Sen == 1 || Temp_Mach_MainDoorUnUse == UnUse) && Temp_In_Door01_Sen == 1)
+{
+	Temp_MainDoorSenErrStatus = 0
+	Temp_In_Door01_Sen = 0
+}
+
+// 도어 센서 관련
+IF((In_Door02_Sen == 0 || In_Door03_Sen == 0 || In_Door04_Sen == 0  || In_Door05_Sen == 0) && Temp_In_Door02_Sen == 0)
+{
+	Temp_In_Door02_Sen = 1
+	if(Temp_Mach_SideDoorUnUse == Use)
+	{
+		Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+		Temp_SideDooerSenErrStatus = 1
+		//에러 코드
+		Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7100_SIDEDOOROPEN		//사이드 도어 오픈 에러
+	}
+}
+ELSE IF(((In_Door02_Sen == 1 && In_Door03_Sen == 1 && In_Door04_Sen == 1  && In_Door05_Sen == 1) || Temp_Mach_SideDoorUnUse == UnUse) && Temp_In_Door02_Sen == 1)
+{
+	Temp_SideDooerSenErrStatus = 0
+	 Temp_In_Door02_Sen = 0
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 좌측 압력 센서 관련
+if(In_LeftUnit_Pressure_Sen == 0)
+{
+	if(Temp_In_LeftUnit_Pressure_Sen == 0)
+	{
+		Temp_In_LeftUnit_Pressure_Sen = 1
+		Sys.CdTimer[L_PressureSen_T] = PressureSenDelayTime
+	}
+	Else
+	{
+		if(In_LeftUnit_Pressure_Sen == 0 && Sys.CdTimer[L_PressureSen_T] <= 0)
+		{
+			IF(Temp_PressureSenUnUse == Use) // 압력 센서 사용/미사용 임시 처리
+			{
+				Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+				Temp_LeftPressureSenErrStatus = 1
+				//에러 코드
+				Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7300_PRESSURESENERR	 // 압력 센서 에러
+			}
+		}
+	}
+}
+else if((In_LeftUnit_Pressure_Sen == 1 || Temp_PressureSenUnUse == UnUse) && Temp_In_LeftUnit_Pressure_Sen == 1)
+{
+	Temp_LeftPressureSenErrStatus = 0
+	Temp_In_LeftUnit_Pressure_Sen = 0
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 우측 압력 센서 관련
+if(In_RightUnit_Pressure_Sen == 0)
+{
+	if(Temp_In_RightUnit_Pressure_Sen == 0)
+	{
+		Temp_In_RightUnit_Pressure_Sen = 1
+		Sys.CdTimer[R_PressureSen_T] = PressureSenDelayTime
+	}
+	Else
+	{
+		if(In_RightUnit_Pressure_Sen == 0 && Sys.CdTimer[R_PressureSen_T] <= 0)
+		{
+			IF(Temp_PressureSenUnUse == Use) // 압력 센서 사용/미사용 임시 처리
+			{
+				Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+				Temp_RightPressureSenErrStatus = 1
+				//에러 코드
+				Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7300_PRESSURESENERR	 // 압력 센서 에러
+			}
+		}
+	}
+}
+else if((In_RightUnit_Pressure_Sen == 1 || Temp_PressureSenUnUse == UnUse) && Temp_In_RightUnit_Pressure_Sen == 1)
+{
+	Temp_RightPressureSenErrStatus = 0
+	Temp_In_RightUnit_Pressure_Sen = 0
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 리크 센서 관련
+if(In_Leak_Sen == 0 && Temp_In_Leak_Sen == 0 )
+{
+	Temp_In_Leak_Sen = 1
+	if(Temp_LeakSenUnUse == Use)		// 리크센서 사용 / 미사용 임시 처리
+	{
+		Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+		Temp_LeakSenErrStatus = 1
+		//에러 코드
+		Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7500_LEAKSENERR	//리크 센서 에러
+	}
+}
+else if((In_Leak_Sen == 1 || Temp_LeakSenUnUse == UnUse) && Temp_In_Leak_Sen == 1)
+{
+	Temp_LeakSenErrStatus = 0
+	Temp_In_Leak_Sen = 0
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 에어리어 센서 관련
+// 좌측 스테이지
+IF(In_LeftUnit_Area_Sen == 0 && Temp_In_LeftUnit_Area_Sen == 0)
+{
+	Temp_In_LeftUnit_Area_Sen = 1
+	if(Mtr_StIngMove(LStageY) == 1)
+	{
+		if(Temp_Mach_AreaSenUnUse == Use)		// 에어리어 사용 미사용
+		{
+			Temp_AreaSenErrStatus = 1
+			Unit_AutoStartReadySt(LSTAGE) = 0
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7200_TABLEAREASEN		//에어리어 센서 입력
+			Unit_CmdErrorCode(LSTAGE) = EEROR_CODE_7200_TABLEAREASEN		//에어리어 센서 입력
+			//Mach_ExeCmdStep(PART_MACH) = MACH_270_EXE_AUTO_STOP
+			L_CtsMtrNum = 1
+			if(Coord[1].ProgActive == 1)
+			{
+				cmd"&1a"
+			}
+			call Timer.msec(200)
+			while(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)
+			{
+				If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+				{
+					if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+					{
+						Mtr_ExeCmd(L_CtsMtrNum) = MTR_080_EXE_STOP
+					}
+				}
+				L_CtsMtrNum++
+			}
+			if(Temp_Mach_AreaSenVentUnUse == Use)
+			{
+				Out_LeftUnit_VacPump01	  = 0
+				Out_LeftUnit_VacPumpSol01 = 0
+				Out_LeftUnit_VacPumpSol02 = 0
+				Out_LeftUnit_VacPump02	  = 0
+				Out_LeftUnit_VacPumpSol03 = 0
+				Out_LeftUnit_VacPumpSol04 = 0
+				Out_LeftUnit_Vac_Btn_Lamp = 0
+				U2P_Lstage_VacReadySt = 0
+			}
+		}
+	}
+}
+ELSE IF((In_LeftUnit_Area_Sen == 1 || Temp_Mach_AreaSenUnUse == UnUse)&& Temp_In_LeftUnit_Area_Sen == 1)
+{
+		Temp_AreaSenErrStatus = 0
+		Temp_In_LeftUnit_Area_Sen = 0
+}
+
+// 우측 스테이지
+IF(In_RightUnit_Area_Sen == 0 && Temp_In_RightUnit_Area_Sen == 0)
+{
+	Temp_In_RightUnit_Area_Sen = 1
+	if(Mtr_StIngMove(RStageY) == 1)
+	{
+		if(Temp_Mach_AreaSenUnUse == Use)		// 에어리어 사용 미사용
+		{
+			Temp_AreaSenErrStatus = 1
+			Unit_AutoStartReadySt(RSTAGE) = 0
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7200_TABLEAREASEN		//에어리어 센서 입력
+			Unit_CmdErrorCode(RSTAGE) = EEROR_CODE_7200_TABLEAREASEN		//에어리어 센서 입력
+			//Mach_ExeCmdStep(PART_MACH) = MACH_270_EXE_AUTO_STOP
+			if(Coord[1].ProgActive == 1)
+			{
+				cmd"&1a"
+			}
+			call Timer.msec(200)
+			L_CtsMtrNum = 1
+			while(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)
+			{
+				If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+				{
+					if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+					{
+						Mtr_ExeCmd(L_CtsMtrNum) = MTR_080_EXE_STOP
+					}
+				}
+				L_CtsMtrNum++
+			}
+			if(Temp_Mach_AreaSenVentUnUse == Use)
+			{
+				Out_RightUnit_VacPump01	  = 0
+				Out_RightUnit_VacPumpSol01 = 0
+				Out_RightUnit_VacPumpSol02 = 0
+				Out_RightUnit_VacPump02	  = 0
+				Out_RightUnit_VacPumpSol03 = 0
+				Out_RightUnit_VacPumpSol04 = 0
+				Out_RightUnit_Vac_Btn_Lamp = 0
+				U2P_Rstage_VacReadySt = 0
+			}
+		}
+	}
+}
+ELSE IF((In_RightUnit_Area_Sen == 1|| Temp_Mach_AreaSenUnUse == UnUse) && Temp_In_RightUnit_Area_Sen == 1)
+{
+	Temp_AreaSenErrStatus = 0
+	Temp_In_RightUnit_Area_Sen = 0
+}
+// 준비 완료 후 대기 시간 체크
+// 미사용 삭제
+/*
+IF(Unit_AutoStartReadySt(LSTAGE) == 1 && Sys.CdTimer[LSTAGE_WAIT_T] <= 0)
+{
+	Unit_AutoStartReadySt(LSTAGE) = 0
+}
+
+IF(Unit_AutoStartReadySt(RSTAGE) == 1 && Sys.CdTimer[RSTAGE_WAIT_T] <= 0)
+{
+	Unit_AutoStartReadySt(RSTAGE) = 0
+}
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 모터 구동 중 안전 위치 세이프티 처리
+// 좌측
+if(Temp_LStageY_SetMtSafePos > Mtr_GetActPos(LStageY) && Temp_Lstage_SaftyMvCheck == 0)
+{
+	Temp_Lstage_SaftyMvCheck = 1
+	if(Temp_SaftyPosCheckUnUse == Use)
+	{
+		if(Temp_LStageY_SetMtSafePos != 0 && Motor[LStageY].AmpEna == 1 && Mtr_StCompHome(LStageY) == 1)
+		{
+			if(Mtr_ExeCmd(LStageY) < MTR_030_EXE_HOME || Mtr_ExeCmd(LStageY) > MTR_030_EXE_HOME+9)
+			{
+				Temp_LstageSaftyMvErrStatus = 1
+				//Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+				if(Coord[1].ProgActive == 1)
+				{
+					cmd"&1a"
+				}
+				call Timer.msec(200)
+				L_CtsMtrNum = 1
+				while(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)
+				{
+					If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+					{
+						if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+						{
+							Mtr_ExeCmd(L_CtsMtrNum) = MTR_080_EXE_STOP
+						}
+					}
+					L_CtsMtrNum++
+				}
+				Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7600_SAFTYMVERR	//세이프티 위치 초과 구동
+				Unit_CmdErrorCode(RSTAGE) = EEROR_CODE_7600_SAFTYMVERR		//세이프티 위치 초과 구동
+			}
+		}
+	}
+}
+else if((Temp_LStageY_SetMtSafePos < Mtr_GetActPos(LStageY) || Temp_LStageY_SetMtSafePos == 0 || Temp_SaftyPosCheckUnUse ==UnUse) && Temp_Lstage_SaftyMvCheck == 1)
+{
+	Temp_LstageSaftyMvErrStatus = 0
+	Temp_Lstage_SaftyMvCheck = 0
+}
+// 우측
+if(Temp_RStageY_SetMtSafePos > Mtr_GetActPos(RStageY) && Temp_Rstage_SaftyMvCheck == 0)
+{
+	Temp_Rstage_SaftyMvCheck = 1
+	if(Temp_SaftyPosCheckUnUse == Use)
+	{
+		if(Temp_RStageY_SetMtSafePos != 0  && Motor[RStageY].AmpEna == 1 && Mtr_StCompHome(RStageY) == 1)
+		{
+			if(Mtr_ExeCmd(RStageY) < MTR_030_EXE_HOME || Mtr_ExeCmd(RStageY) > MTR_030_EXE_HOME+9)
+			{
+				Temp_RstageSaftyMvErrStatus = 1
+				//Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+				if(Coord[1].ProgActive == 1)
+				{
+					cmd"&1a"
+				}
+				call Timer.msec(200)
+				L_CtsMtrNum = 1
+				while(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)
+				{
+					If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+					{
+						if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+						{
+							Mtr_ExeCmd(L_CtsMtrNum) = MTR_080_EXE_STOP
+						}
+					}
+					L_CtsMtrNum++
+				}
+				Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7600_SAFTYMVERR	//세이프티 위치 초과 구동
+				Unit_CmdErrorCode(RSTAGE) = EEROR_CODE_7600_SAFTYMVERR		//세이프티 위치 초과 구동
+			}
+		}
+	}
+}
+else if((Temp_RStageY_SetMtSafePos < Mtr_GetActPos(RStageY) || Temp_RStageY_SetMtSafePos == 0 || Temp_SaftyPosCheckUnUse ==UnUse) && Temp_Rstage_SaftyMvCheck == 1)
+{
+	Temp_RstageSaftyMvErrStatus = 0
+	Temp_Rstage_SaftyMvCheck = 0
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 중알람 에러 알람 비트 생성
+if(Temp_AreaSenErrStatus == 1 || Temp_SideDooerSenErrStatus ==1 || Temp_MainDoorSenErrStatus == 1 || Temp_PressureSenErrStatus == 1 || Temp_LeakSenErrStatus == 1 || Temp_LstageSaftyMvErrStatus == 1 || Temp_RstageSaftyMvErrStatus == 1)
+{
+	Safety_ErrorCheck = 1
+	if(Temp_SideDooerSenErrStatus ==1 || Temp_MainDoorSenErrStatus == 1 || Temp_PressureSenErrStatus == 1 || Temp_LeakSenErrStatus == 1)
+	{
+		Temp_SafetyEMOErrNotClearStatus = 1
+	}
+	ELSE IF(Temp_AreaSenErrStatus == 1 || Temp_RstageSaftyMvErrStatus == 1 || Temp_LstageSaftyMvErrStatus == 1)
+	{
+		IF(Temp_AreaSenErrStatus == 1)
+		{
+			Temp_SafetyStopErrNotClearStatus = 1
+		}
+		ELSE if(Temp_LstageSaftyMvErrStatus == 1 || Temp_RstageSaftyMvErrStatus == 1)
+		{
+			Temp_SafetyStopErrNotClearStatus = 0
+		}
+	}
+	Else
+	{
+		Temp_SafetyEMOErrNotClearStatus = 0
+		Temp_SafetyStopErrNotClearStatus = 0
+	}
+}
+close

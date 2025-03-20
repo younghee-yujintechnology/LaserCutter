@@ -1,0 +1,151 @@
+open plc PLC_04_PROG_ALLHOME
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 전체 홈 시퀀스
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+if(Mach_ExeCmdStep(PART_MACH) != MACH_510_STAT_AUTORUN)
+{
+//Z축 호밍
+	if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME)
+	{
+		Temp_Part_ExeCmdReadyStep(PART_MACH) = Part_ExeCmdReadyStep(PART_MACH)
+		U2P_Mach_AllHomming = 1
+		HomeAllComplete = 0
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+10
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+10)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+20
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+20)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+30
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+30)
+	{
+		Mtr_ExeCmd(ServoZ) = MTR_030_EXE_HOME
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+70
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+70)
+	{
+		if(Mtr_StCompHome(ServoZ) == 1)
+		{
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+100
+		}
+		else if(Mtr_ExeCmd(ServoZ)< 0)
+		{
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+80
+		}
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+80)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = -1*Part_ExeCmdReadyStep(PART_MACH)
+		//에러코드
+		Part_CmdErrorCode(PART_MACH) = ERROR_CODE_2300_ALLHOMEFAIL				// 장비 전체 홈 구동 실패
+	}
+	//X, LEFT Y, RIGHT Y축 호밍
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+100)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+120
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+120)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+130
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+130)
+	{
+		Mtr_ExeCmd(LinearX) = MTR_030_EXE_HOME
+		Mtr_ExeCmd(LStageY) = MTR_030_EXE_HOME
+		Mtr_ExeCmd(RStageY) = MTR_030_EXE_HOME
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+170
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+170)
+	{
+		if(Mtr_StCompHome(LinearX) == 1 && Mtr_StCompHome(LStageY) == 1 && Mtr_StCompHome(RStageY) == 1)
+		{
+			//Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+200
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+800
+		}
+		else if(Mtr_ExeCmd(LinearX) < 0 || Mtr_ExeCmd(LStageY) < 0 || Mtr_ExeCmd(RStageY) < 0)
+		{
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+180
+		}
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+180)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = -1*Part_ExeCmdReadyStep(PART_MACH)
+		//에러코드
+		Part_CmdErrorCode(PART_MACH) = ERROR_CODE_2300_ALLHOMEFAIL				// 장비 전체 홈 구동 실패
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+800)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+820
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+820)
+	{
+		Mach_ExeCmdReset = 1
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+870
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+870)
+	{
+		if(Mach_ExeCmdReset == 0)
+		{
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+900
+		}
+	}
+	/*
+	//X, 대기 위치 LEFT Y, RIGHT Y축 로딩 위치 이동 
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+200)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+220
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+220)
+	{
+		Mtr_SetMovePos(LinearX) = Temp_LinearX_SetMtReadyPos
+		Mtr_SetMovePos(LStageY) = Temp_LStageY_SetMtLoadingPos
+		Mtr_SetMovePos(RStageY) = Temp_RStageY_SetMtLoadingPos
+		Mtr_SetMoveTa(LinearX) = Temp_LinearX_SetMtPosMvTA
+		Mtr_SetMoveTa(LStageY) = Temp_LStageY_SetMtPosMvTA
+		Mtr_SetMoveTa(RStageY) = Temp_RStageY_SetMtPosMvTA
+		Mtr_SetMoveSpd(LinearX) = Temp_LinearX_SetMtPosMvSpd
+		Mtr_SetMoveSpd(LStageY) = Temp_LStageY_SetMtPosMvSpd
+		Mtr_SetMoveSpd(RStageY) = Temp_RStageY_SetMtPosMvSpd
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+230
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+230)
+	{
+		Mtr_ExeCmd(LinearX) = MTR_060_EXE_MOVE_ABS
+		Mtr_ExeCmd(LStageY) = MTR_060_EXE_MOVE_ABS
+		Mtr_ExeCmd(RStageY) = MTR_060_EXE_MOVE_ABS
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+170
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+170)
+	{
+		call MTR_Prog.ChkCompMovePos(LinearX)
+		call MTR_Prog.ChkCompMovePos(LStageY)
+		call MTR_Prog.ChkCompMovePos(RStageY)
+		if(Mtr_CompMovePos(LinearX) == 1 && Mtr_CompMovePos(LStageY) == 1 && Mtr_CompMovePos(RStageY) == 1)
+		{
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+900
+		}
+		else if(Mtr_CompMovePos(LinearX) < 0 || Mtr_CompMovePos(LStageY) < 0 || Mtr_CompMovePos(RStageY) < 0)
+		{
+			Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME+280
+		}
+	}
+	else if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+280)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = -1*Part_ExeCmdReadyStep(PART_MACH)
+		//에러코드
+	}
+	*/
+	ELSE if(Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+900)
+	{
+		U2P_Mach_AllHomming = 0
+		HomeAllComplete = 1
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_000_STAT_READY
+	}
+}
+
+
+
+close

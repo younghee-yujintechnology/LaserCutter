@@ -1,0 +1,237 @@
+
+//Feed Rate Slew Rate 계산 계수
+global CalSlewRateForm
+CalSlewRateForm = pow(Sys.ServoPeriod,2)
+
+#define MAX_PLC_COUNT												5
+
+//Plc 업데이트 주기
+global Plc_SetUpdateTime(MAX_PLC_COUNT)
+global Plc_SetExeCount(MAX_PLC_COUNT)
+global Plc_SetUpdateCycle(MAX_PLC_COUNT)
+global Plc_ChkUpdateCount(MAX_PLC_COUNT)
+global Temp_Plc_ChkUpdateCount(MAX_PLC_COUNT)
+
+global Mach_CalPlcCycleTime = 0
+global Mach_CalAverPlcCycleTime = 0
+
+//Gate 종류
+#define GATE_01													01
+#define GATE_03													03
+#define NO_GATE													99
+
+//모터 이더켓 사용 유무
+#define USE_ECAT												01
+#define NOT_USE_ECAT												02
+
+//원점 검색 시 리밋 사용 여부 확인
+#define USE_HOME_SEQ_LIMIT										00
+#define NOT_USE_HOME_SEQ_LIMIT										01
+
+//원점 테스트 설정
+#define HOME_CAPT_TEST_IMMEDIATE									99
+
+//모터 형태 종류
+#define TYPE_LINEAR												01	//리니어 타입
+#define TYPE_ENCODER											02	//엔코더 타입
+#define TYPE_INF_ROT											03	//무한 회전 타입
+#define TYPE_POS_ROT											04	//위치 회전 타입(Cam)
+
+//리밋 에러 사용 여부
+#define NOT_USE_LIMIT_ERR										00
+#define USE_LIMIT_ERR											01
+
+//모터 총 수량
+#define MAX_MOTOR_COUNT											33 //모터 총 수량	  
+#define MAX_USE_MOTOR_COUNT										6  //사용 모터 수량
+
+//위치 확인 에러량(단위: um)
+global SetChkInposBand = 200
+
+//명령 커맨드
+global Mtr_ExeCmd(MAX_MOTOR_COUNT)								//커맨드 명령
+global Temp_Mtr_ExeCmd(MAX_MOTOR_COUNT)							//커맨드 명령
+global Mtr_CmdLock(MAX_MOTOR_COUNT)								//커맨드 명령 임시 변수
+global Mtr_StCompHome(MAX_MOTOR_COUNT)							//모터 홈 완료 상태
+global Mtr_CmdErrorCode(MAX_MOTOR_COUNT)							//커맨드 에러 코드
+global Mtr_SetMachScale(MAX_MOTOR_COUNT)							//모터 기계 스케일
+global Mtr_SetScale(MAX_MOTOR_COUNT)								//모터 스케일
+global Mtr_SetScaleOffset(MAX_MOTOR_COUNT)						//모터 스케일 옵셋 값
+global Mtr_CalDivFactVel(MAX_MOTOR_COUNT)							//모터 속도 계산 상수
+global Mtr_SetSoftLimP(MAX_MOTOR_COUNT)							//소프트 리밋(+)
+global Mtr_SetSoftLimN(MAX_MOTOR_COUNT)							//소프트 리밋(-)
+global Mtr_SetAbortAcc(MAX_MOTOR_COUNT)							//급속 정지 가속도
+global Mtr_SetMaxAccG(MAX_MOTOR_COUNT)							//구동 최고 가속도
+global Mtr_SetJogTa(MAX_MOTOR_COUNT)								//조그 구동 가속 시간
+global Mtr_SetJogVel(MAX_MOTOR_COUNT)								//조그 구동 속도
+global Mtr_ChkJogCmd(MAX_MOTOR_COUNT)								//조그 커맨드 실행 임시 변수
+global Mtr_SetMoveTa(MAX_MOTOR_COUNT)								//위치 이동 가속 시간
+global Mtr_SetMoveSpd(MAX_MOTOR_COUNT)							//위치 이동 속도
+global Mtr_SetMovePos(MAX_MOTOR_COUNT)							//위치 이동 위치
+global Mtr_SetPosRdy(MAX_MOTOR_COUNT)								//대기 위치
+global Mtr_SetHomeTa(MAX_MOTOR_COUNT)								//홈 구동 가속 시간
+global Mtr_SetHomeJVel(MAX_MOTOR_COUNT)							//홈 구동 리밋 검색 속도
+global Mtr_SetHomeSVel(MAX_MOTOR_COUNT)							//홈 구동 원점 검색 속도
+global Mtr_SetHomeOffsetPos(MAX_MOTOR_COUNT)						//홈 구동 원점 오프셋
+global Mtr_SetHomeOverTime(MAX_MOTOR_COUNT)						//홈 구동 타임오버 시간
+global Mtr_SetMaxPos(MAX_MOTOR_COUNT)								//모터 최대 이동 거리(소프트 리밋 설정)
+global Mtr_SetMinPos(MAX_MOTOR_COUNT)								//모터 최소 이동 거리(소프트 리밋 설정)
+global Mtr_GetActPos(MAX_MOTOR_COUNT)								//모터 현재 위치
+global Mtr_GetDesPos(MAX_MOTOR_COUNT)								//모터 커맨드 현재 위치
+global Temp_Mtr_GetActPos(MAX_MOTOR_COUNT)						//모터 현재 위치 임시 저장 변수
+global Mtr_SavOffsetPos(MAX_MOTOR_COUNT)							//이송 위치 저장(컨베이어 축 오버 플로우 방지)
+global Mtr_GetActSpd(MAX_MOTOR_COUNT)								//모터 현재 이송 속도
+global Mtr_GetDesSpd(MAX_MOTOR_COUNT)								//모터 현재 커맨드 이송 속도
+global Mtr_StIngMove(MAX_MOTOR_COUNT)								//모터 구동중 상태
+global Mtr_StIngHome(MAX_MOTOR_COUNT)								//모터 원점 검색 중 상태
+global Mtr_StPosHome(MAX_MOTOR_COUNT)								//모터 원점 위치 상태 비트
+global Mtr_CalDacOut(MAX_MOTOR_COUNT)								//모터 부하율 측정 값
+global Mtr_SetStopTd(MAX_MOTOR_COUNT)								//정지 감속 시간
+global Mtr_SetMotor_Type(MAX_MOTOR_COUNT)							//모터 구동 형태
+global Mtr_SetUSE_LIMIT_ERR(MAX_MOTOR_COUNT)						//모터 리밋 에러 사용 여부
+global Mtr_SetMotorEcat(MAX_MOTOR_COUNT)							//모터 ECAT 사용 유무
+global Mtr_ChkAmpEnable(MAX_MOTOR_COUNT)							//모터 서보 온 상태 확인
+global Mtr_ChkMotorUnuse(MAX_MOTOR_COUNT)							//모터 사용 유무
+
+//에러 상태 확인
+global Mach_StError = 0
+global Temp_Cts_Mach_StError = 0
+global Temp_Chk_Mach_StError(50)
+
+//Toggle Bit
+global Mach_Bit_0200_MsecToggle = 0
+global Mach_Bit_0250_MsecToggle = 0
+global Mach_Bit_0500_MsecToggle = 0
+global Mach_Bit_1000_MsecToggle = 0
+
+
+//명령 이후 추가 딜레이(msec)
+global Mach_CmdTime = 0.00
+global Mach_WaitCycle = 0
+
+//원주율 Pi 값 입력
+#define PI														3.1415926535897
+
+//설비 커맨드 변수
+global Mach_Cmd													//명령 입력 변수(명령 Step)
+global Mach_CmdLock												//설비 구동 인터락
+global Temp_Mach_ChkErr											//설비 에러 확인
+global Temp_Mach_Cmd											//임시 변수(시작 cmd 저장)
+global Mach_CmdErrCode											//설비 에러 코드
+
+//설비 상태 변수
+global Mach_StIngMove											//전체 모터 구동 중 상태
+global Mach_StAmpEnable											//전체 서보온 상태
+global Mach_StAmpDisable										//전체 서보오프 상태
+global Mach_StCompHome											//전체 모터 원점 완료 상태
+
+//모터 자동 스탭 명령(모터 자동 시퀀스 실행)
+global Mtr_ExeCmdStep(MAX_MOTOR_COUNT)							//자동 구동 모터별 스탭 명령
+global Mtr_ChkCmdStepReady(MAX_MOTOR_COUNT)						//자동 구동 모터별 스탭 명령 준비 확인
+global Mtr_BitCmdStepNotReady(MAX_MOTOR_COUNT)					//자동 구동 모터별 스탭 명령 미준비 에러 비트(0: 준비 완료, 숫자: 비트 열에 따라 에러 확인)
+global Mtr_GetCmdError(MAX_MOTOR_COUNT)							//자동 구동 모터별 스탭 명령
+
+//모터 자동 구동 상태
+global Mtr_StAutoRdy(MAX_MOTOR_COUNT)								//모터 자동 구동 조건 완료 상태(0: 완료 1: 준비 미 완료)
+global Mtr_StServoRdy(MAX_MOTOR_COUNT)							//모터 구동 조건 완료 상태(0: 완료 1: 준비 미 완료)
+
+//모터 모션 프로그램 구동 상태
+global Mtr_CompExeProgRun(MAX_MOTOR_COUNT)						//모터 프로그램 실행 완료
+global Mtr_CompProgRun(MAX_MOTOR_COUNT)							//모터 프로그램 실행 종료
+global Mtr_CompExtraWindProgRun = 0								//모터 잔량 권취 프로그램 종료
+
+//모터 구동 설정 값
+global Mach_SetMoveRdyTa = 200
+global Mach_SetMoveRdySpd = 50
+
+//각 모터 설정 위치 값
+global Mtr_ChkMoveRdyPos(MAX_MOTOR_COUNT)							//모터 대기 위치 상태(1: 설정 위치, 0: 설정 위치 아님)
+global Mtr_SetMoveRdyTa(MAX_MOTOR_COUNT)							//모터 대기 위치 이동 가속 시간
+global Mtr_SetMoveRdySpd(MAX_MOTOR_COUNT)							//모터 대기 위치 이동 속도
+global Mtr_SetMoveRdyPos(MAX_MOTOR_COUNT)							//모터 대기 위치 
+
+global Mtr_SetMoveTargetPos(MAX_MOTOR_COUNT)						//모터 구동 목표 위치
+global Mtr_SetMoveRemainDist(MAX_MOTOR_COUNT)						//모터 구동 목표 까지 남은 거리
+global Mtr_CompMovePos(MAX_MOTOR_COUNT)							//모터 목표 위치 이동 완료
+
+//위치 확인 
+global Mtr_ChkPosSetPos(MAX_MOTOR_COUNT)							//모터 위치 상태 확인
+global Mtr_ChkPosMoveRdyPos(MAX_MOTOR_COUNT)						//모터 대기 위치 상태(1: 설정 위치, 0: 설정 위치 아님)
+
+//데이터 없을 시 기본 설정 값
+global Mtr_SetBasicTa = 200
+global Mtr_SetBasicMoveSpd = 30
+global Mtr_SetBasicJogMoveSpd = 5
+global Mtr_SetBasicHomeSpd = 50
+
+//원점 Flag 주소
+ptr Mtr_GetHomeFlag(MAX_MOTOR_COUNT)->*
+
+//전체 홈 완료
+global HomeAllComplete = 0
+
+//스테이지 일시정지 커맨드
+global LSTAGE_AreaSenPauseCmd	= 0
+global RSTAGE_AreaSenPauseCmd	= 0
+
+//이더켓 설정
+ptr Mtr_SetEcatTouchprobeFunction(MAX_MOTOR_COUNT)->*				//모터 터치 프로브 설정 
+ptr Mtr_SetEcatTouchprobeStatus(MAX_MOTOR_COUNT)->*				//모터 터치 프로브 상태
+ptr Mtr_SetEcatErrorReset(MAX_MOTOR_COUNT)->*						//에러 리셋 비트
+ptr Mtr_SetEcatSerovoOut(MAX_MOTOR_COUNT)->*						//모터 현재 출력
+global Mtr_SetTouchprobeFunctionValue(MAX_MOTOR_COUNT)			//이더켓 모터 터치 프로브 설정 값($11:Flag(EXT1) $15: Start Index Latch)
+
+//세이프티 초과 확인용 위치값 저정 변수
+global Mtr_SaftyCheckTargetPos(MAX_MOTOR_COUNT)						// 세이프티 체크 위치 확인 변수
+
+//배열 값 초기화
+Plc_SetUpdateTime(0),MAX_PLC_COUNT = 0
+Plc_SetExeCount(0),MAX_PLC_COUNT = 0
+Plc_SetUpdateCycle(0),MAX_PLC_COUNT = 0
+Plc_ChkUpdateCount(0),MAX_PLC_COUNT = 0
+Temp_Plc_ChkUpdateCount(0),MAX_PLC_COUNT = 0
+Mtr_ExeCmd(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_ExeCmd(0),MAX_MOTOR_COUNT = 0
+Mtr_CmdLock(0),MAX_MOTOR_COUNT = 0
+Mtr_StCompHome(0),MAX_MOTOR_COUNT = 0
+Mtr_CmdErrorCode(0),MAX_MOTOR_COUNT = 0
+Mtr_SetMachScale(0),MAX_MOTOR_COUNT = 1000
+Mtr_SetScale(0),MAX_MOTOR_COUNT = 1000
+Mtr_SetScaleOffset(0),MAX_MOTOR_COUNT = 1
+Mtr_CalDivFactVel(0),MAX_MOTOR_COUNT = 1
+Mtr_SetSoftLimP(0),MAX_MOTOR_COUNT = 0
+Mtr_SetSoftLimN(0),MAX_MOTOR_COUNT = 0
+Mtr_SetAbortAcc(0),MAX_MOTOR_COUNT = 1
+Mtr_SetMaxAccG(0),MAX_MOTOR_COUNT = 1
+Mtr_SetJogTa(0),MAX_MOTOR_COUNT = 100
+Mtr_SetJogVel(0),MAX_MOTOR_COUNT = 10
+Mtr_ChkJogCmd(0),MAX_MOTOR_COUNT = 0
+Mtr_SetMoveTa(0),MAX_MOTOR_COUNT = 100
+Mtr_SetMoveSpd(0),MAX_MOTOR_COUNT = 10
+Mtr_SetMovePos(0),MAX_MOTOR_COUNT = 0
+Mtr_SetPosRdy(0),MAX_MOTOR_COUNT = 0
+Mtr_SetHomeTa(0),MAX_MOTOR_COUNT = 100
+Mtr_SetHomeJVel(0),MAX_MOTOR_COUNT = 50
+Mtr_SetHomeSVel(0),MAX_MOTOR_COUNT = 25
+Mtr_SetHomeJVel(5) = 10
+Mtr_SetHomeSVel(5) = 5
+Mtr_SetHomeOffsetPos(0),MAX_MOTOR_COUNT = 0
+Mtr_SetHomeOverTime(0),MAX_MOTOR_COUNT = 10000
+Mtr_SetMaxPos(0),MAX_MOTOR_COUNT = 0
+Mtr_SetMinPos(0),MAX_MOTOR_COUNT = 0
+Mtr_GetActPos(0),MAX_MOTOR_COUNT = 0
+Mtr_SavOffsetPos(0),MAX_MOTOR_COUNT = 0
+Mtr_GetActSpd(0),MAX_MOTOR_COUNT = 0
+Mtr_StIngMove(0),MAX_MOTOR_COUNT = 0
+Mtr_StIngHome(0),MAX_MOTOR_COUNT = 0
+Mtr_StPosHome(0),MAX_MOTOR_COUNT = 0
+Mtr_CalDacOut(0),MAX_MOTOR_COUNT = 0
+Mtr_SetStopTd(0),MAX_MOTOR_COUNT = 300
+Mtr_SetMotor_Type(0),MAX_MOTOR_COUNT = TYPE_LINEAR
+Mtr_SetUSE_LIMIT_ERR(0),MAX_MOTOR_COUNT = NOT_USE_LIMIT_ERR
+Mtr_ChkAmpEnable(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_GetActPos(0),MAX_MOTOR_COUNT = 0
+Temp_Chk_Mach_StError(0),50 = 0
+Mtr_SetTouchprobeFunctionValue(0),MAX_MOTOR_COUNT = $11	//기본 값 Flag 사용
+HomeAllComplete = 0
+

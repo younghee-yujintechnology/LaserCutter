@@ -1,0 +1,54 @@
+
+//Motor 기본 동작 프로그램
+
+open plc PLC_21_MT_PROG_BASIC_MOVE
+
+
+//- 전체 에러 클리어
+If(Mach_ExeCmdStep(PART_MACH) == MACH_090_EXE_ERROR_CLEAR)
+{
+	Call Mtr_Cmd.StepAllErrClear()
+}
+//- 기본 구동 명령 입력 실행
+Local L_CtsMotorNum
+If(L_CtsMotorNum > MAX_USE_MOTOR_COUNT || L_CtsMotorNum < 0)
+{
+	L_CtsMotorNum = 1
+}
+If(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+{
+	//모터 단독 구동 모드에서만 구동 프로그램 구동
+	If(Mtr_ExeCmd(L_CtsMotorNum) != MTR_510_StAutoRun && Mtr_ExeCmd(L_CtsMotorNum) < MTR_210_EXE_AUTO_RUN)																				            
+	{
+		//모터 사용 여부 확인
+		Call Mtr_Chk.UseServo(L_CtsMotorNum)																															                        
+		//명령 입력 변수에 데이터가 입력 되고 모터 사용 상태 일때
+		If(Mtr_ExeCmd(L_CtsMotorNum) > 0 && Motor[L_CtsMotorNum].ServoCtrl != 0)																							                    
+		{
+			//모터 선언 되어있으면 구동
+			If(Motor[L_CtsMotorNum].ServoCtrl == 1)																													                        
+			{
+				//서보 온/오프 프로그램 호출
+				Call Mtr_Cmd.StepServoOn(L_CtsMotorNum)																													                    
+				Call Mtr_Cmd.StepServoOff(L_CtsMotorNum)																													                    
+				//에러 클리어 프로그램 호출
+				Call Mtr_Cmd.StepErrClear(L_CtsMotorNum)																													                    
+				//조그 구동 프로그램 호출
+				Call Mtr_Cmd.StepJogP(L_CtsMotorNum,Mtr_SetJogTa(L_CtsMotorNum),Mtr_SetJogVel(L_CtsMotorNum))
+				Call Mtr_Cmd.StepJogN(L_CtsMotorNum,Mtr_SetJogTa(L_CtsMotorNum),Mtr_SetJogVel(L_CtsMotorNum))
+				Call Mtr_Cmd.StepJogCmdChk(L_CtsMotorNum)																												                    
+				//위치 이송 프로그램 호출
+				Call Mtr_Cmd.StepMoveAbs(L_CtsMotorNum,Mtr_SetMovePos(L_CtsMotorNum),Mtr_SetMoveTa(L_CtsMotorNum),Mtr_SetMoveSpd(L_CtsMotorNum))								                
+				Call Mtr_Cmd.StepMoveInc(L_CtsMotorNum,Mtr_SetMovePos(L_CtsMotorNum),Mtr_SetMoveTa(L_CtsMotorNum),Mtr_SetMoveSpd(L_CtsMotorNum))								                
+				//구동 정지 프로그램 호출
+				Call Mtr_Cmd.StepMoveStop(L_CtsMotorNum,Mtr_SetStopTd(L_CtsMotorNum))																					                    
+				//원점 구동 프로그램 호출
+				Call Mtr_Cmd.StepHomeProg(L_CtsMotorNum,Mtr_SetHomeTa(L_CtsMotorNum),Mtr_SetHomeJVel(L_CtsMotorNum),Mtr_SetHomeSVel(L_CtsMotorNum),Mtr_SetHomeOffsetPos(L_CtsMotorNum))
+			}
+		}
+		Call Mtr_Cmd.StepJogStopChk(L_CtsMotorNum)
+	}
+	L_CtsMotorNum++;
+}
+Close
+

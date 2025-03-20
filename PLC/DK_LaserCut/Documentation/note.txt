@@ -1,0 +1,128 @@
+I130=16
+I131=140
+I132=140
+I133=0.00300000002607703209
+I134=0
+I135=3000
+
+//240821 이전 전류,PID gain
+I130=16
+I131=140
+I132=140
+I133=0.003
+I134=0
+I135=3000
+Motor[1].IiGain=0.43164843		
+Motor[1].IpbGain=3.2199705
+
+//240821 이후 전류,PID gain
+I130=8
+I131=200
+I132=200
+I133=0.003
+I134=0
+I135=2500
+Motor[1].IiGain=0.12562852
+Motor[1].IpbGain=1.5916476
+
+I230=20
+I231=150
+I232=150
+I233=0.00100000004749745131
+I234=0
+I235=2500
+
+I330=30
+I332=235
+I331=235
+I333=0.00100000004749745131
+I334=0
+I335=4000
+
+
+I320=100
+I321=0
+I322=10
+
+I530=10
+I531=60
+I532=60
+I533=0.00200000009499490261
+I534=0
+I535=0
+
+I520=100
+I521=0
+I522=5
+
+P2U_Mach_AllHomeExe = 1
+P2U_Mach_AllHomeExe = 0
+
+P2U_Mach_ReadyExe = 1
+P2U_Mach_ReadyExe = 0
+
+P2U_Mach_LstageProgStart = 1
+P2U_Mach_LstageProgStart = 0
+	
+P2U_Mach_RstageProgStart = 1
+P2U_Mach_RstageProgStart = 0
+	
+P2U_Mach_AutoStop = 1	
+P2U_Mach_AutoStop = 0	
+	
+P2U_Mach_ReSetStart = 1		
+P2U_Mach_ReSetStart = 0		
+
+P2U_Lstage_VacStart = 1
+P2U_Lstage_VacStart = 0
+
+P2U_Rstage_VacStart = 1
+P2U_Rstage_VacStart = 0
+
+p1101 = 10
+p1102 = 50
+
+p1112 = 1
+p1113 = 1
+
+test_Mode =0
+Half_test_Mode=1
+
+// 플리크 작업 -> 1개로 일원화
+// 에러 코드 일원화
+// TA, SPD 변수 기본 값 추가
+
+Temp_LstageSaftyMvErrStatus
+
+
+
+undefine all
+&1 #1->10000X #2->10000Y
+delete lookahead
+define lookahead 1024
+
+
+undefine all
+&1 #1->10000X #3->10000Y
+delete lookahead
+define lookahead 1500
+
+P1212 = 1
+P1212 = 0
+
+P1218 = 1
+P1218 = 0
+
+P2U_Mach_BuzzerStopExe = 1
+P2U_Mach_BuzzerStopExe = 0
+
+Coord[1].LHDistance = 1500
+Motor[1].SegMoveTime
+Coord[1].LHSize
+
+Motor[1].MaxSpeed = 10000
+
+Mtr_ExeCmd(1)
+Mtr_ExeCmd(2)
+Mtr_ExeCmd(3)
+Mtr_ExeCmd(5)

@@ -1,0 +1,1412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="&gt;&gt;lblSelectedMenu.Name" xml:space="preserve">
+    <value>lblSelectedMenu</value>
+  </data>
+  <data name="&gt;&gt;lblSelectedMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSelectedMenu.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;lblSelectedMenu.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.Name" xml:space="preserve">
+    <value>btnVietnam</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.Name" xml:space="preserve">
+    <value>btnKorea</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.Name" xml:space="preserve">
+    <value>btnEnglish</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.Name" xml:space="preserve">
+    <value>btnAuto</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnManual.Name" xml:space="preserve">
+    <value>btnManual</value>
+  </data>
+  <data name="&gt;&gt;btnManual.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnManual.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnManual.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.Name" xml:space="preserve">
+    <value>btnConfig</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.Name" xml:space="preserve">
+    <value>btnAlarm</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Name" xml:space="preserve">
+    <value>btnJobFile</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Name" xml:space="preserve">
+    <value>btnVision</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnVision.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Name" xml:space="preserve">
+    <value>btnLog</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnLog.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;btnExit.Name" xml:space="preserve">
+    <value>btnExit</value>
+  </data>
+  <data name="&gt;&gt;btnExit.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnExit.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnExit.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panBottom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panBottom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 956</value>
+  </data>
+  <data name="panBottom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 84</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panBottom.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panBottom.Name" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;panBottom.Type" xml:space="preserve">
+    <value>DaekhonSystem.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panBottom.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panBottom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblSelectedMenu.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt, style=Bold</value>
+  </data>
+  <data name="lblSelectedMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 71</value>
+  </data>
+  <data name="lblSelectedMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 7</value>
+  </data>
+  <data name="lblSelectedMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>716</value>
+  </data>
+  <data name="lblSelectedMenu.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblSelectedMenu.Name" xml:space="preserve">
+    <value>lblSelectedMenu</value>
+  </data>
+  <data name="&gt;&gt;lblSelectedMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSelectedMenu.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;lblSelectedMenu.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnVietnam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnVietnam.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1122, 23</value>
+  </data>
+  <data name="btnVietnam.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 47</value>
+  </data>
+  <data name="btnVietnam.TabIndex" type="System.Int32, mscorlib">
+    <value>1128</value>
+  </data>
+  <data name="btnVietnam.Text" xml:space="preserve">
+    <value>tiếng Hàn</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.Name" xml:space="preserve">
+    <value>btnVietnam</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnVietnam.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnKorea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnKorea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1012, 23</value>
+  </data>
+  <data name="btnKorea.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 47</value>
+  </data>
+  <data name="btnKorea.TabIndex" type="System.Int32, mscorlib">
+    <value>1127</value>
+  </data>
+  <data name="btnKorea.Text" xml:space="preserve">
+    <value>한국어</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.Name" xml:space="preserve">
+    <value>btnKorea</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnKorea.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnEnglish.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1232, 23</value>
+  </data>
+  <data name="btnEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 47</value>
+  </data>
+  <data name="btnEnglish.TabIndex" type="System.Int32, mscorlib">
+    <value>1126</value>
+  </data>
+  <data name="btnEnglish.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.Name" xml:space="preserve">
+    <value>btnEnglish</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnEnglish.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnAuto.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnAuto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
+        0AAADdABEGw9BwAABJBJREFUaEPt2VeMlFUYgOFFUCkWpBkQEoyKEaQFNAiooQQRe2LUG1EvMIQAF0AA
+        lYAaqheKFIkREFDU2G68sYEtoiKoISqg9JIoTQJIleD7TvZszg5Td2d252K+5Ilmdvbf77TvnP9QUeBo
+        gEa4MOJnJRsN0RVPYGyl0bgNzVBycREexGrsxs+VtmErnsMNKJnoiDnYgm/wKPpXGoalOIzP8QhsYBwt
+        cCfuj9yHXmiMgoZz9R58gWN4A92RnNRVeBw2yp5/FlcixGPYAEck9i5uRMHicjyP7TiAUTCRdIvuYnTG
+        e/gHb8GE/P7TsNGzMQIjYcI/og8KEs7ND3AEa5A8jM0xHi+gPUJD/G8bOL8PYh2Gwp436QGwcZdgEgqS
+        9AUYiLU4ifkwibh3TfJ1/IvTcNj7wd8NYSWxwjhKh/Ar/K5rwGc5vSag1klbex+ClWEfnkRyGXNBfgUb
+        5OKbC5M6DpOwJIYwuduxHmdxDvZ0QZL2IVdgGpwO38LejhNwOF3te7EL43ApDBNzZE7ABnVBvFDbYgmc
+        Lntg2bSa1DhpF5tzzuqwHwtxLUI4/27GMjgnV2EI4qlgmISL9neYmIu2HcK0sgMextdwWlmFXkVeSfuw
+        bnA1/wV/2RV9GUJ0gDveb7CUzcLVSBc+051xJRwNe/cW2PAQ/r6N+wMm/wtuRdZoClv9KSxl9q4PD71n
+        r7hgVuBvfIi70QS5hD08GTb2O1jiHNEQNsLa/zFcO6+gE5JHryqcX5Yfe85V784WbwIuPD/7ATthfb0O
+        aR+YJhwx18CX2IHXcA3i6eIZZgH8O+6kd8DDV1X45evxNlwQFvabEA+dCTt0LrbvcS/84+EP5RsuRuv9
+        YrhePKc8gPA8O6I1nP/ujk6pqaiqWM4le8/hmAHna9x71mKngeeH9+FWXa3VNQwTtOGWT9eOO6XTIVQe
+        w03LOu9Usno5ba1midVvD7rYnNNx7w2Gm4C1dh5sfU17N124BzgdTOwMHElLYwg7sBVcvKewCInheRNx
+        7XVqOB2sr35xDOKfFyPsVSuWm81m3IV4xB3dP2GBSCRtbbSXrQI98BkcDlvdE3UZ7g2b4Oh7BrFAuAac
+        Sn6eSPpFuEpfgvXW4+NGTEFcm+sqnH6eCD0JWhg+ggewd3AU05E45Hj4sVdtnfPK0hZvt/URLkDPJubk
+        ocpjgAm7wyZa5v+4JXvIcRX3Rb71t9DRGy5OT42+AVm1Ur7JuOAsfaWU9EzEu+Z5UU66llFOuq6iaEn7
+        Hc8CLfPgJpZLFC1pT4de0HiUzcVPmIhcomhJWz89n5i4O2s2bsGeFHM5dBUtaQ81Jv0UPFBl4/GgZJL2
+        FSqXKCcdopx0iignHaKcdIooJx3Cf40y6eQ75XRRF0l7F5Mx6eHwDto7tviGKV0UM2mf7WWk177Jd+HV
+        wss+/0nCt/OX8UwWy+GL8CfRZ5k4ir6kpvpZzClhL3sl5mV7xlH3fDAIvgV755yNvewtvhc6qX6ezIuY
+        /5I+S8UbLa8yHPGMvRzCVnnm9e3X++H64AWoN7ZemeUdzr36kCEqKv4H3At7Huu1B38AAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="btnAuto.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnAuto.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 4</value>
+  </data>
+  <data name="btnAuto.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnAuto.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnAuto.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnAuto.TabIndex" type="System.Int32, mscorlib">
+    <value>717</value>
+  </data>
+  <data name="btnAuto.Text" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.Name" xml:space="preserve">
+    <value>btnAuto</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnAuto.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnManual.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnManual.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="btnManual.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnManual.Location" type="System.Drawing.Point, System.Drawing">
+    <value>316, 4</value>
+  </data>
+  <data name="btnManual.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnManual.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnManual.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnManual.TabIndex" type="System.Int32, mscorlib">
+    <value>657</value>
+  </data>
+  <data name="btnManual.Text" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="&gt;&gt;btnManual.Name" xml:space="preserve">
+    <value>btnManual</value>
+  </data>
+  <data name="&gt;&gt;btnManual.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnManual.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnManual.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnConfig.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnConfig.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="btnConfig.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnConfig.Location" type="System.Drawing.Point, System.Drawing">
+    <value>458, 4</value>
+  </data>
+  <data name="btnConfig.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnConfig.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnConfig.TabIndex" type="System.Int32, mscorlib">
+    <value>1131</value>
+  </data>
+  <data name="btnConfig.Text" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.Name" xml:space="preserve">
+    <value>btnConfig</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnConfig.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="btnAlarm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnAlarm.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnAlarm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>600, 4</value>
+  </data>
+  <data name="btnAlarm.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnAlarm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnAlarm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnAlarm.TabIndex" type="System.Int32, mscorlib">
+    <value>657</value>
+  </data>
+  <data name="btnAlarm.Text" xml:space="preserve">
+    <value>Alarm</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.Name" xml:space="preserve">
+    <value>btnAlarm</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnAlarm.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="btnJobFile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnJobFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        I3aN/2mMGfMPRrQjgFC9gVoAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnJobFile.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnJobFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnJobFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1353, 3</value>
+  </data>
+  <data name="btnJobFile.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnJobFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnJobFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnJobFile.TabIndex" type="System.Int32, mscorlib">
+    <value>658</value>
+  </data>
+  <data name="btnJobFile.Text" xml:space="preserve">
+    <value>JobFile</value>
+  </data>
+  <data name="btnJobFile.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Name" xml:space="preserve">
+    <value>btnJobFile</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="btnVision.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnVision.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnVision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1496, 3</value>
+  </data>
+  <data name="btnVision.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnVision.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnVision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnVision.TabIndex" type="System.Int32, mscorlib">
+    <value>1132</value>
+  </data>
+  <data name="btnVision.Text" xml:space="preserve">
+    <value>Vision</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Name" xml:space="preserve">
+    <value>btnVision</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnVision.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="btnLog.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnLog.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1638, 3</value>
+  </data>
+  <data name="btnLog.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>1133</value>
+  </data>
+  <data name="btnLog.Text" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Name" xml:space="preserve">
+    <value>btnLog</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnLog.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="btnExit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAYAAAA6GuKaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAABFhJREFUaEPtmWmIVWUYx8fScivL3DEwDBNUXHDD1MQWc0nBSDSlSIRccFdEbRGE
+        KPwg+iVJC9rENrcg1BShcilXcF9xR0VcqC+hH/z9xnvkzplz5s69d2bO/XD/8GPmnBnO+Z/3fd73fZ73
+        LUE74AJchqtwLYW/X4HzcAZOR3AKTlaSE3AAFkITyEv/wTr4AXaBBm/DPdD4TvgWPoXZMB7Gwts5sADO
+        wjjISzfhTWgML8AwmAHLYT3sBlvUHvkaPgZf+iI8Cw2hHtSBRzPg/9urPj8v3YKhD34tVS14BOrD8/AS
+        2EofwlewGbbCr/Aj+HH2gB/eAR6HODUHTc8svcpDYdNR8iOehNbQEV4GW3sOLIWfwZ5YA50gTjVqOl32
+        RG2oC4aGRgyr18HBNgTilJjpKPkhrcDYf8MbMSoo06olFE1XpKJpKJqOU6GYdgZyGnU6zahCMO3i1Q8W
+        gYvWE1Chkjat4eHwN5yDwzAZHoNYJWnakOgOGr4Ir8BKcGV9B2JDJUnTtuYnYAsPBDPBNmCqvAd8VmSL
+        m5omZVqTE0HTS8CBaOu3h9WwHfpCuRavLtO+3AHVFJqlMEO0QjLNDe6ZbFmA/AtfgEmYcd4FNoLZY08o
+        Yzxb05ppBCZIT6WuVdj0M7AC7Oa9KfaDrXo07Z4cAu8byxYhyl4wBf4NND4YzPFLla3p52AeWBAsBgsF
+        FTbdDo6B05hFxJhK8BYY04Fs3V7gu/6Ad8EQytr0VPAB38El0LitHTZtXHo9ACpTigWEZajYAJZ6R2AW
+        ZG36M/gdJoDVutWKD44ybcXeH/x7PrKEs668AZu8ka1pKxRHtQaPw0iIa+mqMG3rGzr/wPfgvJ61aSvv
+        zqD5rqlrFRfT28AC2BkiE99AHwikYePYsLAOdaYpDaFsTStb1tYLZg4VNu3M8jk4L7t/Itfhf3BfJbgn
+        d+Bu6qd7KkpzI+AguGI6XT7ssVxMRylsWrmauZvkoiJW6g7ej9Lu2WuugBp2Q6gBaK43bAFj2B4tM0ir
+        03RY4RXRKW0uuPU2CQy1wLD7Kz9BNyhjWCVtej4Ysw4291YcaM5O4kZRuSVcJWlaObhcvl0lXYgMlbXg
+        auj8HqmkTRsObeED+BO+hB4Qa1glbVo5Cz0NhoZpQmRIpKsQTAdKn0IrVCGZrrSKpqFoOk41aboFVIlp
+        q/FREBSVuUrTHgK9B54YROE5jUu2+xp5yZb+BSyhLIuCA6AKJ/cIadqk5y8wZ4jCpdlUNT39zEmW8NZg
+        HsdZWJpsW0yugmng+u/JVyZp2vNHl+TpMbwPNkqQg+csH+ALzQEGgcvpBvADjFFzAqtoazRLLEt7S39L
+        /fSVy2dYqVicml5G4bvKZWz5ygdaprukWhW/ClPAYzf3IPaBcWtS7kd4+joaTCVNITMNxBqRyYyt6SB1
+        n8OE3dMrT179CDdeHBOatTesGV+DgpMzjBWJ3W2PWLi6H2eGtgzcUapGlZTcB/9EVmABhobrAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="btnExit.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="btnExit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1780, 3</value>
+  </data>
+  <data name="btnExit.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnExit.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnExit.TabIndex" type="System.Int32, mscorlib">
+    <value>1134</value>
+  </data>
+  <data name="btnExit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="&gt;&gt;btnExit.Name" xml:space="preserve">
+    <value>btnExit</value>
+  </data>
+  <data name="&gt;&gt;btnExit.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnExit.Parent" xml:space="preserve">
+    <value>panBottom</value>
+  </data>
+  <data name="&gt;&gt;btnExit.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Name" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
+    <value>DaekhonSystem.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.Name" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.Type" xml:space="preserve">
+    <value>DaekhonSystem.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 102</value>
+  </data>
+  <data name="panTop.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panTop.Name" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;panTop.Type" xml:space="preserve">
+    <value>DaekhonSystem.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panTop.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pictureBox1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 3</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 90</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Name" xml:space="preserve">
+    <value>btnLogIn</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Name" xml:space="preserve">
+    <value>lblUser</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblUser.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.Name" xml:space="preserve">
+    <value>lblDateTime</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
+    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="metroPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1347, 2</value>
+  </data>
+  <data name="metroPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>568, 93</value>
+  </data>
+  <data name="metroPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Name" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Type" xml:space="preserve">
+    <value>DaekhonSystem.Panel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;metroPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnLogIn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnLogIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnLogIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>419, 6</value>
+  </data>
+  <data name="btnLogIn.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnLogIn.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnLogIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 78</value>
+  </data>
+  <data name="btnLogIn.TabIndex" type="System.Int32, mscorlib">
+    <value>795</value>
+  </data>
+  <data name="btnLogIn.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Name" xml:space="preserve">
+    <value>btnLogIn</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Type" xml:space="preserve">
+    <value>DaekhonSystem.BitBtn, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblUser.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="lblUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 5</value>
+  </data>
+  <data name="lblUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 37</value>
+  </data>
+  <data name="lblUser.TabIndex" type="System.Int32, mscorlib">
+    <value>792</value>
+  </data>
+  <data name="lblUser.Text" xml:space="preserve">
+    <value>[Administrator] ID : DK</value>
+  </data>
+  <data name="lblUser.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Name" xml:space="preserve">
+    <value>lblUser</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblUser.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblUser.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 37</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>793</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>DATE</value>
+  </data>
+  <data name="label4.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 37</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>794</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>USER</value>
+  </data>
+  <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="lblDateTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14pt, style=Bold</value>
+  </data>
+  <data name="lblDateTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 49</value>
+  </data>
+  <data name="lblDateTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 37</value>
+  </data>
+  <data name="lblDateTime.TabIndex" type="System.Int32, mscorlib">
+    <value>784</value>
+  </data>
+  <data name="lblDateTime.Text" xml:space="preserve">
+    <value>2023-04-10  PM 10:11:22</value>
+  </data>
+  <data name="lblDateTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.Name" xml:space="preserve">
+    <value>lblDateTime</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
+    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
+    <value>metroPanel1</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
+    <value>lblVersion</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
+    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.Name" xml:space="preserve">
+    <value>lblBuildVersion</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.Type" xml:space="preserve">
+    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.Parent" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.Name" xml:space="preserve">
+    <value>lblMainTitle</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.Type" xml:space="preserve">
+    <value>DaekhonSystem.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.Parent" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panEqpTitle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 36pt, style=Bold</value>
+  </data>
+  <data name="panEqpTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 5</value>
+  </data>
+  <data name="panEqpTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1124, 89</value>
+  </data>
+  <data name="panEqpTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="panEqpTitle.Text" xml:space="preserve">
+    <value>Main Form</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.Name" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.Type" xml:space="preserve">
+    <value>DaekhonSystem.GradientPanel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;panEqpTitle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="lblVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14pt, style=Bold</value>
+  </data>
+  <data name="lblVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>929, 46</value>
+  </data>
+  <data name="lblVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 34</value>
+  </data>
+  <data name="lblVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>1517</value>
+  </data>
+  <data name="lblVersion.Text" xml:space="preserve">
+    <value>Version-0.9</value>
+  </data>
+  <data name="lblVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Name" xml:space="preserve">
+    <value>lblVersion</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Type" xml:space="preserve">
+    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.Parent" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;lblVersion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblBuildVersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14pt, style=Bold</value>
+  </data>
+  <data name="lblBuildVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>907, 7</value>
+  </data>
+  <data name="lblBuildVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 28</value>
+  </data>
+  <data name="lblBuildVersion.TabIndex" type="System.Int32, mscorlib">
+    <value>787</value>
+  </data>
+  <data name="lblBuildVersion.Text" xml:space="preserve">
+    <value>Build: 20240825.001</value>
+  </data>
+  <data name="lblBuildVersion.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.Name" xml:space="preserve">
+    <value>lblBuildVersion</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.Type" xml:space="preserve">
+    <value>DaekhonSystem.Label, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.Parent" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;lblBuildVersion.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblMainTitle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 30pt, style=Bold</value>
+  </data>
+  <data name="lblMainTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 7</value>
+  </data>
+  <data name="lblMainTitle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="lblMainTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1069, 71</value>
+  </data>
+  <data name="lblMainTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>1126</value>
+  </data>
+  <data name="lblMainTitle.Text" xml:space="preserve">
+    <value>Main Form</value>
+  </data>
+  <data name="lblMainTitle.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.Name" xml:space="preserve">
+    <value>lblMainTitle</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.Type" xml:space="preserve">
+    <value>DaekhonSystem.GradientLabel, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.Parent" xml:space="preserve">
+    <value>panEqpTitle</value>
+  </data>
+  <data name="&gt;&gt;lblMainTitle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="AutoThread.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="panRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt</value>
+  </data>
+  <data name="panRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1556, 102</value>
+  </data>
+  <data name="panRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 793</value>
+  </data>
+  <data name="panRight.TabIndex" type="System.Int32, mscorlib">
+    <value>1123</value>
+  </data>
+  <data name="&gt;&gt;panRight.Name" xml:space="preserve">
+    <value>panRight</value>
+  </data>
+  <data name="&gt;&gt;panRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panRight.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panRight.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panClient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
+  </data>
+  <data name="panClient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 102</value>
+  </data>
+  <data name="panClient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1446, 752</value>
+  </data>
+  <data name="panClient.TabIndex" type="System.Int32, mscorlib">
+    <value>1124</value>
+  </data>
+  <data name="&gt;&gt;panClient.Name" xml:space="preserve">
+    <value>panClient</value>
+  </data>
+  <data name="&gt;&gt;panClient.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panClient.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panClient.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 1040</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 10pt</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>LaserCutter</value>
+  </data>
+  <data name="&gt;&gt;AutoThread.Name" xml:space="preserve">
+    <value>AutoThread</value>
+  </data>
+  <data name="&gt;&gt;AutoThread.Type" xml:space="preserve">
+    <value>DaekhonSystem.Thread, DaekhonSystem, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmMain</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

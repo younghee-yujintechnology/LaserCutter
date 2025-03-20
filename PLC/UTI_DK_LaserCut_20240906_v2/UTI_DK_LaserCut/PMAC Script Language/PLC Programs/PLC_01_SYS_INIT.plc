@@ -1,0 +1,121 @@
+
+//초기화 프로그램
+
+open plc PLC_01_SYS_INIT
+abort 1..15
+kill 1..31
+ECAT[0].Enable = 0
+
+call Timer.msec(1000)
+//변수 초기화
+Mtr_ExeCmd(0),MAX_MOTOR_COUNT = 0
+Mtr_CmdErrorCode(0),MAX_MOTOR_COUNT = 0
+Mtr_ExeCmdStep(0),MAX_MOTOR_COUNT = 0
+Mtr_StCompHome(0),MAX_MOTOR_COUNT = 0
+
+//IO 출력 초기화
+cmd"M7100,50 = 0"
+//PC 명령 실행 변수 초기화
+cmd"p(PtoU_BIT_EXE_SERVO_ON),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_SERVO_OFF),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_JOG_PLUS),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_JOG_MINUS),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_HOME),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_MOVE_INC),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_MOVE_ABS),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_SERVO_RESET),MAX_USE_MOTOR_COUNT,100 = 0"
+cmd"p(PtoU_BIT_EXE_MOVE_STOP),MAX_USE_MOTOR_COUNT,100 = 0"
+//IO 초기 상태
+Out_PowerMeter_Up=1
+Out_PowerMeter_Dw=0
+Out_BeamShutter_Sol	= 0
+//아이오 초기화
+// PMAC -> PC 완료 신호 초기화
+U2P_Lstage_AilgnMvComp		= 0
+U2P_Lstage_WorkPosMvComp	= 0
+U2P_Lstage_LoadingPosMvComp = 0
+U2P_Lstage_ViAilgnSeqComp = 0
+U2P_Rstage_AilgnMvComp		= 0
+U2P_Rstage_WorkPosMvComp	= 0
+U2P_Rstage_LoadingPosMvComp = 0
+U2P_Rstage_ViAilgnSeqComp = 0
+U2P_Mach_PowerMoterChkComp  = 0
+U2P_Mach_AllHomming = 0
+U2P_Mach_AllHomeComp = 0
+// PMAC -> PC 기타 신호 초기화
+U2P_Lstage_VacReadySt			= 0
+U2P_Lstage_AutoReadySt			= 0
+U2P_Lstage_MotionDownroadExe	= 0
+U2P_Lstage_Motioning			= 0
+U2P_Lstage_MotionComp			= 0
+U2P_Lstage_AutoRunComp			= 0
+U2P_Lstage_ViAilgnSeqComp		= 0
+U2P_Lstage_ViAilgn01TrigExe		= 0
+U2P_Lstage_ViAilgn02TrigExe		= 0
+U2P_Lstage_ViAilgn03TrigExe		= 0
+U2P_Lstage_ViAilgn04TrigExe		= 0
+U2P_Rstage_VacReadySt			= 0
+U2P_Rstage_AutoReadySt			= 0
+U2P_Rstage_MotionDownroadExe	= 0
+U2P_Rstage_Motioning			= 0
+U2P_Rstage_MotionComp			= 0
+U2P_Rstage_AutoRunComp			= 0
+U2P_Rstage_ViAilgnSeqComp		= 0
+U2P_Rstage_ViAilgn01TrigExe		= 0
+U2P_Rstage_ViAilgn02TrigExe		= 0
+U2P_Rstage_ViAilgn03TrigExe		= 0
+U2P_Rstage_ViAilgn04TrigExe		= 0
+Unit_AutoStartReadySt(LSTAGE)	= 0
+Unit_AutoStartReadySt(RSTAGE)	= 0
+
+//에러 관련 변수 초기화
+Temp_AreaSenErrStatus			= 0
+Temp_MainDoorSenErrStatus		= 0
+Temp_SideDooerSenErrStatus		= 0
+Temp_LeftPressureSenErrStatus	= 0
+Temp_RightPressureSenErrStatus	= 0
+Temp_PressureSenErrStatus		= 0
+Temp_LeakSenErrStatus			= 0
+Safety_ErrorCheck				= 0
+Temp_SafetyStopErrNotClearStatus = 0
+Temp_SafetyEMOErrNotClearStatus	 = 0
+AutoRun_NotStopErrBit			= 0
+
+// 장비 구동 비트
+Temp_Lstage_AutoRunStatus = 0
+Temp_Rstage_AutoRunStatus = 0
+
+//커맨드 명령 리셋
+Mach_ExeCmdReset				= 1
+call Timer.sec(5)
+
+//Plc 프로그램 실행
+
+disable plc PLC_00_PRIMARY_PLC				//우선 순위 구동 PLC
+disable plc PLC_06_PROG_AUTO_SEQ			//장비 자동 시퀀스 프로그램
+
+
+
+enable plc PLC_02_PROG_ALARM					//알람 프로그램
+enable plc PLC_03_PROG_INTERFACE				//외부 연결 시퀀스 프로그램
+enable plc PLC_04_PROG_ALLHOME					//전체 홈 프로그램
+enable plc PLC_05_PROG_MACH_AUTO				//장비 자동 프로그램
+enable plc PLC_07_PROG_UNIT_SEQ					//장비 유닛 시퀀스 프로그램
+enable plc 8									//모터 상태 관련 프로그램
+enable plc 9									//장비 유닛 시퀀스 프로그램
+enable plc PLC_10_PROG_MANUAL_IN				//Manual 입력 프로그램 
+enable plc PLC_11_PROG_MANUAL_OUT				//Manual 출력 프로그램
+enable plc PLC_12_PROG_SEN_SAFTY				//에어리어, 도어 센서 관련 프로그램
+enable plc PLC_13_PROG_IO_OUT					//io 입출력 관련 프로그램
+enable plc PLC_21_MT_PROG_BASIC_MOVE			//Motor 기본 프로그램
+enable plc PLC_22_MT_PROG_BASIC_ERROR			//Motor 기본 프로그램(Heavy Alarm)
+enable plc PLC_23_MT_PROG_BASIC_STAT_UPDATE		//Motor 기본 상태 업데이트
+
+Motor[1].JogSpeed=2000
+Motor[2].JogSpeed=2000
+Motor[3].JogSpeed=2000
+
+disable plc PLC_01_SYS_INIT
+close
+
+

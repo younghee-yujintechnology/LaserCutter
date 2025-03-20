@@ -1,0 +1,149 @@
+open plc PLC_03_PROG_INTERFACE
+//전체 원점 시작 버튼
+if(P2U_Mach_AllHomeExe == 1 && Temp_Mach_AllHomeExe == 0)                           // 전체 원점 시작 버튼 입력
+{
+	Temp_Mach_AllHomeExe = 1                                                                // 재진입 방지 셋팅
+	if(Part_ExeCmdReadyStep(PART_MACH) <= 0 || Part_ExeCmdReadyStep(PART_MACH) == MACH_1000_EXE_ALL_HOME+990)            // 전체 원점 시퀀스 구동 확인
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_1000_EXE_ALL_HOME            // 전체 원점 시퀀스 실행
+	}
+}
+else if(P2U_Mach_AllHomeExe == 0 && Temp_Mach_AllHomeExe == 1)                  // 전체 원점 시작 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Mach_AllHomeExe = 0                                                                // 재진입 방지 OFF
+}
+//좌측 스테이지 정지 버튼
+if(In_LeftUnit_Stop_Btn == 1 && Temp_In_LeftUnit_Stop_Btn == 0)                           // 장비 정지 버튼 입력
+{
+	Temp_In_LeftUnit_Stop_Btn = 1															// 재진입 방지 셋팅																					
+	LeftStopSwitchCts = LeftStopSwitchCts+1
+	//Mach_ExeCmdStep(PART_MACH) = MACH_270_EXE_AUTO_STOP
+}
+else if(In_LeftUnit_Stop_Btn == 0 && Temp_In_LeftUnit_Stop_Btn ==1)                  // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_LeftUnit_Stop_Btn = 0                                                             // 재진입 방지 OFF
+}
+//우측 스테이지 정지 버튼
+if(In_RightUnit_Stop_Btn == 1 && Temp_In_RightUnit_Stop_Btn == 0)                           // 장비 정지 버튼 입력
+{
+	Temp_In_RightUnit_Stop_Btn = 1																						// 재진입 방지 셋팅
+	RightStopSwitchCts = RightStopSwitchCts+1
+	//Mach_ExeCmdStep(PART_MACH) = MACH_270_EXE_AUTO_STOP
+}
+else if(In_RightUnit_Stop_Btn == 0 && Temp_In_RightUnit_Stop_Btn == 1)                  // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_RightUnit_Stop_Btn = 0                                                             // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//리셋 버튼
+if((In_LeftUnit_ReSet_Btn == 1 || In_RightUnit_ReSet_Btn == 1 || P2U_Mach_ReSetStart == 1) && Temp_In_LeftUnit_ReSet_Btn == 0)                            // 장비 리셋 버튼 입력
+{
+	Temp_In_LeftUnit_ReSet_Btn = 1                                                               // 재진입 방지 셋팅
+}
+else if((In_LeftUnit_ReSet_Btn == 0 && In_RightUnit_ReSet_Btn == 0 && P2U_Mach_ReSetStart == 0) && Temp_In_LeftUnit_ReSet_Btn ==1)                   // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	if (In_Main_PowerOn == 0)
+	{
+		call Timer.msec(ErrResetDelayTime)
+	}
+	Mach_ExeCmdErrorReset = 1
+	Temp_In_LeftUnit_ReSet_Btn = 0                                                              // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//장비 EMO 버튼
+if((In_EMO01_Btn == 1 || In_EMO02_Btn == 1 || In_EMO03_Btn == 1) && Temp_In_RightUnit_ReSet_Btn == 0)                         // 장비 리셋 버튼 입력
+{
+	Temp_In_RightUnit_ReSet_Btn = 1                                                              // 재진입 방지 셋팅
+	Mach_ExeCmdStep(PART_MACH) = MACH_290_EXE_EMS
+}
+else if(In_RightUnit_ReSet_Btn == 0 && Temp_In_RightUnit_ReSet_Btn ==1)                  // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_RightUnit_ReSet_Btn = 0                                                               // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//좌측 진공 버튼
+if((In_LeftUnit_Vac_Btn == 1 || P2U_Lstage_VacStart == 1) && Temp_In_LeftUnit_Vac_Btn == 0)                         // 장비 리셋 버튼 입력
+{
+	Temp_In_LeftUnit_Vac_Btn = 1																					// 재진입 방지 셋팅
+	if(U2P_Lstage_VacReadySt == 1 || (Unit_ExeCmdStep(LSTAGE) >= UNIT_100_EXE_TABLEVAC && Unit_ExeCmdStep(LSTAGE) <= UNIT_100_EXE_TABLEVAC+90))
+	{                                                       
+		Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT
+	}
+	else if(U2P_Lstage_VacReadySt == 0)
+	{
+		Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC
+	}
+}
+else if((In_LeftUnit_Vac_Btn == 0 && P2U_Lstage_VacStart == 0) && Temp_In_LeftUnit_Vac_Btn ==1)                    // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_LeftUnit_Vac_Btn = 0                                                              // 재진입 방지 OFF
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//우측 진공 버튼
+if((In_RightUnit_Vac_Btn == 1 || P2U_Rstage_VacStart == 1) && Temp_In_RightUnit_Vac_Btn == 0)                           // 장비 리셋 버튼 입력
+{
+	Temp_In_RightUnit_Vac_Btn = 1
+	if(U2P_Rstage_VacReadySt == 1 || (Unit_ExeCmdStep(RSTAGE) >= UNIT_100_EXE_TABLEVAC && Unit_ExeCmdStep(RSTAGE) <= UNIT_100_EXE_TABLEVAC+90))
+	{                                                               // 재진입 방지 셋팅
+		Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT
+	}
+	else if(U2P_Rstage_VacReadySt == 0)
+	{
+		Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC
+	}
+}
+else if((In_RightUnit_Vac_Btn == 0 && P2U_Rstage_VacStart == 0) && Temp_In_RightUnit_Vac_Btn ==1)                  // 알람 리셋 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_In_RightUnit_Vac_Btn = 0                                                             // 재진입 방지 OFF
+}
+
+//장비 부저 정지 버튼
+if(P2U_Mach_BuzzerStopExe == 1 && Temp_Mach_BuzzerStopExe == 0)                         // 부저 정지 이동 버튼 입력
+{
+	Temp_Mach_BuzzerStopExe = 1                                                             // 재진입 방지 셋팅
+	Temp_SinalTower_Buzzer = 1																// 부저 정지 실행
+}
+else if(P2U_Mach_BuzzerStopExe == 0 && Temp_Mach_BuzzerStopExe ==1)                    // 부저 정지 버튼 입력 OFF, 재진입 방지 ON 일 시
+{
+	Temp_Mach_BuzzerStopExe = 0                                                                // 재진입 방지 OFF
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 파라미터 데이터 취득
+Mtr_SetHomeOffsetPos(LinearX)	=	LinearX_Mtr_HomeOffset	
+Mtr_SetHomeOffsetPos(LStageY)	=	LStageY_Mtr_HomeOffset	
+Mtr_SetHomeOffsetPos(RStageY)	=	RStageY_Mtr_HomeOffset	
+Mtr_SetHomeOffsetPos(ServoZ)	=	ServoZ_Mtr_HomeOffset	
+
+Temp_Mach_MainDoorUnUse			=		P2U_Mach_MainDoorUnUse			//메인 도어 센서 사용/미사용 
+Temp_Mach_AreaSenUnUse			=		P2U_Mach_AreaSenUnUse			//에어리어 센서 사용/미사용
+Temp_Mach_SideDoorUnUse 		=		P2U_Mach_SideDoorUnUse			//사이드 도어 센서 사용/미사용
+Temp_Mach_BuzzerUnUse			=		P2U_Mach_BuzzerUnUse			//부저 사용/미사용
+
+Temp_Mach_UnitStartDelayTime	=		P2U_Mach_UnitStartDelayTime*1000	//장비 구동 중 유닛 대기상태 딜레이 시간
+
+Temp_Mach_AutoCompVentUnUse		=		P2U_Mach_AutoCompVentUnUse		//장비 구동 완료 시 벤트 시퀀스 진행 사용/미사용
+Temp_Mach_VacErrCheckUnUse 		=		P2U_Mach_VacErrCheckUnUse		//장비 진공 에러 알람 사용/미사용
+Temp_Mach_AreaSenVentUnUse 		=		P2U_Mach_AreaSenVentUnUse		//장비 에어리어 센서 감지 시 파기 사용/미사용
+
+Temp_Lstage_VacUseCts 			=		P2U_Lstage_VacUseCts			//진공 패드 사용 수(1차~4차)
+Temp_Lstage_Vac01Time 			=		P2U_Lstage_Vac01Time*1000		//진공 패드 1차 인터벌 타임
+Temp_Lstage_Vac02Time 			=		P2U_Lstage_Vac02Time*1000		//진공 패드 2차 인터벌 타임
+Temp_Lstage_Vac03Time 			=		P2U_Lstage_Vac03Time*1000		//진공 패드 3차 인터벌 타임
+Temp_Lstage_Vac04Time 			=		P2U_Lstage_Vac04Time*1000		//진공 패드 4차 인터벌 타임
+
+Temp_Rstage_VacUseCts 			=		P2U_Rstage_VacUseCts			//진공 패드 사용 수(1차~4차)
+Temp_Rstage_Vac01Time 			=		P2U_Rstage_Vac01Time*1000		//진공 패드 1차 인터벌 타임
+Temp_Rstage_Vac02Time 			=		P2U_Rstage_Vac02Time*1000		//진공 패드 2차 인터벌 타임
+Temp_Rstage_Vac03Time 			=		P2U_Rstage_Vac03Time*1000		//진공 패드 3차 인터벌 타임
+Temp_Rstage_Vac04Time 			=		P2U_Rstage_Vac04Time*1000		//진공 패드 4차 인터벌 타임
+
+Temp_MaxAccData = P2U_Mach_LookAheadAcc
+Motor[1].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+Motor[1].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+Motor[2].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LStageY))/1000/1000)
+Motor[2].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LStageY))/1000/1000)
+Motor[3].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(RStageY))/1000/1000)
+Motor[3].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(RStageY))/1000/1000)
+
+
+close

@@ -1,0 +1,344 @@
+open plc PLC_07_PROG_UNIT_SEQ
+Local LSTAGE_VAC_Cts
+Local RSTAGE_VAC_Cts
+Local LSTAGE_Align_Cts
+Local RSTAGE_Align_Cts
+
+// --------------------User Code Goes Here------------------------
+// LSTAGE 유닛 유닛 시퀀스
+if(Unit_ExeCmdStep(LSTAGE) > 0)
+{
+// 진공 시퀀스
+	IF(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC)
+	{
+		Temp_Unit_ExeCmdStep(LSTAGE) = Unit_ExeCmdStep(LSTAGE)
+		Sys.CdTimer[LSTAGE_T] = 0
+		LSTAGE_VAC_Cts = 0
+		Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+10
+
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC+10) // 진공 펌프 1 실행
+	{
+		Out_LeftUnit_VacPump01 = 1
+		Out_LeftUnit_VacPump02 = 1
+		Out_LeftUnit_VacPumpSol01 = 1
+		Sys.CdTimer[LSTAGE_T] = Temp_Lstage_Vac01Time
+		Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+20
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC+20) // 1차 진공 실행
+	{
+		LSTAGE_VAC_Cts++
+		if(LSTAGE_VAC_Cts < Temp_Lstage_VacUseCts) // 진공 사용 횟수 확인
+		{
+			Sys.CdTimer[LSTAGE_T] = Temp_Lstage_Vac01Time
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+30
+		}
+		else if (Sys.CdTimer[LSTAGE_T] <= 0)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+70
+		}
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC+30 && Sys.CdTimer[LSTAGE_T] <= 0) // 2차 진공 실행
+	{
+		Out_LeftUnit_VacPumpSol02 = 1
+		LSTAGE_VAC_Cts++
+		if(LSTAGE_VAC_Cts < Temp_Lstage_VacUseCts) // 진공 사용 횟수 확인
+		{
+			Sys.CdTimer[LSTAGE_T] = Temp_Lstage_Vac01Time
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+40
+		}
+		else
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+70
+		}
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC+40 && Sys.CdTimer[LSTAGE_T] <= 0) // 3차 진공 실행
+	{
+		Out_LeftUnit_VacPumpSol03 = 1
+		LSTAGE_VAC_Cts++
+		if(LSTAGE_VAC_Cts < Temp_Lstage_VacUseCts) // 진공 사용 횟수 확인
+		{
+			Sys.CdTimer[LSTAGE_T] = Temp_Lstage_Vac01Time
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+50
+		}
+		else
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+70
+		}
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC+50 && Sys.CdTimer[LSTAGE_T] <= 0) // 4차 진공 실행
+	{
+		Out_LeftUnit_VacPumpSol04 = 1
+		Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+70
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC+70)
+	{
+		if(Temp_Mach_VacErrCheckUnUse == Use)
+		{
+			if(In_LeftUnit_Vac_Sen == 1)
+			{
+				U2P_Lstage_VacReadySt = 1														// 진공 완료 상태 On
+				Out_LeftUnit_Vac_Btn_Lamp = 1													// 진공 버튼 램프 On
+				Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+90
+			}
+			else
+			{
+				Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+80
+			}
+		}
+		else
+		{
+			U2P_Lstage_VacReadySt = 1														// 진공 완료 상태 On
+			Out_LeftUnit_Vac_Btn_Lamp = 1													// 진공 버튼 램프 On
+			Unit_ExeCmdStep(LSTAGE) = UNIT_100_EXE_TABLEVAC+90
+		}
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_100_EXE_TABLEVAC+80)
+	{
+		Unit_ExeCmdStep(LSTAGE) = -1*abs(Unit_ExeCmdStep(LSTAGE))
+		Out_LeftUnit_Vac_Btn_Lamp = 0
+		U2P_Lstage_VacReadySt = 0
+		Out_LeftUnit_VacPump01	  = 0
+		Out_LeftUnit_VacPumpSol01 = 0
+		Out_LeftUnit_VacPumpSol02 = 0
+		Out_LeftUnit_VacPump02	  = 0
+		Out_LeftUnit_VacPumpSol03 = 0
+		Out_LeftUnit_VacPumpSol04 = 0
+		//에러코드
+		Unit_CmdErrorCode(LSTAGE) = EEROR_CODE_5500_TABLEVACFAIL			// 테이블 진공 실패
+	}
+// 파기 시퀀스
+	ELSE IF(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT)
+	{
+		Temp_Unit_ExeCmdStep(LSTAGE) = Unit_ExeCmdStep(LSTAGE)
+		Sys.CdTimer[LSTAGE_T] = 0
+		//진공 수 확인
+		IF(Temp_Lstage_VacUseCts == 4)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+10
+		}
+		ELSE IF(Temp_Lstage_VacUseCts == 3)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+20
+		}
+		ELSE IF(Temp_Lstage_VacUseCts == 2)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+30
+		}
+		ELSE IF(Temp_Lstage_VacUseCts == 1)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+40
+		}
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+10)   // 4차 진공 OFFF
+	{
+		Out_LeftUnit_VacPumpSol04 = 0
+		Sys.CdTimer[LSTAGE_T] = Temp_Lstage_Vac01Time
+		Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+20
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+20 && Sys.CdTimer[LSTAGE_T] <= 0) // 3차 진공 OFF, 2차 펌프 OFF
+	{
+		Out_LeftUnit_VacPumpSol03 = 0
+		Sys.CdTimer[LSTAGE_T] = Temp_Lstage_Vac01Time
+		Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+30
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+30 && Sys.CdTimer[LSTAGE_T] <= 0) // 2차 진공 OFF
+	{
+		Out_LeftUnit_VacPumpSol02 = 0
+		Sys.CdTimer[LSTAGE_T] = Temp_Lstage_Vac01Time
+		Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+40
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+40 && Sys.CdTimer[LSTAGE_T] <= 0) // 1차 진공 OFF, 1차 펌프 OFF
+	{
+		Out_LeftUnit_VacPumpSol01 = 0
+		Out_LeftUnit_VacPump02 = 0
+		Out_LeftUnit_VacPump01 = 0
+		Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+50
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+50)
+	{
+		Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+70
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+70)
+	{
+		U2P_Lstage_VacReadySt = 0														// 진공 완료 상태 On
+		Out_LeftUnit_Vac_Btn_Lamp = 0													// 진공 버튼 램프 On
+		Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT+90
+	}
+	else if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+80)
+	{
+		Unit_ExeCmdStep(LSTAGE) = -1*abs(Unit_ExeCmdStep(LSTAGE))
+		//에러코드
+		Unit_CmdErrorCode(LSTAGE) = EEROR_CODE_5500_TABLEVENTFAIL			// 테이블 파기 실패
+	}
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// RSTAGE 유닛 유닛 시퀀스
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+if(Unit_ExeCmdStep(RSTAGE) > 0)
+{
+// 진공 시퀀스
+	IF(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC)
+	{
+		Temp_Unit_ExeCmdStep(RSTAGE) = Unit_ExeCmdStep(RSTAGE)
+		RSTAGE_VAC_Cts = 0
+		Sys.CdTimer[RSTAGE_T] = 0
+		Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+10
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC+10)   // 진공 펌프 1 실행
+	{
+		Out_RightUnit_VacPump01 = 1
+		Out_RightUnit_VacPump02 = 1
+		Out_RightUnit_VacPumpSol01 = 1
+		Sys.CdTimer[RSTAGE_T] = Temp_Rstage_Vac01Time
+		Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+20
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC+20) // 1차 진공 실행
+	{
+		RSTAGE_VAC_Cts++
+		if(RSTAGE_VAC_Cts < Temp_Rstage_VacUseCts) // 진공 사용 횟수 확인
+		{
+			Sys.CdTimer[RSTAGE_T] = Temp_Rstage_Vac01Time
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+30
+		}
+		else if (Sys.CdTimer[RSTAGE_T] <= 0)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+70
+		}
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC+30 && Sys.CdTimer[RSTAGE_T] <= 0) // 2차 진공 실행
+	{
+		Out_RightUnit_VacPumpSol02 = 1
+		RSTAGE_VAC_Cts++
+		if(RSTAGE_VAC_Cts < Temp_Rstage_VacUseCts) // 진공 사용 횟수 확인
+		{
+			Sys.CdTimer[RSTAGE_T] = Temp_Rstage_Vac01Time
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+40
+		}
+		else
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+70
+		}
+	
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC+40 && Sys.CdTimer[RSTAGE_T] <= 0) // 3차 진공 실행
+	{
+		Out_RightUnit_VacPumpSol03 = 1
+		RSTAGE_VAC_Cts++
+		if(RSTAGE_VAC_Cts < Temp_Rstage_VacUseCts)
+		{
+			Sys.CdTimer[RSTAGE_T] = Temp_Rstage_Vac01Time
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+50
+		}
+		else
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+70
+		}
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC+50 && Sys.CdTimer[RSTAGE_T] <= 0) // 4차 진공 실행
+	{
+		Out_RightUnit_VacPumpSol04 = 1
+		Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+70
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC+70)
+	{
+		if(Temp_Mach_VacErrCheckUnUse == Use)
+		{
+			if(In_RightUnit_Vac_Sen == 1)
+			{
+				U2P_Rstage_VacReadySt = 1														// 진공 완료 상태 On
+				Out_RightUnit_Vac_Btn_Lamp = 1													// 진공 버튼 램프 On
+				Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+90
+			}
+			else
+			{
+				Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+80
+			}
+		}
+		else
+		{
+			U2P_Rstage_VacReadySt = 1														// 진공 완료 상태 On
+			Out_RightUnit_Vac_Btn_Lamp = 1													// 진공 버튼 램프 On
+			Unit_ExeCmdStep(RSTAGE) = UNIT_100_EXE_TABLEVAC+90
+		}
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_100_EXE_TABLEVAC+80)
+	{
+		Unit_ExeCmdStep(RSTAGE) = -1*abs(Unit_ExeCmdStep(RSTAGE))
+		Out_RightUnit_Vac_Btn_Lamp = 0
+		U2P_Rstage_VacReadySt = 0
+		Out_RightUnit_VacPump01	  = 0
+		Out_RightUnit_VacPumpSol01 = 0
+		Out_RightUnit_VacPumpSol02 = 0
+		Out_RightUnit_VacPump02	  = 0
+		Out_RightUnit_VacPumpSol03 = 0
+		Out_RightUnit_VacPumpSol04 = 0
+		//에러코드
+		Unit_CmdErrorCode(RSTAGE) = EEROR_CODE_5500_TABLEVACFAIL			// 테이블 진공 실패
+	}
+// 파기 시퀀스
+	IF(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT)
+	{
+		Temp_Unit_ExeCmdStep(RSTAGE) = Unit_ExeCmdStep(RSTAGE)
+		Sys.CdTimer[RSTAGE_T] = 0
+		IF(Temp_Rstage_VacUseCts == 4)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+10
+		}
+		ELSE IF(Temp_Rstage_VacUseCts == 3)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+20
+		}
+		ELSE IF(Temp_Rstage_VacUseCts == 2)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+30
+		}
+		ELSE IF(Temp_Rstage_VacUseCts == 1)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+40
+		}
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+10)
+	{
+		Out_RightUnit_VacPumpSol04 = 0
+		Sys.CdTimer[RSTAGE_T] = Temp_Rstage_Vac01Time
+		Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+20
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+20 && Sys.CdTimer[RSTAGE_T] <= 0)
+	{
+		Out_RightUnit_VacPumpSol03 = 0
+		Sys.CdTimer[RSTAGE_T] = Temp_Rstage_Vac01Time
+		Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+30
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+30 && Sys.CdTimer[RSTAGE_T] <= 0)
+	{
+		Out_RightUnit_VacPumpSol02 = 0
+		Sys.CdTimer[RSTAGE_T] = Temp_Rstage_Vac01Time
+		Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+40
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+40 && Sys.CdTimer[RSTAGE_T] <= 0)
+	{
+		Out_RightUnit_VacPumpSol01 = 0
+		Out_RightUnit_VacPump02 = 0
+		Out_RightUnit_VacPump01 = 0
+		Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+50
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+50)
+	{
+		Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+70
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+70)
+	{
+		U2P_Rstage_VacReadySt = 0
+		Out_RightUnit_Vac_Btn_Lamp = 0
+		Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT+90
+	}
+	else if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+80)
+	{
+		Unit_ExeCmdStep(RSTAGE) = -1*abs(Unit_ExeCmdStep(RSTAGE))
+		//에러코드
+		Unit_CmdErrorCode(RSTAGE) = EEROR_CODE_5500_TABLEVENTFAIL			// 테이블 파기 실패
+	}
+}
+
+close

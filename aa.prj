@@ -1,0 +1,21 @@
+object LaserProject
+  LaserProcess = DXFLoad
+  Object Model1
+    CadFile = "Cad~~"
+    Layers = {Name = "0", Color = "16777215", Used = "False", Direction = "CW", StartPoint = "Top", Sort = "False"}
+    Layers = {Name = "Process1", Color = "16777215", Used = "False", Direction = "CcW", StartPoint = "top", Sort = "False"}
+    Layers = {Name = "Process2", Color = "16777215", Used = "false", Direction = "CW", StartPoint = "Top", Sort = "False"}
+    Layers = {Name = "Process3", Color = "16777215", Used = "False", Direction = "CW", StartPoint = "Top", Sort = "False"}
+    Layers = {Name = "Process4", Color = "16777215", Used = "False", Direction = "ccw", StartPoint = "Top", Sort = "False"}
+    Layers = {Name = "Process5", Color = "16777215", Used = "False", Direction = "CW", StartPoint = "Top", Sort = "False"}
+    Layers = {Name = "Process6", Color = "16777215", Used = "False", Direction = "CW", StartPoint = "Top", Sort = "False"}
+    Layers = {Name = "Process7", Color = "16777215", Used = "False", Direction = "CW", StartPoint = "Top", Sort = "False"}
+    Layers = {Name = "Process8", Color = "16777215", Used = "False", Direction = "CW", StartPoint = "Top", Sort = "False"}
+    Thickness = "12"
+    Power = "2.3"
+  end
+  Object Model2
+  end
+  Object Model3
+  end
+end

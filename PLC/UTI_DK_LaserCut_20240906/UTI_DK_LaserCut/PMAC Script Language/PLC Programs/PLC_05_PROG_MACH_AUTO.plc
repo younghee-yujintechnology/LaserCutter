@@ -1,0 +1,84 @@
+open plc PLC_05_PROG_MACH_AUTO
+
+Local L_CtsMtrNum
+Local L_CtsUnitNum
+// --------------------User Code Goes Here------------------------
+
+// 장비 자동 정지
+if(Mach_ExeCmdStep(PART_MACH) == MACH_270_EXE_AUTO_STOP)
+{
+	Out_BeamShutter_Sol = 0
+	Out_ADV_On = 0
+	IF(Unit_ExeCmdStep(LSTAGE) >= 0)
+	{
+		Unit_ExeCmdStep(LSTAGE) = MACH_000_STAT_READY
+	}
+	IF(Unit_ExeCmdStep(RSTAGE) >= 0)
+	{
+		Unit_ExeCmdStep(RSTAGE) = MACH_000_STAT_READY
+	}
+	if(Part_ExeCmdReadyStep(PART_MACH) >= 0)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_000_STAT_READY
+	}
+	if(AutoRun == 1)		// 정지 실행 지 장비 커맨드 입력 상태 일 시
+	{
+		if(Coord[1].ProgActive == 1)
+		{
+			cmd"&1a"
+		}
+		L_CtsMtrNum = 1
+		while(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)
+		{
+			If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+			{
+				if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+				{
+					Mtr_ExeCmd(L_CtsMtrNum) = MTR_080_EXE_STOP
+				}
+			}
+			L_CtsMtrNum++
+		}
+		Part_ExeCmdReadyStep(PART_MACH) = 0
+	}
+}
+
+// 장비 EMO 관련
+if(Mach_ExeCmdStep(PART_MACH) == MACH_290_EXE_EMS)
+{
+	Mach_ExeCmdReset = 1					// 장비 커맨드 초기와
+	Out_BeamShutter_Sol = 0					// 빔 셔터 Close
+	Part_ExeCmdReadyStep(PART_MACH) = 0
+	Out_ADV_On = 0							// ADV Off
+	if(Coord[1].ProgActive == 1)			// 모션 구동 중일 시
+	{
+		cmd"&1a"
+	}
+	call Timer.sec(1)
+	kill 1..30;												// 모터 전체 Servo Off
+	Mach_ExeCmdStep(PART_MACH) = MACH_590_STAT_EMS			// EMO 시퀀스 상태
+}
+else if(Mach_ExeCmdStep(PART_MACH) == MACH_590_STAT_EMS && Mach_ExeCmdReset == 0)
+{
+	IF(Unit_ExeCmdStep(LSTAGE) >= 0)
+	{
+		Unit_ExeCmdStep(LSTAGE) = MACH_000_STAT_READY
+	}
+	IF(Unit_ExeCmdStep(RSTAGE) >= 0)
+	{
+		Unit_ExeCmdStep(RSTAGE) = MACH_000_STAT_READY
+	}
+	if(Part_ExeCmdReadyStep(PART_MACH) >= 0)
+	{
+		Part_ExeCmdReadyStep(PART_MACH) = MACH_000_STAT_READY
+	}
+	IF(In_EMO01_Btn == 1 || In_EMO02_Btn == 1 || In_EMO03_Btn == 1)
+	{
+		//에러 코드
+		Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7400_EMOSWITCH   //EMO 스위치 입력
+	}
+	Mach_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY
+}
+close
+
+

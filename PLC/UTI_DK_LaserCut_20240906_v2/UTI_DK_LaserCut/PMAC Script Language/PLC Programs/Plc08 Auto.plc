@@ -1,0 +1,252 @@
+
+open plc 8
+//모터 위치 검출
+// CurPosition
+XCurPos = Motor[1].ActPos -	Motor[1].HomePos;
+Y1CurPos = Motor[2].ActPos - Motor[2].HomePos;
+Y2CurPos = Motor[3].ActPos - Motor[3].HomePos;
+ZCurPos = Motor[5].ActPos - Motor[5].HomePos;
+//모터 속도 검출
+XVelocity = Motor[1].ActVel;
+Y1Velocity = Motor[2].ActVel;
+Y2Velocity = Motor[3].ActVel;
+ZVelocity = Motor[5].ActVel;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 장비 상태 업데이트
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+IF(Mach_StError == 1)
+{
+	U2P_Mach_Status = 2 // 장비 에러 상태
+}
+else if(AutoRun == 1)
+{
+	U2P_Mach_Status = 1 // 장비 가동 상태
+}
+else if(AutoRun == 0)
+{
+	U2P_Mach_Status = 0 // 장비 대기 상태
+}
+// 스테이지 위치 검출
+if ((Y1CurPos >= (Table1LoadYPos - Y1PositionTolerance)) && (Y1CurPos <= (Table1LoadYPos + Y1PositionTolerance)))
+{
+	Y1InLoadPos = 1;
+}
+else
+{
+	Y1InLoadPos = 0;
+}
+
+if ((Y2CurPos >= (Table2LoadYPos - Y2PositionTolerance)) && (Y2CurPos <= (Table2LoadYPos + Y2PositionTolerance)))
+{
+	Y2InLoadPos = 1;
+}
+else
+{
+	Y2InLoadPos = 0;
+}
+//1stage 에러 코드
+if(Unit_CmdErrorCode(LSTAGE) > 0)
+{
+	Table1ErrorCode = Unit_CmdErrorCode(LSTAGE)
+}
+else if(Part_CmdErrorCode(PART_MACH) > 0)
+{
+	Table1ErrorCode = Part_CmdErrorCode(PART_MACH)
+}
+else if(Mtr_CmdErrorCode(1) > 0 || Mtr_CmdErrorCode(2) > 0 || Mtr_CmdErrorCode(5) > 0)
+{
+	if(Mtr_CmdErrorCode(1) > 0)
+	{
+		Table1ErrorCode = Mtr_CmdErrorCode(1)
+	}
+	else if(Mtr_CmdErrorCode(2) > 0)
+	{
+		Table1ErrorCode = Mtr_CmdErrorCode(2)
+	}
+	else if(Mtr_CmdErrorCode(5) > 0)
+	{
+		Table1ErrorCode = Mtr_CmdErrorCode(5)
+	}
+}
+//2stage 에러 코드
+if(Unit_CmdErrorCode(RSTAGE) > 0)
+{
+	Table2ErrorCode = Unit_CmdErrorCode(RSTAGE)
+}
+else if(Part_CmdErrorCode(PART_MACH) > 0)
+{
+	Table2ErrorCode = Part_CmdErrorCode(PART_MACH)
+}
+else if(Mtr_CmdErrorCode(1) > 0 || Mtr_CmdErrorCode(3) > 0 || Mtr_CmdErrorCode(5) > 0)
+{
+	if(Mtr_CmdErrorCode(1) > 0)
+	{
+		Table2ErrorCode = Mtr_CmdErrorCode(1)
+	}
+	else if(Mtr_CmdErrorCode(3) > 0)
+	{
+		Table2ErrorCode = Mtr_CmdErrorCode(3)
+	}
+	else if(Mtr_CmdErrorCode(5) > 0)
+	{
+		Table2ErrorCode = Mtr_CmdErrorCode(5)
+	}
+}
+//토글 Bit 동작
+local L_0250_MsecToggleTime
+local L_1000_MsecToggleTime
+
+if(Sys.Time > L_0250_MsecToggleTime)
+{
+	L_0250_MsecToggleTime = Sys.Time+0.25
+	Mach_Bit_0250_MsecToggle = Mach_Bit_0250_MsecToggle^1
+}
+if(Sys.Time > L_1000_MsecToggleTime)
+{
+	L_1000_MsecToggleTime = Sys.Time+1.0
+	Mach_Bit_1000_MsecToggle = Mach_Bit_1000_MsecToggle^1
+}
+close
+
+// 장비 구동 관련
+open plc 9
+// 좌측 테이블 시작버튼 램프 신규 시작
+if (diTable1Start == 1 && Temp_In_LeftUnit_Start_Btn == 0)
+{
+	Temp_In_LeftUnit_Start_Btn = 1
+	if(U2P_Lstage_VacReadySt == 1)
+	{
+		Table1New = 1
+	}
+	Temp_In_LeftUnit_Start_Btn = 0
+}
+else if(diTable1Start == 0 && Temp_In_LeftUnit_Start_Btn == 1)
+{
+	Temp_In_LeftUnit_Start_Btn = 0
+}
+if(U2P_Lstage_VacReadySt == 0)
+{
+	Table1New = 0
+}
+// 우측 테이블 시작버튼 램프 신규 시작
+if (diTable2Start == 1 && Temp_In_RightUnit_Start_Btn == 0)
+{
+	Temp_In_RightUnit_Start_Btn = 1
+	if(U2P_Rstage_VacReadySt == 1)
+	{
+		Table2New = 1
+	}
+}
+else if(diTable2Start == 0 && Temp_In_RightUnit_Start_Btn == 1)
+{
+	Temp_In_RightUnit_Start_Btn =0
+}
+if(U2P_Rstage_VacReadySt == 0)
+{
+	Table2New = 0
+}
+
+// 좌측 테이블 시작버튼 램프
+if (Table1New == 1)
+{
+	doTable1StopLamp = 0
+	IF(Y1InLoadPos == 0)
+	{
+		doTable1StartLamp = 1
+	}
+	else if(Y1InLoadPos == 1 && U2P_Lstage_VacReadySt == 1)
+	{	
+		doTable1StartLamp = Mach_Bit_0250_MsecToggle
+	}
+}
+else
+{
+	doTable1StartLamp = 0
+	doTable1StopLamp = 1
+}
+// 우측 테이블 시작버튼 램프
+if (Table2New == 1)
+{
+	doTable2StopLamp = 0
+	if(Y2InLoadPos == 0)
+	{
+		doTable2StartLamp = 1
+	}
+	else if(Y2InLoadPos == 1 && U2P_Rstage_VacReadySt == 1)
+	{
+	doTable2StartLamp = Mach_Bit_0250_MsecToggle
+	}
+}
+else
+{
+	doTable2StartLamp = 0
+	doTable2StopLamp = 1
+}
+// 가공 종료 후 로딩 위치 이동
+if(Table1Unload == 1 && TempTable1Unload == 0)
+{
+	TempTable1Unload = 1
+	Motor[2].ProgJogPos = Table1LoadYPos
+	cmd"#2j=*"
+}
+else if(Table1Unload == 1 && TempTable1Unload == 1)
+{
+	Table1Unload = 0
+	TempTable1Unload = 0
+}
+if(Table2Unload == 1 && TempTable2Unload ==0)
+{
+	TempTable2Unload = 1
+	Motor[3].ProgJogPos = Table2LoadYPos
+	cmd"#3j=*"
+}
+else if(Table2Unload == 1 && TempTable2Unload == 1)
+{
+	Table2Unload = 0
+	TempTable2Unload = 0
+}
+// 좌측 스테이지 정지
+if(Table1Stop == 1 && Table1StopSwitch == 1 && OldTable1Stop == 0)
+{
+	Table1StopSwitch = 0
+	Table1New = 0
+	OldTable1Stop = 1
+}
+else if(Table1StopSwitch == 0 && OldTable1Stop == 1)
+{
+	OldTable1Stop = 0
+}
+// 우측 스테이지 정지
+if(Table2Stop == 1 && Table2StopSwitch == 1 && OldTable2Stop == 0)
+{
+	Table2StopSwitch = 0
+	Table2New = 0
+	OldTable2Stop = 1
+}
+else if(Table2StopSwitch == 0 && OldTable2Stop == 1)
+{
+	OldTable2Stop = 0
+}
+// 좌측 긴급 스테이지 정지
+if(Table1EMOStop == 1 && Table1EMOStopSwitch == 1 && OldTable1EMOStop == 0)
+{
+	Table1EMOStopSwitch = 0
+	Table1New = 0
+	OldTable1EMOStop = 1
+}
+else if(Table1EMOStopSwitch == 0 && OldTable1EMOStop == 1)
+{
+	OldTable1EMOStop = 0
+}
+// 우측 긴급 스테이지 정지
+if(Table2EMOStop == 1 && Table2EMOStopSwitch == 1 && OldTable2EMOStop == 0)
+{
+	Table2EMOStopSwitch = 0
+	Table2New = 0
+	OldTable2EMOStop = 1
+}
+else if(Table2EMOStopSwitch == 0 && OldTable2EMOStop == 1)
+{
+	OldTable2EMOStop = 0
+}
+close

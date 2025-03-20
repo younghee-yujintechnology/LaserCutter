@@ -1,0 +1,174 @@
+Open plc PLC_13_PROG_IO_OUT
+// --------------------User Code Goes Here------------------------
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 리셋 램프 상위 설정
+if(In_Main_PowerOn == 0 && Temp_In_Main_PowerOn == 0)
+{
+	Exe_ResetLamp_FlickOn = 1
+	Temp_In_Main_PowerOn = 1
+}
+else if(Mach_StError == 1 && Exe_ResetLamp_FlickOn == 0)
+{
+	Exe_ResetLamp_On = 1
+}
+else if(In_Main_PowerOn == 1 && Temp_In_Main_PowerOn == 1)
+{
+	Exe_ResetLamp_FlickOn = 0
+	Temp_In_Main_PowerOn = 0
+}
+else if(Mach_StError == 0 && In_Main_PowerOn == 1)
+{
+	Exe_ResetLamp_On = 0
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 리셋 램프 구동
+if(Exe_ResetLamp_FlickOn == 1 && Exe_ResetLamp_On == 0)
+{
+	IF(Temp_Exe_ResetLamp_FlickOn == 0 && Out_LeftUnit_ReSet_Btn_Lamp == 0 && Sys.CdTimer[ResetLamp_T] <= 0)
+	{
+		Out_LeftUnit_ReSet_Btn_Lamp=1
+		Out_RightUnit_ReSet_Btn_Lamp=1
+		Temp_Exe_ResetLamp_FlickOn = 1
+		Sys.CdTimer[ResetLamp_T] = ResetLampFlickTime
+	}
+	else if(Temp_Exe_ResetLamp_FlickOn == 1 && Out_LeftUnit_ReSet_Btn_Lamp == 1 && Sys.CdTimer[ResetLamp_T] <= 0)
+	{
+		Out_LeftUnit_ReSet_Btn_Lamp=0
+		Out_RightUnit_ReSet_Btn_Lamp=0
+		Temp_Exe_ResetLamp_FlickOn = 0
+		Sys.CdTimer[ResetLamp_T] = ResetLampFlickTime
+	}
+}
+else if(Exe_ResetLamp_FlickOn == 0 && Exe_ResetLamp_On == 1)
+{
+	Out_LeftUnit_ReSet_Btn_Lamp=1
+	Out_RightUnit_ReSet_Btn_Lamp=1
+	Temp_Exe_ResetLamp_FlickOn = 0
+}
+else if(Exe_ResetLamp_FlickOn == 0 && Exe_ResetLamp_On == 0)
+{
+	Out_LeftUnit_ReSet_Btn_Lamp=0
+	Out_RightUnit_ReSet_Btn_Lamp=0
+	Temp_Exe_ResetLamp_FlickOn = 0
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 좌측 시작 램프 상위 설정
+if(Unit_AutoStartReadySt(LSTAGE) == 1 && Temp_Lstage_AutoRunStatus == 0)
+{
+	Exe_LeftStartLamp_FlickOn = 1
+	Exe_LeftStartLamp_On = 0
+}
+else if(Unit_AutoStartReadySt(LSTAGE) == 0 && Temp_Lstage_AutoRunStatus == 1)
+{
+	Exe_LeftStartLamp_FlickOn =0
+	Exe_LeftStartLamp_On = 1
+}
+else if((Unit_AutoStartReadySt(LSTAGE) == 0 && Temp_Lstage_AutoRunStatus == 0) || Mach_StError == 1)
+{
+	Exe_LeftStartLamp_FlickOn = 0
+	Exe_LeftStartLamp_On = 0
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  좌측 장비 구동 시작 램프 구동
+if(Exe_LeftStartLamp_FlickOn == 1)
+{
+	IF(Temp_Exe_LeftStartLamp_FlickOn == 0 && Sys.CdTimer[L_StartLamp_T] <= 0)
+	{
+		Out_LeftUnit_Start_Btn_Lamp=1
+		Temp_Exe_LeftStartLamp_FlickOn = 1
+		Sys.CdTimer[L_StartLamp_T] = ResetLampFlickTime
+	}
+	else if(Temp_Exe_LeftStartLamp_FlickOn == 1 && Sys.CdTimer[L_StartLamp_T] <= 0)
+	{
+		Out_LeftUnit_Start_Btn_Lamp=0
+		Temp_Exe_LeftStartLamp_FlickOn = 0
+		Sys.CdTimer[L_StartLamp_T] = ResetLampFlickTime
+	}
+}
+else if(Exe_LeftStartLamp_On == 1)
+{
+	Out_LeftUnit_Start_Btn_Lamp=1
+	Temp_Exe_LeftStartLamp_FlickOn = 0
+}
+else if(Exe_LeftStartLamp_FlickOn == 0 && Exe_LeftStartLamp_On == 0)
+{
+	Out_LeftUnit_Start_Btn_Lamp=0
+	Temp_Exe_LeftStartLamp_FlickOn = 0
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 우측 시작 램프 상위 설정
+if(Unit_AutoStartReadySt(RSTAGE) == 1 && Temp_Rstage_AutoRunStatus == 0)
+{
+	Exe_RightStartLamp_FlickOn = 1
+	Exe_RightStartLamp_On = 0
+}
+else if(Unit_AutoStartReadySt(RSTAGE) == 0 && Temp_Rstage_AutoRunStatus == 1)
+{
+	Exe_RightStartLamp_FlickOn =0
+	Exe_RightStartLamp_On = 1
+}
+else if((Unit_AutoStartReadySt(RSTAGE) == 0 && Temp_Rstage_AutoRunStatus == 0) || Mach_StError == 1)
+{
+	Exe_RightStartLamp_FlickOn = 0
+	Exe_RightStartLamp_On = 0
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  우측 장비 구동 시작 램프 구동
+if(Exe_RightStartLamp_FlickOn == 1)
+{
+	IF(Temp_Exe_RightStartLamp_FlickOn == 0 && Sys.CdTimer[R_startLamp_T] <= 0)
+	{
+		Out_RightUnit_Start_Btn_Lamp=1
+		Temp_Exe_RightStartLamp_FlickOn = 1
+		Sys.CdTimer[R_startLamp_T] = ResetLampFlickTime
+	}
+	else if(Temp_Exe_RightStartLamp_FlickOn == 1 && Sys.CdTimer[R_startLamp_T] <= 0)
+	{
+		Out_RightUnit_Start_Btn_Lamp=0
+		Temp_Exe_RightStartLamp_FlickOn = 0
+		Sys.CdTimer[R_startLamp_T] = ResetLampFlickTime
+	}
+}
+else if(Exe_RightStartLamp_On == 1)
+{
+	Out_RightUnit_Start_Btn_Lamp=1
+	Temp_Exe_RightStartLamp_FlickOn = 0
+}
+else if(Exe_RightStartLamp_FlickOn == 0 && Exe_RightStartLamp_On == 0)
+{
+	Out_RightUnit_Start_Btn_Lamp=0
+	Temp_Exe_RightStartLamp_FlickOn = 0
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//타워 램프
+if(U2P_Mach_Status == 0) // 대기 상태
+{
+	Out_SignalTower_Red = 0
+	Out_SignalTower_Yellow = 0
+	Out_SignalTower_Green = 0
+}
+else if(U2P_Mach_Status == 1) // 자동 구동 상태
+{
+	Out_SignalTower_Red = 0
+	Out_SignalTower_Yellow = 0
+	Out_SignalTower_Green = 1
+}
+else if(U2P_Mach_Status == 2) // 에러 상태
+{
+	Out_SignalTower_Red = 1
+	Out_SignalTower_Yellow = 0
+	Out_SignalTower_Green = 0
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//정지 스위치 램프
+Out_LeftUnit_Stop_Btn_Lamp = In_LeftUnit_Stop_Btn
+Out_RightUnit_Stop_Btn_Lamp = In_RightUnit_Stop_Btn
+//LED등 On/Off
+Out_LED_Light_On = P2U_Mach_LEDLampOn
+
+close

@@ -1,0 +1,110 @@
+
+//Manual 입력 프로그램
+
+Open Plc PLC_10_PROG_MANUAL_IN
+local L_CtsMotorNum        
+if(L_CtsMotorNum > MAX_USE_MOTOR_COUNT || L_CtsMotorNum < 0)
+{
+	L_CtsMotorNum = 1
+}
+If(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+{
+	//모터 메뉴얼 구동 프로그램
+	if(Motor[L_CtsMotorNum].ServoCtrl == 1)
+	{
+		//비트 입력
+		local L_ExeServoOn = PtoU_BIT_EXE_SERVO_ON+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeServoOff = PtoU_BIT_EXE_SERVO_OFF+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeJogP = PtoU_BIT_EXE_JOG_PLUS+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeJogN = PtoU_BIT_EXE_JOG_MINUS+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeHome = PtoU_BIT_EXE_HOME+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeMoveInc = PtoU_BIT_EXE_MOVE_INC+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeMoveAbs = PtoU_BIT_EXE_MOVE_ABS+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeServoReset = PtoU_BIT_EXE_SERVO_RESET+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_ExeMoveStop = PtoU_BIT_EXE_MOVE_STOP+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		//데이터 입력	  
+		local L_SetMoveTa = PtoU_SET_MOVE_TA+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_SetMoveSpd = PtoU_SET_MOVE_SPEED+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_SetMovePos = PtoU_SET_MOVE_POS+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_SetHomeTa = PtoU_SET_HOME_TA+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_SetHomeSpd = PtoU_SET_HOME_SPEED+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		local L_SetHomeOffset = PtoU_SET_HOME_OFFSET+(CMD_VAR_INTERVAL*(L_CtsMotorNum-1))
+		//명령 실행 비트 입력
+		if(P(L_ExeServoOn) == 1)
+		{
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_010_EXE_SERVO_ON
+			Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			P(L_ExeServoOn) = 0
+		}
+		else If(P(L_ExeServoOff) == 1)
+		{
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_020_EXE_SERVO_OFF
+			Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			P(L_ExeServoOff) = 0
+		}
+		else If(P(L_ExeHome) == 1)
+		{
+			//원점 검색 속도/가속 시간 입력
+			call Mtr_Set.SetData(&Mtr_SetHomeTa(L_CtsMotorNum),P(L_SetHomeTa),Mtr_SetBasicTa)
+
+			call Mtr_Set.SetData(&Mtr_SetHomeJVel(L_CtsMotorNum),P(L_SetHomeSpd),Mtr_SetBasicHomeSpd)
+			call Mtr_Set.SetData(&Mtr_SetHomeJVel(L_CtsMotorNum),P(L_SetHomeSpd)/2,Mtr_SetBasicHomeSpd/2)
+			//Mtr_SetHomeOffsetPos(L_CtsMotorNum) = P(L_SetHomeOffset)
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_030_EXE_HOME
+			Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			P(L_ExeHome) = 0
+		}
+		else If(P(L_ExeMoveInc) == 1)
+		{
+			//이동 속도/가속 시간 입력
+			call Mtr_Set.SetData(&Mtr_SetMoveTa(L_CtsMotorNum),P(L_SetMoveTa),Mtr_SetBasicTa)
+			call Mtr_Set.SetData(&Mtr_SetMoveSpd(L_CtsMotorNum),P(L_SetMoveSpd),Mtr_SetBasicMoveSpd)
+			Mtr_SetMovePos(L_CtsMotorNum) = P(L_SetMovePos)
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_070_EXE_MOVE_INC
+			Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			P(L_ExeMoveInc) = 0
+		}
+		else If(P(L_ExeMoveAbs) == 1)
+		{				
+			if(Mtr_SetMotor_Type(L_CtsMotorNum) != TYPE_INF_ROT)
+			{
+				//이동 속도/가속 시간 입력
+				call Mtr_Set.SetData(&Mtr_SetMoveTa(L_CtsMotorNum),P(L_SetMoveTa),Mtr_SetBasicTa)
+				call Mtr_Set.SetData(&Mtr_SetMoveSpd(L_CtsMotorNum),P(L_SetMoveSpd),Mtr_SetBasicMoveSpd)
+				Mtr_SetMovePos(L_CtsMotorNum) = P(L_SetMovePos)
+				Mtr_ExeCmd(L_CtsMotorNum) = MTR_060_EXE_MOVE_ABS
+				Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			}
+			P(L_ExeMoveAbs) = 0
+		}
+		else If(P(L_ExeServoReset) == 1)
+		{
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_090_EXE_ERROR_CLEAR
+			P(L_ExeServoReset) = 0
+		}
+		else If(P(L_ExeJogP) == 1)
+		{
+			call Mtr_Set.SetData(&Mtr_SetJogTa(L_CtsMotorNum),P(L_SetMoveTa),Mtr_SetBasicTa)
+			call Mtr_Set.SetData(&Mtr_SetJogVel(L_CtsMotorNum),P(L_SetMoveSpd),Mtr_SetBasicJogMoveSpd)
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_040_EXE_JOG_PLUS
+			Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			P(L_ExeJogP) = 0
+		}
+		else If(P(L_ExeJogN) == 1)
+		{
+			call Mtr_Set.SetData(&Mtr_SetJogTa(L_CtsMotorNum),P(L_SetMoveTa),Mtr_SetBasicTa)
+			call Mtr_Set.SetData(&Mtr_SetJogVel(L_CtsMotorNum),P(L_SetMoveSpd),Mtr_SetBasicJogMoveSpd)
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_050_EXE_JOG_MINUS
+			Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			P(L_ExeJogN) = 0
+		}
+		else If(P(L_ExeMoveStop) == 1)
+		{
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_080_EXE_STOP
+			Temp_Mtr_ExeCmd(L_CtsMotorNum) = Mtr_ExeCmd(L_CtsMotorNum)
+			P(L_ExeMoveStop) = 0
+		}
+	}
+	L_CtsMotorNum++
+}
+close

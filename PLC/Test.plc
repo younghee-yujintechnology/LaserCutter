@@ -1,0 +1,166 @@
+open plc 15
+//X Axis Homing
+	
+	p50=0
+	sys.WpKey=$AAAAAAAA
+	//Gate3[0].Chan[0].CaptCtrl=1  // index
+	Gate3[0].Chan[0].CaptCtrl=10 // homeflag 
+	Gate3[0].Chan[0].CaptFlagSel=0
+	sys.WpKey=$0
+
+	/*
+	Global definitions ..
+	XAxisNo = 1;
+
+	Motor[XAxisNo].JogSpeed=150
+	이런 식으로 기입하면 Download 할때 Error가 발생함.
+
+	XAxisNo = 8192..가 들어있다고 하면서...
+	*/
+	Motor[1].JogSpeed=250
+	Motor[1].HomeVel=20
+	Motor[1].MinPos=0
+	Motor[1].MaxPos=0
+
+	p50=1
+	if(Motor[1].AmpEna == 0) {
+		Cmd"#1j/"
+	}
+	call Timer.sec(0.01);
+	while (Motor[1].AmpEna==0) {}
+
+	p50=2
+	Cmd"#1j-"
+	call Timer.sec(0.1);
+	while(Motor[1].MinusLimit==0){}
+
+	p50=3
+	Cmd"#1j/"
+	call Timer.sec(0.1);
+
+	p50=4
+	Cmd"#1hm"
+	Call Timer.sec(0.1)
+	while (Motor[1].HomeComplete==0) {}
+
+	p50=1000
+	disable plc 15
+close
+
+open plc 16
+//Y1 Axis Homing
+
+	p51=0
+	sys.WpKey=$AAAAAAAA
+	//Gate3[0].Chan[0].CaptCtrl=1  // index
+	Gate3[0].Chan[0].CaptCtrl=10 // homeflag 
+	Gate3[0].Chan[0].CaptFlagSel=0
+	sys.WpKey=$0
+	Motor[2].JogSpeed=150
+	Motor[2].HomeVel=20
+	Motor[2].MinPos=0
+	Motor[2].MaxPos=0
+
+	p51=1
+	if(Motor[2].AmpEna == 0) {
+		Cmd"#2j/"
+	}
+	call Timer.sec(0.01);
+	while (Motor[2].AmpEna==0) {}
+
+	p51=2
+	Cmd"#2j-"
+	call Timer.sec(0.1);
+	while(Motor[2].MinusLimit==0){}
+
+	p51=3
+	Cmd"#2j/"
+	call Timer.sec(0.1);
+
+	p51=4
+	Cmd"#2hm"
+	Call Timer.sec(0.1)
+	while (Motor[2].HomeComplete==0) {}
+
+	p51=1000
+	disable plc 16
+close
+
+open plc 17
+//Y2 Axis Homing
+
+	p52=0
+	sys.WpKey=$AAAAAAAA
+	//Gate3[0].Chan[0].CaptCtrl=1  // index
+	Gate3[0].Chan[0].CaptCtrl=10 // homeflag 
+	Gate3[0].Chan[0].CaptFlagSel=0
+	sys.WpKey=$0
+	Motor[3].JogSpeed=150
+	Motor[3].HomeVel=20
+	Motor[3].MinPos=0
+	Motor[3].MaxPos=0
+
+	p52=1
+	if(Motor[3].AmpEna == 0) {
+		Cmd"#3j/"
+	}
+	call Timer.sec(0.01);
+	while (Motor[3].AmpEna==0) {}
+
+	p52=2
+	Cmd"#3j-"
+	call Timer.sec(0.1);
+	while(Motor[3].MinusLimit==0){}
+
+	p52=3
+	Cmd"#3j/"
+	call Timer.sec(0.1);
+
+	p52=4
+	Cmd"#3hm"
+	Call Timer.sec(0.1)
+	while (Motor[3].HomeComplete==0) {}
+
+	p52=1000
+	disable plc 17
+close
+
+
+open plc 18
+//Z Axis Homing
+
+	p53=0
+	sys.WpKey=$AAAAAAAA
+	//Gate3[0].Chan[0].CaptCtrl=1  // index
+	Gate3[0].Chan[0].CaptCtrl=10 // homeflag 
+	Gate3[0].Chan[0].CaptFlagSel=0
+	sys.WpKey=$0
+	Motor[5].JogSpeed=50
+	Motor[5].HomeVel=20
+	Motor[5].MinPos=0
+	Motor[5].MaxPos=0
+
+	p53=1
+	if(Motor[5].AmpEna == 0) {
+		Cmd"#5j/"
+	}
+	call Timer.sec(0.01);
+	while (Motor[5].AmpEna==0) {}
+
+	p53=2
+	Cmd"#5j-"
+	call Timer.sec(0.1);
+	while(Motor[5].MinusLimit==0){}
+
+	p53=3
+	Cmd"#5j/"
+	call Timer.sec(0.1);
+
+	p53=4
+	Cmd"#5hm"
+	Call Timer.sec(0.1)
+	while (Motor[5].HomeComplete==0) {}
+
+	p53=1000
+	disable plc 18
+close

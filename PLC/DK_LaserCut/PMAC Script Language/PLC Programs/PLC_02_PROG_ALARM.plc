@@ -1,0 +1,314 @@
+
+//알람 상태 업데이트, 리셋 프로그램
+open plc PLC_02_PROG_ALARM
+local L_CtsPartNum = 1
+local L_CtsUnitNum = 1
+local L_CtsSeqNum = 1
+local L_CtsCydNum = 1
+local L_CtsMotorNum = 1
+local L_Temp_Timer
+Temp_Chk_Mach_StError(0) = 0
+//설비 에러 확인
+L_CtsPartNum = 1
+while(MAX_PART_COUNT > L_CtsPartNum)
+{
+	if(Mach_ExeCmdStep(L_CtsPartNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(1)++
+	}
+	if(Part_ExeCmdStep(L_CtsPartNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(2)++
+	}
+	if(Part_ExeCmdReadyStep(L_CtsPartNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(3)++
+	}
+	if(Safety_ErrorCheck == 1)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(4)++
+	}
+	L_CtsPartNum++
+}
+L_CtsUnitNum = 1
+while(MAX_UNIT_COUNT > L_CtsUnitNum)
+{
+	if(Unit_ExeCmdStep(L_CtsUnitNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(10)++
+	}
+	if(Unit_ReqCmd(L_CtsUnitNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(11)++
+	}
+	L_CtsUnitNum++
+}
+L_CtsSeqNum = 1
+while(MAX_PART_COUNT > L_CtsSeqNum)
+{
+	if(Seq_ExeCmdStep(L_CtsSeqNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(20)++
+	}
+	L_CtsSeqNum++
+}
+L_CtsCydNum = 1
+while(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+{
+	if(Mtr_ExeCmd(L_CtsMotorNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(35)++
+	}
+	if(Mtr_ExeCmdStep(L_CtsMotorNum) < 0)
+	{
+		Temp_Chk_Mach_StError(0)++
+		Temp_Chk_Mach_StError(36)++
+	}
+
+	L_CtsMotorNum++
+}
+Temp_Cts_Mach_StError = Temp_Chk_Mach_StError(0)
+if(Temp_Chk_Mach_StError(0) > 0)
+{
+	if(Part_CmdErrorCode(PART_MACH) == 0 && Mach_CmdErrorCode(PART_MACH) == 0 && (Unit_CmdErrorCode(LSTAGE) == EEROR_CODE_5600_TABLEAUTOREADYFAIL || Unit_CmdErrorCode(RSTAGE) == EEROR_CODE_5600_TABLEAUTOREADYFAIL))
+	{
+		if(Seq_ExeCmdStep(PART_MACH) > SEQ_2000_LSTAGE_AUTO && Seq_ExeCmdStep(PART_MACH) < SEQ_2000_LSTAGE_AUTO+990)
+		{
+			if(Unit_ExeCmdStep(RSTAGE) < 0)
+			{
+				if(Unit_CmdErrorCode(RSTAGE) == EEROR_CODE_5600_TABLEAUTOREADYFAIL || Unit_CmdErrorCode(RSTAGE) == EEROR_CODE_5500_TABLEVACFAIL)
+				{
+					AutoRun_NotStopErrBit = 1
+				}
+			}
+		}
+		Else if(Seq_ExeCmdStep(PART_MACH) > SEQ_3000_RSTAGE_AUTO && Seq_ExeCmdStep(PART_MACH) < SEQ_3000_RSTAGE_AUTO+990)
+		{
+			if(Unit_ExeCmdStep(LSTAGE) < 0)
+			{
+				if(Unit_CmdErrorCode(LSTAGE) == EEROR_CODE_5600_TABLEAUTOREADYFAIL || Unit_CmdErrorCode(LSTAGE) == EEROR_CODE_5500_TABLEVACFAIL)
+				{
+					AutoRun_NotStopErrBit = 1
+				}
+			}
+		}
+	}
+	Mach_StError = 1
+	if(Temp_SinalTower_Buzzer == 0)
+	{
+		Out_SinalTower_Buzzer = (Temp_Mach_BuzzerUnUse^1)
+	}
+	ELSE
+	{	
+		Out_SinalTower_Buzzer = 0 
+	}
+}
+Else
+{
+	Mach_StError = 0
+	AutoRun_NotStopErrBit = 0
+	Temp_SinalTower_Buzzer = 0
+	Out_SinalTower_Buzzer = 0
+
+}
+////////////////////////////////////////////////////////////////////////////////////////
+//설비 에러 초기화
+If(Mach_ExeCmdErrorReset == 1)
+{
+	//에러 상태 초기화
+	L_CtsPartNum = 1
+	while(MAX_PART_COUNT > L_CtsPartNum )
+	{
+		if(Mach_ExeCmdStep(L_CtsPartNum) < 0)
+		{
+			Mach_ExeCmdStep(L_CtsPartNum) = 0
+		}
+		if(Part_ExeCmdStep(L_CtsPartNum) < 0)
+		{
+			Part_ExeCmdStep(L_CtsPartNum) = 0
+		}
+		if(Part_ExeCmdReadyStep(L_CtsPartNum) < 0)
+		{
+			Part_ExeCmdReadyStep(L_CtsPartNum) = 0
+		}
+		L_CtsPartNum++
+	}
+
+	L_CtsUnitNum = 1
+	while(MAX_UNIT_COUNT> L_CtsUnitNum)
+	{
+		if(Unit_ExeCmdStep(L_CtsUnitNum) < 0)
+		{
+			Unit_ExeCmdStep(L_CtsUnitNum) = 0
+		}
+		if(Unit_ReqCmd(L_CtsUnitNum) < 0)
+		{
+			Unit_ReqCmd(L_CtsUnitNum) = 0
+		}
+		L_CtsUnitNum++
+	}
+	L_CtsSeqNum = 1
+	while(MAX_PART_COUNT > L_CtsSeqNum)
+	{
+		if(Seq_ExeCmdStep(L_CtsSeqNum) < 0)
+		{
+			Seq_ExeCmdStep(L_CtsSeqNum) = 0
+		}
+		L_CtsSeqNum++
+	}
+	L_CtsCydNum = 1
+	while(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+	{
+		if(Mtr_ExeCmdStep(L_CtsMotorNum) < 0)
+		{
+			Mtr_ExeCmdStep(L_CtsMotorNum) = 0
+		}
+		L_CtsMotorNum++
+	}
+	//에러코드 초기화
+	cmd"Mach_CmdErrorCode(0),MAX_PART_COUNT = 0"
+	cmd"Part_CmdErrorCode(0),MAX_PART_COUNT = 0"
+	cmd"Mtr_CmdErrorCode(0),MAX_USE_MOTOR_COUNT = 0"
+	cmd"Unit_CmdErrorCode(0),MAX_UNIT_COUNT = 0"
+	sendallcmds
+	//모터 에러 초기화
+	L_CtsMotorNum = 1
+	while(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+	{
+  		if(Mtr_ExeCmd(L_CtsMotorNum) < 0)
+		{
+			Mtr_ExeCmd(L_CtsMotorNum) = MTR_090_EXE_ERROR_CLEAR
+		}
+		L_CtsMotorNum++
+  	}
+	L_Temp_Timer = Sys.Time+0.5
+	Mach_ExeCmdErrorReset = 5
+}
+else If(Mach_ExeCmdErrorReset == 5 && L_Temp_Timer < Sys.Time)
+{
+	L_Temp_Timer = Sys.Time+0.5
+	Safety_ErrorCheck = 0
+	Temp_SafetyStopErrNotClearStatus = 0
+	Temp_SafetyEMOErrNotClearStatus	 = 0
+	AutoRun_NotStopErrBit = 0
+	Mach_ExeCmdErrorReset = 6
+}
+else If(Mach_ExeCmdErrorReset == 6 && L_Temp_Timer < Sys.Time)
+{
+	Mach_ExeCmdErrorReset = 0
+}
+///////////////////////////////////////////////////////////////////////////
+//설비 커맨드 명령 리셋
+If(Mach_ExeCmdReset == 1)
+{
+	Part_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY
+	Mach_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY
+	Seq_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY
+	Unit_ExeCmdStep(LSTAGE) = MACH_000_STAT_READY
+	Unit_ExeCmdStep(RSTAGE) = MACH_000_STAT_READY
+	Ready_ExeCmdStep(LSTAGE) = MACH_000_STAT_READY
+	Ready_ExeCmdStep(RSTAGE) = MACH_000_STAT_READY
+	Mach_ExeCmdReset = 2
+}
+else if(Mach_ExeCmdReset == 2)
+{
+	Unit_AutoStartReadySt(LSTAGE)	= 0
+	Unit_AutoStartReadySt(RSTAGE)	= 0
+	U2P_Mach_PowerMoterChkComp		= 0
+	MotionEnd						= 0
+	//PMAC->PC 신호 초기화
+	U2P_Lstage_VacReadySt			= 0
+	U2P_Lstage_AutoReadySt			= 0
+	U2P_Lstage_MotionDownroadExe	= 0
+	U2P_Lstage_Motioning			= 0
+	U2P_Lstage_MotionComp			= 0
+	U2P_Lstage_AutoRunComp			= 0
+	U2P_Lstage_ViAilgnSeqComp		= 0
+	U2P_Lstage_ViAilgn01TrigExe		= 0
+	U2P_Lstage_ViAilgn02TrigExe		= 0
+	U2P_Lstage_ViAilgn03TrigExe		= 0
+	U2P_Lstage_ViAilgn04TrigExe		= 0
+	U2P_Rstage_VacReadySt			= 0
+	U2P_Rstage_AutoReadySt			= 0
+	U2P_Rstage_MotionDownroadExe	= 0
+	U2P_Rstage_Motioning			= 0
+	U2P_Rstage_MotionComp			= 0
+	U2P_Rstage_AutoRunComp			= 0
+	U2P_Rstage_ViAilgnSeqComp		= 0
+	U2P_Rstage_ViAilgn01TrigExe		= 0
+	U2P_Rstage_ViAilgn02TrigExe		= 0
+	U2P_Rstage_ViAilgn03TrigExe		= 0
+	U2P_Rstage_ViAilgn04TrigExe		= 0
+	//IO 초기화
+	Out_LeftUnit_Ionizer			= 0
+	Out_LeftUnit_IonizerSol			= 0
+	Out_RightUnit_Ionizer			= 0
+	Out_RightUnit_IonizerSol		= 0
+	Out_BeamShutter_Sol				= 0
+	Out_ADV_On						= 0
+	//진공 파기
+	 Out_LeftUnit_VacPump01			= 0
+	 Out_LeftUnit_VacPumpSol01		= 0
+	 Out_LeftUnit_VacPumpSol02		= 0
+	 Out_LeftUnit_VacPump02			= 0
+	 Out_LeftUnit_VacPumpSol03		= 0
+	 Out_LeftUnit_VacPumpSol04		= 0
+	 Out_RightUnit_VacPump01		= 0	
+	 Out_RightUnit_VacPumpSol01		= 0
+	 Out_RightUnit_VacPumpSol02		= 0
+	 Out_RightUnit_VacPump02		= 0	
+	 Out_RightUnit_VacPumpSol03		= 0
+	 Out_RightUnit_VacPumpSol04		= 0
+	 //램프 해제
+	 Out_LeftUnit_Start_Btn_Lamp	= 0
+	 Out_LeftUnit_Vac_Btn_Lamp		= 0
+	 Out_LeftUnit_Stop_Btn_Lamp		= 0
+	 Out_RightUnit_Start_Btn_Lamp	= 0
+	 Out_RightUnit_Vac_Btn_Lamp		= 0
+	 Out_RightUnit_Stop_Btn_Lamp	= 0
+	 Mach_ExeCmdReset = 0
+	 //아이오 초기화
+	 Out_Dust_Collector				= 0
+	 Out_OpticBox_Purge				= 0
+	 //파워미터 초기화
+	 Out_PowerMeter_Up				= 1
+	 Out_PowerMeter_Dw				= 0
+	 //부저 관련
+	 Temp_SinalTower_Buzzer = 0
+	 Out_SinalTower_Buzzer = 0
+	 // 완료 상태 초기화
+	 U2P_Lstage_AilgnMvComp		= 0
+	 U2P_Lstage_WorkPosMvComp	= 0
+	 U2P_Lstage_LoadingPosMvComp = 0
+	 U2P_Lstage_ViAilgnSeqComp = 0
+	 U2P_Rstage_AilgnMvComp		= 0
+	 U2P_Rstage_WorkPosMvComp	= 0
+	 U2P_Rstage_LoadingPosMvComp = 0
+	 U2P_Rstage_ViAilgnSeqComp = 0
+	 U2P_Mach_PowerMoterChkComp  = 0
+	 //에러 관련
+	 AutoRun_NotStopErrBit = 0
+	 Safety_ErrorCheck = 0
+	 Temp_SafetyStopErrNotClearStatus = 0
+	 Temp_SafetyEMOErrNotClearStatus = 0
+	 //장비 자동 비트
+	 Temp_Lstage_AutoRunStatus = 0
+	 Temp_Rstage_AutoRunStatus = 0
+}
+
+
+
+
+
+
+
+close
+

@@ -1,0 +1,30 @@
+
+//Motor 기본 알람 업데이트 프로그램
+
+Open plc PLC_22_MT_PROG_BASIC_ERROR
+
+//- 기본 모터 알람
+Local L_CtsMotorNum
+if(L_CtsMotorNum > MAX_USE_MOTOR_COUNT || L_CtsMotorNum < 1)
+{
+	L_CtsMotorNum = 1
+}
+Else If(MAX_USE_MOTOR_COUNT >= L_CtsMotorNum)
+{
+	//- 모터 리밋 감지 정지 확인(리밋 에러 사용 모터 만)
+	If(Mtr_SetUSE_LIMIT_ERR(L_CtsMotorNum) == USE_LIMIT_ERR)
+	{
+		Call MTR_Err.LimitErr(L_CtsMotorNum)
+	}
+	//- 모터 중알람 확인(과부하 알람, 추종 오차 알람, 엠프 알람 발생)
+	//알람 상태가 아니고 에러 클리어 상태가 아닐 때
+	If(Mtr_ExeCmd(L_CtsMotorNum) !< 0) 
+	{
+		If(Int(Mtr_ExeCmd(L_CtsMotorNum)/10)!= MTR_090_EXE_ERROR_CLEAR/10 && Int(Mtr_ExeCmd(L_CtsMotorNum)/10)!= MTR_010_EXE_SERVO_ON/10)               
+		{		
+			Call MTR_Err.HeavyErr(L_CtsMotorNum)
+		}
+	}
+	L_CtsMotorNum++
+}
+Close

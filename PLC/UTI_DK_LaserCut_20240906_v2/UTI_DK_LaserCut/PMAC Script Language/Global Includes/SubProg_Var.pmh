@@ -1,0 +1,166 @@
+
+//MC.MoveJogP
+global MC_MoveJogP_In_Axis(MAX_MOTOR_COUNT)
+global MC_MoveJogP_In_MaxPosition(MAX_MOTOR_COUNT)
+global MC_MoveJogP_In_AccTime(MAX_MOTOR_COUNT)
+global MC_MoveJogP_In_Velocity(MAX_MOTOR_COUNT)
+//MC.MoveJogN
+global MC_MoveJogN_In_Axis(MAX_MOTOR_COUNT)
+global MC_MoveJogN_In_MinPosition(MAX_MOTOR_COUNT)
+global MC_MoveJogN_In_AccTime(MAX_MOTOR_COUNT)
+global MC_MoveJogN_In_Velocity(MAX_MOTOR_COUNT)
+//MC.MoveAbs
+global MC_MoveAbs_In_Axis(MAX_MOTOR_COUNT)                                                                                                                                  
+global MC_MoveAbs_In_MaxPosition(MAX_MOTOR_COUNT)
+global MC_MoveAbs_In_MinPosition(MAX_MOTOR_COUNT)
+global MC_MoveAbs_In_Position(MAX_MOTOR_COUNT)
+global MC_MoveAbs_In_AccTime(MAX_MOTOR_COUNT)
+global MC_MoveAbs_In_Velocity(MAX_MOTOR_COUNT)
+global MC_MoveAbs_Ot_DesMovePosition(MAX_MOTOR_COUNT)
+global MC_MoveAbs_Ot_MovePosition(MAX_MOTOR_COUNT)
+//MC.MoveInc
+global MC_MoveInc_In_Axis(MAX_MOTOR_COUNT)
+global MC_MoveInc_In_MaxPosition(MAX_MOTOR_COUNT)
+global MC_MoveInc_In_MinPosition(MAX_MOTOR_COUNT)
+global MC_MoveInc_In_Position(MAX_MOTOR_COUNT)
+global MC_MoveInc_In_AccTime(MAX_MOTOR_COUNT)
+global MC_MoveInc_In_Velocity(MAX_MOTOR_COUNT)
+global MC_MoveInc_Ot_DesMovePosition(MAX_MOTOR_COUNT)
+global MC_MoveInc_Ot_MovePosition(MAX_MOTOR_COUNT)
+//MC.MoveStop
+global MC_MoveStop_In_DecTime(MAX_MOTOR_COUNT)
+//Mtr_Chk.CmRdyErr
+global Mtr_Chk_ExeRdyErr_In_Cmd(MAX_MOTOR_COUNT)  
+global Mtr_Chk_ExeRdyErr_Ot_Error(MAX_MOTOR_COUNT) 
+global Mtr_Chk_ExeRdyErr_Ot_ErrorID(MAX_MOTOR_COUNT) 
+//Mtr_Chk.CmEndErr
+global Mtr_Chk_ExeEndErr_In_Cmd(MAX_MOTOR_COUNT) 
+global Mtr_Chk_ExeEndErr_Ot_Error(MAX_MOTOR_COUNT) 
+global Mtr_Chk_ExeEndErr_Ot_ErrorID(MAX_MOTOR_COUNT) 
+//Mtr_Cmd.StepHomeProg
+global Mtr_Cmd_StepHomeProg_In_HomeJogVel(MAX_MOTOR_COUNT) 
+global Mtr_Cmd_StepHomeProg_In_HomeJogTa(MAX_MOTOR_COUNT) 
+global Mtr_Cmd_StepHomeProg_In_HomeVel(MAX_MOTOR_COUNT) 
+global Mtr_Cmd_StepHomeProg_In_HomeOffset(MAX_MOTOR_COUNT) 
+global Mtr_Cmd_StepHomeProg_In_UseLimit(MAX_MOTOR_COUNT) 
+global Mtr_Cmd_StepHomeProg_In_TimeOutTime(MAX_MOTOR_COUNT) 
+//Mtr_Chk.AllAmpEna
+global Mtr_Chk_AllAmpEna_Ot_Ena(MAX_MOTOR_COUNT) 
+global Mtr_Chk_AllAmpEna_Ot_Temp(MAX_MOTOR_COUNT) 
+//Mtr_Chk.AllCompHome
+global Mtr_Chk_AllCompHome_Ot_Comp(MAX_MOTOR_COUNT) 
+global Mtr_Chk_AllCompHome_Ot_Temp(MAX_MOTOR_COUNT) 
+//Mtr_Chk.AllMoving
+global Mtr_Chk_AllMoving_Ot_Moving(MAX_MOTOR_COUNT) 
+global Mtr_Chk_AllMoving_Ot_Temp(MAX_MOTOR_COUNT) 
+//Mtr_Chk.AllErr
+global Mtr_Chk_AllErr_Ot_Err(MAX_MOTOR_COUNT) 		 
+global Mtr_Chk_AllErr_Ot_Temp(MAX_MOTOR_COUNT) 
+////MTR_Err.LimitErr
+global MTR_Err_LimitErr_Ot_State(MAX_MOTOR_COUNT)
+//Mtr_Set.GateSetup
+global Mtr_Set_GateSetup_In_Word_SetGate(MAX_MOTOR_COUNT) 
+global Mtr_Set_GateSetup_In_GateNum(MAX_MOTOR_COUNT) 
+global Mtr_Set_GateSetup_In_ChanNum(MAX_MOTOR_COUNT) 
+//Mtr_Set.MtWord_Setup
+global Mtr_Set_MtWord_Setup_In_AbortAcc(MAX_MOTOR_COUNT) 
+global Mtr_Set_MtWord_Setup_In_ProgMaxSpeed(MAX_MOTOR_COUNT) 
+global Mtr_Set_MtWord_Setup_In_ProgMaxAcc(MAX_MOTOR_COUNT) 
+//Mtr_Set.HomeWord_Setup
+global Mtr_Set_HomeWord_Setup_In_CaptCtrl(MAX_MOTOR_COUNT) 												  
+global Mtr_Set_HomeWord_Setup_In_CaptFlag(MAX_MOTOR_COUNT) 
+//AUTO_CHK.MtCmdEnd
+global AUTO_CHK_MtCmdEnd_Ot_Temp(MAX_MOTOR_COUNT) 
+global AUTO_CHK_MtCmdEnd_Ot_Comp(MAX_MOTOR_COUNT) 
+global AUTO_CHK_MtCmdEnd_Ot_Error(MAX_MOTOR_COUNT) 
+//AUTO_CHK.CmdEnd
+global AUTO_CHK_CmdEnd_Ot_Temp(MAX_MOTOR_COUNT) 
+global AUTO_CHK_CmdEnd_Ot_Comp(MAX_MOTOR_COUNT) 
+global AUTO_CHK_CmdEnd_Ot_Error(MAX_MOTOR_COUNT) 			  
+//AUTO_CHK.DoneTimeBase
+global AUTO_CHK_HostTimeBaseDone_Ot_Temp(MAX_MOTOR_COUNT)
+global AUTO_CHK_HostTimeBaseDone_Ot_Comp(MAX_MOTOR_COUNT)	 
+
+global Mach_SetSubProgUpdateTime = 1
+global Mach_SetSubProgWaitCycle = 1
+
+//배열 변수 초기화
+//MC.MoveJogP
+MC_MoveJogP_In_Axis(0),MAX_MOTOR_COUNT = 0
+MC_MoveJogP_In_MaxPosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveJogP_In_AccTime(0),MAX_MOTOR_COUNT = 0
+MC_MoveJogP_In_Velocity(0),MAX_MOTOR_COUNT = 0
+//MC.MoveJogN
+MC_MoveJogN_In_Axis(0),MAX_MOTOR_COUNT = 0
+MC_MoveJogN_In_MinPosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveJogN_In_AccTime(0),MAX_MOTOR_COUNT = 0
+MC_MoveJogN_In_Velocity(0),MAX_MOTOR_COUNT = 0
+//MC.MoveAbs
+MC_MoveAbs_In_Axis(0),MAX_MOTOR_COUNT = 0
+MC_MoveAbs_In_MaxPosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveAbs_In_MinPosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveAbs_In_Position(0),MAX_MOTOR_COUNT = 0
+MC_MoveAbs_In_AccTime(0),MAX_MOTOR_COUNT = 0
+MC_MoveAbs_In_Velocity(0),MAX_MOTOR_COUNT = 0
+MC_MoveAbs_Ot_DesMovePosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveAbs_Ot_MovePosition(0),MAX_MOTOR_COUNT = 0
+//MC.MoveInc
+MC_MoveInc_In_Axis(0),MAX_MOTOR_COUNT = 0
+MC_MoveInc_In_MaxPosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveInc_In_MinPosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveInc_In_Position(0),MAX_MOTOR_COUNT = 0
+MC_MoveInc_In_AccTime(0),MAX_MOTOR_COUNT = 0
+MC_MoveInc_In_Velocity(0),MAX_MOTOR_COUNT = 0
+MC_MoveInc_Ot_DesMovePosition(0),MAX_MOTOR_COUNT = 0
+MC_MoveInc_Ot_MovePosition(0),MAX_MOTOR_COUNT = 0
+//MC.MoveStop
+MC_MoveStop_In_DecTime(0),MAX_MOTOR_COUNT = 0
+//Mtr_Chk.CmRdyErr
+Mtr_Chk_ExeRdyErr_In_Cmd(0),MAX_MOTOR_COUNT = 0
+Mtr_Chk_ExeRdyErr_Ot_Error(0),MAX_MOTOR_COUNT = 0
+Mtr_Chk_ExeRdyErr_Ot_ErrorID(0),MAX_MOTOR_COUNT = 0
+//Mtr_Chk.CmEndErr
+Mtr_Chk_ExeEndErr_In_Cmd(0),MAX_MOTOR_COUNT = 0
+Mtr_Chk_ExeEndErr_Ot_Error(0),MAX_MOTOR_COUNT = 0
+Mtr_Chk_ExeEndErr_Ot_ErrorID(0),MAX_MOTOR_COUNT = 0
+//Mtr_Cmd.StepHomeProg
+Mtr_Cmd_StepHomeProg_In_HomeJogVel(0),MAX_MOTOR_COUNT = 0
+Mtr_Cmd_StepHomeProg_In_HomeJogTa(0),MAX_MOTOR_COUNT = 0
+Mtr_Cmd_StepHomeProg_In_HomeVel(0),MAX_MOTOR_COUNT = 0
+Mtr_Cmd_StepHomeProg_In_HomeOffset(0),MAX_MOTOR_COUNT = 0
+Mtr_Cmd_StepHomeProg_In_UseLimit(0),MAX_MOTOR_COUNT = 0
+Mtr_Cmd_StepHomeProg_In_TimeOutTime(0),MAX_MOTOR_COUNT = 0
+//Mtr_Chk.AllAmpEna
+Mtr_Chk_AllAmpEna_Ot_Ena(0),MAX_MOTOR_COUNT = 0
+Mtr_Chk_AllAmpEna_Ot_Temp(0),MAX_MOTOR_COUNT = 0
+//Mtr_Chk.AllMoving
+Mtr_Chk_AllMoving_Ot_Moving(0),MAX_MOTOR_COUNT = 0
+Mtr_Chk_AllMoving_Ot_Temp(0),MAX_MOTOR_COUNT = 0
+//Mtr_Chk.AllErr
+Mtr_Chk_AllErr_Ot_Err(0),MAX_MOTOR_COUNT = 0
+Mtr_Chk_AllErr_Ot_Temp(0),MAX_MOTOR_COUNT = 0
+////MTR_Err.LimitErr
+MTR_Err_LimitErr_Ot_State(0),MAX_MOTOR_COUNT = 0
+//Mtr_Set.GateSetup
+Mtr_Set_GateSetup_In_Word_SetGate(0),MAX_MOTOR_COUNT = 0
+Mtr_Set_GateSetup_In_GateNum(0),MAX_MOTOR_COUNT = 0
+Mtr_Set_GateSetup_In_ChanNum(0),MAX_MOTOR_COUNT = 0
+//Mtr_Set.MtWord_Setup
+Mtr_Set_MtWord_Setup_In_AbortAcc(0),MAX_MOTOR_COUNT = 0
+Mtr_Set_MtWord_Setup_In_ProgMaxSpeed(0),MAX_MOTOR_COUNT = 0
+Mtr_Set_MtWord_Setup_In_ProgMaxAcc(0),MAX_MOTOR_COUNT = 0
+//Mtr_Set.HomeWord_Setup
+Mtr_Set_HomeWord_Setup_In_CaptCtrl(0),MAX_MOTOR_COUNT = 0
+Mtr_Set_HomeWord_Setup_In_CaptFlag(0),MAX_MOTOR_COUNT = 0
+//AUTO_CHK.MtCmdEnd
+AUTO_CHK_MtCmdEnd_Ot_Temp(0),MAX_MOTOR_COUNT = 0
+AUTO_CHK_MtCmdEnd_Ot_Comp(0),MAX_MOTOR_COUNT = 0
+AUTO_CHK_MtCmdEnd_Ot_Error(0),MAX_MOTOR_COUNT = 0
+//AUTO_CHK.CmdEnd
+AUTO_CHK_CmdEnd_Ot_Temp(0),MAX_MOTOR_COUNT = 0
+AUTO_CHK_CmdEnd_Ot_Comp(0),MAX_MOTOR_COUNT = 0
+AUTO_CHK_CmdEnd_Ot_Error(0),MAX_MOTOR_COUNT = 0
+//AUTO_CHK.DoneTimeBase
+AUTO_CHK_HostTimeBaseDone_Ot_Temp(0),MAX_MOTOR_COUNT = 0
+AUTO_CHK_HostTimeBaseDone_Ot_Comp(0),MAX_MOTOR_COUNT = 0
+

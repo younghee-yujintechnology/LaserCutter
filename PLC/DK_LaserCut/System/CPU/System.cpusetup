@@ -1,0 +1,31 @@
+<SystemData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0" GenerateSystemSetupConfiguration="true">
+  <CpuName>arm,LS1021A</CpuName>
+  <FirmwareVersion>2.7.0.0</FirmwareVersion>
+  <BgSleepTime>0</BgSleepTime>
+  <BgWDTReset>0</BgWDTReset>
+  <CompEnable>0</CompEnable>
+  <CompMotor>0</CompMotor>
+  <FirstEnc>0</FirstEnc>
+  <MaxCoords>16</MaxCoords>
+  <MaxEcats>1</MaxEcats>
+  <MaxMotors>32</MaxMotors>
+  <MaxRtPlc>0</MaxRtPlc>
+  <ModbusServerEnable>0</ModbusServerEnable>
+  <PhaseCycleExt>0</PhaseCycleExt>
+  <PhaseOverServoPeriod>0.33333333333333331</PhaseOverServoPeriod>
+  <PreCalc>1</PreCalc>
+  <RtIntPeriod>0</RtIntPeriod>
+  <SendFileMode>0</SendFileMode>
+  <ServoPeriod>0.19999661451348533</ServoPeriod>
+  <WDTReset>0</WDTReset>
+  <CamEnable>0</CamEnable>
+  <ServoTask>1</ServoTask>
+  <RtiTask>1</RtiTask>
+  <BackgroundThreadTask>0</BackgroundThreadTask>
+  <DownloadGpgBuffer>false</DownloadGpgBuffer>
+  <GpgBuffer>16</GpgBuffer>
+  <CpuClockModified>true</CpuClockModified>
+  <pAbortAll>0</pAbortAll>
+  <AbortAllBit>0</AbortAllBit>
+  <AbortAllLimit>0</AbortAllLimit>
+</SystemData>

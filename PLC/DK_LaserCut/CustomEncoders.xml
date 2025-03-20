@@ -1,0 +1,66 @@
+<CustomEncoderDatabase>
+  <CustomEncoder>
+    <manufacturer Value="20um_enc" />
+    <partnumber Value="20um_enc" />
+    <encodertype Value="FB_Sinusoidal" />
+    <signaltype Value="Sinusoidal" />
+    <islinear Value="True" />
+    <isbuiltin Value="False" />
+    <hallsensoravailable Value="False" />
+    <rotaryrevresolution Value="0" />
+    <linearresolution Value="20" />
+    <linearrevolutionunit Value="Micrometer" />
+    <maxspeed Value="2" />
+    <maxspeedunit Value="MetersPerSecond" />
+    <isabsolute Value="False" />
+    <rotarysingleturnbits Value="0" />
+    <rotarymultiturnbits Value="0" />
+    <lineardatabits Value="0" />
+    <mdivisor Value="0" />
+    <ndivisor Value="0" />
+    <isservoclock Value="False" />
+    <isfallingedge Value="False" />
+    <triggerdelay Value="0" />
+    <delaycompensation Value="False" />
+    <encoderid Value="0" />
+    <commandcode Value="0" />
+    <parity Value="" />
+    <isoneshot Value="False" />
+    <triggerenable Value="False" />
+    <graybinaryconversion Value="False" />
+    <rotarysingleturnstartbit Value="0" />
+    <rotarymultiturnstartbit Value="0" />
+  </CustomEncoder>
+  <CustomEncoder>
+    <manufacturer Value="digital_1um" />
+    <partnumber Value="1um" />
+    <encodertype Value="FB_AQuadB" />
+    <signaltype Value="Quadrature" />
+    <islinear Value="True" />
+    <isbuiltin Value="False" />
+    <hallsensoravailable Value="False" />
+    <rotaryrevresolution Value="0" />
+    <linearresolution Value="1" />
+    <linearrevolutionunit Value="Micrometer" />
+    <maxspeed Value="1" />
+    <maxspeedunit Value="MetersPerSecond" />
+    <isabsolute Value="False" />
+    <rotarysingleturnbits Value="0" />
+    <rotarymultiturnbits Value="0" />
+    <lineardatabits Value="0" />
+    <mdivisor Value="0" />
+    <ndivisor Value="0" />
+    <isservoclock Value="False" />
+    <isfallingedge Value="False" />
+    <triggerdelay Value="0" />
+    <delaycompensation Value="False" />
+    <encoderid Value="0" />
+    <commandcode Value="0" />
+    <parity Value="" />
+    <isoneshot Value="False" />
+    <triggerenable Value="False" />
+    <graybinaryconversion Value="False" />
+    <rotarysingleturnstartbit Value="0" />
+    <rotarymultiturnstartbit Value="0" />
+  </CustomEncoder>
+</CustomEncoderDatabase>

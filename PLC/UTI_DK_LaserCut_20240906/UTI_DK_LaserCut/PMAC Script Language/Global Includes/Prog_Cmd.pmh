@@ -1,0 +1,35 @@
+//모터명령
+#define MTR_000_STAT_READY												000 //대기 상태
+#define MTR_010_EXE_SERVO_ON											010	//모터 서보 온
+#define MTR_020_EXE_SERVO_OFF											020 //모터 서보 오프
+#define MTR_030_EXE_HOME												030 //모터 홈구동
+#define MTR_040_EXE_JOG_PLUS											040 //모터 조그 플러스
+#define MTR_050_EXE_JOG_MINUS											050 //모터 조그 마이너스
+#define MTR_060_EXE_MOVE_ABS											060 //모터 절대위치 이송
+#define MTR_070_EXE_MOVE_INC											070 //모터 상대위치 이송
+#define MTR_080_EXE_STOP												080 //모터 정지
+#define MTR_090_EXE_ERROR_CLEAR											090 //모터 에러 클리어
+
+#define MTR_100_EXE_MOVE_POS_READY										100 //모터 대기 이송
+#define MTR_110_EXE_MOVE_POS01											110 //모터 설정 위치 01 이송
+#define MTR_120_EXE_MOVE_POS02											120 //모터 설정 위치 02 이송
+#define MTR_130_EXE_MOVE_POS03											130 //모터 설정 위치 03 이송
+#define MTR_140_EXE_MOVE_POS04											140 //모터 설정 위치 04 이송
+#define MTR_150_EXE_MOVE_POS05											150 //모터 설정 위치 05 이송
+
+#define MTR_180_EXE_ERR_CHECK											180 //모터 구동 가능 상태 확인
+#define MTR_190_EXE_ABORT												190 //모터 구동 정지
+
+#define MTR_200_EXE_READY												200 //모터 준비 실행
+
+//에러 확인 커맨드
+#define MTR_010_CHECK_SERVO_ON											010	//모터 서보 온 확인
+#define MTR_015_CHECK_SERVO_READY										015	//모터 서보 준비 상태 확인
+
+//원점 검색 에러 확인 스탭
+#define MTR_033_EXE_HOME_SEARCH_LIMIT									033
+#define MTR_035_EXE_HOME_SEARCH_HOME									035
+
+//이동 방법 설정
+#define SET_MOVE_INC													01
+#define SET_MOVE_ABS													02

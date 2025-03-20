@@ -1,0 +1,735 @@
+
+open plc 8
+
+	XCurPos = Motor[1].ActPos - Motor[1].HomePos;
+	Y1CurPos = Motor[2].ActPos - Motor[2].HomePos;
+	Y2CurPos = Motor[3].ActPos - Motor[3].HomePos;
+
+	XOriginDone = Motor[1].HomeComplete;
+	XMotionDone = Motor[1].DesVelZero;
+	XInPosition = Motor[1].InPos;
+	if (XMotionDone == true) 
+	{
+		XBusy = false 
+	} else
+	{	
+		XBusy = true;
+	}	
+
+	Y1OriginDone = Motor[2].HomeComplete;
+	Y1MotionDone = Motor[2].DesVelZero;
+	Y1InPosition = Motor[2].InPos;
+	if (Y1MotionDone == true) 
+	{
+		Y1Busy = false 
+	} else
+	{	
+		Y1Busy = true;
+	}
+
+	Y2OriginDone = Motor[3].HomeComplete;
+	Y2MotionDone = Motor[3].DesVelZero;
+	Y2InPosition = Motor[3].InPos;
+	if (Y2MotionDone == true) 
+	{
+		Y2Busy = false 
+	} else
+	{	
+		Y2Busy = true;
+	}
+
+	if ((XCurPos >= (XTargetPos - XPositionTolerance)) && (XCurPos <= (XTargetPos + XPositionTolerance)))
+	{
+		XInTargetPos = true;
+	}
+	else
+	{
+		XInTargetPos = false;
+	}
+
+	if ((Y1CurPos >= (Y1TargetPos - Y1PositionTolerance)) && (Y1CurPos <= (Y1TargetPos + Y1PositionTolerance)))
+	{
+		Y1InTargetPos = true;
+	}
+	else
+	{
+		Y1InTargetPos = false;
+	}
+
+	if ((Y2CurPos >= (Y2TargetPos - Y2PositionTolerance)) && (Y2CurPos <= (Y2TargetPos + Y2PositionTolerance)))
+	{
+		Y2InTargetPos = true;
+	}
+	else
+	{
+		Y2InTargetPos = false;
+	}
+
+	if ((Table1Step >= 10) && (Table1Step <= 3000))
+	{
+		Table1Busy = true;
+	}
+	else
+	{
+		Table1Busy = false;
+	}
+
+	if ((Table2Step >= 10) && (Table2Step <= 3000))
+	{
+		Table2Busy = true;
+	}
+	else
+	{
+		Table2Busy = false;
+	}
+
+	if (Table1New == true)
+	{
+		if ((Table1Step == 0) && (Table2Busy != true)) 
+		{
+			Table1New = false
+			Table1ErrorCode = 0;
+			Table1LastStep = 0;
+
+			Table1Vision = true
+			Table1VisionSimul = true
+			Table1Vision2Point = false;
+			Table1Vision3Point = false;
+			Table1Vision4Point = true;
+
+			diSkipMotionFileDownload = true;
+
+			Table1Step = 10;
+		}
+	}
+	else
+	if (Table2New == true)
+	{
+		if ((Table1Busy != true) && (Table2Step == 0)) 
+		{
+			Table2New = false
+			Table2ErrorCode = 0;
+			Table2LastStep = 0;
+
+			Table2Vision = true
+			Table2VisionSimul = true
+			Table2Vision2Point = false;
+			Table2Vision3Point = false;
+			Table2Vision4Point = true;
+
+			diSkipMotionFileDownload = true;
+
+			Table2Step = 10;
+		}
+	}
+close
+
+open plc 9
+
+	switch(Table1Step)
+	{
+		// @@ 
+		case 10: // Vision을 사용하지 않으면 1100으로 점프
+
+			if (Table1Vision == 1)
+			{
+				// MoveAlign#1Pos
+				Table1Step = 110; 
+			} 
+			else
+			{
+				// Vision 사용하지 않음 가공 위치로..
+				Table1Step = 1100;
+			}
+			break;
+
+		/* ======================================================================
+         * Align Pos
+		 */
+		 
+		// @@ MoveAlign#1Pos --------------------------------------------------
+		case 110: // Move Align#1 Pos
+
+			XTargetPos = Table1Vision1XPos;
+			Y1TargetPos = Table1Vision1YPos;
+
+			Table1Step = 111;
+			break;
+
+		case 111:
+			if ((XInTargetPos != true) || (Y1InTargetPos != true))
+			{
+				Motor[1].ProgJogPos = Table1Vision1XPos;
+				Motor[2].ProgJogPos = Table1Vision1YPos;
+
+				cmd "#1J=*"
+				cmd "#2J=*"
+
+				Timer1 = Sys.Time + MotorMoveStartTimeOut; // Motor 기동 시간
+				Table1Step = 112;
+			} 
+			else
+			{
+				Table1Step = 130;
+			}
+			break;
+			
+		case 112: // 기동 Delay
+            if (Timer1 < Sys.Time)
+            {
+                Timer1 = Sys.Time + MotorMoveTimeOut; // Align#1 pos 이동 최대 5.0초
+
+                Table1Step = 120;
+			}
+			break;
+		
+		case 120: // Align#1 Pos 도착 확인, 
+			if ((Y1MotionDone == true) && (Y1InPosition == true) && (XInTargetPos == true) && (Y1InTargetPos == true))
+			{
+				Timer1 = Sys.Time + MotorStopTime;
+				Table1Step = 121;
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+			   Table1LastStep = Table1Step;
+   	           Table1ErrorCode = TABLE1_MOVE_TIME_OVER_VISION1_POS;         // 도착 시간 TIME OVER
+
+   	           Table1Step = CASE_ERROR;
+            }
+			break;
+			
+		case 121 :
+			if (Timer1 < Sys.Time)
+            {
+   	           Table1Step = 130;
+            }
+			break;
+
+		case 130: // Vision 찍어라!!
+			
+			Timer1 = sys.Time + VisionReplyTimeOut; 	// Align#1 응답 시간 최대 3.0초
+
+			doVisionSearch = true;
+			Table1Step = 140;			
+			break;
+			
+		case 140: // Vision 응답 대기
+			if ((diVisionResultOK == true) || (diVisionResultBad == true))
+			{
+				doVisionSearch = false;
+
+				Table1Step = 210;
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+				doVisionSearch = false;
+				if (Table1VisionSimul == false)
+				{
+  					Table1LastStep = Table1Step;
+ 					Table1ErrorCode = TABLE1_VISION_ACK_TIME_OVER_VISION1_POS;         // Align#1 응답  TIME OVER
+
+   					Table1Step = CASE_ERROR;
+				}
+				else
+				{
+					Table1Step = 210;
+				}
+            }
+			break;
+			
+		// @@ MoveAlign#2Pos --------------------------------------------------
+		case 210: 
+			XTargetPos = Table1Vision2XPos;
+			Y1TargetPos = Table1Vision2YPos;
+
+			Table1Step = 211;
+			break;
+
+		case 211:
+			if ((XInTargetPos != true) || (Y1InTargetPos != true))
+			{
+				Motor[1].ProgJogPos = Table1Vision2XPos;
+				Motor[2].ProgJogPos = Table1Vision2YPos;
+
+				cmd "#1J=*"
+				cmd "#2J=*"
+
+				Timer1 = Sys.Time + MotorMoveStartTimeOut; // Motor 기동 시간
+				Table1Step = 212;
+			} 
+			else
+			{
+				Table1Step = 230;
+			}
+			break;
+			
+		case 212: // 기동 Delay
+            if (Timer1 < Sys.Time)
+            {
+                Timer1 = Sys.Time + MotorMoveTimeOut; // // Align#2 pos 이동 최대 3.0초
+
+                Table1Step = 220;
+            }
+			break;
+		
+		case 220: // Align#1 Pos 도착 확인, 
+			if ((Y1MotionDone == true) && (Y1InPosition == true) && (XInTargetPos == true) && (Y1InTargetPos == true))
+			{
+				Timer1 = Sys.Time + MotorStopTime;
+				Table1Step = 221;
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+			   Table1LastStep = Table1Step;
+   	           Table1ErrorCode = TABLE1_MOVE_TIME_OVER_VISION2_POS;         // 도착 시간 TIME OVER
+
+   	           Table1Step = CASE_ERROR;
+            }
+			break;
+			
+		case 221 :
+			if (Timer1 < Sys.Time)
+            {
+   	           Table1Step = 230;
+            }
+			break;
+
+		case 230: // Vision 찍어라!!
+			
+			Timer1 = sys.Time + VisionReplyTimeOut; 	// Align#2 응답 시간 최대 3.0초
+			
+			doVisionSearch = true;
+			Table1Step = 240;
+
+			break;
+			
+		case 240: // Vision 응답 대기
+			if ((diVisionResultOK == true) || (diVisionResultBad == true))
+			{
+				doVisionSearch = false;
+				if (Table1Vision2Point == 1) // Vision 2Point
+				{
+					// MoveReadyPos
+					Table1Step = 1100
+				} 
+				else
+				{
+					// MoveAlign#3Pos
+					Table1Step = 310
+				}
+				break;
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+				doVisionSearch = false;
+				if (Table1VisionSimul == false)
+				{
+					Table1LastStep = Table1Step;
+   					Table1ErrorCode = TABLE1_VISION_ACK_TIME_OVER_VISION2_POS;         // Align#2 응답  TIME OVER
+
+   					Table1Step = CASE_ERROR;
+				}
+				else
+				{
+					if (Table1Vision2Point == 1) // Vision 2Point
+					{
+						// MoveReadyPos
+						Table1Step = 1100
+					} 
+					else
+					{
+						// MoveAlign#3Pos
+						Table1Step = 310
+					}
+				}
+            }
+			break;
+			
+		// @@ MoveAlign#3Pos --------------------------------------------------
+		case 310: // Move Align#3 Pos
+			XTargetPos = Table1Vision3XPos;
+			Y1TargetPos = Table1Vision3YPos;
+
+			Table1Step = 311;
+			break;
+
+		case 311:
+			if ((XInTargetPos != true) || (Y1InTargetPos != true))
+			{
+				Motor[1].ProgJogPos = Table1Vision3XPos;
+				Motor[2].ProgJogPos = Table1Vision3YPos;
+
+				cmd "#1J=*"
+				cmd "#2J=*"
+
+				Timer1 = Sys.Time + MotorMoveStartTimeOut; // Motor 기동 시간
+				Table1Step = 312;
+			} 
+			else
+			{
+				Table1Step = 330;
+			}
+			break;
+			
+		case 312: // 기동 Delay
+            if (Timer1 < Sys.Time)
+            {
+                Timer1 = Sys.Time + MotorMoveTimeOut; // // Align#3 pos 이동 최대 3.0초
+
+                Table1Step = 320;
+            }
+			break;
+		
+		case 320: // Align#3 Pos 도착 확인, 
+			if ((Y1MotionDone == true) && (Y1InPosition == true) && (XInTargetPos == true) && (Y1InTargetPos == true))
+			{
+				Timer1 = Sys.Time + MotorStopTime;
+				Table1Step = 321
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+			   Table1LastStep = Table1Step;
+   	           Table1ErrorCode = TABLE1_MOVE_TIME_OVER_VISION2_POS;         // 도착 시간 TIME OVER
+
+   	           Table1Step = CASE_ERROR;
+            }
+			break;
+			
+		case 321 :
+			if (Timer1 < Sys.Time)
+            {
+   	           Table1Step = 330;
+            }
+			break;
+
+		case 330: // Vision 찍어라!!
+			
+			Timer1 = sys.Time + VisionReplyTimeOut; 	// Align#3 응답 시간 최대 3.0초
+			
+			doVisionSearch = true;
+			Table1Step = 340;
+			break;
+			
+		case 340: // Vision 응답 대기
+			if ((diVisionResultOK == true) || (diVisionResultBad == true))
+			{
+				doVisionSearch = false;
+				if (Table1Vision3Point == 1) // Vision 3Point
+				{
+					// MoveReadyPos
+					Table1Step = 1100
+				} 
+				else
+				{
+					// MoveAlign#4Pos
+					Table1Step = 410
+				}
+				break;
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+				doVisionSearch = false;
+				if (Table1VisionSimul == false)
+				{
+					Table1LastStep = Table1Step;
+   					Table1ErrorCode = TABLE1_VISION_ACK_TIME_OVER_VISION3_POS;         // Align#3 응답  TIME OVER
+
+   					Table1Step = CASE_ERROR;
+				}
+				else
+				{
+					if (Table1Vision3Point == 1) // Vision 3Point
+					{
+						// MoveReadyPos
+						Table1Step = 1100
+					} 
+					else
+					{
+						// MoveAlign#4Pos
+						Table1Step = 410
+					}
+				}
+            }
+			break;
+			
+		// @@ MoveAlign#4Pos --------------------------------------------------
+		case 410: // Move Align#1 Pos
+			
+			XTargetPos = Table1Vision4XPos;
+			Y1TargetPos = Table1Vision4YPos;
+
+			Table1Step = 411;
+			break;
+
+		case 411:
+			if ((XInTargetPos != true) || (Y1InTargetPos != true))
+			{
+				Motor[1].ProgJogPos = Table1Vision4XPos;
+				Motor[2].ProgJogPos = Table1Vision4YPos;
+
+				cmd "#1J=*"
+				cmd "#2J=*"
+
+				Timer1 = Sys.Time + MotorMoveStartTimeOut; // Motor 기동 시간
+				Table1Step = 412;
+			} 
+			else
+			{
+				Table1Step = 430;
+			}
+			break;
+			
+		case 412: // 기동 Delay
+            if (Timer1 < Sys.Time)
+            {
+                Timer1 = Sys.Time + MotorMoveTimeOut; // // Align#4 pos 이동 최대 3.0초
+
+                Table1Step = 420;
+            }
+			break;
+		
+		case 420: // Align#1 Pos 도착 확인, 
+			if ((Y1MotionDone == true) && (Y1InPosition == true) && (XInTargetPos == true) && (Y1InTargetPos == true))
+			{
+				Timer1 = Sys.Time + MotorStopTime;
+				Table1Step = 421
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+   	           Table1ErrorCode = TABLE1_MOVE_TIME_OVER_VISION4_POS;         // 도착 시간 TIME OVER
+
+   	           Table1Step = CASE_ERROR;
+            }
+			break;
+
+		case 421 :
+			if (Timer1 < Sys.Time)
+            {
+   	           Table1Step = 430;
+            }
+			break;
+						
+		case 430: // Vision 찍어라!!
+			Timer1 = sys.Time + VisionReplyTimeOut; 	// Align#4 응답 시간 최대 3.0초
+
+			doVisionSearch = true;
+			Table1Step = 440;
+			break;
+			
+		case 440: // Vision 응답 대기
+			if ((diVisionResultOK == true) || (diVisionResultBad == true))
+			{
+				doVisionSearch = false;
+
+				Table1Step = 1100
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+				doVisionSearch = false;
+				if (Table1VisionSimul == false)
+				{
+					Table1LastStep = Table1Step;
+   					Table1ErrorCode = TABLE1_VISION_ACK_TIME_OVER_VISION4_POS;         // Align#4 응답  TIME OVER
+
+   					Table1Step = CASE_ERROR;
+				}
+				else
+				{
+					Table1Step = 1100
+				}
+            }
+			break;
+			
+		/* ======================================================================
+         * 가공 대기 위치로 출발
+		 */		
+		case 1100:  // 가공 대기 위치로 출발
+			XTargetPos = Table1ReadyXPos;
+			Y1TargetPos = Table1ReadyYPos;
+
+			Table1Step = 1101;
+			break;
+
+		case 1101:
+			if ((XInTargetPos != true) || (Y1InTargetPos != true))
+			{
+				Motor[1].ProgJogPos = Table1ReadyXPos;
+				Motor[2].ProgJogPos = Table1ReadyYPos;
+			
+				cmd "#1J=*"
+				cmd "#2J=*"
+
+				Timer1 = sys.Time + MotorMoveStartTimeOut; 	// Move 기동 최대 0.3초
+				Table1Step = 1110;
+			}
+			else
+			{
+				Table1Step = 1120;
+			}
+
+			break;
+			
+		case 1110:
+            if (Timer1 < Sys.Time)
+            {
+                Timer1 = Sys.Time + MotorMoveTimeOut; // Align#3 pos 이동 최대 3.0초
+
+				Table1Step = 1111;
+			}
+			break
+			
+					
+		case 1111: // 가공 대기 위치 도착 확인, 
+			if ((Y1MotionDone == true) && (Y1InPosition == true) && (XInTargetPos == true) && (Y1InTargetPos == true))
+			{
+				Table1Step = 1120
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+			   Table1LastStep = Table1Step;
+   	           Table1ErrorCode = TABLE1_MOVE_TIME_OVER_READY_POS;         // 도착 시간 TIME OVER
+
+   	           Table1Step = CASE_ERROR;
+            }
+			break;
+
+		case 1120: // MotionDownload 요청
+			doMotionDownload = true;
+			Timer1 = sys.Time + MotionFileDownloadTimeOut; 	// Download 후 회신 최대 3.0초
+			
+			Table1Step = 1130;
+			break;
+								
+		case 1130: // MotionDownload 응답 대기
+			if ( diMotionDownload == true )
+			{
+				Table1Step = 1140
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+				if (diSkipMotionFileDownload != true)
+				{
+					Table1LastStep = Table1Step;
+   					Table1ErrorCode = TABLE1_MOTION_FILE_DOWNLOAD_TIME_OVER;         // Download 응답 회신 TIME OVER
+
+   					Table1Step = CASE_ERROR;
+				} 
+				else
+				{
+					Table1Step = 2000;
+				}
+            }
+			break;
+		
+		/*	
+		case 1140: // Motion 호출
+			//(..&B501R..)
+			Timer1 = sys.Time + 3.0; 	// Motion 완료 대기 시간 최대 3.0초
+
+			Table1Step = 1150;
+			break;
+		
+		case 1150 : // Motion 완료 체크
+			
+			//if ( .. )
+			{
+				Table1New = 0; // 더 이상 새 제품이 아님..
+
+				Table1Step = 2000;
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+   	           Table1ErrorCode = 30;         // Motion 완료 TIME OVER OVER
+
+   	           Table1Step = CASE_ERROR;
+            }
+			break;
+		*/
+
+		/* ======================================================================
+         * Motion 완료 후 Load 위치로 이동
+		 */		
+		
+		case 2000 :
+			XTargetPos = Table1LoadXPos;
+			Y1TargetPos = Table1LoadYPos;
+
+			Table1Step = 2001;
+			break;
+
+		case 2001:
+			if ((XInTargetPos != true) || (Y1InTargetPos != true))
+			{
+				Motor[1].ProgJogPos = Table1LoadXPos;
+				Motor[2].ProgJogPos = Table1LoadYPos;
+			
+				cmd "#1J=*"
+				cmd "#2J=*"
+
+				Timer1 = sys.Time + MotorMoveStartTimeOut; 	// Move 기동 최대 0.3초
+				Table1Step = 2010;
+			}
+			else
+			{
+				Table1Step = 2010;
+			}
+
+			break;
+			
+		case 2010:
+            if (Timer1 < Sys.Time)
+            {
+                Timer1 = Sys.Time + MotorMoveTimeOut; // LoadPos 이동 최대 3.0초
+
+				Table1Step = 2020;
+			}
+			break
+			
+					
+		case 2020: // 가공 대기 위치 도착 확인, 
+			if ((Y1MotionDone == true) && (Y1InPosition == true) && (XInTargetPos == true) && (Y1InTargetPos == true))
+			{
+				Table1Step = 3000
+			} 
+			else
+		    if (Timer1 < Sys.Time)
+            {
+			   Table1LastStep = Table1Step;
+   	           Table1ErrorCode = TABLE1_MOVE_TIME_OVER_LOAD_POS;         // 도착 시간 TIME OVER
+
+   	           Table1Step = CASE_ERROR;
+            }
+			break;
+
+		/* ======================================================================
+         * Jog로 대기위치로 이동 
+		 */	
+		case 3000:
+			Table1Step = CASE_DONE;
+			break;
+
+		case CASE_DONE:
+   			Table1Step = CASE_DONE;
+			Table1Step = 0;
+			break;		
+
+		case CASE_ABORT:
+			Table1Step = 0;
+			break;
+
+		case CASE_ERROR:
+			Table1Step = 0;
+			break;
+	}
+close

@@ -1,0 +1,53 @@
+Welcome to the Monaco Telnet Server
+
+WARNING: The laser is being controlled from more than one connection
+
+ SOURCE      CONTROLLING  ACCESS             ACTIVE               HB
+ 192.168.0.1     No       Customer           2024-07-12 16:59.40  0
+ 192.168.0.1     Yes      Customer           2024-07-12 16:59.40  30
+
+
+
+Monaco> 
+HD:41.3.1105, A1:91.0, IM:2.1, OS:7.0, CH:0.0, WEB:0.6.1105, JSON:0.8.1105, POST:0.030.34, UP:3.0.1105
+Monaco> 
+0
+Monaco> 
+1
+Monaco> 
+27.045
+Monaco> 
+On
+Monaco> 
+1
+Monaco> 
+24
+Monaco> 
+1
+Monaco> 
+300
+Monaco> 
+250,300,1,3,PulseEQ
+Monaco> 
+25.7
+Monaco> 
+25.643
+Monaco> 
+1
+Monaco> 
+There are no active chiller faults
+Monaco> 
+HD:41.3.1105, A1:91.0, IM:2.1, OS:7.0, CH:0.0, WEB:0.6.1105, JSON:0.8.1105, POST:0.030.34, UP:3.0.1105
+Monaco> 
+0
+Monaco> 
+1
+Monaco> 
+27.043
+Monaco> 
+On
+Monaco> 
+1
+Monaco> 
+24
+Monaco> 

@@ -1,0 +1,514 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// PC<->PMAC 변수 선언
+//////////////////////////////////////////////////////////////////////////////////////
+
+// 공통 ///////////////////////////////////////////////////////////////////////////////
+//PC -> PMAC (INPUT)
+#define	P2U_Mach_AllHomeExe				P5000	//장비 전체 원점(초기화)
+
+#define	P2U_Mach_MtrAllServoOn			P5002	//장비 전체 서보 온
+#define	P2U_Mach_MtrAllServoOff			P5003	//장비 전체 서보 오프
+#define	P2U_Mach_PowerMeterChk			P5004	//장비 파워미터 측정 시퀀스 실행
+#define	P2U_Mach_ReadyExe				P5005	//장비 준비 상태 실행
+#define	P2U_Mach_MainDoorUnUse			P5006	//메인 도어 센서 사용/미사용			//사용  = 0, 미사용 = 1
+#define	P2U_Mach_AreaSenUnUse			P5007	//에어리어 센서 사용/미사용			//사용  = 0, 미사용 = 1
+#define	P2U_Mach_SideDoorUnUse			P5008	//사이드 도어 센서 사용/미사용			//사용  = 0, 미사용 = 1
+#define	P2U_Mach_BuzzerUnUse			P5009	//장비 부저 사용/미사용				//사용  = 0, 미사용 = 1
+#define	P2U_Mach_LEDLampOn				P5010	//장비 LED등 On/Off
+#define	P2U_Mach_MotionTimeOut			P5011	//장비 모션 구동 타임 아웃 시간 값
+#define	P2U_Mach_BuzzerStopExe			P5012	//장비 부저 정지 실행
+#define	P2U_Mach_LstageProgStart		P5013	//좌측 스테이지 시작 버튼
+#define	P2U_Mach_RstageProgStart		P5014	//우측 스테이지 시작 버튼
+#define	P2U_Mach_AutoStop				P5015	//자동 정지 버튼
+#define	P2U_Mach_ReSetStart				P5016	//리셋 버튼
+#define	P2U_Mach_ReadyStatus			P5017	//장비 준비 상태
+#define	P2U_Mach_UnitStartDelayTime		P5018	//장비 구동 중 유닛 대기상태 딜레이 시간
+#define	P2U_Mach_ReserveUnUse			P5019	//장비 예약 기능 사용 / 미사용		//사용  = 0, 미사용 = 1
+
+#define	P2U_Mach_AutoCompVentUnUse		P5021	//장비 구동 완료 시 벤트 시퀀스 진행 사용/미사용	//사용  = 0, 미사용 = 1
+#define	P2U_Mach_VacErrCheckUnUse		P5022	//장비 진공 에러 알람 사용/미사용					//사용  = 0, 미사용 = 1
+#define	P2U_Mach_AreaSenVentUnUse		P5023	//장비 에어리어 센서 감지 시 파기 사용/미사용		//사용  = 0, 미사용 = 1
+
+#define	P2U_Mach_LookAheadAcc			P5025	//장비 최대 가속도(G 단위)
+
+global Temp_Mach_AllHomeExe	= 0
+global Temp_Mach_MtrAllServoOn = 0
+global Temp_Mach_MtrAllServoOff = 0
+global Temp_Mach_PowerMeterChk = 0
+global Temp_Mach_ReadyExe = 0
+global Temp_Mach_MainDoorUnUse = 0
+global Temp_Mach_AreaSenUnUse = 0
+global Temp_Mach_SideDoorUnUse = 0
+global Temp_Mach_LED_Light_On = 0
+global Temp_Mach_BuzzerStopExe = 0
+global Temp_Mach_BuzzerUnUse = 0
+
+global Temp_Mach_UnitStartDelayTime = 0
+global Temp_Mach_ReserveUnUse = 0	
+	
+global Temp_Mach_AutoCompVentUnUse = 0
+global Temp_Mach_VacErrCheckUnUse = 0	
+global Temp_Mach_AreaSenVentUnUse = 0	
+
+//PMAC -> PC (OUTPUT)
+#define U2P_Mach_BitData01				P5154	////장비 관련Bit 변수01
+#define U2P_Mach_BitData02				P5155	////장비 관련Bit 변수02
+
+#define	U2P_Mach_Status					P5100	//장비 상태
+#define	U2P_Mach_AllHomming				P5101	//장비 전체 홈 진행 중
+#define	U2P_Mach_AllHomeComp			P5102	//장비 전제 홈 완료
+
+#define	U2P_Mach_PowerMoterChkComp		P5104	//장비 파워미터 측정 시퀀스 완료
+#define	U2P_Mach_ReadyPosComp			P5105	//장비 대기 위치 이동 완료
+
+
+#define MotionEnd						P8000	//모션 완료 신호 (모션프로그램에 있음)
+
+global 	Temp_Mach_Status = 0 
+global 	Temp_Mach_AllHomming = 0
+global 	Temp_Mach_AllHomeComp = 0
+global	Temp_Mach_MotionTimeOut = 0
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Left Stage 관련 ///////////////////////////////////////////////////////////////////////////////
+//PC -> PMAC (INPUT)
+
+#define	U2P_Lstage_BitData01			P6154 //LStage 관련Bit 변수
+#define	U2P_Lstage_BitData02			P6155 //LStage 관련Bit 변수
+
+#define	P2U_Lstage_ReadySt				P6000	//좌측 스테이지 준비 상태
+#define	P2U_Lstage_AutoStart			P6001	//좌측 스테이지 장비 구동 시작
+#define	P2U_Lstage_MotionDownroadComp	P6002	//모션 다운로드 완료
+
+#define	P2U_Lstage_Glessthickness		P6004	//좌측 스테이지 글라스 두께
+
+
+global Temp_Lstage_ReadySt = 0
+global Temp_Lstage_AutoStart = 0
+global Temp_Lstage_MotionDownroadComp = 0
+global Temp_Lstage_Glessthickness = 0
+
+#define	P2U_Lstage_ViAilgnUnUse			P6009	//Ailgn 비전 사용/미사용
+#define	P2U_Lstage_ViAilgnCts			P6010	//Ailgn 비전 촬영 위치 수
+#define	P2U_Lstage_ViAilgn01TrigComp	P6011	//얼라인 비전 1점 촬영 완료
+#define	P2U_Lstage_ViAilgn02TrigComp	P6012	//얼라인 비전 2점 촬영 완료
+#define	P2U_Lstage_ViAilgn03TrigComp	P6013	//얼라인 비전 3점 촬영 완료
+#define	P2U_Lstage_ViAilgn04TrigComp	P6014	//얼라인 비전 4점 촬영 완료
+
+global Temp_Lstage_ViAilgnUnUse = 0
+global Temp_Lstage_ViAilgnCts = 0
+global Temp_Lstage_ViAilgn01TrigComp = 0
+global Temp_Lstage_ViAilgn02TrigComp = 0
+global Temp_Lstage_ViAilgn03TrigComp = 0
+global Temp_Lstage_ViAilgn04TrigComp = 0
+
+#define	P2U_Lstage_VacUseCts			P6016	//진공 패드 사용 수(1차~4차)
+
+global Temp_Lstage_VacUseCts			= 0
+
+#define P2U_Lstage_Vac01Time			P6018	//진공 패드 1차 인터벌 타임
+#define P2U_Lstage_Vac02Time			P6019	//진공 패드 2차 인터벌 타임
+#define P2U_Lstage_Vac03Time			P6020	//진공 패드 3차 인터벌 타임
+#define P2U_Lstage_Vac04Time			P6021	//진공 패드 4차 인터벌 타임
+
+global Temp_Lstage_Vac01Time = 0
+global Temp_Lstage_Vac02Time = 0
+global Temp_Lstage_Vac03Time = 0
+global Temp_Lstage_Vac04Time = 0
+
+#define	P2U_Lstage_AilgnMvStart			P6023	//좌측 스테이지 얼라인 비전 구동 시작
+#define	P2U_Lstage_WorkPosMvStart		P6024	//좌측 스테이지 작업 시작 위치 구동 시작
+#define	P2U_Lstage_LoadingPosMvStart	P6025	//좌측 스테이지 로딩 위치 구동 시작
+#define	P2U_Lstage_VacStart				P6026	//좌측 진공 시퀀스 시작
+
+#define	P2U_Lstage_ReadyMvStart			P6028	//좌측 스테이지 대기 위치 시작
+
+Global Temp_Lstage_AilgnMvStart = 0
+Global Temp_Lstage_WorkPosMvStart = 0
+Global Temp_Lstage_LoadingPosMvStart = 0
+Global Temp_Lstage_ReadyMvStart = 0
+
+//PMAC -> PC (OUTPUT)
+#define	U2P_Lstage_VacReadySt			P6100	//진공 패드 시퀀스 완료 상태
+#define	U2P_Lstage_AutoReadySt			P6101	//자동 준비 완료 상태
+#define	U2P_Lstage_MotionDownroadExe	P6102	//모션 다운로드 실행
+#define	U2P_Lstage_Motioning			P6103	//모션 실행중
+#define	U2P_Lstage_MotionComp			P6104	//모션 구동 완료
+#define	U2P_Lstage_AutoRunComp			P6105	//자동 구동 완료
+
+global Temp_Lstage_VacReadySt = 0
+global Temp_Lstage_AutoReadySt = 0
+global Temp_Lstage_MotionDownroadExe = 0
+global Temp_Lstage_Motioning = 0
+global Temp_Lstage_MotionComp = 0
+global Temp_Lstage_AutoRunComp = 0
+
+#define	U2P_Lstage_ViAilgnSeqComp		P6109	//얼라인 비전 시퀀스 완료 상태
+#define	U2P_Lstage_ViAilgn01TrigExe		P6110	//얼라인 비전 1점 촬영 위치 도달 트리거 요청
+#define	U2P_Lstage_ViAilgn02TrigExe		P6111	//얼라인 비전 2점 촬영 위치 도달 트리거 요청
+#define	U2P_Lstage_ViAilgn03TrigExe		P6112	//얼라인 비전 3점 촬영 위치 도달 트리거 요청
+#define	U2P_Lstage_ViAilgn04TrigExe		P6113	//얼라인 비전 4점 촬영 위치 도달 트리거 요청
+
+global Temp_Lstage_ViAilgnSeqComp = 0
+global Temp_Lstage_ViAilgn01TrigExe = 0
+global Temp_Lstage_ViAilgn02TrigExe	= 0
+global Temp_Lstage_ViAilgn03TrigExe = 0
+global Temp_Lstage_ViAilgn04TrigExe = 0
+
+#define	U2P_Lstage_MachStatus			P6116	//장비 상태
+
+#define	U2P_Lstage_AilgnMvComp			P6123	//좌측 스테이지 얼라인 비전 구동 완료
+#define	U2P_Lstage_WorkPosMvComp		P6124	//좌측 스테이지 작업 시작 위치 구동 완료
+#define	U2P_Lstage_LoadingPosMvComp		P6125	//좌측 스테이지 로딩 위치 구동 완료
+
+#define	U2P_Lstage_ReadyMvComp			P6128	//좌측 스테이지 대기 위치 구동 완료
+
+global Temp_Lstage_MachStatus = 0
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// Right Stage 관련 ///////////////////////////////////////////////////////////////////////////////
+//PC -> PMAC (INPUT)
+#define	P2U_Rstage_ReadySt				P7000	//좌측 스테이지 준비 상태
+#define	P2U_Rstage_AutoStart			P7001	//좌측 스테이지 장비 구동 시작
+#define	P2U_Rstage_MotionDownroadComp	P7002	//모션 다운로드 완료
+
+#define	P2U_Rstage_Glessthickness		P7004	//우측 스테이지 글라스 두께
+
+global Temp_Rstage_ReadySt = 0
+global Temp_Rstage_AutoStart = 0
+global Temp_Rstage_MotionDownroadComp = 0
+global Temp_Rstage_Glessthickness = 0
+
+#define	P2U_Rstage_ViAilgnUnUse			P7009	//Ailgn 비전 사용/미사용
+#define	P2U_Rstage_ViAilgnCts			P7010	//Ailgn 비전 촬영 위치 수
+#define	P2U_Rstage_ViAilgn01TrigComp	P7011	//얼라인 비전 1점 촬영 완료
+#define	P2U_Rstage_ViAilgn02TrigComp	P7012	//얼라인 비전 2점 촬영 완료
+#define	P2U_Rstage_ViAilgn03TrigComp	P7013	//얼라인 비전 3점 촬영 완료
+#define	P2U_Rstage_ViAilgn04TrigComp	P7014	//얼라인 비전 4점 촬영 완료
+
+global Temp_Rstage_ViAilgnUnUse	= 0
+global Temp_Rstage_ViAilgnCts = 0
+global Temp_Rstage_ViAilgn01TrigComp = 0
+global Temp_Rstage_ViAilgn02TrigComp = 0
+global Temp_Rstage_ViAilgn03TrigComp = 0
+global Temp_Rstage_ViAilgn04TrigComp = 0
+
+#define	P2U_Rstage_VacUseCts			P7016	//진공 패드 사용 수(1차~4차)
+
+global Temp_Rstage_VacUseCts = 0
+
+#define P2U_Rstage_Vac01Time			P7018	//진공 패드 1차 인터벌 타임
+#define P2U_Rstage_Vac02Time			P7019	//진공 패드 2차 인터벌 타임
+#define P2U_Rstage_Vac03Time			P7020	//진공 패드 3차 인터벌 타임
+#define P2U_Rstage_Vac04Time			P7021	//진공 패드 4차 인터벌 타임
+
+global Temp_Rstage_Vac01Time = 0
+global Temp_Rstage_Vac02Time = 0
+global Temp_Rstage_Vac03Time = 0
+global Temp_Rstage_Vac04Time = 0
+
+#define	P2U_Rstage_AilgnMvStart			P7023	//우측 스테이지 얼라인 비전 구동 시작
+#define	P2U_Rstage_WorkPosMvStart		P7024	//우측 스테이지 작업 시작 위치 구동 시작
+#define	P2U_Rstage_LoadingPosMvStart	P7025	//우측 스테이지 로딩 위치 구동 시작
+#define	P2U_Rstage_VacStart				P7026	//우측 진공 시퀀스 시작
+
+#define	P2U_Rstage_ReadyMvStart			P7028	//우측 스테이지 대기 위치 시작
+
+Global Temp_Rstage_AilgnMvStart	 = 0
+Global Temp_Rstage_WorkPosMvStart = 0
+Global Temp_Rstage_LoadingPosMvStart = 0
+
+Global Temp_Rstage_ReadyMvStart = 0
+
+//PMAC -> PC (OUTPUT)
+
+#define	U2P_Rstage_BitData01	P7154	////RStage 관련Bit 변수01
+#define	U2P_Rstage_BitData02	P7155	////RStage 관련Bit 변수02
+
+#define	U2P_Rstage_VacReadySt			P7100	//진공 패드 시퀀스 완료 상태
+#define	U2P_Rstage_AutoReadySt			P7101	//자동 준비 완료 상태
+#define	U2P_Rstage_MotionDownroadExe	P7102	//모션 다운로드 실행
+#define	U2P_Rstage_Motioning			P7103	//모션 실행중
+#define	U2P_Rstage_MotionComp			P7104	//모션 구동 완료
+#define	U2P_Rstage_AutoRunComp			P7105	//자동 구동 완료
+
+global Temp_Rstage_VacReadySt = 0
+global Temp_Rstage_AutoReadySt = 0
+global Temp_Rstage_MotionDownroadExe = 0
+global Temp_Rstage_Motioning = 0
+global Temp_Rstage_MotionComp = 0
+global Temp_Rstage_AutoRunComp = 0
+
+#define	U2P_Rstage_ViAilgnSeqComp		P7109	//얼라인 비전 시퀀스 완료 상태
+#define	U2P_Rstage_ViAilgn01TrigExe		P7110	//얼라인 비전 1점 촬영 위치 도달 트리거 요청
+#define	U2P_Rstage_ViAilgn02TrigExe		P7111	//얼라인 비전 2점 촬영 위치 도달 트리거 요청
+#define	U2P_Rstage_ViAilgn03TrigExe		P7112	//얼라인 비전 3점 촬영 위치 도달 트리거 요청
+#define	U2P_Rstage_ViAilgn04TrigExe		P7113	//얼라인 비전 4점 촬영 위치 도달 트리거 요청
+
+global Temp_Rstage_ViAilgnSeqComp = 0
+global Temp_Rstage_ViAilgn01TrigExe = 0
+global Temp_Rstage_ViAilgn02TrigExe = 0
+global Temp_Rstage_ViAilgn03TrigExe	= 0
+global Temp_Rstage_ViAilgn04TrigExe	= 0
+
+#define	U2P_Rstage_MachStatus			P7116	//장비 상태
+
+#define	U2P_Rstage_AilgnMvComp			P7123	//우측 스테이지 얼라인 비전 구동 완료
+#define	U2P_Rstage_WorkPosMvComp		P7124	//우측 스테이지 작업 시작 위치 구동 완료
+#define	U2P_Rstage_LoadingPosMvComp		P7125	//우측 스테이지 로딩 위치 구동 완료
+
+#define	U2P_Rstage_ReadyMvComp			P7128	//우측 스테이지 대기 위치 구동 완료
+
+
+global Temp_Rstage_MachStatus = 0
+
+
+//Servo Pos 관련 ///////////////////////////////////////////////////////////////////////////////
+//PC -> PMAC (INPUT)
+
+//#1
+#define	LinearX_SetMtReadyPos			P4100	//모터 대기 위치
+#define	LinearX_SetMtLWorkStartPos		P4101	//모터 Left 작업 시작 위치
+#define	LinearX_SetMtRWorkStartPos		P4102	//모터 Right 작업 시작 위치
+#define	LinearX_SetMtLLoadingPos		P4103	//모터 Left 로딩 위치
+#define	LinearX_SetMtRLoadingPos		P4104	//모터 Right 로딩 위치
+#define	LinearX_SetMtLViAilgn01Pos		P4105	//Left Align01 촬영 위치
+#define	LinearX_SetMtLViAilgn02Pos		P4106	//Left Align02 촬영 위치
+#define	LinearX_SetMtLViAilgn03Pos		P4107	//Left Align03 촬영 위치
+#define	LinearX_SetMtLViAilgn04Pos		P4108	//Left Align04 촬영 위치
+#define	LinearX_SetMtRViAilgn01Pos		P4109	//Right Align01 촬영 위치
+#define	LinearX_SetMtRViAilgn02Pos		P4110	//Right Align02 촬영 위치
+#define	LinearX_SetMtRViAilgn03Pos		P4111	//Right Align03 촬영 위치
+#define	LinearX_SetMtRViAilgn04Pos		P4112	//Right Align04 촬영 위치
+#define	LinearX_SetMtPowerMeterPos		P4113	//파워 미터 측정 포지션 위치
+#define	LinearX_SetMtSpare10Pos			P4114	//Spare Pos10
+#define	LinearX_SetMtPosMvSpd			P4115	//좌표 이동 시 속도
+#define	LinearX_SetMtPosMvTA			P4116	//좌표 이동 시 가속시간
+#define	LinearX_SetReadyPosMvSpd		P4117	//대기 위치 이동 시 속도	
+#define	LinearX_SetReadyPosMvTA			P4118	//대기 위치 이동 시 가속시간	
+#define	LinearX_SetMtWorkStartPosMvSpd	P4119	//작업 시작 위치 이동 시 속도	
+#define	LinearX_SetMtWorkStartPosMvTA	P4120	//작업 시작 위치 이동 시 가속시간	
+#define	LinearX_SetAlignPosMvSpd		P4121	//얼라인 비전 위치 이동 시 속도	
+#define	LinearX_SetAlignPosMvTA			P4122	//얼라인 비전 위치 이동 시 가속시간	
+#define	LinearX_SetLoadingPosMvSpd		P4123	//로딩 위치 이동 시 속도	
+#define	LinearX_SetLoadingPosMvTA		P4124	//로딩 위치 이동 시 가속시간	
+#define	LinearX_SetPowerMeterPosMvSpd	P4125	//파워 미터 측정 이동 시 속도	
+#define	LinearX_SetPowerMeterPosMvTA	P4126	//파워 미터 측정 이동 시 가속시간	
+
+
+Global Temp_LinearX_SetMtReadyPos = 0
+Global Temp_LinearX_SetMtLWorkStartPos = 0
+Global Temp_LinearX_SetMtRWorkStartPos = 0
+Global Temp_LinearX_SetMtLLoadingPos = 0
+Global Temp_LinearX_SetMtRLoadingPos = 0
+Global Temp_LinearX_SetMtLViAilgn01Pos = 0
+Global Temp_LinearX_SetMtLViAilgn02Pos = 0
+Global Temp_LinearX_SetMtLViAilgn03Pos = 0
+Global Temp_LinearX_SetMtLViAilgn04Pos = 0
+Global Temp_LinearX_SetMtRViAilgn01Pos = 0
+Global Temp_LinearX_SetMtRViAilgn02Pos = 0
+Global Temp_LinearX_SetMtRViAilgn03Pos = 0
+Global Temp_LinearX_SetMtRViAilgn04Pos = 0
+Global Temp_LinearX_SetMtPowerMeterPos = 0
+Global Temp_LinearX_SetMtSpare10Pos	= 0
+Global Temp_LinearX_SetMtPosMvSpd = 0
+Global Temp_LinearX_SetMtPosMvTA = 0
+Global Temp_LinearX_SetReadyPosMvSpd = 0
+Global Temp_LinearX_SetReadyPosMvTA	= 0
+Global Temp_LinearX_SetMtWorkStartPosMvSpd = 0
+Global Temp_LinearX_SetMtWorkStartPosMvTA = 0
+Global Temp_LinearX_SetAlignPosMvSpd = 0
+Global Temp_LinearX_SetAlignPosMvTA = 0
+Global Temp_LinearX_SetLoadingPosMvSpd = 0
+Global Temp_LinearX_SetLoadingPosMvTA = 0
+Global Temp_LinearX_SetPowerMeterPosMvSpd = 0
+Global Temp_LinearX_SetPowerMeterPosMvTA = 0
+
+//2
+#define	LStageY_SetMtReadyPos			P4200	//모터 대기 위치
+#define	LStageY_SetMtWorkStartPos		P4201	//모터 작업 시작 위치
+#define	LStageY_SetMtSpare03Pos			P4202	//Spare Pos03
+#define	LStageY_SetMtLoadingPos			P4203	//모터 로딩 위치
+#define	LStageY_SetMtSpare04Pos			P4204	//Spare Pos04
+#define	LStageY_SetMtViAilgn01Pos		P4205	//Align01 촬영 위치
+#define	LStageY_SetMtViAilgn02Pos		P4206	//Align02 촬영 위치
+#define	LStageY_SetMtViAilgn03Pos		P4207	//Align03 촬영 위치
+#define	LStageY_SetMtViAilgn04Pos		P4208	//Align04 촬영 위치
+#define	LStageY_SetMtSpare05Pos			P4209	//Spare Pos05
+#define	LStageY_SetMtSpare06Pos			P4210	//Spare Pos06
+#define	LStageY_SetMtSpare07Pos			P4211	//Spare Pos07
+#define	LStageY_SetMtSpare08Pos			P4212	//Spare Pos08
+#define	LStageY_SetMtSpare09Pos			P4213	//Spare Pos09
+#define	LStageY_SetMtSafePos			P4214	//스테이지 안전 위치	
+#define	LStageY_SetMtPosMvSpd			P4215	//좌표 이동 시 속도
+#define	LStageY_SetMtPosMvTA			P4216	//좌표 이동 시 가속시간
+#define	LStageY_SetReadyPosMvSpd		P4217	//대기 위치 이동 시 속도	
+#define	LStageY_SetReadyPosMvTA			P4218	//대기 위치 이동 시 가속시간	
+#define	LStageY_SetMtWorkStartPosMvSpd	P4219	//작업 시작 위치 이동 시 속도	
+#define	LStageY_SetMtWorkStartPosMvTA	P4220	//작업 시작 위치 이동 시 가속시간	
+#define	LStageY_SetAlignPosMvSpd		P4221	//얼라인 비전 위치 이동 시 속도	
+#define	LStageY_SetAlignPosMvTA			P4222	//얼라인 비전 위치 이동 시 가속시간	
+#define	LStageY_SetLoadingPosMvSpd		P4223	//로딩 위치 이동 시 속도	
+#define	LStageY_SetLoadingPosMvTA		P4224	//로딩 위치 이동 시 가속시간	
+
+
+Global Temp_LStageY_SetMtReadyPos = 0
+Global Temp_LStageY_SetMtWorkStartPos = 0
+Global Temp_LStageY_SetMtSpare03Pos = 0
+Global Temp_LStageY_SetMtLoadingPos = 0
+Global Temp_LStageY_SetMtSpare04Pos = 0
+Global Temp_LStageY_SetMtViAilgn01Pos = 0
+Global Temp_LStageY_SetMtViAilgn02Pos = 0
+Global Temp_LStageY_SetMtViAilgn03Pos = 0
+Global Temp_LStageY_SetMtViAilgn04Pos = 0
+Global Temp_LStageY_SetMtSpare05Pos = 0
+Global Temp_LStageY_SetMtSpare06Pos = 0
+Global Temp_LStageY_SetMtSpare07Pos = 0
+Global Temp_LStageY_SetMtSpare08Pos = 0
+Global Temp_LStageY_SetMtSpare09Pos = 0
+Global Temp_LStageY_SetMtSafePos = 0
+Global Temp_LStageY_SetMtPosMvSpd = 0
+Global Temp_LStageY_SetMtPosMvTA = 0
+Global Temp_LStageY_SetReadyPosMvSpd = 0
+Global Temp_LStageY_SetReadyPosMvTA	= 0
+Global Temp_LStageY_SetMtWorkStartPosMvSpd = 0
+Global Temp_LStageY_SetMtWorkStartPosMvTA = 0
+Global Temp_LStageY_SetAlignPosMvSpd = 0
+Global Temp_LStageY_SetAlignPosMvTA = 0
+Global Temp_LStageY_SetLoadingPosMvSpd = 0
+Global Temp_LStageY_SetLoadingPosMvTA = 0
+
+//3
+#define	RStageY_SetMtReadyPos			P4300	//모터 대기 위치
+#define	RStageY_SetMtWorkStartPos		P4301	//모터 작업 시작 위치
+#define	RStageY_SetMtSpare03Pos			P4302	//Spare Pos03
+#define	RStageY_SetMtLoadingPos			P4303	//모터 로딩 위치
+#define	RStageY_SetMtSpare04Pos			P4304	//Spare Pos04
+#define	RStageY_SetMtViAilgn01Pos		P4305	//Align01 촬영 위치
+#define	RStageY_SetMtViAilgn02Pos		P4306	//Align02 촬영 위치
+#define	RStageY_SetMtViAilgn03Pos		P4307	//Align03 촬영 위치
+#define	RStageY_SetMtViAilgn04Pos		P4308	//Align04 촬영 위치
+#define	RStageY_SetMtSpare05Pos			P4309	//Spare Pos05
+#define	RStageY_SetMtSpare06Pos			P4310	//Spare Pos06
+#define	RStageY_SetMtSpare07Pos			P4311	//Spare Pos07
+#define	RStageY_SetMtSpare08Pos			P4312	//Spare Pos08
+#define	RStageY_SetMtSpare09Pos			P4313	//Spare Pos09
+#define	RStageY_SetMtSafePos			P4314	//스테이지 안전 위치
+#define	RStageY_SetMtPosMvSpd			P4315	//좌표 이동 시 속도
+#define	RStageY_SetMtPosMvTA			P4316	//좌표 이동 시 가속시간
+#define	RStageY_SetReadyPosMvSpd		P4317	//대기 위치 이동 시 속도
+#define	RStageY_SetReadyPosMvTA			P4318	//대기 위치 이동 시 가속시간
+#define	RStageY_SetMtWorkStartPosMvSpd	P4319	//작업 시작 위치 이동 시 속도
+#define	RStageY_SetMtWorkStartPosMvTA	P4320	//작업 시작 위치 이동 시 가속시간
+#define	RStageY_SetAlignPosMvSpd		P4321	//얼라인 비전 위치 이동 시 속도
+#define	RStageY_SetAlignPosMvTA			P4322	//얼라인 비전 위치 이동 시 가속시간
+#define	RStageY_SetLoadingPosMvSpd		P4323	//로딩 위치 이동 시 속도
+#define	RStageY_SetLoadingPosMvTA		P4324	//로딩 위치 이동 시 가속시간
+
+
+Global Temp_RStageY_SetMtReadyPos = 0
+Global Temp_RStageY_SetMtWorkStartPos = 0
+Global Temp_RStageY_SetMtSpare03Pos = 0
+Global Temp_RStageY_SetMtLoadingPos = 0
+Global Temp_RStageY_SetMtSpare04Pos = 0
+Global Temp_RStageY_SetMtViAilgn01Pos = 0
+Global Temp_RStageY_SetMtViAilgn02Pos = 0
+Global Temp_RStageY_SetMtViAilgn03Pos = 0
+Global Temp_RStageY_SetMtViAilgn04Pos = 0
+Global Temp_RStageY_SetMtSpare05Pos = 0
+Global Temp_RStageY_SetMtSpare06Pos = 0
+Global Temp_RStageY_SetMtSpare07Pos = 0
+Global Temp_RStageY_SetMtSpare08Pos = 0
+Global Temp_RStageY_SetMtSpare09Pos = 0
+Global Temp_RStageY_SetMtSafePos = 0
+Global Temp_RStageY_SetMtPosMvSpd = 0
+Global Temp_RStageY_SetMtPosMvTA = 0
+Global Temp_RStageY_SetReadyPosMvSpd = 0
+Global Temp_RStageY_SetReadyPosMvTA	= 0
+Global Temp_RStageY_SetMtWorkStartPosMvSpd = 0
+Global Temp_RStageY_SetMtWorkStartPosMvTA = 0
+Global Temp_RStageY_SetAlignPosMvSpd = 0
+Global Temp_RStageY_SetAlignPosMvTA	= 0
+Global Temp_RStageY_SetLoadingPosMvSpd = 0
+Global Temp_RStageY_SetLoadingPosMvTA = 0
+
+//5
+#define	ServoZ_SetMtReadyPos			P4500	//모터 대기 위치
+#define	ServoZ_SetMtWorkStartPos		P4501	//모터 작업 시작 위치
+#define	ServoZ_SetMtSpare03Pos			P4502	//Spare Pos03
+#define	ServoZ_SetMtLoadingPos			P4503	//모터 로딩 위치
+#define	ServoZ_SetMtSpare04Pos			P4504	//Spare Pos04
+//#define	ServoZ_SetMtViAilgn01Pos		P4505	//Align01 촬영 위치
+//#define	ServoZ_SetMtViAilgn02Pos		P4506	//Align02 촬영 위치
+//#define	ServoZ_SetMtViAilgn03Pos		P4507	//Align03 촬영 위치
+//#define	ServoZ_SetMtViAilgn04Pos		P4508	//Align04 촬영 위치
+#define	ServoZ_SetMtLeftViAilgnPos		P4505	//좌측 Align 촬영 위치
+#define	ServoZ_SetMtRightViAilgnPos		P4506	//우측 Align 촬영 위치
+#define	ServoZ_SetMtLeftLaserFocusPos	P4507	//레이저 포커스 위치
+#define	ServoZ_SetMtRigntLaserFocusPos	P4508	//Spare Vision Pos
+#define	ServoZ_SetMtSpare05Pos			P4509	//Spare Pos05
+#define	ServoZ_SetMtSpare06Pos			P4510	//Spare Pos06
+#define	ServoZ_SetMtSpare07Pos			P4511	//Spare Pos07
+#define	ServoZ_SetMtSpare08Pos			P4512	//Spare Pos08
+#define	ServoZ_SetMtPowerMeterPos		P4513	//파워 미터 측정 포지션 위치
+#define	ServoZ_SetMtSpare10Pos			P4514	//Spare Pos10
+#define	ServoZ_SetMtPosMvSpd			P4515	//좌표 이동 시 속도
+#define	ServoZ_SetMtPosMvTA				P4516	//좌표 이동 시 가속시간
+#define	ServoZ_SetReadyPosMvSpd			P4517	//대기 위치 이동 시 속도
+#define	ServoZ_SetReadyPosMvTA			P4518	//대기 위치 이동 시 가속시간
+#define	ServoZ_SetMtWorkStartPosMvSpd	P4519	//작업 시작 위치 이동 시 속도
+#define	ServoZ_SetMtWorkStartPosMvTA	P4520	//작업 시작 위치 이동 시 가속시간
+#define	ServoZ_SetAlignPosMvSpd			P4521	//얼라인 비전 위치 이동 시 속도
+#define	ServoZ_SetAlignPosMvTA			P4522	//얼라인 비전 위치 이동 시 가속시간
+#define	ServoZ_SetLoadingPosMvSpd		P4523	//로딩 위치 이동 시 속도
+#define	ServoZ_SetLoadingPosMvTA		P4524	//로딩 위치 이동 시 가속시간
+#define	ServoZ_SetPowerMeterPosMvSpd	P4525	//파워 미터 측정 이동 시 속도
+#define	ServoZ_SetPowerMeterPosMvTA		P4526	//파워 미터 측정 이동 시 가속시간
+
+Global Temp_ServoZ_SetMtReadyPos = 0
+Global Temp_ServoZ_SetMtWorkStartPos = 0
+Global Temp_ServoZ_SetMtSpare03Pos = 0
+Global Temp_ServoZ_SetMtLoadingPos = 0
+Global Temp_ServoZ_SetMtSpare04Pos = 0
+//Global Temp_ServoZ_SetMtViAilgn01Pos = 0
+//Global Temp_ServoZ_SetMtViAilgn02Pos = 0
+//Global Temp_ServoZ_SetMtViAilgn03Pos = 0
+//Global Temp_ServoZ_SetMtViAilgn04Pos = 0
+Global Temp_ServoZ_SetMtLeftViAilgnPos = 0
+Global Temp_ServoZ_SetMtRightViAilgnPos = 0
+Global Temp_ServoZ_SetMtLeftLaserFocusPos = 0
+Global Temp_ServoZ_SetMtRigntLaserFocusPos = 0
+
+Global Temp_ServoZ_SetMtSpare05Pos = 0
+Global Temp_ServoZ_SetMtSpare06Pos = 0
+Global Temp_ServoZ_SetMtSpare07Pos = 0
+Global Temp_ServoZ_SetMtSpare08Pos = 0
+Global Temp_ServoZ_SetMtPowerMeterPos = 0
+Global Temp_ServoZ_SetMtSpare10Pos = 0
+Global Temp_ServoZ_SetMtPosMvSpd = 0
+Global Temp_ServoZ_SetMtPosMvTA	= 0
+Global Temp_ServoZ_SetReadyPosMvSpd = 0
+Global Temp_ServoZ_SetReadyPosMvTA = 0
+Global Temp_ServoZ_SetMtWorkStartPosMvSpd = 0
+Global Temp_ServoZ_SetMtWorkStartPosMvTA = 0
+Global Temp_ServoZ_SetAlignPosMvSpd = 0
+Global Temp_ServoZ_SetAlignPosMvTA = 0
+Global Temp_ServoZ_SetLoadingPosMvSpd = 0
+Global Temp_ServoZ_SetLoadingPosMvTA = 0
+Global Temp_ServoZ_SetPowerMeterPosMvSpd = 0
+Global Temp_ServoZ_SetPowerMeterPosMvTA	= 0
+
+// 세이프티 체크 용 변수 정의
+#define P2U_LstageY_MvPos		P1205
+#define P2U_RstageY_MvPos		P1305
+
+
+
+
+
+
+
+
+

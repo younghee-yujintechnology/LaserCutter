@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DeviceDescription xmlns="http://www.3s-software.com/schemas/DeviceDescription-1.0.xsd" xmlns:ts="http://www.3s-software.com/schemas/TargetSettings-0.1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Strings namespace="local">
+		<Language lang="en">
+			<!--<String identifier="ModelName">PPMAC_ECATIO</String> -->
+			<!--<String identifier="DeviceDescription">PPMAC ECATIO Input/Output Driver</String> -->
+			<String identifier="VendorName">OMRON Delta Tau</String>
+			<String identifier="typename">ECATIO</String>
+			<String identifier="typedescription">A device that includes libs and automatically generates some FB instances from this libs.</String>
+		</Language>
+	</Strings>
+	<Device hideInCatalogue="false"  showParamsInDevDescOrder="true">
+		<DeviceIdentification>
+			<Type>50004</Type>	<!-- CT_OEM_START = 0x8000 -->
+	<Id>16e5 3000</Id> <!-- Custom ID # for Auto gen. Range from hex. 3000 - 3FFF -->
+			<Version>2.6.1.0</Version>
+		</DeviceIdentification>
+		<DeviceInfo>
+	<Name name="local:ModelName">ECAT_IO_</Name>
+			<Description name="local:DeviceDescription">PPMAC ECAT I/O Variables</Description>
+			<Vendor name="local:VendorName">OMRON Delta Tau</Vendor>
+			<OrderNumber>???</OrderNumber>
+		</DeviceInfo>
+		<Connector moduleType="45004" interface="DeltaTau.ECATIO" role="child" explicit="false" connectorId="1" hostpath="-1">
+			<InterfaceName name="local:PCI">PPMAC ECATIO</InterfaceName>
+			<Slot count="1" allowEmpty="false"></Slot>
+		</Connector>
+		<!-- moduleType: CT_OEM_START = 0x8000 -->
+		<Connector moduleType="50004" interface="MyCompany:Internal" role="parent" explicit="false" connectorId="2" hostpath="1">
+			<InterfaceName name="local:DP">Internal</InterfaceName>
+			<Var max="125"></Var>
+			<DriverInfo needsBusCycle="false">
+				<Scan supported="false">
+				</Scan>
+			</DriverInfo>
+			<HostParameterSet>
+			<ParameterSection>
+			<Name name="local:ps1">ECATIO</Name>
+			<Description name="local:ps1.Desc">ECAT I/O</Description>
+			<ParameterSection>
+			<Name name="local:ps1">ECAT[0]</Name>
+			<Description name="local:ps1.Desc">ECAT[0] input/output</Description>
+			</ParameterSection>
+				</ParameterSection>
+			</HostParameterSet>
+		</Connector>
+	</Device>
+</DeviceDescription>

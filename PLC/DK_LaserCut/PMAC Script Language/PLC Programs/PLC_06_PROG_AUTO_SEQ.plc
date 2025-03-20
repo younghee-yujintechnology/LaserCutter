@@ -1,0 +1,646 @@
+open plc PLC_06_PROG_AUTO_SEQ
+// --------------------User Code Goes Here------------------------
+if(Part_ExeCmdStep(PART_MACH) > 0 || Part_ExeCmdStep(PART_MACH) == MACH_000_STAT_READY)
+{
+	if(Seq_ExeCmdStep(PART_MACH) > 0)
+	{
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 좌측 스테이지 자동 구동 시퀀스
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO)
+		{
+			Temp_Seq_ExeCmdStep(PART_MACH) = Seq_ExeCmdStep(PART_MACH)
+			Unit_AutoStartReadySt(LSTAGE) = 0
+			Out_SelectBoard = 1
+			Temp_Lstage_AutoRunStatus = 1
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+100
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+100)
+		{
+			Temp_Lstage_AutoRdyServoZPos = Temp_ServoZ_SetMtReadyPos - Temp_Lstage_Glessthickness	// 자동 구동 시 Z축 위치 연산
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+130
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+130)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_700_EXE_READYPOSMV					// 사용 시 Align Vsion 시퀀스 실행
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+170
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+170)
+		{
+			if(Unit_ExeCmdStep(LSTAGE) == UNIT_700_EXE_READYPOSMV+90)			// Align Vsion 시퀀스 완료
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+200			// 다음 스텝으로 이행(모션프로그램 다운로드)
+			}
+			else if(Unit_ExeCmdStep(LSTAGE) < 0)									// Align Vsion 시퀀스 중 에러 발생 시
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+180			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+180)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5700_READYPOSMVFAIL		// 얼라인 비전 시퀀스 실패
+		}
+		// Align Vision 실행
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+200)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+230
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+230)
+		{
+			if(Temp_Lstage_ViAilgnUnUse == Use)										// Align Vision 사용/미사용 확인
+			{
+				Unit_ExeCmdStep(LSTAGE) = UNIT_1000_EXE_ALIGNMV						// 사용 시 Align Vsion 시퀀스 실행
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+270
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+400			// 미사용 시 다음 스텝으로 이행(모션프로그램 다운로드)
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+270)
+		{
+			if(Unit_ExeCmdStep(LSTAGE) == UNIT_1000_EXE_ALIGNMV+990)				// Align Vsion 시퀀스 완료
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+400			// 다음 스텝으로 이행(모션프로그램 다운로드)
+			}
+			else if(Unit_ExeCmdStep(LSTAGE) < 0)									// Align Vsion 시퀀스 중 에러 발생 시
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+280			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+280)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = ERROR_CODE_5000_ALIGNVISIONFAIL			// 얼라인 비전 시퀀스 실패
+		}
+		/*
+		// 가공 위치 이동
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+300)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+330
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+330)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_400_EXE_WORKSTARTMV					// 가공 위치 이동 시퀀스 실행
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+370
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+370)
+		{
+			if(Unit_ExeCmdStep(LSTAGE) == UNIT_400_EXE_WORKSTARTMV+90)			// 가공 위치 이동 완료 확인
+			{
+				Out_LeftUnit_Ionizer = 1
+				Out_LeftUnit_IonizerSol = 1
+				Out_Dust_Collector = 1
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+400			// 다음 스텝으로 이행
+			}
+			else if(Unit_ExeCmdStep(LSTAGE) < 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+380			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+380)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = ERROR_CODE_5100_WORKSTARTPOSFAIL		// 작업 시작 위치 이동 실패
+		}
+		*/
+		// Motion 프로그램 다운로드 요청
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+400)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+420
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+420)
+		{
+			U2P_Lstage_MotionDownroadExe = 1									// 모션 다운로드 요청 신호 요청
+			Sys.CdTimer[MDOWNL_T] = MotionDownloadTimeOut						// 타임 아웃 시간 설정
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+470
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+470)
+		{
+			if(P2U_Lstage_MotionDownroadComp == 1)								// 모션 다운로드 완료 신호 수신
+			{
+				U2P_Lstage_MotionDownroadExe = 0								// 모션 다운로드 요청 신호 초기화
+				P2U_Lstage_MotionDownroadComp = 0								// 모션 다운로드 완료 신호 수신 초기화
+				Out_BeamShutter_Sol = 1											// 빔 셔터 On
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+700			// 다음 스텝으로 이행
+			}
+			else if(Sys.CdTimer[MDOWNL_T] <= 0)									// 타임 아웃 에러
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+480			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+480)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5200_MOTIONDOWNLOADFAIL	// 모션 다운로드 실패
+		}
+		/*
+		// 좌표계 설정
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+400)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+410
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+410)
+		{
+			if(Motor[LinearX].Coord != 1 || Motor[ServoZ].Coord != 1)			// 좌표계 설정
+			{
+				Motor[LinearX].Coord = 1											//X축 1번 좌표계 설정
+				Motor[ServoZ].Coord = 1											//Z축 1번 좌표계 설정
+			}
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+420
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+420)
+		{
+			if(Motor[LinearX].Coord == 1 && Motor[ServoZ].Coord == 1)			// 좌표계 변경 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+430
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+480			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+430)
+		{
+			Motor[LinearX].CoordSf[6] = Mtr_SetMachScale(LinearX)					//X축 1번 좌표계 스케일 설정
+			Motor[ServoZ].CoordSf[8] = Mtr_SetMachScale(ServoZ)					//Z축 1번 좌표계 스케일 설정
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+440
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+440)
+		{
+			if(Motor[LinearX].CoordSf[6] == Mtr_SetMachScale(LinearX) && Motor[ServoZ].CoordSf[8] == Mtr_SetMachScale(ServoZ))
+			{
+				cmd"pmatch"														//좌표계 위치 처리 명령
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+500			// 다음 스텝으로 이행
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+480			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+480)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+600)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+630
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+630)
+		{
+			cmd"&1b1r"															// 모션 실행
+			Sys.CdTimer[MACHSEQ_T] = 100
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+670
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+670)
+		{
+			if(Coord[1].ProgActive == 1 && Coord[1].ProgRunning == 1)			// 모션 실행 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+700			// 다음 스텝으로 이행
+			}
+			else if(Coord[1].ProgActive == 0 || Coord[1].ProgRunning == 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+680			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+680)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+		}
+		*/
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+700)
+		{
+			Sys.CdTimer[MACHSEQ_T] = Temp_Mach_MotionTimeOut				// 구동 완료 타임아웃 시간 체크 시작
+			if(test_Mode == Use && Half_test_Mode == UnUse)
+			{
+				cmd"&1b54r"
+			}
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+720
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+720)
+		{
+			if (Coord[1].ProgActive == 1 && Sys.CdTimer[MACHSEQ_T] > 0)
+			{
+				Sys.CdTimer[MACHSEQ_T] = Temp_Mach_MotionTimeOut				// 구동 완료 타임아웃 시간 체크 시작
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+770
+			}
+			else if (Sys.CdTimer[MACHSEQ_T] <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+780			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+770)
+		{
+			if(Coord[1].ProgActive == 0)						// 구동 완료 신호 확인
+			{
+				U2P_Lstage_MotionComp = 1										// 모션 구동 완료 신호 출력
+				Out_BeamShutter_Sol = 0											// 빔 셔터 Close
+				MotionEnd = 0													// 모션 정지
+				Out_LeftUnit_Ionizer = 0										// 이오나이저 off
+				Out_LeftUnit_IonizerSol = 0										// 이오나이저 off
+				Out_Dust_Collector = 0
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+800
+			}
+			else if(Sys.CdTimer[MACHSEQ_T] <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+780			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+780)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5300_MOTIONENDTIMEOUT		// 모션 종료 실패(타임아웃)
+		}
+		// 로딩 위치 이동
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+800)
+		{
+			Temp_Lstage_AutoRdyServoZPos = Temp_ServoZ_SetMtReadyPos
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+830
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+830)
+		{
+			Unit_ExeCmdStep(LSTAGE) = UNIT_700_EXE_READYPOSMV						// 대기 위치 이동 시퀀스 실행
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+870
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+870)
+		{
+			if(Unit_ExeCmdStep(LSTAGE) == UNIT_700_EXE_READYPOSMV+90)				// 대기 위치 이동 시퀀스 완료 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+900
+			}
+			else if(Unit_ExeCmdStep(LSTAGE) <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+880			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+880)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5700_READYPOSMVFAIL		// 로딩 위치 이동 실패
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+900)
+		{
+			if(Temp_Mach_AutoCompVentUnUse == Use)
+			{
+				P1++
+				Unit_ExeCmdStep(LSTAGE) = UNIT_200_EXE_TABLEVENT
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+950
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+970
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+950)
+		{
+			if(Unit_ExeCmdStep(LSTAGE) == UNIT_200_EXE_TABLEVENT+90)				// 진공 파기 시퀀스 완료 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+970
+			}
+			else if(Unit_ExeCmdStep(LSTAGE) <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+980			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+970)
+		{
+			U2P_Lstage_AutoRunComp = 1											// 좌측 자동 구동 완료 신호 On
+			Temp_Lstage_AutoRunStatus = 0
+			Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO+990
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+980)
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5500_TABLEVENTFAIL		// 로딩 위치 이동 실패
+		}
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// 우측 스테이지 자동 구동 시퀀스
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO)
+		{
+			Temp_Seq_ExeCmdStep(PART_MACH) = Seq_ExeCmdStep(PART_MACH)
+			Unit_AutoStartReadySt(RSTAGE) = 0
+			Temp_Rstage_AutoRunStatus = 1
+			Out_SelectBoard = 0
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+200
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+100)
+		{
+			Temp_Rstage_AutoRdyServoZPos = Temp_ServoZ_SetMtReadyPos - Temp_Rstage_Glessthickness	// 자동 구동 시 Z축 위치 연산
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+130
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+130)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_700_EXE_READYPOSMV					// 사용 시 Align Vsion 시퀀스 실행
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+170
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+170)
+		{
+			if(Unit_ExeCmdStep(RSTAGE) == UNIT_700_EXE_READYPOSMV+90)			// Align Vsion 시퀀스 완료
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+200			// 다음 스텝으로 이행(모션프로그램 다운로드)
+			}
+			else if(Unit_ExeCmdStep(RSTAGE) < 0)									// Align Vsion 시퀀스 중 에러 발생 시
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+180			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+180)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5700_READYPOSMVFAIL		// 얼라인 비전 시퀀스 실패
+		}
+		// Align Vision 실행
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+200)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+230
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+230)
+		{
+			if(Temp_Rstage_ViAilgnUnUse == Use)										// Align Vision 사용/미사용 확인
+			{
+				Unit_ExeCmdStep(RSTAGE) = UNIT_1000_EXE_ALIGNMV						// 사용 시 Align Vsion 시퀀스 실행
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+270
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+400			// 미사용 시 다음 스텝으로 이행(모션프로그램 다운로드)
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+270)
+		{
+			if(Unit_ExeCmdStep(RSTAGE) == UNIT_1000_EXE_ALIGNMV+990)				// Align Vsion 시퀀스 완료
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+400			// 다음 스텝으로 이행(모션프로그램 다운로드)
+			}
+			else if(Unit_ExeCmdStep(RSTAGE) < 0)									// Align Vsion 시퀀스 중 에러 발생 시
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+280			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+280)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = ERROR_CODE_5000_ALIGNVISIONFAIL		// 얼라인 비전 시퀀스 실패
+		}
+		/*
+		// 가공 위치 이동
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+300)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+330
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+330)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_400_EXE_WORKSTARTMV					// 가공 위치 이동 시퀀스 실행
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+370
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+370)
+		{
+			if(Unit_ExeCmdStep(RSTAGE) == UNIT_400_EXE_WORKSTARTMV+90)			// 가공 위치 이동 완료 확인
+			{
+				Out_RightUnit_Ionizer = 1
+				Out_RightUnit_IonizerSol = 1
+				Out_Dust_Collector = 1
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+400			// 다음 스텝으로 이행
+			}
+			else if(Unit_ExeCmdStep(RSTAGE) < 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+380			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+380)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = ERROR_CODE_5100_WORKSTARTPOSFAIL		// 작업 위치 이동 실패
+		}
+		*/
+		// Motion 프로그램 다운로드 요청
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+400)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+420
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+420)
+		{
+			U2P_Rstage_MotionDownroadExe = 1									// 모션 다운로드 요청 신호 요청
+			Sys.CdTimer[MDOWNL_T] = MotionDownloadTimeOut						// 타임 아웃 시간 설정
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+470
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+470)
+		{
+			if(P2U_Rstage_MotionDownroadComp == 1)								// 모션 다운로드 완료 신호 수신
+			{
+				U2P_Rstage_MotionDownroadExe = 0								// 모션 다운로드 요청 신호 초기화
+				P2U_Rstage_MotionDownroadComp = 0								// 모션 다운로드 완료 신호 수신 초기화
+				Out_BeamShutter_Sol = 1											// 빔 셔터 On
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+700			// 다음 스텝으로 이행
+			}
+			else if(Sys.CdTimer[MDOWNL_T] <= 0)									// 타임 아웃 에러
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+480			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+480)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5200_MOTIONDOWNLOADFAIL		// 모션 다운로드 실패
+		}
+		/*
+		// 좌표계 설정
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+400)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+410
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+410)
+		{
+			if(Motor[LinearX].Coord != 2 || Motor[ServoZ].Coord != 2)			// 좌표계 설정
+			{
+				Motor[LinearX].Coord = 2											//X축 1번 좌표계 설정
+				Motor[ServoZ].Coord = 2											//Z축 1번 좌표계 설정
+			}
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+420
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+420)
+		{
+			if(Motor[LinearX].Coord == 2 && Motor[ServoZ].Coord == 2)			// 좌표계 변경 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+430
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+480			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+430)
+		{
+			Motor[LinearX].CoordSf[6] = Mtr_SetMachScale(LinearX)					//X축 1번 좌표계 스케일 설정
+			Motor[ServoZ].CoordSf[8] = Mtr_SetMachScale(ServoZ)					//Z축 1번 좌표계 스케일 설정
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+440
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+440)
+		{
+			if(Motor[LinearX].CoordSf[6] == Mtr_SetMachScale(LinearX) && Motor[ServoZ].CoordSf[8] == Mtr_SetMachScale(ServoZ))
+			{
+				cmd"pmatch"														//좌표계 위치 처리 명령
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+500			// 다음 스텝으로 이행
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+480			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+480)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+600)
+		{
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+630
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+630)
+		{
+			cmd"&2b1r"															// 모션 실행
+			Sys.CdTimer[MACHSEQ_T] = 100
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+670
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+670)
+		{
+			if(Coord[2].ProgActive == 1 && Coord[2].ProgRunning == 1)			// 모션 실행 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+700			// 다음 스텝으로 이행
+			}
+			else if(Coord[2].ProgActive == 0 || Coord[2].ProgRunning == 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+680			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+680)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+		}
+		*/
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+700)
+		{
+			Sys.CdTimer[MACHSEQ_T] = Temp_Mach_MotionTimeOut				// 구동 완료 타임아웃 시간 체크 시작
+			if(test_Mode == Use && Half_test_Mode == UnUse)
+			{
+				cmd"&1b54r"
+			}
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+720
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+720)
+		{
+			if (Coord[1].ProgActive == 1 && Sys.CdTimer[MACHSEQ_T] > 0)
+			{
+				Sys.CdTimer[MACHSEQ_T] = Temp_Mach_MotionTimeOut				// 구동 완료 타임아웃 시간 체크 시
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+770
+			}
+			else if (Sys.CdTimer[MACHSEQ_T] <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+780			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+770)
+		{
+			if(Coord[1].ProgActive == 0)						// 구동 완료 신호 확인
+			{
+				U2P_Rstage_MotionComp = 1										// 모션 구동 완료 신호 출력
+				Out_BeamShutter_Sol = 0											// 빔 셔터 Close
+				MotionEnd = 0													// 모션 정지
+				Out_RightUnit_Ionizer = 0										// 이오나이저 off
+				Out_RightUnit_IonizerSol = 0										// 이오나이저 off
+				Out_Dust_Collector = 0
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+800
+			}
+			else if(Sys.CdTimer[MACHSEQ_T] <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+780			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+780)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5300_MOTIONENDTIMEOUT		// 모션 종료 실패(타임아웃)
+		}
+		// 로딩 위치 이동
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+800)			
+		{
+			Temp_Rstage_AutoRdyServoZPos = Temp_ServoZ_SetMtReadyPos
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+830
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+830)
+		{
+			Unit_ExeCmdStep(RSTAGE) = UNIT_700_EXE_READYPOSMV						// 대기 위치 이동 시퀀스 실행
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+870
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+870)
+		{
+			if(Unit_ExeCmdStep(RSTAGE) == UNIT_700_EXE_READYPOSMV+90)				// 대기 위치 이동 시퀀스 완료 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+900
+			}
+			else if(Unit_ExeCmdStep(RSTAGE) <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+880			// 에러 처리 스텝`
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+880)			// 에러 처리 스텝
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5700_READYPOSMVFAIL		// 대기 위치 이동 실패
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+900)
+		{
+			if(Temp_Mach_AutoCompVentUnUse == Use)
+			{
+				Unit_ExeCmdStep(RSTAGE) = UNIT_200_EXE_TABLEVENT
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+950
+			}
+			else
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+970
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+950)
+		{
+			if(Unit_ExeCmdStep(RSTAGE) == UNIT_200_EXE_TABLEVENT+90)				// 진공 파기 시퀀스 완료 확인
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+970
+			}
+			else if(Unit_ExeCmdStep(RSTAGE) <= 0)
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+980			// 에러 처리 스텝
+			}
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+970)
+		{
+			U2P_Rstage_AutoRunComp = 1											// 좌측 자동 구동 완료 신호 On
+			Temp_Rstage_AutoRunStatus = 0
+			Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO+990
+		}
+		else if(Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+980)
+		{
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))		// 에러 처리
+			//에러 코드
+			Part_CmdErrorCode(PART_MACH) = EEROR_CODE_5500_TABLEVENTFAIL		// 로딩 위치 이동 실패
+		}
+	}
+}
+close

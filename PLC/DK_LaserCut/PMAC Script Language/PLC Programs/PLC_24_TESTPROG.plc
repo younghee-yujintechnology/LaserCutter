@@ -1,0 +1,182 @@
+open plc 24
+// --------------------User Code Goes Here------------------------
+/////////////////////////////////////////////////////////
+if(test_ModeDataUndate == 1)
+{
+	P2U_Mach_MainDoorUnUse = 1
+
+	P2U_Lstage_VacUseCts = 4
+	P2U_Rstage_VacUseCts = 4
+	
+	P2U_Lstage_Vac01Time = 500
+	P2U_Lstage_Vac02Time = 500
+	P2U_Lstage_Vac03Time = 500
+	P2U_Lstage_Vac04Time = 500
+	
+	P2U_Rstage_Vac01Time = 500
+	P2U_Rstage_Vac02Time = 500
+	P2U_Rstage_Vac03Time = 500
+	P2U_Rstage_Vac04Time = 500
+	
+	P2U_Lstage_ViAilgnCts = 4
+	P2U_Rstage_ViAilgnCts = 4
+	
+	P2U_Lstage_ViAilgnUnUse = 0
+	P2U_Rstage_ViAilgnUnUse = 0
+	
+	P2U_Mach_MotionTimeOut = 60000
+	
+	LinearX_SetMtReadyPos = 900
+	LStageY_SetMtReadyPos = 10
+	RStageY_SetMtReadyPos = 10
+	ServoZ_SetMtReadyPos = 5
+
+	LinearX_SetMtLWorkStartPos	= 450
+	LinearX_SetMtRWorkStartPos  = 1300
+	LStageY_SetMtWorkStartPos	= 410
+	RStageY_SetMtWorkStartPos   = 410
+	ServoZ_SetMtWorkStartPos	= 10
+	
+	LinearX_SetMtLViAilgn01Pos = 340
+	LinearX_SetMtLViAilgn02Pos = 600
+	LinearX_SetMtLViAilgn03Pos = 300
+	LinearX_SetMtLViAilgn04Pos = 600
+	LinearX_SetMtRViAilgn01Pos = 1150
+	LinearX_SetMtRViAilgn02Pos = 1500
+	LinearX_SetMtRViAilgn03Pos = 1140
+	LinearX_SetMtRViAilgn04Pos = 1500
+	
+	LStageY_SetMtViAilgn01Pos = 280
+	LStageY_SetMtViAilgn02Pos = 340
+	LStageY_SetMtViAilgn03Pos = 600
+	LStageY_SetMtViAilgn04Pos = 560
+	
+	RStageY_SetMtViAilgn01Pos = 250
+	RStageY_SetMtViAilgn02Pos = 270
+	RStageY_SetMtViAilgn03Pos = 630
+	RStageY_SetMtViAilgn04Pos = 600
+	
+	LStageY_SetMtLoadingPos = 20
+	RStageY_SetMtLoadingPos = 20
+	
+	LinearX_SetMtLLoadingPos = 900
+	LinearX_SetMtRLoadingPos = 900
+	
+	ServoZ_SetMtViAilgn01Pos = 10
+	ServoZ_SetMtViAilgn02Pos = 10
+	ServoZ_SetMtViAilgn03Pos = 10
+	ServoZ_SetMtViAilgn04Pos = 10
+	
+	ServoZ_SetMtLoadingPos = 0
+
+	LinearX_SetReadyPosMvSpd = 100	
+	LinearX_SetReadyPosMvTA	= 50 
+	LStageY_SetReadyPosMvSpd = 100
+	LStageY_SetReadyPosMvTA	= 50
+	RStageY_SetReadyPosMvSpd = 100	
+	RStageY_SetReadyPosMvTA	= 50
+	ServoZ_SetReadyPosMvSpd	= 30
+	ServoZ_SetReadyPosMvTA = 50
+	
+	ServoZ_SetMtWorkStartPosMvSpd	= 30
+	ServoZ_SetMtWorkStartPosMvTA	= 50
+	ServoZ_SetAlignPosMvSpd			= 30
+	ServoZ_SetAlignPosMvTA			= 50
+	ServoZ_SetLoadingPosMvSpd		= 30
+	ServoZ_SetLoadingPosMvTA		= 50
+	
+	LinearX_SetMtWorkStartPosMvSpd	= 100
+	LinearX_SetMtWorkStartPosMvTA	= 50
+	LinearX_SetAlignPosMvSpd		= 100
+	LinearX_SetAlignPosMvTA			= 50
+	LinearX_SetLoadingPosMvSpd		= 100
+	LinearX_SetLoadingPosMvTA		= 50
+	
+	LStageY_SetMtWorkStartPosMvSpd	= 100
+	LStageY_SetMtWorkStartPosMvTA	= 50
+	LStageY_SetAlignPosMvSpd		= 100
+	LStageY_SetAlignPosMvTA			= 50
+	LStageY_SetLoadingPosMvSpd		= 100
+	LStageY_SetLoadingPosMvTA		= 50
+	
+	RStageY_SetMtWorkStartPosMvSpd	= 100
+	RStageY_SetMtWorkStartPosMvTA	= 50
+	RStageY_SetAlignPosMvSpd		= 100
+	RStageY_SetAlignPosMvTA			= 50
+	RStageY_SetLoadingPosMvSpd		= 100
+	RStageY_SetLoadingPosMvTA		= 50
+	test_ModeDataUndate = 0
+}
+
+if(test_Mode == Use)
+{	
+	if(Half_test_Mode == UnUse)
+	{
+		if(P2U_Lstage_ReadySt == 0)
+		{
+			P2U_Lstage_ReadySt = 1
+		}
+		/////////////////////////////////////////////////////////
+		IF(P2U_Rstage_ReadySt == 0)
+		{
+			P2U_Rstage_ReadySt = 1
+		}
+		/////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////
+		P2U_Lstage_ViAilgn01TrigComp = U2P_Lstage_ViAilgn01TrigExe
+		P2U_Lstage_ViAilgn02TrigComp = U2P_Lstage_ViAilgn02TrigExe
+		P2U_Lstage_ViAilgn03TrigComp = U2P_Lstage_ViAilgn03TrigExe
+		P2U_Lstage_ViAilgn04TrigComp = U2P_Lstage_ViAilgn04TrigExe
+		///////////////////////////////////////////////////////////////
+		P2U_Rstage_ViAilgn01TrigComp = U2P_Rstage_ViAilgn01TrigExe
+		P2U_Rstage_ViAilgn02TrigComp = U2P_Rstage_ViAilgn02TrigExe
+		P2U_Rstage_ViAilgn03TrigComp = U2P_Rstage_ViAilgn03TrigExe
+		P2U_Rstage_ViAilgn04TrigComp = U2P_Rstage_ViAilgn04TrigExe
+		///////////////////////////////////////////////////////////////
+		P2U_Lstage_AutoStart = U2P_Lstage_AutoReadySt
+		P2U_Rstage_AutoStart = U2P_Rstage_AutoReadySt
+		///////////////////////////////////////////////////////////////
+	}
+	if(U2P_Lstage_MotionDownroadExe == 1 && Temp_Lstage_MotionDownroadExe == 0)
+	{
+		Temp_Lstage_MotionDownroadExe = 1
+		Motor[1].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+		Motor[1].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+		Motor[2].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LStageY))/1000/1000)
+		Motor[2].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LStageY))/1000/1000)
+		cmd"undefine all"
+		cmd"&1 #1->10000X #2->10000Y"
+		cmd"delete lookahead"
+		cmd"define lookahead 1500"
+		if(Half_test_Mode == UnUse)
+		{
+			P2U_Lstage_MotionDownroadComp = 1
+		}
+	}
+	ELSE if(U2P_Lstage_MotionDownroadExe == 0 && Temp_Lstage_MotionDownroadExe == 1)
+	{
+		Temp_Lstage_MotionDownroadExe = 0
+	}
+
+	if(U2P_Rstage_MotionDownroadExe == 1 && Temp_Rstage_MotionDownroadExe == 0)
+	{
+		Temp_Rstage_MotionDownroadExe = 1
+		Motor[1].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+		Motor[1].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(LinearX))/1000/1000)
+		Motor[3].InvAmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(RStageY))/1000/1000)
+		Motor[3].InvDmax = 1/(((Temp_MaxAccData*9.8)*1000*Mtr_SetMachScale(RStageY))/1000/1000)
+		cmd"undefine all"
+		cmd"&1 #1->10000X #3->10000Y"
+		cmd"delete lookahead"
+		cmd"define lookahead 1500"
+		if(Half_test_Mode == UnUse)
+		{
+			P2U_Rstage_MotionDownroadComp = 1
+		}
+	}
+	ELSE if(U2P_Rstage_MotionDownroadExe == 0 && Temp_Rstage_MotionDownroadExe == 1)
+	{
+		Temp_Rstage_MotionDownroadExe = 0
+	}
+}
+close

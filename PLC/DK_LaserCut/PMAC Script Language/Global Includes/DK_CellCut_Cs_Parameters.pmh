@@ -1,0 +1,70 @@
+//
+// System Unlock
+Sys.WpKey = $AAAAAAAA
+
+// Target GMTD Code Sub Program Numbers
+/*
+Coord[1].Gprog = 1000
+Coord[1].Mprog = 1001
+Coord[1].Tprog = 1002
+Coord[1].Dprog = 1003
+
+Coord[2].Gprog = 1000
+Coord[2].Mprog = 1001
+Coord[2].Tprog = 1002
+Coord[2].Dprog = 1003
+*/
+/*
+// Feedrate Related Setup
+coord[1].FeedTime=1000
+coord[1].TimeBaseSlew=0.0001
+Coord[1].FeedHoldSlew=0.25
+Coord[1].TimeBaseSlew=0.25
+coord[1].RapidVelCtrl=1
+
+coord[2].FeedTime=1000
+coord[2].TimeBaseSlew=0.0001
+Coord[2].FeedHoldSlew=0.25
+Coord[2].TimeBaseSlew=0.25
+coord[2].RapidVelCtrl=1
+// Required Distance-To-Go Reporting CS Settings
+//Coord[1].tpsize = 1024
+//Coord[1].tpcoords = $1C0  //XYZ for XY it is $C0
+
+// 2D Cutter Compensation Buffer Size
+// Increase these setting if your G-code requires
+// a high number of out of plane moves
+Coord[1].CCSize = 20
+Coord[1].CCDistance = 8
+
+Coord[2].CCSize = 20
+Coord[2].CCDistance = 8
+
+// Coarse Interpolation Time
+Coord[1].SegMoveTime = 5
+Coord[1].MaxFeedRate = 5000000
+Coord[1].Ta = 100
+Coord[1].Ts = 50
+Coord[1].Td = Coord[1].Ta
+
+Coord[2].SegMoveTime = 5
+Coord[2].MaxFeedRate = 5000000
+Coord[2].Ta = 100
+Coord[2].Ts = 50
+Coord[2].Td = Coord[2].Ta
+*/
+//Lookahead Buffer Size
+Coord[1].LHDistance = 1500
+//Coordinate System Alternate Feedrate for Non-Feedrate Axes
+Coord[1].AltFeedrate = 300
+
+/*
+Coord[1].SegOverride = 1
+Coord[2].SegOverride = 1
+// PMAC Maximum Number of Coordinates
+//Sys.MaxMotors = 32
+//Sys.MaxCoords = 3
+// Synchronous Buffer Size
+Coord[1].SyncOps = 8192
+Coord[2].SyncOps = 8192
+*/

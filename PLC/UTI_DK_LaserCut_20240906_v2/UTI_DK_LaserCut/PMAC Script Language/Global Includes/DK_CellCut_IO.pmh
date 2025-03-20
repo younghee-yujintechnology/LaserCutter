@@ -1,0 +1,413 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// PC<->PMAC 변수 선언
+///////////////////////////////////////////////////////////////////////////////////////
+#define IO_Cts	50
+ptr IO_Out(IO_Cts)->*
+ptr IOIn(IO_Cts)->*
+global Temp_IO_Out(IO_Cts)
+global Temp_IOIn(IO_Cts)
+
+// 입력 맵핑
+M7000->CK3WAX[0].GpioData[0].0
+M7001->CK3WAX[0].GpioData[0].1
+M7002->CK3WAX[0].GpioData[0].2
+M7003->CK3WAX[0].GpioData[0].3
+M7004->CK3WAX[0].GpioData[0].4
+M7005->CK3WAX[0].GpioData[0].5
+M7006->CK3WAX[0].GpioData[0].6
+M7007->CK3WAX[0].GpioData[0].7
+M7008->CK3WAX[0].GpioData[0].8
+M7009->CK3WAX[0].GpioData[0].9
+M7010->CK3WAX[0].GpioData[0].10
+M7011->CK3WAX[0].GpioData[0].11
+M7012->CK3WAX[0].GpioData[0].12
+M7013->CK3WAX[0].GpioData[0].13
+M7014->CK3WAX[0].GpioData[0].14
+M7015->CK3WAX[0].GpioData[0].15
+M7016->CK3WAX[1].GpioData[0].0
+M7017->CK3WAX[1].GpioData[0].1
+M7018->CK3WAX[1].GpioData[0].2
+M7019->CK3WAX[1].GpioData[0].3
+M7020->CK3WAX[1].GpioData[0].4
+M7021->CK3WAX[1].GpioData[0].5
+M7022->CK3WAX[1].GpioData[0].6
+M7023->CK3WAX[1].GpioData[0].7
+M7024->CK3WAX[1].GpioData[0].8
+M7025->CK3WAX[1].GpioData[0].9
+M7026->CK3WAX[1].GpioData[0].10
+M7027->CK3WAX[1].GpioData[0].11
+M7028->CK3WAX[1].GpioData[0].12
+M7029->CK3WAX[1].GpioData[0].13
+M7030->CK3WAX[1].GpioData[0].14
+M7031->CK3WAX[1].GpioData[0].15
+M7032->CK3WMD[2].GpioData[0].0
+M7033->CK3WMD[2].GpioData[0].1
+M7034->CK3WMD[2].GpioData[0].2
+M7035->CK3WMD[2].GpioData[0].3
+M7036->CK3WMD[2].GpioData[0].4
+M7037->CK3WMD[2].GpioData[0].5
+M7038->CK3WMD[2].GpioData[0].6
+M7039->CK3WMD[2].GpioData[0].7
+M7040->CK3WMD[2].GpioData[0].8
+M7041->CK3WMD[2].GpioData[0].9
+M7042->CK3WMD[2].GpioData[0].10
+M7043->CK3WMD[2].GpioData[0].11
+M7044->CK3WMD[2].GpioData[0].12
+M7045->CK3WMD[2].GpioData[0].13
+M7046->CK3WMD[2].GpioData[0].14
+M7047->CK3WMD[2].GpioData[0].15
+
+M7100->CK3WAX[0].GpioData[0].16
+M7101->CK3WAX[0].GpioData[0].17
+M7102->CK3WAX[0].GpioData[0].18
+M7103->CK3WAX[0].GpioData[0].19
+M7104->CK3WAX[0].GpioData[0].20
+M7105->CK3WAX[0].GpioData[0].21
+M7106->CK3WAX[0].GpioData[0].22
+M7107->CK3WAX[0].GpioData[0].23
+M7108->CK3WAX[0].GpioData[0].24
+M7109->CK3WAX[0].GpioData[0].25
+M7110->CK3WAX[0].GpioData[0].26
+M7111->CK3WAX[0].GpioData[0].27
+M7112->CK3WAX[0].GpioData[0].28
+M7113->CK3WAX[0].GpioData[0].29
+M7114->CK3WAX[0].GpioData[0].30
+M7115->CK3WAX[0].GpioData[0].31
+M7116->CK3WAX[1].GpioData[0].16
+M7117->CK3WAX[1].GpioData[0].17
+M7118->CK3WAX[1].GpioData[0].18
+M7119->CK3WAX[1].GpioData[0].19
+M7120->CK3WAX[1].GpioData[0].20
+M7121->CK3WAX[1].GpioData[0].21
+M7122->CK3WAX[1].GpioData[0].22
+M7123->CK3WAX[1].GpioData[0].23
+M7124->CK3WAX[1].GpioData[0].24
+M7125->CK3WAX[1].GpioData[0].25
+M7126->CK3WAX[1].GpioData[0].26
+M7127->CK3WAX[1].GpioData[0].27
+M7128->CK3WAX[1].GpioData[0].28
+M7129->CK3WAX[1].GpioData[0].29
+M7130->CK3WAX[1].GpioData[0].30
+M7131->CK3WAX[1].GpioData[0].31
+M7132->CK3WMD[2].GpioData[0].16
+M7133->CK3WMD[2].GpioData[0].17
+M7134->CK3WMD[2].GpioData[0].18
+M7135->CK3WMD[2].GpioData[0].19
+M7136->CK3WMD[2].GpioData[0].20
+M7137->CK3WMD[2].GpioData[0].21
+M7138->CK3WMD[2].GpioData[0].22
+M7139->CK3WMD[2].GpioData[0].23
+M7140->CK3WMD[2].GpioData[0].24
+M7141->CK3WMD[2].GpioData[0].25
+M7142->CK3WMD[2].GpioData[0].26
+M7143->CK3WMD[2].GpioData[0].27
+M7144->CK3WMD[2].GpioData[0].28
+M7145->CK3WMD[2].GpioData[0].29
+M7146->CK3WMD[2].GpioData[0].30
+M7147->CK3WMD[2].GpioData[0].31
+
+///////////////////////////////////////////////////////////////////////////////////////
+//input
+#define	In_Main_PowerOn					M7000	//Main Power On
+#define	In_EMO01_Btn					M7001	//1번 EMO
+#define	In_EMO02_Btn					M7002	//2번 EMO
+#define	In_EMO03_Btn					M7003	//3번 EMO
+#define	In_LeftUnit_Start_Btn			M7004	//Start 버튼 눌렸을때 - Left
+#define	In_LeftUnit_Vac_Btn				M7005	//Vacuum 버튼 눌렸을때 - Left
+#define	In_LeftUnit_Stop_Btn			M7006	//Stop 버튼 눌렸을때 - Left
+#define	In_LeftUnit_ReSet_Btn			M7007	//Reset 버튼 눌렸을때 - Left
+#define	In_LeftUnit_Pressure_Sen		M7008	//Pressure 센서가 On시 - Left
+#define	In_LeftUnit_Vac_Sen				M7009	//Vacuum 센서 On시 - Left
+#define	In_RightUnit_Start_Btn			M7010	//Start 버튼 눌렸을때 - Right
+#define	In_RightUnit_Vac_Btn			M7011	//Vacuum 버튼 눌렸을때 - Right
+#define	In_RightUnit_Stop_Btn			M7012	//Stop 버튼 눌렸을때  - Right
+#define	In_RightUnit_ReSet_Btn			M7013	//Reset 버튼 눌렸을때 - Right
+#define	In_RightUnit_Pressure_Sen		M7014	//Pressure 센서가 On시 - Right
+#define	In_RightUnit_Vac_Sen			M7015	//Vacuum 센서 On시 - Right
+#define	In_Stage_PowerOn				M7016	//Stage Power On
+#define	In_Leak_Sen						M7017	//Leak Sensor On시
+#define	In_Door01_Sen					M7018	//Door Sensor1 열릴때
+#define	In_Door02_Sen					M7019	//Door Sensor2 열릴때
+#define	In_Door03_Sen					M7020	//Door Sensor3 열릴때
+#define	In_Door04_Sen					M7021	//Door Sensor4 열릴때
+#define	In_Door05_Sen					M7022	//Door Sensor5 열릴때
+#define	In_Spare_UX024					M7023	
+#define	In_LeftUnit_Ionizer				M7024	//Ionizer Run/Stop - Left
+#define	In_RightUnit_Ionizer			M7025	//Ionizer Run/Stop - Right
+#define	In_BeamShutter_Close			M7026	//Beam Shutter Close
+#define	In_BeamShutter_Open				M7027	//Beam Shutter Open
+#define	In_PowerMeter_Open				M7028	//Power Meter Open
+#define	In_PowerMeter_Close				M7029	//Power Meter Close
+#define	In_LeftUnit_Area_Sen			M7030	//Left Work Table Area Sensor
+#define	In_RightUnit_Area_Sen			M7031	//Right Work Table Area Sensor
+#define	In_Spare_UX033					M7032
+#define	In_Spare_UX034					M7033
+#define	In_Spare_UX035					M7034
+#define	In_Spare_UX036					M7035
+#define	In_Spare_UX037					M7036
+#define	In_Spare_UX038					M7037
+#define	In_Spare_UX039					M7038
+#define	In_Spare_UX040					M7039
+#define	In_Spare_UX041					M7040
+#define	In_Spare_UX042					M7041
+#define	In_Spare_UX043					M7042
+#define	In_Spare_UX044					M7043
+#define	In_Spare_UX045					M7044
+#define	In_Spare_UX046					M7045
+#define	In_Spare_UX047					M7046
+#define	In_Spare_UX048					M7047
+///////////////////////////////////////////////////////////////////////////////////////
+//Output
+#define Out_Soft_PowerOff				M7100	 //Output 신호를 주면 EMO와 같이 설비 파워가 Off됨
+#define Out_LED_Light_On				M7101	 //설비 LED 형광등 On/Off
+#define Out_SignalTower_Red				M7102	 //Signal Tower Red On/Off
+#define Out_SignalTower_Yellow			M7103	 //Signal Tower Yellow On/Off
+#define Out_SignalTower_Green			M7104	 //Signal Tower Green On/Off
+#define Out_SinalTower_Buzzer			M7105	 //Signal Tower Buzzer On/Off
+#define Out_LeftUnit_Start_Btn_Lamp		M7106	 //Start Switch Lamp On/Off - Left
+#define Out_LeftUnit_Vac_Btn_Lamp		M7107	 //Vaccum Switch Lamp On/Off - Left
+#define Out_LeftUnit_Stop_Btn_Lamp		M7108	 //Stop Switch Lamp On/Off - Left
+#define Out_LeftUnit_ReSet_Btn_Lamp		M7109	 //Reset Switch Lamp On/Off - Left
+#define Out_RightUnit_Start_Btn_Lamp	M7110	 //Start Switch Lamp On/Off - Right
+#define Out_RightUnit_Vac_Btn_Lamp		M7111	 //Vaccum Switch Lamp On/Off - Right
+#define Out_RightUnit_Stop_Btn_Lamp		M7112	 //Stop Switch Lamp On/Off - Right
+#define Out_RightUnit_ReSet_Btn_Lamp	M7113	 //Reset Switch Lamp On/Off - Right
+#define Out_LeftUnit_Ionizer			M7114	 //Ionizer Run/Stop - Left
+#define Out_LeftUnit_IonizerSol			M7115	 //Ionizer Sol On/Off - Left
+#define Out_RightUnit_Ionizer			M7116	 //Ionizer Run/Stop - Right
+#define Out_RightUnit_IonizerSol		M7117	 //Ionizer Sol On/Off - Right
+#define Out_BeamShutter_Sol				M7118	 //Beam Saftey Shutter Up/Dw Sol
+#define Out_Dust_Collector				M7119	 //Dust Collector On/Off
+#define Out_OpticBox_Purge				M7120	 //Optic Box Purge On/Off 
+#define Out_PowerMeter_Up				M7121	 //Power Meter Cover Up Sol
+#define Out_PowerMeter_Dw				M7122	 //Power Meter Cover Dw Sol
+#define Out_SelectBoard					M7123	 //Select Board On/Off - On일때 1번 Stage, Off일때 2번 Stage
+#define Out_ADV_On						M7124	 //ADV ON
+#define Out_LeftUnit_VacPump01			M7125	 //Left Work Table 1~2차 진공영역 Vacuum Pump On-Off
+#define Out_LeftUnit_VacPumpSol01		M7126	 //Left Work Table 1차 진공영역 Vacuum Sol Valve On-Off
+#define Out_LeftUnit_VacPumpSol02		M7127	 //Left Work Table 2차 진공영역 Vacuum Sol Valve On-Off
+#define Out_LeftUnit_VacPump02			M7128	 //Left Work Table 3~4차 진공영역 Vacuum Pump On-Off
+#define Out_LeftUnit_VacPumpSol03		M7129	 //Left Work Table 3차 진공영역 Vacuum Sol Valve On-Off
+#define Out_LeftUnit_VacPumpSol04		M7130	 //Left Work Table 4차 진공영역 Vacuum Sol Valve On-Off
+
+#define Out_RightUnit_VacPump01			M7131	 //Right Work Table 1~2차 진공영역 Vaccum Pump On-Off
+#define Out_RightUnit_VacPumpSol01		M7132	 //Right Work Table 1차 진공영역 Vacuum Sol Valve On-Off
+#define Out_RightUnit_VacPumpSol02		M7133	 //Right Work Table 2차 진공영역 Vacuum Sol Valve On-Off
+#define Out_RightUnit_VacPump02			M7134	 //Right Work Table 3~4차 진공영역 Vacuum Pump On-Off
+#define Out_RightUnit_VacPumpSol03		M7135	 //Right Work Table 3차 진공영역 Vacuum Sol Valve On-Off
+#define Out_RightUnit_VacPumpSol04		M7136	 //Right Work Table 4차 진공영역 Vacuum Sol Valve On-Off
+
+#define Out_Spare_UX038					M7137
+#define Out_Spare_UX039					M7138
+#define Out_Spare_UX040					M7139
+#define Out_Spare_UX041					M7140
+#define Out_Spare_UX042					M7141
+#define Out_Spare_UX043					M7142
+#define Out_Spare_UX044					M7143
+#define Out_Spare_UX045					M7144
+#define Out_Spare_UX046					M7145
+#define Out_Spare_UX047					M7146
+#define Out_Spare_UX048					M7147
+
+///////////////////////////////////////////////////////////////////////////////////////////
+global Temp_In_Main_PowerOn				= 0	
+global Temp_In_EMO01_Btn				= 0
+global Temp_In_EMO02_Btn				= 0
+global Temp_In_EMO03_Btn				= 0
+global Temp_In_LeftUnit_Start_Btn		= 0
+global Temp_In_LeftUnit_Vac_Btn			= 0	
+global Temp_In_LeftUnit_Stop_Btn		= 0
+global Temp_In_LeftUnit_ReSet_Btn		= 0
+global Temp_In_LeftUnit_Pressure_Sen	= 0
+global Temp_In_LeftUnit_Vac_Sen			= 0	
+global Temp_In_RightUnit_Start_Btn		= 0
+global Temp_In_RightUnit_Vac_Btn		= 0
+global Temp_In_RightUnit_Stop_Btn		= 0
+global Temp_In_RightUnit_ReSet_Btn		= 0
+global Temp_In_RightUnit_Pressure_Sen	= 0
+global Temp_In_RightUnit_Vac_Sen		= 0
+global Temp_In_Stage_PowerOn			= 0
+global Temp_In_Leak_Sen					= 0	
+global Temp_In_Door01_Sen				= 0
+global Temp_In_Door02_Sen				= 0
+global Temp_In_Door03_Sen				= 0
+global Temp_In_Door04_Sen				= 0
+global Temp_In_Door05_Sen				= 0
+global Temp_In_Spare_UX024				= 0
+global Temp_In_LeftUnit_Ionizer			= 0	
+global Temp_In_RightUnit_Ionizer		= 0
+global Temp_In_BeamShutter_Close		= 0
+global Temp_In_BeamShutter_Open			= 0	
+global Temp_In_PowerMeter_Open			= 0
+global Temp_In_PowerMeter_Close			= 0	
+global Temp_In_LeftUnit_Area_Sen		= 0
+global Temp_In_RightUnit_Area_Sen		= 0
+global Temp_In_Spare_UX033				= 0
+global Temp_In_Spare_UX034				= 0
+global Temp_In_Spare_UX035				= 0
+global Temp_In_Spare_UX036				= 0
+global Temp_In_Spare_UX037				= 0
+global Temp_In_Spare_UX038				= 0
+global Temp_In_Spare_UX039				= 0
+global Temp_In_Spare_UX040				= 0
+global Temp_In_Spare_UX041				= 0
+global Temp_In_Spare_UX042				= 0
+global Temp_In_Spare_UX043				= 0
+global Temp_In_Spare_UX044				= 0
+global Temp_In_Spare_UX045				= 0
+global Temp_In_Spare_UX046				= 0
+global Temp_In_Spare_UX047				= 0
+global Temp_In_Spare_UX048				= 0
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//변수 초기화
+////////////////////////////////////////////////////////////////////////////////////////////
+
+Temp_IO_Out(0),IO_Cts = 0
+Temp_IOIn(0),IO_Cts = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

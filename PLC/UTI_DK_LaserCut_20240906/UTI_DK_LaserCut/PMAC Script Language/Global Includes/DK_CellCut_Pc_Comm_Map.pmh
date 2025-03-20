@@ -1,0 +1,68 @@
+//명령 변수 간격
+#define		CMD_VAR_INTERVAL											100
+
+//※ P변수 번호 = 통신 번호+(명령 변수 간격*(모터번호-1))
+//Main PC -> PMAC 입력
+//Bit 입력
+#define PtoU_BIT_EXE_SERVO_ON										1110 //모터 서보 온
+#define PtoU_BIT_EXE_SERVO_OFF										1111 //모터 서보 오프
+#define PtoU_BIT_EXE_JOG_PLUS										1112 //조그 플러스
+#define PtoU_BIT_EXE_JOG_MINUS										1113 //조그 마이너스
+#define PtoU_BIT_EXE_HOME											1114 //원점 검색
+#define PtoU_BIT_EXE_MOVE_INC										1115 //상대 위치 이송
+#define PtoU_BIT_EXE_MOVE_ABS										1116 //절대 위치 이송
+#define PtoU_BIT_EXE_SERVO_RESET									1117 //알람 리셋
+#define PtoU_BIT_EXE_MOVE_STOP										1118 //모터 정지
+//Data 입력
+#define PtoU_SET_MOVE_SPEED											1101 //조그 속도/이송 속도
+#define PtoU_SET_MOVE_TA											1102 //모터 가감속 시간
+#define PtoU_SET_HOME_SPEED											1103 //원점 검색 속도
+#define PtoU_SET_HOME_OFFSET										1104 //원점 옵셋
+#define PtoU_SET_MOVE_POS											1105 //위치 이송 위치
+#define PtoU_SET_HOME_TA											1106 //원점 검색 가감속 시간
+
+//PMAC -> Main PC 출력
+#define UtoP_BIT_STAT_SERVO_ON        								1160 //모터 서보온 상태
+#define UtoP_BIT_STAT_COMP_MOVE										1161 //모터 구동 완료
+#define UtoP_BIT_STAT_ING_MOVE										1162 //모터 구동 중 상태
+#define UtoP_BIT_STAT_ING_HOME										1163 //모터 원점 검색 중 상태
+#define UtoP_BIT_STAT_COMP_HOME										1164 //모터 원점 검색 완료
+#define UtoP_BIT_STAT_ERR_AMP_FAULT									1165 //드라이브 알람
+#define UtoP_BIT_STAT_ERR_FE_FATAL									1166 //모터 추종 알람
+#define UtoP_BIT_STAT_ERR_PLUS_LIMIT								1167 //플러스 리밋 알람
+#define UtoP_BIT_STAT_ERR_MINUS_LIMIT								1168 //마이너스 리밋 알람
+#define UtoP_BIT_STAT_ERR_I2T_FAULT									1169 //모터 과부하 알람
+
+#define UtoP_GET_ACT_SPEED											1151 //모터 현재 속도 값
+#define UtoP_GET_ACT_POS											1152 //모터 현재 위치 값
+#define UtoP_GET_DAC_OUT											1153 //모터 현재 부하율
+
+//Bit 실행 데이터 입력
+#define BIT_EXE_SERVO_ON											00	//모터 서보 온
+#define BIT_EXE_SERVO_OFF											01	//모터 서보 오프
+#define BIT_EXE_HOME												02	//원점 검색
+#define BIT_EXE_JOG_PLUS											03	//조그 플러스
+#define BIT_EXE_JOG_MINUS											04	//조그 마이너스
+#define BIT_EXE_MOVE_ABS											05	//절대 위치 이송
+#define BIT_EXE_MOVE_INC											06	//상대 위치 이송
+#define BIT_EXE_MOVE_STOP											07	//이송 정지
+#define BIT_EXE_ERR_RESET											08	//알람 리셋
+
+//모터 상태 Bit Data 번호
+#define BIT_MASK_STAT_SERVO											$FFFF
+#define BIT_STAT_SERVO_ON											00   //모터 서보온 상태
+#define BIT_STAT_ING_MOVE											01   //구동 중 상태
+#define BIT_STAT_COMP_HOME											02   //기구적 원점 복귀완료, 홈 구동 완료
+#define BIT_STAT_ON_HOME_POS										03   //모터 원점복귀 완료, 홈 위치 있을시 ON
+#define BIT_STAT_ERR_AMP_FAULT										04   //드라이브 알람
+#define BIT_STAT_ERR_FE_FATAL										05   //모터 추종 알람
+#define BIT_STAT_ERR_FE_I2T_FAULT									06   //모터 과부하 알람
+#define BIT_STAT_SEN_PLUS_LIMIT										07   //플러스 리밋 센서 상태
+#define BIT_STAT_SEN_MINUS_LIMIT									08   //마이너스 리밋 센서 상태
+#define BIT_STAT_SEN_HOME_DOG										09   //홈센서 감지 상태
+
+//변수 활용용 정의
+#define	LinearX_Mtr_HomeOffset										P1104
+#define	LStageY_Mtr_HomeOffset										P1204
+#define	RStageY_Mtr_HomeOffset										P1304
+#define	ServoZ_Mtr_HomeOffset										P1504

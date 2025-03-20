@@ -1,0 +1,189 @@
+open plc PLC_05_PROG_MACH_AUTO
+
+Local L_CtsMtrNum
+Local L_CtsUnitNum
+// --------------------User Code Goes Here------------------------
+If(Mach_ExeCmdStep(PART_MACH) == MACH_210_EXE_AUTO_RUN)
+{
+	//모터 상태 확인
+	L_CtsMtrNum = 1
+	Mach_CtsChkMtrError = 0
+	While(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)	// 모터 상태 확인
+	{
+		If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+		{
+			if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+			{
+				call Mtr_Chk.CmEndErr(L_CtsMtrNum,MTR_015_CHECK_SERVO_READY)
+				Mach_CtsChkMtrError = Mach_CtsChkMtrError+Mtr_Chk_ExeEndErr_Ot_Error(L_CtsMtrNum)
+			}
+		}
+		L_CtsMtrNum++
+	}
+	L_CtsUnitNum = 1
+	Mach_CtsChkUnitError = 0
+	While(MAX_UNIT_COUNT >= L_CtsUnitNum)			// 유닛 상태 확인
+	{	
+		If(Unit_ExeCmdStep(L_CtsUnitNum) < 0) 
+		{
+			Mach_CtsChkUnitError++
+		}
+		L_CtsUnitNum++
+	}
+	if(Seq_ExeCmdStep(PART_MACH) >= 0 && Mach_CtsChkMtrError == 0 && Mach_CtsChkUnitError == 0)	// 시퀀스 및 에러 상태 확인
+	{
+		Part_ExeCmdStep(PART_MACH) = MACH_510_STAT_AUTORUN//Mach_ExeCmdStep(PART_MACH)+MACH_300_ADDCHANGEEXETORUN		// 장비 자동 상태로 전환
+		Mach_ExeCmdStep(PART_MACH) = MACH_510_STAT_AUTORUN//Mach_ExeCmdStep(PART_MACH)+MACH_300_ADDCHANGEEXETORUN		// 장비 자동 상태로 전환
+	}
+	else if(Mach_CtsChkMtrError > 0 || Mach_CtsChkUnitError > 0)
+	{
+		Mach_ExeCmdStep(PART_MACH) = -1*abs(Mach_ExeCmdStep(PART_MACH))
+		//에러 코드
+		Part_CmdErrorCode(PART_MACH) = ERROR_CODE_2000_AUTORUNFAIL		// 자동 구동 실패 에러
+	}
+}
+// 장비 자동 정지
+if(Mach_ExeCmdStep(PART_MACH) == MACH_270_EXE_AUTO_STOP)
+{
+	Out_BeamShutter_Sol = 0
+	Out_ADV_On = 0
+	IF(Unit_ExeCmdStep(LSTAGE) >= 0)
+	{
+		Unit_ExeCmdStep(LSTAGE) = MACH_000_STAT_READY
+	}
+	IF(Unit_ExeCmdStep(RSTAGE) >= 0)
+	{
+		Unit_ExeCmdStep(RSTAGE) = MACH_000_STAT_READY
+	}
+	if(Part_ExeCmdStep(PART_MACH) > 0)		// 정지 실행 지 장비 커맨드 입력 상태 일 시
+	{
+		if(Coord[1].ProgActive == 1)
+		{
+			cmd"&1a"
+		}
+		L_CtsMtrNum = 1
+		while(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)
+		{
+			If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+			{
+				if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+				{
+					Mtr_ExeCmd(L_CtsMtrNum) = MTR_080_EXE_STOP
+				}
+			}
+			L_CtsMtrNum++
+		}
+		U2P_Lstage_AutoRunComp = 0							// 우측 자동 완료 신호 off
+		U2P_Rstage_AutoRunComp = 0							// 우측 자동 완료 신호 off
+		Seq_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY
+		Part_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY		// 커맨드 초기화
+	}
+	else
+	{
+		L_CtsMtrNum = 1
+		while(MAX_USE_MOTOR_COUNT > L_CtsMtrNum)
+		{
+			If(Motor[L_CtsMtrNum].ServoCtrl != 0) 
+			{
+				if(Mtr_ChkMotorUnuse(L_CtsMtrNum) != UnUse)
+				{
+					if(Motor[L_CtsMtrNum].AmpEna == 1)
+					{
+						Mtr_ExeCmd(L_CtsMtrNum) = MTR_080_EXE_STOP
+					}
+				}
+			}
+			L_CtsMtrNum++
+		}
+	}
+	Mach_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY			// 장비 커맨드 초기화
+}
+
+// 장비 EMO 관련
+if(Mach_ExeCmdStep(PART_MACH) == MACH_290_EXE_EMS)
+{
+	Mach_ExeCmdReset = 1					// 장비 커맨드 초기와
+	Seq_ExeCmdStep(PART_MACH) = 0			// 장비 자동 시퀀스 초기화
+	Out_BeamShutter_Sol = 0					// 빔 셔터 Close
+	Out_ADV_On = 0							// ADV Off
+	if(Coord[1].ProgActive == 1)			// 모션 구동 중일 시
+	{
+		cmd"&1a"
+	}
+	call Timer.sec(1)
+	kill 1..30;												// 모터 전체 Servo Off
+	Mach_ExeCmdStep(PART_MACH) = MACH_590_STAT_EMS			// EMO 시퀀스 상태
+}
+else if(Mach_ExeCmdStep(PART_MACH) == MACH_590_STAT_EMS && Mach_ExeCmdReset == 0)
+{
+	Part_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY		// 장비 전체 시퀀스 초기화
+	Mach_ExeCmdStep(PART_MACH) = MACH_000_STAT_READY		// 징비 시퀀스 초기화
+	IF(In_EMO01_Btn == 1 || In_EMO02_Btn == 1 || In_EMO03_Btn == 1)
+	{
+		//에러 코드
+		Part_CmdErrorCode(PART_MACH) = EEROR_CODE_7400_EMOSWITCH   //EMO 스위치 입력
+	}
+	//에러 코드
+}
+// 장비 구동 관련 시퀀스
+if(Part_ExeCmdStep(PART_MACH) == MACH_510_STAT_AUTORUN)
+{
+	if(Seq_ExeCmdStep(PART_MACH) >= 0)
+	{
+		// 장비 시퀀스가 좌측 완료 상태, 우측 완료 상태, 대기 상태 3상태중 한 개일 경우
+		if(Seq_ExeCmdStep(PART_MACH) == SEQ_2000_LSTAGE_AUTO+990 || Seq_ExeCmdStep(PART_MACH) == SEQ_3000_RSTAGE_AUTO+990 || Seq_ExeCmdStep(PART_MACH) == 0)  
+		{
+			if(Unit_AutoStartReadySt(LSTAGE) == 1)					// 좌측 스테이지 구동 시작 대기 상태
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_2000_LSTAGE_AUTO	// 좌측 스테이지 자동 구동 시작
+			}
+			else if(Unit_AutoStartReadySt(RSTAGE) == 1)					// 우측 스테이지 구동 시작 대기 상태
+			{
+				Seq_ExeCmdStep(PART_MACH) = SEQ_3000_RSTAGE_AUTO	// 우측 스테이지 자동 구동 시작
+			}
+			else if(Unit_AutoStartReadySt(LSTAGE) == 0 && Unit_AutoStartReadySt(RSTAGE) == 0)		// 좌측, 우측 둘다 구동 시작 대기 상태가 아닐 경우
+			{
+				Mach_ExeCmdStep(PART_MACH) = MACH_270_EXE_AUTO_STOP		// 장비 정지 시퀀스 실행
+			}
+		}
+	}
+	// 에러 발생 시
+	if(Seq_ExeCmdStep(PART_MACH) < 0 || Mach_StError == 1)
+	{
+		if(AutoRun_NotStopErrBit == 0)
+		{
+			Part_ExeCmdStep(PART_MACH) = -1*ABS(Part_ExeCmdStep(PART_MACH))	// 장비 에러 처리
+			Seq_ExeCmdStep(PART_MACH) = -1*abs(Seq_ExeCmdStep(PART_MACH))
+			IF(Unit_ExeCmdStep(LSTAGE) > 0)
+			{
+				Unit_ExeCmdStep(LSTAGE) = -1*(INT(Unit_ExeCmdStep(LSTAGE)/100)*100+80)
+			}
+			IF(Unit_ExeCmdStep(RSTAGE) > 0)
+			{
+				Unit_ExeCmdStep(RSTAGE) = -1*(INT(Unit_ExeCmdStep(LSTAGE)/100)*100+80)
+			}
+			if(Coord[1].ProgActive == 1)
+			{
+				cmd"&1a"
+			}
+			Unit_AutoStartReadySt(LSTAGE) = 0
+			Unit_AutoStartReadySt(RSTAGE) = 0
+			Temp_Lstage_AutoRunStatus = 0
+			Temp_Rstage_AutoRunStatus = 0
+			Out_LeftUnit_Ionizer	 = 0
+			Out_LeftUnit_IonizerSol	 = 0
+			Out_RightUnit_Ionizer	 = 0
+			Out_RightUnit_IonizerSol = 0
+			Out_Dust_Collector = 0
+			Out_OpticBox_Purge = 0
+			Out_BeamShutter_Sol = 0
+			Out_ADV_On = 0
+			Mach_ExeCmdStep(PART_MACH) = -1*ABS(Mach_ExeCmdStep(PART_MACH))
+			//에러 코드
+		}
+	}
+}
+
+close
+
+

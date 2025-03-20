@@ -1,0 +1,437 @@
+////모터 프로그램 좌표계 설정
+//undefine all
+
+//&1 #1->1000X
+//&2 #2->1000X
+//&3 #3->1000X
+//&4 #4->1000X
+//&5 #5->1000X
+
+//모터 Scale 입력(cts/Deg, cts/mm)
+Mtr_SetMachScale(LinearX) = 10000
+Mtr_SetMachScale(LStageY) = 10000
+Mtr_SetMachScale(RStageY) = 10000
+Mtr_SetMachScale(MOTOR_4) = 1000
+Mtr_SetMachScale(ServoZ) = 10000
+				 
+Mtr_SetScale(LinearX) = Mtr_SetMachScale(LinearX)
+Mtr_SetScale(LStageY) = Mtr_SetMachScale(LStageY)
+Mtr_SetScale(RStageY) = Mtr_SetMachScale(RStageY)
+Mtr_SetScale(MOTOR_4) = Mtr_SetMachScale(MOTOR_4)
+Mtr_SetScale(ServoZ) = Mtr_SetMachScale(ServoZ)
+
+//모터 사용 유무
+Mtr_ChkMotorUnuse(LinearX)	= Use
+Mtr_ChkMotorUnuse(LStageY)	= Use
+Mtr_ChkMotorUnuse(RStageY)	= Use
+Mtr_ChkMotorUnuse(MOTOR_4)	= UnUse
+Mtr_ChkMotorUnuse(ServoZ)	= Use
+
+//이더켓 사용 유무
+Mtr_SetMotorEcat(LinearX) = NOT_USE_ECAT
+Mtr_SetMotorEcat(LStageY) = NOT_USE_ECAT 
+Mtr_SetMotorEcat(RStageY) = NOT_USE_ECAT 
+Mtr_SetMotorEcat(MOTOR_4) = NOT_USE_ECAT 
+Mtr_SetMotorEcat(ServoZ) = NOT_USE_ECAT 
+
+//모터 원점 검색 리밋 사용 여부 설정
+Mtr_Cmd_StepHomeProg_In_UseLimit(LinearX) = USE_HOME_SEQ_LIMIT
+Mtr_Cmd_StepHomeProg_In_UseLimit(LStageY) = USE_HOME_SEQ_LIMIT
+Mtr_Cmd_StepHomeProg_In_UseLimit(RStageY) = USE_HOME_SEQ_LIMIT
+Mtr_Cmd_StepHomeProg_In_UseLimit(MOTOR_4) = NOT_USE_HOME_SEQ_LIMIT
+Mtr_Cmd_StepHomeProg_In_UseLimit(ServoZ) = USE_HOME_SEQ_LIMIT
+
+//모터 구성 형태 입력
+Mtr_SetMotor_Type(LinearX) = TYPE_LINEAR
+Mtr_SetMotor_Type(LStageY) = TYPE_LINEAR
+Mtr_SetMotor_Type(RStageY) = TYPE_LINEAR
+Mtr_SetMotor_Type(MOTOR_4) = TYPE_LINEAR
+Mtr_SetMotor_Type(ServoZ) = TYPE_LINEAR
+
+//리밋 에러 사용 여부
+Mtr_SetUSE_LIMIT_ERR(LinearX) = USE_LIMIT_ERR
+Mtr_SetUSE_LIMIT_ERR(LStageY) = USE_LIMIT_ERR
+Mtr_SetUSE_LIMIT_ERR(RStageY) = USE_LIMIT_ERR
+Mtr_SetUSE_LIMIT_ERR(MOTOR_4) = NOT_USE_LIMIT_ERR
+Mtr_SetUSE_LIMIT_ERR(ServoZ) = USE_LIMIT_ERR 
+
+//내부 인터락 사용 미사용
+Temp_PressureSenUnUse	= UnUse			// 우측 압력센서 이상으로 미사용
+Temp_LeakSenUnUse	= Use				// 기본 사용
+
+//가속 관련
+P2U_Mach_LookAheadAcc = 0.05
+
+//실행 커맨드 초기화
+//모터 메뉴얼 명령
+Mtr_ExeManualCmd(0),MAX_MOTOR_COUNT = 0
+Temp_Mtr_ExeManualCmd(0),MAX_MOTOR_COUNT = 0
+Part_StAutoReady(0),MAX_MOTOR_COUNT = 0
+Part_BitStNotAutoReady(0),MAX_MOTOR_COUNT = 0
+
+//설비 자동 스탭 명령(자동 구동 시퀀스 실행)
+Mach_ExeCmdStep(0),MAX_PART_COUNT = 0
+Mach_Chk1CycleCmd(0),MAX_PART_COUNT = 0
+Mach_ChkCmdStepReady(0),MAX_PART_COUNT = 0
+Mach_CmdErrorCode(0),MAX_PART_COUNT = 0
+
+//파트 자동 스탭 명령(설비 파트 별 자동 구동 실행)
+Part_ExeCmdStep(0),MAX_PART_COUNT = 0
+Part_ChkCmdStepReady(0),MAX_PART_COUNT = 0
+Part_BitCmdStepNotReady(0),MAX_PART_COUNT = 0
+Part_CmdErrorCode(0),MAX_PART_COUNT = 0
+
+//파트 상태
+Part_StAutoRdy(0),MAX_PART_COUNT = 0
+Part_StMtrServoRdy(0),MAX_PART_COUNT = 0
+Part_StErrorStatus(0),MAX_PART_COUNT = 0
+Temp_Part_StErrorStatus(0),MAX_PART_COUNT = 0
+
+//파트 레디 스탭 명령(설비 파트 별 자동 구동 실행)
+Part_ExeCmdReadyStep(0),MAX_PART_COUNT = 0						
+Part_CmdReadyError(0),MAX_PART_COUNT = 0							
+
+//유닛 자동 스탭 명령(설비 유닛 별 자동 구동 실행)
+Unit_ExeCmdStep(0),MAX_UNIT_COUNT = 0	
+Temp_Unit_ExeCmdStep(0),MAX_UNIT_COUNT = 0	
+Unit_ReqCmd(0),MAX_UNIT_COUNT = 0
+Unit_LockCmd(0),MAX_UNIT_COUNT = 0
+Unit_StErrorStatus(0),MAX_UNIT_COUNT = 0
+Temp_Unit_StErrorStatus(0),MAX_UNIT_COUNT = 0
+Unit_CmdErrorCode(0),MAX_UNIT_COUNT = 0
+
+//모터 자동 스탭 명령(모터 자동 시퀀스 실행)
+Mtr_ExeCmdStep(0),MAX_MOTOR_COUNT = 0
+Mtr_ChkCmdStepReady(0),MAX_MOTOR_COUNT = 0
+Mtr_BitCmdStepNotReady(0),MAX_MOTOR_COUNT = 0
+Mtr_GetCmdError(0),MAX_MOTOR_COUNT = 0
+
+Seq_ExeCmdStep(0),MAX_PART_COUNT = 0									
+Temp_Seq_ExeCmdStep(0),MAX_PART_COUNT = 0								
+Test_Seq_ExeCmdStep(0),MAX_PART_COUNT = 0									
+
+//모터 자동 구동 상태
+Mtr_StAutoRdy(0),MAX_MOTOR_COUNT = 0
+Mtr_StServoRdy(0),MAX_MOTOR_COUNT = 0
+
+//모터 모션 프로그램 구동 상태
+Mtr_CompExeProgRun(0),MAX_MOTOR_COUNT = 0
+Mtr_CompProgRun(0),MAX_MOTOR_COUNT = 0
+Mtr_SetMoveTargetPos(0),MAX_MOTOR_COUNT = 0						//모터 구동 목표 위치
+Mtr_SetMoveRemainDist(0),MAX_MOTOR_COUNT = 0						//모터 구동 목표 까지 남은 거리
+Mtr_CompMovePos(0),MAX_MOTOR_COUNT = 0							//모터 목표 위치 이동 완료
+
+//모션 프로그램 제한 값
+Motor[1].MaxSpeed=10000
+Motor[2].MaxSpeed=10000
+Motor[3].MaxSpeed=10000
+Motor[4].MaxSpeed=10000
+Motor[5].MaxSpeed=10000
+Motor[6].MaxSpeed=10000
+Motor[7].MaxSpeed=10000
+Motor[8].MaxSpeed=10000
+Motor[9].MaxSpeed=10000
+Motor[10].MaxSpeed=10000
+Motor[11].MaxSpeed=10000
+Motor[12].MaxSpeed=10000
+Motor[13].MaxSpeed=10000
+Motor[14].MaxSpeed=10000
+Motor[15].MaxSpeed=10000
+Motor[16].MaxSpeed=10000
+Motor[17].MaxSpeed=10000
+Motor[18].MaxSpeed=10000
+Motor[19].MaxSpeed=10000
+Motor[20].MaxSpeed=10000
+Motor[21].MaxSpeed=10000
+Motor[22].MaxSpeed=10000
+Motor[23].MaxSpeed=10000
+Motor[24].MaxSpeed=10000
+Motor[25].MaxSpeed=10000
+Motor[26].MaxSpeed=10000
+Motor[27].MaxSpeed=10000
+Motor[28].MaxSpeed=10000
+Motor[29].MaxSpeed=10000
+Motor[30].MaxSpeed=10000
+Motor[31].MaxSpeed=10000
+Motor[32].MaxSpeed=10000
+
+Motor[1].InvDmax=0.000001
+Motor[2].InvDmax=0.000001
+Motor[3].InvDmax=0.000001
+Motor[4].InvDmax=0.000001
+Motor[5].InvDmax=0.000001
+Motor[6].InvDmax=0.000001
+Motor[7].InvDmax=0.000001
+Motor[8].InvDmax=0.000001
+Motor[9].InvDmax=0.000001
+Motor[10].InvDmax=0.000001
+Motor[11].InvDmax=0.000001
+Motor[12].InvDmax=0.000001
+Motor[13].InvDmax=0.000001
+Motor[14].InvDmax=0.000001
+Motor[15].InvDmax=0.000001
+Motor[16].InvDmax=0.000001
+Motor[17].InvDmax=0.000001
+Motor[18].InvDmax=0.000001
+Motor[19].InvDmax=0.000001
+Motor[20].InvDmax=0.000001
+Motor[21].InvDmax=0.000001
+Motor[22].InvDmax=0.000001
+Motor[23].InvDmax=0.000001
+Motor[24].InvDmax=0.000001
+Motor[25].InvDmax=0.000001
+Motor[26].InvDmax=0.000001
+Motor[27].InvDmax=0.000001
+Motor[28].InvDmax=0.000001
+Motor[29].InvDmax=0.000001
+Motor[30].InvDmax=0.000001
+Motor[31].InvDmax=0.000001
+Motor[32].InvDmax=0.000001
+
+Motor[1].InvAmax=0.000001
+Motor[2].InvAmax=0.000001
+Motor[3].InvAmax=0.000001
+Motor[4].InvAmax=0.000001
+Motor[5].InvAmax=0.000001
+Motor[6].InvAmax=0.000001
+Motor[7].InvAmax=0.000001
+Motor[8].InvAmax=0.000001
+Motor[9].InvAmax=0.000001
+Motor[10].InvAmax=0.000001
+Motor[11].InvAmax=0.000001
+Motor[12].InvAmax=0.000001
+Motor[13].InvAmax=0.000001
+Motor[14].InvAmax=0.000001
+Motor[15].InvAmax=0.000001
+Motor[16].InvAmax=0.000001
+Motor[17].InvAmax=0.000001
+Motor[18].InvAmax=0.000001
+Motor[19].InvAmax=0.000001
+Motor[20].InvAmax=0.000001
+Motor[21].InvAmax=0.000001
+Motor[22].InvAmax=0.000001
+Motor[23].InvAmax=0.000001
+Motor[24].InvAmax=0.000001
+Motor[25].InvAmax=0.000001
+Motor[26].InvAmax=0.000001
+Motor[27].InvAmax=0.000001
+Motor[28].InvAmax=0.000001
+Motor[29].InvAmax=0.000001
+Motor[30].InvAmax=0.000001
+Motor[31].InvAmax=0.000001
+Motor[32].InvAmax=0.000001
+
+Motor[1].InvJmax=0.000001
+Motor[2].InvJmax=0.000001
+Motor[3].InvJmax=0.000001
+Motor[4].InvJmax=0.000001
+Motor[5].InvJmax=0.000001
+Motor[6].InvJmax=0.000001
+Motor[7].InvJmax=0.000001
+Motor[8].InvJmax=0.000001
+Motor[9].InvJmax=0.000001
+Motor[10].InvJmax=0.000001
+Motor[11].InvJmax=0.000001
+Motor[12].InvJmax=0.000001
+Motor[13].InvJmax=0.000001
+Motor[14].InvJmax=0.000001
+Motor[15].InvJmax=0.000001
+Motor[16].InvJmax=0.000001
+Motor[17].InvJmax=0.000001
+Motor[18].InvJmax=0.000001
+Motor[19].InvJmax=0.000001
+Motor[20].InvJmax=0.000001
+Motor[21].InvJmax=0.000001
+Motor[22].InvJmax=0.000001
+Motor[23].InvJmax=0.000001
+Motor[24].InvJmax=0.000001
+Motor[25].InvJmax=0.000001
+Motor[26].InvJmax=0.000001
+Motor[27].InvJmax=0.000001
+Motor[28].InvJmax=0.000001
+Motor[29].InvJmax=0.000001
+Motor[30].InvJmax=0.000001
+Motor[31].InvJmax=0.000001
+Motor[32].InvJmax=0.000001
+
+Motor[1].InPosBand = 10
+Motor[2].InPosBand = 10
+Motor[3].InPosBand = 10
+Motor[4].InPosBand = 10
+Motor[5].InPosBand = 10
+Motor[6].InPosBand = 10
+Motor[7].InPosBand = 10
+Motor[8].InPosBand = 10
+Motor[9].InPosBand = 10
+Motor[10].InPosBand = 10
+Motor[11].InPosBand = 10
+Motor[12].InPosBand = 10
+Motor[13].InPosBand = 10
+Motor[14].InPosBand = 10
+Motor[15].InPosBand = 10
+Motor[16].InPosBand = 10
+Motor[17].InPosBand = 10
+Motor[18].InPosBand = 10
+Motor[19].InPosBand = 10
+Motor[20].InPosBand = 10
+Motor[21].InPosBand = 10
+Motor[22].InPosBand = 10
+Motor[23].InPosBand = 10
+Motor[24].InPosBand = 10
+Motor[25].InPosBand = 10
+Motor[26].InPosBand = 10
+Motor[27].InPosBand = 10
+Motor[28].InPosBand = 10
+Motor[29].InPosBand = 10
+Motor[30].InPosBand = 10
+Motor[31].InPosBand = 10
+Motor[32].InPosBand = 10
+
+Motor[1].FatalFeLimit = 2000
+Motor[2].FatalFeLimit = 2000
+Motor[3].FatalFeLimit = 2000
+Motor[4].FatalFeLimit = 2000
+Motor[5].FatalFeLimit = 2000
+Motor[6].FatalFeLimit = 2000
+Motor[7].FatalFeLimit = 2000
+Motor[8].FatalFeLimit = 2000
+Motor[9].FatalFeLimit = 2200
+Motor[10].FatalFeLimit = 2000
+Motor[11].FatalFeLimit = 2000
+Motor[12].FatalFeLimit = 2000
+Motor[13].FatalFeLimit = 2000
+Motor[14].FatalFeLimit = 2000
+Motor[15].FatalFeLimit = 2000
+Motor[16].FatalFeLimit = 2000
+Motor[17].FatalFeLimit = 2000
+Motor[18].FatalFeLimit = 2000
+Motor[19].FatalFeLimit = 2000
+Motor[20].FatalFeLimit = 2000
+Motor[21].FatalFeLimit = 2000
+Motor[22].FatalFeLimit = 2000
+Motor[23].FatalFeLimit = 2000
+Motor[24].FatalFeLimit = 2000
+Motor[25].FatalFeLimit = 2000
+Motor[26].FatalFeLimit = 2000
+Motor[27].FatalFeLimit = 2000
+Motor[28].FatalFeLimit = 2000
+Motor[29].FatalFeLimit = 2000
+Motor[30].FatalFeLimit = 2000
+Motor[31].FatalFeLimit = 2000
+Motor[32].FatalFeLimit = 2000
+
+Motor[1].AbortTa = 100
+Motor[2].AbortTa = 100
+Motor[3].AbortTa = 100
+Motor[4].AbortTa = 100
+Motor[5].AbortTa = 100
+
+Coord[1].SegMoveTime = 0.2
+Coord[2].SegMoveTime = 0.2
+Coord[3].SegMoveTime = 0.2
+Coord[4].SegMoveTime = 0.2
+Coord[5].SegMoveTime = 0.2
+Coord[6].SegMoveTime = 0.2
+Coord[7].SegMoveTime = 0.2
+Coord[8].SegMoveTime = 0.2
+Coord[9].SegMoveTime = 0.2
+Coord[10].SegMoveTime = 1
+Coord[11].SegMoveTime = 1
+Coord[12].SegMoveTime = 1
+Coord[13].SegMoveTime = 1
+Coord[14].SegMoveTime = 1
+Coord[15].SegMoveTime = 1
+Coord[16].SegMoveTime = 1
+
+
+//임시
+ServoZ_SetReadyPosMvTA = 50
+RStageY_SetReadyPosMvTA	= 50
+LStageY_SetReadyPosMvTA	= 50
+LinearX_SetReadyPosMvTA	= 50 
+ServoZ_SetMtWorkStartPosMvTA	= 50
+ServoZ_SetAlignPosMvTA			= 50
+ServoZ_SetLoadingPosMvTA		= 50
+LinearX_SetMtWorkStartPosMvTA	= 50
+LinearX_SetAlignPosMvTA			= 50
+LinearX_SetLoadingPosMvTA		= 50
+
+LStageY_SetMtWorkStartPosMvTA	= 50
+LStageY_SetAlignPosMvTA			= 50
+LStageY_SetLoadingPosMvTA		= 50
+
+RStageY_SetMtWorkStartPosMvTA	= 50
+RStageY_SetAlignPosMvTA			= 50
+RStageY_SetLoadingPosMvTA		= 50
+
+// 기본 입력 데이터(임시)
+////////////////////////////////////////////////
+P2U_Mach_MainDoorUnUse = 0
+P2U_Mach_SideDoorUnUse = 1
+Temp_MainDoorSenErrStatus = 600000
+P2U_Mach_ReserveUnUse = 1
+P2U_Mach_AutoCompVentUnUse = 1
+P2U_Mach_VacErrCheckUnUse = 1
+P2U_Mach_AreaSenVentUnUse = 1
+P2U_Mach_BuzzerUnUse = 1
+
+
+P2U_Lstage_VacUseCts = 4
+P2U_Rstage_VacUseCts = 4
+
+P2U_Lstage_Vac01Time = 0.5
+P2U_Lstage_Vac02Time = 0.5
+P2U_Lstage_Vac03Time = 0.5
+P2U_Lstage_Vac04Time = 0.5
+
+P2U_Rstage_Vac01Time = 0.5
+P2U_Rstage_Vac02Time = 0.5
+P2U_Rstage_Vac03Time = 0.5
+P2U_Rstage_Vac04Time = 0.5
+
+P2U_Lstage_ViAilgnCts = 4
+P2U_Rstage_ViAilgnCts = 4
+
+P2U_Lstage_ViAilgnUnUse = 0
+P2U_Rstage_ViAilgnUnUse = 0
+
+P2U_Mach_MotionTimeOut = 60000
+
+LinearX_SetReadyPosMvSpd = 100	
+LinearX_SetReadyPosMvTA	= 50 
+LStageY_SetReadyPosMvSpd = 100
+LStageY_SetReadyPosMvTA	= 50
+RStageY_SetReadyPosMvSpd = 100	
+RStageY_SetReadyPosMvTA	= 50
+ServoZ_SetReadyPosMvSpd	= 30
+ServoZ_SetReadyPosMvTA = 50
+
+ServoZ_SetMtWorkStartPosMvSpd	= 30
+ServoZ_SetMtWorkStartPosMvTA	= 50
+ServoZ_SetAlignPosMvSpd			= 30
+ServoZ_SetAlignPosMvTA			= 50
+ServoZ_SetLoadingPosMvSpd		= 30
+ServoZ_SetLoadingPosMvTA		= 50
+
+LinearX_SetMtWorkStartPosMvSpd	= 100
+LinearX_SetMtWorkStartPosMvTA	= 50
+LinearX_SetAlignPosMvSpd		= 100
+LinearX_SetAlignPosMvTA			= 50
+LinearX_SetLoadingPosMvSpd		= 100
+LinearX_SetLoadingPosMvTA		= 50
+
+LStageY_SetMtWorkStartPosMvSpd	= 100
+LStageY_SetMtWorkStartPosMvTA	= 50
+LStageY_SetAlignPosMvSpd		= 100
+LStageY_SetAlignPosMvTA			= 50
+LStageY_SetLoadingPosMvSpd		= 100
+LStageY_SetLoadingPosMvTA		= 50
+
+RStageY_SetMtWorkStartPosMvSpd	= 100
+RStageY_SetMtWorkStartPosMvTA	= 50
+RStageY_SetAlignPosMvSpd		= 100
+RStageY_SetAlignPosMvTA			= 50
+RStageY_SetLoadingPosMvSpd		= 100
+RStageY_SetLoadingPosMvTA		= 50
+
+////////////////////////////////////////////////

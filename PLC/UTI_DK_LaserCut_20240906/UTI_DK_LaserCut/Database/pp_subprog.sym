@@ -1,0 +1,72 @@
+SUB	sec	10000	1	0	1	1
+SUB	msec	10001	1	0	1	1
+SUBPROG	WaitCycle	100001	1	0	1	1
+SUB	AverPeriodData	10000	5	0	2	1	1	1	1	2	1	1	3	1	1	4	1	1
+SUB	MoveTime	10001	4	0	2	1	1	1	1	2	1	1	3	1	1
+SUB	MoveSpd	10002	4	0	2	1	1	1	1	2	1	1	3	1	1
+SUB	TaDist	10003	3	0	2	1	1	1	1	2	1	1
+SUB	TmDist	10004	3	0	2	1	1	1	1	2	1	1
+SUB	ServoOn	10000	1	0	1	1
+SUB	ServoOff	10001	1	0	1	1
+SUB	HomeSearch	10002	3	0	1	1	1	1	1	2	1	1
+SUB	LimitSearch	10003	3	0	1	1	1	1	1	2	1	1
+SUB	ErrClear	10004	1	0	1	1
+SUB	MoveJogP	10005	3	0	1	1	1	1	1	2	1	1
+SUB	MoveJogN	10006	3	0	1	1	1	1	1	2	1	1
+SUB	MoveAbs	10007	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	MoveInc	10008	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	MoveStop	10009	2	0	1	1	1	1	1
+SUB	CmdJogStop	10010	1	0	1	1
+SUB	CmdJogP	10011	1	0	1	1
+SUB	CmdJogN	10012	1	0	1	1
+SUB	CmdJogMove	10013	3	0	1	1	1	1	1	2	1	1
+SUB	UseServo	10000	1	0	1	1
+SUB	AllAmpEna	10001	0
+SUB	AllCompHome	10002	0
+SUB	AllMoving	10003	0
+SUB	AllErr	10004	0
+SUB	IngHome	10005	1	0	1	1
+SUB	IngMove	10006	1	0	1	1
+SUB	GetActPos	10007	1	0	1	1
+SUB	GetDesPos	10008	1	0	1	1
+SUB	GetL_TypeDesPos	10009	1	0	1	1
+SUB	GetVel	10010	1	0	1	1
+SUB	GetDesVel	10011	1	0	1	1
+SUB	CmRdyErr	10012	2	0	1	1	1	1	1
+SUB	CmEndErr	10013	2	0	1	1	1	1	1
+SUB	EnableChk	10014	1	0	1	1
+SUB	ChkHomePos	10000	1	0	1	1
+SUB	ChkDesPos	10001	3	0	1	1	1	1	1	2	2	1
+SUB	ChkDesPosUpdate	10002	3	0	1	1	1	1	1	2	2	1
+SUB	ChkRdyPos	10003	1	0	1	1
+SUB	ChkWorkPos	10004	1	0	1	1
+SUB	ChkLoadPos	10005	1	0	1	1
+SUB	ChkPowerMeterPos	10006	1	0	1	1
+SUB	ChkReadyPos	10007	1	0	1	1
+SUB	ChkAilgnPos	10008	1	0	1	1
+SUB	StepServoOn	10000	1	0	1	1
+SUB	StepServoOff	10001	1	0	1	1
+SUB	StepJogP	10002	3	0	1	1	1	1	1	2	1	1
+SUB	StepJogN	10003	3	0	1	1	1	1	1	2	1	1
+SUB	StepMoveAbs	10004	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	StepMoveInc	10005	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	StepMoveStop	10006	2	0	1	1	1	1	1
+SUB	StepErrClear	10007	1	0	1	1
+SUB	StepJogCmdChk	10008	1	0	1	1
+SUB	StepJogStopChk	10009	1	0	1	1
+SUB	StepAllErrClear	10010	0
+SUB	StepTimebaseInit	10011	1	0	1	1
+SUB	StepTimebaseZero	10012	1	0	1	1
+SUB	StepHomeProg	10013	5	0	1	1	1	1	1	2	1	1	3	1	1	4	1	1
+SUB	LimitErr	10000	1	0	1	1
+SUB	HeavyErr	10001	1	0	1	1
+SUB	ExeMotionProg	10000	2	0	1	1	1	1	1
+SUB	SetMovePos	10001	3	0	1	1	1	1	1	2	1	1
+SUB	ExeAbsMove	10002	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	ExeIncMove	10003	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	ChkCompMovePos	10004	1	0	1	1
+SUB	SetData	10000	3	0	2	1	1	1	1	2	1	1
+SUB	GateSetup	10001	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	MtWord_Setup	10002	4	0	1	1	1	1	1	2	1	1	3	1	1
+SUB	HomeWord_Setup	10003	3	0	1	1	1	1	1	2	1	1
+SUB	ExePlcCheck	10000	1	0	1	1

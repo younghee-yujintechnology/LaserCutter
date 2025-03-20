@@ -1,0 +1,121 @@
+#define true 1
+#define false 0
+
+#define CASE_DONE								10000
+#define CASE_ABORT								20000
+#define CASE_ERROR								30000
+
+#define TABLE1_MOVE_TIME_OVER_VISION1_POS		1010;
+#define TABLE1_MOVE_TIME_OVER_VISION2_POS		1011;
+#define TABLE1_MOVE_TIME_OVER_VISION3_POS		1012;
+#define TABLE1_MOVE_TIME_OVER_VISION4_POS		1013;
+#define TABLE1_MOVE_TIME_OVER_READY_POS			1014;
+#define TABLE1_MOVE_TIME_OVER_LOAD_POS			1015;
+
+#define TABLE1_VISION_ACK_TIME_OVER_VISION1_POS 1020;
+#define TABLE1_VISION_ACK_TIME_OVER_VISION2_POS 1021;
+#define TABLE1_VISION_ACK_TIME_OVER_VISION3_POS 1022;
+#define TABLE1_VISION_ACK_TIME_OVER_VISION4_POS 1023;
+
+#define TABLE1_MOTION_FILE_DOWNLOAD_TIME_OVER	1030;
+#define TABLE1_COORD1_START_TIME_OVER			1031;
+#define TABLE1_COORD1_STOP_TIME_OVER			1032;
+#define TABLE2_MOVE_TIME_OVER_VISION1_POS		2010;
+#define TABLE2_MOVE_TIME_OVER_VISION2_POS		2011;
+#define TABLE2_MOVE_TIME_OVER_VISION3_POS		2012;
+#define TABLE2_MOVE_TIME_OVER_VISION4_POS		2013;
+#define TABLE2_MOVE_TIME_OVER_READY_POS			2014;
+#define TABLE2_MOVE_TIME_OVER_LOAD_POS			2015;
+
+#define TABLE2_VISION_ACK_TIME_OVER_VISION1_POS 2020;
+#define TABLE2_VISION_ACK_TIME_OVER_VISION2_POS 2021;
+#define TABLE2_VISION_ACK_TIME_OVER_VISION3_POS 2022;
+#define TABLE2_VISION_ACK_TIME_OVER_VISION4_POS 2023;
+
+#define TABLE2_MOTION_FILE_DOWNLOAD_TIME_OVER	2030;
+#define TABLE2_COORD1_START_TIME_OVER			2031;
+#define TABLE2_COORD1_STOP_TIME_OVER			2032;
+
+
+#define diTable1Start							M7004	//Table1.Start
+#define	diTable1Vacuum							M7005	//Table1.Vacuum
+#define	diTable1Stop							M7006	//Table1.Stop
+#define diTable1Reset							M7007
+
+#define diTable2Start							M7010   //Table2.Start
+#define diTable2Vacuum							M7011   //Table2.Start
+#define diTable2Stop							M7012   //Table2.Start
+#define diTable2Reset							M7013
+
+#define doTable1StartLamp						M7106
+#define doTable1VacuumLamp						M7107
+#define doTable1StopLamp						M7108
+#define doTable1ResetLamp						M7109	 
+
+#define doTable2StartLamp						M7110	 
+#define doTable2VacuumLamp						M7111	 
+#define doTable2StopLamp						M7112	 
+#define doTable2ResetLamp						M7113	 
+
+#define doTable1Pump1							M7125
+#define doTable1Pump2							M7128
+
+Global XBusy, XOriginDone, XMotionDone, XInPosition, XCurPos, XVelocity, XInTargetPos, XPositionTolerance = 0.01 * 10000; // 10um
+Global Y1Busy, Y1OriginDone, Y1MotionDone, Y1InPosition, Y1CurPos, Y1Velocity, Y1InLoadPos, Y1PositionTolerance = 0.01 * 10000; // 10um
+Global Y2Busy, Y2OriginDone, Y2MotionDone, Y2InPosition, Y2CurPos, Y2Velocity, Y2InLoadPos, Y2PositionTolerance = 0.01 * 10000; // 10um
+Global ZBusy, ZOriginDone, ZMotionDone, ZInPosition, ZCurPos, ZVelocity, ZInTargetPos, ZPositionTolerance = 0.01 * 10000; // 10um
+
+Global Timer1, Timer11, Timer2, Timer21;
+
+Global MotorMoveStartTimeOut = 0.3
+Global MotorMoveTimeOut = 15.0
+Global MotorStopTime = 0.3;
+
+global Table1EMOStopSwitch = false    // PMAC -> PC
+global Table2EMOStopSwitch = false    // PMAC -> PC
+
+global Table1StopSwitch = false    // PMAC -> PC
+global Table2StopSwitch = false    // PMAC -> PC
+
+Global DownloadTimeOut1 = 5.0	// MotionFile Download 최대 시간
+Global DownloadTimeOut2 = 5.0	// MotionFile Download 최대 시간
+
+Global Table1ExeCount = 0;
+Global Table1Film = false;		// 1: 제품 흡착, 0:
+Global Table1New = false;		// 1: 제품 흡착 + Start Switch 
+Global Table1Step = 0;			// 0: 대기중, 다른값은.. Busy...
+Global Table1LastStep = 0;
+Global Table1ErrorCode = 0;
+Global Table1Busy;
+Global Table1Unload = false;
+Global Table1Stop = 0			    // PC -> PMAC
+Global Table1EMOStop = 0
+Global TempTable1Unload = 0
+Global OldTable1Stop = 0
+Global OldTable1EMOStop = 0
+
+
+Global Table1LoadXPos = 180 * 10000;
+Global Table1LoadYPos = 50 * 10000;
+
+Global Table2Film = false;		// 1: 제품 흡착, 0:
+Global Table2New = false;		// 1: 제품 흡착 + Start Switch 
+Global Table2Step = 0;			// 0: 대기중, 다른값은.. Busy...
+Global Table2LastStep = 0;
+Global Table2ErrorCode = 0;
+Global Table2Busy;
+Global Table2Unload = false;
+Global Table2Stop = 0
+Global Table2EMOStop = 0
+Global TempTable2Unload = 0
+Global OldTable2Stop = 0
+Global OldTable2EMOStop = 0
+
+Global Table2LoadXPos = 1060 * 10000;
+Global Table2LoadYPos = 50 * 10000;
+
+Global AutoRun = 0				//PC -> PMAC 자동 구동 상태
+
+
+
+
