@@ -45,9 +45,9 @@ namespace LaserCutter
             tabPage2.Controls.Add(Type2);
             tabPage3.Controls.Add(Type3);
 
-            Type1.Location = new Point(2, 0);
-            Type2.Location = new Point(2, 0);
-            Type3.Location = new Point(2, 0);
+            Type1.Location = new Point(0, 0);
+            Type2.Location = new Point(0, 0);
+            Type3.Location = new Point(0, 0);
         }
 
         #region private TableNo TableNo

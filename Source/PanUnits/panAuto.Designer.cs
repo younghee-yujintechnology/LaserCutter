@@ -51,7 +51,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(1221, 844);
+            this.tabControl1.Size = new System.Drawing.Size(1216, 848);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 0;
@@ -71,7 +71,7 @@
             this.tabTable1.Location = new System.Drawing.Point(4, 40);
             this.tabTable1.Name = "tabTable1";
             this.tabTable1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTable1.Size = new System.Drawing.Size(1213, 800);
+            this.tabTable1.Size = new System.Drawing.Size(1208, 804);
             this.tabTable1.TabIndex = 0;
             this.tabTable1.Text = "Tabel #1";
             this.tabTable1.UseVisualStyleBackColor = true;
@@ -81,7 +81,7 @@
             this.tabTable2.Location = new System.Drawing.Point(4, 40);
             this.tabTable2.Name = "tabTable2";
             this.tabTable2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTable2.Size = new System.Drawing.Size(1249, 800);
+            this.tabTable2.Size = new System.Drawing.Size(1213, 800);
             this.tabTable2.TabIndex = 1;
             this.tabTable2.Text = "Tabel #2";
             this.tabTable2.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tabControl1);
             this.Name = "panAuto";
-            this.Size = new System.Drawing.Size(1913, 850);
+            this.Size = new System.Drawing.Size(1913, 855);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 

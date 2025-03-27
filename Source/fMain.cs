@@ -384,7 +384,7 @@ namespace LaserCutter
             panClient.Controls.Clear();
             panClient.Location = new Point(0, 102);
             panClient.Width = 1358;
-            panClient.Height = 854;
+            panClient.Height = 900;
 
             panRight.Location = new Point(panClient.Width, 102);
             panRight.Size = new Size(360, 852);

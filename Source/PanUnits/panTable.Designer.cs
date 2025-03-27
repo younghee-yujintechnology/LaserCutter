@@ -53,9 +53,11 @@
             this.panClient.Controls.Add(this.lblGroupName);
             this.panClient.Controls.Add(this.lblModelName);
             this.panClient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panClient.FrameInner.Visible = false;
+            this.panClient.FrameOuter.Visible = false;
             this.panClient.Location = new System.Drawing.Point(0, 0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(1213, 800);
+            this.panClient.Size = new System.Drawing.Size(1203, 799);
             this.panClient.TabIndex = 1141;
             // 
             // gradientLabel1
@@ -83,7 +85,7 @@
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(1138, 8);
+            this.btnClose.Location = new System.Drawing.Point(1134, 8);
             this.btnClose.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(64, 28);
@@ -98,7 +100,7 @@
             this.btnOpenJobFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOpenJobFile.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.btnOpenJobFile.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenJobFile.Location = new System.Drawing.Point(1072, 8);
+            this.btnOpenJobFile.Location = new System.Drawing.Point(1068, 8);
             this.btnOpenJobFile.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnOpenJobFile.Name = "btnOpenJobFile";
             this.btnOpenJobFile.Size = new System.Drawing.Size(64, 28);
@@ -114,11 +116,11 @@
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("Tahoma", 11F);
             this.tabControl1.ItemSize = new System.Drawing.Size(150, 30);
-            this.tabControl1.Location = new System.Drawing.Point(9, 37);
+            this.tabControl1.Location = new System.Drawing.Point(4, 37);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(1193, 752);
+            this.tabControl1.Size = new System.Drawing.Size(1193, 756);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 0;
@@ -138,7 +140,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1185, 714);
+            this.tabPage1.Size = new System.Drawing.Size(1185, 718);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DXF";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -148,7 +150,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1185, 714);
+            this.tabPage2.Size = new System.Drawing.Size(1185, 718);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "DXF Array";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -158,7 +160,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1185, 714);
+            this.tabPage3.Size = new System.Drawing.Size(1185, 718);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Make Cell";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -200,7 +202,7 @@
             this.Controls.Add(this.panClient);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Name = "panTable";
-            this.Size = new System.Drawing.Size(1213, 800);
+            this.Size = new System.Drawing.Size(1203, 799);
             this.panClient.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
