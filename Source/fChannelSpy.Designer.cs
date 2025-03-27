@@ -1,4 +1,4 @@
-﻿using YujinTechnology;
+﻿using yjTech;
 
 namespace LaserCutter
 {
@@ -33,15 +33,15 @@ namespace LaserCutter
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.propGridIO = new YujinTechnology.PropertyGrid();
+            this.propGridIO = new yjTech.PropertyGrid();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.propGridMotion = new YujinTechnology.PropertyGrid();
+            this.propGridMotion = new yjTech.PropertyGrid();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.propGridADV = new YujinTechnology.PropertyGrid();
+            this.propGridADV = new yjTech.PropertyGrid();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.propGridLaser = new YujinTechnology.PropertyGrid();
+            this.propGridLaser = new yjTech.PropertyGrid();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.propGridConfig = new YujinTechnology.PropertyGrid();
+            this.propGridConfig = new yjTech.PropertyGrid();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -189,13 +189,14 @@ namespace LaserCutter
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        public YujinTechnology.PropertyGrid propGridIO;
         private System.Windows.Forms.TabPage tabPage3;
-        public YujinTechnology.PropertyGrid propGridMotion;
-        public YujinTechnology.PropertyGrid propGridADV;
         private System.Windows.Forms.TabPage tabPage4;
-        public YujinTechnology.PropertyGrid propGridLaser;
         private System.Windows.Forms.TabPage tabPage5;
+
+        public yjTech.PropertyGrid propGridIO;
+        public yjTech.PropertyGrid propGridMotion;
+        public yjTech.PropertyGrid propGridADV;
+        public yjTech.PropertyGrid propGridLaser;
         public PropertyGrid propGridConfig;
     }
 }

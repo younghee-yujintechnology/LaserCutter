@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
-using System.Security.Cryptography;
 using System.Windows.Forms;
  
-using YujinTechnology;
+using yjTech;
 using IniParser.Model;
 using Raize.CodeSiteLogging;
 
@@ -14,245 +12,8 @@ namespace LaserCutter
 {
     static class Const
     {
-        public const double VISION_ZOOM_FIT = 0.3740234375;
-
-#if _VERSION1
-        public const int XY_LINEAR_SCALE = 1000;
-        public const int Z_AXIS_SCALE = 10000;
-
-        public const string _X00 = "X00:Main Power";
-        public const string _X01 = "X01:EMO #1";
-        public const string _X02 = "X02:EMO #2";
-        public const string _X03 = "X03:EMO #3";
-        public const string _X04 = "X04:T1 Start Switch";
-        public const string _X05 = "X05:T1 Vacuum Switch";
-        public const string _X06 = "X06:T1 Stop Switch";
-        public const string _X07 = "X07:T1 Reset Switch";
-
-        public const string _X08 = "X08:T1 Pressure Sensor";
-        public const string _X09 = "X09:T1 Vacuum Sensor";
-        public const string _X10 = "X10:T2 Start Switch";
-        public const string _X11 = "X11:T2 Vacuum Switch";
-        public const string _X12 = "X12:T2 Stop Switch";
-        public const string _X13 = "X13:T2 Reset Switch";
-        public const string _X14 = "X14:T2 Pressure Sensor";
-        public const string _X15 = "X15:T2 Vacuum Sensor";
-
-        public const string _X16 = "X16:Stage Power";
-        public const string _X17 = "X17:Leak Sensor";
-        public const string _X18 = "X18:Door Sensor #1";
-        public const string _X19 = "X19:Door Sensor #2";
-        public const string _X20 = "X20:Door Sensor #3";
-        public const string _X21 = "X21:Door Sensor #4";
-        public const string _X22 = "X22:Door Sensor #5";
-        public const string _X23 = "X23:Reserved";
-
-        public const string _X24 = "X24:Ionizer Run T1";
-        public const string _X25 = "X25:Ionizer Run T2";
-        public const string _X26 = "X26:Beam Shutter Open";
-        public const string _X27 = "X27:Beam Shutter Close";
-        public const string _X28 = "X28:Power Meter Close";
-        public const string _X29 = "X29:Power Meter Open";
-        public const string _X30 = "X30:Area Sensor T2";
-        public const string _X31 = "X31:Area Sensor T1";
-
-        public const string _Y00 = "Y00:Reserved";
-        public const string _Y01 = "Y01:LED Light";
-        public const string _Y02 = "Y02:Signal Tower Red";
-        public const string _Y03 = "Y03:Signal Tower Yellow";
-        public const string _Y04 = "Y04:Signal Tower Green";
-        public const string _Y05 = "Y05:Signal Tower Buzzer";
-        public const string _Y06 = "Y06:Table1VacuumOn";
-        public const string _Y07 = "Y07:Table2VacuumOn";
-
-        public const string _Y08 = "Y08:Table1StartLamp";
-        public const string _Y09 = "Y09:Table1VacuumLamp";
-        public const string _Y10 = "Y10:Table1StopLamp";
-        public const string _Y11 = "Y11:Table1ResetLamp";
-        public const string _Y12 = "Y12:Table2StartLamp";
-        public const string _Y13 = "Y13:Table2VacuumLamp";
-        public const string _Y14 = "Y14:Table2StopLamp";
-        public const string _Y15 = "Y15:Table2ResetLamp";
-
-        public const string _Y16 = "Y16:Reserved";
-        public const string _Y17 = "Y17:Table1IonizerRun";
-        public const string _Y18 = "Y18:Table2IonizerRun";
-        public const string _Y19 = "Y19:Table1IonizerSol";
-        public const string _Y20 = "Y20:Table2IonizerSol";
-        public const string _Y21 = "Y21:OuterBeamShutterOpen";
-        public const string _Y22 = "Y22:Reserved";
-        public const string _Y23 = "Y23:Dust Collector";
-
-        public const string _Y24 = "Y24:Optic Box Sol On";
-        public const string _Y25 = "Y25:Optic Box Sol Off";
-        public const string _Y26 = "Y26:PowerMeterCoverClose";
-        public const string _Y27 = "Y27:PowerMeterCoverOpen";
-        public const string _Y28 = "Y28:ADV ON";
-        public const string _Y29 = "Y29:SelectTable";
-        public const string _Y30 = "Y30:Reserved";
-        public const string _Y31 = "Y31:Reserved";
-
-#elif _VERSION2
         public const int XY_LINEAR_SCALE = 10000;
         public const int Z_AXIS_SCALE = 10000;
-
-        public const string _X00 = "X00:Main Power";
-        public const string _X01 = "X01:EMO #1";
-        public const string _X02 = "X02:EMO #2";
-        public const string _X03 = "X03:EMO #3";
-        public const string _X04 = "X04:T1 Start Switch";
-        public const string _X05 = "X05:T1 Vacuum Switch";
-        public const string _X06 = "X06:T1 Stop Switch";
-        public const string _X07 = "X07:T1 Reset Switch";
-
-        public const string _X08 = "X08:T1 Pressure Sensor";
-        public const string _X09 = "X09:T1 Vacuum Sensor";
-        public const string _X10 = "X10:T2 Start Switch";
-        public const string _X11 = "X11:T2 Vacuum Switch";
-        public const string _X12 = "X12:T2 Stop Switch";
-        public const string _X13 = "X13:T2 Reset Switch";
-        public const string _X14 = "X14:T2 Pressure Sensor";
-        public const string _X15 = "X15:T2 Vacuum Sensor";
-
-        public const string _X16 = "X16:Stage Power";
-        public const string _X17 = "X17:Leak Sensor";
-        public const string _X18 = "X18:Door Sensor #1";
-        public const string _X19 = "X19:Door Sensor #2";
-        public const string _X20 = "X20:Door Sensor #3";
-        public const string _X21 = "X21:Door Sensor #4";
-        public const string _X22 = "X22:Door Sensor #5";
-        public const string _X23_RESERVED = "X23:Reserved";
-
-        public const string _X24 = "X24:Table1IonizerRun";
-        public const string _X25 = "X25:Table2IonizerRun";
-        public const string _X26 = "X26:Beam Shutter Close";
-        public const string _X27 = "X27:Beam Shutter Open";
-        public const string _X28 = "X28:Power Meter Open";
-        public const string _X29 = "X29:Power Meter Close";
-        public const string _X30 = "X30:Area Sensor T1";
-        public const string _X31 = "X31:Area Sensor T2";
-
-        public const string _Y00 = "Y00:Soft Power";
-        public const string _Y01 = "Y01:LED Light";
-        public const string _Y02 = "Y02:Signal Tower Red";
-        public const string _Y03 = "Y03:Signal Tower Yellow";
-        public const string _Y04 = "Y04:Signal Tower Green";
-        public const string _Y05 = "Y05:Signal Tower Buzzer";
-        public const string _Y06 = "Y06:Table1StartLamp";
-        public const string _Y07 = "Y07:Table1VacuumLamp";
-
-        public const string _Y08 = "Y08:Table1StopLamp";
-        public const string _Y09 = "Y09:Table1ResetLamp";
-        public const string _Y10 = "Y10:Table2StartLamp";
-        public const string _Y11 = "Y11:Table2VacuumLamp";
-        public const string _Y12 = "Y12:Table2StopLamp";
-        public const string _Y13 = "Y13:Table2ResetLamp";
-        public const string _Y14 = "Y14:Table1IonizerRun";
-        public const string _Y15 = "Y15:Table1IonizerSol";
-
-        public const string _Y16 = "Y16:Table2IonizerRun";
-        public const string _Y17 = "Y17:Table2IonizerSolOn";
-        public const string _Y18 = "Y18:OuterBeamShutterOpen";
-        public const string _Y19 = "Y19:Dust Collector";
-        public const string _Y20 = "Y20:Optic Box Purge";
-        public const string _Y21 = "Y21:PowerMeterCoverClose";
-        public const string _Y22 = "Y22:PowerMeterCoverOpen";
-        public const string _Y23 = "Y23:SelectTable";
-
-        public const string _Y24 = "Y24:ADV ON";
-        public const string _Y25 = "Y25:Table1Pump1On";
-        public const string _Y26 = "Y26:Table1VacuumSol1";
-        public const string _Y27 = "Y27:Table1VacuumSol2";
-        public const string _Y28 = "Y28:Table1Pump2On";
-        public const string _Y29 = "Y29:Table1Vacuum3";
-        public const string _Y30 = "Y30:Table1Vacuum4";
-        public const string _Y31 = "Y31:Table2Pump1On";
-
-        public const string _Y32 = "Y32:Table2VacuumSol1";
-        public const string _Y33 = "Y33:Table2VacuumSol2";
-        public const string _Y34 = "Y34:Table2Pump2On";
-        public const string _Y35 = "Y35:Table2VacuumSol3";
-        public const string _Y36 = "Y36:Table2VacuumSol4";
-        public const string _Y37 = "Y37:Reserved";
-        public const string _Y38 = "Y38:Reserved";
-        public const string _Y39 = "Y39:Reserved";
-
-#elif (!_VERSION1 && !_VERSION2)
-        public const int XY_LINEAR_SCALE = 10000;
-        public const int Z_AXIS_SCALE = 10000;
-
-        public const string _X00 = "X00:Main Power";
-        public const string _X01 = "X01:EMO #1";
-        public const string _X02 = "X02:EMO #2";
-        public const string _X03 = "X03:EMO #3";
-        public const string _X04 = "X04:T1 Start Switch";
-        public const string _X05 = "X05:T1 Vacuum Switch";
-        public const string _X06 = "X06:T1 Stop Switch";
-        public const string _X07 = "X07:T1 Reset Switch";
-
-        public const string _X08 = "X08:T1 Pressure Sensor";
-        public const string _X09 = "X09:T1 Vacuum Sensor";
-        public const string _X10 = "X10:T2 Start Switch";
-        public const string _X11 = "X11:T2 Vacuum Switch";
-        public const string _X12 = "X12:T2 Stop Switch";
-        public const string _X13 = "X13:T2 Reset Switch";
-        public const string _X14 = "X14:T2 Pressure Sensor";
-        public const string _X15 = "X15:T2 Vacuum Sensor";
-
-        public const string _X16 = "X16:Stage Power";
-        public const string _X17 = "X17:Leak Sensor";
-        public const string _X18 = "X18:Door Sensor #1";
-        public const string _X19 = "X19:Door Sensor #2";
-        public const string _X20 = "X20:Door Sensor #3";
-        public const string _X21 = "X21:Door Sensor #4";
-        public const string _X22 = "X22:Door Sensor #5";
-        public const string _X23 = "X23:Reserved";
-
-        public const string _X24 = "X24:Ionizer Run T1";
-        public const string _X25 = "X25:Ionizer Run T2";
-        public const string _X26 = "X26:Beam Shutter Open";
-        public const string _X27 = "X27:Beam Shutter Close";
-        public const string _X28 = "X28:Power Meter Close";
-        public const string _X29 = "X29:Power Meter Open";
-        public const string _X30 = "X30:Area Sensor T1";
-        public const string _X31 = "X31:Area Sensor T2";
-
-        public const string _Y00 = "Y00:Reserved";
-        public const string _Y01 = "Y01:LED Light";
-        public const string _Y02 = "Y02:Signal Tower Red";
-        public const string _Y03 = "Y03:Signal Tower Yellow";
-        public const string _Y04 = "Y04:Signal Tower Green";
-        public const string _Y05 = "Y05:Signal Tower Buzzer";
-        public const string _Y06 = "Y06:Table1VacuumOn";
-        public const string _Y07 = "Y07:Table2VacuumOn";
-
-        public const string _Y08 = "Y08:Table1StartLamp";
-        public const string _Y09 = "Y09:Table1VacuumLamp";
-        public const string _Y10 = "Y10:Table1StopLamp";
-        public const string _Y11 = "Y11:Table1ResetLamp";
-        public const string _Y12 = "Y12:Table2StartLamp";
-        public const string _Y13 = "Y13:Table2VacuumLamp";
-        public const string _Y14 = "Y14:Table2StopLamp";
-        public const string _Y15 = "Y15:Table2ResetLamp";
-
-        public const string _Y16 = "Y16:Reserved";
-        public const string _Y17 = "Y17:Table1IonizerRun";
-        public const string _Y18 = "Y18:Table2IonizerRun";
-        public const string _Y19 = "Y19:Table1IonizerSol";
-        public const string _Y20 = "Y20:Table2IonizerSol";
-        public const string _Y21 = "Y21:OuterBeamShutterOpen";
-        public const string _Y22 = "Y22:Reserved";
-        public const string _Y23 = "Y23:Dust Collector";
-
-        public const string _Y24 = "Y24:Optic Box Sol On";
-        public const string _Y25 = "Y25:Optic Box Sol Off";
-        public const string _Y26 = "Y26:PowerMeterCoverClose";
-        public const string _Y27 = "Y27:PowerMeterCoverOpen";
-        public const string _Y28 = "Y28:ADV ON";
-        public const string _Y29 = "Y29:SelectTable";
-        public const string _Y30 = "Y30:Reserved";
-        public const string _Y31 = "Y31:Reserved";
-#endif
 
         #region ErrorList
 
@@ -467,7 +228,7 @@ namespace LaserCutter
 
     public class Global
     {
-        public const string MESSAGE_BOX_TITLE = "DaekhonCorporation.System";
+        public const string MESSAGE_BOX_TITLE = "YujinTechnology";
 
         #region Define Channels {...}
         public static uint gDeviceNo = 0;
@@ -598,8 +359,6 @@ namespace LaserCutter
         //Output #3
         public static Channel coADVON;
 #if _VERSION1
-        public static Channel coTable1Vacuum;
-        public static Channel coTable2Vacuum;
 #elif _VERSION2
         public static Channel coTable1Pump1;
         public static Channel coTable1Vacuum11;
@@ -754,7 +513,7 @@ namespace LaserCutter
 
         public static List<MotionParameter> MotionParameters;
 
-        public static YujinTechnology.IniFile iniEng;
+        public static yjTech.IniFile iniEng;
         public static IniData iniKor;
         public static IniData iniVie;
 
@@ -789,13 +548,13 @@ namespace LaserCutter
                         keypadEdit.Frame.FlatColor = color;
                     }
                     else
-                    if (control is YujinTechnology.ComboBox comboBox)
+                    if (control is yjTech.ComboBox comboBox)
                     {
                         comboBox.Frame.FlatColor = color;
                     }
                 }
 
-                if (control is YujinTechnology.TabControl tabControl)
+                if (control is yjTech.TabControl tabControl)
                 {
                     foreach (TabPage tabPage in tabControl.TabPages)
                     {

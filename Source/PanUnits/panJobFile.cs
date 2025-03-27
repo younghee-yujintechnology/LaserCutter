@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-using YujinTechnology;
+using yjTech;
 using Raize.CodeSiteLogging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -337,7 +337,7 @@ namespace LaserCutter
                         szDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
                         Directory.CreateDirectory(szDir);
 
-                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table1", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table1", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
                         //Directory.CreateDirectory(szDir);
 
                         szFileName = String.Format("{0}\\[{1}][{2}][Table1].prj", szDir, szGroupName, frmModelName.edName.Text);
@@ -357,7 +357,7 @@ namespace LaserCutter
                         /*
                          * 1. Project파일 생성
                          */
-                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table2", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table2", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
                         //Directory.CreateDirectory(szDir);
 
                         szFileName = String.Format("{0}\\[{1}][{2}][Table2].prj", szDir, szGroupName, frmModelName.edName.Text);

@@ -17,13 +17,8 @@ using System.IO;
 using System.Text;
 using IniParser;
 
-using Cognex.VisionPro.QuickBuild;
-using Cognex.VisionPro;
-
-using MvCameraControl;
-
 using Raize.CodeSiteLogging;
-using YujinTechnology;
+using yjTech;
 
 //using IniP
 
@@ -33,23 +28,10 @@ namespace LaserCutter
     {
         CodeSiteLogger logger;
 
-        public static frmVision frmVision;
-        private static frmMVS frmMVS;
-
         public frmChannelSpy frmChannelSpy;
-        public frmCarbide frmCarbide;
 
-        private frmProgress frmProgress = new frmProgress();
-        private frmMotionFile frmMotionFile = new frmMotionFile();
-
-        public panConfig Config;
         public panAuto Auto;
         public panManual Manual;
-        public panJobFile JobFile;
-        public panSideMenu SideMenu;
-
-        private panLog panLog;
-        private panAlarm panAlarm;
 
         private Point mMousePoint;
 
@@ -91,13 +73,7 @@ namespace LaserCutter
 
             InitializeComponent();
 
-#if _VERSION1
-            lblVersion.Text = "Version:1.2";
-#elif _VERSION2
-            lblVersion.Text = "Version:2.2";
-#elif _VERSION3
-            lblVersion.Text = "Version:3.0";
-#endif
+            lblVersion.Text = "Version:1.0";
 
             FormClosing += frmMain_FormClosing;
 
@@ -134,41 +110,24 @@ namespace LaserCutter
                 logger.SendMsg($"Warning: {szStr}. \r\nCurrent dll version \"{currentVersion}\" is lower than expected version \"{expectedVersion}\".");
             }
 
-            btnAuto.Click += ChangeMainPanel;
-            btnJobFile.Click += ChangeMainPanel;
-            btnManual.Click += ChangeMainPanel;
-            btnConfig.Click += ChangeMainPanel;
-            btnAlarm.Click += ChangeMainPanel;
-            btnLog.Click += ChangeMainPanel;
-            btnLogIn.Click += ChangeMainPanel;
+            //btnAuto.Click += ChangeMainPanel;
+            //btnJobFile.Click += ChangeMainPanel;
+            //btnManual.Click += ChangeMainPanel;
+            //btnConfig.Click += ChangeMainPanel;
+            //btnAlarm.Click += ChangeMainPanel;
+            //btnLog.Click += ChangeMainPanel;
+            //btnLogIn.Click += ChangeMainPanel;
 
             SystemInitialize();
 
             ChangeMainPanel(btnAuto);
 
-            frmVision = frmVision.StaticInstance;
             frmChannelSpy = frmChannelSpy.StaticInstance;
 
-		#if _VERSION2
-            frmCarbide = frmCarbide.StaticInstance;
-		#endif
-
-            frmMVS.btnConnect_Click(null, null);
-
-            //       Config.Motor.SetSoftLimit();
-#if _VERSION1
-            Pmac.QueryCommand("disable plc 10, 11, 20, 22, 26, 27");
-            Pmac.QueryCommand("enable plc 8, 9");
-
-            Pmac.QueryCommand("disable plc 10, 11, 20, 22, 26, 27");
-            Pmac.QueryCommand("enable plc 8, 9");
-#endif
             LoadLanguageFile();
             //영어로 초기화
             ChangeLanguageEnglish();
 
-            Manual.Laser.ShutterClose();
-            Pmac.QueryCommand("doBeamShutterOpen=false");
 
             CodeSite.ExitMethod("frmMain.Create()");
         }
@@ -255,46 +214,6 @@ namespace LaserCutter
         {
             base.WndProc(ref m);
 
-            if (m.Msg == PowerPMac.WM_MESSAGE_DOWNLOAD)
-            {
-                var cds = (CopyDataStruct)Marshal.PtrToStructure(m.LParam, typeof(CopyDataStruct));
-
-                switch (cds.dwData.ToInt32())
-                {
-                    case PowerPMac.DT_Progress:
-
-                        if (cds.cbData == 0)
-                        {
-                            frmProgress.Show();
-                        }
-                        else
-                        if (cds.cbData == 100)
-                        {
-                            frmProgress.Close();
-                        }
-
-                        frmProgress.progressBar1.Value = cds.cbData;
-                        frmProgress.lblMessage.Text = String.Format("Downloading..{0}", cds.cbData);
-
-                        // logger.SendMsg(frmProgress.lblMessage.Text);
-                        break;
-
-                    case PowerPMac.DT_StringA:
-                        string s = Marshal.PtrToStringAnsi(cds.lpData);
-                        s = yjCommon.RemoveCRLF(s);
-                        frmMotionFile.Memo1.AppendText(s + Environment.NewLine);
-                        logger.SendMsg(s + Environment.NewLine);
-                        break;
-
-                    case PowerPMac.DT_StringW:
-                        // Handle wide string case if needed
-                        break;
-                }
-
-                frmMotionFile.MessageQueue.Add(m.WParam.ToInt32());
-            }
-
-
             switch (m.Msg)
             {
                 case WM_HOTKEY:
@@ -309,43 +228,11 @@ namespace LaserCutter
                         frmChannelSpy.TopMost = true;
                         frmChannelSpy.Show();
                     }
-                    else
-                    if (m.WParam.ToInt32() == atomDownload)
-                    {
-                        if (Auto.TabControl1.SelectedIndex == 0)
-                        {
-                            Auto.Table1.PageIndex = Auto.Table1.GetFirstPage();
-
-                            Auto.Table1.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
-                            Pmac.DownloadFile1(Handle);
-                        }
-                        else
-                        if (Auto.TabControl1.SelectedIndex == 1)
-                        {
-                            Auto.Table2.PageIndex = Auto.Table2.GetFirstPage();
-
-                            Auto.Table2.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
-                            Pmac.DownloadFile2(Handle);
-                        }
-                    }
-                    else
-                    if (m.WParam.ToInt32() == atomCarbide)
-                    {
-#if _VERSION2
-                        if (frmCarbide.Visible)
-                        {
-                            frmCarbide.Close();
-                        }
-
-                        frmCarbide.TopMost = true;
-                        frmCarbide.ReadThread.Enabled = true;
-                        frmCarbide.Show();
-#endif
-                    }
 
                     break;
             }
         }
+
         #endregion
 
         private void SystemInitialize()
@@ -360,85 +247,38 @@ namespace LaserCutter
             CheckSystemFile();
 
             /*
-             * 1. Auto
-             */
+  * 1. Auto
+  */
             Auto = new panAuto();
             Auto.frmChannelSpy = frmChannelSpy.StaticInstance;
-            Auto.frmVision = frmVision.StaticInstance;
-            Auto.frmMVS = frmMVS.StaticInstance;
-            Auto.Vision1.frmMVS = frmMVS.StaticInstance;
-            Auto.Vision2.frmMVS = frmMVS.StaticInstance;
+            ////Auto.frmVision = frmVision.StaticInstance;
+            ////Auto.frmMVS = frmMVS.StaticInstance;
+            ////Auto.Vision1.frmMVS = frmMVS.StaticInstance;
+            ////Auto.Vision2.frmMVS = frmMVS.StaticInstance;
 
-            Auto.frmRestart = frmRestart.StaticInstance;
+            ////Auto.frmRestart = frmRestart.StaticInstance;
             Auto.frmMain = this;
 
-            Auto.Common = panConfigCommon.StaticInstance;
-            Auto.SideMenu = panSideMenu.StaticInstance;
+            ////Auto.Common = panConfigCommon.StaticInstance;
+            ////Auto.SideMenu = panSideMenu.StaticInstance;
 
-            Auto.Table1.JobInfo.Type1.Common = panConfigCommon.StaticInstance;
-            Auto.Table1.JobInfo.Type2.Common = panConfigCommon.StaticInstance;
-            Auto.Table1.JobInfo.Type3.Common = panConfigCommon.StaticInstance;
+            ////Auto.Table1.JobInfo.Type1.Common = panConfigCommon.StaticInstance;
+            ////Auto.Table1.JobInfo.Type2.Common = panConfigCommon.StaticInstance;
+            ////Auto.Table1.JobInfo.Type3.Common = panConfigCommon.StaticInstance;
 
-            Auto.Table2.JobInfo.Type1.Common = panConfigCommon.StaticInstance;
-            Auto.Table2.JobInfo.Type2.Common = panConfigCommon.StaticInstance;
-            Auto.Table2.JobInfo.Type3.Common = panConfigCommon.StaticInstance;
-            
-            Auto.ChannelAssign();
+            ////Auto.Table2.JobInfo.Type1.Common = panConfigCommon.StaticInstance;
+            ////Auto.Table2.JobInfo.Type2.Common = panConfigCommon.StaticInstance;
+            ////Auto.Table2.JobInfo.Type3.Common = panConfigCommon.StaticInstance;
 
-#if _VERSION1
-            Auto.lblMachineNo.Text = "No: 01";
-#elif _VERSION2
-            Auto.lblMachineNo.Text = "No: 02";
-#endif
+            ////Auto.ChannelAssign();
 
             /*
-             * 2. Manual
-             */
+            * 2. Manual
+            */
             Manual = panManual.StaticInstance;
-            Manual.Laser.btnConnectLaser_Click(null, null);
-            Manual.Laser.ShutterClose();
-            Pmac.QueryCommand("doBeamShutterOpen=false");
-
-            /*
-             * 3. Config
-             */
-            Config = new panConfig();
-
-            /*
-             * 4. JobFile
-             */
-            JobFile = new panJobFile();
-
-            /*
-             * 5. SideMenu
-             */
-            SideMenu = panSideMenu.StaticInstance;
-#if _VERSION1
-            SideMenu.Version1ChannelAssign();
-#elif _VERSION2
-            SideMenu.Version2ChannelAssign();
-#endif
-
-            /*
-             * 6. Log
-             */
-            panLog = new panLog();
-
-            /*
-             * 7. Alarm
-             */
-            panAlarm = new panAlarm();
-
-            /*
-             * 8. MVS
-             */
-            SDKSystem.Initialize();
-
-            frmMVS = frmMVS.StaticInstance;
-            frmMVS.InitializeCamera();
-
-            frmMVS.UpdateThread1.OnExecute += Auto.Vision1.UpdateThread_OnExecute;
-            frmMVS.UpdateThread2.OnExecute += Auto.Vision2.UpdateThread_OnExecute;
+            ////Manual.Laser.btnConnectLaser_Click(null, null);
+            ////Manual.Laser.ShutterClose();
+            ////Pmac.QueryCommand("doBeamShutterOpen=false");
 
             /*
              * 
@@ -448,24 +288,10 @@ namespace LaserCutter
             logger.ExitMethod("SystemInitialize");
         }
 
-        public async void SystemFinalization()
+        public void SystemFinalization()
         {
             logger.SendMsg("SystemFinalization()");
-            
-            frmMVS.UpdateThread1.Enabled = false;
-            await Task.Delay(100); // 0.05초 동안 대기
-
-            frmMVS.UpdateThread2.Enabled = false;
-            await Task.Delay(100); // 0.05초 동안 대기
-
-            frmMVS.btnGrabStop_Click(null, null);
-            await Task.Delay(100); // 0.05초 동안 대기
-
-            frmMVS.btnDisconnect_Click(null, null);
-            await Task.Delay(100); // 0.05초 동안 대기
-
-            SDKSystem.Finalize();
-
+                        
             UnregisterHotKey();
         }
 
@@ -526,53 +352,10 @@ namespace LaserCutter
         #region frmMain Event
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //ConfigCommon
-            Config.Common.propSaver1.INIFileName = yjCommon.AppPath() + "Config\\LaserCutter.INI";
-            Config.Common.propSaver1.SaveToRegistry = false;
-            Config.Common.propSaver1.LoadProperty();
-
-            //SideMenu
-            SideMenu.PropSaver.INIFileName = yjCommon.AppPath() + "Config\\SideMenu.INI";
-            SideMenu.PropSaver.SaveToRegistry = false;
-            SideMenu.PropSaver.LoadProperty();
-
-            Auto.SetTableBasePos();
-            Config.SetTableBasePos();
-
-            Manual.Light.Connect();
-            Manual.ADV.Connect();
-            Manual.PowerMeter.Connect();
-
-            // panMain.Ini
-            Config.Common.InitControls();
-
-            if (Screen.AllScreens.Length > 1)
-            {
-                Screen sencondScreen = Screen.AllScreens[1];
-
-                frmVision.StartPosition = FormStartPosition.Manual;
-                frmVision.Location = sencondScreen.WorkingArea.Location;
-                frmVision.Left = sencondScreen.WorkingArea.Left;
-                frmVision.Top = sencondScreen.WorkingArea.Top;
-
-#if _VISION
-                String visionfile = String.Format("{0}Vision\\CogPMAlignTool(4Align).vpp", yjCommon.AppPath());
-                frmVision.Vision1.cogJobManager = (CogJobManager)CogSerializer.LoadObjectFromFile(visionfile);
-                frmVision.Vision2.cogJobManager = (CogJobManager)CogSerializer.LoadObjectFromFile(visionfile);
-#endif
-            }
-
-#if _VISION
-            frmVision.Show();
-#endif
-
-            frmMVS.UpdateThread1.OnExecute += frmVision.Vision1.UpdateThread_OnExecute;
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Config.Common.propSaver1.SaveProperty();
-
             SystemFinalization();
 
             String szStr = String.Format("Application - Close: {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -582,65 +365,15 @@ namespace LaserCutter
 
         private void ChangeMainPanel(object sender, EventArgs e)
         {
-            if (sender is YujinTechnology.BitBtn aButton)
-            {
-                ChangeMainPanel(aButton);
-            }
+
         }
 
         public void ChangeAutoTitle()
         {
-            Auto.ledTable1DXF.LED.Value = (Auto.Table1.JobInfo.TabControl2.SelectedIndex == 0);
-            Auto.ledTable1DXFArray.LED.Value = (Auto.Table1.JobInfo.TabControl2.SelectedIndex == 1);
-            Auto.ledTable1MakeCell.LED.Value = (Auto.Table1.JobInfo.TabControl2.SelectedIndex == 2);
 
-            Auto.ledTable2DXF.LED.Value = (Auto.Table2.JobInfo.TabControl2.SelectedIndex == 0);
-            Auto.ledTable2DXFArray.LED.Value = (Auto.Table2.JobInfo.TabControl2.SelectedIndex == 1);
-            Auto.ledTable2MakeCell.LED.Value = (Auto.Table2.JobInfo.TabControl2.SelectedIndex == 2);
-
-            if (MenuIndex == 10)
-            {
-                if (Auto.TabControl1.SelectedIndex == 0)
-                {
-                    lblMainTitle.ForeColor = Color.Red;
-                    if (Auto.Table1.JobInfo.TabControl2.SelectedIndex == 0)
-                    {
-                        lblMainTitle.Text = "Table1 - Auto (DXF)";
-                    }
-                    else
-                    if (Auto.Table1.JobInfo.TabControl2.SelectedIndex == 1)
-                    {
-                        lblMainTitle.Text = "Table1 - Auto (Array)";
-                    }
-                    else
-                    if (Auto.Table1.JobInfo.TabControl2.SelectedIndex == 2)
-                    {
-                        lblMainTitle.Text = "Table1 - Auto (Make Cell)";
-                    }
-                }
-                else
-                if (Auto.TabControl1.SelectedIndex == 1)
-                {
-                    lblMainTitle.ForeColor = Color.Yellow;
-                    if (Auto.Table2.JobInfo.TabControl2.SelectedIndex == 0)
-                    {
-                        lblMainTitle.Text = "Table2 - Auto (DXF)";
-                    }
-                    else
-                    if (Auto.Table2.JobInfo.TabControl2.SelectedIndex == 1)
-                    {
-                        lblMainTitle.Text = "Table2 - Auto (Array)";
-                    }
-                    else
-                    if (Auto.Table2.JobInfo.TabControl2.SelectedIndex == 2)
-                    {
-                        lblMainTitle.Text = "Table2 - Auto (Make Cell)";
-                    }
-                }
-            }
         }
 
-        public void ChangeMainPanel(YujinTechnology.BitBtn aButton)
+        public void ChangeMainPanel(yjTech.BitBtn aButton)
         {
             if (MenuIndex == Convert.ToInt32(aButton.Tag)) return;
 
@@ -650,84 +383,48 @@ namespace LaserCutter
 
             panClient.Controls.Clear();
             panClient.Location = new Point(0, 102);
+            panClient.Width = 1358;
             panClient.Height = 854;
-            panClient.Width = 1556;
 
-            panRight.Location = new Point(1556, 102);
+            panRight.Location = new Point(panClient.Width, 102);
             panRight.Size = new Size(360, 852);
 
-            JobFile.Height = Auto.Height;
-            Config.Height = Auto.Height;
+            //// JobFile.Height = Auto.Height;
+            //// Config.Height = Auto.Height;
             Manual.Height = Auto.Height;
 
             if (aButton == btnAuto)
             {
                 ChangeAutoTitle();
 
-                panClient.Width = 1920;
+             //   panClient.Width = 1318;
                 panClient.Controls.Add(Auto);
             }
             else
             if (aButton == btnJobFile)
             {
-                lblMainTitle.Text = "JobFile";
+                ////lblMainTitle.Text = "JobFile";
 
-                panClient.Controls.Add(JobFile);
+                ////panClient.Controls.Add(JobFile);
 
-                JobFile.LoadRecentList(JobFile.lvRecentModel, (TableNo) JobFile.TabControl1.SelectedIndex + 1);
-                JobFile.LoadModelList();
+                ////JobFile.LoadRecentList(JobFile.lvRecentModel, (TableNo)JobFile.TabControl1.SelectedIndex + 1);
+                ////JobFile.LoadModelList();
 
-                panRight.Controls.Add(SideMenu);
-                SideMenu.Left = 0;
-            }
-            else
-            if (aButton == btnManual)
-            {
-                lblMainTitle.Text = "Manual";
-
-                panClient.Controls.Add(Manual);
-                panRight.Controls.Add(SideMenu);
-                SideMenu.Left = 0;
-                SideMenu.Left = 0;
-            }
-            else
-            if (aButton == btnConfig)
-            {
-                lblMainTitle.Text = "Config";
-
-                panClient.Controls.Add(Config);
-                panRight.Controls.Add(SideMenu);
-                SideMenu.Left = 0;
-                SideMenu.Left = 0;
+                ////panRight.Controls.Add(SideMenu);
+                ////SideMenu.Left = 0;
             }
             else
             if (aButton == btnLog)
             {
-                lblMainTitle.Text = "Error Log";
+                ////lblMainTitle.Text = "Error Log";
 
-                panClient.Width = 1920;
-                panClient.Controls.Add(panLog);
-            }
-            else
-            if (aButton == btnLogIn)
-            {
-            }
-            else
-            if (aButton == btnExit)
-            {
-            }
-            else
-            if (aButton == btnAlarm)
-            {
-                lblMainTitle.Text = "Alarm";
-
-                panClient.Width = 1920;
-                panClient.Controls.Add(panAlarm);
+                ////panClient.Width = 1920;
+                ////panClient.Controls.Add(panLog);
             }
 
             xpos = aButton.Location.X + 4;
 
-            lblSelectedMenu.Location = new Point(xpos, lblSelectedMenu.Location.Y);
+            ////lblSelectedMenu.Location = new Point(xpos, lblSelectedMenu.Location.Y);
         }
 
         private async void btnExit_Click(object sender, EventArgs e)
@@ -738,38 +435,38 @@ namespace LaserCutter
             frmUserConfirm.StartPosition = FormStartPosition.CenterScreen;
             if (frmUserConfirm.ShowDialog() == DialogResult.OK)
             {
-                Manual.Laser.ShutterClose();
-                
-                Auto.AutoThread.Enabled = false;
-                Manual.ADV.ReadThread.Enabled = false;
-                Manual.Light.ReadThread.Enabled = false;
-                Manual.PowerMeter.MeasureThread.Enabled = false;
+                //// Manual.Laser.ShutterClose();
 
+                Auto.AutoThread.Enabled = false;
+                //// Manual.ADV.ReadThread.Enabled = false;
+                //// Manual.Light.ReadThread.Enabled = false;
+                //// Manual.PowerMeter.MeasureThread.Enabled = false;
                 await Task.Delay(100);
 
                 Pmac.QueryCommand("doTowerLampBuzzer=false");
                 Pmac.QueryCommand("doBeamShutterOpen=false");
 
-                frmMVS.btnGrabStop_Click(null, null);
-                frmMVS.btnDisconnect_Click(null, null);
+                //// frmMVS.btnGrabStop_Click(null, null);
+                //// frmMVS.btnDisconnect_Click(null, null);
 
-                await Task.Delay(100);
+                //// await Task.Delay(100);
 
-                frmVision.exitConfirmed = true;
-                frmVision.Vision1.exitConfirmed = true;
-                frmVision.Vision2.exitConfirmed = true;
-                frmVision.Finilization();
+                //// frmVision.exitConfirmed = true;
+                //// frmVision.Vision1.exitConfirmed = true;
+                //// frmVision.Vision2.exitConfirmed = true;
+                //// frmVision.Finilization();
 
-                await Task.Delay(100);
+                //// await Task.Delay(100);
 
-                Manual.ADV.Comm.CloseComm();
-                Manual.Light.Comm.CloseComm();
-                Manual.PowerMeter.Comm.CloseComm();
+                //// Manual.ADV.Comm.CloseComm();
+                //// Manual.Light.Comm.CloseComm();
+                //// Manual.PowerMeter.Comm.CloseComm();
 
                 await Task.Delay(100);
 
                 Application.Exit();
             }
+
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -780,24 +477,7 @@ namespace LaserCutter
         {
             if (DateTime.Now.Date != currentDate.Date)
             {
-                // 날짜가 변경되었으므로 Logger를 새로 초기화
-                currentDate = DateTime.Now;
 
-                String szStr = String.Format("{0}Log", yjCommon.AppPath());
-                szStr = CreateDailyFolder(szStr);
-
-                ChangeLogFilePath(szStr);
-                Auto.ChangeLogFilePath(szStr);
-                Auto.Table1.ChangeLogFilePath(szStr);
-                Auto.Table2.ChangeLogFilePath(szStr);
-                Auto.Vision1.ChangeLogFilePath(szStr);
-                Auto.Vision2.ChangeLogFilePath(szStr);
-                Manual.Motion.ChangeLogFilePath(szStr);
-                SideMenu.ChangeLogFilePath(szStr);
-                Manual.Laser.ChangeLogFilePath(szStr); 
-                Manual.Light.ChangeLogFilePath(szStr);
-
-                Pmac.ChangeLogFilePath(szStr);
             }
             lblDateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
@@ -826,30 +506,6 @@ namespace LaserCutter
             lblBuildVersion.Text = "Build:20241203.001";
         }
 
-        private void btnVision_Click(object sender, EventArgs e)
-        {
-            if (frmVision.Visible)
-            {
-                frmVision.Hide();
-            }
-            else
-            {
-                frmVision.Show();
-            }
-        }
-
-        public void ButtonEnables(bool bEnable)
-        {
-            btnAuto.Enabled = bEnable;
-            btnConfig.Enabled = bEnable;
-            btnJobFile.Enabled = bEnable;
-            btnManual.Enabled = bEnable;
-            btnAlarm.Enabled = bEnable;
-           // btnVision.Enabled = bEnable;
-            btnLog.Enabled = bEnable;
-            btnLogIn.Enabled = bEnable;
-            btnExit.Enabled = bEnable;
-        }
 
         private void btnEnglish_Click(object sender, EventArgs e)
         {
@@ -892,7 +548,7 @@ namespace LaserCutter
 
             String szFileName = String.Format("{0}Config\\Language_English.ini", yjCommon.AppPath());
 
-            Global.iniEng = new YujinTechnology.IniFile(szFileName);
+            Global.iniEng = new yjTech.IniFile(szFileName);
 
 
             szFileName = String.Format("{0}Config\\Language_Korea.ini", yjCommon.AppPath());
@@ -928,122 +584,21 @@ namespace LaserCutter
         #region public void ChangeLanguageEnglish() 
         public void ChangeLanguageEnglish()
         {
-            btnAuto.Text = Global.iniEng.ReadString("frmMain", "btnAuto.Text", "Auto");
-            btnJobFile.Text = Global.iniEng.ReadString("frmMain", "btnJobFile.Text", "JobFile");
-            btnManual.Text = Global.iniEng.ReadString("frmMain", "btnManual.Text", "Manual");
-            btnConfig.Text = Global.iniEng.ReadString("frmMain", "btnConfig.Text", "Config");
-            btnAlarm.Text = Global.iniEng.ReadString("frmMain", "btnAlarm.Text", "Alarm");
-            btnVision.Text = Global.iniEng.ReadString("frmMain", "btnVision.Text", "Vision");
-            btnLog.Text = Global.iniEng.ReadString("frmMain", "btnLog.Text", "Log");
-            btnLogIn.Text = Global.iniEng.ReadString("frmMain", "btnLogIn.Text", "User");
-            btnExit.Text = Global.iniEng.ReadString("frmMain", "btnExit.Text", "Exit");
 
-            Auto.ChangeLanguageEnglish();
-            Auto.Table1.ChangeLanguageEnglish();
-            Auto.Table2.ChangeLanguageEnglish();
-            Auto.Table1.JobInfo.Type1.ChangeLanguageEnglish();
-            Auto.Table1.JobInfo.Type2.ChangeLanguageEnglish();
-            Auto.Table1.JobInfo.Type3.ChangeLanguageEnglish();
-            Auto.Table2.JobInfo.Type1.ChangeLanguageEnglish();
-            Auto.Table2.JobInfo.Type2.ChangeLanguageEnglish();
-            Auto.Table2.JobInfo.Type3.ChangeLanguageEnglish();
-
-            JobFile.Table1.JobInfo.Type1.ChangeLanguageEnglish();
-            JobFile.Table1.JobInfo.Type2.ChangeLanguageEnglish();
-            JobFile.Table1.JobInfo.Type3.ChangeLanguageEnglish();
-            JobFile.Table2.JobInfo.Type1.ChangeLanguageEnglish();
-            JobFile.Table2.JobInfo.Type2.ChangeLanguageEnglish();
-            JobFile.Table2.JobInfo.Type3.ChangeLanguageEnglish();
-
-            SideMenu.ChangeLanguageEnglish();
-            Config.Common.ChangeLanguageEnglish();
-            frmVision.Vision1.ChangeLanguageEnglish();
-            frmVision.Vision2.ChangeLanguageEnglish();
-            Manual.Motion.ChangeLanguageEnglish();
-            Manual.Laser.ChangeLanguageEnglish();
-            Manual.Light.ChangeLanguageEnglish();
-            Manual.ADV.ChangeLanguageEnglish();
-            Manual.PowerMeter.ChangeLanguageEnglish();
             //panJobFile.Info.Type1.SetChangeLagEngData(INI, culture);
         }
 
         public void ChangeLanguageKorea()
         {
-            // 섹션과 키를 사용하여 값 읽기            
-            btnAuto.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnAuto.Text");
-            btnJobFile.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnJobFile.Text");
-            btnManual.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnManual.Text");
-            btnConfig.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnConfig.Text");
-            btnAlarm.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnAlarm.Text");
-            btnVision.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnVision.Text");
-            btnLog.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnLog.Text");
-            btnLogIn.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnLogIn.Text");
-            btnExit.Text = Global.GetIniLanguageValue(Global.iniKor, "frmMain", "btnExit.Text");
 
-            Auto.ChangeLanguageKorea();
-            Auto.Table1.ChangeLanguageKorea();
-            Auto.Table2.ChangeLanguageKorea();
-            Auto.Table1.JobInfo.Type1.ChangeLanguageKorea();
-            Auto.Table1.JobInfo.Type2.ChangeLanguageKorea();
-            Auto.Table1.JobInfo.Type3.ChangeLanguageKorea();
-            Auto.Table2.JobInfo.Type1.ChangeLanguageKorea();
-            Auto.Table2.JobInfo.Type2.ChangeLanguageKorea();
-            Auto.Table2.JobInfo.Type3.ChangeLanguageKorea();
 
-            JobFile.Table1.JobInfo.Type1.ChangeLanguageKorea();
-            JobFile.Table1.JobInfo.Type2.ChangeLanguageKorea();
-            JobFile.Table1.JobInfo.Type3.ChangeLanguageKorea();
-
-            JobFile.Table2.JobInfo.Type1.ChangeLanguageKorea();
-            JobFile.Table2.JobInfo.Type2.ChangeLanguageKorea();
-            JobFile.Table2.JobInfo.Type3.ChangeLanguageKorea();
-
-            SideMenu.ChangeLanguageKorea();
-            Config.Common.ChangeLanguageKorea();
-            Manual.Motion.ChangeLanguageKorea();
-            Manual.Laser.ChangeLanguageKorea();
-            Manual.Light.ChangeLanguageKorea();
-            Manual.ADV.ChangeLanguageKorea();
-            Manual.PowerMeter.ChangeLanguageKorea();
         }
 
         public void ChangeLanguageVietnam()
         {
             //// 섹션과 키를 사용하여 값 읽기
-            btnAuto.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnAuto.Text");
-            btnJobFile.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnJobFile.Text");
-            btnManual.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnManual.Text");
-            btnConfig.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnConfig.Text");
-            btnAlarm.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnAlarm.Text");
-            btnVision.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnVision.Text");
-            btnLog.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnLog.Text");
-            btnLogIn.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnLogIn.Text");
-            btnExit.Text = Global.GetIniLanguageValue(Global.iniVie, "frmMain", "btnExit.Text");
 
-            Auto.ChangeLanguageVietnam();
-            Auto.Table1.ChangeLanguageVietnam();
-            Auto.Table2.ChangeLanguageVietnam();
-            Auto.Table1.JobInfo.Type1.ChangeLanguageVietnam();
-            Auto.Table1.JobInfo.Type2.ChangeLanguageVietnam();
-            Auto.Table1.JobInfo.Type3.ChangeLanguageVietnam();
-            Auto.Table2.JobInfo.Type1.ChangeLanguageVietnam();
-            Auto.Table2.JobInfo.Type2.ChangeLanguageVietnam();
-            Auto.Table2.JobInfo.Type3.ChangeLanguageVietnam();
 
-            JobFile.Table1.JobInfo.Type1.ChangeLanguageVietnam();
-            JobFile.Table1.JobInfo.Type2.ChangeLanguageVietnam();
-            JobFile.Table1.JobInfo.Type3.ChangeLanguageVietnam();
-            JobFile.Table2.JobInfo.Type1.ChangeLanguageVietnam();
-            JobFile.Table2.JobInfo.Type2.ChangeLanguageVietnam();
-            JobFile.Table2.JobInfo.Type3.ChangeLanguageVietnam();
-
-            SideMenu.ChangeLanguageVietnam();
-            Config.Common.ChangeLanguageVietnam();
-            Manual.Motion.ChangeLanguageVietnam();
-            Manual.Laser.ChangeLanguageVietnam();
-            Manual.Light.ChangeLanguageVietnam();
-            Manual.ADV.ChangeLanguageVietnam();
-            Manual.PowerMeter.ChangeLanguageVietnam();
         }
 #endregion
 
@@ -1062,6 +617,11 @@ namespace LaserCutter
                 }
 
             }
+        }
+
+        private void btnAuto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

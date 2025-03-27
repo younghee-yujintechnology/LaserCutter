@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new YujinTechnology.BitBtn();
-            this.btnOk = new YujinTechnology.BitBtn();
+            this.btnCancel = new yjTech.BitBtn();
+            this.btnOk = new yjTech.BitBtn();
             this.edName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -87,8 +87,8 @@
 
         #endregion
 
-        private YujinTechnology.BitBtn btnCancel;
-        private YujinTechnology.BitBtn btnOk;
+        private yjTech.BitBtn btnCancel;
+        private yjTech.BitBtn btnOk;
         public System.Windows.Forms.TextBox edName;
     }
 }

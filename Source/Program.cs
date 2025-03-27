@@ -6,7 +6,8 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
-using YujinTechnology;
+using yjTech;
+using Raize.CodeSiteLogging;
 
 namespace LaserCutter
 {
@@ -48,7 +49,7 @@ namespace LaserCutter
         private static bool ExistPrevInstance()
         {
             bool createdNew = false;
-            hMutex = new Mutex(true, "DaekhonCorporation.System.LaserCutter", out createdNew);
+            hMutex = new Mutex(true, "yjTech.LaserCutter", out createdNew);
 
             if (!createdNew)
             {

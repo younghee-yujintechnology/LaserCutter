@@ -6,13 +6,12 @@ using System.IO;
 
 using System.Windows.Forms;
 
-using YujinTechnology;
+using yjTech;
 
 namespace LaserCutter
 {
     public partial class frmSelectJob : Form
     {
-
         public panJobFile JobFile;
 
         public TableNo TableNo;

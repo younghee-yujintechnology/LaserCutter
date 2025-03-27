@@ -2,7 +2,7 @@
 using System.Collections;
 using System.ComponentModel;
 
-using YujinTechnology;
+using yjTech;
 using Raize.CodeSiteLogging;
 
 namespace LaserCutter

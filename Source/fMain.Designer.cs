@@ -29,91 +29,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.panBottom = new YujinTechnology.GradientPanel();
-            this.lblSelectedMenu = new System.Windows.Forms.Label();
-            this.btnVietnam = new System.Windows.Forms.Button();
-            this.btnKorea = new System.Windows.Forms.Button();
-            this.btnEnglish = new System.Windows.Forms.Button();
-            this.btnAuto = new YujinTechnology.BitBtn();
-            this.btnManual = new YujinTechnology.BitBtn();
-            this.btnConfig = new YujinTechnology.BitBtn();
-            this.btnAlarm = new YujinTechnology.BitBtn();
-            this.btnJobFile = new YujinTechnology.BitBtn();
-            this.btnVision = new YujinTechnology.BitBtn();
-            this.btnLog = new YujinTechnology.BitBtn();
-            this.btnExit = new YujinTechnology.BitBtn();
-            this.panTop = new YujinTechnology.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.metroPanel1 = new YujinTechnology.Panel();
-            this.btnLogIn = new YujinTechnology.BitBtn();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblDateTime = new YujinTechnology.Label();
-            this.panEqpTitle = new YujinTechnology.GradientPanel();
-            this.lblVersion = new YujinTechnology.Label();
-            this.lblBuildVersion = new YujinTechnology.Label();
-            this.lblMainTitle = new YujinTechnology.GradientLabel();
-            this.AutoThread = new YujinTechnology.Thread();
-            this.panRight = new System.Windows.Forms.Panel();
+            this.AutoThread = new yjTech.Thread();
             this.panClient = new System.Windows.Forms.Panel();
-            this.panBottom.SuspendLayout();
-            this.panTop.SuspendLayout();
+            this.btnAuto = new yjTech.BitBtn();
+            this.btnJobFile = new yjTech.BitBtn();
+            this.btnVision = new yjTech.BitBtn();
+            this.btnLog = new yjTech.BitBtn();
+            this.btnExit = new yjTech.BitBtn();
+            this.bitBtn2 = new yjTech.BitBtn();
+            this.bitBtn3 = new yjTech.BitBtn();
+            this.bitBtn4 = new yjTech.BitBtn();
+            this.bitBtn5 = new yjTech.BitBtn();
+            this.bitBtn6 = new yjTech.BitBtn();
+            this.panTop = new yjTech.Panel();
+            this.lblDateTime = new yjTech.Label();
+            this.lblBuildVersion = new yjTech.Label();
+            this.lblVersion = new yjTech.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panRight = new System.Windows.Forms.Panel();
+            this.bitBtn1 = new yjTech.BitBtn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.metroPanel1.SuspendLayout();
-            this.panEqpTitle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panBottom
+            // AutoThread
             // 
-            this.panBottom.Controls.Add(this.lblSelectedMenu);
-            this.panBottom.Controls.Add(this.btnVietnam);
-            this.panBottom.Controls.Add(this.btnKorea);
-            this.panBottom.Controls.Add(this.btnEnglish);
-            this.panBottom.Controls.Add(this.btnAuto);
-            this.panBottom.Controls.Add(this.btnManual);
-            this.panBottom.Controls.Add(this.btnConfig);
-            this.panBottom.Controls.Add(this.btnAlarm);
-            this.panBottom.Controls.Add(this.btnJobFile);
-            this.panBottom.Controls.Add(this.btnVision);
-            this.panBottom.Controls.Add(this.btnLog);
-            this.panBottom.Controls.Add(this.btnExit);
-            resources.ApplyResources(this.panBottom, "panBottom");
-            this.panBottom.FrameInner.Visible = false;
-            this.panBottom.FrameOuter.Visible = false;
-            this.panBottom.GradientEnable = true;
-            this.panBottom.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
-            this.panBottom.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.panBottom.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
-            this.panBottom.Name = "panBottom";
+            this.AutoThread.Enabled = false;
+            this.AutoThread.Interval = 100;
+            this.AutoThread.OnExecute += new System.EventHandler(this.AutoThread_OnExecute);
             // 
-            // lblSelectedMenu
+            // panClient
             // 
-            this.lblSelectedMenu.BackColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.lblSelectedMenu, "lblSelectedMenu");
-            this.lblSelectedMenu.ForeColor = System.Drawing.Color.White;
-            this.lblSelectedMenu.Name = "lblSelectedMenu";
-            // 
-            // btnVietnam
-            // 
-            resources.ApplyResources(this.btnVietnam, "btnVietnam");
-            this.btnVietnam.Name = "btnVietnam";
-            this.btnVietnam.UseVisualStyleBackColor = true;
-            this.btnVietnam.Click += new System.EventHandler(this.btnVietnam_Click);
-            // 
-            // btnKorea
-            // 
-            resources.ApplyResources(this.btnKorea, "btnKorea");
-            this.btnKorea.Name = "btnKorea";
-            this.btnKorea.UseVisualStyleBackColor = true;
-            this.btnKorea.Click += new System.EventHandler(this.btnKorea_Click);
-            // 
-            // btnEnglish
-            // 
-            resources.ApplyResources(this.btnEnglish, "btnEnglish");
-            this.btnEnglish.Name = "btnEnglish";
-            this.btnEnglish.UseVisualStyleBackColor = true;
-            this.btnEnglish.Click += new System.EventHandler(this.btnEnglish_Click);
+            this.panClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            resources.ApplyResources(this.panClient, "panClient");
+            this.panClient.Name = "panClient";
             // 
             // btnAuto
             // 
@@ -126,40 +74,7 @@
             this.btnAuto.Name = "btnAuto";
             this.btnAuto.Tag = "10";
             this.btnAuto.UseVisualStyleBackColor = false;
-            // 
-            // btnManual
-            // 
-            this.btnManual.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnManual.BackColor = System.Drawing.Color.Wheat;
-            this.btnManual.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnManual, "btnManual");
-            this.btnManual.ForeColor = System.Drawing.Color.Black;
-            this.btnManual.Name = "btnManual";
-            this.btnManual.Tag = "11";
-            this.btnManual.UseVisualStyleBackColor = false;
-            // 
-            // btnConfig
-            // 
-            this.btnConfig.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnConfig.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnConfig, "btnConfig");
-            this.btnConfig.ForeColor = System.Drawing.Color.Black;
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Tag = "12";
-            this.btnConfig.UseVisualStyleBackColor = false;
-            // 
-            // btnAlarm
-            // 
-            this.btnAlarm.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnAlarm.BackColor = System.Drawing.Color.Transparent;
-            this.btnAlarm.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnAlarm, "btnAlarm");
-            this.btnAlarm.ForeColor = System.Drawing.Color.Black;
-            this.btnAlarm.Image = global::LaserCutter.Properties.Resources.Alarm;
-            this.btnAlarm.Name = "btnAlarm";
-            this.btnAlarm.Tag = "13";
-            this.btnAlarm.UseVisualStyleBackColor = false;
+            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
             // 
             // btnJobFile
             // 
@@ -202,21 +117,115 @@
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btnExit, "btnExit");
             this.btnExit.ForeColor = System.Drawing.Color.Black;
+            this.btnExit.Margin2 = 10;
             this.btnExit.Name = "btnExit";
             this.btnExit.Tag = "17";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // bitBtn2
+            // 
+            this.bitBtn2.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn2.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn2.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn2, "bitBtn2");
+            this.bitBtn2.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn2.Margin2 = 10;
+            this.bitBtn2.Name = "bitBtn2";
+            this.bitBtn2.Tag = "10";
+            this.bitBtn2.UseVisualStyleBackColor = false;
+            // 
+            // bitBtn3
+            // 
+            this.bitBtn3.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn3.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn3.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn3, "bitBtn3");
+            this.bitBtn3.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn3.Margin2 = 10;
+            this.bitBtn3.Name = "bitBtn3";
+            this.bitBtn3.Tag = "10";
+            this.bitBtn3.UseVisualStyleBackColor = false;
+            // 
+            // bitBtn4
+            // 
+            this.bitBtn4.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn4.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn4.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn4, "bitBtn4");
+            this.bitBtn4.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn4.Margin2 = 10;
+            this.bitBtn4.Name = "bitBtn4";
+            this.bitBtn4.Tag = "10";
+            this.bitBtn4.UseVisualStyleBackColor = false;
+            // 
+            // bitBtn5
+            // 
+            this.bitBtn5.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn5.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn5.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn5, "bitBtn5");
+            this.bitBtn5.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn5.Margin2 = 10;
+            this.bitBtn5.Name = "bitBtn5";
+            this.bitBtn5.Tag = "10";
+            this.bitBtn5.UseVisualStyleBackColor = false;
+            // 
+            // bitBtn6
+            // 
+            this.bitBtn6.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn6.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn6.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn6, "bitBtn6");
+            this.bitBtn6.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn6.Margin2 = 10;
+            this.bitBtn6.Name = "bitBtn6";
+            this.bitBtn6.Tag = "10";
+            this.bitBtn6.UseVisualStyleBackColor = false;
+            // 
             // panTop
             // 
             this.panTop.BackColor = System.Drawing.Color.White;
             this.panTop.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panTop.Controls.Add(this.pictureBox1);
-            this.panTop.Controls.Add(this.metroPanel1);
-            this.panTop.Controls.Add(this.panEqpTitle);
             resources.ApplyResources(this.panTop, "panTop");
             this.panTop.FrameInner.Visible = false;
             this.panTop.Name = "panTop";
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.BackColor = System.Drawing.Color.LightGray;
+            this.lblDateTime.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lblDateTime.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
+            this.lblDateTime.CaptionStyle.ShadowDirection = yjTech.ShadowDirection.BottomRight;
+            this.lblDateTime.CaptionStyle.TextStyle = yjTech.TextStyle.Shadow;
+            resources.ApplyResources(this.lblDateTime, "lblDateTime");
+            this.lblDateTime.ForeColor = System.Drawing.Color.Red;
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.ShowAccelChar = false;
+            // 
+            // lblBuildVersion
+            // 
+            this.lblBuildVersion.BackColor = System.Drawing.Color.Transparent;
+            this.lblBuildVersion.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lblBuildVersion.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
+            this.lblBuildVersion.CaptionStyle.ShadowDirection = yjTech.ShadowDirection.BottomRight;
+            this.lblBuildVersion.CaptionStyle.TextStyle = yjTech.TextStyle.Shadow;
+            resources.ApplyResources(this.lblBuildVersion, "lblBuildVersion");
+            this.lblBuildVersion.ForeColor = System.Drawing.Color.Gold;
+            this.lblBuildVersion.Name = "lblBuildVersion";
+            this.lblBuildVersion.ShowAccelChar = false;
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.BackColor = System.Drawing.Color.Transparent;
+            this.lblVersion.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
+            this.lblVersion.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
+            this.lblVersion.CaptionStyle.ShadowDirection = yjTech.ShadowDirection.BottomRight;
+            this.lblVersion.CaptionStyle.TextStyle = yjTech.TextStyle.Shadow;
+            resources.ApplyResources(this.lblVersion, "lblVersion");
+            this.lblVersion.ForeColor = System.Drawing.Color.Red;
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.ShowAccelChar = false;
             // 
             // pictureBox1
             // 
@@ -225,202 +234,75 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
-            // metroPanel1
-            // 
-            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroPanel1.Controls.Add(this.btnLogIn);
-            this.metroPanel1.Controls.Add(this.lblUser);
-            this.metroPanel1.Controls.Add(this.label4);
-            this.metroPanel1.Controls.Add(this.label3);
-            this.metroPanel1.Controls.Add(this.lblDateTime);
-            this.metroPanel1.FrameInner.Visible = false;
-            this.metroPanel1.FrameOuter.Visible = false;
-            resources.ApplyResources(this.metroPanel1, "metroPanel1");
-            this.metroPanel1.Name = "metroPanel1";
-            // 
-            // btnLogIn
-            // 
-            this.btnLogIn.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnLogIn.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnLogIn, "btnLogIn");
-            this.btnLogIn.ForeColor = System.Drawing.Color.Black;
-            this.btnLogIn.Image = global::LaserCutter.Properties.Resources.LogN;
-            this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Tag = "20";
-            this.btnLogIn.UseVisualStyleBackColor = false;
-            // 
-            // lblUser
-            // 
-            this.lblUser.BackColor = System.Drawing.Color.LightGray;
-            this.lblUser.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.lblUser, "lblUser");
-            this.lblUser.ForeColor = System.Drawing.Color.Black;
-            this.lblUser.Name = "lblUser";
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Name = "label4";
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Name = "label3";
-            // 
-            // lblDateTime
-            // 
-            this.lblDateTime.BackColor = System.Drawing.Color.LightGray;
-            this.lblDateTime.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lblDateTime.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblDateTime.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
-            this.lblDateTime.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
-            resources.ApplyResources(this.lblDateTime, "lblDateTime");
-            this.lblDateTime.ForeColor = System.Drawing.Color.Red;
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.ShowAccelChar = false;
-            // 
-            // panEqpTitle
-            // 
-            this.panEqpTitle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panEqpTitle.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
-            this.panEqpTitle.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.panEqpTitle.CaptionStyle.ShadowDepth = 3;
-            this.panEqpTitle.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
-            this.panEqpTitle.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
-            this.panEqpTitle.Controls.Add(this.lblVersion);
-            this.panEqpTitle.Controls.Add(this.lblBuildVersion);
-            this.panEqpTitle.Controls.Add(this.lblMainTitle);
-            resources.ApplyResources(this.panEqpTitle, "panEqpTitle");
-            this.panEqpTitle.GradientEnable = true;
-            this.panEqpTitle.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
-            this.panEqpTitle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.panEqpTitle.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
-            this.panEqpTitle.Name = "panEqpTitle";
-            this.panEqpTitle.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.BackColor = System.Drawing.Color.Transparent;
-            this.lblVersion.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lblVersion.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblVersion.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
-            this.lblVersion.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
-            resources.ApplyResources(this.lblVersion, "lblVersion");
-            this.lblVersion.ForeColor = System.Drawing.Color.Red;
-            this.lblVersion.Frame.Visible = false;
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.ShowAccelChar = false;
-            // 
-            // lblBuildVersion
-            // 
-            this.lblBuildVersion.BackColor = System.Drawing.Color.Transparent;
-            this.lblBuildVersion.CaptionStyle.OutlineFillColor = System.Drawing.Color.WhiteSmoke;
-            this.lblBuildVersion.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblBuildVersion.CaptionStyle.ShadowDepth = 2;
-            this.lblBuildVersion.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
-            this.lblBuildVersion.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
-            resources.ApplyResources(this.lblBuildVersion, "lblBuildVersion");
-            this.lblBuildVersion.ForeColor = System.Drawing.Color.Gold;
-            this.lblBuildVersion.Frame.Visible = false;
-            this.lblBuildVersion.Name = "lblBuildVersion";
-            this.lblBuildVersion.ShowAccelChar = false;
-            // 
-            // lblMainTitle
-            // 
-            this.lblMainTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblMainTitle.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
-            this.lblMainTitle.CaptionStyle.ShadowColor = System.Drawing.Color.Black;
-            this.lblMainTitle.CaptionStyle.ShadowDepth = 3;
-            this.lblMainTitle.CaptionStyle.ShadowDirection = YujinTechnology.ShadowDirection.BottomRight;
-            this.lblMainTitle.CaptionStyle.TextStyle = YujinTechnology.TextStyle.Shadow;
-            this.lblMainTitle.CausesValidation = false;
-            resources.ApplyResources(this.lblMainTitle, "lblMainTitle");
-            this.lblMainTitle.ForeColor = System.Drawing.Color.Lime;
-            this.lblMainTitle.Frame.Visible = false;
-            this.lblMainTitle.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
-            this.lblMainTitle.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.lblMainTitle.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(233)))), ((int)(((byte)(248)))));
-            this.lblMainTitle.Name = "lblMainTitle";
-            this.lblMainTitle.ShowAccelChar = false;
-            this.lblMainTitle.DoubleClick += new System.EventHandler(this.lblMainTitle_DoubleClick);
-            this.lblMainTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblMainTitle_MouseDown);
-            this.lblMainTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblMainTitle_MouseMove);
-            // 
-            // AutoThread
-            // 
-            this.AutoThread.Enabled = false;
-            this.AutoThread.Interval = 100;
-            this.AutoThread.OnExecute += new System.EventHandler(this.AutoThread_OnExecute);
-            // 
             // panRight
             // 
             resources.ApplyResources(this.panRight, "panRight");
             this.panRight.Name = "panRight";
             // 
-            // panClient
+            // bitBtn1
             // 
-            this.panClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            resources.ApplyResources(this.panClient, "panClient");
-            this.panClient.Name = "panClient";
+            this.bitBtn1.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn1.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn1.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn1, "bitBtn1");
+            this.bitBtn1.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn1.Margin2 = 10;
+            this.bitBtn1.Name = "bitBtn1";
+            this.bitBtn1.Tag = "10";
+            this.bitBtn1.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.panClient);
+            this.Controls.Add(this.bitBtn1);
             this.Controls.Add(this.panRight);
-            this.Controls.Add(this.panBottom);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblVersion);
+            this.Controls.Add(this.lblBuildVersion);
+            this.Controls.Add(this.lblDateTime);
+            this.Controls.Add(this.bitBtn6);
+            this.Controls.Add(this.bitBtn5);
+            this.Controls.Add(this.bitBtn4);
+            this.Controls.Add(this.bitBtn3);
+            this.Controls.Add(this.bitBtn2);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnLog);
+            this.Controls.Add(this.btnVision);
+            this.Controls.Add(this.btnJobFile);
+            this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.panTop);
+            this.Controls.Add(this.panClient);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
             this.TransparencyKey = System.Drawing.Color.DeepPink;
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.panBottom.ResumeLayout(false);
-            this.panTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.metroPanel1.ResumeLayout(false);
-            this.panEqpTitle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private YujinTechnology.GradientPanel panBottom;
-        private YujinTechnology.Panel panTop;
-        private System.Windows.Forms.Label lblSelectedMenu;
-        private YujinTechnology.BitBtn btnAuto;
-        private YujinTechnology.BitBtn btnAlarm;
-        private YujinTechnology.BitBtn btnManual;
-        private YujinTechnology.Thread AutoThread;
-        private YujinTechnology.Panel metroPanel1;
-        private YujinTechnology.Label lblDateTime;
-        private YujinTechnology.GradientPanel panEqpTitle;
+        private yjTech.Thread AutoThread;
+        public System.Windows.Forms.Panel panClient;
+        private yjTech.BitBtn btnAuto;
+        private yjTech.BitBtn btnJobFile;
+        private yjTech.BitBtn btnVision;
+        private yjTech.BitBtn btnLog;
+        private yjTech.BitBtn btnExit;
+        private yjTech.BitBtn bitBtn2;
+        private yjTech.BitBtn bitBtn3;
+        private yjTech.BitBtn bitBtn4;
+        private yjTech.BitBtn bitBtn5;
+        private yjTech.BitBtn bitBtn6;
+        private yjTech.Panel panTop;
+        private yjTech.Label lblDateTime;
+        private yjTech.Label lblBuildVersion;
+        private yjTech.Label lblVersion;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panRight;
-        private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private YujinTechnology.Label lblBuildVersion;
-        private System.Windows.Forms.Button btnVietnam;
-        private System.Windows.Forms.Button btnKorea;
-        private System.Windows.Forms.Button btnEnglish;
-        public System.Windows.Forms.Panel panClient;
-        public YujinTechnology.GradientLabel lblMainTitle;
-        private YujinTechnology.Label lblVersion;
-        private YujinTechnology.BitBtn btnJobFile;
-        private YujinTechnology.BitBtn btnConfig;
-        private YujinTechnology.BitBtn btnExit;
-        private YujinTechnology.BitBtn btnLog;
-        private YujinTechnology.BitBtn btnVision;
-        private YujinTechnology.BitBtn btnLogIn;
+        private yjTech.BitBtn bitBtn1;
     }
 }
 

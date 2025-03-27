@@ -1,28 +1,18 @@
-﻿using Raize.CodeSiteLogging;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using System.ComponentModel.Design;
-using System.Windows.Forms.Design;
-using System.Web.UI.Design.WebControls;
 
 namespace LaserCutter
 {
     public partial class sjPanel : System.Windows.Forms.Panel
     {
-        YujinTechnology.GradientLabel lblTitle;
+        yjTech.GradientLabel lblTitle;
         System.Windows.Forms.Label lblBorder;
 
         public sjPanel()
         {
-            lblTitle = new YujinTechnology.GradientLabel();
+            lblTitle = new yjTech.GradientLabel();
             lblBorder = new System.Windows.Forms.Label();
 
             lblBorder.BackColor = System.Drawing.SystemColors.ActiveCaption;
