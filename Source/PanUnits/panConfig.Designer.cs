@@ -97,12 +97,12 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tabPage2.Font = new System.Drawing.Font("Tahoma", 10F);
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1545, 804);
+            this.tabPage2.Size = new System.Drawing.Size(1214, 804);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "Motor";
             // 
@@ -113,7 +113,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1545, 804);
+            this.tabPage1.Size = new System.Drawing.Size(1214, 804);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Common";
             // 
@@ -133,7 +133,7 @@
             this.tabConfig.RightToLeftLayout = true;
             this.tabConfig.ShowActiveCloseButton = false;
             this.tabConfig.ShowCloseButton = false;
-            this.tabConfig.Size = new System.Drawing.Size(1553, 852);
+            this.tabConfig.Size = new System.Drawing.Size(1222, 852);
             this.tabConfig.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabConfig.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabConfig.TabIndex = 1127;
@@ -156,7 +156,7 @@
             this.Controls.Add(this.tabConfig);
             this.Font = new System.Drawing.Font("굴림", 9F);
             this.Name = "panConfig";
-            this.Size = new System.Drawing.Size(1552, 852);
+            this.Size = new System.Drawing.Size(1222, 852);
             this.tabConfig.ResumeLayout(false);
             this.ResumeLayout(false);
 

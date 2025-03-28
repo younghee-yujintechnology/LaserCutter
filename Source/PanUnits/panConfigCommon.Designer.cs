@@ -453,7 +453,7 @@
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Margin = new System.Windows.Forms.Padding(0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(1367, 843);
+            this.panClient.Size = new System.Drawing.Size(1209, 800);
             this.panClient.TabIndex = 0;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -465,9 +465,9 @@
             this.btnCancel.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(955, 771);
+            this.btnCancel.Location = new System.Drawing.Point(882, 752);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(123, 57);
+            this.btnCancel.Size = new System.Drawing.Size(104, 43);
             this.btnCancel.TabIndex = 1595;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -476,9 +476,9 @@
             // 
             this.btnSet.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSet.Location = new System.Drawing.Point(1084, 771);
+            this.btnSet.Location = new System.Drawing.Point(991, 752);
             this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(123, 57);
+            this.btnSet.Size = new System.Drawing.Size(104, 43);
             this.btnSet.TabIndex = 1594;
             this.btnSet.Text = "Apply";
             this.btnSet.UseVisualStyleBackColor = false;
@@ -495,11 +495,11 @@
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("Tahoma", 11F);
             this.tabControl1.ItemSize = new System.Drawing.Size(150, 30);
-            this.tabControl1.Location = new System.Drawing.Point(15, 56);
+            this.tabControl1.Location = new System.Drawing.Point(4, 50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(1332, 705);
+            this.tabControl1.Size = new System.Drawing.Size(1199, 698);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 1593;
@@ -539,7 +539,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1324, 667);
+            this.tabPage1.Size = new System.Drawing.Size(1191, 660);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "  Speed  ";
             // 
@@ -930,10 +930,10 @@
             this.tabPage2.Controls.Add(this.uiLine5);
             this.tabPage2.Controls.Add(this.gradLabel7);
             this.tabPage2.Controls.Add(this.gradLabel6);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1324, 675);
+            this.tabPage2.Size = new System.Drawing.Size(1191, 660);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "  Position  ";
             // 
@@ -950,7 +950,7 @@
             this.sunnyLine4.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.sunnyLine4.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.sunnyLine4.LineWidth = 1F;
-            this.sunnyLine4.Location = new System.Drawing.Point(746, 272);
+            this.sunnyLine4.Location = new System.Drawing.Point(654, 272);
             this.sunnyLine4.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine4.Name = "sunnyLine4";
             this.sunnyLine4.ShowHint = false;
@@ -1146,7 +1146,7 @@
             this.btnMark.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnMark.ForeColor = System.Drawing.Color.Black;
             this.btnMark.LED.Size = new System.Drawing.Size(16, 26);
-            this.btnMark.Location = new System.Drawing.Point(896, 440);
+            this.btnMark.Location = new System.Drawing.Point(804, 440);
             this.btnMark.Margin2 = 10;
             this.btnMark.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnMark.Name = "btnMark";
@@ -1165,7 +1165,7 @@
             this.gradientLabel29.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel29.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel29.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel29.Location = new System.Drawing.Point(872, 367);
+            this.gradientLabel29.Location = new System.Drawing.Point(780, 367);
             this.gradientLabel29.Name = "gradientLabel29";
             this.gradientLabel29.ShowAccelChar = false;
             this.gradientLabel29.Size = new System.Drawing.Size(115, 29);
@@ -1181,7 +1181,7 @@
             this.edTable2YOffset.Frame.CornerRound = 1;
             this.edTable2YOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2YOffset.Hint = null;
-            this.edTable2YOffset.Location = new System.Drawing.Point(1092, 367);
+            this.edTable2YOffset.Location = new System.Drawing.Point(1000, 367);
             this.edTable2YOffset.Max = 0D;
             this.edTable2YOffset.Min = 0D;
             this.edTable2YOffset.Name = "edTable2YOffset";
@@ -1201,7 +1201,7 @@
             this.edTable2XOffset.Frame.CornerRound = 1;
             this.edTable2XOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2XOffset.Hint = null;
-            this.edTable2XOffset.Location = new System.Drawing.Point(993, 367);
+            this.edTable2XOffset.Location = new System.Drawing.Point(901, 367);
             this.edTable2XOffset.Max = 0D;
             this.edTable2XOffset.Min = 0D;
             this.edTable2XOffset.Name = "edTable2XOffset";
@@ -1218,7 +1218,7 @@
             this.btnMove.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnMove.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.btnMove.Location = new System.Drawing.Point(1191, 334);
+            this.btnMove.Location = new System.Drawing.Point(1099, 334);
             this.btnMove.Name = "btnMove";
             this.btnMove.Size = new System.Drawing.Size(32, 29);
             this.btnMove.TabIndex = 1660;
@@ -1235,7 +1235,7 @@
             this.gradientLabel6.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel6.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel6.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel6.Location = new System.Drawing.Point(872, 334);
+            this.gradientLabel6.Location = new System.Drawing.Point(780, 334);
             this.gradientLabel6.Name = "gradientLabel6";
             this.gradientLabel6.ShowAccelChar = false;
             this.gradientLabel6.Size = new System.Drawing.Size(115, 29);
@@ -1251,7 +1251,7 @@
             this.edTable2MarkCenterY.Frame.CornerRound = 1;
             this.edTable2MarkCenterY.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2MarkCenterY.Hint = null;
-            this.edTable2MarkCenterY.Location = new System.Drawing.Point(1092, 334);
+            this.edTable2MarkCenterY.Location = new System.Drawing.Point(1000, 334);
             this.edTable2MarkCenterY.Max = 0D;
             this.edTable2MarkCenterY.Min = 0D;
             this.edTable2MarkCenterY.Name = "edTable2MarkCenterY";
@@ -1271,7 +1271,7 @@
             this.edTable2MarkCenterX.Frame.CornerRound = 1;
             this.edTable2MarkCenterX.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2MarkCenterX.Hint = null;
-            this.edTable2MarkCenterX.Location = new System.Drawing.Point(993, 334);
+            this.edTable2MarkCenterX.Location = new System.Drawing.Point(901, 334);
             this.edTable2MarkCenterX.Max = 0D;
             this.edTable2MarkCenterX.Min = 0D;
             this.edTable2MarkCenterX.Name = "edTable2MarkCenterX";
@@ -1292,7 +1292,7 @@
             this.btnMeasure.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnMeasure.ForeColor = System.Drawing.Color.Black;
             this.btnMeasure.LED.Size = new System.Drawing.Size(16, 26);
-            this.btnMeasure.Location = new System.Drawing.Point(1092, 440);
+            this.btnMeasure.Location = new System.Drawing.Point(1000, 440);
             this.btnMeasure.Margin2 = 10;
             this.btnMeasure.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnMeasure.Name = "btnMeasure";
@@ -1501,7 +1501,7 @@
             this.gradientLabel7.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel7.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel7.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel7.Location = new System.Drawing.Point(872, 400);
+            this.gradientLabel7.Location = new System.Drawing.Point(780, 400);
             this.gradientLabel7.Name = "gradientLabel7";
             this.gradientLabel7.ShowAccelChar = false;
             this.gradientLabel7.Size = new System.Drawing.Size(115, 29);
@@ -1589,7 +1589,7 @@
             this.edTable2NozzleYOffset.Frame.CornerRound = 1;
             this.edTable2NozzleYOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2NozzleYOffset.Hint = null;
-            this.edTable2NozzleYOffset.Location = new System.Drawing.Point(1092, 400);
+            this.edTable2NozzleYOffset.Location = new System.Drawing.Point(1000, 400);
             this.edTable2NozzleYOffset.Max = 0D;
             this.edTable2NozzleYOffset.Min = 0D;
             this.edTable2NozzleYOffset.Name = "edTable2NozzleYOffset";
@@ -1609,7 +1609,7 @@
             this.edTable2NozzleXOffset.Frame.CornerRound = 1;
             this.edTable2NozzleXOffset.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edTable2NozzleXOffset.Hint = null;
-            this.edTable2NozzleXOffset.Location = new System.Drawing.Point(993, 400);
+            this.edTable2NozzleXOffset.Location = new System.Drawing.Point(901, 400);
             this.edTable2NozzleXOffset.Max = 0D;
             this.edTable2NozzleXOffset.Min = 0D;
             this.edTable2NozzleXOffset.Name = "edTable2NozzleXOffset";
@@ -1634,7 +1634,7 @@
             this.sunnyLine3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.sunnyLine3.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.sunnyLine3.LineWidth = 1F;
-            this.sunnyLine3.Location = new System.Drawing.Point(744, 309);
+            this.sunnyLine3.Location = new System.Drawing.Point(652, 309);
             this.sunnyLine3.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine3.Name = "sunnyLine3";
             this.sunnyLine3.ShowHint = false;
@@ -1654,7 +1654,7 @@
             this.gradLabel39.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel39.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel39.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel39.Location = new System.Drawing.Point(993, 304);
+            this.gradLabel39.Location = new System.Drawing.Point(901, 304);
             this.gradLabel39.Name = "gradLabel39";
             this.gradLabel39.ShowAccelChar = false;
             this.gradLabel39.Size = new System.Drawing.Size(94, 26);
@@ -1671,7 +1671,7 @@
             this.gradLabel15.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel15.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel15.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel15.Location = new System.Drawing.Point(1092, 304);
+            this.gradLabel15.Location = new System.Drawing.Point(1000, 304);
             this.gradLabel15.Name = "gradLabel15";
             this.gradLabel15.ShowAccelChar = false;
             this.gradLabel15.Size = new System.Drawing.Size(94, 26);
@@ -1899,10 +1899,10 @@
             this.tabPage4.Controls.Add(this.gradLabel5);
             this.tabPage4.Controls.Add(this.gradLabel2);
             this.tabPage4.Controls.Add(this.uiLine1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1324, 675);
+            this.tabPage4.Size = new System.Drawing.Size(1191, 660);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "  Option  ";
             // 
@@ -2492,10 +2492,10 @@
             this.tabPage5.Controls.Add(this.edTable1LoadingPosX);
             this.tabPage5.Controls.Add(this.edTable1LoadingPosY);
             this.tabPage5.Controls.Add(this.groupBox6);
-            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Location = new System.Drawing.Point(4, 34);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1324, 675);
+            this.tabPage5.Size = new System.Drawing.Size(1191, 660);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "  Loading  ";
             // 
@@ -2635,7 +2635,7 @@
             this.groupBox3.Controls.Add(this.ledTable2RightTop);
             this.groupBox3.Controls.Add(this.ledTable2LeftBottom);
             this.groupBox3.Controls.Add(this.ledTable2LeftTop);
-            this.groupBox3.Location = new System.Drawing.Point(735, 23);
+            this.groupBox3.Location = new System.Drawing.Point(606, 23);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(553, 460);
             this.groupBox3.TabIndex = 1659;
@@ -3041,7 +3041,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1324, 667);
+            this.tabPage3.Size = new System.Drawing.Size(1191, 660);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "  Loading.Position  ";
             // 
@@ -4049,10 +4049,10 @@
             // 
             this.tabPage6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tabPage6.Controls.Add(this.tabControl2);
-            this.tabPage6.Location = new System.Drawing.Point(4, 26);
+            this.tabPage6.Location = new System.Drawing.Point(4, 34);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1324, 675);
+            this.tabPage6.Size = new System.Drawing.Size(1191, 660);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "  Focus  ";
             // 
@@ -4061,8 +4061,9 @@
             this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Controls.Add(this.tabPage8);
             this.tabControl2.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl2.Location = new System.Drawing.Point(189, 69);
+            this.tabControl2.Location = new System.Drawing.Point(138, 31);
             this.tabControl2.Name = "tabControl2";
+            this.tabControl2.RightToLeftLayout = true;
             this.tabControl2.ShowActiveCloseButton = false;
             this.tabControl2.ShowCloseButton = false;
             this.tabControl2.Size = new System.Drawing.Size(924, 537);
@@ -4854,10 +4855,10 @@
             this.tabPage8.Controls.Add(this.btnMoveTable2LaserZFocus);
             this.tabPage8.Controls.Add(this.edTable2VisionZFocus);
             this.tabPage8.Controls.Add(this.edTable2LaserZFocus);
-            this.tabPage8.Location = new System.Drawing.Point(4, 26);
+            this.tabPage8.Location = new System.Drawing.Point(4, 34);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(916, 507);
+            this.tabPage8.Size = new System.Drawing.Size(916, 499);
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "  Table#2  ";
             // 
@@ -5547,9 +5548,9 @@
             // 
             this.btnAllSave.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnAllSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnAllSave.Location = new System.Drawing.Point(1213, 771);
+            this.btnAllSave.Location = new System.Drawing.Point(1099, 752);
             this.btnAllSave.Name = "btnAllSave";
-            this.btnAllSave.Size = new System.Drawing.Size(132, 57);
+            this.btnAllSave.Size = new System.Drawing.Size(104, 43);
             this.btnAllSave.TabIndex = 1562;
             this.btnAllSave.Text = "Save";
             this.btnAllSave.UseVisualStyleBackColor = false;
@@ -5560,7 +5561,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panClient);
             this.Name = "panConfigCommon";
-            this.Size = new System.Drawing.Size(1373, 849);
+            this.Size = new System.Drawing.Size(1214, 805);
             this.Load += new System.EventHandler(this.panConfigCommon_Load);
             this.panClient.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
