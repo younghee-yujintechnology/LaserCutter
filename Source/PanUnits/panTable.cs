@@ -49,7 +49,7 @@ namespace LaserCutter
             tabPage1.Controls.Add(Type1);
             tabPage2.Controls.Add(Type2);
             tabPage3.Controls.Add(Type3);
-            tabPage4.Controls.Add(Type3);
+            tabPage4.Controls.Add(Type4);
 
             Type1.Location = new Point(0, 0);
             Type2.Location = new Point(0, 0);

@@ -112,7 +112,7 @@ namespace LaserCutter
 
             btnAuto.Click += ChangeMainPanel;
             btnJobFile.Click += ChangeMainPanel;
-            ////btnManual.Click += ChangeMainPanel;
+            btnManual.Click += ChangeMainPanel;
             ////btnConfig.Click += ChangeMainPanel;
             ////btnAlarm.Click += ChangeMainPanel;
             btnLog.Click += ChangeMainPanel;
@@ -415,6 +415,13 @@ namespace LaserCutter
                 JobFile.LoadModelList();
             }
             else
+            if (aButton == btnManual)
+            {
+                lblMainTitle.Text = "Manual";
+
+                panClient.Controls.Add(Manual);
+            }
+            else
             if (aButton == btnLog)
             {
                 ////lblMainTitle.Text = "Error Log";
@@ -444,8 +451,8 @@ namespace LaserCutter
                 //// Manual.PowerMeter.MeasureThread.Enabled = false;
                 await Task.Delay(100);
 
-                Pmac.QueryCommand("doTowerLampBuzzer=false");
-                Pmac.QueryCommand("doBeamShutterOpen=false");
+                ////Pmac.QueryCommand("doTowerLampBuzzer=false");
+                ////Pmac.QueryCommand("doBeamShutterOpen=false");
 
                 //// frmMVS.btnGrabStop_Click(null, null);
                 //// frmMVS.btnDisconnect_Click(null, null);
@@ -548,9 +555,5 @@ namespace LaserCutter
         }
 #endregion
 
-        private void btnAuto_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

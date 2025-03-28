@@ -287,7 +287,7 @@
             this.lblShutterStatus.Location = new System.Drawing.Point(380, 200);
             this.lblShutterStatus.Name = "lblShutterStatus";
             this.lblShutterStatus.ShowAccelChar = false;
-            this.lblShutterStatus.Size = new System.Drawing.Size(160, 50);
+            this.lblShutterStatus.Size = new System.Drawing.Size(160, 45);
             this.lblShutterStatus.TabIndex = 1645;
             this.lblShutterStatus.Text = "Main Output is closed";
             this.lblShutterStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -364,10 +364,10 @@
             this.lblLaserSet.Frame.Right = false;
             this.lblLaserSet.Frame.Top = false;
             this.lblLaserSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblLaserSet.Location = new System.Drawing.Point(127, 199);
+            this.lblLaserSet.Location = new System.Drawing.Point(127, 202);
             this.lblLaserSet.Name = "lblLaserSet";
             this.lblLaserSet.ShowAccelChar = false;
-            this.lblLaserSet.Size = new System.Drawing.Size(273, 51);
+            this.lblLaserSet.Size = new System.Drawing.Size(247, 44);
             this.lblLaserSet.TabIndex = 1639;
             this.lblLaserSet.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -922,7 +922,7 @@
             this.gradLabel26.Size = new System.Drawing.Size(99, 30);
             this.gradLabel26.TabIndex = 1484;
             this.gradLabel26.Text = "Velocity";
-            this.gradLabel26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gradLabel26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // gradLabel24
             // 
@@ -1016,7 +1016,7 @@
             this.gradLabel17.Size = new System.Drawing.Size(99, 30);
             this.gradLabel17.TabIndex = 1485;
             this.gradLabel17.Text = "Position";
-            this.gradLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gradLabel17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // gradLabel29
             // 
