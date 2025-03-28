@@ -51,42 +51,42 @@ namespace LaserCutter
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(panJobFile));
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "[현대자동차][쏘나타][2차]",
             "2024-06-22, 오후 3:06"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "2",
             "[삼성자동차][르노]"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "3",
             "[현대자동차][쏘나타]"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "4",
             "[현대자동차][갤로퍼]"}, -1);
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("4차");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("3차");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("2차");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("1차");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("쏘나타", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16});
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("갤로퍼");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("현대자동차", new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18});
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("QMC");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("삼성자동차", new System.Windows.Forms.TreeNode[] {
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("BMW");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("FORD");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("대우");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("4차");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("3차");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("2차");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("1차");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("쏘나타", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("갤로퍼");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("현대자동차", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("QMC");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("삼성자동차", new System.Windows.Forms.TreeNode[] {
+            treeNode8});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("BMW");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FORD");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("대우");
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.panLeft = new System.Windows.Forms.Panel();
+            this.panRight = new System.Windows.Forms.Panel();
             this.tabControlSelectJobFile = new System.Windows.Forms.TabControl();
             this.tabPageRecentModel = new System.Windows.Forms.TabPage();
             this.lvRecentModel = new System.Windows.Forms.ListView();
@@ -94,14 +94,10 @@ namespace LaserCutter
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClear = new yjTech.BitBtn();
             this.tabPageRegisteredModel = new System.Windows.Forms.TabPage();
             this.tvModel = new System.Windows.Forms.TreeView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panClient = new yjTech.Panel();
-            this.TabControl1 = new yjTech.TabControl();
-            this.tabTable1 = new System.Windows.Forms.TabPage();
-            this.tabTable2 = new System.Windows.Forms.TabPage();
-            this.btnClear = new yjTech.BitBtn();
             this.btnCopyModel = new yjTech.BitBtn();
             this.label1 = new yjTech.Label();
             this.LabelGroup = new yjTech.Label();
@@ -111,8 +107,12 @@ namespace LaserCutter
             this.btnDeleteGroup = new yjTech.BitBtn();
             this.btnRenameGroup = new yjTech.BitBtn();
             this.btnAddGroup = new yjTech.BitBtn();
+            this.panClient = new yjTech.Panel();
+            this.TabControl1 = new yjTech.TabControl();
+            this.tabTable1 = new System.Windows.Forms.TabPage();
+            this.tabTable2 = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1.SuspendLayout();
-            this.panLeft.SuspendLayout();
+            this.panRight.SuspendLayout();
             this.tabControlSelectJobFile.SuspendLayout();
             this.tabPageRecentModel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -167,15 +167,16 @@ namespace LaserCutter
             this.imageList1.Images.SetKeyName(24, "24.bmp");
             this.imageList1.Images.SetKeyName(25, "25.bmp");
             // 
-            // panLeft
+            // panRight
             // 
-            this.panLeft.Controls.Add(this.tabControlSelectJobFile);
-            this.panLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panLeft.Location = new System.Drawing.Point(0, 0);
-            this.panLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.panLeft.Name = "panLeft";
-            this.panLeft.Size = new System.Drawing.Size(344, 852);
-            this.panLeft.TabIndex = 1380;
+            this.panRight.Controls.Add(this.tabControlSelectJobFile);
+            this.panRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panRight.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.panRight.Location = new System.Drawing.Point(1224, 0);
+            this.panRight.Margin = new System.Windows.Forms.Padding(0);
+            this.panRight.Name = "panRight";
+            this.panRight.Size = new System.Drawing.Size(560, 852);
+            this.panRight.TabIndex = 1380;
             // 
             // tabControlSelectJobFile
             // 
@@ -189,7 +190,7 @@ namespace LaserCutter
             this.tabControlSelectJobFile.Multiline = true;
             this.tabControlSelectJobFile.Name = "tabControlSelectJobFile";
             this.tabControlSelectJobFile.SelectedIndex = 0;
-            this.tabControlSelectJobFile.Size = new System.Drawing.Size(344, 852);
+            this.tabControlSelectJobFile.Size = new System.Drawing.Size(560, 852);
             this.tabControlSelectJobFile.TabIndex = 1;
             // 
             // tabPageRecentModel
@@ -200,7 +201,7 @@ namespace LaserCutter
             this.tabPageRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRecentModel.Name = "tabPageRecentModel";
             this.tabPageRecentModel.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabPageRecentModel.Size = new System.Drawing.Size(311, 844);
+            this.tabPageRecentModel.Size = new System.Drawing.Size(527, 844);
             this.tabPageRecentModel.TabIndex = 0;
             this.tabPageRecentModel.Text = "  Recent Model  ";
             this.tabPageRecentModel.UseVisualStyleBackColor = true;
@@ -217,14 +218,14 @@ namespace LaserCutter
             this.lvRecentModel.FullRowSelect = true;
             this.lvRecentModel.HideSelection = false;
             this.lvRecentModel.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
             this.lvRecentModel.Location = new System.Drawing.Point(4, 3);
             this.lvRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.lvRecentModel.Name = "lvRecentModel";
-            this.lvRecentModel.Size = new System.Drawing.Size(303, 805);
+            this.lvRecentModel.Size = new System.Drawing.Size(519, 805);
             this.lvRecentModel.TabIndex = 1366;
             this.lvRecentModel.UseCompatibleStateImageBehavior = false;
             this.lvRecentModel.View = System.Windows.Forms.View.Details;
@@ -238,7 +239,7 @@ namespace LaserCutter
             // columnHeader2
             // 
             this.columnHeader2.Text = "Model";
-            this.columnHeader2.Width = 300;
+            this.columnHeader2.Width = 358;
             // 
             // columnHeader3
             // 
@@ -251,8 +252,26 @@ namespace LaserCutter
             this.panel1.Location = new System.Drawing.Point(4, 808);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(303, 33);
+            this.panel1.Size = new System.Drawing.Size(519, 33);
             this.panel1.TabIndex = 1365;
+            // 
+            // btnClear
+            // 
+            this.btnClear.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btnClear.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
+            this.btnClear.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btnClear.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnClear.ImageKey = "12.bmp";
+            this.btnClear.ImageList = this.imageList1;
+            this.btnClear.Location = new System.Drawing.Point(484, 3);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(32, 30);
+            this.btnClear.TabIndex = 1364;
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // tabPageRegisteredModel
             // 
@@ -261,7 +280,7 @@ namespace LaserCutter
             this.tabPageRegisteredModel.Location = new System.Drawing.Point(29, 4);
             this.tabPageRegisteredModel.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRegisteredModel.Name = "tabPageRegisteredModel";
-            this.tabPageRegisteredModel.Size = new System.Drawing.Size(311, 844);
+            this.tabPageRegisteredModel.Size = new System.Drawing.Size(535, 844);
             this.tabPageRegisteredModel.TabIndex = 1;
             this.tabPageRegisteredModel.Text = "  Registered Model  ";
             this.tabPageRegisteredModel.UseVisualStyleBackColor = true;
@@ -276,38 +295,38 @@ namespace LaserCutter
             this.tvModel.Location = new System.Drawing.Point(0, 0);
             this.tvModel.Margin = new System.Windows.Forms.Padding(0);
             this.tvModel.Name = "tvModel";
-            treeNode13.Name = "노드8";
-            treeNode13.Text = "4차";
-            treeNode14.Name = "노드9";
-            treeNode14.Text = "3차";
-            treeNode15.Name = "노드10";
-            treeNode15.Text = "2차";
-            treeNode16.Name = "노드11";
-            treeNode16.Text = "1차";
-            treeNode17.Name = "노드5";
-            treeNode17.Text = "쏘나타";
-            treeNode18.Name = "노드7";
-            treeNode18.Text = "갤로퍼";
-            treeNode19.Name = "노드0";
-            treeNode19.Text = "현대자동차";
-            treeNode20.Name = "노드6";
-            treeNode20.Text = "QMC";
-            treeNode21.Name = "노드1";
-            treeNode21.Text = "삼성자동차";
-            treeNode22.Name = "노드2";
-            treeNode22.Text = "BMW";
-            treeNode23.Name = "노드3";
-            treeNode23.Text = "FORD";
-            treeNode24.Name = "노드4";
-            treeNode24.Text = "대우";
+            treeNode1.Name = "노드8";
+            treeNode1.Text = "4차";
+            treeNode2.Name = "노드9";
+            treeNode2.Text = "3차";
+            treeNode3.Name = "노드10";
+            treeNode3.Text = "2차";
+            treeNode4.Name = "노드11";
+            treeNode4.Text = "1차";
+            treeNode5.Name = "노드5";
+            treeNode5.Text = "쏘나타";
+            treeNode6.Name = "노드7";
+            treeNode6.Text = "갤로퍼";
+            treeNode7.Name = "노드0";
+            treeNode7.Text = "현대자동차";
+            treeNode8.Name = "노드6";
+            treeNode8.Text = "QMC";
+            treeNode9.Name = "노드1";
+            treeNode9.Text = "삼성자동차";
+            treeNode10.Name = "노드2";
+            treeNode10.Text = "BMW";
+            treeNode11.Name = "노드3";
+            treeNode11.Text = "FORD";
+            treeNode12.Name = "노드4";
+            treeNode12.Text = "대우";
             this.tvModel.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode19,
-            treeNode21,
-            treeNode22,
-            treeNode23,
-            treeNode24});
+            treeNode7,
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12});
             this.tvModel.SelectedImageIndex = 0;
-            this.tvModel.Size = new System.Drawing.Size(311, 736);
+            this.tvModel.Size = new System.Drawing.Size(535, 736);
             this.tvModel.TabIndex = 1369;
             this.tvModel.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvModel_NodeMouseClick);
             // 
@@ -327,86 +346,8 @@ namespace LaserCutter
             this.panel2.Location = new System.Drawing.Point(0, 736);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(311, 108);
+            this.panel2.Size = new System.Drawing.Size(535, 108);
             this.panel2.TabIndex = 1368;
-            // 
-            // panClient
-            // 
-            this.panClient.Controls.Add(this.TabControl1);
-            this.panClient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panClient.FrameInner.Visible = false;
-            this.panClient.FrameOuter.Visible = false;
-            this.panClient.Location = new System.Drawing.Point(344, 0);
-            this.panClient.Margin = new System.Windows.Forms.Padding(0);
-            this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(1208, 852);
-            this.panClient.TabIndex = 1381;
-            // 
-            // TabControl1
-            // 
-            this.TabControl1.Controls.Add(this.tabTable1);
-            this.TabControl1.Controls.Add(this.tabTable2);
-            this.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.TabControl1.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Bold);
-            this.TabControl1.ImageList = this.imageList1;
-            this.TabControl1.ItemSize = new System.Drawing.Size(590, 40);
-            this.TabControl1.Location = new System.Drawing.Point(0, 0);
-            this.TabControl1.Name = "TabControl1";
-            this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TabControl1.ShowActiveCloseButton = false;
-            this.TabControl1.ShowCloseButton = false;
-            this.TabControl1.Size = new System.Drawing.Size(1205, 849);
-            this.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.TabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.TabControl1.TabIndex = 1422;
-            this.TabControl1.TabSelectedColor = System.Drawing.Color.Lime;
-            this.TabControl1.TabSelectedForeColor = System.Drawing.Color.Black;
-            this.TabControl1.TabSelectedHighColor = System.Drawing.Color.Red;
-            this.TabControl1.TabSelectedHighColorSize = 4;
-            this.TabControl1.TabUnSelectedForeColor = System.Drawing.Color.Gray;
-            this.TabControl1.TabVisible = true;
-            this.TabControl1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TabControl1.TipsColor = System.Drawing.Color.Red;
-            this.TabControl1.TipsFont = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabControl1.TipsForeColor = System.Drawing.Color.White;
-            this.TabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
-            // 
-            // tabTable1
-            // 
-            this.tabTable1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.tabTable1.Font = new System.Drawing.Font("굴림", 9F);
-            this.tabTable1.Location = new System.Drawing.Point(4, 44);
-            this.tabTable1.Name = "tabTable1";
-            this.tabTable1.Size = new System.Drawing.Size(1197, 801);
-            this.tabTable1.TabIndex = 0;
-            this.tabTable1.Text = "Tabel #1";
-            // 
-            // tabTable2
-            // 
-            this.tabTable2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.tabTable2.Location = new System.Drawing.Point(4, 26);
-            this.tabTable2.Name = "tabTable2";
-            this.tabTable2.Size = new System.Drawing.Size(1197, 819);
-            this.tabTable2.TabIndex = 1;
-            this.tabTable2.Text = "Tabel #2";
-            // 
-            // btnClear
-            // 
-            this.btnClear.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnClear.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
-            this.btnClear.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnClear.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnClear.ImageKey = "12.bmp";
-            this.btnClear.ImageList = this.imageList1;
-            this.btnClear.Location = new System.Drawing.Point(268, 3);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(32, 30);
-            this.btnClear.TabIndex = 1364;
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnCopyModel
             // 
@@ -418,7 +359,7 @@ namespace LaserCutter
             this.btnCopyModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnCopyModel.ImageIndex = 8;
             this.btnCopyModel.ImageList = this.imageList1;
-            this.btnCopyModel.Location = new System.Drawing.Point(238, 67);
+            this.btnCopyModel.Location = new System.Drawing.Point(231, 67);
             this.btnCopyModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCopyModel.Name = "btnCopyModel";
             this.btnCopyModel.Size = new System.Drawing.Size(32, 30);
@@ -432,7 +373,7 @@ namespace LaserCutter
             this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label1.Frame.Visible = false;
-            this.label1.Location = new System.Drawing.Point(192, 4);
+            this.label1.Location = new System.Drawing.Point(174, 3);
             this.label1.Name = "label1";
             this.label1.ShowAccelChar = false;
             this.label1.Size = new System.Drawing.Size(110, 25);
@@ -465,7 +406,7 @@ namespace LaserCutter
             this.btnDeleteModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDeleteModel.ImageKey = "7.bmp";
             this.btnDeleteModel.ImageList = this.imageList1;
-            this.btnDeleteModel.Location = new System.Drawing.Point(275, 31);
+            this.btnDeleteModel.Location = new System.Drawing.Point(268, 31);
             this.btnDeleteModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeleteModel.Name = "btnDeleteModel";
             this.btnDeleteModel.Size = new System.Drawing.Size(32, 30);
@@ -483,7 +424,7 @@ namespace LaserCutter
             this.btnRenameModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRenameModel.ImageKey = "13.bmp";
             this.btnRenameModel.ImageList = this.imageList1;
-            this.btnRenameModel.Location = new System.Drawing.Point(237, 31);
+            this.btnRenameModel.Location = new System.Drawing.Point(230, 31);
             this.btnRenameModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRenameModel.Name = "btnRenameModel";
             this.btnRenameModel.Size = new System.Drawing.Size(32, 30);
@@ -501,7 +442,7 @@ namespace LaserCutter
             this.btnAddModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnAddModel.ImageIndex = 8;
             this.btnAddModel.ImageList = this.imageList1;
-            this.btnAddModel.Location = new System.Drawing.Point(198, 31);
+            this.btnAddModel.Location = new System.Drawing.Point(191, 31);
             this.btnAddModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAddModel.Name = "btnAddModel";
             this.btnAddModel.Size = new System.Drawing.Size(32, 30);
@@ -560,17 +501,78 @@ namespace LaserCutter
             this.btnAddGroup.UseVisualStyleBackColor = false;
             this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
             // 
+            // panClient
+            // 
+            this.panClient.Controls.Add(this.TabControl1);
+            this.panClient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panClient.FrameInner.Visible = false;
+            this.panClient.FrameOuter.Visible = false;
+            this.panClient.Location = new System.Drawing.Point(0, 0);
+            this.panClient.Margin = new System.Windows.Forms.Padding(0);
+            this.panClient.Name = "panClient";
+            this.panClient.Size = new System.Drawing.Size(1224, 852);
+            this.panClient.TabIndex = 1381;
+            // 
+            // TabControl1
+            // 
+            this.TabControl1.Controls.Add(this.tabTable1);
+            this.TabControl1.Controls.Add(this.tabTable2);
+            this.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.TabControl1.Font = new System.Drawing.Font("Tahoma", 13F);
+            this.TabControl1.ImageList = this.imageList1;
+            this.TabControl1.ItemSize = new System.Drawing.Size(590, 36);
+            this.TabControl1.Location = new System.Drawing.Point(3, 3);
+            this.TabControl1.Name = "TabControl1";
+            this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TabControl1.ShowActiveCloseButton = false;
+            this.TabControl1.ShowCloseButton = false;
+            this.TabControl1.Size = new System.Drawing.Size(1216, 848);
+            this.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.TabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.TabControl1.TabIndex = 1422;
+            this.TabControl1.TabSelectedColor = System.Drawing.Color.Lime;
+            this.TabControl1.TabSelectedForeColor = System.Drawing.Color.Black;
+            this.TabControl1.TabSelectedHighColor = System.Drawing.Color.Red;
+            this.TabControl1.TabSelectedHighColorSize = 4;
+            this.TabControl1.TabUnSelectedForeColor = System.Drawing.Color.Gray;
+            this.TabControl1.TabVisible = true;
+            this.TabControl1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TabControl1.TipsColor = System.Drawing.Color.Red;
+            this.TabControl1.TipsFont = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TabControl1.TipsForeColor = System.Drawing.Color.White;
+            this.TabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
+            // 
+            // tabTable1
+            // 
+            this.tabTable1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.tabTable1.Font = new System.Drawing.Font("굴림", 9F);
+            this.tabTable1.Location = new System.Drawing.Point(4, 40);
+            this.tabTable1.Name = "tabTable1";
+            this.tabTable1.Size = new System.Drawing.Size(1208, 804);
+            this.tabTable1.TabIndex = 0;
+            this.tabTable1.Text = "Tabel #1";
+            // 
+            // tabTable2
+            // 
+            this.tabTable2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.tabTable2.Location = new System.Drawing.Point(4, 44);
+            this.tabTable2.Name = "tabTable2";
+            this.tabTable2.Size = new System.Drawing.Size(1208, 804);
+            this.tabTable2.TabIndex = 1;
+            this.tabTable2.Text = "Tabel #2";
+            // 
             // panJobFile
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panClient);
-            this.Controls.Add(this.panLeft);
+            this.Controls.Add(this.panRight);
+            this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panJobFile";
-            this.Size = new System.Drawing.Size(1552, 852);
+            this.Size = new System.Drawing.Size(1784, 852);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panLeft.ResumeLayout(false);
+            this.panRight.ResumeLayout(false);
             this.tabControlSelectJobFile.ResumeLayout(false);
             this.tabPageRecentModel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -586,7 +588,7 @@ namespace LaserCutter
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.Panel panLeft;
+        private System.Windows.Forms.Panel panRight;
         public System.Windows.Forms.TabControl tabControlSelectJobFile;
         public System.Windows.Forms.TabPage tabPageRecentModel;
         private System.Windows.Forms.ColumnHeader columnHeader1;

@@ -1,4 +1,5 @@
 ﻿/*
+/*
 
 _VERSION1, _PMAC, _COHERENT, _ADV, _POWERMETER, _LIGHT, _VISION, _MVS
 
@@ -32,6 +33,7 @@ namespace LaserCutter
 
         public panAuto Auto;
         public panManual Manual;
+        public panJobFile JobFile;
 
         private Point mMousePoint;
 
@@ -73,8 +75,6 @@ namespace LaserCutter
 
             InitializeComponent();
 
-            lblVersion.Text = "Version:1.0";
-
             FormClosing += frmMain_FormClosing;
 
             staticForm = this;
@@ -94,7 +94,7 @@ namespace LaserCutter
             szStr = String.Format("LaserCutter - Start: {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             szStr = String.Format("{0}Dll\\", yjCommon.AppPath());
-            Lcad.SetDllPath(szStr);
+            //// Lcad.SetDllPath(szStr);
             PowerPMac.SetDllPath(szStr);
 
             /*
@@ -110,13 +110,13 @@ namespace LaserCutter
                 logger.SendMsg($"Warning: {szStr}. \r\nCurrent dll version \"{currentVersion}\" is lower than expected version \"{expectedVersion}\".");
             }
 
-            //btnAuto.Click += ChangeMainPanel;
-            //btnJobFile.Click += ChangeMainPanel;
-            //btnManual.Click += ChangeMainPanel;
-            //btnConfig.Click += ChangeMainPanel;
-            //btnAlarm.Click += ChangeMainPanel;
-            //btnLog.Click += ChangeMainPanel;
-            //btnLogIn.Click += ChangeMainPanel;
+            btnAuto.Click += ChangeMainPanel;
+            btnJobFile.Click += ChangeMainPanel;
+            ////btnManual.Click += ChangeMainPanel;
+            ////btnConfig.Click += ChangeMainPanel;
+            ////btnAlarm.Click += ChangeMainPanel;
+            btnLog.Click += ChangeMainPanel;
+            ////btnLogIn.Click += ChangeMainPanel;
 
             SystemInitialize();
 
@@ -281,6 +281,11 @@ namespace LaserCutter
             ////Pmac.QueryCommand("doBeamShutterOpen=false");
 
             /*
+            * 4. JobFile
+            */
+            JobFile = new panJobFile();
+
+            /*
              * 
              */
             AutoThread.Enabled = true;
@@ -365,7 +370,10 @@ namespace LaserCutter
 
         private void ChangeMainPanel(object sender, EventArgs e)
         {
-
+            if (sender is yjTech.BitBtn aButton)
+            {
+                ChangeMainPanel(aButton);
+            }
         }
 
         public void ChangeAutoTitle()
@@ -377,17 +385,14 @@ namespace LaserCutter
         {
             if (MenuIndex == Convert.ToInt32(aButton.Tag)) return;
 
-            int xpos = 0;
+            int ypos = 0;
 
             MenuIndex = Convert.ToInt32(aButton.Tag);
 
             panClient.Controls.Clear();
-            panClient.Location = new Point(0, 102);
-            panClient.Width = 1358;
-            panClient.Height = 900;
-
-            panRight.Location = new Point(panClient.Width, 102);
-            panRight.Size = new Size(360, 852);
+            panClient.Location = new Point(6, 86);
+            panClient.Width = 1784;
+            panClient.Height = 858;
 
             //// JobFile.Height = Auto.Height;
             //// Config.Height = Auto.Height;
@@ -397,21 +402,17 @@ namespace LaserCutter
             {
                 ChangeAutoTitle();
 
-             //   panClient.Width = 1318;
                 panClient.Controls.Add(Auto);
             }
             else
             if (aButton == btnJobFile)
             {
-                ////lblMainTitle.Text = "JobFile";
+                lblMainTitle.Text = "JobFile";
 
-                ////panClient.Controls.Add(JobFile);
+                panClient.Controls.Add(JobFile);
 
-                ////JobFile.LoadRecentList(JobFile.lvRecentModel, (TableNo)JobFile.TabControl1.SelectedIndex + 1);
-                ////JobFile.LoadModelList();
-
-                ////panRight.Controls.Add(SideMenu);
-                ////SideMenu.Left = 0;
+                JobFile.LoadRecentList(JobFile.lvRecentModel, (TableNo)JobFile.TabControl1.SelectedIndex + 1);
+                JobFile.LoadModelList();
             }
             else
             if (aButton == btnLog)
@@ -422,9 +423,9 @@ namespace LaserCutter
                 ////panClient.Controls.Add(panLog);
             }
 
-            xpos = aButton.Location.X + 4;
+            ypos = aButton.Location.Y + 4;
 
-            ////lblSelectedMenu.Location = new Point(xpos, lblSelectedMenu.Location.Y);
+            lblSelectedMenu.Location = new Point(lblSelectedMenu.Location.X, ypos);
         }
 
         private async void btnExit_Click(object sender, EventArgs e)
@@ -482,66 +483,11 @@ namespace LaserCutter
             lblDateTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
-        private void lblMainTitle_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (yjCommon.IsCtrlKeyDown())
-            {
-                if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-                {
-                    Location = new Point(Left - (mMousePoint.X - e.X), Top - (mMousePoint.Y - e.Y));
-                }
-            }
-        }
-
-        private void lblMainTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (yjCommon.IsCtrlKeyDown())
-            {
-                mMousePoint = new Point(e.X, e.Y);
-            }
-        }
-
         public void SetBuildVersion()
         {
             lblBuildVersion.Text = "Build:20241203.001";
         }
 
-
-        private void btnEnglish_Click(object sender, EventArgs e)
-        {
-            strCulture = "en";
-            ChangeLanguage("en");  // 영어로 변경
-        }
-
-        private void btnKorea_Click(object sender, EventArgs e)
-        {
-            strCulture = "ko";
-            ChangeLanguage(strCulture);  // 한국어로 변경
-        }
-
-        private void btnVietnam_Click(object sender, EventArgs e)
-        {
-            strCulture = "vi";
-            ChangeLanguage("vi");  // 한국어로 변경
-        }
-
-        // 언어 변경 메서드
-        private void ChangeLanguage(string culture)
-        {
-            if (culture.ToLower() == "en")
-            {
-                ChangeLanguageEnglish();
-            }
-            else
-            if (culture.ToLower() == "ko")
-            {
-                ChangeLanguageKorea();
-            }
-            if (culture.ToLower() == "vi")
-            {
-                ChangeLanguageVietnam();
-            }
-        }
         private void LoadLanguageFile()
         {
             //motionParameters.Clear();
@@ -601,23 +547,6 @@ namespace LaserCutter
 
         }
 #endregion
-
-        private void lblMainTitle_DoubleClick(object sender, EventArgs e)
-        {
-            if (yjCommon.IsCtrlKeyDown())
-            {
-                if (Screen.AllScreens.Length > 1)
-                {
-                    Screen firrstScreen = Screen.AllScreens[0];
-
-                    StartPosition = FormStartPosition.Manual;
-                    Location = firrstScreen.WorkingArea.Location;
-                    Left = firrstScreen.WorkingArea.Left;
-                    Top = firrstScreen.WorkingArea.Top;
-                }
-
-            }
-        }
 
         private void btnAuto_Click(object sender, EventArgs e)
         {

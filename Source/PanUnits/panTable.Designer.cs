@@ -38,6 +38,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblGroupName = new yjTech.Label();
             this.lblModelName = new yjTech.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panClient.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -113,8 +114,9 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.tabControl1.ItemSize = new System.Drawing.Size(150, 30);
             this.tabControl1.Location = new System.Drawing.Point(4, 37);
             this.tabControl1.Name = "tabControl1";
@@ -137,13 +139,14 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
+            this.tabPage1.Font = new System.Drawing.Font("Tahoma", 11F);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1185, 718);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DXF";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -195,6 +198,17 @@
             this.lblModelName.TabIndex = 33;
             this.lblModelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1185, 718);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "BeadCut";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // panTable
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -222,5 +236,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }

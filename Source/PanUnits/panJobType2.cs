@@ -22,5 +22,10 @@ namespace LaserCutter
         public void EnableControl(bool bEnabled)
         {
         }
+
+        private void btnUse_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

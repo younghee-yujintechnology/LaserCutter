@@ -25,16 +25,17 @@ namespace LaserCutter
             Table1 = new panTable();
             Table2 = new panTable();
 
-            tabTable1.Controls.Add(Table1);
-            tabTable2.Controls.Add(Table2);
-
             Table1.TableNo = TableNo.Table1;
+            Table1.Location = new Point(2, 2);
             Table1.btnOpenJobFile.Enabled = false;
             Table1.btnClose.Enabled = false;
+            tabTable1.Controls.Add(Table1);
 
             Table2.TableNo = TableNo.Table2;
+            Table2.Location = new Point(2, 2);
             Table2.btnOpenJobFile.Enabled = false;
             Table2.btnClose.Enabled = false;
+            tabTable2.Controls.Add(Table2);
 
             tvModel.Nodes.Clear();
             lvRecentModel.Items.Clear();

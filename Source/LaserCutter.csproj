@@ -70,6 +70,9 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DaekhonSystem">
+      <HintPath>Embeded Dll\DaekhonSystem.dll</HintPath>
+    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
       <HintPath>Embeded Dll\FirebirdSql.Data.FirebirdClient.dll</HintPath>
       <Private>False</Private>
@@ -188,6 +191,12 @@
     <Compile Include="PanUnits\panJobType3.Designer.cs">
       <DependentUpon>panJobType3.cs</DependentUpon>
     </Compile>
+    <Compile Include="PanUnits\panJobType4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panJobType4.Designer.cs">
+      <DependentUpon>panJobType4.cs</DependentUpon>
+    </Compile>
     <Compile Include="PanUnits\panManual.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -253,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panJobType3.resx">
       <DependentUpon>panJobType3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panJobType4.resx">
+      <DependentUpon>panJobType4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panManual.resx">
       <DependentUpon>panManual.cs</DependentUpon>

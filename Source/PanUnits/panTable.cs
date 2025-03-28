@@ -20,6 +20,7 @@ namespace LaserCutter
         public panJobType1 Type1;
         public panJobType2 Type2;
         public panJobType3 Type3;
+        public panJobType4 Type4;
 
         public frmMain frmMain;
 
@@ -39,11 +40,16 @@ namespace LaserCutter
             Type3.Auto = panAuto.StaticInstance;
             Type3.EnableControl(false);
 
+            Type4 = new panJobType4();
+            Type4.Auto = panAuto.StaticInstance;
+            Type4.EnableControl(false);
+
             frmMain = frmMain.StaticInstance;
 
             tabPage1.Controls.Add(Type1);
             tabPage2.Controls.Add(Type2);
             tabPage3.Controls.Add(Type3);
+            tabPage4.Controls.Add(Type3);
 
             Type1.Location = new Point(0, 0);
             Type2.Location = new Point(0, 0);
