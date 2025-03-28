@@ -200,7 +200,7 @@ namespace LaserCutter
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Margin = new System.Windows.Forms.Padding(0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(936, 843);
+            this.panClient.Size = new System.Drawing.Size(733, 799);
             this.panClient.TabIndex = 1294;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -220,8 +220,9 @@ namespace LaserCutter
             this.gradientLabel5.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel5.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel5.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel5.Location = new System.Drawing.Point(578, 747);
+            this.gradientLabel5.Location = new System.Drawing.Point(458, 747);
             this.gradientLabel5.Name = "gradientLabel5";
+            this.gradientLabel5.ShowAccelChar = false;
             this.gradientLabel5.Size = new System.Drawing.Size(188, 29);
             this.gradientLabel5.TabIndex = 1498;
             this.gradientLabel5.Text = "(모드에 상관없이 Laser ON)";
@@ -237,8 +238,9 @@ namespace LaserCutter
             this.gradientLabel4.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel4.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel4.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel4.Location = new System.Drawing.Point(332, 747);
+            this.gradientLabel4.Location = new System.Drawing.Point(212, 747);
             this.gradientLabel4.Name = "gradientLabel4";
+            this.gradientLabel4.ShowAccelChar = false;
             this.gradientLabel4.Size = new System.Drawing.Size(128, 29);
             this.gradientLabel4.TabIndex = 1497;
             this.gradientLabel4.Text = "강제 출력";
@@ -254,8 +256,9 @@ namespace LaserCutter
             this.gradientLabel3.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel3.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel3.Location = new System.Drawing.Point(333, 694);
+            this.gradientLabel3.Location = new System.Drawing.Point(213, 694);
             this.gradientLabel3.Name = "gradientLabel3";
+            this.gradientLabel3.ShowAccelChar = false;
             this.gradientLabel3.Size = new System.Drawing.Size(128, 29);
             this.gradientLabel3.TabIndex = 1496;
             this.gradientLabel3.Text = "작업테이블";
@@ -269,7 +272,7 @@ namespace LaserCutter
             this.btnSelectTable1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSelectTable1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnSelectTable1.ForeColor = System.Drawing.Color.Black;
-            this.btnSelectTable1.Location = new System.Drawing.Point(467, 685);
+            this.btnSelectTable1.Location = new System.Drawing.Point(347, 685);
             this.btnSelectTable1.Margin2 = 10;
             this.btnSelectTable1.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSelectTable1.Name = "btnSelectTable1";
@@ -287,7 +290,7 @@ namespace LaserCutter
             this.btnSelectTable2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSelectTable2.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnSelectTable2.ForeColor = System.Drawing.Color.Black;
-            this.btnSelectTable2.Location = new System.Drawing.Point(581, 685);
+            this.btnSelectTable2.Location = new System.Drawing.Point(461, 685);
             this.btnSelectTable2.Margin2 = 10;
             this.btnSelectTable2.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSelectTable2.Name = "btnSelectTable2";
@@ -307,7 +310,7 @@ namespace LaserCutter
             this.ledTX.LED.OffColor = System.Drawing.Color.Gray;
             this.ledTX.Location = new System.Drawing.Point(910, 12);
             this.ledTX.Name = "ledTX";
-            this.ledTX.ShowChannelName = false;
+            this.ledTX.ShowAccelChar = false;
             this.ledTX.Size = new System.Drawing.Size(15, 16);
             this.ledTX.TabIndex = 1493;
             this.ledTX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -323,7 +326,7 @@ namespace LaserCutter
             this.ledRX.LED.OnColor = System.Drawing.Color.Red;
             this.ledRX.Location = new System.Drawing.Point(892, 12);
             this.ledRX.Name = "ledRX";
-            this.ledRX.ShowChannelName = false;
+            this.ledRX.ShowAccelChar = false;
             this.ledRX.Size = new System.Drawing.Size(15, 16);
             this.ledRX.TabIndex = 1492;
             this.ledRX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,8 +340,9 @@ namespace LaserCutter
             this.lblVersion.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.lblVersion.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.lblVersion.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.lblVersion.Location = new System.Drawing.Point(244, 84);
+            this.lblVersion.Location = new System.Drawing.Point(199, 84);
             this.lblVersion.Name = "lblVersion";
+            this.lblVersion.ShowAccelChar = false;
             this.lblVersion.Size = new System.Drawing.Size(95, 29);
             this.lblVersion.TabIndex = 1351;
             this.lblVersion.Text = "Version";
@@ -354,8 +358,9 @@ namespace LaserCutter
             this.gradientLabel2.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel2.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel2.Location = new System.Drawing.Point(107, 84);
+            this.gradientLabel2.Location = new System.Drawing.Point(62, 84);
             this.gradientLabel2.Name = "gradientLabel2";
+            this.gradientLabel2.ShowAccelChar = false;
             this.gradientLabel2.Size = new System.Drawing.Size(128, 29);
             this.gradientLabel2.TabIndex = 1349;
             this.gradientLabel2.Text = "Version";
@@ -367,8 +372,9 @@ namespace LaserCutter
             this.viGetBoundMode.Cursor = System.Windows.Forms.Cursors.Default;
             this.viGetBoundMode.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viGetBoundMode.ForeColor = System.Drawing.Color.Black;
-            this.viGetBoundMode.Location = new System.Drawing.Point(244, 530);
+            this.viGetBoundMode.Location = new System.Drawing.Point(199, 530);
             this.viGetBoundMode.Name = "viGetBoundMode";
+            this.viGetBoundMode.ShowAccelChar = false;
             this.viGetBoundMode.Size = new System.Drawing.Size(95, 29);
             this.viGetBoundMode.TabIndex = 1348;
             this.viGetBoundMode.Text = "OFF";
@@ -380,8 +386,9 @@ namespace LaserCutter
             this.viGetOperating.Cursor = System.Windows.Forms.Cursors.Default;
             this.viGetOperating.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viGetOperating.ForeColor = System.Drawing.Color.Black;
-            this.viGetOperating.Location = new System.Drawing.Point(244, 498);
+            this.viGetOperating.Location = new System.Drawing.Point(199, 498);
             this.viGetOperating.Name = "viGetOperating";
+            this.viGetOperating.ShowAccelChar = false;
             this.viGetOperating.Size = new System.Drawing.Size(95, 29);
             this.viGetOperating.TabIndex = 1346;
             this.viGetOperating.Text = "OFF";
@@ -393,8 +400,9 @@ namespace LaserCutter
             this.viGetM2Pitch.Cursor = System.Windows.Forms.Cursors.Default;
             this.viGetM2Pitch.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viGetM2Pitch.ForeColor = System.Drawing.Color.Black;
-            this.viGetM2Pitch.Location = new System.Drawing.Point(629, 215);
+            this.viGetM2Pitch.Location = new System.Drawing.Point(509, 215);
             this.viGetM2Pitch.Name = "viGetM2Pitch";
+            this.viGetM2Pitch.ShowAccelChar = false;
             this.viGetM2Pitch.Size = new System.Drawing.Size(95, 29);
             this.viGetM2Pitch.TabIndex = 1345;
             this.viGetM2Pitch.Text = "0.0";
@@ -406,8 +414,9 @@ namespace LaserCutter
             this.viTrigger.Cursor = System.Windows.Forms.Cursors.Default;
             this.viTrigger.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viTrigger.ForeColor = System.Drawing.Color.Black;
-            this.viTrigger.Location = new System.Drawing.Point(244, 439);
+            this.viTrigger.Location = new System.Drawing.Point(199, 439);
             this.viTrigger.Name = "viTrigger";
+            this.viTrigger.ShowAccelChar = false;
             this.viTrigger.Size = new System.Drawing.Size(95, 29);
             this.viTrigger.TabIndex = 1344;
             this.viTrigger.Text = "0.0";
@@ -419,8 +428,9 @@ namespace LaserCutter
             this.viGetMode.Cursor = System.Windows.Forms.Cursors.Default;
             this.viGetMode.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viGetMode.ForeColor = System.Drawing.Color.Black;
-            this.viGetMode.Location = new System.Drawing.Point(244, 147);
+            this.viGetMode.Location = new System.Drawing.Point(199, 147);
             this.viGetMode.Name = "viGetMode";
+            this.viGetMode.ShowAccelChar = false;
             this.viGetMode.Size = new System.Drawing.Size(95, 29);
             this.viGetMode.TabIndex = 1343;
             this.viGetMode.Text = "0";
@@ -432,8 +442,9 @@ namespace LaserCutter
             this.viGetM0PW.Cursor = System.Windows.Forms.Cursors.Default;
             this.viGetM0PW.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viGetM0PW.ForeColor = System.Drawing.Color.Black;
-            this.viGetM0PW.Location = new System.Drawing.Point(244, 247);
+            this.viGetM0PW.Location = new System.Drawing.Point(199, 247);
             this.viGetM0PW.Name = "viGetM0PW";
+            this.viGetM0PW.ShowAccelChar = false;
             this.viGetM0PW.Size = new System.Drawing.Size(95, 29);
             this.viGetM0PW.TabIndex = 1342;
             this.viGetM0PW.Text = "0.0";
@@ -446,8 +457,9 @@ namespace LaserCutter
             this.viEnc1.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viEnc1.ForeColor = System.Drawing.Color.Black;
             this.viEnc1.FormatString = "0.0000";
-            this.viEnc1.Location = new System.Drawing.Point(244, 407);
+            this.viEnc1.Location = new System.Drawing.Point(199, 407);
             this.viEnc1.Name = "viEnc1";
+            this.viEnc1.ShowAccelChar = false;
             this.viEnc1.Size = new System.Drawing.Size(95, 29);
             this.viEnc1.TabIndex = 1341;
             this.viEnc1.Text = "0";
@@ -459,8 +471,9 @@ namespace LaserCutter
             this.viGetM2PW.Cursor = System.Windows.Forms.Cursors.Default;
             this.viGetM2PW.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viGetM2PW.ForeColor = System.Drawing.Color.Black;
-            this.viGetM2PW.Location = new System.Drawing.Point(629, 247);
+            this.viGetM2PW.Location = new System.Drawing.Point(509, 247);
             this.viGetM2PW.Name = "viGetM2PW";
+            this.viGetM2PW.ShowAccelChar = false;
             this.viGetM2PW.Size = new System.Drawing.Size(95, 29);
             this.viGetM2PW.TabIndex = 1340;
             this.viGetM2PW.Text = "0.0";
@@ -472,8 +485,9 @@ namespace LaserCutter
             this.viGetM0Period.Cursor = System.Windows.Forms.Cursors.Default;
             this.viGetM0Period.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viGetM0Period.ForeColor = System.Drawing.Color.Black;
-            this.viGetM0Period.Location = new System.Drawing.Point(244, 215);
+            this.viGetM0Period.Location = new System.Drawing.Point(199, 215);
             this.viGetM0Period.Name = "viGetM0Period";
+            this.viGetM0Period.ShowAccelChar = false;
             this.viGetM0Period.Size = new System.Drawing.Size(95, 29);
             this.viGetM0Period.TabIndex = 1347;
             this.viGetM0Period.Text = "0.0";
@@ -486,8 +500,9 @@ namespace LaserCutter
             this.viEnc0.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viEnc0.ForeColor = System.Drawing.Color.Black;
             this.viEnc0.FormatString = "0.0000";
-            this.viEnc0.Location = new System.Drawing.Point(244, 375);
+            this.viEnc0.Location = new System.Drawing.Point(199, 375);
             this.viEnc0.Name = "viEnc0";
+            this.viEnc0.ShowAccelChar = false;
             this.viEnc0.Size = new System.Drawing.Size(95, 29);
             this.viEnc0.TabIndex = 1339;
             this.viEnc0.Text = "0";
@@ -503,8 +518,9 @@ namespace LaserCutter
             this.gradLabel11.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel11.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel11.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel11.Location = new System.Drawing.Point(110, 530);
+            this.gradLabel11.Location = new System.Drawing.Point(65, 530);
             this.gradLabel11.Name = "gradLabel11";
+            this.gradLabel11.ShowAccelChar = false;
             this.gradLabel11.Size = new System.Drawing.Size(128, 29);
             this.gradLabel11.TabIndex = 1337;
             this.gradLabel11.Text = "Bound Mode";
@@ -520,8 +536,9 @@ namespace LaserCutter
             this.gradLabel10.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel10.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel10.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel10.Location = new System.Drawing.Point(110, 498);
+            this.gradLabel10.Location = new System.Drawing.Point(65, 498);
             this.gradLabel10.Name = "gradLabel10";
+            this.gradLabel10.ShowAccelChar = false;
             this.gradLabel10.Size = new System.Drawing.Size(128, 29);
             this.gradLabel10.TabIndex = 1336;
             this.gradLabel10.Text = "Operating";
@@ -537,8 +554,9 @@ namespace LaserCutter
             this.gradLabel3.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel3.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel3.Location = new System.Drawing.Point(495, 215);
+            this.gradLabel3.Location = new System.Drawing.Point(375, 215);
             this.gradLabel3.Name = "gradLabel3";
+            this.gradLabel3.ShowAccelChar = false;
             this.gradLabel3.Size = new System.Drawing.Size(128, 29);
             this.gradLabel3.TabIndex = 1335;
             this.gradLabel3.Text = "Mode2 Pitch";
@@ -554,8 +572,9 @@ namespace LaserCutter
             this.gradLabel75.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel75.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel75.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel75.Location = new System.Drawing.Point(110, 439);
+            this.gradLabel75.Location = new System.Drawing.Point(65, 439);
             this.gradLabel75.Name = "gradLabel75";
+            this.gradLabel75.ShowAccelChar = false;
             this.gradLabel75.Size = new System.Drawing.Size(128, 29);
             this.gradLabel75.TabIndex = 1334;
             this.gradLabel75.Text = "Trigger";
@@ -571,8 +590,9 @@ namespace LaserCutter
             this.gradLabel5.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel5.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel5.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel5.Location = new System.Drawing.Point(107, 148);
+            this.gradLabel5.Location = new System.Drawing.Point(62, 148);
             this.gradLabel5.Name = "gradLabel5";
+            this.gradLabel5.ShowAccelChar = false;
             this.gradLabel5.Size = new System.Drawing.Size(128, 29);
             this.gradLabel5.TabIndex = 1333;
             this.gradLabel5.Text = "Trigger Mode";
@@ -588,8 +608,9 @@ namespace LaserCutter
             this.gradLabel2.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel2.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel2.Location = new System.Drawing.Point(110, 247);
+            this.gradLabel2.Location = new System.Drawing.Point(65, 247);
             this.gradLabel2.Name = "gradLabel2";
+            this.gradLabel2.ShowAccelChar = false;
             this.gradLabel2.Size = new System.Drawing.Size(128, 29);
             this.gradLabel2.TabIndex = 1332;
             this.gradLabel2.Text = "Mode0 PulseWidth";
@@ -605,8 +626,9 @@ namespace LaserCutter
             this.gradLabel73.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel73.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel73.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel73.Location = new System.Drawing.Point(110, 407);
+            this.gradLabel73.Location = new System.Drawing.Point(65, 407);
             this.gradLabel73.Name = "gradLabel73";
+            this.gradLabel73.ShowAccelChar = false;
             this.gradLabel73.Size = new System.Drawing.Size(128, 29);
             this.gradLabel73.TabIndex = 1331;
             this.gradLabel73.Text = "Encoder 1 (Y)";
@@ -622,8 +644,9 @@ namespace LaserCutter
             this.gradLabel4.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel4.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel4.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel4.Location = new System.Drawing.Point(495, 247);
+            this.gradLabel4.Location = new System.Drawing.Point(375, 247);
             this.gradLabel4.Name = "gradLabel4";
+            this.gradLabel4.ShowAccelChar = false;
             this.gradLabel4.Size = new System.Drawing.Size(128, 29);
             this.gradLabel4.TabIndex = 1330;
             this.gradLabel4.Text = "Mode2 PulseWidth";
@@ -639,8 +662,9 @@ namespace LaserCutter
             this.gradLabel1.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel1.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel1.Location = new System.Drawing.Point(110, 215);
+            this.gradLabel1.Location = new System.Drawing.Point(65, 215);
             this.gradLabel1.Name = "gradLabel1";
+            this.gradLabel1.ShowAccelChar = false;
             this.gradLabel1.Size = new System.Drawing.Size(128, 29);
             this.gradLabel1.TabIndex = 1338;
             this.gradLabel1.Text = "Mode0 Period";
@@ -656,8 +680,9 @@ namespace LaserCutter
             this.gradLabel72.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel72.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel72.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel72.Location = new System.Drawing.Point(110, 375);
+            this.gradLabel72.Location = new System.Drawing.Point(65, 375);
             this.gradLabel72.Name = "gradLabel72";
+            this.gradLabel72.ShowAccelChar = false;
             this.gradLabel72.Size = new System.Drawing.Size(128, 29);
             this.gradLabel72.TabIndex = 1329;
             this.gradLabel72.Text = "Encoder 0 (X)";
@@ -669,8 +694,9 @@ namespace LaserCutter
             this.viBaudRate.Cursor = System.Windows.Forms.Cursors.Default;
             this.viBaudRate.Font = new System.Drawing.Font("Tahoma", 11F);
             this.viBaudRate.ForeColor = System.Drawing.Color.Black;
-            this.viBaudRate.Location = new System.Drawing.Point(722, 104);
+            this.viBaudRate.Location = new System.Drawing.Point(525, 104);
             this.viBaudRate.Name = "viBaudRate";
+            this.viBaudRate.ShowAccelChar = false;
             this.viBaudRate.Size = new System.Drawing.Size(95, 29);
             this.viBaudRate.TabIndex = 1328;
             this.viBaudRate.Text = "1";
@@ -686,8 +712,9 @@ namespace LaserCutter
             this.gradientLabel1.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel1.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel1.Location = new System.Drawing.Point(631, 103);
+            this.gradientLabel1.Location = new System.Drawing.Point(434, 103);
             this.gradientLabel1.Name = "gradientLabel1";
+            this.gradientLabel1.ShowAccelChar = false;
             this.gradientLabel1.Size = new System.Drawing.Size(88, 29);
             this.gradientLabel1.TabIndex = 1327;
             this.gradientLabel1.Text = "Baudrate";
@@ -699,9 +726,9 @@ namespace LaserCutter
             this.btnResetEncoder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnResetEncoder.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnResetEncoder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResetEncoder.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnResetEncoder.Font = new System.Drawing.Font("굴림", 9F);
             this.btnResetEncoder.ForeColor = System.Drawing.Color.Black;
-            this.btnResetEncoder.Location = new System.Drawing.Point(467, 632);
+            this.btnResetEncoder.Location = new System.Drawing.Point(347, 632);
             this.btnResetEncoder.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnResetEncoder.Name = "btnResetEncoder";
             this.btnResetEncoder.Size = new System.Drawing.Size(105, 47);
@@ -716,9 +743,9 @@ namespace LaserCutter
             this.btnGetEncorderY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnGetEncorderY.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnGetEncorderY.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGetEncorderY.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnGetEncorderY.Font = new System.Drawing.Font("굴림", 9F);
             this.btnGetEncorderY.ForeColor = System.Drawing.Color.Black;
-            this.btnGetEncorderY.Location = new System.Drawing.Point(695, 632);
+            this.btnGetEncorderY.Location = new System.Drawing.Point(575, 632);
             this.btnGetEncorderY.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnGetEncorderY.Name = "btnGetEncorderY";
             this.btnGetEncorderY.Size = new System.Drawing.Size(105, 47);
@@ -733,9 +760,9 @@ namespace LaserCutter
             this.btnGetEncorderX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnGetEncorderX.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnGetEncorderX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGetEncorderX.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnGetEncorderX.Font = new System.Drawing.Font("굴림", 9F);
             this.btnGetEncorderX.ForeColor = System.Drawing.Color.Black;
-            this.btnGetEncorderX.Location = new System.Drawing.Point(581, 632);
+            this.btnGetEncorderX.Location = new System.Drawing.Point(461, 632);
             this.btnGetEncorderX.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnGetEncorderX.Name = "btnGetEncorderX";
             this.btnGetEncorderX.Size = new System.Drawing.Size(105, 47);
@@ -750,9 +777,9 @@ namespace LaserCutter
             this.btnGetTrigger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnGetTrigger.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnGetTrigger.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGetTrigger.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnGetTrigger.Font = new System.Drawing.Font("굴림", 9F);
             this.btnGetTrigger.ForeColor = System.Drawing.Color.Black;
-            this.btnGetTrigger.Location = new System.Drawing.Point(581, 577);
+            this.btnGetTrigger.Location = new System.Drawing.Point(461, 577);
             this.btnGetTrigger.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnGetTrigger.Name = "btnGetTrigger";
             this.btnGetTrigger.Size = new System.Drawing.Size(105, 47);
@@ -766,7 +793,7 @@ namespace LaserCutter
             this.listBox.Font = new System.Drawing.Font("Tahoma", 10F);
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 16;
-            this.listBox.Location = new System.Drawing.Point(467, 375);
+            this.listBox.Location = new System.Drawing.Point(347, 375);
             this.listBox.Name = "listBox";
             this.listBox.ScrollAlwaysVisible = true;
             this.listBox.Size = new System.Drawing.Size(333, 196);
@@ -778,9 +805,9 @@ namespace LaserCutter
             this.btnMode2Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnMode2Set.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnMode2Set.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMode2Set.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnMode2Set.Font = new System.Drawing.Font("굴림", 9F);
             this.btnMode2Set.ForeColor = System.Drawing.Color.Black;
-            this.btnMode2Set.Location = new System.Drawing.Point(730, 293);
+            this.btnMode2Set.Location = new System.Drawing.Point(610, 293);
             this.btnMode2Set.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnMode2Set.Name = "btnMode2Set";
             this.btnMode2Set.Size = new System.Drawing.Size(61, 47);
@@ -795,9 +822,9 @@ namespace LaserCutter
             this.btnMode0Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnMode0Set.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnMode0Set.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMode0Set.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnMode0Set.Font = new System.Drawing.Font("굴림", 9F);
             this.btnMode0Set.ForeColor = System.Drawing.Color.Black;
-            this.btnMode0Set.Location = new System.Drawing.Point(345, 293);
+            this.btnMode0Set.Location = new System.Drawing.Point(300, 293);
             this.btnMode0Set.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnMode0Set.Name = "btnMode0Set";
             this.btnMode0Set.Size = new System.Drawing.Size(61, 47);
@@ -816,7 +843,7 @@ namespace LaserCutter
             this.edMode0Period.Frame.CornerRound = 1;
             this.edMode0Period.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edMode0Period.Hint = null;
-            this.edMode0Period.Location = new System.Drawing.Point(244, 279);
+            this.edMode0Period.Location = new System.Drawing.Point(199, 279);
             this.edMode0Period.Max = 0D;
             this.edMode0Period.Min = 0D;
             this.edMode0Period.Name = "edMode0Period";
@@ -826,6 +853,7 @@ namespace LaserCutter
             this.edMode0Period.TabIndex = 1315;
             this.edMode0Period.TabStop = false;
             this.edMode0Period.Text = "0.000";
+            this.edMode0Period.Value = 0D;
             // 
             // edMode0PulseWidth
             // 
@@ -837,7 +865,7 @@ namespace LaserCutter
             this.edMode0PulseWidth.Frame.CornerRound = 1;
             this.edMode0PulseWidth.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edMode0PulseWidth.Hint = null;
-            this.edMode0PulseWidth.Location = new System.Drawing.Point(244, 311);
+            this.edMode0PulseWidth.Location = new System.Drawing.Point(199, 311);
             this.edMode0PulseWidth.Max = 0D;
             this.edMode0PulseWidth.Min = 0D;
             this.edMode0PulseWidth.Name = "edMode0PulseWidth";
@@ -847,6 +875,7 @@ namespace LaserCutter
             this.edMode0PulseWidth.TabIndex = 1316;
             this.edMode0PulseWidth.TabStop = false;
             this.edMode0PulseWidth.Text = "0.000";
+            this.edMode0PulseWidth.Value = 0D;
             // 
             // edMode2PulseWidth
             // 
@@ -858,7 +887,7 @@ namespace LaserCutter
             this.edMode2PulseWidth.Frame.CornerRound = 1;
             this.edMode2PulseWidth.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edMode2PulseWidth.Hint = null;
-            this.edMode2PulseWidth.Location = new System.Drawing.Point(629, 311);
+            this.edMode2PulseWidth.Location = new System.Drawing.Point(509, 311);
             this.edMode2PulseWidth.Max = 0D;
             this.edMode2PulseWidth.Min = 0D;
             this.edMode2PulseWidth.Name = "edMode2PulseWidth";
@@ -868,6 +897,7 @@ namespace LaserCutter
             this.edMode2PulseWidth.TabIndex = 1311;
             this.edMode2PulseWidth.TabStop = false;
             this.edMode2PulseWidth.Text = "2";
+            this.edMode2PulseWidth.Value = 0D;
             // 
             // edMode2PulsePitch
             // 
@@ -879,7 +909,7 @@ namespace LaserCutter
             this.edMode2PulsePitch.Frame.CornerRound = 1;
             this.edMode2PulsePitch.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edMode2PulsePitch.Hint = null;
-            this.edMode2PulsePitch.Location = new System.Drawing.Point(629, 279);
+            this.edMode2PulsePitch.Location = new System.Drawing.Point(509, 279);
             this.edMode2PulsePitch.Max = 0D;
             this.edMode2PulsePitch.Min = 0D;
             this.edMode2PulsePitch.Name = "edMode2PulsePitch";
@@ -889,6 +919,7 @@ namespace LaserCutter
             this.edMode2PulsePitch.TabIndex = 1310;
             this.edMode2PulsePitch.TabStop = false;
             this.edMode2PulsePitch.Text = "0.000";
+            this.edMode2PulsePitch.Value = 0D;
             // 
             // gradLabel53
             // 
@@ -900,8 +931,9 @@ namespace LaserCutter
             this.gradLabel53.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel53.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel53.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel53.Location = new System.Drawing.Point(110, 279);
+            this.gradLabel53.Location = new System.Drawing.Point(65, 279);
             this.gradLabel53.Name = "gradLabel53";
+            this.gradLabel53.ShowAccelChar = false;
             this.gradLabel53.Size = new System.Drawing.Size(128, 29);
             this.gradLabel53.TabIndex = 1313;
             this.gradLabel53.Text = "Pulse Period (us)";
@@ -917,8 +949,9 @@ namespace LaserCutter
             this.gradLabel54.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel54.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel54.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel54.Location = new System.Drawing.Point(110, 311);
+            this.gradLabel54.Location = new System.Drawing.Point(65, 311);
             this.gradLabel54.Name = "gradLabel54";
+            this.gradLabel54.ShowAccelChar = false;
             this.gradLabel54.Size = new System.Drawing.Size(128, 29);
             this.gradLabel54.TabIndex = 1314;
             this.gradLabel54.Text = "Pulse Width (us)";
@@ -938,7 +971,7 @@ namespace LaserCutter
             this.uiLine17.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.uiLine17.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.uiLine17.LineWidth = 1F;
-            this.uiLine17.Location = new System.Drawing.Point(69, 185);
+            this.uiLine17.Location = new System.Drawing.Point(24, 185);
             this.uiLine17.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine17.Name = "uiLine17";
             this.uiLine17.ShowHint = false;
@@ -959,8 +992,9 @@ namespace LaserCutter
             this.gradLabel60.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel60.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel60.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel60.Location = new System.Drawing.Point(510, 279);
+            this.gradLabel60.Location = new System.Drawing.Point(390, 279);
             this.gradLabel60.Name = "gradLabel60";
+            this.gradLabel60.ShowAccelChar = false;
             this.gradLabel60.Size = new System.Drawing.Size(114, 29);
             this.gradLabel60.TabIndex = 1308;
             this.gradLabel60.Text = "Pulse Pitch (um)";
@@ -976,8 +1010,9 @@ namespace LaserCutter
             this.gradLabel47.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel47.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel47.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel47.Location = new System.Drawing.Point(513, 311);
+            this.gradLabel47.Location = new System.Drawing.Point(393, 311);
             this.gradLabel47.Name = "gradLabel47";
+            this.gradLabel47.ShowAccelChar = false;
             this.gradLabel47.Size = new System.Drawing.Size(111, 29);
             this.gradLabel47.TabIndex = 1309;
             this.gradLabel47.Text = "Pulse Width (us)";
@@ -993,7 +1028,7 @@ namespace LaserCutter
             this.btnConnect.ForeColor = System.Drawing.Color.Black;
             this.btnConnect.LED.Layout = yjTech.LEDLayout.Center;
             this.btnConnect.LED.Size = new System.Drawing.Size(70, 26);
-            this.btnConnect.Location = new System.Drawing.Point(823, 79);
+            this.btnConnect.Location = new System.Drawing.Point(626, 79);
             this.btnConnect.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(92, 46);
@@ -1008,9 +1043,9 @@ namespace LaserCutter
             this.btnClearList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnClearList.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnClearList.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClearList.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnClearList.Font = new System.Drawing.Font("굴림", 9F);
             this.btnClearList.ForeColor = System.Drawing.Color.Black;
-            this.btnClearList.Location = new System.Drawing.Point(695, 577);
+            this.btnClearList.Location = new System.Drawing.Point(575, 577);
             this.btnClearList.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnClearList.Name = "btnClearList";
             this.btnClearList.Size = new System.Drawing.Size(105, 47);
@@ -1029,8 +1064,9 @@ namespace LaserCutter
             this.gradLabel74.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel74.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel74.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel74.Location = new System.Drawing.Point(631, 73);
+            this.gradLabel74.Location = new System.Drawing.Point(434, 73);
             this.gradLabel74.Name = "gradLabel74";
+            this.gradLabel74.ShowAccelChar = false;
             this.gradLabel74.Size = new System.Drawing.Size(88, 29);
             this.gradLabel74.TabIndex = 1298;
             this.gradLabel74.Text = "Port";
@@ -1060,7 +1096,7 @@ namespace LaserCutter
             "COM12",
             "COM13",
             "COM14"});
-            this.cbComPort.Location = new System.Drawing.Point(722, 73);
+            this.cbComPort.Location = new System.Drawing.Point(525, 73);
             this.cbComPort.Margin = new System.Windows.Forms.Padding(4);
             this.cbComPort.MinimumSize = new System.Drawing.Size(63, 0);
             this.cbComPort.Name = "cbComPort";
@@ -1084,7 +1120,7 @@ namespace LaserCutter
             this.uiLine2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.uiLine2.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.uiLine2.LineWidth = 1F;
-            this.uiLine2.Location = new System.Drawing.Point(440, 185);
+            this.uiLine2.Location = new System.Drawing.Point(320, 185);
             this.uiLine2.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine2.Name = "uiLine2";
             this.uiLine2.ShowHint = false;
@@ -1103,7 +1139,7 @@ namespace LaserCutter
             this.btnGetVersion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGetVersion.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btnGetVersion.ForeColor = System.Drawing.Color.Black;
-            this.btnGetVersion.Location = new System.Drawing.Point(345, 77);
+            this.btnGetVersion.Location = new System.Drawing.Point(300, 77);
             this.btnGetVersion.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnGetVersion.Name = "btnGetVersion";
             this.btnGetVersion.Size = new System.Drawing.Size(61, 47);
@@ -1118,9 +1154,9 @@ namespace LaserCutter
             this.btnResetTrigger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnResetTrigger.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.btnResetTrigger.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnResetTrigger.Font = new System.Drawing.Font("Gulim", 9F);
+            this.btnResetTrigger.Font = new System.Drawing.Font("굴림", 9F);
             this.btnResetTrigger.ForeColor = System.Drawing.Color.Black;
-            this.btnResetTrigger.Location = new System.Drawing.Point(467, 577);
+            this.btnResetTrigger.Location = new System.Drawing.Point(347, 577);
             this.btnResetTrigger.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnResetTrigger.Name = "btnResetTrigger";
             this.btnResetTrigger.Size = new System.Drawing.Size(105, 47);
@@ -1137,7 +1173,7 @@ namespace LaserCutter
             this.btnOperatingOn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOperatingOn.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnOperatingOn.ForeColor = System.Drawing.Color.Black;
-            this.btnOperatingOn.Location = new System.Drawing.Point(467, 738);
+            this.btnOperatingOn.Location = new System.Drawing.Point(347, 738);
             this.btnOperatingOn.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnOperatingOn.Name = "btnOperatingOn";
             this.btnOperatingOn.Size = new System.Drawing.Size(105, 47);
@@ -1151,11 +1187,11 @@ namespace LaserCutter
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.panClient);
-            this.Font = new System.Drawing.Font("Gulim", 9F);
+            this.Font = new System.Drawing.Font("굴림", 9F);
             this.Location = new System.Drawing.Point(3, 3);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panManualADV";
-            this.Size = new System.Drawing.Size(940, 849);
+            this.Size = new System.Drawing.Size(739, 804);
             this.panClient.ResumeLayout(false);
             this.ResumeLayout(false);
 

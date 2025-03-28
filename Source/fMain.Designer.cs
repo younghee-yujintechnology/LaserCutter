@@ -47,7 +47,7 @@
             this.lblDateTime = new yjTech.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.AutoThread = new yjTech.Thread();
-            this.bitBtn2 = new yjTech.BitBtn();
+            this.btnConfig = new yjTech.BitBtn();
             this.panTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -253,23 +253,23 @@
             this.AutoThread.Interval = 100;
             this.AutoThread.OnExecute += new System.EventHandler(this.AutoThread_OnExecute);
             // 
-            // bitBtn2
+            // btnConfig
             // 
-            this.bitBtn2.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.bitBtn2.BackColor = System.Drawing.Color.Transparent;
-            this.bitBtn2.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.bitBtn2, "bitBtn2");
-            this.bitBtn2.ForeColor = System.Drawing.Color.Black;
-            this.bitBtn2.Margin2 = 10;
-            this.bitBtn2.Name = "bitBtn2";
-            this.bitBtn2.Tag = "10";
-            this.bitBtn2.UseVisualStyleBackColor = false;
+            this.btnConfig.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnConfig.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnConfig, "btnConfig");
+            this.btnConfig.ForeColor = System.Drawing.Color.Black;
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Tag = "12";
+            this.btnConfig.UseVisualStyleBackColor = false;
             // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.lblSelectedMenu);
             this.Controls.Add(this.bitBtn1);
             this.Controls.Add(this.bitBtn6);
@@ -282,7 +282,6 @@
             this.Controls.Add(this.panClient);
             this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.btnManual);
-            this.Controls.Add(this.bitBtn2);
             this.Controls.Add(this.btnJobFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
@@ -313,7 +312,7 @@
         private yjTech.Label lblDateTime;
         public yjTech.GradientLabel lblMainTitle;
         private yjTech.BitBtn btnManual;
-        private yjTech.BitBtn bitBtn2;
+        private yjTech.BitBtn btnConfig;
     }
 }
 

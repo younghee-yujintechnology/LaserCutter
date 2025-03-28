@@ -91,7 +91,7 @@ namespace LaserCutter
             this.panClient.Controls.Add(this.cbComPort);
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(427, 843);
+            this.panClient.Size = new System.Drawing.Size(427, 799);
             this.panClient.TabIndex = 1295;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -108,7 +108,7 @@ namespace LaserCutter
             this.ledTX.LED.OffColor = System.Drawing.Color.Gray;
             this.ledTX.Location = new System.Drawing.Point(402, 12);
             this.ledTX.Name = "ledTX";
-            this.ledTX.ShowChannelName = false;
+            this.ledTX.ShowAccelChar = false;
             this.ledTX.Size = new System.Drawing.Size(15, 16);
             this.ledTX.TabIndex = 1491;
             this.ledTX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -124,7 +124,7 @@ namespace LaserCutter
             this.ledRX.LED.OnColor = System.Drawing.Color.Red;
             this.ledRX.Location = new System.Drawing.Point(384, 12);
             this.ledRX.Name = "ledRX";
-            this.ledRX.ShowChannelName = false;
+            this.ledRX.ShowAccelChar = false;
             this.ledRX.Size = new System.Drawing.Size(15, 16);
             this.ledRX.TabIndex = 1490;
             this.ledRX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -157,6 +157,7 @@ namespace LaserCutter
             this.viCurrentValue.FormatString = "0";
             this.viCurrentValue.Location = new System.Drawing.Point(181, 233);
             this.viCurrentValue.Name = "viCurrentValue";
+            this.viCurrentValue.ShowAccelChar = false;
             this.viCurrentValue.Size = new System.Drawing.Size(95, 29);
             this.viCurrentValue.TabIndex = 1334;
             this.viCurrentValue.Text = "0";
@@ -174,6 +175,7 @@ namespace LaserCutter
             this.gradientLabel4.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel4.Location = new System.Drawing.Point(83, 234);
             this.gradientLabel4.Name = "gradientLabel4";
+            this.gradientLabel4.ShowAccelChar = false;
             this.gradientLabel4.Size = new System.Drawing.Size(93, 26);
             this.gradientLabel4.TabIndex = 1333;
             this.gradientLabel4.Text = "Current";
@@ -219,7 +221,6 @@ namespace LaserCutter
             // 
             this.edLightValue.BackColor = System.Drawing.Color.White;
             this.edLightValue.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edLightValue.DataType = yjTech.DataType.Integer;
             this.edLightValue.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edLightValue.ForeColor = System.Drawing.Color.Black;
             this.edLightValue.Frame.CornerRound = 1;
@@ -235,6 +236,7 @@ namespace LaserCutter
             this.edLightValue.TabIndex = 1329;
             this.edLightValue.TabStop = false;
             this.edLightValue.Text = "0";
+            this.edLightValue.Value = 0D;
             // 
             // gradientLabel2
             // 
@@ -248,6 +250,7 @@ namespace LaserCutter
             this.gradientLabel2.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel2.Location = new System.Drawing.Point(83, 298);
             this.gradientLabel2.Name = "gradientLabel2";
+            this.gradientLabel2.ShowAccelChar = false;
             this.gradientLabel2.Size = new System.Drawing.Size(92, 26);
             this.gradientLabel2.TabIndex = 1328;
             this.gradientLabel2.Text = "Light Value";
@@ -265,6 +268,7 @@ namespace LaserCutter
             this.gradientLabel3.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel3.Location = new System.Drawing.Point(83, 74);
             this.gradientLabel3.Name = "gradientLabel3";
+            this.gradientLabel3.ShowAccelChar = false;
             this.gradientLabel3.Size = new System.Drawing.Size(92, 26);
             this.gradientLabel3.TabIndex = 1324;
             this.gradientLabel3.Text = "Port";
@@ -313,7 +317,7 @@ namespace LaserCutter
             this.Location = new System.Drawing.Point(3, 3);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panManualLight";
-            this.Size = new System.Drawing.Size(433, 849);
+            this.Size = new System.Drawing.Size(433, 805);
             this.panClient.ResumeLayout(false);
             this.ResumeLayout(false);
 

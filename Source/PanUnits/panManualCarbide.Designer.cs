@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using yjTech;
 
 namespace LaserCutter
 {
@@ -31,77 +31,77 @@ namespace LaserCutter
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dsLaser = new DaekhonSystem.DataServer();
+            this.dsLaser = new yjTech.DataServer();
             this.tmr_LaserStatus = new System.Windows.Forms.Timer(this.components);
-            this.ReadThread = new DaekhonSystem.Thread();
+            this.ReadThread = new yjTech.Thread();
             this.panClient = new LaserCutter.sjPanel();
-            this.edBurstControlP = new DaekhonSystem.NumberEdit();
-            this.btnBurstControlP = new DaekhonSystem.BitBtn();
-            this.gradientLabel4 = new DaekhonSystem.GradientLabel();
-            this.viBurstControlP = new DaekhonSystem.ValueIndicator();
-            this.edBurstEnvelopeControlP = new DaekhonSystem.NumberEdit();
-            this.btnBurstEnvelopeControlP = new DaekhonSystem.BitBtn();
-            this.gradientLabel3 = new DaekhonSystem.GradientLabel();
-            this.viBurstEnvelopeControlP = new DaekhonSystem.ValueIndicator();
-            this.edBurstEnvelopeControlN = new DaekhonSystem.NumberEdit();
-            this.btnBurstEnvelopeControlN = new DaekhonSystem.BitBtn();
-            this.gradientLabel7 = new DaekhonSystem.GradientLabel();
-            this.viBurstEnvelopeControlN = new DaekhonSystem.ValueIndicator();
-            this.btnExternalLow = new DaekhonSystem.LEDButton();
+            this.edBurstControlP = new yjTech.NumberEdit();
+            this.btnBurstControlP = new yjTech.BitBtn();
+            this.gradientLabel4 = new yjTech.GradientLabel();
+            this.viBurstControlP = new yjTech.ValueIndicator();
+            this.edBurstEnvelopeControlP = new yjTech.NumberEdit();
+            this.btnBurstEnvelopeControlP = new yjTech.BitBtn();
+            this.gradientLabel3 = new yjTech.GradientLabel();
+            this.viBurstEnvelopeControlP = new yjTech.ValueIndicator();
+            this.edBurstEnvelopeControlN = new yjTech.NumberEdit();
+            this.btnBurstEnvelopeControlN = new yjTech.BitBtn();
+            this.gradientLabel7 = new yjTech.GradientLabel();
+            this.viBurstEnvelopeControlN = new yjTech.ValueIndicator();
+            this.btnExternalLow = new yjTech.LEDButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnExternalHigh = new DaekhonSystem.LEDButton();
-            this.btnInternal = new DaekhonSystem.LEDButton();
-            this.lblShutterStatus = new DaekhonSystem.Label();
-            this.lblEmissionStatus = new DaekhonSystem.Label();
-            this.lblLaserStatus = new DaekhonSystem.Label();
+            this.btnExternalHigh = new yjTech.LEDButton();
+            this.btnInternal = new yjTech.LEDButton();
+            this.lblShutterStatus = new yjTech.Label();
+            this.lblEmissionStatus = new yjTech.Label();
+            this.lblLaserStatus = new yjTech.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.edTargetTemp = new DaekhonSystem.NumberEdit();
-            this.btnChillerTempSet = new DaekhonSystem.BitBtn();
+            this.edTargetTemp = new yjTech.NumberEdit();
+            this.btnChillerTempSet = new yjTech.BitBtn();
             this.lbChillerStatus = new System.Windows.Forms.Label();
-            this.btnChillerOff = new DaekhonSystem.LEDButton();
-            this.btnchillerOn = new DaekhonSystem.LEDButton();
-            this.edBurstControlN = new DaekhonSystem.NumberEdit();
-            this.btnBurstControlN = new DaekhonSystem.BitBtn();
-            this.gradientLabel2 = new DaekhonSystem.GradientLabel();
-            this.viBurstControlN = new DaekhonSystem.ValueIndicator();
-            this.edPPDivider = new DaekhonSystem.NumberEdit();
-            this.btnPPDivider = new DaekhonSystem.BitBtn();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
-            this.viPPDivider = new DaekhonSystem.ValueIndicator();
-            this.btnApply = new DaekhonSystem.BitBtn();
-            this.btnStandBy = new DaekhonSystem.BitBtn();
+            this.btnChillerOff = new yjTech.LEDButton();
+            this.btnchillerOn = new yjTech.LEDButton();
+            this.edBurstControlN = new yjTech.NumberEdit();
+            this.btnBurstControlN = new yjTech.BitBtn();
+            this.gradientLabel2 = new yjTech.GradientLabel();
+            this.viBurstControlN = new yjTech.ValueIndicator();
+            this.edPPDivider = new yjTech.NumberEdit();
+            this.btnPPDivider = new yjTech.BitBtn();
+            this.gradientLabel1 = new yjTech.GradientLabel();
+            this.viPPDivider = new yjTech.ValueIndicator();
+            this.btnApply = new yjTech.BitBtn();
+            this.btnStandBy = new yjTech.BitBtn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.switchChirp = new DaekhonSystem.SunnySwitch();
+            this.switchChirp = new yjTech.SunnySwitch();
             this.label3 = new System.Windows.Forms.Label();
-            this.edPulseduration = new DaekhonSystem.NumberEdit();
-            this.btnPulseduration = new DaekhonSystem.BitBtn();
+            this.edPulseduration = new yjTech.NumberEdit();
+            this.btnPulseduration = new yjTech.BitBtn();
             this.lbCurrentPulseDuration = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnShutterClose = new DaekhonSystem.LEDButton();
-            this.btnShutterOpen = new DaekhonSystem.LEDButton();
+            this.btnShutterClose = new yjTech.LEDButton();
+            this.btnShutterOpen = new yjTech.LEDButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnDisconnect = new DaekhonSystem.LEDButton();
-            this.btnConnect = new DaekhonSystem.LEDButton();
-            this.cbLaserSet = new DaekhonSystem.ComboBox();
+            this.btnDisconnect = new yjTech.LEDButton();
+            this.btnConnect = new yjTech.LEDButton();
+            this.cbLaserSet = new yjTech.ComboBox();
             this.lblCurLaserParam = new System.Windows.Forms.Label();
-            this.gradLabel57 = new DaekhonSystem.GradientLabel();
-            this.btnLogClear = new DaekhonSystem.BitBtn();
-            this.ListBoxStatus = new DaekhonSystem.ListBox();
-            this.uiLine26 = new DaekhonSystem.SunnyLine();
-            this.edAttenuator = new DaekhonSystem.NumberEdit();
-            this.btnSetAttenuator = new DaekhonSystem.BitBtn();
-            this.Attenuotor = new DaekhonSystem.GradientLabel();
-            this.gradLabel15 = new DaekhonSystem.GradientLabel();
-            this.gradLabel16 = new DaekhonSystem.GradientLabel();
-            this.viFrequency = new DaekhonSystem.ValueIndicator();
-            this.viPower = new DaekhonSystem.ValueIndicator();
+            this.gradLabel57 = new yjTech.GradientLabel();
+            this.btnLogClear = new yjTech.BitBtn();
+            this.ListBoxStatus = new yjTech.ListBox();
+            this.uiLine26 = new yjTech.SunnyLine();
+            this.edAttenuator = new yjTech.NumberEdit();
+            this.btnSetAttenuator = new yjTech.BitBtn();
+            this.Attenuotor = new yjTech.GradientLabel();
+            this.gradLabel15 = new yjTech.GradientLabel();
+            this.gradLabel16 = new yjTech.GradientLabel();
+            this.viFrequency = new yjTech.ValueIndicator();
+            this.viPower = new yjTech.ValueIndicator();
             this.label36 = new System.Windows.Forms.Label();
-            this.viAttenuator = new DaekhonSystem.ValueIndicator();
+            this.viAttenuator = new yjTech.ValueIndicator();
             this.label50 = new System.Windows.Forms.Label();
-            this.uiLine25 = new DaekhonSystem.SunnyLine();
-            this.uiLine23 = new DaekhonSystem.SunnyLine();
+            this.uiLine25 = new yjTech.SunnyLine();
+            this.uiLine23 = new yjTech.SunnyLine();
             this.panClient.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -112,7 +112,7 @@ namespace LaserCutter
             // 
             // dsLaser
             // 
-            this.dsLaser.OnError += new DaekhonSystem.ErrorEventHandler(this.dataServer1_OnError);
+            this.dsLaser.OnError += new yjTech.ErrorEventHandler(this.dataServer1_OnError);
             // 
             // tmr_LaserStatus
             // 
@@ -182,7 +182,7 @@ namespace LaserCutter
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Margin = new System.Windows.Forms.Padding(0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(936, 843);
+            this.panClient.Size = new System.Drawing.Size(733, 799);
             this.panClient.TabIndex = 1279;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.Color.Black;
@@ -199,7 +199,7 @@ namespace LaserCutter
             this.edBurstControlP.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edBurstControlP.Frame.Top = false;
             this.edBurstControlP.Hint = null;
-            this.edBurstControlP.Location = new System.Drawing.Point(594, 310);
+            this.edBurstControlP.Location = new System.Drawing.Point(515, 299);
             this.edBurstControlP.Margin = new System.Windows.Forms.Padding(4);
             this.edBurstControlP.Max = 0D;
             this.edBurstControlP.Min = 0D;
@@ -211,6 +211,7 @@ namespace LaserCutter
             this.edBurstControlP.Size = new System.Drawing.Size(95, 29);
             this.edBurstControlP.TabIndex = 1376;
             this.edBurstControlP.Text = "0";
+            this.edBurstControlP.Value = 0D;
             // 
             // btnBurstControlP
             // 
@@ -220,7 +221,7 @@ namespace LaserCutter
             this.btnBurstControlP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBurstControlP.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnBurstControlP.ForeColor = System.Drawing.Color.Black;
-            this.btnBurstControlP.Location = new System.Drawing.Point(692, 309);
+            this.btnBurstControlP.Location = new System.Drawing.Point(613, 298);
             this.btnBurstControlP.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnBurstControlP.Name = "btnBurstControlP";
             this.btnBurstControlP.Size = new System.Drawing.Size(77, 30);
@@ -240,8 +241,9 @@ namespace LaserCutter
             this.gradientLabel4.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel4.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel4.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel4.Location = new System.Drawing.Point(377, 311);
+            this.gradientLabel4.Location = new System.Drawing.Point(298, 300);
             this.gradientLabel4.Name = "gradientLabel4";
+            this.gradientLabel4.ShowAccelChar = false;
             this.gradientLabel4.Size = new System.Drawing.Size(99, 26);
             this.gradientLabel4.TabIndex = 1374;
             this.gradientLabel4.Text = "Burst Control P";
@@ -253,8 +255,9 @@ namespace LaserCutter
             this.viBurstControlP.Cursor = System.Windows.Forms.Cursors.Default;
             this.viBurstControlP.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viBurstControlP.ForeColor = System.Drawing.Color.Black;
-            this.viBurstControlP.Location = new System.Drawing.Point(480, 311);
+            this.viBurstControlP.Location = new System.Drawing.Point(401, 300);
             this.viBurstControlP.Name = "viBurstControlP";
+            this.viBurstControlP.ShowAccelChar = false;
             this.viBurstControlP.Size = new System.Drawing.Size(81, 26);
             this.viBurstControlP.TabIndex = 1375;
             this.viBurstControlP.Text = "0";
@@ -270,7 +273,7 @@ namespace LaserCutter
             this.edBurstEnvelopeControlP.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edBurstEnvelopeControlP.Frame.Top = false;
             this.edBurstEnvelopeControlP.Hint = null;
-            this.edBurstEnvelopeControlP.Location = new System.Drawing.Point(594, 346);
+            this.edBurstEnvelopeControlP.Location = new System.Drawing.Point(515, 335);
             this.edBurstEnvelopeControlP.Margin = new System.Windows.Forms.Padding(4);
             this.edBurstEnvelopeControlP.Max = 0D;
             this.edBurstEnvelopeControlP.Min = 0D;
@@ -282,6 +285,7 @@ namespace LaserCutter
             this.edBurstEnvelopeControlP.Size = new System.Drawing.Size(95, 29);
             this.edBurstEnvelopeControlP.TabIndex = 1372;
             this.edBurstEnvelopeControlP.Text = "0";
+            this.edBurstEnvelopeControlP.Value = 0D;
             // 
             // btnBurstEnvelopeControlP
             // 
@@ -291,7 +295,7 @@ namespace LaserCutter
             this.btnBurstEnvelopeControlP.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBurstEnvelopeControlP.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnBurstEnvelopeControlP.ForeColor = System.Drawing.Color.Black;
-            this.btnBurstEnvelopeControlP.Location = new System.Drawing.Point(692, 345);
+            this.btnBurstEnvelopeControlP.Location = new System.Drawing.Point(613, 334);
             this.btnBurstEnvelopeControlP.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnBurstEnvelopeControlP.Name = "btnBurstEnvelopeControlP";
             this.btnBurstEnvelopeControlP.Size = new System.Drawing.Size(77, 30);
@@ -311,8 +315,9 @@ namespace LaserCutter
             this.gradientLabel3.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel3.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel3.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel3.Location = new System.Drawing.Point(355, 347);
+            this.gradientLabel3.Location = new System.Drawing.Point(276, 336);
             this.gradientLabel3.Name = "gradientLabel3";
+            this.gradientLabel3.ShowAccelChar = false;
             this.gradientLabel3.Size = new System.Drawing.Size(121, 26);
             this.gradientLabel3.TabIndex = 1370;
             this.gradientLabel3.Text = "Envelope Control P";
@@ -324,8 +329,9 @@ namespace LaserCutter
             this.viBurstEnvelopeControlP.Cursor = System.Windows.Forms.Cursors.Default;
             this.viBurstEnvelopeControlP.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viBurstEnvelopeControlP.ForeColor = System.Drawing.Color.Black;
-            this.viBurstEnvelopeControlP.Location = new System.Drawing.Point(480, 347);
+            this.viBurstEnvelopeControlP.Location = new System.Drawing.Point(401, 336);
             this.viBurstEnvelopeControlP.Name = "viBurstEnvelopeControlP";
+            this.viBurstEnvelopeControlP.ShowAccelChar = false;
             this.viBurstEnvelopeControlP.Size = new System.Drawing.Size(81, 26);
             this.viBurstEnvelopeControlP.TabIndex = 1371;
             this.viBurstEnvelopeControlP.Text = "0";
@@ -341,7 +347,7 @@ namespace LaserCutter
             this.edBurstEnvelopeControlN.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edBurstEnvelopeControlN.Frame.Top = false;
             this.edBurstEnvelopeControlN.Hint = null;
-            this.edBurstEnvelopeControlN.Location = new System.Drawing.Point(594, 424);
+            this.edBurstEnvelopeControlN.Location = new System.Drawing.Point(515, 413);
             this.edBurstEnvelopeControlN.Margin = new System.Windows.Forms.Padding(4);
             this.edBurstEnvelopeControlN.Max = 0D;
             this.edBurstEnvelopeControlN.Min = 0D;
@@ -353,6 +359,7 @@ namespace LaserCutter
             this.edBurstEnvelopeControlN.Size = new System.Drawing.Size(95, 29);
             this.edBurstEnvelopeControlN.TabIndex = 1368;
             this.edBurstEnvelopeControlN.Text = "0";
+            this.edBurstEnvelopeControlN.Value = 0D;
             // 
             // btnBurstEnvelopeControlN
             // 
@@ -362,7 +369,7 @@ namespace LaserCutter
             this.btnBurstEnvelopeControlN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBurstEnvelopeControlN.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnBurstEnvelopeControlN.ForeColor = System.Drawing.Color.Black;
-            this.btnBurstEnvelopeControlN.Location = new System.Drawing.Point(692, 423);
+            this.btnBurstEnvelopeControlN.Location = new System.Drawing.Point(613, 412);
             this.btnBurstEnvelopeControlN.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnBurstEnvelopeControlN.Name = "btnBurstEnvelopeControlN";
             this.btnBurstEnvelopeControlN.Size = new System.Drawing.Size(77, 30);
@@ -382,8 +389,9 @@ namespace LaserCutter
             this.gradientLabel7.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel7.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel7.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel7.Location = new System.Drawing.Point(358, 425);
+            this.gradientLabel7.Location = new System.Drawing.Point(279, 414);
             this.gradientLabel7.Name = "gradientLabel7";
+            this.gradientLabel7.ShowAccelChar = false;
             this.gradientLabel7.Size = new System.Drawing.Size(118, 26);
             this.gradientLabel7.TabIndex = 1366;
             this.gradientLabel7.Text = "Envelope Control N";
@@ -395,8 +403,9 @@ namespace LaserCutter
             this.viBurstEnvelopeControlN.Cursor = System.Windows.Forms.Cursors.Default;
             this.viBurstEnvelopeControlN.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viBurstEnvelopeControlN.ForeColor = System.Drawing.Color.Black;
-            this.viBurstEnvelopeControlN.Location = new System.Drawing.Point(480, 425);
+            this.viBurstEnvelopeControlN.Location = new System.Drawing.Point(401, 414);
             this.viBurstEnvelopeControlN.Name = "viBurstEnvelopeControlN";
+            this.viBurstEnvelopeControlN.ShowAccelChar = false;
             this.viBurstEnvelopeControlN.Size = new System.Drawing.Size(81, 26);
             this.viBurstEnvelopeControlN.TabIndex = 1367;
             this.viBurstEnvelopeControlN.Text = "0";
@@ -410,9 +419,9 @@ namespace LaserCutter
             this.btnExternalLow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExternalLow.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnExternalLow.ForeColor = System.Drawing.Color.Black;
-            this.btnExternalLow.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnExternalLow.LED.Layout = yjTech.LEDLayout.Center;
             this.btnExternalLow.LED.Size = new System.Drawing.Size(70, 26);
-            this.btnExternalLow.Location = new System.Drawing.Point(508, 765);
+            this.btnExternalLow.Location = new System.Drawing.Point(429, 743);
             this.btnExternalLow.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnExternalLow.Name = "btnExternalLow";
             this.btnExternalLow.Size = new System.Drawing.Size(89, 46);
@@ -427,7 +436,7 @@ namespace LaserCutter
             this.groupBox5.Controls.Add(this.btnExternalHigh);
             this.groupBox5.Controls.Add(this.btnInternal);
             this.groupBox5.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.groupBox5.Location = new System.Drawing.Point(107, 503);
+            this.groupBox5.Location = new System.Drawing.Point(28, 492);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(251, 87);
             this.groupBox5.TabIndex = 1363;
@@ -442,7 +451,7 @@ namespace LaserCutter
             this.btnExternalHigh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExternalHigh.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnExternalHigh.ForeColor = System.Drawing.Color.Black;
-            this.btnExternalHigh.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnExternalHigh.LED.Layout = yjTech.LEDLayout.Center;
             this.btnExternalHigh.LED.Size = new System.Drawing.Size(70, 26);
             this.btnExternalHigh.Location = new System.Drawing.Point(130, 27);
             this.btnExternalHigh.MinimumSize = new System.Drawing.Size(1, 1);
@@ -461,7 +470,7 @@ namespace LaserCutter
             this.btnInternal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInternal.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnInternal.ForeColor = System.Drawing.Color.Black;
-            this.btnInternal.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnInternal.LED.Layout = yjTech.LEDLayout.Center;
             this.btnInternal.LED.Size = new System.Drawing.Size(70, 26);
             this.btnInternal.Location = new System.Drawing.Point(24, 27);
             this.btnInternal.MinimumSize = new System.Drawing.Size(1, 1);
@@ -478,8 +487,9 @@ namespace LaserCutter
             this.lblShutterStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblShutterStatus.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblShutterStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblShutterStatus.Location = new System.Drawing.Point(490, 109);
+            this.lblShutterStatus.Location = new System.Drawing.Point(411, 98);
             this.lblShutterStatus.Name = "lblShutterStatus";
+            this.lblShutterStatus.ShowAccelChar = false;
             this.lblShutterStatus.Size = new System.Drawing.Size(295, 33);
             this.lblShutterStatus.TabIndex = 1362;
             this.lblShutterStatus.Text = "Main Output is closed";
@@ -491,8 +501,9 @@ namespace LaserCutter
             this.lblEmissionStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblEmissionStatus.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblEmissionStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblEmissionStatus.Location = new System.Drawing.Point(490, 70);
+            this.lblEmissionStatus.Location = new System.Drawing.Point(411, 59);
             this.lblEmissionStatus.Name = "lblEmissionStatus";
+            this.lblEmissionStatus.ShowAccelChar = false;
             this.lblEmissionStatus.Size = new System.Drawing.Size(295, 33);
             this.lblEmissionStatus.TabIndex = 1361;
             this.lblEmissionStatus.Text = "No emission";
@@ -504,8 +515,9 @@ namespace LaserCutter
             this.lblLaserStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblLaserStatus.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblLaserStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblLaserStatus.Location = new System.Drawing.Point(107, 70);
+            this.lblLaserStatus.Location = new System.Drawing.Point(28, 59);
             this.lblLaserStatus.Name = "lblLaserStatus";
+            this.lblLaserStatus.ShowAccelChar = false;
             this.lblLaserStatus.Size = new System.Drawing.Size(372, 72);
             this.lblLaserStatus.TabIndex = 1360;
             this.lblLaserStatus.Text = "Standing by";
@@ -520,7 +532,7 @@ namespace LaserCutter
             this.groupBox4.Controls.Add(this.btnChillerOff);
             this.groupBox4.Controls.Add(this.btnchillerOn);
             this.groupBox4.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.groupBox4.Location = new System.Drawing.Point(107, 601);
+            this.groupBox4.Location = new System.Drawing.Point(28, 590);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(251, 158);
             this.groupBox4.TabIndex = 1359;
@@ -560,6 +572,7 @@ namespace LaserCutter
             this.edTargetTemp.Size = new System.Drawing.Size(89, 29);
             this.edTargetTemp.TabIndex = 1359;
             this.edTargetTemp.Text = "0";
+            this.edTargetTemp.Value = 0D;
             // 
             // btnChillerTempSet
             // 
@@ -600,7 +613,7 @@ namespace LaserCutter
             this.btnChillerOff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChillerOff.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnChillerOff.ForeColor = System.Drawing.Color.Black;
-            this.btnChillerOff.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnChillerOff.LED.Layout = yjTech.LEDLayout.Center;
             this.btnChillerOff.LED.Size = new System.Drawing.Size(70, 26);
             this.btnChillerOff.Location = new System.Drawing.Point(130, 57);
             this.btnChillerOff.MinimumSize = new System.Drawing.Size(1, 1);
@@ -619,7 +632,7 @@ namespace LaserCutter
             this.btnchillerOn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnchillerOn.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnchillerOn.ForeColor = System.Drawing.Color.Black;
-            this.btnchillerOn.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnchillerOn.LED.Layout = yjTech.LEDLayout.Center;
             this.btnchillerOn.LED.Size = new System.Drawing.Size(70, 26);
             this.btnchillerOn.Location = new System.Drawing.Point(24, 57);
             this.btnchillerOn.MinimumSize = new System.Drawing.Size(1, 1);
@@ -640,7 +653,7 @@ namespace LaserCutter
             this.edBurstControlN.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edBurstControlN.Frame.Top = false;
             this.edBurstControlN.Hint = null;
-            this.edBurstControlN.Location = new System.Drawing.Point(594, 388);
+            this.edBurstControlN.Location = new System.Drawing.Point(515, 377);
             this.edBurstControlN.Margin = new System.Windows.Forms.Padding(4);
             this.edBurstControlN.Max = 0D;
             this.edBurstControlN.Min = 0D;
@@ -652,6 +665,7 @@ namespace LaserCutter
             this.edBurstControlN.Size = new System.Drawing.Size(95, 29);
             this.edBurstControlN.TabIndex = 1357;
             this.edBurstControlN.Text = "0";
+            this.edBurstControlN.Value = 0D;
             // 
             // btnBurstControlN
             // 
@@ -661,7 +675,7 @@ namespace LaserCutter
             this.btnBurstControlN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBurstControlN.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnBurstControlN.ForeColor = System.Drawing.Color.Black;
-            this.btnBurstControlN.Location = new System.Drawing.Point(692, 387);
+            this.btnBurstControlN.Location = new System.Drawing.Point(613, 376);
             this.btnBurstControlN.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnBurstControlN.Name = "btnBurstControlN";
             this.btnBurstControlN.Size = new System.Drawing.Size(77, 30);
@@ -681,8 +695,9 @@ namespace LaserCutter
             this.gradientLabel2.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel2.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel2.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel2.Location = new System.Drawing.Point(377, 389);
+            this.gradientLabel2.Location = new System.Drawing.Point(298, 378);
             this.gradientLabel2.Name = "gradientLabel2";
+            this.gradientLabel2.ShowAccelChar = false;
             this.gradientLabel2.Size = new System.Drawing.Size(99, 26);
             this.gradientLabel2.TabIndex = 1355;
             this.gradientLabel2.Text = "Burst Control N";
@@ -694,8 +709,9 @@ namespace LaserCutter
             this.viBurstControlN.Cursor = System.Windows.Forms.Cursors.Default;
             this.viBurstControlN.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viBurstControlN.ForeColor = System.Drawing.Color.Black;
-            this.viBurstControlN.Location = new System.Drawing.Point(480, 389);
+            this.viBurstControlN.Location = new System.Drawing.Point(401, 378);
             this.viBurstControlN.Name = "viBurstControlN";
+            this.viBurstControlN.ShowAccelChar = false;
             this.viBurstControlN.Size = new System.Drawing.Size(81, 26);
             this.viBurstControlN.TabIndex = 1356;
             this.viBurstControlN.Text = "0";
@@ -711,7 +727,7 @@ namespace LaserCutter
             this.edPPDivider.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edPPDivider.Frame.Top = false;
             this.edPPDivider.Hint = null;
-            this.edPPDivider.Location = new System.Drawing.Point(594, 267);
+            this.edPPDivider.Location = new System.Drawing.Point(515, 256);
             this.edPPDivider.Margin = new System.Windows.Forms.Padding(4);
             this.edPPDivider.Max = 0D;
             this.edPPDivider.Min = 0D;
@@ -723,6 +739,7 @@ namespace LaserCutter
             this.edPPDivider.Size = new System.Drawing.Size(95, 29);
             this.edPPDivider.TabIndex = 1353;
             this.edPPDivider.Text = "0";
+            this.edPPDivider.Value = 0D;
             // 
             // btnPPDivider
             // 
@@ -732,7 +749,7 @@ namespace LaserCutter
             this.btnPPDivider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPPDivider.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnPPDivider.ForeColor = System.Drawing.Color.Black;
-            this.btnPPDivider.Location = new System.Drawing.Point(692, 266);
+            this.btnPPDivider.Location = new System.Drawing.Point(613, 255);
             this.btnPPDivider.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnPPDivider.Name = "btnPPDivider";
             this.btnPPDivider.Size = new System.Drawing.Size(77, 30);
@@ -752,8 +769,9 @@ namespace LaserCutter
             this.gradientLabel1.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradientLabel1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradientLabel1.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradientLabel1.Location = new System.Drawing.Point(377, 268);
+            this.gradientLabel1.Location = new System.Drawing.Point(298, 257);
             this.gradientLabel1.Name = "gradientLabel1";
+            this.gradientLabel1.ShowAccelChar = false;
             this.gradientLabel1.Size = new System.Drawing.Size(99, 26);
             this.gradientLabel1.TabIndex = 1351;
             this.gradientLabel1.Text = "PP Divider";
@@ -765,8 +783,9 @@ namespace LaserCutter
             this.viPPDivider.Cursor = System.Windows.Forms.Cursors.Default;
             this.viPPDivider.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viPPDivider.ForeColor = System.Drawing.Color.Black;
-            this.viPPDivider.Location = new System.Drawing.Point(480, 268);
+            this.viPPDivider.Location = new System.Drawing.Point(401, 257);
             this.viPPDivider.Name = "viPPDivider";
+            this.viPPDivider.ShowAccelChar = false;
             this.viPPDivider.Size = new System.Drawing.Size(81, 26);
             this.viPPDivider.TabIndex = 1352;
             this.viPPDivider.Text = "0";
@@ -780,7 +799,7 @@ namespace LaserCutter
             this.btnApply.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnApply.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnApply.ForeColor = System.Drawing.Color.Black;
-            this.btnApply.Location = new System.Drawing.Point(608, 565);
+            this.btnApply.Location = new System.Drawing.Point(529, 554);
             this.btnApply.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(77, 30);
@@ -797,7 +816,7 @@ namespace LaserCutter
             this.btnStandBy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStandBy.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnStandBy.ForeColor = System.Drawing.Color.Black;
-            this.btnStandBy.Location = new System.Drawing.Point(691, 565);
+            this.btnStandBy.Location = new System.Drawing.Point(612, 554);
             this.btnStandBy.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnStandBy.Name = "btnStandBy";
             this.btnStandBy.Size = new System.Drawing.Size(77, 30);
@@ -811,7 +830,7 @@ namespace LaserCutter
             this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("굴림", 9F);
-            this.label1.Location = new System.Drawing.Point(568, 243);
+            this.label1.Location = new System.Drawing.Point(489, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 12);
             this.label1.TabIndex = 1348;
@@ -825,7 +844,7 @@ namespace LaserCutter
             this.groupBox3.Controls.Add(this.btnPulseduration);
             this.groupBox3.Controls.Add(this.lbCurrentPulseDuration);
             this.groupBox3.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.groupBox3.Location = new System.Drawing.Point(107, 368);
+            this.groupBox3.Location = new System.Drawing.Point(28, 357);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(251, 125);
             this.groupBox3.TabIndex = 1346;
@@ -843,7 +862,7 @@ namespace LaserCutter
             this.switchChirp.Name = "switchChirp";
             this.switchChirp.ShowHint = false;
             this.switchChirp.Size = new System.Drawing.Size(128, 23);
-            this.switchChirp.SwitchShape = DaekhonSystem.SwitchShape.Square;
+            this.switchChirp.SwitchShape = yjTech.SwitchShape.Square;
             this.switchChirp.TabIndex = 1362;
             this.switchChirp.Text = "Negative Chirp";
             this.switchChirp.Click += new System.EventHandler(this.switchChirp_Click);
@@ -881,6 +900,7 @@ namespace LaserCutter
             this.edPulseduration.Size = new System.Drawing.Size(95, 29);
             this.edPulseduration.TabIndex = 1359;
             this.edPulseduration.Text = "0";
+            this.edPulseduration.Value = 0D;
             // 
             // btnPulseduration
             // 
@@ -918,7 +938,7 @@ namespace LaserCutter
             this.groupBox2.Controls.Add(this.btnShutterClose);
             this.groupBox2.Controls.Add(this.btnShutterOpen);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.groupBox2.Location = new System.Drawing.Point(107, 255);
+            this.groupBox2.Location = new System.Drawing.Point(28, 244);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(251, 104);
             this.groupBox2.TabIndex = 1345;
@@ -933,7 +953,7 @@ namespace LaserCutter
             this.btnShutterClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShutterClose.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnShutterClose.ForeColor = System.Drawing.Color.Black;
-            this.btnShutterClose.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnShutterClose.LED.Layout = yjTech.LEDLayout.Center;
             this.btnShutterClose.LED.Size = new System.Drawing.Size(70, 26);
             this.btnShutterClose.Location = new System.Drawing.Point(130, 33);
             this.btnShutterClose.MinimumSize = new System.Drawing.Size(1, 1);
@@ -952,7 +972,7 @@ namespace LaserCutter
             this.btnShutterOpen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnShutterOpen.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnShutterOpen.ForeColor = System.Drawing.Color.Black;
-            this.btnShutterOpen.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnShutterOpen.LED.Layout = yjTech.LEDLayout.Center;
             this.btnShutterOpen.LED.Size = new System.Drawing.Size(70, 26);
             this.btnShutterOpen.Location = new System.Drawing.Point(24, 33);
             this.btnShutterOpen.MinimumSize = new System.Drawing.Size(1, 1);
@@ -968,7 +988,7 @@ namespace LaserCutter
             this.groupBox1.Controls.Add(this.btnDisconnect);
             this.groupBox1.Controls.Add(this.btnConnect);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.groupBox1.Location = new System.Drawing.Point(107, 145);
+            this.groupBox1.Location = new System.Drawing.Point(28, 134);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(251, 104);
             this.groupBox1.TabIndex = 1344;
@@ -983,7 +1003,7 @@ namespace LaserCutter
             this.btnDisconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDisconnect.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnDisconnect.ForeColor = System.Drawing.Color.Black;
-            this.btnDisconnect.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnDisconnect.LED.Layout = yjTech.LEDLayout.Center;
             this.btnDisconnect.LED.Size = new System.Drawing.Size(70, 26);
             this.btnDisconnect.Location = new System.Drawing.Point(130, 33);
             this.btnDisconnect.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1002,7 +1022,7 @@ namespace LaserCutter
             this.btnConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnect.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnConnect.ForeColor = System.Drawing.Color.Black;
-            this.btnConnect.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnConnect.LED.Layout = yjTech.LEDLayout.Center;
             this.btnConnect.LED.Size = new System.Drawing.Size(70, 26);
             this.btnConnect.LED.Value = true;
             this.btnConnect.Location = new System.Drawing.Point(24, 33);
@@ -1023,7 +1043,7 @@ namespace LaserCutter
             this.cbLaserSet.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.cbLaserSet.Hint = null;
             this.cbLaserSet.ItemIndex = 1;
-            this.cbLaserSet.Location = new System.Drawing.Point(375, 531);
+            this.cbLaserSet.Location = new System.Drawing.Point(296, 520);
             this.cbLaserSet.Margin = new System.Windows.Forms.Padding(4);
             this.cbLaserSet.MinimumSize = new System.Drawing.Size(63, 0);
             this.cbLaserSet.Name = "cbLaserSet";
@@ -1039,7 +1059,7 @@ namespace LaserCutter
             this.lblCurLaserParam.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblCurLaserParam.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblCurLaserParam.ForeColor = System.Drawing.Color.Black;
-            this.lblCurLaserParam.Location = new System.Drawing.Point(479, 501);
+            this.lblCurLaserParam.Location = new System.Drawing.Point(400, 490);
             this.lblCurLaserParam.Name = "lblCurLaserParam";
             this.lblCurLaserParam.Size = new System.Drawing.Size(292, 26);
             this.lblCurLaserParam.TabIndex = 1330;
@@ -1054,8 +1074,9 @@ namespace LaserCutter
             this.gradLabel57.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel57.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel57.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel57.Location = new System.Drawing.Point(375, 501);
+            this.gradLabel57.Location = new System.Drawing.Point(296, 490);
             this.gradLabel57.Name = "gradLabel57";
+            this.gradLabel57.ShowAccelChar = false;
             this.gradLabel57.Size = new System.Drawing.Size(99, 26);
             this.gradLabel57.TabIndex = 1329;
             this.gradLabel57.Text = "Current";
@@ -1069,7 +1090,7 @@ namespace LaserCutter
             this.btnLogClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogClear.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnLogClear.ForeColor = System.Drawing.Color.Black;
-            this.btnLogClear.Location = new System.Drawing.Point(691, 753);
+            this.btnLogClear.Location = new System.Drawing.Point(612, 742);
             this.btnLogClear.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLogClear.Name = "btnLogClear";
             this.btnLogClear.Size = new System.Drawing.Size(77, 30);
@@ -1081,38 +1102,40 @@ namespace LaserCutter
             // 
             // ListBoxStatus
             // 
+            this.ListBoxStatus.BackColor = System.Drawing.Color.White;
             this.ListBoxStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.ListBoxStatus.Font = new System.Drawing.Font("굴림", 9F);
-            this.ListBoxStatus.Location = new System.Drawing.Point(375, 631);
+            this.ListBoxStatus.Hint = null;
+            this.ListBoxStatus.Location = new System.Drawing.Point(296, 620);
             this.ListBoxStatus.Margin = new System.Windows.Forms.Padding(4);
             this.ListBoxStatus.MinimumSize = new System.Drawing.Size(1, 1);
             this.ListBoxStatus.Name = "ListBoxStatus";
             this.ListBoxStatus.Padding = new System.Windows.Forms.Padding(2);
+            this.ListBoxStatus.ShowHint = false;
             this.ListBoxStatus.Size = new System.Drawing.Size(392, 118);
             this.ListBoxStatus.TabIndex = 1311;
-            this.ListBoxStatus.Text = "uiListBox3";
             this.ListBoxStatus.Visible = false;
             // 
             // uiLine26
             // 
             this.uiLine26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine26.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine26.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine26.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine26.Direction = yjTech.LineDirection.Horizontal;
+            this.uiLine26.EndCap = yjTech.UILineCap.None;
             this.uiLine26.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine26.ForeColor = System.Drawing.Color.Black;
             this.uiLine26.Frame.Visible = false;
             this.uiLine26.Hint = null;
             this.uiLine26.LineCapSize = 4;
             this.uiLine26.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine26.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine26.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.uiLine26.LineWidth = 1F;
-            this.uiLine26.Location = new System.Drawing.Point(375, 603);
+            this.uiLine26.Location = new System.Drawing.Point(296, 592);
             this.uiLine26.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine26.Name = "uiLine26";
             this.uiLine26.ShowHint = false;
             this.uiLine26.Size = new System.Drawing.Size(393, 17);
-            this.uiLine26.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine26.StartCap = yjTech.UILineCap.None;
             this.uiLine26.TabIndex = 1312;
             this.uiLine26.Text = "Status Log";
             this.uiLine26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1129,7 +1152,7 @@ namespace LaserCutter
             this.edAttenuator.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edAttenuator.Frame.Top = false;
             this.edAttenuator.Hint = null;
-            this.edAttenuator.Location = new System.Drawing.Point(594, 230);
+            this.edAttenuator.Location = new System.Drawing.Point(515, 219);
             this.edAttenuator.Margin = new System.Windows.Forms.Padding(4);
             this.edAttenuator.Max = 0D;
             this.edAttenuator.Min = 0D;
@@ -1141,6 +1164,7 @@ namespace LaserCutter
             this.edAttenuator.Size = new System.Drawing.Size(95, 29);
             this.edAttenuator.TabIndex = 1305;
             this.edAttenuator.Text = "0";
+            this.edAttenuator.Value = 0D;
             // 
             // btnSetAttenuator
             // 
@@ -1150,7 +1174,7 @@ namespace LaserCutter
             this.btnSetAttenuator.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSetAttenuator.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnSetAttenuator.ForeColor = System.Drawing.Color.Black;
-            this.btnSetAttenuator.Location = new System.Drawing.Point(692, 229);
+            this.btnSetAttenuator.Location = new System.Drawing.Point(613, 218);
             this.btnSetAttenuator.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSetAttenuator.Name = "btnSetAttenuator";
             this.btnSetAttenuator.Size = new System.Drawing.Size(77, 30);
@@ -1170,8 +1194,9 @@ namespace LaserCutter
             this.Attenuotor.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.Attenuotor.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.Attenuotor.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.Attenuotor.Location = new System.Drawing.Point(377, 231);
+            this.Attenuotor.Location = new System.Drawing.Point(298, 220);
             this.Attenuotor.Name = "Attenuotor";
+            this.Attenuotor.ShowAccelChar = false;
             this.Attenuotor.Size = new System.Drawing.Size(99, 26);
             this.Attenuotor.TabIndex = 1299;
             this.Attenuotor.Text = "Attenuator";
@@ -1188,8 +1213,9 @@ namespace LaserCutter
             this.gradLabel15.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel15.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel15.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel15.Location = new System.Drawing.Point(377, 175);
+            this.gradLabel15.Location = new System.Drawing.Point(298, 164);
             this.gradLabel15.Name = "gradLabel15";
+            this.gradLabel15.ShowAccelChar = false;
             this.gradLabel15.Size = new System.Drawing.Size(99, 26);
             this.gradLabel15.TabIndex = 1300;
             this.gradLabel15.Text = "Power";
@@ -1204,8 +1230,9 @@ namespace LaserCutter
             this.gradLabel16.GradientEndColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
             this.gradLabel16.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.gradLabel16.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.gradLabel16.Location = new System.Drawing.Point(594, 175);
+            this.gradLabel16.Location = new System.Drawing.Point(515, 164);
             this.gradLabel16.Name = "gradLabel16";
+            this.gradLabel16.ShowAccelChar = false;
             this.gradLabel16.Size = new System.Drawing.Size(95, 26);
             this.gradLabel16.TabIndex = 1301;
             this.gradLabel16.Text = "Freq";
@@ -1218,8 +1245,9 @@ namespace LaserCutter
             this.viFrequency.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viFrequency.ForeColor = System.Drawing.Color.Black;
             this.viFrequency.FormatString = "{0:F1}";
-            this.viFrequency.Location = new System.Drawing.Point(692, 175);
+            this.viFrequency.Location = new System.Drawing.Point(613, 164);
             this.viFrequency.Name = "viFrequency";
+            this.viFrequency.ShowAccelChar = false;
             this.viFrequency.Size = new System.Drawing.Size(74, 26);
             this.viFrequency.TabIndex = 1302;
             this.viFrequency.Text = "0";
@@ -1232,8 +1260,9 @@ namespace LaserCutter
             this.viPower.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viPower.ForeColor = System.Drawing.Color.Black;
             this.viPower.FormatString = "{0:F3}";
-            this.viPower.Location = new System.Drawing.Point(480, 175);
+            this.viPower.Location = new System.Drawing.Point(401, 164);
             this.viPower.Name = "viPower";
+            this.viPower.ShowAccelChar = false;
             this.viPower.Size = new System.Drawing.Size(81, 26);
             this.viPower.TabIndex = 1303;
             this.viPower.Text = "0";
@@ -1244,7 +1273,7 @@ namespace LaserCutter
             this.label36.AutoSize = true;
             this.label36.Cursor = System.Windows.Forms.Cursors.Default;
             this.label36.Font = new System.Drawing.Font("굴림", 9F);
-            this.label36.Location = new System.Drawing.Point(767, 187);
+            this.label36.Location = new System.Drawing.Point(688, 176);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(26, 12);
             this.label36.TabIndex = 1297;
@@ -1257,8 +1286,9 @@ namespace LaserCutter
             this.viAttenuator.Font = new System.Drawing.Font("Tahoma", 10F);
             this.viAttenuator.ForeColor = System.Drawing.Color.Black;
             this.viAttenuator.FormatString = "{0:F1}";
-            this.viAttenuator.Location = new System.Drawing.Point(480, 231);
+            this.viAttenuator.Location = new System.Drawing.Point(401, 220);
             this.viAttenuator.Name = "viAttenuator";
+            this.viAttenuator.ShowAccelChar = false;
             this.viAttenuator.Size = new System.Drawing.Size(81, 26);
             this.viAttenuator.TabIndex = 1304;
             this.viAttenuator.Text = "0";
@@ -1269,7 +1299,7 @@ namespace LaserCutter
             this.label50.AutoSize = true;
             this.label50.Cursor = System.Windows.Forms.Cursors.Default;
             this.label50.Font = new System.Drawing.Font("굴림", 9F);
-            this.label50.Location = new System.Drawing.Point(568, 187);
+            this.label50.Location = new System.Drawing.Point(489, 176);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(15, 12);
             this.label50.TabIndex = 1298;
@@ -1279,22 +1309,22 @@ namespace LaserCutter
             // 
             this.uiLine25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine25.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine25.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine25.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine25.Direction = yjTech.LineDirection.Horizontal;
+            this.uiLine25.EndCap = yjTech.UILineCap.None;
             this.uiLine25.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine25.ForeColor = System.Drawing.Color.Black;
             this.uiLine25.Frame.Visible = false;
             this.uiLine25.Hint = null;
             this.uiLine25.LineCapSize = 4;
             this.uiLine25.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine25.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine25.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.uiLine25.LineWidth = 1F;
-            this.uiLine25.Location = new System.Drawing.Point(375, 145);
+            this.uiLine25.Location = new System.Drawing.Point(296, 134);
             this.uiLine25.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine25.Name = "uiLine25";
             this.uiLine25.ShowHint = false;
             this.uiLine25.Size = new System.Drawing.Size(415, 17);
-            this.uiLine25.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine25.StartCap = yjTech.UILineCap.None;
             this.uiLine25.TabIndex = 1296;
             this.uiLine25.Text = "Status & Set";
             this.uiLine25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1304,22 +1334,22 @@ namespace LaserCutter
             // 
             this.uiLine23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.uiLine23.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiLine23.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.uiLine23.EndCap = DaekhonSystem.UILineCap.None;
+            this.uiLine23.Direction = yjTech.LineDirection.Horizontal;
+            this.uiLine23.EndCap = yjTech.UILineCap.None;
             this.uiLine23.Font = new System.Drawing.Font("Tahoma", 10F);
             this.uiLine23.ForeColor = System.Drawing.Color.Black;
             this.uiLine23.Frame.Visible = false;
             this.uiLine23.Hint = null;
             this.uiLine23.LineCapSize = 4;
             this.uiLine23.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiLine23.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.uiLine23.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.uiLine23.LineWidth = 1F;
-            this.uiLine23.Location = new System.Drawing.Point(375, 475);
+            this.uiLine23.Location = new System.Drawing.Point(296, 464);
             this.uiLine23.MinimumSize = new System.Drawing.Size(16, 14);
             this.uiLine23.Name = "uiLine23";
             this.uiLine23.ShowHint = false;
             this.uiLine23.Size = new System.Drawing.Size(393, 17);
-            this.uiLine23.StartCap = DaekhonSystem.UILineCap.None;
+            this.uiLine23.StartCap = yjTech.UILineCap.None;
             this.uiLine23.TabIndex = 1294;
             this.uiLine23.Text = "Laser Set";
             this.uiLine23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1332,7 +1362,7 @@ namespace LaserCutter
             this.Controls.Add(this.panClient);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Name = "panManualCarbide";
-            this.Size = new System.Drawing.Size(940, 849);
+            this.Size = new System.Drawing.Size(738, 804);
             this.panClient.ResumeLayout(false);
             this.panClient.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -1356,7 +1386,7 @@ namespace LaserCutter
         private System.Windows.Forms.Label lblCurLaserParam;
         private GradientLabel gradLabel57;
         private BitBtn btnLogClear;
-        private DaekhonSystem.ListBox ListBoxStatus;
+        private yjTech.ListBox ListBoxStatus;
         private SunnyLine uiLine26;
         private NumberEdit edAttenuator;
         private BitBtn btnSetAttenuator;
@@ -1385,9 +1415,9 @@ namespace LaserCutter
         private BitBtn btnChillerTempSet;
         private System.Windows.Forms.Label lbChillerStatus;
         private System.Windows.Forms.Label label4;
-        private DaekhonSystem.Label lblLaserStatus;
-        private DaekhonSystem.Label lblShutterStatus;
-        private DaekhonSystem.Label lblEmissionStatus;
+        private yjTech.Label lblLaserStatus;
+        private yjTech.Label lblShutterStatus;
+        private yjTech.Label lblEmissionStatus;
         private System.Windows.Forms.Timer tmr_LaserStatus;
 
         private ValueIndicator viFrequency;

@@ -1,4 +1,4 @@
-﻿using DaekhonSystem;
+﻿using yjTech;
 
 namespace LaserCutter
 {
@@ -30,59 +30,59 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {
-            this.Comm = new DaekhonSystem.Comm();
-            this.MeasureThread = new DaekhonSystem.Thread();
+            this.Comm = new yjTech.Comm();
+            this.MeasureThread = new yjTech.Thread();
             this.sjPanel1 = new LaserCutter.sjPanel();
-            this.gradientLabel10 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel9 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel8 = new DaekhonSystem.GradientLabel();
-            this.viLastStep = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel7 = new DaekhonSystem.GradientLabel();
-            this.viCurrentStep = new DaekhonSystem.ValueIndicator();
-            this.valueIndicator1 = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel2 = new DaekhonSystem.GradientLabel();
-            this.viReadCount = new DaekhonSystem.ValueIndicator();
-            this.bitClear = new DaekhonSystem.BitBtn();
-            this.viCurrentValue = new DaekhonSystem.ValueIndicator();
-            this.gradientLabel1 = new DaekhonSystem.GradientLabel();
-            this.viAverage = new DaekhonSystem.ValueIndicator();
-            this.viMax = new DaekhonSystem.ValueIndicator();
-            this.viMin = new DaekhonSystem.ValueIndicator();
-            this.btnMeasureStart = new DaekhonSystem.LEDButton();
-            this.btnConnect = new DaekhonSystem.LEDButton();
-            this.gradientLabel5 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel6 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel3 = new DaekhonSystem.GradientLabel();
-            this.gradientLabel4 = new DaekhonSystem.GradientLabel();
-            this.sunnyLine3 = new DaekhonSystem.SunnyLine();
-            this.btnRead = new DaekhonSystem.BitBtn();
-            this.sunnyLine1 = new DaekhonSystem.SunnyLine();
-            this.edScanTime = new DaekhonSystem.KeypadEdit();
-            this.gradLabel53 = new DaekhonSystem.GradientLabel();
-            this.cbComPort = new DaekhonSystem.ComboBox();
+            this.gradientLabel10 = new yjTech.GradientLabel();
+            this.gradientLabel9 = new yjTech.GradientLabel();
+            this.gradientLabel8 = new yjTech.GradientLabel();
+            this.viLastStep = new yjTech.ValueIndicator();
+            this.gradientLabel7 = new yjTech.GradientLabel();
+            this.viCurrentStep = new yjTech.ValueIndicator();
+            this.valueIndicator1 = new yjTech.ValueIndicator();
+            this.gradientLabel2 = new yjTech.GradientLabel();
+            this.viReadCount = new yjTech.ValueIndicator();
+            this.bitClear = new yjTech.BitBtn();
+            this.viCurrentValue = new yjTech.ValueIndicator();
+            this.gradientLabel1 = new yjTech.GradientLabel();
+            this.viAverage = new yjTech.ValueIndicator();
+            this.viMax = new yjTech.ValueIndicator();
+            this.viMin = new yjTech.ValueIndicator();
+            this.btnMeasureStart = new yjTech.LEDButton();
+            this.btnConnect = new yjTech.LEDButton();
+            this.gradientLabel5 = new yjTech.GradientLabel();
+            this.gradientLabel6 = new yjTech.GradientLabel();
+            this.gradientLabel3 = new yjTech.GradientLabel();
+            this.gradientLabel4 = new yjTech.GradientLabel();
+            this.sunnyLine3 = new yjTech.SunnyLine();
+            this.btnRead = new yjTech.BitBtn();
+            this.sunnyLine1 = new yjTech.SunnyLine();
+            this.edScanTime = new yjTech.KeypadEdit();
+            this.gradLabel53 = new yjTech.GradientLabel();
+            this.cbComPort = new yjTech.ComboBox();
             this.sjPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Comm
             // 
-            this.Comm.BaudRate = DaekhonSystem.BaudRate._9600;
+            this.Comm.BaudRate = yjTech.BaudRate._9600;
             this.Comm.BinaryMode = false;
-            this.Comm.ByteSize = DaekhonSystem.ByteSize._8;
+            this.Comm.ByteSize = yjTech.ByteSize._8;
             this.Comm.CheckParity = false;
-            this.Comm.CommEvents = new DaekhonSystem.CommEvent[] {
-        DaekhonSystem.CommEvent.EV_RXCHAR,
-        DaekhonSystem.CommEvent.EV_RXFLAG,
-        DaekhonSystem.CommEvent.EV_TXEMPTY};
+            this.Comm.CommEvents = new yjTech.CommEvent[] {
+        yjTech.CommEvent.EV_RXCHAR,
+        yjTech.CommEvent.EV_RXFLAG,
+        yjTech.CommEvent.EV_TXEMPTY};
             this.Comm.DiscardNull = false;
             this.Comm.EventChar = "0x0D";
-            this.Comm.FlowControl = DaekhonSystem.FlowControl.FC_XONXOFF;
+            this.Comm.FlowControl = yjTech.FlowControl.FC_XONXOFF;
             this.Comm.MaxInQueue = 4096;
             this.Comm.MaxOutQueue = 2048;
-            this.Comm.Parity = DaekhonSystem.Parity.NONE;
-            this.Comm.Port = DaekhonSystem.Port.COM03;
+            this.Comm.Parity = yjTech.Parity.NONE;
+            this.Comm.Port = yjTech.Port.COM03;
             this.Comm.Priority = System.Threading.ThreadPriority.Normal;
             this.Comm.RS485Mode = false;
-            this.Comm.StopBits = DaekhonSystem.StopBits._1;
+            this.Comm.StopBits = yjTech.StopBits._1;
             this.Comm.TimeOut = ((uint)(1000u));
             // 
             // MeasureThread
@@ -122,7 +122,7 @@ namespace LaserCutter
             this.sjPanel1.Controls.Add(this.cbComPort);
             this.sjPanel1.Location = new System.Drawing.Point(3, 3);
             this.sjPanel1.Name = "sjPanel1";
-            this.sjPanel1.Size = new System.Drawing.Size(427, 843);
+            this.sjPanel1.Size = new System.Drawing.Size(427, 799);
             this.sjPanel1.TabIndex = 1280;
             this.sjPanel1.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.sjPanel1.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -145,6 +145,7 @@ namespace LaserCutter
             this.gradientLabel10.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel10.Location = new System.Drawing.Point(283, 627);
             this.gradientLabel10.Name = "gradientLabel10";
+            this.gradientLabel10.ShowAccelChar = false;
             this.gradientLabel10.Size = new System.Drawing.Size(89, 26);
             this.gradientLabel10.TabIndex = 1397;
             this.gradientLabel10.Text = "(w)";
@@ -162,6 +163,7 @@ namespace LaserCutter
             this.gradientLabel9.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel9.Location = new System.Drawing.Point(83, 74);
             this.gradientLabel9.Name = "gradientLabel9";
+            this.gradientLabel9.ShowAccelChar = false;
             this.gradientLabel9.Size = new System.Drawing.Size(92, 26);
             this.gradientLabel9.TabIndex = 1396;
             this.gradientLabel9.Text = "Port";
@@ -183,6 +185,7 @@ namespace LaserCutter
             this.gradientLabel8.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel8.Location = new System.Drawing.Point(44, 457);
             this.gradientLabel8.Name = "gradientLabel8";
+            this.gradientLabel8.ShowAccelChar = false;
             this.gradientLabel8.Size = new System.Drawing.Size(135, 26);
             this.gradientLabel8.TabIndex = 1395;
             this.gradientLabel8.Text = "Last Step";
@@ -198,6 +201,7 @@ namespace LaserCutter
             this.viLastStep.FormatString = "0";
             this.viLastStep.Location = new System.Drawing.Point(181, 454);
             this.viLastStep.Name = "viLastStep";
+            this.viLastStep.ShowAccelChar = false;
             this.viLastStep.Size = new System.Drawing.Size(95, 29);
             this.viLastStep.TabIndex = 1394;
             this.viLastStep.Text = "0";
@@ -219,6 +223,7 @@ namespace LaserCutter
             this.gradientLabel7.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel7.Location = new System.Drawing.Point(44, 425);
             this.gradientLabel7.Name = "gradientLabel7";
+            this.gradientLabel7.ShowAccelChar = false;
             this.gradientLabel7.Size = new System.Drawing.Size(135, 26);
             this.gradientLabel7.TabIndex = 1393;
             this.gradientLabel7.Text = "Current Step";
@@ -234,6 +239,7 @@ namespace LaserCutter
             this.viCurrentStep.FormatString = "0";
             this.viCurrentStep.Location = new System.Drawing.Point(181, 422);
             this.viCurrentStep.Name = "viCurrentStep";
+            this.viCurrentStep.ShowAccelChar = false;
             this.viCurrentStep.Size = new System.Drawing.Size(95, 29);
             this.viCurrentStep.TabIndex = 1392;
             this.viCurrentStep.Text = "0";
@@ -249,6 +255,7 @@ namespace LaserCutter
             this.valueIndicator1.FormatString = "{0:F3}";
             this.valueIndicator1.Location = new System.Drawing.Point(181, 329);
             this.valueIndicator1.Name = "valueIndicator1";
+            this.valueIndicator1.ShowAccelChar = false;
             this.valueIndicator1.Size = new System.Drawing.Size(95, 29);
             this.valueIndicator1.TabIndex = 1391;
             this.valueIndicator1.Text = "5.0";
@@ -270,6 +277,7 @@ namespace LaserCutter
             this.gradientLabel2.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel2.Location = new System.Drawing.Point(41, 330);
             this.gradientLabel2.Name = "gradientLabel2";
+            this.gradientLabel2.ShowAccelChar = false;
             this.gradientLabel2.Size = new System.Drawing.Size(135, 26);
             this.gradientLabel2.TabIndex = 1390;
             this.gradientLabel2.Text = "First Delay Time(s)";
@@ -284,6 +292,7 @@ namespace LaserCutter
             this.viReadCount.FormatString = "0";
             this.viReadCount.Location = new System.Drawing.Point(184, 594);
             this.viReadCount.Name = "viReadCount";
+            this.viReadCount.ShowAccelChar = false;
             this.viReadCount.Size = new System.Drawing.Size(95, 29);
             this.viReadCount.TabIndex = 1389;
             this.viReadCount.Text = "0";
@@ -315,6 +324,7 @@ namespace LaserCutter
             this.viCurrentValue.FormatString = "0.000";
             this.viCurrentValue.Location = new System.Drawing.Point(181, 233);
             this.viCurrentValue.Name = "viCurrentValue";
+            this.viCurrentValue.ShowAccelChar = false;
             this.viCurrentValue.Size = new System.Drawing.Size(95, 29);
             this.viCurrentValue.TabIndex = 1387;
             this.viCurrentValue.Text = "0";
@@ -336,6 +346,7 @@ namespace LaserCutter
             this.gradientLabel1.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel1.Location = new System.Drawing.Point(83, 234);
             this.gradientLabel1.Name = "gradientLabel1";
+            this.gradientLabel1.ShowAccelChar = false;
             this.gradientLabel1.Size = new System.Drawing.Size(93, 26);
             this.gradientLabel1.TabIndex = 1386;
             this.gradientLabel1.Text = "Currrent";
@@ -350,6 +361,7 @@ namespace LaserCutter
             this.viAverage.FormatString = "0.000";
             this.viAverage.Location = new System.Drawing.Point(184, 626);
             this.viAverage.Name = "viAverage";
+            this.viAverage.ShowAccelChar = false;
             this.viAverage.Size = new System.Drawing.Size(95, 29);
             this.viAverage.TabIndex = 1385;
             this.viAverage.Text = "0.000";
@@ -364,6 +376,7 @@ namespace LaserCutter
             this.viMax.FormatString = "0.000";
             this.viMax.Location = new System.Drawing.Point(184, 658);
             this.viMax.Name = "viMax";
+            this.viMax.ShowAccelChar = false;
             this.viMax.Size = new System.Drawing.Size(95, 29);
             this.viMax.TabIndex = 1384;
             this.viMax.Text = "0.000";
@@ -378,6 +391,7 @@ namespace LaserCutter
             this.viMin.FormatString = "0.000";
             this.viMin.Location = new System.Drawing.Point(184, 690);
             this.viMin.Name = "viMin";
+            this.viMin.ShowAccelChar = false;
             this.viMin.Size = new System.Drawing.Size(95, 29);
             this.viMin.TabIndex = 1383;
             this.viMin.Text = "0.000";
@@ -391,7 +405,7 @@ namespace LaserCutter
             this.btnMeasureStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMeasureStart.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnMeasureStart.ForeColor = System.Drawing.Color.Black;
-            this.btnMeasureStart.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnMeasureStart.LED.Layout = yjTech.LEDLayout.Center;
             this.btnMeasureStart.LED.Size = new System.Drawing.Size(70, 26);
             this.btnMeasureStart.Location = new System.Drawing.Point(286, 353);
             this.btnMeasureStart.MinimumSize = new System.Drawing.Size(1, 1);
@@ -409,7 +423,7 @@ namespace LaserCutter
             this.btnConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnect.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnConnect.ForeColor = System.Drawing.Color.Black;
-            this.btnConnect.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.btnConnect.LED.Layout = yjTech.LEDLayout.Center;
             this.btnConnect.LED.Size = new System.Drawing.Size(70, 26);
             this.btnConnect.Location = new System.Drawing.Point(282, 64);
             this.btnConnect.MinimumSize = new System.Drawing.Size(1, 1);
@@ -431,6 +445,7 @@ namespace LaserCutter
             this.gradientLabel5.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel5.Location = new System.Drawing.Point(90, 659);
             this.gradientLabel5.Name = "gradientLabel5";
+            this.gradientLabel5.ShowAccelChar = false;
             this.gradientLabel5.Size = new System.Drawing.Size(89, 26);
             this.gradientLabel5.TabIndex = 1368;
             this.gradientLabel5.Text = "MAX";
@@ -448,6 +463,7 @@ namespace LaserCutter
             this.gradientLabel6.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel6.Location = new System.Drawing.Point(90, 691);
             this.gradientLabel6.Name = "gradientLabel6";
+            this.gradientLabel6.ShowAccelChar = false;
             this.gradientLabel6.Size = new System.Drawing.Size(89, 26);
             this.gradientLabel6.TabIndex = 1369;
             this.gradientLabel6.Text = "MIN";
@@ -469,6 +485,7 @@ namespace LaserCutter
             this.gradientLabel3.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel3.Location = new System.Drawing.Point(90, 595);
             this.gradientLabel3.Name = "gradientLabel3";
+            this.gradientLabel3.ShowAccelChar = false;
             this.gradientLabel3.Size = new System.Drawing.Size(89, 26);
             this.gradientLabel3.TabIndex = 1364;
             this.gradientLabel3.Text = "Count";
@@ -490,6 +507,7 @@ namespace LaserCutter
             this.gradientLabel4.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradientLabel4.Location = new System.Drawing.Point(90, 627);
             this.gradientLabel4.Name = "gradientLabel4";
+            this.gradientLabel4.ShowAccelChar = false;
             this.gradientLabel4.Size = new System.Drawing.Size(89, 26);
             this.gradientLabel4.TabIndex = 1365;
             this.gradientLabel4.Text = "Average";
@@ -499,20 +517,22 @@ namespace LaserCutter
             // 
             this.sunnyLine3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.sunnyLine3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.sunnyLine3.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine3.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine3.Direction = yjTech.LineDirection.Horizontal;
+            this.sunnyLine3.EndCap = yjTech.UILineCap.None;
             this.sunnyLine3.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine3.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine3.Frame.Visible = false;
+            this.sunnyLine3.Hint = null;
             this.sunnyLine3.LineCapSize = 4;
             this.sunnyLine3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine3.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine3.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.sunnyLine3.LineWidth = 1F;
             this.sunnyLine3.Location = new System.Drawing.Point(46, 570);
             this.sunnyLine3.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine3.Name = "sunnyLine3";
+            this.sunnyLine3.ShowHint = false;
             this.sunnyLine3.Size = new System.Drawing.Size(250, 17);
-            this.sunnyLine3.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine3.StartCap = yjTech.UILineCap.None;
             this.sunnyLine3.TabIndex = 1363;
             this.sunnyLine3.Text = "Result";
             this.sunnyLine3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -538,20 +558,22 @@ namespace LaserCutter
             // 
             this.sunnyLine1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.sunnyLine1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.sunnyLine1.Direction = DaekhonSystem.LineDirection.Horizontal;
-            this.sunnyLine1.EndCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine1.Direction = yjTech.LineDirection.Horizontal;
+            this.sunnyLine1.EndCap = yjTech.UILineCap.None;
             this.sunnyLine1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.sunnyLine1.ForeColor = System.Drawing.Color.Black;
             this.sunnyLine1.Frame.Visible = false;
+            this.sunnyLine1.Hint = null;
             this.sunnyLine1.LineCapSize = 4;
             this.sunnyLine1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.sunnyLine1.LineDashStyle = DaekhonSystem.UILineDashStyle.Solid;
+            this.sunnyLine1.LineDashStyle = yjTech.UILineDashStyle.Solid;
             this.sunnyLine1.LineWidth = 1F;
             this.sunnyLine1.Location = new System.Drawing.Point(690, 539);
             this.sunnyLine1.MinimumSize = new System.Drawing.Size(16, 14);
             this.sunnyLine1.Name = "sunnyLine1";
+            this.sunnyLine1.ShowHint = false;
             this.sunnyLine1.Size = new System.Drawing.Size(269, 17);
-            this.sunnyLine1.StartCap = DaekhonSystem.UILineCap.None;
+            this.sunnyLine1.StartCap = yjTech.UILineCap.None;
             this.sunnyLine1.TabIndex = 1332;
             this.sunnyLine1.Text = "Laser Set";
             this.sunnyLine1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -561,20 +583,22 @@ namespace LaserCutter
             // 
             this.edScanTime.BackColor = System.Drawing.Color.White;
             this.edScanTime.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.edScanTime.DataType = DaekhonSystem.DataType.Integer;
             this.edScanTime.Font = new System.Drawing.Font("Tahoma", 11F);
             this.edScanTime.ForeColor = System.Drawing.Color.Black;
             this.edScanTime.Frame.CornerRound = 1;
             this.edScanTime.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.edScanTime.Hint = null;
             this.edScanTime.Location = new System.Drawing.Point(181, 361);
             this.edScanTime.Max = 1.7976931348623157E+308D;
             this.edScanTime.Min = -1.7976931348623157E+308D;
             this.edScanTime.Name = "edScanTime";
             this.edScanTime.PrecisionDigits = 3;
+            this.edScanTime.ShowHint = false;
             this.edScanTime.Size = new System.Drawing.Size(95, 29);
             this.edScanTime.TabIndex = 1321;
             this.edScanTime.TabStop = false;
             this.edScanTime.Text = "10";
+            this.edScanTime.Value = 0D;
             // 
             // gradLabel53
             // 
@@ -592,6 +616,7 @@ namespace LaserCutter
             this.gradLabel53.GradientStartColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
             this.gradLabel53.Location = new System.Drawing.Point(87, 362);
             this.gradLabel53.Name = "gradLabel53";
+            this.gradLabel53.ShowAccelChar = false;
             this.gradLabel53.Size = new System.Drawing.Size(89, 26);
             this.gradLabel53.TabIndex = 1319;
             this.gradLabel53.Text = "Scan Time(s)";
@@ -604,6 +629,7 @@ namespace LaserCutter
             this.cbComPort.Font = new System.Drawing.Font("Tahoma", 11F);
             this.cbComPort.Frame.CornerRound = 1;
             this.cbComPort.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.cbComPort.Hint = null;
             this.cbComPort.ItemIndex = 0;
             this.cbComPort.Items.AddRange(new object[] {
             "COM01",
@@ -625,6 +651,7 @@ namespace LaserCutter
             this.cbComPort.MinimumSize = new System.Drawing.Size(63, 0);
             this.cbComPort.Name = "cbComPort";
             this.cbComPort.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.cbComPort.ShowHint = false;
             this.cbComPort.Size = new System.Drawing.Size(95, 29);
             this.cbComPort.TabIndex = 1309;
             this.cbComPort.Text = "COM01";
@@ -636,7 +663,7 @@ namespace LaserCutter
             this.Controls.Add(this.sjPanel1);
             this.Font = new System.Drawing.Font("굴림", 9F);
             this.Name = "panManualPowermeter";
-            this.Size = new System.Drawing.Size(433, 849);
+            this.Size = new System.Drawing.Size(433, 805);
             this.sjPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

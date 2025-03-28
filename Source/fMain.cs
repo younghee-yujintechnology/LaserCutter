@@ -33,6 +33,8 @@ namespace LaserCutter
 
         public panAuto Auto;
         public panManual Manual;
+        public panConfig Config;
+
         public panJobFile JobFile;
 
         private Point mMousePoint;
@@ -113,7 +115,7 @@ namespace LaserCutter
             btnAuto.Click += ChangeMainPanel;
             btnJobFile.Click += ChangeMainPanel;
             btnManual.Click += ChangeMainPanel;
-            ////btnConfig.Click += ChangeMainPanel;
+            btnConfig.Click += ChangeMainPanel;
             ////btnAlarm.Click += ChangeMainPanel;
             btnLog.Click += ChangeMainPanel;
             ////btnLogIn.Click += ChangeMainPanel;
@@ -281,6 +283,11 @@ namespace LaserCutter
             ////Pmac.QueryCommand("doBeamShutterOpen=false");
 
             /*
+            * 3. Config
+            */
+            Config = new panConfig();
+
+            /*
             * 4. JobFile
             */
             JobFile = new panJobFile();
@@ -422,6 +429,13 @@ namespace LaserCutter
                 panClient.Controls.Add(Manual);
             }
             else
+            if (aButton == btnConfig)
+            {
+                lblMainTitle.Text = "Config";
+
+                panClient.Controls.Add(Config);
+            }
+            else
             if (aButton == btnLog)
             {
                 ////lblMainTitle.Text = "Error Log";
@@ -553,7 +567,7 @@ namespace LaserCutter
 
 
         }
-#endregion
+        #endregion
 
     }
 }

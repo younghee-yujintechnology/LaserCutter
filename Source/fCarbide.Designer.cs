@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ReadThread = new DaekhonSystem.Thread();
+            this.ReadThread = new yjTech.Thread();
             this.panBottom = new System.Windows.Forms.Panel();
-            this.ledRX = new DaekhonSystem.LEDLabel();
-            this.ledTX = new DaekhonSystem.LEDLabel();
+            this.ledRX = new yjTech.LEDLabel();
+            this.ledTX = new yjTech.LEDLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
@@ -74,7 +74,7 @@
             this.ledRX.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ledRX.Frame.Visible = false;
             this.ledRX.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ledRX.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.ledRX.LED.Layout = yjTech.LEDLayout.Center;
             this.ledRX.Location = new System.Drawing.Point(8, 8);
             this.ledRX.Name = "ledRX";
             this.ledRX.ShowChannelName = false;
@@ -88,7 +88,7 @@
             this.ledTX.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ledTX.Frame.Visible = false;
             this.ledTX.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ledTX.LED.Layout = DaekhonSystem.LEDLayout.Center;
+            this.ledTX.LED.Layout = yjTech.LEDLayout.Center;
             this.ledTX.LED.OnColor = System.Drawing.Color.Red;
             this.ledTX.Location = new System.Drawing.Point(23, 8);
             this.ledTX.Name = "ledTX";
@@ -230,7 +230,7 @@
         }
 
         #endregion
-        public DaekhonSystem.Thread ReadThread;
+        public yjTech.Thread ReadThread;
         private System.Windows.Forms.Panel panBottom;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -243,7 +243,7 @@
         private System.Windows.Forms.PropertyGrid propertyGrid4;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.PropertyGrid propertyGrid5;
-        private DaekhonSystem.LEDLabel ledRX;
-        private DaekhonSystem.LEDLabel ledTX;
+        private yjTech.LEDLabel ledRX;
+        private yjTech.LEDLabel ledTX;
     }
 }

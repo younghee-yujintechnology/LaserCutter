@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 using RestSharp;
 using Raize.CodeSiteLogging;
-using DaekhonSystem;
+using yjTech;
 
 namespace LaserCutter
 {
@@ -58,7 +58,7 @@ namespace LaserCutter
             logger.Category = "Manual.Laser";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -304,7 +304,7 @@ namespace LaserCutter
                         break;
                 }
 
-                dkCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
+                yjCommon.Warning(szMsg, Global.MESSAGE_BOX_TITLE);
             }
         }
         #endregion

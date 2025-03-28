@@ -179,6 +179,24 @@
     <Compile Include="PanUnits\panAuto.Designer.cs">
       <DependentUpon>panAuto.cs</DependentUpon>
     </Compile>
+    <Compile Include="PanUnits\panConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panConfig.Designer.cs">
+      <DependentUpon>panConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panConfigCommon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panConfigCommon.Designer.cs">
+      <DependentUpon>panConfigCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\PanConfigMotor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\PanConfigMotor.Designer.cs">
+      <DependentUpon>PanConfigMotor.cs</DependentUpon>
+    </Compile>
     <Compile Include="PanUnits\panJobFile.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -292,6 +310,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panAuto.resx">
       <DependentUpon>panAuto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panConfig.resx">
+      <DependentUpon>panConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panConfigCommon.resx">
+      <DependentUpon>panConfigCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\PanConfigMotor.resx">
+      <DependentUpon>PanConfigMotor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panJobFile.resx">
       <DependentUpon>panJobFile.cs</DependentUpon>
