@@ -125,6 +125,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fCarbide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fCarbide.Designer.cs">
+      <DependentUpon>fCarbide.cs</DependentUpon>
+    </Compile>
     <Compile Include="fChannelSpy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,12 @@
     </Compile>
     <Compile Include="fModelName.Designer.cs">
       <DependentUpon>fModelName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fRunStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fRunStatus.Designer.cs">
+      <DependentUpon>fRunStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="fSelectJob.cs">
       <SubType>Form</SubType>
@@ -203,11 +215,35 @@
     <Compile Include="PanUnits\panManual.Designer.cs">
       <DependentUpon>panManual.cs</DependentUpon>
     </Compile>
+    <Compile Include="PanUnits\panManualADV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualADV.Designer.cs">
+      <DependentUpon>panManualADV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualCarbide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualCarbide.Designer.cs">
+      <DependentUpon>panManualCarbide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualLight.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualLight.Designer.cs">
+      <DependentUpon>panManualLight.cs</DependentUpon>
+    </Compile>
     <Compile Include="PanUnits\panManualMotion.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PanUnits\panManualMotion.Designer.cs">
       <DependentUpon>panManualMotion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panManualPowermeter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panManualPowermeter.Designer.cs">
+      <DependentUpon>panManualPowermeter.cs</DependentUpon>
     </Compile>
     <Compile Include="PanUnits\panTable.cs">
       <SubType>UserControl</SubType>
@@ -229,6 +265,9 @@
     <Compile Include="UserControl\sjPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="fCarbide.resx">
+      <DependentUpon>fCarbide.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fChannelSpy.resx">
       <DependentUpon>fChannelSpy.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fModelName.resx">
       <DependentUpon>fModelName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fRunStatus.resx">
+      <DependentUpon>fRunStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSelectJob.resx">
       <DependentUpon>fSelectJob.cs</DependentUpon>
@@ -269,8 +311,20 @@
     <EmbeddedResource Include="PanUnits\panManual.resx">
       <DependentUpon>panManual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualADV.resx">
+      <DependentUpon>panManualADV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualCarbide.resx">
+      <DependentUpon>panManualCarbide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualLight.resx">
+      <DependentUpon>panManualLight.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panManualMotion.resx">
       <DependentUpon>panManualMotion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panManualPowermeter.resx">
+      <DependentUpon>panManualPowermeter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panTable.resx">
       <DependentUpon>panTable.cs</DependentUpon>

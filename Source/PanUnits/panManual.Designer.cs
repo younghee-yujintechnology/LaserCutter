@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.uiTabControlMenu1 = new DaekhonSystem.TabControl();
+            this.uiTabControlMenu1 = new yjTech.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -124,7 +124,7 @@
 
         #endregion
 
-        private DaekhonSystem.TabControl uiTabControlMenu1;
+        private yjTech.TabControl uiTabControlMenu1;
 
 
         private System.Windows.Forms.TabPage tabPage2;

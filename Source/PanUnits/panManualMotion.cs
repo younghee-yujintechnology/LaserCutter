@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using DaekhonSystem;
+using yjTech;
 using Newtonsoft.Json.Linq;
 using Raize.CodeSiteLogging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
@@ -71,7 +71,7 @@ namespace LaserCutter
             logger.Category = "Manual.Motion";
 
             var fileDestination = new CodeSiteDestination();
-            fileDestination.LogFile.FilePath = dkCommon.AppPath();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
             fileDestination.LogFile.FileName = "LaserCutter";
 
             logger.Destination = fileDestination;
@@ -119,9 +119,9 @@ namespace LaserCutter
                     ((LEDLabel)control).DataServer = dsMotion;
                 }
                 else
-                if (control is DaekhonSystem.ComboBox)
+                if (control is yjTech.ComboBox)
                 {
-                    ((DaekhonSystem.ComboBox)control).DataServer = dsMotion;
+                    ((yjTech.ComboBox)control).DataServer = dsMotion;
                 }
                 if (control.HasChildren)
                 {
