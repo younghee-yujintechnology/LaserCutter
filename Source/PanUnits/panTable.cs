@@ -1,10 +1,215 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+
 using Raize.CodeSiteLogging;
+using yjTech;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LaserCutter
 {
+    public struct PageItem
+    {
+        public double x { get; set; }
+        public double y { get; set; }
+        public bool Used { get; set; }
+
+        public PageItem(double x, double y, bool used)
+        {
+            this.x = x;
+            this.y = y;
+            this.Used = used;
+        }
+
+        public override string ToString()
+        {
+            return $"[{x}, {y}, {Used}]";
+        }
+    }
+
+    public class PageList
+    {
+        private List<PageItem> positions; // 좌표 리스트
+
+        private DoublePoint mPageSize; // 페이지 크기
+
+        public PageList()
+        {
+            positions = new List<PageItem>();
+        }
+
+        // Clear: 리스트 초기화
+        public void Clear()
+        {
+            positions.Clear();
+        }
+
+        // Add: x, y 값을 추가
+        public void Add(double x, double y, bool used)
+        {
+            positions.Add(new PageItem(x, y, used));
+        }
+
+        // Count: 현재 리스트의 개수 반환
+        public int Count => positions.Count;
+
+        // SetCellSize: 셀 크기 설정
+        public DoublePoint PageSize
+        {
+            get => mPageSize;
+            set => mPageSize = value;
+        }
+
+        // XMin: x 좌표의 최소값 - PageSize.x / 2
+        public double XMin
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double minX = double.MaxValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].x < minX)
+                    {
+                        minX = positions[i].x;
+                    }
+                }
+
+                return minX - PageSize.x / 2;
+            }
+        }
+
+        // XMax: x 좌표의 최대값 + PageSize.x / 2
+        public double XMax
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double maxX = double.MinValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].x > maxX)
+                    {
+                        maxX = positions[i].x;
+                    }
+                }
+
+                return maxX + PageSize.x / 2;
+            }
+        }
+
+        // YMin: y 좌표의 최소값 - PageSize.y / 2
+        public double YMin
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double minY = double.MaxValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].y < minY)
+                    {
+                        minY = positions[i].y;
+                    }
+                }
+
+                return minY - PageSize.y / 2;
+            }
+        }
+
+        // YMax: y 좌표의 최대값 + PageSize.y / 2
+        public double YMax
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double maxY = double.MinValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].y > maxY)
+                    {
+                        maxY = positions[i].y;
+                    }
+                }
+
+                return maxY + PageSize.y / 2;
+            }
+        }
+
+        // Width: 전체 페이지의 너비 계산
+        public double Width => XMax - XMin;
+
+        // Height: 전체 페이지의 높이 계산
+        public double Height => YMax - YMin;
+
+        // 인덱서를 사용하여 특정 좌표를 참조
+        public PageItem this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= positions.Count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+                return positions[index];
+            }
+            set
+            {
+                if (index < 0 || index >= positions.Count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+                positions[index] = value;
+            }
+        }
+
+        // GetAll: 모든 좌표 반환
+        public List<PageItem> GetAll()
+        {
+            return new List<PageItem>(positions);
+        }
+
+        public int SelectedCount()
+        {
+            int result = 0;
+
+            for (int nIndex = 0; nIndex < Count; nIndex++)
+            {
+                if (this[nIndex].Used) result = result + 1;
+            }
+            return result;
+        }
+
+        public int GetFirstPage()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (this[i].Used)
+                {
+                    return i;
+                }
+            }
+
+            return -1; // 없으면 -1 반환
+        }
+
+        // GetNextPage: 지정된 인덱스 이후로 처음 Used == true인 인덱스 반환
+        public int GetNextPage(int index)
+        {
+            for (int i = index; i < Count; i++)
+            {
+                if (this[i].Used)
+                {
+                    return i;
+                }
+            }
+
+            return -1; // 없으면 -1 반환
+        }
+    }
+
+
     public partial class panTable: UserControl
     {
         CodeSiteLogger logger = new CodeSiteLogger();
@@ -19,6 +224,9 @@ namespace LaserCutter
         public panJobType4 Type4;
 
         public frmMain frmMain;
+
+        public DoublePoint[] TableBasePos = new DoublePoint[5];
+        private LoadDir mLoadDir = LoadDir.LeftBottom;
 
         public panTable(bool withVision = false)
         {
@@ -123,18 +331,18 @@ namespace LaserCutter
 
                 if (!String.IsNullOrEmpty(mModelName))
                 {
-                    ////if (LoadJobFile(GroupName, ModelName))
-                    ////{
-                    ////    DisplayJobFile();
-                    ////}
-                    ////else
-                    ////{
-                    ////    ClearAllControlValue();
-                    ////}
+                    if (LoadJobFile(GroupName, ModelName))
+                    {
+                        DisplayJobFile();
+                    }
+                    else
+                    {
+                        ClearAllControlValue();
+                    }
                 }
                 else
                 {
-                    ////ClearAllControlValue();
+                    ClearAllControlValue();
                 }
             }
         }
@@ -218,7 +426,440 @@ namespace LaserCutter
             /*
              * Cad Event를 다시 가져와야 함.
              */
-            ////JobInfo.SetEventProc();
+            SetEventProc();
         }
+
+        public bool LoadJobFile(String aGroupName, String aModelName)
+        {
+            // CodeSite.EnterMethod("panJobInfo.LoadJobFile()");
+
+            bool Result = false;
+
+            String szPath = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), aGroupName, aModelName);
+            String szName = String.Empty;
+
+            szName = String.Format("[{0}][{1}][Table{2}].prj", aGroupName, aModelName, (int)TableNo);
+            szPath = String.Format("{0}\\{1}", szPath, szName);
+
+            if (yjCommon.FileExists(szPath))
+            {
+                Result = true;
+
+                LaserProject.Clear();
+                LaserProject.Model1.Clear();
+                LaserProject.Model2.Clear();
+                LaserProject.Model3.Clear();
+
+                LaserProject.LoadFromFile(szPath);
+            }
+
+            // CodeSite.ExitMethod("panJobInfo.LoadJobFile()");
+
+            return Result;
+        }
+
+        public string GetModelPath()
+        {
+            return String.Format("{0}Model\\{1}\\{2}\\", yjCommon.AppPath(), GroupName, ModelName);
+        }
+
+        #region public void DisplayJobFile()
+        public void DisplayJobFile()
+        {
+            // CodeSite.EnterMethod("JobInfo.DisplayJobFile()");
+
+            Type1.lblDxfPath.Text = LaserProject.CadFile;
+            Type2.lblDxfPath.Text = LaserProject.CadFile;
+
+            int Old = tabControl1.SelectedIndex;
+
+            tabControl1.SelectedIndex = 0;
+
+            Type1.ClearControlValue();
+            if (!String.IsNullOrEmpty(LaserProject.CadFile))
+            {
+                if (yjCommon.FileExists(GetModelPath() + LaserProject.CadFile))
+                {
+                    Type1.Cad1.Visible = true;
+                    Type1.Cad1.Open(GetModelPath() + LaserProject.CadFile);
+                    Type1.lblDxfPath.Text = LaserProject.CadFile;
+                    Type1.Cad1.ZoomExtend();
+                    Type1.Cad1.ZoomScale(0.8);
+
+                    Type1.CheckLayerInfo();
+                    Type1.DisplayLayerInfo();
+                }
+                else
+                {
+                    /*
+                     * 등록된 도면을 불러들일수 없습니다. 에러 메세지를 도면에 출력
+                     */
+                    Type1.panCad.Text = "등록된 도면을 불러들일수 없습니다." + "\r\n\r\n"
+                                + "경로가 올바른지 확인이 필요합니다.";
+                    Type1.Cad1.Visible = false;
+                }
+            }
+            else
+            {
+                /*
+                 * 도면이 등록되지 않았습니다. 에러 메세지 출력
+                 */
+               Type1.panCad.Text = "도면이 등록되지 않았습니다." + "\r\n\r\n"
+                           + "도면을 등록을 해주십시오.";
+               Type1.Cad1.Visible = false;
+            }
+
+            Type1.edZOffset.Enabled = (TableNo != TableNo.Table0);
+
+            Type1.edThickness.Value = LaserProject.Model1.Thickness;
+
+            Type1.edZOffset.Value = LaserProject.Model1.ZOffset;
+            Type1.edZOffset.BackColor = Color.White;
+            Type1.edZOffset.Frame.FlatColor = Color.FromArgb(80, 160, 255);
+
+            // Type1.viRepeatCount.AsInteger = LaserProject.Model1.RepeatCount;
+            Type1.edManualShiftX.Value = LaserProject.Model1.ManualShiftX;
+            Type1.edManualShiftY.Value = LaserProject.Model1.ManualShiftY;
+            Type1.edLaserPower.Value = LaserProject.Model1.LaserPower;
+            Type1.edPulsePitch.Value = LaserProject.Model1.PulsePitch;
+            Type1.cbStartPoint.ItemIndex = (int)LaserProject.Model1.StartPoint;
+            Type1.edGlassSizeX.Value = LaserProject.Model1.GlassSizeX;
+            Type1.edGlassSizeY.Value = LaserProject.Model1.GlassSizeY;
+
+            if (TableNo == TableNo.Table1)
+            {
+                ////Type1.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                ////Type1.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
+            }
+
+            Type1.chkAlignUse.Checked = LaserProject.Model1.AlignUse;
+            Type1.ledUseVision.LED.Value = LaserProject.Model1.AlignUse;
+            Type1.AlignMethod = LaserProject.Model1.AlignMethod;
+
+            Type1.btnUse.LED.Value = (LaserProject.MenuIndex == 0);
+
+            Type1.EnableControl(true);
+            Type1.GetWorkCenter();
+
+            tabControl1.SelectedIndex = 1;
+            Type2.ClearControlValue();
+
+            if (!String.IsNullOrEmpty(GetModelPath() + LaserProject.CadFile))
+            {
+                if (yjCommon.FileExists(GetModelPath() + LaserProject.CadFile))
+                {
+                    Type2.Cad2.Visible = true;
+                    Type2.Cad2.Open(GetModelPath() + LaserProject.CadFile);
+                    Type2.lblDxfPath.Text = LaserProject.CadFile;
+                    Type2.Cad2.ZoomExtend();
+                    Type2.Cad2.ZoomScale(0.8);
+
+                    Type2.CheckLayerInfo();
+                    Type2.DisplayLayerInfo();
+                }
+                else
+                {
+                    /*
+                     * 등록된 도면을 불러들일수 없습니다. 에러 메세지를 도면에 출력
+                     */
+                    Type2.panCad2.Text = "등록된 도면을 불러들일수 없습니다." + "\r\n\r\n"
+                                + "경로가 올바른지 확인이 필요합니다.";
+                    Type2.Cad2.Visible = false;
+                }
+            }
+            else
+            {
+                /*
+                 * 도면이 등록되지 않았습니다. 에러 메세지 출력
+                 */
+               Type2.panCad2.Text = "도면이 등록되지 않았습니다." + "\r\n\r\n"
+                           + "도면을 등록을 해주십시오.";
+               Type2.Cad2.Visible = false;
+            }
+
+            Type2.edXCount.AsInteger = LaserProject.Model2.XCount;
+            Type2.edYCount.AsInteger = LaserProject.Model2.YCount;
+
+            Type2.edGapX.Value = LaserProject.Model2.GapX;
+            Type2.edGapY.Value = LaserProject.Model2.GapY;
+
+            Type2.ledSortMethod1.LED.Value = (LaserProject.Model2.SortMethod == SortMethod.Method1);
+            Type2.ledSortMethod2.LED.Value = (LaserProject.Model2.SortMethod == SortMethod.Method2);
+            Type2.ledSortMethod3.LED.Value = (LaserProject.Model2.SortMethod == SortMethod.Method3);
+            Type2.ledSortMethod4.LED.Value = (LaserProject.Model2.SortMethod == SortMethod.Method4);
+
+            Type2.edThickness.Value = LaserProject.Model2.Thickness;
+            Type2.edZOffset.Value = LaserProject.Model2.ZOffset;
+
+            if (TableNo == TableNo.Table1)
+            {
+                ////Type2.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                ////Type2.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
+            }
+
+            Type2.edManualShiftX.Value = LaserProject.Model2.ManualShiftX;
+            Type2.edManualShiftY.Value = LaserProject.Model2.ManualShiftY;
+            Type2.edGlassSizeX.Value = LaserProject.Model2.GlassSizeX;
+            Type2.edGlassSizeY.Value = LaserProject.Model2.GlassSizeY;
+            Type2.edLaserPower.Value = LaserProject.Model2.LaserPower;
+            Type2.edPulsePitch.Value = LaserProject.Model2.PulsePitch;
+            Type2.cbStartPoint.ItemIndex = (int)LaserProject.Model2.StartPoint;
+
+            Type2.chkAlignUse.Checked = LaserProject.Model2.AlignUse;
+            Type2.ledUseVision.LED.Value = LaserProject.Model2.AlignUse;
+            Type2.btnUse.LED.Value = (LaserProject.MenuIndex == 1);
+
+            Type2.EnableControl(true);
+            Type2.GetPageData();
+
+            Type2.btnApply_Click(null, null);
+            Type2.GetWorkCenter(0);
+
+            tabControl1.SelectedIndex = 2;
+            Type3.ClearControlValue();
+
+            Type3.edLaserPower.Value = LaserProject.Model3.LaserPower;
+            Type3.edPulsePitch.Value = LaserProject.Model3.PulsePitch;
+            Type3.cbStartPoint.ItemIndex = (int)LaserProject.Model3.StartPoint;
+
+            Type3.edThickness.Value = LaserProject.Model3.Thickness;
+            Type3.edZOffset.Value = LaserProject.Model3.ZOffset;
+
+            if (TableNo == TableNo.Table1)
+            {
+                ////Type3.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                ////Type3.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
+            }
+
+            Type3.rdoCell.Checked = (LaserProject.Model3.SelectType == 0);
+            Type3.rdoCircle.Checked = !(LaserProject.Model3.SelectType == 0);
+
+            if (Type3.rdoCell.Checked)
+            {
+                Type3.UpdateCellTypeUI(true);
+            }
+            else
+            if (Type3.rdoCircle.Checked)
+            {
+                Type3.UpdateCellTypeUI(false);
+            }
+
+            Type3.edXCount.AsInteger = LaserProject.Model3.XCount;
+            Type3.edYCount.AsInteger = LaserProject.Model3.YCount;
+
+            Type3.edGapX.Value = LaserProject.Model3.GapX;
+            Type3.edGapY.Value = LaserProject.Model3.GapY;
+            Type3.edCellWidth.Value = LaserProject.Model3.Width;
+            Type3.edCellHeight.Value = LaserProject.Model3.Height;
+            Type3.edCellRadius.Value = LaserProject.Model3.Radius;
+            Type3.chkUseBreakLine.Checked = LaserProject.Model3.UseBreakingLine;
+            Type3.chkBreakLineOutDir.Checked = LaserProject.Model3.LineDir;
+
+            Type3.edBreakLineOffset.Value = LaserProject.Model3.BreakingLineOffset;
+            Type3.edBreakLineLength.Value = LaserProject.Model3.BreakingLineLength;
+
+            Type3.ledSortMethod1.LED.Value = (LaserProject.Model3.SortMethod == SortMethod.Method1);
+            Type3.ledSortMethod2.LED.Value = (LaserProject.Model3.SortMethod == SortMethod.Method2);
+            Type3.ledSortMethod3.LED.Value = (LaserProject.Model3.SortMethod == SortMethod.Method3);
+            Type3.ledSortMethod4.LED.Value = (LaserProject.Model3.SortMethod == SortMethod.Method4);
+
+            Type3.edGlassSizeX.Value = LaserProject.Model3.GlassSizeX;
+            Type3.edGlassSizeY.Value = LaserProject.Model3.GlassSizeY;
+            Type3.btnUse.LED.Value = (LaserProject.MenuIndex == 2);
+
+            Type3.EnableControl(true);
+            Type3.CreateUserCell();
+            Type3.CheckLayerInfo();
+            Type3.btnApply_Click(null, null);
+            Type3.GetWorkCenter(0);
+
+            tabControl1.SelectedIndex = Old;
+
+            tabControl1.SelectedIndex = LaserProject.MenuIndex;
+
+            // CodeSite.ExitMethod("JobInfo.DisplayJobFile()");
+        }
+        #endregion
+
+
+        #region public void ClearAllControlValue()
+        public void ClearAllControlValue()
+        {
+            // Type1
+            Type1.lblDxfPath.Text = "";
+
+            Type1.edLaserPower.Value = 0.0;
+            Type1.edZOffset.Value = 0.0;
+
+            Type1.edManualShiftX.Value = 0.0;
+            Type1.edManualShiftY.Value = 0.0;
+
+            Type1.edPulsePitch.Value = 0.000;
+
+            Type1.edGlassSizeX.Value = 0.0;
+            Type1.edGlassSizeY.Value = 0.0;
+
+            // Type2
+            Type2.edLaserPower.Value = 0.0;
+            Type2.edZOffset.Value = 0.0;
+            Type2.edPulsePitch.Value = 0.000;
+            Type2.edYCount.AsInteger = 0;
+            Type2.edXCount.AsInteger = 0;
+            Type2.edGapX.Value = 0.0;
+            Type2.edGapY.Value = 0.0;
+
+            Type3.edLaserPower.Value = 0.0;
+            Type3.edZOffset.Value = 0.0;
+            Type3.edPulsePitch.Value = 0.000;
+        }
+
+        #endregion
+
+
+        public void SetEventProc()
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    if (Type1.Cad1 != null)
+                    {
+                        Type1.Cad1.SetEventProc();
+                    }
+                    break;
+
+                case 1:
+                    if (Type2.Cad2 != null)
+                    {
+                        Type2.Cad2.SetEventProc();
+                    }
+                    break;
+
+                case 2:
+                    if (Type3.Cad3 != null)
+                    {
+                        Type3.Cad3.SetEventProc();
+                    }
+                    break;
+
+                case 3:
+                    if (Type4.Cad4 != null)
+                    {
+                        Type4.Cad4.SetEventProc();
+                    }
+                    break;
+            }
+        }
+
+        public void GetTableBaseOffset(PageList APageList, int APageIndex, double xShift, double yShift, ztMarkPage ACadData, ref double offsetX, ref double offsetY)
+        {
+            // Original Loading위치를 가져오고..
+            GetTableBaseOffset(xShift, yShift, ACadData, ref offsetX, ref offsetY);
+
+            // Original Loading위치에서 APageIndex 제품의 보정빼준다..
+            switch (LoadDir)
+            {
+                case LoadDir.LeftBottom:
+                    offsetX = offsetX + APageList[APageIndex].x;
+                    offsetY = offsetY - APageList[APageIndex].y;
+                    break;
+
+                case LoadDir.LeftTop:
+                    break;
+
+                case LoadDir.RightTop:
+                    break;
+
+                case LoadDir.RightBottom:
+                    break;
+
+                case LoadDir.Center:
+                    offsetX = offsetX - (APageList.Width - APageList.PageSize.x) / 2.0 + APageList[APageIndex].x;
+                    offsetY = offsetY + (APageList.Height - APageList.PageSize.y) / 2.0 - APageList[APageIndex].y;
+                    break;
+            }
+        }
+
+        public void GetTableBaseOffset(double xShift, double yShift, ztMarkPage ACadData, ref double offsetX, ref double offsetY)
+        {
+            GetTableBaseOffset(ACadData.XMin, ACadData.YMin, ACadData.XMax, ACadData.YMax, xShift, yShift, ref offsetX, ref offsetY);
+        }
+
+        public void GetTableBaseOffset(double xMin, double yMin, double xMax, double yMax, double xShift, double yShift, ref double offsetX, ref double offsetY)
+        {
+            double width = (xMax - xMin);
+            double height = (yMax - yMin);
+
+            switch (LoadDir)
+            {
+                case LoadDir.LeftBottom:
+                    if (TableBasePos[0] != null)
+                    {
+                        offsetX = TableBasePos[0].x + (width / 2) + xShift;
+                        offsetY = TableBasePos[0].y - ((height / 2) + yShift);
+                    }
+                    break;
+
+                case LoadDir.LeftTop:
+                    if (TableBasePos[1] != null)
+                    {
+                        offsetX = TableBasePos[1].x + (width / 2);
+                        offsetY = TableBasePos[1].y + (height / 2);
+                    }
+                    break;
+
+                case LoadDir.RightTop:
+                    if (TableBasePos[2] != null)
+                    {
+                        offsetX = TableBasePos[2].x - (width / 2);
+                        offsetY = TableBasePos[2].y + (height / 2);
+                    }
+
+                    break;
+
+                case LoadDir.RightBottom:
+                    if (TableBasePos[3] != null)
+                    {
+                        offsetX = TableBasePos[3].x - (width / 2);
+                        offsetY = TableBasePos[3].y - (height / 2);
+                    }
+                    break;
+
+                case LoadDir.Center:
+                    if (TableBasePos[4] != null)
+                    {
+                        offsetX = TableBasePos[4].x;
+                        offsetY = TableBasePos[4].y;
+                    }
+
+                    break;
+            }
+        }
+
+        #region public LoadDir LoadDir
+        public LoadDir LoadDir
+        {
+            get
+            {
+                return mLoadDir;
+            }
+
+            set
+            {
+                mLoadDir = value;
+            }
+        }
+        #endregion
     }
 }

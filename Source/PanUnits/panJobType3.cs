@@ -6,7 +6,7 @@ using yjTech;
 
 namespace LaserCutter
 {
-    public partial class panJobType3: UserControl
+    public partial class panJobType3 : UserControl
     {
         CodeSiteLogger logger = new CodeSiteLogger();
 
@@ -118,6 +118,60 @@ namespace LaserCutter
 
         public void EnableControl(bool bEnabled)
         {
+        }
+
+        public void btnApply_Click(object sender, System.EventArgs e)
+        {
+            ;
+        }
+
+        public void CreateUserCell()
+        {
+        }
+
+        public void CheckLayerInfo()
+        {
+        }
+
+        public void GetWorkCenter(int APageIndex)
+        {
+        }
+
+        public void ClearControlValue()
+        {
+            Cad3.Clear();
+            Cad3.ReDraw();
+
+            edLaserPower.Value = 0.0;
+            edPulsePitch.Value = 0.0;
+
+            edZOffset.Value = 0.0;
+
+            edXCount.AsInteger = 0;
+            edYCount.AsInteger = 0;
+            edGapX.Value = 0.0;
+            edGapY.Value = 0.0;
+
+            edCellWidth.Value = 0.0;
+            edCellHeight.Value = 0.0;
+            edCellRadius.Value = 0.0;
+
+            chkBreakLineOutDir.Checked = false;
+            chkUseBreakLine.Checked = false;
+
+            edBreakLineLength.Value = 0.0;
+            edBreakLineOffset.Value = 0.0;
+
+            btnUse.LED.Value = false;
+
+            dataGridView3.Rows.Clear();
+        }
+
+        public void UpdateCellTypeUI(bool bCell)
+        {
+            lblLabelSize.Visible = bCell;
+            edCellHeight.Visible = bCell;
+            edCellWidth.Visible = bCell;
         }
     }
 }

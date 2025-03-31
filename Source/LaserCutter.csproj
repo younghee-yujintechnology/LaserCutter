@@ -263,9 +263,7 @@
     <Compile Include="PanUnits\panManualPowermeter.Designer.cs">
       <DependentUpon>panManualPowermeter.cs</DependentUpon>
     </Compile>
-    <Compile Include="PanUnits\panTable.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="PanUnits\panTable.cs" />
     <Compile Include="PanUnits\panTable.Designer.cs">
       <DependentUpon>panTable.cs</DependentUpon>
     </Compile>

@@ -679,7 +679,7 @@ namespace LaserCutter
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(531, 416);
+            this.tabPage2.Size = new System.Drawing.Size(534, 416);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "  Vision Align  ";
             // 
@@ -1353,7 +1353,6 @@ namespace LaserCutter
 
         #endregion
         private System.Windows.Forms.TabPage tabPage3;
-        private yjTech.Panel panCad;
         private yjTech.TabControl tabControl1;
         private TabPage tabPage1;
         private CheckBox chkShowJumpline;
@@ -1423,5 +1422,6 @@ namespace LaserCutter
         private DataGridViewComboBoxColumn ColumnStartPoint;
         private yjTech.BitBtn btnCancel;
         public yjTech.BitBtn btnSave;
+        public yjTech.Panel panCad;
     }
 }

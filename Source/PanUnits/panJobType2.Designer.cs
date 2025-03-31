@@ -605,7 +605,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(531, 416);
+            this.tabPage2.Size = new System.Drawing.Size(534, 416);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "    Array Info    ";
             // 
@@ -791,6 +791,7 @@
             this.btnApply.TabIndex = 1750;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = false;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // edGapY
             // 
@@ -1047,7 +1048,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(531, 416);
+            this.tabPage3.Size = new System.Drawing.Size(534, 416);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "  Vision Align  ";
             // 
@@ -1770,7 +1771,6 @@
         }
 
         #endregion
-        private yjTech.Panel panCad2;
         private yjTech.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.CheckBox chkShowJumpline;
@@ -1862,5 +1862,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn ColumnStartPoint;
         private yjTech.BitBtn btnCancel;
         public yjTech.BitBtn btnSave;
+        public yjTech.Panel panCad2;
     }
 }

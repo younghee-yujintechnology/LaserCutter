@@ -4,6 +4,8 @@ using System.Windows.Forms;
 
 using yjTech;
 using Raize.CodeSiteLogging;
+using System.Windows.Documents;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LaserCutter
 {
@@ -11,10 +13,20 @@ namespace LaserCutter
     {
         CodeSiteLogger logger = new CodeSiteLogger();
 
+        public LaserProject LaserProject = null;
+
         public panAuto Auto = null;
 
         public ztCad Cad2;
         public ztMarkPage cad2Data;
+
+        public DoublePoint CenterPos = new DoublePoint();
+        public DoublePoint ReadyPos = new DoublePoint();
+        public DoublePoint WorkCenter = new DoublePoint(0, 0);
+
+        public panTable Table;
+
+        public PageList PageList;
 
         public panJobType2()
         {
@@ -125,6 +137,377 @@ namespace LaserCutter
         private void btnUse_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void CheckLayerInfo()
+        {
+            bool error1 = false, error2 = false;
+
+            ztCadLayerList list = new ztCadLayerList();
+            Cad2.GetLayers(list);
+
+            // Layer 갯수가 같은지 체크
+            error1 = (list.Count != LaserProject.Model2.Layers.Count);
+
+            // Layer의 이름이 다른지 체크
+            int ii = 0;
+            for (int nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
+            {
+                var szName = LaserProject.Model2.Layers[nIndex].Name;
+
+                for (int nIndex2 = 0; nIndex2 < list.Count; nIndex2++)
+                {
+                    if (szName.ToLower() == list[nIndex2].Name.ToLower())
+                    {
+                        cad2Data.Clear();
+                        Cad2.CurLayerName = szName;
+                        Cad2.GetPage(cad2Data);
+
+                        LaserProject.Model2.Layers[nIndex].Count = cad2Data.Count;
+                        //      CodeSite.SendMsg(String.Format("Type2.Cad2.Layer[{0}] = {1}", szName, cad2Data.Count));
+                        ii = ii + 1;
+                        break;
+                    }
+                }
+
+                Cad2.CurLayerName = "";
+            }
+
+            if (error1 || error2)
+            {
+                MakeNewLayer();
+
+                for (int nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
+                {
+                    var szName = LaserProject.Model2.Layers[nIndex].Name;
+
+                    for (int nIndex2 = 0; nIndex2 < list.Count; nIndex2++)
+                    {
+                        if (szName.ToLower() == list[nIndex2].Name.ToLower())
+                        {
+                            cad2Data.Clear();
+                            Cad2.CurLayerName = szName;
+                            Cad2.GetPage(cad2Data);
+
+                            LaserProject.Model2.Layers[nIndex].Count = cad2Data.Count;
+                            ii = ii + 1;
+                            break;
+                        }
+                    }
+
+                    Cad2.CurLayerName = "";
+                }
+            }
+
+            for (int nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
+            {
+                LaserProject.Model2.Layers[nIndex].szColor = list.GetColor(LaserProject.Model2.Layers[nIndex].Name);
+            }
+
+            /* 
+            * Layer에 ALign 정보가 있는지 확인 
+            */
+            StringList szList1 = new StringList();
+            StringList szList2 = new StringList();
+
+            for (int nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
+            {
+                string szTmp = LaserProject.Model2.Layers[nIndex].Name.ToLower(); // szTmp를 적절히 초기화해야 합니다.
+                int dot = szTmp.IndexOf("align");
+                if (dot >= 0)
+                {
+                    szTmp = szTmp.Remove(0, "align".Length); // 'ALIGN' 문자열 제거
+                    szTmp = szTmp.Trim(); // 문자열 앞뒤 공백 제거
+
+                    int jj = -1;
+                    if (int.TryParse(szTmp, out jj) && jj > -1)
+                    {
+                        szList1.Add(LaserProject.Model2.Layers[nIndex].Name);
+                        szList2.Add(string.Format("ALIGN {0:D5}", jj)); // 정수 값을 5자리로 포맷
+                    }
+                }
+            }
+
+            ledAlign1Pos.LED.Value = false;
+            ii = szList2.IndexOf("ALIGN 00001");
+            if (ii >= 0)
+            {
+                Cad2.CurLayerName = szList1[ii];
+
+                IntPtr hEnt = Cad2.GetFirstEntity(false);
+                double xXMin = 0;
+                double xYMin = 0;
+                double xXMax = 0;
+                double xYMax = 0;
+
+                bool haveAlign = false;
+                while (hEnt != IntPtr.Zero)
+                {
+                    xXMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMIN);
+                    xXMin = Math.Round(xXMin * 1000) / 1000;
+
+                    xYMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMIN);
+                    xYMin = Math.Round(xYMin * 1000) / 1000;
+
+                    xXMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMAX);
+                    xXMax = Math.Round(xXMax * 1000) / 1000;
+
+                    xYMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMAX);
+                    xYMax = Math.Round(xYMax * 1000) / 1000;
+
+                    haveAlign = true;
+                    hEnt = Cad2.GetNextEntity(false, hEnt);
+                }
+
+                ledAlign1Pos.LED.Value = haveAlign;
+                viAlign1PosX.AsDouble = (xXMin + xXMax) / 2;
+                viAlign1PosY.AsDouble = (xYMin + xYMax) / 2;
+            }
+
+            ledAlign2Pos.LED.Value = false;
+            ii = szList2.IndexOf("ALIGN 00002");
+            if (ii >= 0)
+            {
+                Cad2.CurLayerName = szList1[ii];
+
+                IntPtr hEnt = Cad2.GetFirstEntity(false);
+                double xXMin = 0;
+                double xYMin = 0;
+                double xXMax = 0;
+                double xYMax = 0;
+
+                bool haveAlign = false;
+                while (hEnt != IntPtr.Zero)
+                {
+                    xXMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMIN);
+                    xXMin = Math.Round(xXMin * 1000) / 1000;
+
+                    xYMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMIN);
+                    xYMin = Math.Round(xYMin * 1000) / 1000;
+
+                    xXMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMAX);
+                    xXMax = Math.Round(xXMax * 1000) / 1000;
+
+                    xYMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMAX);
+                    xYMax = Math.Round(xYMax * 1000) / 1000;
+
+                    haveAlign = true;
+                    hEnt = Cad2.GetNextEntity(false, hEnt);
+                }
+
+                ledAlign2Pos.LED.Value = haveAlign;
+                viAlign2PosX.AsDouble = (xXMin + xXMax) / 2;
+                viAlign2PosY.AsDouble = (xYMin + xYMax) / 2;
+            }
+
+            ledAlign3Pos.LED.Value = false;
+            ii = szList2.IndexOf("ALIGN 00003");
+            if (ii >= 0)
+            {
+                Cad2.CurLayerName = szList1[ii];
+
+                IntPtr hEnt = Cad2.GetFirstEntity(false);
+                double xXMin = 0;
+                double xYMin = 0;
+                double xXMax = 0;
+                double xYMax = 0;
+
+                bool haveAlign = false;
+                while (hEnt != IntPtr.Zero)
+                {
+                    xXMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMIN);
+                    xXMin = Math.Round(xXMin * 1000) / 1000;
+
+                    xYMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMIN);
+                    xYMin = Math.Round(xYMin * 1000) / 1000;
+
+                    xXMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMAX);
+                    xXMax = Math.Round(xXMax * 1000) / 1000;
+
+                    xYMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMAX);
+                    xYMax = Math.Round(xYMax * 1000) / 1000;
+
+                    haveAlign = true;
+                    hEnt = Cad2.GetNextEntity(false, hEnt);
+                }
+
+                ledAlign3Pos.LED.Value = haveAlign;
+                viAlign3PosX.AsDouble = (xXMin + xXMax) / 2;
+                viAlign3PosY.AsDouble = (xYMin + xYMax) / 2;
+            }
+
+            ledAlign4Pos.LED.Value = false;
+            ii = szList2.IndexOf("ALIGN 00004");
+            if (ii >= 0)
+            {
+                Cad2.CurLayerName = szList1[ii];
+
+                IntPtr hEnt = Cad2.GetFirstEntity(false);
+                double xXMin = 0;
+                double xYMin = 0;
+                double xXMax = 0;
+                double xYMax = 0;
+
+                bool haveAlign = false;
+                while (hEnt != IntPtr.Zero)
+                {
+                    xXMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMIN);
+                    xXMin = Math.Round(xXMin * 1000) / 1000;
+
+                    xYMin = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMIN);
+                    xYMin = Math.Round(xYMin * 1000) / 1000;
+
+                    xXMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_XMAX);
+                    xXMax = Math.Round(xXMax * 1000) / 1000;
+
+                    xYMax = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_ENT_YMAX);
+                    xYMax = Math.Round(xYMax * 1000) / 1000;
+
+                    haveAlign = true;
+                    hEnt = Cad2.GetNextEntity(false, hEnt);
+                }
+
+                ledAlign4Pos.LED.Value = haveAlign;
+                viAlign4PosX.AsDouble = (xXMin + xXMax) / 2;
+                viAlign4PosY.AsDouble = (xYMin + xYMax) / 2;
+            }
+        }
+
+        public void ClearControlValue()
+        {
+            lblDxfPath.Text = "";
+
+            Cad2.Clear();
+            Cad2.ReDraw();
+
+            edLaserPower.Value = 0.0;
+            edPulsePitch.Value = 0.0;
+
+            edManualShiftX.Value = 0.0;
+            edManualShiftY.Value = 0.0;
+
+            edGlassSizeX.Value = 0.0;
+            edGlassSizeY.Value = 0.0;
+
+            //  dataGridView1.IEnabled = bEnabled;
+
+            edZOffset.Value = 0.0;
+
+            chkAlignUse.Checked = false;
+            rdoAlign2P_1_2.Checked = false;
+            rdoAlign2P_1_3.Checked = false;
+            rdoAlign2P_1_4.Checked = false;
+
+            ledAlign1Pos.LED.Value = false;
+            viAlign1PosX.AsDouble = 0.0;
+            viAlign1PosY.AsDouble = 0.0;
+
+            ledAlign2Pos.LED.Value = false;
+            viAlign2PosX.AsDouble = 0.0;
+            viAlign2PosY.AsDouble = 0.0;
+
+            ledAlign3Pos.LED.Value = false;
+            viAlign3PosX.AsDouble = 0.0;
+            viAlign3PosY.AsDouble = 0.0;
+
+            ledAlign4Pos.LED.Value = false;
+            viAlign4PosX.AsDouble = 0.0;
+            viAlign4PosY.AsDouble = 0.0;
+
+            edXCount.AsInteger = 0;
+            edYCount.AsInteger = 0;
+            edGapX.Value = 0.0;
+            edGapY.Value = 0.0;
+
+            btnUse.LED.Value = false;
+
+            dataGridView2.Rows.Clear();
+        }
+
+        public void DisplayLayerInfo()
+        {
+            LayerInfo layerInfo;
+
+            dataGridView2.Rows.Clear();
+            for (int nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
+            {
+                layerInfo = LaserProject.Model2.Layers[nIndex];
+
+                // GridRow Data를 생성하고..
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView2);
+                //  row.Cells[0].Value = nIndex.ToString();
+                row.Cells[1].Value = layerInfo.Name;
+                row.Cells[2].Value = layerInfo.Used.ToString();
+                row.Cells[3].Value = layerInfo.Tool.ToString();
+                row.Cells[4].Value = layerInfo.Direction.ToString();
+                row.Cells[5].Value = layerInfo.LaserPower.ToString("F3");
+                row.Cells[6].Value = layerInfo.ZOffset.ToString("F3");
+                dataGridView2.Rows.Add(row);
+            }
+        }
+
+        public void GetPageData()
+        {
+            Cad2.CurLayerName = "";
+            cad2Data.Clear();
+            Cad2.GetPage(cad2Data);
+        }
+
+        public void GetWorkCenter(int APageIndex)
+        {
+            GetPageData();
+
+            double xShift = 0.0, yShift = 0.0;
+            if (edGlassSizeX.Value > (PageList.Width))
+            {
+                xShift = (edGlassSizeX.Value - PageList.Width) / 2.0;
+            }
+            ;
+
+            if (edGlassSizeY.Value > (PageList.Height))
+            {
+                yShift = (edGlassSizeY.Value - PageList.Height) / 2.0;
+            }
+
+            CenterPos = new DoublePoint(cad2Data.CenterX, cad2Data.CenterY);
+            // CodeSite.SendMsg(String.Format("    Type2.cadData.Center = {0:F3}, {1:F3}", cad2Data.CenterX, cad2Data.CenterY));
+
+            double offsetX = 0.0;
+            double offsetY = 0.0;
+            Table.GetTableBaseOffset(PageList, APageIndex, xShift, yShift, cad2Data, ref offsetX, ref offsetY);
+
+            WorkCenter.x = offsetX; WorkCenter.y = offsetY;
+            //CodeSite.SendMsg(String.Format("        Type2.WorkCenter[{0}] = {1:F3}, {2:F3}", APageIndex, WorkCenter.x, WorkCenter.y));
+        }
+
+        public void MakeNewLayer()
+        {
+            ztCadLayerList list = new ztCadLayerList();
+            LayerInfo layerInfo;
+
+            LaserProject.Model2.Layers.Clear();
+
+            Table.Type2.Cad2.GetLayers(list);
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                // Layer를 생성하고..
+                layerInfo = new LayerInfo();
+                layerInfo.Name = list[i].Name;
+                layerInfo.Direction = Direction.CW;
+                layerInfo.LaserPower = 10.0;
+                layerInfo.PulsePitch = 1.0;
+                layerInfo.ZOffset = 0.0;
+
+                LaserProject.Model2.Layers.Add(layerInfo);
+            }
+        }
+
+
+        public void btnApply_Click(object sender, EventArgs e)
+        {
+            ;
         }
     }
 }

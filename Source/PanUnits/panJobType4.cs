@@ -19,8 +19,6 @@ namespace LaserCutter
 
         public panJobType4()
         {
-            // logger.SendMsg("panJobType4()");
-
             InitializeComponent();
 
             InitDataGridViewControl();
