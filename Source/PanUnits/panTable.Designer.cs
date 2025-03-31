@@ -36,9 +36,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.lblGroupName = new yjTech.Label();
             this.lblModelName = new yjTech.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panClient.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +108,7 @@
             this.btnOpenJobFile.TabIndex = 646;
             this.btnOpenJobFile.Text = "Open";
             this.btnOpenJobFile.UseVisualStyleBackColor = false;
+            this.btnOpenJobFile.Click += new System.EventHandler(this.btnOpenJobFile_Click);
             // 
             // tabControl1
             // 
@@ -168,6 +169,17 @@
             this.tabPage3.Text = "Make Cell";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
+            this.tabPage4.Location = new System.Drawing.Point(4, 34);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1185, 718);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Bead Cut";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // lblGroupName
             // 
             this.lblGroupName.BackColor = System.Drawing.Color.Transparent;
@@ -197,17 +209,6 @@
             this.lblModelName.Size = new System.Drawing.Size(651, 26);
             this.lblModelName.TabIndex = 33;
             this.lblModelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
-            this.tabPage4.Location = new System.Drawing.Point(4, 34);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1185, 718);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "BeadCut";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // panTable
             // 

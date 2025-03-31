@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Raize.CodeSiteLogging;
+using DaekhonSystem;
 
 namespace LaserCutter
 {
     public partial class panTable: UserControl
     {
         CodeSiteLogger logger;
+
+        public LaserProject LaserProject;
 
         public panAuto Auto;
 
@@ -125,5 +128,86 @@ namespace LaserCutter
             }
         }
         #endregion
+
+        private void btnOpenJobFile_Click(object sender, EventArgs e)
+        {
+            frmSelectJob frmSelectJob = frmSelectJob.StaticInstance;
+
+            frmSelectJob.TableNo = TableNo;
+            frmSelectJob.StartPosition = FormStartPosition.CenterScreen;
+            if (frmSelectJob.ShowDialog() == DialogResult.OK)
+            {
+                if (TableNo == TableNo.Table1)
+                {
+                    Auto.ledTable1JobFileLoad.LED.Value = false;
+                }
+                else
+                if (TableNo == TableNo.Table2)
+                {
+                    Auto.ledTable2JobFileLoad.LED.Value = false;
+                }
+
+                logger.SendMsg(String.Format("{0}.Open([{1}][{2}])", TableNo.ToString(), frmSelectJob.GroupName, frmSelectJob.ModelName));
+
+                lblGroupName.Text = frmSelectJob.GroupName;
+                lblModelName.Text = String.Format("{0}", frmSelectJob.ModelName);
+
+                GroupName = frmSelectJob.GroupName;
+                ModelName = frmSelectJob.ModelName;
+
+                LaserProject.NozzleOffsetX = Global.chTable1NozzleXOffset.AsDouble;
+                LaserProject.NozzleOffsetY = Global.chTable1NozzleYOffset.AsDouble;
+
+                if (TableNo == TableNo.Table1)
+                {
+                    Auto.ledTable1JobFileLoad.LED.Value = true;
+                }
+                else
+                if (TableNo == TableNo.Table2)
+                {
+                    Auto.ledTable2JobFileLoad.LED.Value = true;
+                }
+
+                ////Vision.DefaultVisionFile = String.Format("{0}CogPMAlignTool(4Align).vpp", frmSelectJob.GetModelPath());
+                ////Vision.ledCogPMAlignTool.LED.Value = dkCommon.FileExists(Vision.DefaultVisionFile);
+                ////Vision.btnLoadProject.Enabled = Vision.ledCogPMAlignTool.LED.Value;
+
+                ////if (Vision.ledCogPMAlignTool.LED.Value)
+                ////{
+                ////    Vision.btnLoadProject_Click(null, null);
+                ////}
+
+                yjTech.StringList ss;
+                ss = LaserProject.Model1.ToStringList();
+
+                CodeSite.SendMsg("");
+                CodeSite.SendMsg(String.Format("    {0}.FileName = [{1}][{2}][Table{3}].prj", TableNo, GroupName, ModelName, (int)TableNo));
+                for (int nIndex = 0; nIndex < ss.Count; nIndex++)
+                {
+                    CodeSite.SendMsg(ss[nIndex]);
+                }
+
+                ss = LaserProject.Model2.ToStringList();
+
+                CodeSite.SendMsg("");
+                for (int nIndex = 0; nIndex < ss.Count; nIndex++)
+                {
+                    CodeSite.SendMsg(ss[nIndex]);
+                }
+
+                ss = LaserProject.Model3.ToStringList();
+
+                CodeSite.SendMsg("");
+                for (int nIndex = 0; nIndex < ss.Count; nIndex++)
+                {
+                    CodeSite.SendMsg(ss[nIndex]);
+                }
+            }
+
+            /*
+             * Cad Event를 다시 가져와야 함.
+             */
+            ////JobInfo.SetEventProc();
+        }
     }
 }

@@ -32,7 +32,6 @@
             this.panClient = new System.Windows.Forms.Panel();
             this.lblSelectedMenu = new System.Windows.Forms.Label();
             this.btnManual = new yjTech.BitBtn();
-            this.bitBtn1 = new yjTech.BitBtn();
             this.bitBtn6 = new yjTech.BitBtn();
             this.bitBtn5 = new yjTech.BitBtn();
             this.bitBtn4 = new yjTech.BitBtn();
@@ -48,6 +47,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.AutoThread = new yjTech.Thread();
             this.btnConfig = new yjTech.BitBtn();
+            this.bitBtn2 = new yjTech.BitBtn();
             this.panTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,18 +75,6 @@
             this.btnManual.Name = "btnManual";
             this.btnManual.Tag = "11";
             this.btnManual.UseVisualStyleBackColor = false;
-            // 
-            // bitBtn1
-            // 
-            this.bitBtn1.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.bitBtn1.BackColor = System.Drawing.Color.Transparent;
-            this.bitBtn1.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.bitBtn1, "bitBtn1");
-            this.bitBtn1.ForeColor = System.Drawing.Color.Black;
-            this.bitBtn1.Margin2 = 10;
-            this.bitBtn1.Name = "bitBtn1";
-            this.bitBtn1.Tag = "10";
-            this.bitBtn1.UseVisualStyleBackColor = false;
             // 
             // bitBtn6
             // 
@@ -264,14 +252,26 @@
             this.btnConfig.Tag = "12";
             this.btnConfig.UseVisualStyleBackColor = false;
             // 
+            // bitBtn2
+            // 
+            this.bitBtn2.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn2.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn2.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn2, "bitBtn2");
+            this.bitBtn2.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn2.Margin2 = 10;
+            this.bitBtn2.Name = "bitBtn2";
+            this.bitBtn2.Tag = "10";
+            this.bitBtn2.UseVisualStyleBackColor = false;
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.bitBtn2);
             this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.lblSelectedMenu);
-            this.Controls.Add(this.bitBtn1);
             this.Controls.Add(this.bitBtn6);
             this.Controls.Add(this.bitBtn5);
             this.Controls.Add(this.bitBtn4);
@@ -307,12 +307,12 @@
         private yjTech.BitBtn bitBtn5;
         private yjTech.BitBtn bitBtn6;
         private yjTech.Panel panTop;
-        private yjTech.BitBtn bitBtn1;
         private yjTech.Label lblBuildVersion;
         private yjTech.Label lblDateTime;
         public yjTech.GradientLabel lblMainTitle;
         private yjTech.BitBtn btnManual;
         private yjTech.BitBtn btnConfig;
+        private yjTech.BitBtn bitBtn2;
     }
 }
 

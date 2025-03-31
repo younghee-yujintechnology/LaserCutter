@@ -172,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblSelectedMenu.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnManual.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14.25pt, style=Bold</value>
@@ -245,39 +245,6 @@
   </data>
   <data name="&gt;&gt;btnManual.ZOrder" xml:space="preserve">
     <value>12</value>
-  </data>
-  <data name="bitBtn1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 14.25pt, style=Bold</value>
-  </data>
-  <data name="bitBtn1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bitBtn1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 86</value>
-  </data>
-  <data name="bitBtn1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 1</value>
-  </data>
-  <data name="bitBtn1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 3</value>
-  </data>
-  <data name="bitBtn1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 78</value>
-  </data>
-  <data name="bitBtn1.TabIndex" type="System.Int32, mscorlib">
-    <value>1149</value>
-  </data>
-  <data name="&gt;&gt;bitBtn1.Name" xml:space="preserve">
-    <value>bitBtn1</value>
-  </data>
-  <data name="&gt;&gt;bitBtn1.Type" xml:space="preserve">
-    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bitBtn1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bitBtn1.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="bitBtn6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14.25pt, style=Bold</value>
@@ -409,7 +376,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnExit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 946</value>
+    <value>1795, 86</value>
   </data>
   <data name="btnExit.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -630,78 +597,6 @@
   <data name="&gt;&gt;btnAuto.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;lblMainTitle.Name" xml:space="preserve">
-    <value>lblMainTitle</value>
-  </data>
-  <data name="&gt;&gt;lblMainTitle.Type" xml:space="preserve">
-    <value>yjTech.GradientLabel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblMainTitle.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;lblMainTitle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.Name" xml:space="preserve">
-    <value>lblBuildVersion</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.Type" xml:space="preserve">
-    <value>yjTech.Label, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.Name" xml:space="preserve">
-    <value>lblDateTime</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
-    <value>yjTech.Label, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1920, 82</value>
-  </data>
-  <data name="panTop.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panTop.Name" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;panTop.Type" xml:space="preserve">
-    <value>yjTech.Panel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panTop.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="lblMainTitle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 30pt, style=Bold</value>
   </data>
@@ -831,6 +726,30 @@
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="panTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 82</value>
+  </data>
+  <data name="panTop.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panTop.Name" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;panTop.Type" xml:space="preserve">
+    <value>yjTech.Panel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panTop.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <metadata name="AutoThread.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -902,12 +821,45 @@
     <value>btnConfig</value>
   </data>
   <data name="&gt;&gt;btnConfig.Type" xml:space="preserve">
-    <value>yjTech.BitBtn, yjTech, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnConfig.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnConfig.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="bitBtn2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="bitBtn2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bitBtn2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1795, 946</value>
+  </data>
+  <data name="bitBtn2.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="bitBtn2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="bitBtn2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 78</value>
+  </data>
+  <data name="bitBtn2.TabIndex" type="System.Int32, mscorlib">
+    <value>1348</value>
+  </data>
+  <data name="&gt;&gt;bitBtn2.Name" xml:space="preserve">
+    <value>bitBtn2</value>
+  </data>
+  <data name="&gt;&gt;bitBtn2.Type" xml:space="preserve">
+    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bitBtn2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bitBtn2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

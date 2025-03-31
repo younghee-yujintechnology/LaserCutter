@@ -12,16 +12,37 @@ namespace LaserCutter
     {
         public panAuto Auto = null;
 
+        public ztCad Cad4;
+        public ztMarkPage cad4Data;
 
         public panJobType4()
         {
             // logger.SendMsg("panJobType4()");
 
             InitializeComponent();
+
+            InitDataGridViewControl();
+            InitializeControl();
         }
 
         public void InitializeControl()
         {
+            Cad4 = new ztCad();
+
+            Cad4.CadStyle.FileTabs = false;
+            Cad4.CadStyle.Rulers = true;
+            Cad4.CadStyle.Scrolls = true;
+            Cad4.CadStyle.StatusBar = true;
+            Cad4.CadStyle.ViewTab3D = false;
+            Cad4.CadStyle.ViewTabs = false;
+
+            Cad4.Location = new System.Drawing.Point(0, 0);
+            Cad4.Size = new System.Drawing.Size(panCad.Width, panCad.Height);
+            Cad4.Enabled = false;
+
+            panCad.Controls.Add(Cad4);
+
+            cad4Data = new ztMarkPage();
         }
 
         #region public void InitDataGridViewControl()
