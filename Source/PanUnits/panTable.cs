@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Raize.CodeSiteLogging;
-using DaekhonSystem;
 
 namespace LaserCutter
 {
     public partial class panTable: UserControl
     {
-        CodeSiteLogger logger;
+        CodeSiteLogger logger = new CodeSiteLogger();
 
         public LaserProject LaserProject;
 
@@ -30,6 +23,10 @@ namespace LaserCutter
         public panTable(bool withVision = false)
         {
             InitializeComponent();
+
+            SetCodeSitelogger();
+
+            LaserProject = new LaserProject();
 
             Type1 = new panJobType1();
             Type1.Auto = panAuto.StaticInstance;
@@ -57,6 +54,20 @@ namespace LaserCutter
             Type1.Location = new Point(0, 0);
             Type2.Location = new Point(0, 0);
             Type3.Location = new Point(0, 0);
+        }
+
+        public void SetCodeSitelogger()
+        {
+            logger = new CodeSiteLogger();
+
+            logger.Category = String.Format("{0}", TableNo.ToString());
+
+            var fileDestination = new CodeSiteDestination();
+            fileDestination.LogFile.FilePath = yjCommon.AppPath();
+            fileDestination.LogFile.FileName = "LaserCutter";
+
+            logger.Destination = fileDestination;
+            logger.Destination.Viewer.Active = true;
         }
 
         #region private TableNo TableNo
@@ -155,21 +166,21 @@ namespace LaserCutter
                 GroupName = frmSelectJob.GroupName;
                 ModelName = frmSelectJob.ModelName;
 
-                LaserProject.NozzleOffsetX = Global.chTable1NozzleXOffset.AsDouble;
-                LaserProject.NozzleOffsetY = Global.chTable1NozzleYOffset.AsDouble;
+                ////LaserProject.NozzleOffsetX = Global.chTable1NozzleXOffset.AsDouble;
+                ////LaserProject.NozzleOffsetY = Global.chTable1NozzleYOffset.AsDouble;
 
-                if (TableNo == TableNo.Table1)
-                {
-                    Auto.ledTable1JobFileLoad.LED.Value = true;
-                }
-                else
-                if (TableNo == TableNo.Table2)
-                {
-                    Auto.ledTable2JobFileLoad.LED.Value = true;
-                }
+                ////if (TableNo == TableNo.Table1)
+                ////{
+                ////    Auto.ledTable1JobFileLoad.LED.Value = true;
+                ////}
+                ////else
+                ////if (TableNo == TableNo.Table2)
+                ////{
+                ////    Auto.ledTable2JobFileLoad.LED.Value = true;
+                ////}
 
                 ////Vision.DefaultVisionFile = String.Format("{0}CogPMAlignTool(4Align).vpp", frmSelectJob.GetModelPath());
-                ////Vision.ledCogPMAlignTool.LED.Value = dkCommon.FileExists(Vision.DefaultVisionFile);
+                ////Vision.ledCogPMAlignTool.LED.Value = yjCommon.FileExists(Vision.DefaultVisionFile);
                 ////Vision.btnLoadProject.Enabled = Vision.ledCogPMAlignTool.LED.Value;
 
                 ////if (Vision.ledCogPMAlignTool.LED.Value)

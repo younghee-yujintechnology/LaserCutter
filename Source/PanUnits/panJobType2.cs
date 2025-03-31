@@ -9,6 +9,8 @@ namespace LaserCutter
 {
     public partial class panJobType2: UserControl
     {
+        CodeSiteLogger logger = new CodeSiteLogger();
+
         public panAuto Auto = null;
 
         public ztCad Cad2;
