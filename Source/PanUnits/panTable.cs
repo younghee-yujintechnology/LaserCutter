@@ -238,18 +238,26 @@ namespace LaserCutter
 
             Type1 = new panJobType1();
             Type1.Auto = panAuto.StaticInstance;
+            Type1.LaserProject = LaserProject;
+            Type1.Table = this;
             Type1.EnableControl(false);
 
             Type2 = new panJobType2();
             Type2.Auto = panAuto.StaticInstance;
+            Type2.LaserProject = LaserProject;
+            Type2.Table = this;
             Type2.EnableControl(false);
 
             Type3 = new panJobType3();
             Type3.Auto = panAuto.StaticInstance;
+            Type3.LaserProject = LaserProject;
+            Type3.Table = this;
             Type3.EnableControl(false);
 
             Type4 = new panJobType4();
             Type4.Auto = panAuto.StaticInstance;
+            Type4.LaserProject = LaserProject;
+            Type4.Table = this;
             Type4.EnableControl(false);
 
             frmMain = frmMain.StaticInstance;
@@ -262,6 +270,7 @@ namespace LaserCutter
             Type1.Location = new Point(0, 0);
             Type2.Location = new Point(0, 0);
             Type3.Location = new Point(0, 0);
+            Type4.Location = new Point(0, 0);
         }
 
         public void SetCodeSitelogger()

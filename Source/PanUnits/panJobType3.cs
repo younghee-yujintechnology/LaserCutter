@@ -10,7 +10,11 @@ namespace LaserCutter
     {
         CodeSiteLogger logger = new CodeSiteLogger();
 
+        public LaserProject LaserProject = null;
+
         public panAuto Auto = null;
+
+        public panTable Table;
 
         public ztCad Cad3;
         public ztMarkPage cad3Data;

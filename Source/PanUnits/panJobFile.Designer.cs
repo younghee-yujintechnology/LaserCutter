@@ -87,7 +87,7 @@ namespace LaserCutter
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panRight = new System.Windows.Forms.Panel();
-            this.tabControlSelectJobFile = new System.Windows.Forms.TabControl();
+            this.tabControlSelectJobFile = new yjTech.TabControl();
             this.tabPageRecentModel = new System.Windows.Forms.TabPage();
             this.lvRecentModel = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -184,24 +184,39 @@ namespace LaserCutter
             this.tabControlSelectJobFile.Controls.Add(this.tabPageRecentModel);
             this.tabControlSelectJobFile.Controls.Add(this.tabPageRegisteredModel);
             this.tabControlSelectJobFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlSelectJobFile.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControlSelectJobFile.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tabControlSelectJobFile.ItemSize = new System.Drawing.Size(30, 150);
             this.tabControlSelectJobFile.Location = new System.Drawing.Point(0, 0);
             this.tabControlSelectJobFile.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlSelectJobFile.Multiline = true;
             this.tabControlSelectJobFile.Name = "tabControlSelectJobFile";
-            this.tabControlSelectJobFile.SelectedIndex = 0;
+            this.tabControlSelectJobFile.ShowActiveCloseButton = false;
+            this.tabControlSelectJobFile.ShowCloseButton = false;
             this.tabControlSelectJobFile.Size = new System.Drawing.Size(560, 852);
+            this.tabControlSelectJobFile.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControlSelectJobFile.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControlSelectJobFile.TabIndex = 1;
+            this.tabControlSelectJobFile.TabSelectedColor = System.Drawing.Color.Lime;
+            this.tabControlSelectJobFile.TabSelectedForeColor = System.Drawing.Color.Blue;
+            this.tabControlSelectJobFile.TabSelectedHighColor = System.Drawing.Color.Red;
+            this.tabControlSelectJobFile.TabSelectedHighColorSize = 4;
+            this.tabControlSelectJobFile.TabUnSelectedForeColor = System.Drawing.Color.Gray;
+            this.tabControlSelectJobFile.TabVisible = true;
+            this.tabControlSelectJobFile.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabControlSelectJobFile.TipsColor = System.Drawing.Color.Red;
+            this.tabControlSelectJobFile.TipsFont = new System.Drawing.Font("Arial", 8F);
+            this.tabControlSelectJobFile.TipsForeColor = System.Drawing.Color.White;
             // 
             // tabPageRecentModel
             // 
             this.tabPageRecentModel.Controls.Add(this.lvRecentModel);
             this.tabPageRecentModel.Controls.Add(this.panel1);
-            this.tabPageRecentModel.Location = new System.Drawing.Point(29, 4);
+            this.tabPageRecentModel.Location = new System.Drawing.Point(34, 4);
             this.tabPageRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRecentModel.Name = "tabPageRecentModel";
             this.tabPageRecentModel.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabPageRecentModel.Size = new System.Drawing.Size(527, 844);
+            this.tabPageRecentModel.Size = new System.Drawing.Size(522, 844);
             this.tabPageRecentModel.TabIndex = 0;
             this.tabPageRecentModel.Text = "  Recent Model  ";
             this.tabPageRecentModel.UseVisualStyleBackColor = true;
@@ -225,7 +240,7 @@ namespace LaserCutter
             this.lvRecentModel.Location = new System.Drawing.Point(4, 3);
             this.lvRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.lvRecentModel.Name = "lvRecentModel";
-            this.lvRecentModel.Size = new System.Drawing.Size(519, 805);
+            this.lvRecentModel.Size = new System.Drawing.Size(514, 805);
             this.lvRecentModel.TabIndex = 1366;
             this.lvRecentModel.UseCompatibleStateImageBehavior = false;
             this.lvRecentModel.View = System.Windows.Forms.View.Details;
@@ -252,7 +267,7 @@ namespace LaserCutter
             this.panel1.Location = new System.Drawing.Point(4, 808);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(519, 33);
+            this.panel1.Size = new System.Drawing.Size(514, 33);
             this.panel1.TabIndex = 1365;
             // 
             // btnClear
@@ -265,7 +280,7 @@ namespace LaserCutter
             this.btnClear.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnClear.ImageKey = "12.bmp";
             this.btnClear.ImageList = this.imageList1;
-            this.btnClear.Location = new System.Drawing.Point(484, 3);
+            this.btnClear.Location = new System.Drawing.Point(479, 3);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(32, 30);
@@ -277,10 +292,10 @@ namespace LaserCutter
             // 
             this.tabPageRegisteredModel.Controls.Add(this.tvModel);
             this.tabPageRegisteredModel.Controls.Add(this.panel2);
-            this.tabPageRegisteredModel.Location = new System.Drawing.Point(29, 4);
+            this.tabPageRegisteredModel.Location = new System.Drawing.Point(26, 4);
             this.tabPageRegisteredModel.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRegisteredModel.Name = "tabPageRegisteredModel";
-            this.tabPageRegisteredModel.Size = new System.Drawing.Size(535, 844);
+            this.tabPageRegisteredModel.Size = new System.Drawing.Size(530, 844);
             this.tabPageRegisteredModel.TabIndex = 1;
             this.tabPageRegisteredModel.Text = "  Registered Model  ";
             this.tabPageRegisteredModel.UseVisualStyleBackColor = true;
@@ -326,7 +341,7 @@ namespace LaserCutter
             treeNode11,
             treeNode12});
             this.tvModel.SelectedImageIndex = 0;
-            this.tvModel.Size = new System.Drawing.Size(535, 736);
+            this.tvModel.Size = new System.Drawing.Size(530, 736);
             this.tvModel.TabIndex = 1369;
             this.tvModel.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvModel_NodeMouseClick);
             // 
@@ -346,7 +361,7 @@ namespace LaserCutter
             this.panel2.Location = new System.Drawing.Point(0, 736);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(535, 108);
+            this.panel2.Size = new System.Drawing.Size(530, 108);
             this.panel2.TabIndex = 1368;
             // 
             // btnCopyModel
@@ -359,7 +374,7 @@ namespace LaserCutter
             this.btnCopyModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnCopyModel.ImageIndex = 8;
             this.btnCopyModel.ImageList = this.imageList1;
-            this.btnCopyModel.Location = new System.Drawing.Point(231, 67);
+            this.btnCopyModel.Location = new System.Drawing.Point(226, 67);
             this.btnCopyModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCopyModel.Name = "btnCopyModel";
             this.btnCopyModel.Size = new System.Drawing.Size(32, 30);
@@ -406,7 +421,7 @@ namespace LaserCutter
             this.btnDeleteModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDeleteModel.ImageKey = "7.bmp";
             this.btnDeleteModel.ImageList = this.imageList1;
-            this.btnDeleteModel.Location = new System.Drawing.Point(268, 31);
+            this.btnDeleteModel.Location = new System.Drawing.Point(263, 31);
             this.btnDeleteModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeleteModel.Name = "btnDeleteModel";
             this.btnDeleteModel.Size = new System.Drawing.Size(32, 30);
@@ -424,7 +439,7 @@ namespace LaserCutter
             this.btnRenameModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRenameModel.ImageKey = "13.bmp";
             this.btnRenameModel.ImageList = this.imageList1;
-            this.btnRenameModel.Location = new System.Drawing.Point(230, 31);
+            this.btnRenameModel.Location = new System.Drawing.Point(225, 31);
             this.btnRenameModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRenameModel.Name = "btnRenameModel";
             this.btnRenameModel.Size = new System.Drawing.Size(32, 30);
@@ -442,7 +457,7 @@ namespace LaserCutter
             this.btnAddModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnAddModel.ImageIndex = 8;
             this.btnAddModel.ImageList = this.imageList1;
-            this.btnAddModel.Location = new System.Drawing.Point(191, 31);
+            this.btnAddModel.Location = new System.Drawing.Point(186, 31);
             this.btnAddModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAddModel.Name = "btnAddModel";
             this.btnAddModel.Size = new System.Drawing.Size(32, 30);
@@ -555,7 +570,7 @@ namespace LaserCutter
             // tabTable2
             // 
             this.tabTable2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.tabTable2.Location = new System.Drawing.Point(4, 44);
+            this.tabTable2.Location = new System.Drawing.Point(4, 40);
             this.tabTable2.Name = "tabTable2";
             this.tabTable2.Size = new System.Drawing.Size(1208, 804);
             this.tabTable2.TabIndex = 1;
@@ -589,7 +604,7 @@ namespace LaserCutter
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel panRight;
-        public System.Windows.Forms.TabControl tabControlSelectJobFile;
+        public yjTech.TabControl tabControlSelectJobFile;
         public System.Windows.Forms.TabPage tabPageRecentModel;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

@@ -65,7 +65,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnOK = new yjTech.BitBtn();
             this.btnCancel = new yjTech.BitBtn();
-            this.tabControlSelectJobFile = new System.Windows.Forms.TabControl();
+            this.tabControlSelectJobFile = new yjTech.TabControl();
             this.tabPageRecentModel = new System.Windows.Forms.TabPage();
             this.lvRecentModel = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -143,24 +143,39 @@
             this.tabControlSelectJobFile.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.tabControlSelectJobFile.Controls.Add(this.tabPageRecentModel);
             this.tabControlSelectJobFile.Controls.Add(this.tabPageRegisteredModel);
+            this.tabControlSelectJobFile.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControlSelectJobFile.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tabControlSelectJobFile.ItemSize = new System.Drawing.Size(30, 150);
             this.tabControlSelectJobFile.Location = new System.Drawing.Point(8, 8);
             this.tabControlSelectJobFile.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlSelectJobFile.Multiline = true;
             this.tabControlSelectJobFile.Name = "tabControlSelectJobFile";
-            this.tabControlSelectJobFile.SelectedIndex = 0;
+            this.tabControlSelectJobFile.ShowActiveCloseButton = false;
+            this.tabControlSelectJobFile.ShowCloseButton = false;
             this.tabControlSelectJobFile.Size = new System.Drawing.Size(350, 724);
+            this.tabControlSelectJobFile.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControlSelectJobFile.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControlSelectJobFile.TabIndex = 3;
+            this.tabControlSelectJobFile.TabSelectedColor = System.Drawing.Color.Lime;
+            this.tabControlSelectJobFile.TabSelectedForeColor = System.Drawing.Color.Blue;
+            this.tabControlSelectJobFile.TabSelectedHighColor = System.Drawing.Color.Red;
+            this.tabControlSelectJobFile.TabSelectedHighColorSize = 4;
+            this.tabControlSelectJobFile.TabUnSelectedForeColor = System.Drawing.Color.Gray;
+            this.tabControlSelectJobFile.TabVisible = true;
+            this.tabControlSelectJobFile.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabControlSelectJobFile.TipsColor = System.Drawing.Color.Red;
+            this.tabControlSelectJobFile.TipsFont = new System.Drawing.Font("Arial", 8F);
+            this.tabControlSelectJobFile.TipsForeColor = System.Drawing.Color.White;
             // 
             // tabPageRecentModel
             // 
             this.tabPageRecentModel.Controls.Add(this.lvRecentModel);
             this.tabPageRecentModel.Controls.Add(this.panel1);
-            this.tabPageRecentModel.Location = new System.Drawing.Point(29, 4);
+            this.tabPageRecentModel.Location = new System.Drawing.Point(34, 4);
             this.tabPageRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRecentModel.Name = "tabPageRecentModel";
             this.tabPageRecentModel.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.tabPageRecentModel.Size = new System.Drawing.Size(317, 716);
+            this.tabPageRecentModel.Size = new System.Drawing.Size(312, 716);
             this.tabPageRecentModel.TabIndex = 0;
             this.tabPageRecentModel.Text = "  Recent Model  ";
             this.tabPageRecentModel.UseVisualStyleBackColor = true;
@@ -183,7 +198,7 @@
             this.lvRecentModel.Location = new System.Drawing.Point(4, 3);
             this.lvRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.lvRecentModel.Name = "lvRecentModel";
-            this.lvRecentModel.Size = new System.Drawing.Size(309, 677);
+            this.lvRecentModel.Size = new System.Drawing.Size(304, 677);
             this.lvRecentModel.TabIndex = 1366;
             this.lvRecentModel.UseCompatibleStateImageBehavior = false;
             this.lvRecentModel.View = System.Windows.Forms.View.Details;
@@ -211,7 +226,7 @@
             this.panel1.Location = new System.Drawing.Point(4, 680);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 33);
+            this.panel1.Size = new System.Drawing.Size(304, 33);
             this.panel1.TabIndex = 1365;
             // 
             // btnClear
@@ -224,7 +239,7 @@
             this.btnClear.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnClear.ImageKey = "12.bmp";
             this.btnClear.ImageList = this.imageList1;
-            this.btnClear.Location = new System.Drawing.Point(274, 3);
+            this.btnClear.Location = new System.Drawing.Point(269, 3);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(32, 30);
@@ -235,10 +250,10 @@
             // tabPageRegisteredModel
             // 
             this.tabPageRegisteredModel.Controls.Add(this.tvModel);
-            this.tabPageRegisteredModel.Location = new System.Drawing.Point(29, 4);
+            this.tabPageRegisteredModel.Location = new System.Drawing.Point(34, 4);
             this.tabPageRegisteredModel.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageRegisteredModel.Name = "tabPageRegisteredModel";
-            this.tabPageRegisteredModel.Size = new System.Drawing.Size(317, 716);
+            this.tabPageRegisteredModel.Size = new System.Drawing.Size(312, 716);
             this.tabPageRegisteredModel.TabIndex = 1;
             this.tabPageRegisteredModel.Text = "  Registered Model  ";
             this.tabPageRegisteredModel.UseVisualStyleBackColor = true;
@@ -283,7 +298,7 @@
             treeNode11,
             treeNode12});
             this.tvModel.SelectedImageIndex = 0;
-            this.tvModel.Size = new System.Drawing.Size(317, 716);
+            this.tvModel.Size = new System.Drawing.Size(312, 716);
             this.tvModel.TabIndex = 1369;
             this.tvModel.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvModel_NodeMouseClick);
             this.tvModel.DoubleClick += new System.EventHandler(this.tvModel_DoubleClick);
@@ -316,7 +331,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private yjTech.BitBtn btnOK;
         private yjTech.BitBtn btnCancel;
-        public System.Windows.Forms.TabControl tabControlSelectJobFile;
+        public yjTech.TabControl tabControlSelectJobFile;
         public System.Windows.Forms.TabPage tabPageRecentModel;
         private System.Windows.Forms.ListView lvRecentModel;
         private System.Windows.Forms.ColumnHeader columnHeader1;

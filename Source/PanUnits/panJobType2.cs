@@ -1,11 +1,9 @@
 ﻿using System;
-
+using System.Drawing;
 using System.Windows.Forms;
 
 using yjTech;
 using Raize.CodeSiteLogging;
-using System.Windows.Documents;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LaserCutter
 {
@@ -34,6 +32,8 @@ namespace LaserCutter
 
             InitDataGridViewControl();
             InitializeControl();
+
+            PageList = new PageList();
         }
 
         public void InitializeControl()
@@ -504,10 +504,404 @@ namespace LaserCutter
             }
         }
 
+        public void CreateArrayButton()
+        {
+            // 패널에 있는 기존 컨트롤(버튼/라벨)을 모두 제거
+            panel2.Controls.Clear();
+
+            int buttonWidth = 50;  // 버튼의 너비
+            int buttonHeight = 50; // 버튼의 높이
+            int padding = 5;       // 버튼 간의 간격
+
+            int totalWidth = buttonWidth + (edXCount.AsInteger * buttonWidth) + ((edXCount.AsInteger - 1) * padding) + buttonWidth;
+            int totalHeight = buttonHeight + (edYCount.AsInteger * buttonHeight) + ((edYCount.AsInteger - 1) * padding) + buttonHeight;
+
+            panel2.ClientSize = new Size(486, 203);
+            panel2.ClientSize = new Size(Math.Max(panel2.ClientSize.Width, totalWidth), Math.Max(panel2.ClientSize.Height, totalHeight));
+
+            // 버튼 배열이 패널 중앙에 위치하도록 시작 위치 계산 (양 끝 공백 포함)
+            int startX = (panel2.ClientSize.Width - totalWidth) / 2 + buttonWidth;
+            int startY = (panel2.ClientSize.Height - totalHeight) / 2 + buttonHeight;
+
+            int nRowIndex = 0, nColIndex = 0;
+
+            int ii = 1;
+            switch (LaserProject.Model2.SortMethod)
+            {
+                case SortMethod.Method1:
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+                                ledLabel.Tag = ii;
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method2:
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method3:
+
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (nRowIndex) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (nRowIndex) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method4:
+
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (edYCount.AsInteger - nRowIndex - 1) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (edYCount.AsInteger - nRowIndex - 1) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+            }
+
+            cbCellIndex.Items.Clear();
+
+            ii = 0;
+            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+            {
+                for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                {
+                    ii = ii + 1;
+                    cbCellIndex.Items.Add(String.Format("Cell{0}", ii));
+                }
+            }
+        }
+
 
         public void btnApply_Click(object sender, EventArgs e)
         {
-            ;
+            CreateArrayButton();
+
+            GetPageData();
+
+            PageList.Clear();
+            PageList.PageSize = new DoublePoint(cad2Data.MarkList.Width, cad2Data.MarkList.Height);
+            CalcCellPosition();
+
+            edXCount.Apply();
+            edYCount.Apply();
+            edGapX.Apply();
+            edGapY.Apply();
         }
+
+        public void SetPageSize()
+        {
+            cad2Data.Width = cad2Data.MarkList.Width;
+            cad2Data.Height = cad2Data.MarkList.Height;
+        }
+
+        public void CalcCellPosition()
+        {
+            int nRowIndex = 0, nColIndex = 0;
+
+            SetPageSize();
+
+            int ii = 1;
+            switch (LaserProject.Model2.SortMethod)
+            {
+                case SortMethod.Method1:
+
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method2:
+
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method3:
+
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * (edYCount.AsInteger - 1) - (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * (edYCount.AsInteger - 1) - (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method4:
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                double x = (cad2Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad2Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+            }
+
+            //for (int nIndex = 0; nIndex < PageList.Count; nIndex++)
+            //{
+            //    CodeSite.SendMsg(String.Format("PageList[{0}] = {1}", nIndex, PageList[nIndex].ToString()));
+            //}
+
+            //CodeSite.SendMsg(String.Format("PageList.XMin, XMax = {0}, {1}", PageList.XMin, PageList.XMax));
+            //CodeSite.SendMsg(String.Format("PageList.YMin, YMax = {0}, {1}", PageList.YMin, PageList.YMax));
+            //CodeSite.SendMsg(String.Format("PageList.Size = {0}, {1}", PageList.Width, PageList.Height));
+        }
+
+        private void ledLabel_Click(object sender, EventArgs e)
+        {
+            LEDLabel ledLabel = (LEDLabel)sender;
+
+            ledLabel.LED.Value = !ledLabel.LED.Value;
+
+            int nIndex = yjCommon.StrToIntDef(ledLabel.Text, -1);
+
+            if (nIndex > -1)
+            {
+                var Item = PageList[nIndex - 1];
+                Item.Used = ledLabel.LED.Value;
+                PageList[nIndex - 1] = Item;
+            }
+        }
+
     }
 }

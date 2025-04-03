@@ -69,9 +69,10 @@
             // 
             this.btnManual.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnManual.BackColor = System.Drawing.Color.Wheat;
+            this.btnManual.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
             this.btnManual.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btnManual, "btnManual");
-            this.btnManual.ForeColor = System.Drawing.Color.Black;
+            this.btnManual.ForeColor = System.Drawing.Color.Red;
             this.btnManual.Name = "btnManual";
             this.btnManual.Tag = "11";
             this.btnManual.UseVisualStyleBackColor = false;
@@ -141,9 +142,10 @@
             // 
             this.btnVision.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnVision.BackColor = System.Drawing.Color.Transparent;
+            this.btnVision.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
             this.btnVision.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btnVision, "btnVision");
-            this.btnVision.ForeColor = System.Drawing.Color.Black;
+            this.btnVision.ForeColor = System.Drawing.Color.Red;
             this.btnVision.Name = "btnVision";
             this.btnVision.UseVisualStyleBackColor = false;
             // 
@@ -151,9 +153,10 @@
             // 
             this.btnJobFile.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnJobFile.BackColor = System.Drawing.Color.Transparent;
+            this.btnJobFile.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
             this.btnJobFile.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btnJobFile, "btnJobFile");
-            this.btnJobFile.ForeColor = System.Drawing.Color.Black;
+            this.btnJobFile.ForeColor = System.Drawing.Color.Red;
             this.btnJobFile.Margin2 = 10;
             this.btnJobFile.Name = "btnJobFile";
             this.btnJobFile.Tag = "14";
@@ -163,9 +166,10 @@
             // 
             this.btnAuto.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnAuto.BackColor = System.Drawing.Color.Transparent;
+            this.btnAuto.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
             this.btnAuto.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btnAuto, "btnAuto");
-            this.btnAuto.ForeColor = System.Drawing.Color.Black;
+            this.btnAuto.ForeColor = System.Drawing.Color.Red;
             this.btnAuto.Margin2 = 10;
             this.btnAuto.Name = "btnAuto";
             this.btnAuto.Tag = "10";
@@ -245,9 +249,10 @@
             // 
             this.btnConfig.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnConfig.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfig.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
             this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btnConfig, "btnConfig");
-            this.btnConfig.ForeColor = System.Drawing.Color.Black;
+            this.btnConfig.ForeColor = System.Drawing.Color.Red;
             this.btnConfig.Name = "btnConfig";
             this.btnConfig.Tag = "12";
             this.btnConfig.UseVisualStyleBackColor = false;
@@ -270,7 +275,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.bitBtn2);
-            this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.lblSelectedMenu);
             this.Controls.Add(this.bitBtn6);
             this.Controls.Add(this.bitBtn5);
@@ -283,6 +287,7 @@
             this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.btnManual);
             this.Controls.Add(this.btnJobFile);
+            this.Controls.Add(this.btnConfig);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
             this.TransparencyKey = System.Drawing.Color.DeepPink;
