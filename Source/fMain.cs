@@ -116,9 +116,9 @@ namespace LaserCutter
             btnJobFile.Click += ChangeMainPanel;
             btnManual.Click += ChangeMainPanel;
             btnConfig.Click += ChangeMainPanel;
-            ////btnAlarm.Click += ChangeMainPanel;
+            btnAlarm.Click += ChangeMainPanel;
             btnLog.Click += ChangeMainPanel;
-            ////btnLogIn.Click += ChangeMainPanel;
+            btnLogIn.Click += ChangeMainPanel;
 
             SystemInitialize();
 

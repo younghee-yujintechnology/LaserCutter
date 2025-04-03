@@ -70,9 +70,6 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DaekhonSystem">
-      <HintPath>Embeded Dll\DaekhonSystem.dll</HintPath>
-    </Reference>
     <Reference Include="FirebirdSql.Data.FirebirdClient">
       <HintPath>Embeded Dll\FirebirdSql.Data.FirebirdClient.dll</HintPath>
       <Private>False</Private>
