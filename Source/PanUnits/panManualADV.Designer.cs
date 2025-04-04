@@ -197,10 +197,11 @@ namespace LaserCutter
             this.panClient.Controls.Add(this.btnGetVersion);
             this.panClient.Controls.Add(this.btnResetTrigger);
             this.panClient.Controls.Add(this.btnOperatingOn);
+            this.panClient.Font = new System.Drawing.Font("Tahoma", 10F);
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Margin = new System.Windows.Forms.Padding(0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(733, 799);
+            this.panClient.Size = new System.Drawing.Size(769, 876);
             this.panClient.TabIndex = 1294;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -896,7 +897,7 @@ namespace LaserCutter
             this.edMode2PulseWidth.Size = new System.Drawing.Size(95, 29);
             this.edMode2PulseWidth.TabIndex = 1311;
             this.edMode2PulseWidth.TabStop = false;
-            this.edMode2PulseWidth.Text = "2";
+            this.edMode2PulseWidth.Text = "0.000";
             this.edMode2PulseWidth.Value = 0D;
             // 
             // edMode2PulsePitch
@@ -1187,11 +1188,11 @@ namespace LaserCutter
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.panClient);
-            this.Font = new System.Drawing.Font("굴림", 9F);
+            this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Location = new System.Drawing.Point(3, 3);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panManualADV";
-            this.Size = new System.Drawing.Size(739, 804);
+            this.Size = new System.Drawing.Size(773, 881);
             this.panClient.ResumeLayout(false);
             this.ResumeLayout(false);
 

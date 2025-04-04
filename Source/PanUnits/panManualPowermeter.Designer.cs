@@ -120,9 +120,10 @@ namespace LaserCutter
             this.sjPanel1.Controls.Add(this.edScanTime);
             this.sjPanel1.Controls.Add(this.gradLabel53);
             this.sjPanel1.Controls.Add(this.cbComPort);
+            this.sjPanel1.Font = new System.Drawing.Font("Tahoma", 9F);
             this.sjPanel1.Location = new System.Drawing.Point(3, 3);
             this.sjPanel1.Name = "sjPanel1";
-            this.sjPanel1.Size = new System.Drawing.Size(427, 799);
+            this.sjPanel1.Size = new System.Drawing.Size(428, 876);
             this.sjPanel1.TabIndex = 1280;
             this.sjPanel1.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.sjPanel1.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -597,7 +598,7 @@ namespace LaserCutter
             this.edScanTime.Size = new System.Drawing.Size(95, 29);
             this.edScanTime.TabIndex = 1321;
             this.edScanTime.TabStop = false;
-            this.edScanTime.Text = "10";
+            this.edScanTime.Text = "0";
             this.edScanTime.Value = 0D;
             // 
             // gradLabel53
@@ -663,7 +664,7 @@ namespace LaserCutter
             this.Controls.Add(this.sjPanel1);
             this.Font = new System.Drawing.Font("굴림", 9F);
             this.Name = "panManualPowermeter";
-            this.Size = new System.Drawing.Size(433, 805);
+            this.Size = new System.Drawing.Size(434, 887);
             this.sjPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

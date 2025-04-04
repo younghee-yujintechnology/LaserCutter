@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panClient = new LaserCutter.sjPanel();
+            this.btnSave = new yjTech.BitBtn();
             this.dgMotorParameter = new System.Windows.Forms.DataGridView();
             this.columnAxis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnJogSpdLow = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +48,6 @@
             this.ColumnJogTSHigh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLimitM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLimitP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSave = new yjTech.BitBtn();
             this.panClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMotorParameter)).BeginInit();
             this.SuspendLayout();
@@ -56,37 +56,49 @@
             // 
             this.panClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.panClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panClient.Controls.Add(this.btnSave);
             this.panClient.Controls.Add(this.dgMotorParameter);
+            this.panClient.Controls.Add(this.btnSave);
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Margin = new System.Windows.Forms.Padding(0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(1209, 800);
+            this.panClient.Size = new System.Drawing.Size(1201, 876);
             this.panClient.TabIndex = 0;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
             this.panClient.TitleText = "Motor Parameter";
             this.panClient.TitleTextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btnSave
+            // 
+            this.btnSave.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btnSave.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.btnSave.Location = new System.Drawing.Point(1091, 826);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(104, 43);
+            this.btnSave.TabIndex = 1563;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            // 
             // dgMotorParameter
             // 
             this.dgMotorParameter.AllowUserToAddRows = false;
             this.dgMotorParameter.AllowUserToDeleteRows = false;
             this.dgMotorParameter.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgMotorParameter.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgMotorParameter.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgMotorParameter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgMotorParameter.BackgroundColor = System.Drawing.Color.White;
             this.dgMotorParameter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgMotorParameter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgMotorParameter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgMotorParameter.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgMotorParameter.ColumnHeadersHeight = 45;
             this.dgMotorParameter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgMotorParameter.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -105,26 +117,25 @@
             this.dgMotorParameter.EnableHeadersVisualStyles = false;
             this.dgMotorParameter.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
             this.dgMotorParameter.GridColor = System.Drawing.Color.LightGray;
-            this.dgMotorParameter.Location = new System.Drawing.Point(4, 50);
+            this.dgMotorParameter.Location = new System.Drawing.Point(6, 50);
             this.dgMotorParameter.MultiSelect = false;
             this.dgMotorParameter.Name = "dgMotorParameter";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 9F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgMotorParameter.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgMotorParameter.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgMotorParameter.RowHeadersVisible = false;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgMotorParameter.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgMotorParameter.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgMotorParameter.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgMotorParameter.RowTemplate.Height = 28;
-            this.dgMotorParameter.Size = new System.Drawing.Size(1199, 302);
-            this.dgMotorParameter.TabIndex = 1499;
-            this.dgMotorParameter.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgMotorParameter_EditingControlShowing);
+            this.dgMotorParameter.Size = new System.Drawing.Size(1188, 770);
+            this.dgMotorParameter.TabIndex = 1564;
             // 
             // columnAxis
             // 
@@ -166,8 +177,8 @@
             // ColumnJogTALow
             // 
             this.ColumnJogTALow.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColumnJogTALow.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColumnJogTALow.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnJogTALow.FillWeight = 31.53867F;
             this.ColumnJogTALow.Frozen = true;
             this.ColumnJogTALow.HeaderText = "Accel #1";
@@ -238,25 +249,13 @@
             this.ColumnLimitP.Name = "ColumnLimitP";
             this.ColumnLimitP.Width = 120;
             // 
-            // btnSave
-            // 
-            this.btnSave.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSave.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.btnSave.Location = new System.Drawing.Point(1099, 752);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(104, 43);
-            this.btnSave.TabIndex = 1563;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
             // panConfigMotor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panClient);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panConfigMotor";
-            this.Size = new System.Drawing.Size(1214, 805);
+            this.Size = new System.Drawing.Size(1207, 882);
             this.panClient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMotorParameter)).EndInit();
             this.ResumeLayout(false);
@@ -266,6 +265,7 @@
         #endregion
 
         private sjPanel panClient;
+        private yjTech.BitBtn btnSave;
         private System.Windows.Forms.DataGridView dgMotorParameter;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnAxis;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnJogSpdLow;
@@ -279,6 +279,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnJogTSHigh;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLimitM;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLimitP;
-        private yjTech.BitBtn btnSave;
     }
 }

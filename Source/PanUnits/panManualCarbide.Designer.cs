@@ -182,7 +182,7 @@ namespace LaserCutter
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Margin = new System.Windows.Forms.Padding(0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(733, 799);
+            this.panClient.Size = new System.Drawing.Size(769, 876);
             this.panClient.TabIndex = 1279;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.Color.Black;
@@ -1362,7 +1362,7 @@ namespace LaserCutter
             this.Controls.Add(this.panClient);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Name = "panManualCarbide";
-            this.Size = new System.Drawing.Size(738, 804);
+            this.Size = new System.Drawing.Size(773, 881);
             this.panClient.ResumeLayout(false);
             this.panClient.PerformLayout();
             this.groupBox5.ResumeLayout(false);

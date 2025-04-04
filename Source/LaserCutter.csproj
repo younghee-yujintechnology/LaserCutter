@@ -176,6 +176,12 @@
     <Compile Include="PanUnits\panAuto.Designer.cs">
       <DependentUpon>panAuto.cs</DependentUpon>
     </Compile>
+    <Compile Include="PanUnits\panAutoMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panAutoMenu.Designer.cs">
+      <DependentUpon>panAutoMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="PanUnits\panConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -199,6 +205,12 @@
     </Compile>
     <Compile Include="PanUnits\panJobFile.Designer.cs">
       <DependentUpon>panJobFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanUnits\panJobList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PanUnits\panJobList.Designer.cs">
+      <DependentUpon>panJobList.cs</DependentUpon>
     </Compile>
     <Compile Include="PanUnits\panJobType1.cs">
       <SubType>UserControl</SubType>
@@ -308,6 +320,9 @@
     <EmbeddedResource Include="PanUnits\panAuto.resx">
       <DependentUpon>panAuto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panAutoMenu.resx">
+      <DependentUpon>panAutoMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panConfig.resx">
       <DependentUpon>panConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panJobFile.resx">
       <DependentUpon>panJobFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PanUnits\panJobList.resx">
+      <DependentUpon>panJobList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PanUnits\panJobType1.resx">
       <DependentUpon>panJobType1.cs</DependentUpon>

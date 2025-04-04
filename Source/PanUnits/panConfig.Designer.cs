@@ -102,7 +102,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1779, 889);
+            this.tabPage2.Size = new System.Drawing.Size(1208, 882);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "Motor";
             // 
@@ -113,7 +113,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1779, 889);
+            this.tabPage1.Size = new System.Drawing.Size(1208, 882);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Common";
             // 
@@ -124,13 +124,13 @@
             this.tabConfig.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabConfig.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.tabConfig.ItemSize = new System.Drawing.Size(175, 40);
-            this.tabConfig.Location = new System.Drawing.Point(0, 0);
+            this.tabConfig.Location = new System.Drawing.Point(3, 3);
             this.tabConfig.Margin = new System.Windows.Forms.Padding(0);
             this.tabConfig.Multiline = true;
             this.tabConfig.Name = "tabConfig";
             this.tabConfig.ShowActiveCloseButton = false;
             this.tabConfig.ShowCloseButton = false;
-            this.tabConfig.Size = new System.Drawing.Size(1787, 937);
+            this.tabConfig.Size = new System.Drawing.Size(1216, 930);
             this.tabConfig.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabConfig.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabConfig.TabIndex = 1127;
@@ -149,11 +149,10 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tabConfig);
-            this.Font = new System.Drawing.Font("굴림", 9F);
+            this.Font = new System.Drawing.Font("Tahoma", 9F);
             this.Name = "panConfig";
-            this.Size = new System.Drawing.Size(1787, 937);
+            this.Size = new System.Drawing.Size(1223, 939);
             this.tabConfig.ResumeLayout(false);
             this.ResumeLayout(false);
 

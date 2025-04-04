@@ -164,15 +164,6 @@ namespace LaserCutter
             frmSelectJob.StartPosition = FormStartPosition.CenterScreen;
             if (frmSelectJob.ShowDialog() == DialogResult.OK)
             {
-                if (TableNo == TableNo.Table1)
-                {
-                    Auto.ledTable1JobFileLoad.LED.Value = false;
-                }
-                else
-                if (TableNo == TableNo.Table2)
-                {
-                    Auto.ledTable2JobFileLoad.LED.Value = false;
-                }
 
                 logger.SendMsg(String.Format("{0}.Open([{1}][{2}])", TableNo.ToString(), frmSelectJob.GroupName, frmSelectJob.ModelName));
 

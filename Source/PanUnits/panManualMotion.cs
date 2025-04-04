@@ -46,7 +46,7 @@ namespace LaserCutter
 
             ////bPmacConnected = Pmac.Open("192.168.0.200");
 
-            cbSpeed.SelectedIndex = 2;  
+            ////cbSpeed.SelectedIndex = 2;  
         }
 
         #region staticInstance

@@ -20,6 +20,7 @@ using IniParser;
 
 using Raize.CodeSiteLogging;
 using yjTech;
+using LaserCutter.PanUnits;
 
 //using IniP
 
@@ -32,6 +33,7 @@ namespace LaserCutter
         public frmChannelSpy frmChannelSpy;
 
         public panAuto Auto;
+        public panAutoMenu AutoMenu;
         public panManual Manual;
         public panConfig Config;
 
@@ -257,9 +259,14 @@ namespace LaserCutter
             ////Auto.frmMVS = frmMVS.StaticInstance;
             ////Auto.Vision1.frmMVS = frmMVS.StaticInstance;
             ////Auto.Vision2.frmMVS = frmMVS.StaticInstance;
-
+        
             ////Auto.frmRestart = frmRestart.StaticInstance;
             Auto.frmMain = this;
+            panClient.Controls.Add(Auto);
+
+            AutoMenu = new panAutoMenu();
+            panClient.Controls.Add(AutoMenu);
+            AutoMenu.Location = new Point(Auto.Location.X + Auto.Width - 2, Auto.Location.Y);
 
             ////Auto.Common = panConfigCommon.StaticInstance;
             ////Auto.SideMenu = panSideMenu.StaticInstance;
@@ -278,6 +285,7 @@ namespace LaserCutter
             * 2. Manual
             */
             Manual = panManual.StaticInstance;
+            panClient.Controls.Add(Manual);
             ////Manual.Laser.btnConnectLaser_Click(null, null);
             ////Manual.Laser.ShutterClose();
             ////Pmac.QueryCommand("doBeamShutterOpen=false");
@@ -286,16 +294,19 @@ namespace LaserCutter
             * 3. Config
             */
             Config = new panConfig();
+            panClient.Controls.Add(Config);
 
             /*
             * 4. JobFile
             */
             JobFile = new panJobFile();
+            panClient.Controls.Add(JobFile);
 
             /*
              * 
              */
             AutoThread.Enabled = true;
+
 
             logger.ExitMethod("SystemInitialize");
         }
@@ -396,10 +407,10 @@ namespace LaserCutter
 
             MenuIndex = Convert.ToInt32(aButton.Tag);
 
-            panClient.Controls.Clear();
-            panClient.Location = new Point(5, 86);
-            panClient.Width = 1787;
-            panClient.Height = 937;
+            //////panClient.Controls.Clear();
+            //////panClient.Location = new Point(5, 86);
+            //////panClient.Width = 1787;
+            //////panClient.Height = 937;
 
             //// JobFile.Height = Auto.Height;
             //// Config.Height = Auto.Height;
@@ -409,39 +420,35 @@ namespace LaserCutter
             {
                 ChangeAutoTitle();
 
-                panClient.Controls.Add(Auto);
+                Auto.BringToFront();
             }
             else
             if (aButton == btnManual)
             {
                 lblMainTitle.Text = "Manual";
 
-                panClient.Controls.Add(Manual);
+                Manual.BringToFront();
             }
             else
             if (aButton == btnConfig)
             {
                 lblMainTitle.Text = "Config";
 
-                panClient.Controls.Add(Config);
+                Config.BringToFront();
             }
             else
             if (aButton == btnJobFile)
             {
                 lblMainTitle.Text = "JobFile";
 
-                panClient.Controls.Add(JobFile);
-
-                JobFile.LoadRecentList(JobFile.lvRecentModel, (TableNo)JobFile.TabControl1.SelectedIndex + 1);
-                JobFile.LoadModelList();
+                JobFile.BringToFront();
             }
             else
             if (aButton == btnLog)
             {
                 lblMainTitle.Text = "Log";
 
-                ////panClient.Width = 1920;
-                ////panClient.Controls.Add(panLog);
+                // panLog.BringToFront();
             }
             else
             if (aButton == btnLogIn)

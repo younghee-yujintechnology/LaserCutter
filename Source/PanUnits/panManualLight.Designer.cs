@@ -91,7 +91,7 @@ namespace LaserCutter
             this.panClient.Controls.Add(this.cbComPort);
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(427, 799);
+            this.panClient.Size = new System.Drawing.Size(428, 876);
             this.panClient.TabIndex = 1295;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -317,7 +317,7 @@ namespace LaserCutter
             this.Location = new System.Drawing.Point(3, 3);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panManualLight";
-            this.Size = new System.Drawing.Size(433, 805);
+            this.Size = new System.Drawing.Size(434, 887);
             this.panClient.ResumeLayout(false);
             this.ResumeLayout(false);
 

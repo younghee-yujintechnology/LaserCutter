@@ -453,7 +453,7 @@
             this.panClient.Location = new System.Drawing.Point(3, 3);
             this.panClient.Margin = new System.Windows.Forms.Padding(0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(1209, 800);
+            this.panClient.Size = new System.Drawing.Size(1201, 876);
             this.panClient.TabIndex = 0;
             this.panClient.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -465,7 +465,7 @@
             this.btnCancel.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(882, 752);
+            this.btnCancel.Location = new System.Drawing.Point(874, 827);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(104, 43);
             this.btnCancel.TabIndex = 1595;
@@ -476,7 +476,7 @@
             // 
             this.btnSet.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSet.Location = new System.Drawing.Point(991, 752);
+            this.btnSet.Location = new System.Drawing.Point(983, 827);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(104, 43);
             this.btnSet.TabIndex = 1594;
@@ -499,7 +499,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(1199, 698);
+            this.tabControl1.Size = new System.Drawing.Size(1190, 772);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 1593;
@@ -539,7 +539,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1191, 660);
+            this.tabPage1.Size = new System.Drawing.Size(1182, 734);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "  Speed  ";
             // 
@@ -933,7 +933,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1191, 660);
+            this.tabPage2.Size = new System.Drawing.Size(1182, 734);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "  Position  ";
             // 
@@ -1902,7 +1902,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1191, 660);
+            this.tabPage4.Size = new System.Drawing.Size(1182, 734);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "  Option  ";
             // 
@@ -2495,7 +2495,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 34);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1191, 660);
+            this.tabPage5.Size = new System.Drawing.Size(1182, 734);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "  Loading  ";
             // 
@@ -3041,7 +3041,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1191, 660);
+            this.tabPage3.Size = new System.Drawing.Size(1182, 734);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "  Loading.Position  ";
             // 
@@ -3088,7 +3088,7 @@
             this.groupBox5.Controls.Add(this.edTable2LeftTopXPos);
             this.groupBox5.Controls.Add(this.edTable2LeftBottomYPos);
             this.groupBox5.Controls.Add(this.edTable2LeftBottomXPos);
-            this.groupBox5.Location = new System.Drawing.Point(693, 170);
+            this.groupBox5.Location = new System.Drawing.Point(632, 172);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(364, 284);
             this.groupBox5.TabIndex = 1692;
@@ -3523,7 +3523,7 @@
             this.groupBox4.Controls.Add(this.edTable1LeftBottomXPos);
             this.groupBox4.Controls.Add(this.gradientLabel28);
             this.groupBox4.Controls.Add(this.gradientLabel30);
-            this.groupBox4.Location = new System.Drawing.Point(195, 170);
+            this.groupBox4.Location = new System.Drawing.Point(134, 172);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(492, 284);
             this.groupBox4.TabIndex = 1691;
@@ -4052,7 +4052,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 34);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1191, 660);
+            this.tabPage6.Size = new System.Drawing.Size(1182, 734);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "  Focus  ";
             // 
@@ -4855,10 +4855,10 @@
             this.tabPage8.Controls.Add(this.btnMoveTable2LaserZFocus);
             this.tabPage8.Controls.Add(this.edTable2VisionZFocus);
             this.tabPage8.Controls.Add(this.edTable2LaserZFocus);
-            this.tabPage8.Location = new System.Drawing.Point(4, 34);
+            this.tabPage8.Location = new System.Drawing.Point(4, 26);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(916, 499);
+            this.tabPage8.Size = new System.Drawing.Size(916, 507);
             this.tabPage8.TabIndex = 1;
             this.tabPage8.Text = "  Table#2  ";
             // 
@@ -5548,7 +5548,7 @@
             // 
             this.btnAllSave.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnAllSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnAllSave.Location = new System.Drawing.Point(1099, 752);
+            this.btnAllSave.Location = new System.Drawing.Point(1091, 827);
             this.btnAllSave.Name = "btnAllSave";
             this.btnAllSave.Size = new System.Drawing.Size(104, 43);
             this.btnAllSave.TabIndex = 1562;
@@ -5561,7 +5561,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panClient);
             this.Name = "panConfigCommon";
-            this.Size = new System.Drawing.Size(1214, 805);
+            this.Size = new System.Drawing.Size(1207, 882);
             this.Load += new System.EventHandler(this.panConfigCommon_Load);
             this.panClient.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);

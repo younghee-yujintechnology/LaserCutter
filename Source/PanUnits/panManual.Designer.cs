@@ -41,17 +41,16 @@
             this.uiTabControlMenu1.Controls.Add(this.tabPage2);
             this.uiTabControlMenu1.Controls.Add(this.tabPage3);
             this.uiTabControlMenu1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.uiTabControlMenu1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiTabControlMenu1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.uiTabControlMenu1.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uiTabControlMenu1.ItemSize = new System.Drawing.Size(175, 40);
-            this.uiTabControlMenu1.Location = new System.Drawing.Point(0, 0);
+            this.uiTabControlMenu1.Location = new System.Drawing.Point(3, 3);
             this.uiTabControlMenu1.Margin = new System.Windows.Forms.Padding(0);
             this.uiTabControlMenu1.Multiline = true;
             this.uiTabControlMenu1.Name = "uiTabControlMenu1";
             this.uiTabControlMenu1.ShowActiveCloseButton = false;
             this.uiTabControlMenu1.ShowCloseButton = false;
-            this.uiTabControlMenu1.Size = new System.Drawing.Size(1787, 937);
+            this.uiTabControlMenu1.Size = new System.Drawing.Size(1216, 930);
             this.uiTabControlMenu1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControlMenu1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.uiTabControlMenu1.TabIndex = 1127;
@@ -75,7 +74,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1779, 889);
+            this.tabPage1.Size = new System.Drawing.Size(1208, 882);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Motion";
             // 
@@ -87,7 +86,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1775, 804);
+            this.tabPage2.Size = new System.Drawing.Size(1215, 891);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "Laser";
             // 
@@ -99,7 +98,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 44);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1775, 804);
+            this.tabPage3.Size = new System.Drawing.Size(1215, 891);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Trigger";
             // 
@@ -107,12 +106,11 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.uiTabControlMenu1);
             this.Font = new System.Drawing.Font("Tahoma", 9F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panManual";
-            this.Size = new System.Drawing.Size(1787, 937);
+            this.Size = new System.Drawing.Size(1223, 939);
             this.Load += new System.EventHandler(this.panManual_Load);
             this.uiTabControlMenu1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -73,6 +73,9 @@ namespace LaserCutter
             logger.Destination.Viewer.Active = true;
         }
 
+        private void btnTable2New_Click(object sender, System.EventArgs e)
+        {
 
+        }
     }
 }

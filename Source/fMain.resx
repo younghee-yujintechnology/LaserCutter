@@ -415,78 +415,6 @@ Exit</value>
   <data name="&gt;&gt;btnVision.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;lblMainTitle.Name" xml:space="preserve">
-    <value>lblMainTitle</value>
-  </data>
-  <data name="&gt;&gt;lblMainTitle.Type" xml:space="preserve">
-    <value>yjTech.GradientLabel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblMainTitle.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;lblMainTitle.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.Name" xml:space="preserve">
-    <value>lblBuildVersion</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.Type" xml:space="preserve">
-    <value>yjTech.Label, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;lblBuildVersion.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.Name" xml:space="preserve">
-    <value>lblDateTime</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
-    <value>yjTech.Label, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;lblDateTime.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
-    <value>pictureBox1</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1920, 82</value>
-  </data>
-  <data name="panTop.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panTop.Name" xml:space="preserve">
-    <value>panTop</value>
-  </data>
-  <data name="&gt;&gt;panTop.Type" xml:space="preserve">
-    <value>yjTech.Panel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panTop.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="lblMainTitle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 30pt, style=Bold</value>
   </data>
@@ -614,6 +542,30 @@ Exit</value>
     <value>panTop</value>
   </data>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 82</value>
+  </data>
+  <data name="panTop.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panTop.Name" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;panTop.Type" xml:space="preserve">
+    <value>yjTech.Panel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panTop.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="btnAuto.Font" type="System.Drawing.Font, System.Drawing">
