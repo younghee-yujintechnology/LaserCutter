@@ -55,7 +55,7 @@
             this.btnCancel.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(265, 188);
+            this.btnCancel.Location = new System.Drawing.Point(267, 188);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(94, 45);
             this.btnCancel.TabIndex = 1;
@@ -68,7 +68,7 @@
             this.btnOK.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnOK.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btnOK.Location = new System.Drawing.Point(164, 188);
+            this.btnOK.Location = new System.Drawing.Point(166, 188);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(94, 45);
             this.btnOK.TabIndex = 2;
@@ -84,14 +84,17 @@
             // 
             // frmUserConfirm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AcceptButton = this.btnOK;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(528, 243);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblMessage);
             this.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUserConfirm";
             this.Text = "UserConfirm";
             this.ResumeLayout(false);
@@ -100,9 +103,9 @@
 
         #endregion
         private yjTech.BitBtn btnCancel;
-        private yjTech.BitBtn btnOK;
 
         private yjTech.Thread AutoThread;
         public yjTech.Label lblMessage;
+        public yjTech.BitBtn btnOK;
     }
 }

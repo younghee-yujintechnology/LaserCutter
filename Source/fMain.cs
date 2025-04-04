@@ -471,6 +471,7 @@ namespace LaserCutter
             frmUserConfirm.lblMessage.Text = "프로그램을 종료합니다.";
 
             frmUserConfirm.StartPosition = FormStartPosition.CenterScreen;
+            
             if (frmUserConfirm.ShowDialog() == DialogResult.OK)
             {
                 //// Manual.Laser.ShutterClose();

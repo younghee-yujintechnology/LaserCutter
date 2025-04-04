@@ -307,10 +307,10 @@ namespace LaserCutter
             this.panStatus.Controls.Add(this.ledY2Servo);
             this.panStatus.Controls.Add(this.viY2Velocity);
             this.panStatus.Controls.Add(this.ledXAlarm);
-            this.panStatus.Location = new System.Drawing.Point(1215, 3);
+            this.panStatus.Location = new System.Drawing.Point(1214, 3);
             this.panStatus.Margin = new System.Windows.Forms.Padding(0);
             this.panStatus.Name = "panStatus";
-            this.panStatus.Size = new System.Drawing.Size(555, 397);
+            this.panStatus.Size = new System.Drawing.Size(559, 397);
             this.panStatus.TabIndex = 1128;
             this.panStatus.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panStatus.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -1206,10 +1206,10 @@ namespace LaserCutter
             this.panJogMove.Controls.Add(this.btnY2Axis);
             this.panJogMove.Controls.Add(this.btnY1Axis);
             this.panJogMove.Controls.Add(this.btnXAxis);
-            this.panJogMove.Location = new System.Drawing.Point(1215, 403);
+            this.panJogMove.Location = new System.Drawing.Point(1214, 403);
             this.panJogMove.Margin = new System.Windows.Forms.Padding(0);
             this.panJogMove.Name = "panJogMove";
-            this.panJogMove.Size = new System.Drawing.Size(555, 399);
+            this.panJogMove.Size = new System.Drawing.Size(559, 481);
             this.panJogMove.TabIndex = 1131;
             this.panJogMove.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panJogMove.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -1670,7 +1670,7 @@ namespace LaserCutter
             this.uiTabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.uiTabControl1.ShowActiveCloseButton = false;
             this.uiTabControl1.ShowCloseButton = false;
-            this.uiTabControl1.Size = new System.Drawing.Size(1207, 799);
+            this.uiTabControl1.Size = new System.Drawing.Size(1207, 881);
             this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.uiTabControl1.TabIndex = 1337;
@@ -1734,7 +1734,7 @@ namespace LaserCutter
             this.tabPage2.Controls.Add(this.lblInputPort0);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1199, 761);
+            this.tabPage2.Size = new System.Drawing.Size(1199, 843);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "INPUT";
             // 
@@ -2219,7 +2219,7 @@ namespace LaserCutter
             this.ledArray8.Font = new System.Drawing.Font("Tahoma", 9F);
             this.ledArray8.ImageList = imageList2;
             this.ledArray8.LEDCount = 8;
-            this.ledArray8.Location = new System.Drawing.Point(905, 420);
+            this.ledArray8.Location = new System.Drawing.Point(905, 474);
             this.ledArray8.Name = "ledArray8";
             this.ledArray8.OffImageIndices = new int[] {
         2,
@@ -2251,7 +2251,7 @@ namespace LaserCutter
             this.ledArray7.Font = new System.Drawing.Font("Tahoma", 9F);
             this.ledArray7.ImageList = imageList2;
             this.ledArray7.LEDCount = 8;
-            this.ledArray7.Location = new System.Drawing.Point(607, 418);
+            this.ledArray7.Location = new System.Drawing.Point(607, 472);
             this.ledArray7.Name = "ledArray7";
             this.ledArray7.OffImageIndices = new int[] {
         2,
@@ -2283,7 +2283,7 @@ namespace LaserCutter
             this.ledArray6.Font = new System.Drawing.Font("Tahoma", 9F);
             this.ledArray6.ImageList = imageList2;
             this.ledArray6.LEDCount = 8;
-            this.ledArray6.Location = new System.Drawing.Point(309, 418);
+            this.ledArray6.Location = new System.Drawing.Point(309, 472);
             this.ledArray6.Name = "ledArray6";
             this.ledArray6.OffImageIndices = new int[] {
         2,
@@ -2316,7 +2316,7 @@ namespace LaserCutter
             this.ledArray5.Font = new System.Drawing.Font("Tahoma", 9F);
             this.ledArray5.ImageList = imageList2;
             this.ledArray5.LEDCount = 8;
-            this.ledArray5.Location = new System.Drawing.Point(11, 420);
+            this.ledArray5.Location = new System.Drawing.Point(11, 474);
             this.ledArray5.Name = "ledArray5";
             this.ledArray5.OffImageIndices = new int[] {
         2,
@@ -2350,7 +2350,7 @@ namespace LaserCutter
             this.lblInputPort7.ForeColor = System.Drawing.Color.Black;
             this.lblInputPort7.Frame.CornerRound = 1;
             this.lblInputPort7.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.lblInputPort7.Location = new System.Drawing.Point(901, 382);
+            this.lblInputPort7.Location = new System.Drawing.Point(901, 436);
             this.lblInputPort7.Margin = new System.Windows.Forms.Padding(4);
             this.lblInputPort7.MinimumSize = new System.Drawing.Size(1, 14);
             this.lblInputPort7.Name = "lblInputPort7";
@@ -2386,7 +2386,7 @@ namespace LaserCutter
             this.lblInputPort6.ForeColor = System.Drawing.Color.Black;
             this.lblInputPort6.Frame.CornerRound = 1;
             this.lblInputPort6.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.lblInputPort6.Location = new System.Drawing.Point(603, 382);
+            this.lblInputPort6.Location = new System.Drawing.Point(603, 436);
             this.lblInputPort6.Margin = new System.Windows.Forms.Padding(4);
             this.lblInputPort6.MinimumSize = new System.Drawing.Size(1, 14);
             this.lblInputPort6.Name = "lblInputPort6";
@@ -2422,7 +2422,7 @@ namespace LaserCutter
             this.lblInputPort5.ForeColor = System.Drawing.Color.Black;
             this.lblInputPort5.Frame.CornerRound = 1;
             this.lblInputPort5.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.lblInputPort5.Location = new System.Drawing.Point(305, 382);
+            this.lblInputPort5.Location = new System.Drawing.Point(305, 436);
             this.lblInputPort5.Margin = new System.Windows.Forms.Padding(4);
             this.lblInputPort5.MinimumSize = new System.Drawing.Size(1, 14);
             this.lblInputPort5.Name = "lblInputPort5";
@@ -2458,7 +2458,7 @@ namespace LaserCutter
             this.lblInputPort4.ForeColor = System.Drawing.Color.Black;
             this.lblInputPort4.Frame.CornerRound = 1;
             this.lblInputPort4.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.lblInputPort4.Location = new System.Drawing.Point(7, 382);
+            this.lblInputPort4.Location = new System.Drawing.Point(7, 436);
             this.lblInputPort4.Margin = new System.Windows.Forms.Padding(4);
             this.lblInputPort4.MinimumSize = new System.Drawing.Size(1, 14);
             this.lblInputPort4.Name = "lblInputPort4";
@@ -2564,7 +2564,7 @@ namespace LaserCutter
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1199, 769);
+            this.tabPage3.Size = new System.Drawing.Size(1199, 851);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "OUTPUT";
             // 
@@ -3666,7 +3666,7 @@ namespace LaserCutter
             this.Font = new System.Drawing.Font("굴림", 9F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panManualMotion";
-            this.Size = new System.Drawing.Size(1774, 806);
+            this.Size = new System.Drawing.Size(1774, 889);
             this.panStatus.ResumeLayout(false);
             this.panJogMove.ResumeLayout(false);
             this.uiTabControl1.ResumeLayout(false);

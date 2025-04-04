@@ -79,11 +79,11 @@ namespace LaserCutter
             dataGridView1.Columns.Add("Name", "Name");
             dataGridView1.Columns["Name"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns["Name"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["Name"].Width = 180;
+            dataGridView1.Columns["Name"].Width = 250;
 
             // 3. Use
             DataGridViewCheckBoxColumn ColumnCheckBox = new DataGridViewCheckBoxColumn();
-            ColumnCheckBox.ReadOnly = false;
+            ColumnCheckBox.ReadOnly = true;
             ColumnCheckBox.Name = "Use";
             ColumnCheckBox.HeaderText = "Use";
             ColumnCheckBox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -112,18 +112,22 @@ namespace LaserCutter
             dataGridView1.Columns["Dir"].Width = 60;
 
             // 6. power.offset
-            dataGridView1.Columns.Add("p~.offset", "p~.offset");
-            dataGridView1.Columns["p~.offset"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["p~.offset"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["p~.offset"].ReadOnly = true;
-            dataGridView1.Columns["p~.offset"].Width = 75;
+            dataGridView1.Columns.Add("laser.power\r\noffset", "laser.power\r\noffset");
+            dataGridView1.Columns["laser.power\r\noffset"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["laser.power\r\noffset"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["laser.power\r\noffset"].Width = 100;
 
             // 7. z.offset
             dataGridView1.Columns.Add("z.offset", "z.offset");
             dataGridView1.Columns["z.offset"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns["z.offset"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["z.offset"].ReadOnly = true;
             dataGridView1.Columns["z.offset"].Width = 75;
+
+            // 8. Pitch.offset
+            dataGridView1.Columns.Add("pulse.pitch\r\noffset", "pulse.pitch\r\noffset");
+            dataGridView1.Columns["pulse.pitch\r\noffset"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["pulse.pitch\r\noffset"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns["pulse.pitch\r\noffset"].Width = 100;
 
             dataGridView1.AllowUserToResizeRows = false;
         }
@@ -509,6 +513,11 @@ namespace LaserCutter
 
         public void EnableControl(bool bEnabled)
         {
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

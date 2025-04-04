@@ -51,7 +51,7 @@
             this.uiTabControlMenu1.Name = "uiTabControlMenu1";
             this.uiTabControlMenu1.ShowActiveCloseButton = false;
             this.uiTabControlMenu1.ShowCloseButton = false;
-            this.uiTabControlMenu1.Size = new System.Drawing.Size(1783, 852);
+            this.uiTabControlMenu1.Size = new System.Drawing.Size(1787, 937);
             this.uiTabControlMenu1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControlMenu1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.uiTabControlMenu1.TabIndex = 1127;
@@ -75,7 +75,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1775, 804);
+            this.tabPage1.Size = new System.Drawing.Size(1779, 889);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Motion";
             // 
@@ -112,7 +112,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panManual";
-            this.Size = new System.Drawing.Size(1783, 852);
+            this.Size = new System.Drawing.Size(1787, 937);
             this.Load += new System.EventHandler(this.panManual_Load);
             this.uiTabControlMenu1.ResumeLayout(false);
             this.ResumeLayout(false);
