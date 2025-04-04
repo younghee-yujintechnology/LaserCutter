@@ -45,8 +45,8 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new yjTech.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label7 = new yjTech.Label();
@@ -113,7 +113,7 @@ namespace LaserCutter
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(542, 454);
+            this.tabControl1.Size = new System.Drawing.Size(542, 536);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 1692;
@@ -156,7 +156,7 @@ namespace LaserCutter
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(534, 416);
+            this.tabPage1.Size = new System.Drawing.Size(534, 498);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "  가공 속성  ";
             // 
@@ -166,7 +166,7 @@ namespace LaserCutter
             this.label7.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.label7.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label7.Frame.Visible = false;
-            this.label7.Location = new System.Drawing.Point(262, 247);
+            this.label7.Location = new System.Drawing.Point(262, 329);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.label7.Name = "label7";
             this.label7.ShowAccelChar = false;
@@ -181,7 +181,7 @@ namespace LaserCutter
             this.label6.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.label6.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label6.Frame.Visible = false;
-            this.label6.Location = new System.Drawing.Point(174, 343);
+            this.label6.Location = new System.Drawing.Point(174, 425);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.label6.Name = "label6";
             this.label6.ShowAccelChar = false;
@@ -196,7 +196,7 @@ namespace LaserCutter
             this.label4.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.label4.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label4.Frame.Visible = false;
-            this.label4.Location = new System.Drawing.Point(448, 176);
+            this.label4.Location = new System.Drawing.Point(448, 258);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.label4.Name = "label4";
             this.label4.ShowAccelChar = false;
@@ -214,7 +214,7 @@ namespace LaserCutter
             this.edGuideLength.Frame.CornerRound = 1;
             this.edGuideLength.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edGuideLength.Hint = "Guide line length";
-            this.edGuideLength.Location = new System.Drawing.Point(242, 153);
+            this.edGuideLength.Location = new System.Drawing.Point(242, 235);
             this.edGuideLength.Margin = new System.Windows.Forms.Padding(4);
             this.edGuideLength.Max = 100D;
             this.edGuideLength.Min = 0D;
@@ -238,7 +238,7 @@ namespace LaserCutter
             this.edXLength.Frame.CornerRound = 1;
             this.edXLength.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edXLength.Hint = "X line length";
-            this.edXLength.Location = new System.Drawing.Point(242, 209);
+            this.edXLength.Location = new System.Drawing.Point(242, 291);
             this.edXLength.Margin = new System.Windows.Forms.Padding(4);
             this.edXLength.Max = 100D;
             this.edXLength.Min = 0D;
@@ -262,7 +262,7 @@ namespace LaserCutter
             this.edYLength.Frame.CornerRound = 1;
             this.edYLength.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edYLength.Hint = "Y line length";
-            this.edYLength.Location = new System.Drawing.Point(398, 259);
+            this.edYLength.Location = new System.Drawing.Point(398, 341);
             this.edYLength.Margin = new System.Windows.Forms.Padding(4);
             this.edYLength.Max = 100D;
             this.edYLength.Min = 0D;
@@ -286,7 +286,7 @@ namespace LaserCutter
             this.edXPitch.Frame.CornerRound = 1;
             this.edXPitch.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edXPitch.Hint = "X line pitch";
-            this.edXPitch.Location = new System.Drawing.Point(242, 311);
+            this.edXPitch.Location = new System.Drawing.Point(242, 393);
             this.edXPitch.Margin = new System.Windows.Forms.Padding(4);
             this.edXPitch.Max = 100D;
             this.edXPitch.Min = 0D;
@@ -310,7 +310,7 @@ namespace LaserCutter
             this.edGuidePitch.Frame.CornerRound = 1;
             this.edGuidePitch.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edGuidePitch.Hint = "Guide pitch";
-            this.edGuidePitch.Location = new System.Drawing.Point(14, 258);
+            this.edGuidePitch.Location = new System.Drawing.Point(14, 340);
             this.edGuidePitch.Margin = new System.Windows.Forms.Padding(4);
             this.edGuidePitch.Max = 100D;
             this.edGuidePitch.Min = 0D;
@@ -334,7 +334,7 @@ namespace LaserCutter
             this.edYPitch.Frame.CornerRound = 1;
             this.edYPitch.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.edYPitch.Hint = "Y line pitch";
-            this.edYPitch.Location = new System.Drawing.Point(14, 303);
+            this.edYPitch.Location = new System.Drawing.Point(14, 385);
             this.edYPitch.Margin = new System.Windows.Forms.Padding(4);
             this.edYPitch.Max = 100D;
             this.edYPitch.Min = 0D;
@@ -352,7 +352,7 @@ namespace LaserCutter
             // chkShowJumpline
             // 
             this.chkShowJumpline.AutoSize = true;
-            this.chkShowJumpline.Location = new System.Drawing.Point(6, 388);
+            this.chkShowJumpline.Location = new System.Drawing.Point(6, 470);
             this.chkShowJumpline.Name = "chkShowJumpline";
             this.chkShowJumpline.Size = new System.Drawing.Size(131, 22);
             this.chkShowJumpline.TabIndex = 1838;
@@ -567,7 +567,7 @@ namespace LaserCutter
             // 
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(89, 144);
+            this.pictureBox5.Location = new System.Drawing.Point(89, 226);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(374, 238);
             this.pictureBox5.TabIndex = 1839;
@@ -582,7 +582,7 @@ namespace LaserCutter
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(531, 416);
+            this.tabPage2.Size = new System.Drawing.Size(534, 498);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "  Processing Path  ";
             // 
@@ -593,7 +593,7 @@ namespace LaserCutter
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(514, 406);
+            this.panel1.Size = new System.Drawing.Size(524, 488);
             this.panel1.TabIndex = 1822;
             // 
             // btnPreView
@@ -619,7 +619,7 @@ namespace LaserCutter
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Location = new System.Drawing.Point(11, 251);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(486, 145);
+            this.panel2.Size = new System.Drawing.Size(500, 229);
             this.panel2.TabIndex = 1809;
             // 
             // gradientLabel2
@@ -668,7 +668,7 @@ namespace LaserCutter
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(1104, 683);
+            this.btnCancel.Location = new System.Drawing.Point(1104, 764);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnCancel.Name = "btnCancel";
@@ -686,7 +686,7 @@ namespace LaserCutter
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(1104, 615);
+            this.btnSave.Location = new System.Drawing.Point(1104, 696);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSave.Name = "btnSave";
@@ -700,7 +700,7 @@ namespace LaserCutter
             // 
             this.btnMoveUp.Enabled = false;
             this.btnMoveUp.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnMoveUp.Location = new System.Drawing.Point(1066, 465);
+            this.btnMoveUp.Location = new System.Drawing.Point(1066, 546);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(34, 122);
             this.btnMoveUp.TabIndex = 1698;
@@ -711,7 +711,7 @@ namespace LaserCutter
             // 
             this.btnMoveDown.Enabled = false;
             this.btnMoveDown.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnMoveDown.Location = new System.Drawing.Point(1066, 592);
+            this.btnMoveDown.Location = new System.Drawing.Point(1066, 673);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(34, 122);
             this.btnMoveDown.TabIndex = 1697;
@@ -722,17 +722,17 @@ namespace LaserCutter
             // 
             this.dataGridView4.AllowUserToResizeColumns = false;
             this.dataGridView4.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView4.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView4.ColumnHeadersHeight = 40;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnColor,
@@ -743,7 +743,7 @@ namespace LaserCutter
             this.dataGridView4.Enabled = false;
             this.dataGridView4.EnableHeadersVisualStyles = false;
             this.dataGridView4.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView4.Location = new System.Drawing.Point(4, 465);
+            this.dataGridView4.Location = new System.Drawing.Point(4, 546);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowHeadersWidth = 20;
             this.dataGridView4.RowTemplate.Height = 23;
@@ -792,7 +792,7 @@ namespace LaserCutter
             this.panCad.ForeColor = System.Drawing.Color.White;
             this.panCad.Location = new System.Drawing.Point(4, 38);
             this.panCad.Name = "panCad";
-            this.panCad.Size = new System.Drawing.Size(630, 420);
+            this.panCad.Size = new System.Drawing.Size(630, 503);
             this.panCad.TabIndex = 1695;
             this.panCad.Text = "CAD는 동적으로 생성";
             // 
@@ -869,7 +869,7 @@ namespace LaserCutter
             this.btnUse.LED.Layout = yjTech.LEDLayout.Center;
             this.btnUse.LED.OffColor = System.Drawing.Color.Silver;
             this.btnUse.LED.Size = new System.Drawing.Size(58, 16);
-            this.btnUse.Location = new System.Drawing.Point(1104, 464);
+            this.btnUse.Location = new System.Drawing.Point(1104, 545);
             this.btnUse.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnUse.Name = "btnUse";
             this.btnUse.Size = new System.Drawing.Size(77, 32);
@@ -887,7 +887,7 @@ namespace LaserCutter
             this.bitBtn1.Enabled = false;
             this.bitBtn1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.bitBtn1.ForeColor = System.Drawing.Color.Black;
-            this.bitBtn1.Location = new System.Drawing.Point(1104, 649);
+            this.bitBtn1.Location = new System.Drawing.Point(1104, 730);
             this.bitBtn1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bitBtn1.MinimumSize = new System.Drawing.Size(1, 1);
             this.bitBtn1.Name = "bitBtn1";
@@ -916,7 +916,7 @@ namespace LaserCutter
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panJobType4";
-            this.Size = new System.Drawing.Size(1185, 718);
+            this.Size = new System.Drawing.Size(1185, 799);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

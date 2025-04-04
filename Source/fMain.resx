@@ -125,7 +125,7 @@
     <value>6, 86</value>
   </data>
   <data name="panClient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1784, 858</value>
+    <value>1786, 937</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="panClient.TabIndex" type="System.Int32, mscorlib">
@@ -184,7 +184,7 @@
     <value>NoControl</value>
   </data>
   <data name="bitBtn6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 168</value>
+    <value>1795, 167</value>
   </data>
   <data name="bitBtn6.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -217,7 +217,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnLogIn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 250</value>
+    <value>1795, 249</value>
   </data>
   <data name="btnLogIn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -256,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="bitBtn4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 332</value>
+    <value>1795, 331</value>
   </data>
   <data name="bitBtn4.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -313,7 +313,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnExit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 86</value>
+    <value>1795, 85</value>
   </data>
   <data name="btnExit.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -350,7 +350,7 @@ Exit</value>
     <value>NoControl</value>
   </data>
   <data name="btnLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 864</value>
+    <value>1795, 863</value>
   </data>
   <data name="btnLog.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -386,7 +386,7 @@ Exit</value>
     <value>NoControl</value>
   </data>
   <data name="btnVision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 782</value>
+    <value>1795, 781</value>
   </data>
   <data name="btnVision.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -649,7 +649,7 @@ Exit</value>
     <value>NoControl</value>
   </data>
   <data name="btnAuto.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 435</value>
+    <value>1795, 434</value>
   </data>
   <data name="btnAuto.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -724,7 +724,7 @@ Exit</value>
     <value>NoControl</value>
   </data>
   <data name="btnManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 516</value>
+    <value>1795, 515</value>
   </data>
   <data name="btnManual.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -791,7 +791,7 @@ Exit</value>
     <value>NoControl</value>
   </data>
   <data name="btnJobFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1796, 701</value>
+    <value>1796, 700</value>
   </data>
   <data name="btnJobFile.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -873,7 +873,7 @@ Exit</value>
     <value>NoControl</value>
   </data>
   <data name="btnConfig.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 598</value>
+    <value>1795, 597</value>
   </data>
   <data name="btnConfig.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -912,7 +912,7 @@ Exit</value>
     <value>NoControl</value>
   </data>
   <data name="btnAlarm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1796, 947</value>
+    <value>1796, 946</value>
   </data>
   <data name="btnAlarm.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 1</value>
@@ -948,7 +948,7 @@ Exit</value>
     <value>25</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1920, 1040</value>
+    <value>1920, 1029</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt</value>

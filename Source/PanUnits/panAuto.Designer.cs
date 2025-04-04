@@ -139,12 +139,12 @@
             this.tabControl1.Controls.Add(this.tabTable2);
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("Tahoma", 13F);
-            this.tabControl1.ItemSize = new System.Drawing.Size(590, 36);
+            this.tabControl1.ItemSize = new System.Drawing.Size(600, 36);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(1216, 848);
+            this.tabControl1.Size = new System.Drawing.Size(1216, 930);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 0;
@@ -164,7 +164,7 @@
             this.tabTable1.Location = new System.Drawing.Point(4, 40);
             this.tabTable1.Name = "tabTable1";
             this.tabTable1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTable1.Size = new System.Drawing.Size(1208, 804);
+            this.tabTable1.Size = new System.Drawing.Size(1208, 886);
             this.tabTable1.TabIndex = 0;
             this.tabTable1.Text = "Tabel #1";
             this.tabTable1.UseVisualStyleBackColor = true;
@@ -174,7 +174,7 @@
             this.tabTable2.Location = new System.Drawing.Point(4, 40);
             this.tabTable2.Name = "tabTable2";
             this.tabTable2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTable2.Size = new System.Drawing.Size(1208, 804);
+            this.tabTable2.Size = new System.Drawing.Size(1208, 886);
             this.tabTable2.TabIndex = 1;
             this.tabTable2.Text = "Tabel #2";
             this.tabTable2.UseVisualStyleBackColor = true;
@@ -251,7 +251,7 @@
             this.panRight.Font = new System.Drawing.Font("Tahoma", 10F);
             this.panRight.Location = new System.Drawing.Point(1222, 2);
             this.panRight.Name = "panRight";
-            this.panRight.Size = new System.Drawing.Size(557, 849);
+            this.panRight.Size = new System.Drawing.Size(561, 931);
             this.panRight.TabIndex = 1344;
             this.panRight.TitleFont = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.panRight.TitleForeColor = System.Drawing.SystemColors.ControlText;
@@ -470,7 +470,7 @@
             this.btnClear.LED.Layout = yjTech.LEDLayout.Center;
             this.btnClear.LED.Size = new System.Drawing.Size(80, 32);
             this.btnClear.LED.Visible = false;
-            this.btnClear.Location = new System.Drawing.Point(388, 562);
+            this.btnClear.Location = new System.Drawing.Point(398, 688);
             this.btnClear.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(66, 67);
@@ -491,7 +491,7 @@
             this.viTable2CycleTime.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.viTable2CycleTime.Frame.Top = false;
             this.viTable2CycleTime.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.viTable2CycleTime.Location = new System.Drawing.Point(278, 600);
+            this.viTable2CycleTime.Location = new System.Drawing.Point(288, 726);
             this.viTable2CycleTime.Margin = new System.Windows.Forms.Padding(4);
             this.viTable2CycleTime.MinimumSize = new System.Drawing.Size(1, 1);
             this.viTable2CycleTime.Name = "viTable2CycleTime";
@@ -513,7 +513,7 @@
             this.viTable1CycleTime.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.viTable1CycleTime.Frame.Top = false;
             this.viTable1CycleTime.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.viTable1CycleTime.Location = new System.Drawing.Point(176, 600);
+            this.viTable1CycleTime.Location = new System.Drawing.Point(186, 726);
             this.viTable1CycleTime.Margin = new System.Windows.Forms.Padding(4);
             this.viTable1CycleTime.MinimumSize = new System.Drawing.Size(1, 1);
             this.viTable1CycleTime.Name = "viTable1CycleTime";
@@ -532,7 +532,7 @@
             this.lblLabelCycleTime.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblLabelCycleTime.Frame.Visible = false;
             this.lblLabelCycleTime.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblLabelCycleTime.Location = new System.Drawing.Point(69, 599);
+            this.lblLabelCycleTime.Location = new System.Drawing.Point(79, 725);
             this.lblLabelCycleTime.Name = "lblLabelCycleTime";
             this.lblLabelCycleTime.ShowAccelChar = false;
             this.lblLabelCycleTime.Size = new System.Drawing.Size(104, 30);
@@ -551,7 +551,7 @@
             this.viTable2InputCount.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.viTable2InputCount.Frame.Top = false;
             this.viTable2InputCount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.viTable2InputCount.Location = new System.Drawing.Point(278, 562);
+            this.viTable2InputCount.Location = new System.Drawing.Point(288, 688);
             this.viTable2InputCount.Margin = new System.Windows.Forms.Padding(4);
             this.viTable2InputCount.MinimumSize = new System.Drawing.Size(1, 1);
             this.viTable2InputCount.Name = "viTable2InputCount";
@@ -573,7 +573,7 @@
             this.viTable1InputCount.Frame.FlatColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.viTable1InputCount.Frame.Top = false;
             this.viTable1InputCount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.viTable1InputCount.Location = new System.Drawing.Point(176, 562);
+            this.viTable1InputCount.Location = new System.Drawing.Point(186, 688);
             this.viTable1InputCount.Margin = new System.Windows.Forms.Padding(4);
             this.viTable1InputCount.MinimumSize = new System.Drawing.Size(1, 1);
             this.viTable1InputCount.Name = "viTable1InputCount";
@@ -592,7 +592,7 @@
             this.lblLabelInputCount.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblLabelInputCount.Frame.Visible = false;
             this.lblLabelInputCount.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblLabelInputCount.Location = new System.Drawing.Point(69, 561);
+            this.lblLabelInputCount.Location = new System.Drawing.Point(79, 687);
             this.lblLabelInputCount.Name = "lblLabelInputCount";
             this.lblLabelInputCount.ShowAccelChar = false;
             this.lblLabelInputCount.Size = new System.Drawing.Size(102, 30);
@@ -642,7 +642,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(442, 663);
+            this.label6.Location = new System.Drawing.Point(452, 770);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 17);
             this.label6.TabIndex = 1511;
@@ -652,7 +652,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(66, 663);
+            this.label5.Location = new System.Drawing.Point(76, 770);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 17);
             this.label5.TabIndex = 1510;
@@ -1068,7 +1068,7 @@
             this.btnTable2New.LED.OnColor = System.Drawing.Color.Yellow;
             this.btnTable2New.LED.Size = new System.Drawing.Size(20, 32);
             this.btnTable2New.LED.Value = true;
-            this.btnTable2New.Location = new System.Drawing.Point(413, 683);
+            this.btnTable2New.Location = new System.Drawing.Point(423, 790);
             this.btnTable2New.Margin2 = 10;
             this.btnTable2New.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnTable2New.Name = "btnTable2New";
@@ -1086,7 +1086,7 @@
             this.btnLaserRun.ForeColor = System.Drawing.Color.Black;
             this.btnLaserRun.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnLaserRun.LED.Size = new System.Drawing.Size(20, 32);
-            this.btnLaserRun.Location = new System.Drawing.Point(174, 683);
+            this.btnLaserRun.Location = new System.Drawing.Point(184, 790);
             this.btnLaserRun.Margin2 = 10;
             this.btnLaserRun.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnLaserRun.Name = "btnLaserRun";
@@ -1105,7 +1105,7 @@
             this.btnDryRun.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnDryRun.LED.Size = new System.Drawing.Size(20, 32);
             this.btnDryRun.LED.Value = true;
-            this.btnDryRun.Location = new System.Drawing.Point(278, 683);
+            this.btnDryRun.Location = new System.Drawing.Point(288, 790);
             this.btnDryRun.Margin2 = 10;
             this.btnDryRun.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnDryRun.Name = "btnDryRun";
@@ -1126,7 +1126,7 @@
             this.btnReset.LED.OffColor = System.Drawing.Color.Lime;
             this.btnReset.LED.OnColor = System.Drawing.Color.Red;
             this.btnReset.LED.Size = new System.Drawing.Size(80, 32);
-            this.btnReset.Location = new System.Drawing.Point(413, 748);
+            this.btnReset.Location = new System.Drawing.Point(423, 855);
             this.btnReset.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(97, 58);
@@ -1145,7 +1145,7 @@
             this.btnTable1New.LED.OnColor = System.Drawing.Color.Yellow;
             this.btnTable1New.LED.Size = new System.Drawing.Size(20, 32);
             this.btnTable1New.LED.Value = true;
-            this.btnTable1New.Location = new System.Drawing.Point(39, 683);
+            this.btnTable1New.Location = new System.Drawing.Point(49, 790);
             this.btnTable1New.Margin2 = 10;
             this.btnTable1New.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnTable1New.Name = "btnTable1New";
@@ -1343,7 +1343,7 @@
             this.btnAutoReady.LED.Layout = yjTech.LEDLayout.Center;
             this.btnAutoReady.LED.OnColor = System.Drawing.Color.Yellow;
             this.btnAutoReady.LED.Size = new System.Drawing.Size(80, 32);
-            this.btnAutoReady.Location = new System.Drawing.Point(39, 748);
+            this.btnAutoReady.Location = new System.Drawing.Point(49, 855);
             this.btnAutoReady.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnAutoReady.Name = "btnAutoReady";
             this.btnAutoReady.Size = new System.Drawing.Size(97, 58);
@@ -1361,7 +1361,7 @@
             this.btnStop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnStop.LED.Layout = yjTech.LEDLayout.Center;
             this.btnStop.LED.Size = new System.Drawing.Size(80, 32);
-            this.btnStop.Location = new System.Drawing.Point(278, 748);
+            this.btnStop.Location = new System.Drawing.Point(288, 855);
             this.btnStop.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(97, 58);
@@ -1379,7 +1379,7 @@
             this.btnStart.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnStart.LED.Layout = yjTech.LEDLayout.Center;
             this.btnStart.LED.Size = new System.Drawing.Size(80, 32);
-            this.btnStart.Location = new System.Drawing.Point(174, 748);
+            this.btnStart.Location = new System.Drawing.Point(184, 855);
             this.btnStart.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(97, 58);
@@ -1676,7 +1676,7 @@
             this.Controls.Add(this.panRight);
             this.Controls.Add(this.tabControl1);
             this.Name = "panAuto";
-            this.Size = new System.Drawing.Size(1783, 855);
+            this.Size = new System.Drawing.Size(1787, 937);
             this.tabControl1.ResumeLayout(false);
             this.panRight.ResumeLayout(false);
             this.panRight.PerformLayout();

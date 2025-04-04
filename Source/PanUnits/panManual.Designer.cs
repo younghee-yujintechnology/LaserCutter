@@ -37,7 +37,6 @@
             // 
             // uiTabControlMenu1
             // 
-            this.uiTabControlMenu1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.uiTabControlMenu1.Controls.Add(this.tabPage1);
             this.uiTabControlMenu1.Controls.Add(this.tabPage2);
             this.uiTabControlMenu1.Controls.Add(this.tabPage3);
@@ -50,8 +49,6 @@
             this.uiTabControlMenu1.Margin = new System.Windows.Forms.Padding(0);
             this.uiTabControlMenu1.Multiline = true;
             this.uiTabControlMenu1.Name = "uiTabControlMenu1";
-            this.uiTabControlMenu1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.uiTabControlMenu1.RightToLeftLayout = true;
             this.uiTabControlMenu1.ShowActiveCloseButton = false;
             this.uiTabControlMenu1.ShowCloseButton = false;
             this.uiTabControlMenu1.Size = new System.Drawing.Size(1783, 852);
@@ -75,7 +72,7 @@
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tabPage1.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(1775, 804);
@@ -87,7 +84,7 @@
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tabPage2.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(1775, 804);
@@ -99,7 +96,7 @@
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tabPage3.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPage3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage3.Location = new System.Drawing.Point(4, 4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 44);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1775, 804);

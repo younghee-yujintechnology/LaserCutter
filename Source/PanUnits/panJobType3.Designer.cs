@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(panJobType3));
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,17 +118,17 @@
             // 
             this.dataGridView3.AllowUserToResizeColumns = false;
             this.dataGridView3.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView3.ColumnHeadersHeight = 40;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnColor,
@@ -139,7 +139,7 @@
             this.dataGridView3.Enabled = false;
             this.dataGridView3.EnableHeadersVisualStyles = false;
             this.dataGridView3.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView3.Location = new System.Drawing.Point(4, 465);
+            this.dataGridView3.Location = new System.Drawing.Point(4, 546);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 20;
             this.dataGridView3.RowTemplate.Height = 23;
@@ -192,7 +192,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(542, 454);
+            this.tabControl1.Size = new System.Drawing.Size(542, 536);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 1698;
@@ -242,14 +242,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(534, 416);
+            this.tabPage1.Size = new System.Drawing.Size(534, 498);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "  가공 속성  ";
             // 
             // chkShowJumpline
             // 
             this.chkShowJumpline.AutoSize = true;
-            this.chkShowJumpline.Location = new System.Drawing.Point(6, 388);
+            this.chkShowJumpline.Location = new System.Drawing.Point(6, 470);
             this.chkShowJumpline.Name = "chkShowJumpline";
             this.chkShowJumpline.Size = new System.Drawing.Size(131, 22);
             this.chkShowJumpline.TabIndex = 1840;
@@ -834,7 +834,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(534, 416);
+            this.tabPage2.Size = new System.Drawing.Size(534, 498);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "  Array Info  ";
             // 
@@ -863,7 +863,7 @@
             this.panel1.Controls.Add(this.edXCount);
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(514, 406);
+            this.panel1.Size = new System.Drawing.Size(524, 488);
             this.panel1.TabIndex = 1822;
             // 
             // btnPreView
@@ -1048,7 +1048,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Location = new System.Drawing.Point(11, 251);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(486, 145);
+            this.panel2.Size = new System.Drawing.Size(500, 229);
             this.panel2.TabIndex = 1809;
             // 
             // gradLabel58
@@ -1243,7 +1243,7 @@
             this.bitBtn1.Enabled = false;
             this.bitBtn1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.bitBtn1.ForeColor = System.Drawing.Color.Black;
-            this.bitBtn1.Location = new System.Drawing.Point(1104, 649);
+            this.bitBtn1.Location = new System.Drawing.Point(1104, 730);
             this.bitBtn1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bitBtn1.MinimumSize = new System.Drawing.Size(1, 1);
             this.bitBtn1.Name = "bitBtn1";
@@ -1261,7 +1261,7 @@
             this.btnUse.LED.Layout = yjTech.LEDLayout.Center;
             this.btnUse.LED.OffColor = System.Drawing.Color.Silver;
             this.btnUse.LED.Size = new System.Drawing.Size(58, 16);
-            this.btnUse.Location = new System.Drawing.Point(1104, 464);
+            this.btnUse.Location = new System.Drawing.Point(1104, 545);
             this.btnUse.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnUse.Name = "btnUse";
             this.btnUse.Size = new System.Drawing.Size(77, 32);
@@ -1273,7 +1273,7 @@
             // 
             this.btnMoveUp.Enabled = false;
             this.btnMoveUp.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnMoveUp.Location = new System.Drawing.Point(1066, 465);
+            this.btnMoveUp.Location = new System.Drawing.Point(1066, 546);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(34, 122);
             this.btnMoveUp.TabIndex = 1725;
@@ -1284,7 +1284,7 @@
             // 
             this.btnMoveDown.Enabled = false;
             this.btnMoveDown.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnMoveDown.Location = new System.Drawing.Point(1066, 592);
+            this.btnMoveDown.Location = new System.Drawing.Point(1066, 673);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(34, 122);
             this.btnMoveDown.TabIndex = 1724;
@@ -1300,7 +1300,7 @@
             this.btnSave.Enabled = false;
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(1104, 615);
+            this.btnSave.Location = new System.Drawing.Point(1104, 696);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnSave.Name = "btnSave";
@@ -1318,7 +1318,7 @@
             this.btnCancel.Enabled = false;
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(1104, 683);
+            this.btnCancel.Location = new System.Drawing.Point(1104, 764);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.MinimumSize = new System.Drawing.Size(1, 1);
             this.btnCancel.Name = "btnCancel";
@@ -1334,7 +1334,7 @@
             this.panCad.ForeColor = System.Drawing.Color.White;
             this.panCad.Location = new System.Drawing.Point(4, 38);
             this.panCad.Name = "panCad";
-            this.panCad.Size = new System.Drawing.Size(630, 420);
+            this.panCad.Size = new System.Drawing.Size(630, 503);
             this.panCad.TabIndex = 1695;
             this.panCad.Text = "CAD는 동적으로 생성";
             // 
@@ -1421,7 +1421,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "panJobType3";
-            this.Size = new System.Drawing.Size(1185, 718);
+            this.Size = new System.Drawing.Size(1185, 799);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

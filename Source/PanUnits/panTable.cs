@@ -9,207 +9,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LaserCutter
 {
-    public struct PageItem
-    {
-        public double x { get; set; }
-        public double y { get; set; }
-        public bool Used { get; set; }
-
-        public PageItem(double x, double y, bool used)
-        {
-            this.x = x;
-            this.y = y;
-            this.Used = used;
-        }
-
-        public override string ToString()
-        {
-            return $"[{x}, {y}, {Used}]";
-        }
-    }
-
-    public class PageList
-    {
-        private List<PageItem> positions; // 좌표 리스트
-
-        private DoublePoint mPageSize; // 페이지 크기
-
-        public PageList()
-        {
-            positions = new List<PageItem>();
-        }
-
-        // Clear: 리스트 초기화
-        public void Clear()
-        {
-            positions.Clear();
-        }
-
-        // Add: x, y 값을 추가
-        public void Add(double x, double y, bool used)
-        {
-            positions.Add(new PageItem(x, y, used));
-        }
-
-        // Count: 현재 리스트의 개수 반환
-        public int Count => positions.Count;
-
-        // SetCellSize: 셀 크기 설정
-        public DoublePoint PageSize
-        {
-            get => mPageSize;
-            set => mPageSize = value;
-        }
-
-        // XMin: x 좌표의 최소값 - PageSize.x / 2
-        public double XMin
-        {
-            get
-            {
-                if (positions.Count == 0) return 0.0;
-                double minX = double.MaxValue;
-
-                for (int i = 0; i < positions.Count; i++)
-                {
-                    if (positions[i].x < minX)
-                    {
-                        minX = positions[i].x;
-                    }
-                }
-
-                return minX - PageSize.x / 2;
-            }
-        }
-
-        // XMax: x 좌표의 최대값 + PageSize.x / 2
-        public double XMax
-        {
-            get
-            {
-                if (positions.Count == 0) return 0.0;
-                double maxX = double.MinValue;
-
-                for (int i = 0; i < positions.Count; i++)
-                {
-                    if (positions[i].x > maxX)
-                    {
-                        maxX = positions[i].x;
-                    }
-                }
-
-                return maxX + PageSize.x / 2;
-            }
-        }
-
-        // YMin: y 좌표의 최소값 - PageSize.y / 2
-        public double YMin
-        {
-            get
-            {
-                if (positions.Count == 0) return 0.0;
-                double minY = double.MaxValue;
-
-                for (int i = 0; i < positions.Count; i++)
-                {
-                    if (positions[i].y < minY)
-                    {
-                        minY = positions[i].y;
-                    }
-                }
-
-                return minY - PageSize.y / 2;
-            }
-        }
-
-        // YMax: y 좌표의 최대값 + PageSize.y / 2
-        public double YMax
-        {
-            get
-            {
-                if (positions.Count == 0) return 0.0;
-                double maxY = double.MinValue;
-
-                for (int i = 0; i < positions.Count; i++)
-                {
-                    if (positions[i].y > maxY)
-                    {
-                        maxY = positions[i].y;
-                    }
-                }
-
-                return maxY + PageSize.y / 2;
-            }
-        }
-
-        // Width: 전체 페이지의 너비 계산
-        public double Width => XMax - XMin;
-
-        // Height: 전체 페이지의 높이 계산
-        public double Height => YMax - YMin;
-
-        // 인덱서를 사용하여 특정 좌표를 참조
-        public PageItem this[int index]
-        {
-            get
-            {
-                if (index < 0 || index >= positions.Count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
-                return positions[index];
-            }
-            set
-            {
-                if (index < 0 || index >= positions.Count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
-                positions[index] = value;
-            }
-        }
-
-        // GetAll: 모든 좌표 반환
-        public List<PageItem> GetAll()
-        {
-            return new List<PageItem>(positions);
-        }
-
-        public int SelectedCount()
-        {
-            int result = 0;
-
-            for (int nIndex = 0; nIndex < Count; nIndex++)
-            {
-                if (this[nIndex].Used) result = result + 1;
-            }
-            return result;
-        }
-
-        public int GetFirstPage()
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                if (this[i].Used)
-                {
-                    return i;
-                }
-            }
-
-            return -1; // 없으면 -1 반환
-        }
-
-        // GetNextPage: 지정된 인덱스 이후로 처음 Used == true인 인덱스 반환
-        public int GetNextPage(int index)
-        {
-            for (int i = index; i < Count; i++)
-            {
-                if (this[i].Used)
-                {
-                    return i;
-                }
-            }
-
-            return -1; // 없으면 -1 반환
-        }
-    }
-
-
     public partial class panTable: UserControl
     {
         CodeSiteLogger logger = new CodeSiteLogger();
@@ -871,4 +670,205 @@ namespace LaserCutter
         }
         #endregion
     }
+
+    public struct PageItem
+    {
+        public double x { get; set; }
+        public double y { get; set; }
+        public bool Used { get; set; }
+
+        public PageItem(double x, double y, bool used)
+        {
+            this.x = x;
+            this.y = y;
+            this.Used = used;
+        }
+
+        public override string ToString()
+        {
+            return $"[{x}, {y}, {Used}]";
+        }
+    }
+
+    public class PageList
+    {
+        private List<PageItem> positions; // 좌표 리스트
+
+        private DoublePoint mPageSize; // 페이지 크기
+
+        public PageList()
+        {
+            positions = new List<PageItem>();
+        }
+
+        // Clear: 리스트 초기화
+        public void Clear()
+        {
+            positions.Clear();
+        }
+
+        // Add: x, y 값을 추가
+        public void Add(double x, double y, bool used)
+        {
+            positions.Add(new PageItem(x, y, used));
+        }
+
+        // Count: 현재 리스트의 개수 반환
+        public int Count => positions.Count;
+
+        // SetCellSize: 셀 크기 설정
+        public DoublePoint PageSize
+        {
+            get => mPageSize;
+            set => mPageSize = value;
+        }
+
+        // XMin: x 좌표의 최소값 - PageSize.x / 2
+        public double XMin
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double minX = double.MaxValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].x < minX)
+                    {
+                        minX = positions[i].x;
+                    }
+                }
+
+                return minX - PageSize.x / 2;
+            }
+        }
+
+        // XMax: x 좌표의 최대값 + PageSize.x / 2
+        public double XMax
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double maxX = double.MinValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].x > maxX)
+                    {
+                        maxX = positions[i].x;
+                    }
+                }
+
+                return maxX + PageSize.x / 2;
+            }
+        }
+
+        // YMin: y 좌표의 최소값 - PageSize.y / 2
+        public double YMin
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double minY = double.MaxValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].y < minY)
+                    {
+                        minY = positions[i].y;
+                    }
+                }
+
+                return minY - PageSize.y / 2;
+            }
+        }
+
+        // YMax: y 좌표의 최대값 + PageSize.y / 2
+        public double YMax
+        {
+            get
+            {
+                if (positions.Count == 0) return 0.0;
+                double maxY = double.MinValue;
+
+                for (int i = 0; i < positions.Count; i++)
+                {
+                    if (positions[i].y > maxY)
+                    {
+                        maxY = positions[i].y;
+                    }
+                }
+
+                return maxY + PageSize.y / 2;
+            }
+        }
+
+        // Width: 전체 페이지의 너비 계산
+        public double Width => XMax - XMin;
+
+        // Height: 전체 페이지의 높이 계산
+        public double Height => YMax - YMin;
+
+        // 인덱서를 사용하여 특정 좌표를 참조
+        public PageItem this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= positions.Count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+                return positions[index];
+            }
+            set
+            {
+                if (index < 0 || index >= positions.Count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+                positions[index] = value;
+            }
+        }
+
+        // GetAll: 모든 좌표 반환
+        public List<PageItem> GetAll()
+        {
+            return new List<PageItem>(positions);
+        }
+
+        public int SelectedCount()
+        {
+            int result = 0;
+
+            for (int nIndex = 0; nIndex < Count; nIndex++)
+            {
+                if (this[nIndex].Used) result = result + 1;
+            }
+            return result;
+        }
+
+        public int GetFirstPage()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                if (this[i].Used)
+                {
+                    return i;
+                }
+            }
+
+            return -1; // 없으면 -1 반환
+        }
+
+        // GetNextPage: 지정된 인덱스 이후로 처음 Used == true인 인덱스 반환
+        public int GetNextPage(int index)
+        {
+            for (int i = index; i < Count; i++)
+            {
+                if (this[i].Used)
+                {
+                    return i;
+                }
+            }
+
+            return -1; // 없으면 -1 반환
+        }
+    }
+
 }

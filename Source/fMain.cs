@@ -397,9 +397,9 @@ namespace LaserCutter
             MenuIndex = Convert.ToInt32(aButton.Tag);
 
             panClient.Controls.Clear();
-            panClient.Location = new Point(6, 86);
-            panClient.Width = 1784;
-            panClient.Height = 858;
+            panClient.Location = new Point(5, 86);
+            panClient.Width = 1787;
+            panClient.Height = 937;
 
             //// JobFile.Height = Auto.Height;
             //// Config.Height = Auto.Height;
@@ -410,16 +410,6 @@ namespace LaserCutter
                 ChangeAutoTitle();
 
                 panClient.Controls.Add(Auto);
-            }
-            else
-            if (aButton == btnJobFile)
-            {
-                lblMainTitle.Text = "JobFile";
-
-                panClient.Controls.Add(JobFile);
-
-                JobFile.LoadRecentList(JobFile.lvRecentModel, (TableNo)JobFile.TabControl1.SelectedIndex + 1);
-                JobFile.LoadModelList();
             }
             else
             if (aButton == btnManual)
@@ -436,9 +426,35 @@ namespace LaserCutter
                 panClient.Controls.Add(Config);
             }
             else
+            if (aButton == btnJobFile)
+            {
+                lblMainTitle.Text = "JobFile";
+
+                panClient.Controls.Add(JobFile);
+
+                JobFile.LoadRecentList(JobFile.lvRecentModel, (TableNo)JobFile.TabControl1.SelectedIndex + 1);
+                JobFile.LoadModelList();
+            }
+            else
             if (aButton == btnLog)
             {
-                ////lblMainTitle.Text = "Error Log";
+                lblMainTitle.Text = "Log";
+
+                ////panClient.Width = 1920;
+                ////panClient.Controls.Add(panLog);
+            }
+            else
+            if (aButton == btnLogIn)
+            {
+                lblMainTitle.Text = "User";
+
+                ////panClient.Width = 1920;
+                ////panClient.Controls.Add(panLog);
+            }
+            else
+            if (aButton == btnAlarm)
+            {
+                lblMainTitle.Text = "Alarm";
 
                 ////panClient.Width = 1920;
                 ////panClient.Controls.Add(panLog);
@@ -489,10 +505,6 @@ namespace LaserCutter
                 Application.Exit();
             }
 
-        }
-
-        private void btnLogIn_Click(object sender, EventArgs e)
-        {
         }
 
         private void AutoThread_OnExecute(object sender, EventArgs e)

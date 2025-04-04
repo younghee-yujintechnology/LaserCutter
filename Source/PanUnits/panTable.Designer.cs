@@ -58,7 +58,7 @@
             this.panClient.FrameOuter.Visible = false;
             this.panClient.Location = new System.Drawing.Point(0, 0);
             this.panClient.Name = "panClient";
-            this.panClient.Size = new System.Drawing.Size(1203, 799);
+            this.panClient.Size = new System.Drawing.Size(1203, 881);
             this.panClient.TabIndex = 1141;
             // 
             // gradientLabel1
@@ -123,7 +123,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.ShowActiveCloseButton = false;
             this.tabControl1.ShowCloseButton = false;
-            this.tabControl1.Size = new System.Drawing.Size(1193, 756);
+            this.tabControl1.Size = new System.Drawing.Size(1193, 838);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tabControl1.TabIndex = 0;
@@ -145,7 +145,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1185, 718);
+            this.tabPage1.Size = new System.Drawing.Size(1185, 800);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DXF";
             // 
@@ -217,7 +217,7 @@
             this.Controls.Add(this.panClient);
             this.Font = new System.Drawing.Font("Tahoma", 10F);
             this.Name = "panTable";
-            this.Size = new System.Drawing.Size(1203, 799);
+            this.Size = new System.Drawing.Size(1203, 881);
             this.panClient.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);

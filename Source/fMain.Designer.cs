@@ -88,7 +88,7 @@
             this.btnLogIn.Image = global::LaserCutter.Properties.Resources.LogN;
             this.btnLogIn.Margin2 = 10;
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Tag = "10";
+            this.btnLogIn.Tag = "20";
             this.btnLogIn.UseVisualStyleBackColor = false;
             // 
             // bitBtn4
