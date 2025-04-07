@@ -860,10 +860,12 @@ namespace LaserCutter
 
         private void cbTable1UseVacuumCount_Click(object sender, EventArgs e)
         {
+            Pmac.QueryCommand("Table1VacuumOff = true");
         }
 
         private void cbTable2UseVacuumCount_Click(object sender, EventArgs e)
         {
+            Pmac.QueryCommand("Table2VacuumOff = true");
         }
 
         private void btnMeasure_Click(object sender, EventArgs e)
@@ -900,8 +902,8 @@ namespace LaserCutter
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Y2_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable2MarkCenterX.Value);
-                ////Pmac.Y2MoveAbs(edTable2MarkCenterY.Value);
+                Pmac.XMoveAbs(edTable2MarkCenterX.Value);
+                Pmac.Y2MoveAbs(edTable2MarkCenterY.Value);
             }
         }
 
@@ -920,7 +922,7 @@ namespace LaserCutter
             {
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.ZMoveAbs(edTable1LaserZFocus.Value);
+                Pmac.ZMoveAbs(edTable1LaserZFocus.Value);
             }
         }
 
@@ -930,7 +932,7 @@ namespace LaserCutter
             {
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.ZMoveAbs(edTable1VisionZFocus.Value);
+                Pmac.ZMoveAbs(edTable1VisionZFocus.Value);
             }
         }
 
@@ -938,7 +940,7 @@ namespace LaserCutter
         {
             if (yjCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
             {
-                ////Pmac.ZMoveAbs(edTable2LaserZFocus.Value);
+                Pmac.ZMoveAbs(edTable2LaserZFocus.Value);
             }
         }
 
@@ -946,7 +948,7 @@ namespace LaserCutter
         {
             if (yjCommon.Confirm("Z축의 높이를 이동합니다.", "확인") == DialogResult.Yes)
             {
-                ////Pmac.ZMoveAbs(edTable2VisionZFocus.Value);
+                Pmac.ZMoveAbs(edTable2VisionZFocus.Value);
             }
         }
 
@@ -957,8 +959,8 @@ namespace LaserCutter
                 SetVelocity(X_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edPowerMeterXPos.Value);
-                ////Pmac.ZMoveAbs(edPowerMeterZPos.Value);
+                Pmac.XMoveAbs(edPowerMeterXPos.Value);
+                Pmac.ZMoveAbs(edPowerMeterZPos.Value);
             }
         }
 
@@ -1234,10 +1236,11 @@ namespace LaserCutter
                 SetVelocity(Y1_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable1StartX.Value);
-                ////Pmac.Y1MoveAbs(edTable1StartY.Value);
-                ////Pmac.ZMoveAbs(edTable1StartZ.Value);
-            };
+                Pmac.XMoveAbs(edTable1StartX.Value);
+                Pmac.Y1MoveAbs(edTable1StartY.Value);
+                Pmac.ZMoveAbs(edTable1StartZ.Value);
+            }
+            ;
         }
 
         private void btnMoveTable2StartPos_Click(object sender, EventArgs e)
@@ -1248,14 +1251,15 @@ namespace LaserCutter
                 SetVelocity(Y2_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable2StartX.Value);
-                ////Pmac.Y2MoveAbs(edTable2StartY.Value);
-                ////Pmac.ZMoveAbs(edTable2StartZ.Value);
-            };
+                Pmac.XMoveAbs(edTable2StartX.Value);
+                Pmac.Y2MoveAbs(edTable2StartY.Value);
+                Pmac.ZMoveAbs(edTable2StartZ.Value);
+            }
         }
 
         private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            frmMain.Auto.tabControl1.SelectedIndex = tabControl2.SelectedIndex;
         }
 
         private void btnSetLoadPos_Click(object sender, EventArgs e)
@@ -1280,10 +1284,10 @@ namespace LaserCutter
                 SetVelocity(Y2_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edLoadPosX.Value);
-                ////Pmac.Y1MoveAbs(edLoadPosY1.Value);
-                ////Pmac.Y2MoveAbs(edLoadPosY2.Value);
-                ////Pmac.ZMoveAbs(edLoadPosZ.Value);
+                Pmac.XMoveAbs(edLoadPosX.Value);
+                Pmac.Y1MoveAbs(edLoadPosY1.Value);
+                Pmac.Y2MoveAbs(edLoadPosY2.Value);
+                Pmac.ZMoveAbs(edLoadPosZ.Value);
             }
         }
 
@@ -1312,14 +1316,609 @@ namespace LaserCutter
             ShowTable2LoadingPos();
         }
 
-        private void panConfigCommon_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void AutoThread_OnExecute(object sender, EventArgs e)
         {
-           
+            if (frmRunStatus.Abort)
+            {
+                CurrentStep = Const.CASE_ABORT;
+            }
+
+            switch (CurrentStep)
+            {
+                //
+                // table1
+                //
+                case 1000:
+                    frmRunStatus.TopMost = true;
+                    frmRunStatus.Show();
+
+                    OldPulseWidth = frmMain.Manual.ADV.edMode2PulseWidth.Value;
+                    OldPulsePitch = frmMain.Manual.ADV.edMode2PulsePitch.Value;
+
+                    frmMain.Manual.ADV.edMode2PulseWidth.Value = 2.0;
+                    frmMain.Manual.ADV.edMode2PulsePitch.Value = 0.8;
+                    frmMain.Manual.ADV.btnMode2Set_Click(null, null);
+
+                    Pmac.QueryCommand("doBeamShutterOpen=true");
+                    Pmac.QueryCommand("doSelectTable=TABLE1");
+
+                    Counter.Start();
+
+                    CurrentStep = 1010;
+                    break;
+
+                case 1010:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 1020;
+                    }
+                    break;
+
+                case 1020:
+
+                    Pmac.XMoveAbs(edTable1StartX.Value + edTable2NozzleXOffset.Value);
+                    Pmac.Y1MoveAbs(edTable1StartY.Value + edTable2NozzleYOffset.Value);
+                    Pmac.ZMoveAbs(edTable1StartZ.Value);
+
+                    Counter.Start();
+                    CurrentStep = 1030;
+
+                    break;
+
+                case 1030:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        Counter.Start();
+                        CurrentStep = 1031;
+                    }
+                    break;
+
+                case 1031:
+                    if ((Global.chXMotionDone.AsBoolean) && (Global.chY1MotionDone.AsBoolean) && (Global.chZMotionDone.AsBoolean))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 1040;
+                    }
+                    else
+                    if (Counter.isTimeOver(1000 * 30))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = Const.CASE_ERROR;
+                    }
+                    break;
+
+                case 1040:
+                    nIndex = 0;
+                    CurrentStep = 1050;
+
+                    break;
+
+                case 1050:
+                    frmRunStatus.lblMessage.Text = String.Format("{0}/{1}회 가공중입니다.", nIndex + 1, edTable1StepZ.AsInteger);
+
+                    frmMain.Manual.ADV.OperationOn();
+
+                    Counter.Start();
+                    CurrentStep = 1060;
+
+                    break;
+
+                case 1060:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+                        CurrentStep = 1070;
+                    }
+                    break;
+
+                case 1070:
+                    Pmac.XMoveInc(edTable1DrawX.Value);
+
+                    Counter.Start();
+                    CurrentStep = 1080;
+
+                    break;
+
+                case 1080:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        Counter.Start();
+                        CurrentStep = 1081;
+                    }
+                    break;
+
+                case 1081:
+                    if (Global.chXMotionDone.AsBoolean)
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 1090;
+                    }
+                    else
+                    if (Counter.isTimeOver(1000 * 2))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = Const.CASE_ERROR;
+                    }
+                    break;
+
+                case 1090:
+                    frmMain.Manual.ADV.OperationOff();
+
+                    Counter.Start();
+                    CurrentStep = 1100;
+
+                    break;
+
+                case 1100:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 1110;
+                    }
+                    break;
+
+                case 1110:
+                    Pmac.XMoveInc(-edTable1DrawX.Value);
+                    Pmac.ZMoveInc(-edTable1PitchZ.Value);
+                    Pmac.Y1MoveInc(edTable1PitchY.Value);
+
+                    Counter.Start();
+                    CurrentStep = 1111;
+                    break;
+
+                case 1111:
+                    if ((Global.chXMotionDone.AsBoolean) && (Global.chY1MotionDone.AsBoolean) && (Global.chZMotionDone.AsBoolean))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 1200;
+                    }
+                    else
+                    if (Counter.isTimeOver(1000 * 5))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = Const.CASE_ERROR;
+                    }
+                    break;
+
+                case 1200:
+                    if (nIndex + 1 < edTable1StepZ.AsInteger)
+                    {
+                        nIndex = nIndex + 1;
+                        CurrentStep = 1050;
+                    }
+                    else
+                    {
+                        CurrentStep = 1300;
+                    }
+                    break;
+
+                case 1300:
+                    Pmac.QueryCommand("doBeamShutterOpen=false");
+
+                    Counter.Start();
+                    CurrentStep = 1310;
+
+                    break;
+
+                case 1310:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+                        CurrentStep = 1320;
+                    }
+                    break;
+
+                case 1320:
+                    Pmac.XMoveAbs(edTable1StartX.Value - edTable2NozzleXOffset.Value);
+                    Pmac.Y1MoveAbs(edTable1StartY.Value - edTable2NozzleYOffset.Value);
+                    Pmac.ZMoveAbs(edTable1StartZ.Value);
+
+                    frmMain.Manual.ADV.edMode2PulseWidth.Value = OldPulseWidth;
+                    frmMain.Manual.ADV.edMode2PulsePitch.Value = OldPulsePitch;
+
+                    frmRunStatus.Hide();
+
+                    CurrentStep = Const.CASE_DONE;
+                    break;
+
+                //
+                // table2
+                //
+                case 2000:
+                    frmRunStatus.TopMost = true;
+                    frmRunStatus.Show();
+
+                    OldPulseWidth = frmMain.Manual.ADV.edMode2PulseWidth.Value;
+                    OldPulsePitch = frmMain.Manual.ADV.edMode2PulsePitch.Value;
+
+                    frmMain.Manual.ADV.edMode2PulseWidth.Value = 2.0;
+                    frmMain.Manual.ADV.edMode2PulsePitch.Value = 0.8;
+                    frmMain.Manual.ADV.btnMode2Set_Click(null, null);
+
+                    Pmac.QueryCommand("doBeamShutterOpen=true");
+                    Pmac.QueryCommand("doSelectTable=TABLE2");
+
+                    Counter.Start();
+
+                    CurrentStep = 2010;
+                    break;
+
+                case 2010:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 2020;
+                    }
+                    break;
+
+                case 2020:
+
+                    Pmac.XMoveAbs(edTable2StartX.Value + edTable2NozzleXOffset.Value);
+                    Pmac.Y1MoveAbs(edTable2StartY.Value + edTable2NozzleYOffset.Value);
+                    Pmac.ZMoveAbs(edTable2StartZ.Value);
+
+                    Counter.Start();
+                    CurrentStep = 2030;
+
+                    break;
+
+                case 2030:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+                        CurrentStep = 2031;
+                    }
+                    break;
+
+                case 2031:
+                    if ((Global.chXMotionDone.AsBoolean) && (Global.chY2MotionDone.AsBoolean) && (Global.chZMotionDone.AsBoolean))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 2040;
+                    }
+                    else
+                    if (Counter.isTimeOver(1000 * 30))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = Const.CASE_ERROR;
+                    }
+                    break;
+
+                case 2040:
+                    nIndex = 0;
+                    CurrentStep = 2050;
+
+                    break;
+
+                case 2050:
+                    frmRunStatus.lblMessage.Text = String.Format("{0}/{1}회 가공중입니다.", nIndex + 1, edTable1StepZ.AsInteger);
+
+                    frmMain.Manual.ADV.OperationOn();
+
+                    Counter.Start();
+                    CurrentStep = 2060;
+
+                    break;
+
+                case 2060:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+                        CurrentStep = 2070;
+                    }
+                    break;
+
+                case 2070:
+                    Pmac.XMoveInc(edTable2DrawX.Value);
+
+                    Counter.Start();
+                    CurrentStep = 2080;
+
+                    break;
+
+                case 2080:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        Counter.Start();
+                        CurrentStep = 2081;
+                    }
+                    break;
+
+                case 2081:
+                    if (Global.chXMotionDone.AsBoolean)
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 2090;
+                    }
+                    else
+                    if (Counter.isTimeOver(1000 * 2))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = Const.CASE_ERROR;
+                    }
+                    break;
+
+                case 2090:
+                    frmMain.Manual.ADV.OperationOff();
+
+                    Counter.Start();
+                    CurrentStep = 2100;
+
+                    break;
+
+                case 2100:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 2110;
+                    }
+                    break;
+
+                case 2110:
+                    Pmac.XMoveInc(-edTable2DrawX.Value);
+                    Pmac.ZMoveInc(-edTable2PitchZ.Value);
+                    Pmac.Y2MoveInc(edTable2PitchY.Value);
+
+                    Counter.Start();
+                    CurrentStep = 2111;
+                    break;
+
+                case 2111:
+                    if ((Global.chXMotionDone.AsBoolean) && (Global.chY2MotionDone.AsBoolean) && (Global.chZMotionDone.AsBoolean))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = 2200;
+                    }
+                    else
+                    if (Counter.isTimeOver(1000 * 5))
+                    {
+                        Counter.Stop();
+
+                        CurrentStep = Const.CASE_ERROR;
+                    }
+                    break;
+
+                case 2200:
+                    if (nIndex + 1 < edTable2StepZ.AsInteger)
+                    {
+                        nIndex = nIndex + 1;
+                        CurrentStep = 2050;
+                    }
+                    else
+                    {
+                        CurrentStep = 2300;
+                    }
+                    break;
+
+                case 2300:
+                    Pmac.QueryCommand("doBeamShutterOpen=false");
+
+                    Counter.Start();
+                    CurrentStep = 2310;
+
+                    break;
+
+                case 2310:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+                        CurrentStep = 2320;
+                    }
+                    break;
+
+                case 2320:
+                    Pmac.XMoveAbs(edTable2StartX.Value - edTable2NozzleXOffset.Value);
+                    Pmac.Y1MoveAbs(edTable2StartY.Value - edTable2NozzleYOffset.Value);
+                    Pmac.ZMoveAbs(edTable2StartZ.Value);
+
+                    frmMain.Manual.ADV.edMode2PulseWidth.Value = OldPulseWidth;
+                    frmMain.Manual.ADV.edMode2PulsePitch.Value = OldPulsePitch;
+
+                    frmRunStatus.Hide();
+
+                    CurrentStep = Const.CASE_DONE;
+                    break;
+
+                ////////////////////////////////
+                case 3000:
+                    SetVelocity(X_AXIS_NO);
+                    SetVelocity(Y2_AXIS_NO);
+                    SetVelocity(Z_AXIS_NO);
+
+                    CurrentStep = 3100;
+                    break;
+
+                case 3100:
+                    OldPulseWidth = frmMain.Manual.ADV.edMode2PulseWidth.Value;
+                    OldPulsePitch = frmMain.Manual.ADV.edMode2PulsePitch.Value;
+
+                    frmMain.Manual.ADV.edMode2PulseWidth.Value = 2.0;
+                    frmMain.Manual.ADV.edMode2PulsePitch.Value = 0.8;
+                    frmMain.Manual.ADV.btnMode2Set_Click(null, null);
+
+                    //         Pmac.ZMoveAbs(Global.chTable2LaserZFocus.AsDouble);
+                    Counter.Start();
+
+                    CurrentStep = 3200;
+                    break;
+
+                case 3200:
+                    if (Counter.isTimeOver(250))
+                    {
+                        Counter.Stop();
+
+                        Pmac.QueryCommand("doSelectTable=TABLE2");
+                        Pmac.QueryCommand("doBeamShutterOpen=true");
+
+                        Counter.Start();
+
+                        CurrentStep = 3300;
+                    }
+                    break;
+
+                case 3300:
+                    if (Counter.isTimeOver(250))
+                    {
+                        Counter.Stop();
+
+                        Pmac.XMoveInc(-5.0);
+
+                        Counter.Start();
+
+                        CurrentStep = 3400;
+                    }
+                    break;
+
+                case 3400:
+                    if (Counter.isTimeOver(500))
+                    {
+                        Counter.Stop();
+
+                        frmMain.Manual.ADV.OperationOn();
+
+                        Counter.Start();
+
+                        CurrentStep = 3600;
+                    }
+                    break;
+
+                case 3600:
+                    if (Counter.isTimeOver(1000))
+                    {
+                        Counter.Stop();
+
+                        Pmac.XMoveInc(10);
+
+                        Counter.Start();
+
+                        CurrentStep = 3700;
+                    }
+                    break;
+
+                case 3700:
+                    if (Counter.isTimeOver(1000))
+                    {
+                        Counter.Stop();
+
+                        frmMain.Manual.ADV.OperationOff();
+
+                        Counter.Start();
+
+                        CurrentStep = 3800;
+                    }
+                    break;
+
+                case 3800:
+                    if (Counter.isTimeOver(1000))
+                    {
+                        Counter.Stop();
+
+                        //Pmac.ZMoveAbs(Global.chTable2LaserZFocus.AsDouble);
+                        Pmac.XMoveInc(-5);
+                        Pmac.Y2MoveInc(-5);
+
+                        Counter.Start();
+
+                        CurrentStep = 3900;
+                    }
+                    break;
+
+                case 3900:
+                    if (Counter.isTimeOver(300))
+                    {
+                        Counter.Stop();
+
+                        frmMain.Manual.ADV.OperationOn();
+
+                        Counter.Start();
+
+                        CurrentStep = 4000;
+                    }
+                    break;
+
+                case 4000:
+                    if (Counter.isTimeOver(1000))
+                    {
+                        Counter.Stop();
+
+                        Pmac.Y2MoveInc(10);
+
+                        Counter.Start();
+
+                        CurrentStep = 4100;
+                    }
+                    break;
+
+                case 4100:
+                    if (Counter.isTimeOver(1000))
+                    {
+                        Counter.Stop();
+
+                        frmMain.Manual.ADV.OperationOff();
+
+                        Counter.Start();
+
+                        CurrentStep = 4200;
+                    }
+                    break;
+
+                case 4200:
+                    if (Counter.isTimeOver(1000))
+                    {
+                        Counter.Stop();
+
+                        Pmac.Y2MoveInc(-5);
+
+                        Counter.Start();
+
+                        CurrentStep = 4300;
+                    }
+                    break;
+
+                case 4300:
+                    Pmac.QueryCommand("doBeamShutterOpen=false");
+                    frmMain.Manual.ADV.edMode2PulseWidth.Value = OldPulseWidth;
+                    frmMain.Manual.ADV.edMode2PulsePitch.Value = OldPulsePitch;
+
+                    CurrentStep = Const.CASE_DONE;
+                    break;
+
+                case Const.CASE_ERROR:
+                    break;
+
+                case Const.CASE_DONE:
+                    AutoThread.Enabled = false;
+                    break;
+
+                case Const.CASE_ABORT:
+
+                    frmRunStatus.Hide();
+
+                    AutoThread.Enabled = false;
+                    break;
+            }
         }
     }
 }

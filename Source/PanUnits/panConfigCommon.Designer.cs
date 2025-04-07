@@ -5562,7 +5562,6 @@
             this.Controls.Add(this.panClient);
             this.Name = "panConfigCommon";
             this.Size = new System.Drawing.Size(1207, 882);
-            this.Load += new System.EventHandler(this.panConfigCommon_Load);
             this.panClient.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
