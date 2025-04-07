@@ -170,17 +170,17 @@ namespace LaserCutter
         #region public void LoadChannelInfo()
         public void LoadChannelInfo()
         {
-            ////String szPath = String.Format("{0}Config\\ConfigCommonChannels.csv", yjCommon.AppPath());
-            ////if (yjCommon.FileExists(szPath))
-            ////{
-            ////    DataServer.LoadFromCSV(szPath);
+            String szPath = String.Format("{0}Config\\ConfigCommonChannels.csv", yjCommon.AppPath());
+            if (yjCommon.FileExists(szPath))
+            {
+                DataServer.LoadFromCSV(szPath);
 
-            ////    if (frmChannelSpy != null)
-            ////    {
-            ////        frmChannelSpy.propGridConfig.DataServer = DataServer;
-            ////        frmChannelSpy.propGridConfig.Active = true;
-            ////    }
-            ////}
+                if (frmChannelSpy != null)
+                {
+                    frmChannelSpy.propGridConfig.DataServer = DataServer;
+                    frmChannelSpy.propGridConfig.Active = true;
+                }
+            }
         }
         #endregion
 
@@ -306,16 +306,16 @@ namespace LaserCutter
             edTable2VisionFocusLightValue.Apply();
             edTable2LaserFocusLightValue.Apply();
 
-            ////Pmac.QueryCommand($"P2U_Mach_LookAheadAcc={Global.chAccelerationG.AsDouble}");
+            Pmac.QueryCommand($"P2U_Mach_LookAheadAcc={Global.chAccelerationG.AsDouble}");
 
-            ////Vacuum 관련
-            ////Pmac.QueryCommand(string.Format($"Table1VacuumSolCount = {cbTable1UseVacuumCount.SelectedIndex + 1}"));
+            //Vacuum 관련
+            Pmac.QueryCommand(string.Format($"Table1VacuumSolCount = {cbTable1UseVacuumCount.SelectedIndex + 1}"));
 
-            ////Pmac.QueryCommand(string.Format($"Table1VacuumDelayTime = {edTable1VacuumDelay.Value}"));
+            Pmac.QueryCommand(string.Format($"Table1VacuumDelayTime = {edTable1VacuumDelay.Value}"));
 
-            ////Pmac.QueryCommand(string.Format($"Table2VacuumSolCount = {cbTable2UseVacuumCount.SelectedIndex + 1}"));
+            Pmac.QueryCommand(string.Format($"Table2VacuumSolCount = {cbTable2UseVacuumCount.SelectedIndex + 1}"));
 
-            ////Pmac.QueryCommand(string.Format($"Table2VacuumDelayTime={edTable2VacuumDelay.Value}"));
+            Pmac.QueryCommand(string.Format($"Table2VacuumDelayTime={edTable2VacuumDelay.Value}"));
         }
 
         #region public Table1LoadDir LoadDir
@@ -387,9 +387,9 @@ namespace LaserCutter
                 SetVelocity(Y1_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable1LeftBottomXPos.Value);
-                ////Pmac.Y1MoveAbs(edTable1LeftBottomYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable1LeftBottomXPos.Value);
+                Pmac.Y1MoveAbs(edTable1LeftBottomYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
             }
         }
 
@@ -409,9 +409,9 @@ namespace LaserCutter
                 SetVelocity(Y1_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable1LeftTopXPos.Value);
-                ////Pmac.Y1MoveAbs(edTable1LeftTopYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable1LeftTopXPos.Value);
+                Pmac.Y1MoveAbs(edTable1LeftTopYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
             }
         }
 
@@ -433,9 +433,9 @@ namespace LaserCutter
                 SetVelocity(Y1_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable1RightTopXPos.Value);
-                ////Pmac.Y1MoveAbs(edTable1RightTopYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable1RightTopXPos.Value);
+                Pmac.Y1MoveAbs(edTable1RightTopYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
             }
         }
 
@@ -457,9 +457,9 @@ namespace LaserCutter
                 SetVelocity(Y1_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable1RightBottomXPos.Value);
-                ////Pmac.Y1MoveAbs(edTable1RightBottomYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable1RightBottomXPos.Value);
+                Pmac.Y1MoveAbs(edTable1RightBottomYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
             }
         }
 
@@ -480,9 +480,9 @@ namespace LaserCutter
                 SetVelocity(Y1_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable1CenterXPos.Value);
-                ////Pmac.Y1MoveAbs(edTable1CenterYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable1CenterXPos.Value);
+                Pmac.Y1MoveAbs(edTable1CenterYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable1VisionZFocus.AsDouble);
             }
         }
 
@@ -503,9 +503,9 @@ namespace LaserCutter
                 SetVelocity(Y2_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable2LeftBottomXPos.Value);
-                ////Pmac.Y2MoveAbs(edTable2LeftBottomYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable2LeftBottomXPos.Value);
+                Pmac.Y2MoveAbs(edTable2LeftBottomYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
             }
         }
 
@@ -525,9 +525,9 @@ namespace LaserCutter
                 SetVelocity(Y2_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable2LeftTopXPos.Value);
-                ////Pmac.Y2MoveAbs(edTable2LeftTopYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable2LeftTopXPos.Value);
+                Pmac.Y2MoveAbs(edTable2LeftTopYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
             }
         }
 
@@ -548,9 +548,9 @@ namespace LaserCutter
                 SetVelocity(Y2_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable2RightTopXPos.Value);
-                ////Pmac.Y2MoveAbs(edTable2RightTopYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable2RightTopXPos.Value);
+                Pmac.Y2MoveAbs(edTable2RightTopYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
             }
         }
 
@@ -571,9 +571,9 @@ namespace LaserCutter
                 SetVelocity(Y2_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable2RightBottomXPos.Value);
-                ////Pmac.Y2MoveAbs(edTable2RightBottomYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable2RightBottomXPos.Value);
+                Pmac.Y2MoveAbs(edTable2RightBottomYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
             }
         }
 
@@ -594,9 +594,9 @@ namespace LaserCutter
                 SetVelocity(Y2_AXIS_NO);
                 SetVelocity(Z_AXIS_NO);
 
-                ////Pmac.XMoveAbs(edTable2CenterXPos.Value);
-                ////Pmac.Y2MoveAbs(edTable2CenterYPos.Value);
-                ////Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
+                Pmac.XMoveAbs(edTable2CenterXPos.Value);
+                Pmac.Y2MoveAbs(edTable2CenterYPos.Value);
+                Pmac.ZMoveAbs(Global.chTable2VisionZFocus.AsDouble);
             }
         }
 

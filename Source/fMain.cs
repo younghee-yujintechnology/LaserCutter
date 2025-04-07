@@ -21,6 +21,7 @@ using IniParser;
 using Raize.CodeSiteLogging;
 using yjTech;
 using LaserCutter.PanUnits;
+using System.Security.Cryptography;
 
 //using IniP
 
@@ -86,7 +87,6 @@ namespace LaserCutter
             SetBuildVersion();
 
             String szStr = String.Format("{0}UTI_Logo.png", yjCommon.AppPath());
-
             if (yjCommon.FileExists(szStr))
             {
                 pictureBox1.BackgroundImage = Image.FromFile(szStr);
@@ -98,7 +98,7 @@ namespace LaserCutter
             szStr = String.Format("LaserCutter - Start: {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
             szStr = String.Format("{0}Dll\\", yjCommon.AppPath());
-            //// Lcad.SetDllPath(szStr);
+            Lcad.SetDllPath(szStr);
             PowerPMac.SetDllPath(szStr);
 
             /*
@@ -126,12 +126,29 @@ namespace LaserCutter
 
             ChangeMainPanel(btnAuto);
 
+            ////frmVision = frmVision.StaticInstance;
             frmChannelSpy = frmChannelSpy.StaticInstance;
 
+#if _VERSION2
+            ////frmCarbide = frmCarbide.StaticInstance;
+#endif
+
+            ////frmMVS.btnConnect_Click(null, null);
+
+            ////       Config.Motor.SetSoftLimit();
+#if _VERSION1
+            Pmac.QueryCommand("disable plc 10, 11, 20, 22, 26, 27");
+            Pmac.QueryCommand("enable plc 8, 9");
+
+            Pmac.QueryCommand("disable plc 10, 11, 20, 22, 26, 27");
+            Pmac.QueryCommand("enable plc 8, 9");
+#endif
             LoadLanguageFile();
             //영어로 초기화
             ChangeLanguageEnglish();
 
+            Manual.Laser.ShutterClose();
+            Pmac.QueryCommand("doBeamShutterOpen=false");
 
             CodeSite.ExitMethod("frmMain.Create()");
         }
