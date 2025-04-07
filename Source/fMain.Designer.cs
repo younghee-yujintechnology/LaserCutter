@@ -308,8 +308,6 @@
         public System.Windows.Forms.Panel panClient;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblSelectedMenu;
-        private yjTech.BitBtn btnAuto;
-        private yjTech.BitBtn btnJobFile;
         private yjTech.BitBtn btnVision;
         private yjTech.BitBtn btnLog;
         private yjTech.BitBtn btnExit;
@@ -323,6 +321,8 @@
         private yjTech.BitBtn btnManual;
         private yjTech.BitBtn btnConfig;
         private yjTech.BitBtn btnAlarm;
+        public yjTech.BitBtn btnAuto;
+        public yjTech.BitBtn btnJobFile;
     }
 }
 

@@ -396,7 +396,54 @@ namespace LaserCutter
 
         public void ChangeAutoTitle()
         {
+            AutoMenu.ledTable1DXF.LED.Value = (Auto.Table1.tabControl1.SelectedIndex == 0);
+            AutoMenu.ledTable1DXFArray.LED.Value = (Auto.Table1.tabControl1.SelectedIndex == 1);
+            AutoMenu.ledTable1MakeCell.LED.Value = (Auto.Table1.tabControl1.SelectedIndex == 2);
 
+            AutoMenu.ledTable2DXF.LED.Value = (Auto.Table2.tabControl1.SelectedIndex == 0);
+            AutoMenu.ledTable2DXFArray.LED.Value = (Auto.Table2.tabControl1.SelectedIndex == 1);
+            AutoMenu.ledTable2MakeCell.LED.Value = (Auto.Table2.tabControl1.SelectedIndex == 2);
+
+            if (MenuIndex == 10)
+            {
+                if (Auto.tabControl1.SelectedIndex == 0)
+                {
+                    lblMainTitle.ForeColor = Color.Red;
+                    if (Auto.Table1.tabControl1.SelectedIndex == 0)
+                    {
+                        lblMainTitle.Text = "Table1 - Auto (DXF)";
+                    }
+                    else
+                    if (Auto.Table1.tabControl1.SelectedIndex == 1)
+                    {
+                        lblMainTitle.Text = "Table1 - Auto (Array)";
+                    }
+                    else
+                    if (Auto.Table1.tabControl1.SelectedIndex == 2)
+                    {
+                        lblMainTitle.Text = "Table1 - Auto (Make Cell)";
+                    }
+                }
+                else
+                if (Auto.tabControl1.SelectedIndex == 1)
+                {
+                    lblMainTitle.ForeColor = Color.Yellow;
+                    if (Auto.Table2.tabControl1.SelectedIndex == 0)
+                    {
+                        lblMainTitle.Text = "Table2 - Auto (DXF)";
+                    }
+                    else
+                    if (Auto.Table2.tabControl1.SelectedIndex == 1)
+                    {
+                        lblMainTitle.Text = "Table2 - Auto (Array)";
+                    }
+                    else
+                    if (Auto.Table2.tabControl1.SelectedIndex == 2)
+                    {
+                        lblMainTitle.Text = "Table2 - Auto (Make Cell)";
+                    }
+                }
+            }
         }
 
         public void ChangeMainPanel(yjTech.BitBtn aButton)

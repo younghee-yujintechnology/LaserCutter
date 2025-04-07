@@ -660,6 +660,12 @@ namespace LaserCutter
             }
         }
         #endregion
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            frmMain.ChangeAutoTitle();
+            SetEventProc();
+        }
     }
 
     public struct PageItem

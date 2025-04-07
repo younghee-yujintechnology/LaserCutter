@@ -65,6 +65,7 @@
             this.tabControl1.TipsColor = System.Drawing.Color.Red;
             this.tabControl1.TipsFont = new System.Drawing.Font("Tahoma", 9F);
             this.tabControl1.TipsForeColor = System.Drawing.Color.White;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabTable1
             // 
@@ -101,8 +102,8 @@
         #endregion
 
         public yjTech.Thread AutoThread;
-        private yjTech.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabTable1;
         private System.Windows.Forms.TabPage tabTable2;
+        public yjTech.TabControl tabControl1;
     }
 }

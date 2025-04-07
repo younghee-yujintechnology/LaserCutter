@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panClient = new yjTech.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.gradientLabel1 = new yjTech.GradientLabel();
             this.btnClose = new yjTech.BitBtn();
             this.btnOpenJobFile = new yjTech.BitBtn();
@@ -47,6 +48,7 @@
             // 
             this.panClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.panClient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panClient.Controls.Add(this.label1);
             this.panClient.Controls.Add(this.gradientLabel1);
             this.panClient.Controls.Add(this.btnClose);
             this.panClient.Controls.Add(this.btnOpenJobFile);
@@ -60,6 +62,16 @@
             this.panClient.Name = "panClient";
             this.panClient.Size = new System.Drawing.Size(1203, 881);
             this.panClient.TabIndex = 1141;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tempus Sans ITC", 12F);
+            this.label1.Location = new System.Drawing.Point(396, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 20);
+            this.label1.TabIndex = 802;
+            this.label1.Text = "\\";
             // 
             // gradientLabel1
             // 
@@ -137,6 +149,7 @@
             this.tabControl1.TipsColor = System.Drawing.Color.Red;
             this.tabControl1.TipsFont = new System.Drawing.Font("Tahoma", 9F);
             this.tabControl1.TipsForeColor = System.Drawing.Color.White;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -154,7 +167,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1185, 718);
+            this.tabPage2.Size = new System.Drawing.Size(1185, 800);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "DXF Array";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -164,7 +177,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1185, 718);
+            this.tabPage3.Size = new System.Drawing.Size(1185, 800);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Make Cell";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -175,7 +188,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1185, 718);
+            this.tabPage4.Size = new System.Drawing.Size(1185, 800);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Bead Cut";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -219,6 +232,7 @@
             this.Name = "panTable";
             this.Size = new System.Drawing.Size(1203, 881);
             this.panClient.ResumeLayout(false);
+            this.panClient.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -227,7 +241,6 @@
         #endregion
 
         private yjTech.Panel panClient;
-        private yjTech.TabControl tabControl1;
         private yjTech.GradientLabel gradientLabel1;
         public yjTech.BitBtn btnOpenJobFile;
         public yjTech.BitBtn btnClose;
@@ -238,5 +251,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label1;
+        public yjTech.TabControl tabControl1;
     }
 }

@@ -16,6 +16,8 @@ namespace LaserCutter
         public panTable Table1;
         public panTable Table2;
 
+        int mTabIndex;
+
         public panAuto()
         {
             CodeSite.SendMsg("panAuto.Create()");
@@ -73,9 +75,56 @@ namespace LaserCutter
             logger.Destination.Viewer.Active = true;
         }
 
-        private void btnTable2New_Click(object sender, System.EventArgs e)
+        private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (frmMain.MenuIndex == 10)
+            {
+                frmMain.ChangeAutoTitle();
+            }
 
+            mTabIndex = tabControl1.SelectedIndex;
+
+            if (mTabIndex == 0)
+            {
+                ////Vision1.BringToFront();
+                ////SideMenu.tabControl2.SelectedIndex = 0;
+
+                tabControl1.TabSelectedColor = Color.Lime;
+                tabControl1.TabSelectedForeColor = Color.Black;
+                tabControl1.TabSelectedHighColor = Color.Red;
+
+                Table1.tabControl1.TabSelectedColor = Color.Lime;
+                Table1.tabControl1.TabSelectedForeColor = Color.Black;
+                Table1.tabControl1.TabSelectedHighColor = Color.Red;
+
+                frmMain.lblMainTitle.ForeColor = Color.Lime;
+                ////frmVision.lblTitle.Text = "Table1 - Vision";
+                ////frmVision.lblTitle.ForeColor = Color.Lime;
+            }
+            else
+            if (mTabIndex == 1)
+            {
+                ////Vision2.BringToFront();
+                ////SideMenu.tabControl2.SelectedIndex = 1;
+
+                tabControl1.TabSelectedColor = Color.Yellow;
+                tabControl1.TabSelectedForeColor = Color.Black;
+                tabControl1.TabSelectedHighColor = Color.Red;
+
+                Table2.tabControl1.TabSelectedColor = Color.Yellow;
+                Table2.tabControl1.TabSelectedForeColor = Color.Black;
+                Table2.tabControl1.TabSelectedHighColor = Color.Red;
+
+                frmMain.lblMainTitle.ForeColor = Color.Yellow;
+                ////frmVision.lblTitle.Text = "Table2 - Vision";
+                ////frmVision.lblTitle.ForeColor = Color.Yellow;
+            }
+
+            ////if (frmVision.Visible)
+            ////{
+            ////    frmMVS.UpdateThread1.Enabled = (mTabIndex == 0);
+            ////    frmMVS.UpdateThread2.Enabled = (mTabIndex == 1);
+            ////}
         }
     }
 }
