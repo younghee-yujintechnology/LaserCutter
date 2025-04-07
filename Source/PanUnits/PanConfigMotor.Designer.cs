@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panClient = new LaserCutter.sjPanel();
-            this.btnSave = new yjTech.BitBtn();
             this.dgMotorParameter = new System.Windows.Forms.DataGridView();
             this.columnAxis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnJogSpdLow = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +47,7 @@
             this.ColumnJogTSHigh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLimitM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLimitP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSave = new yjTech.BitBtn();
             this.panClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMotorParameter)).BeginInit();
             this.SuspendLayout();
@@ -67,18 +67,6 @@
             this.panClient.TitleForeColor = System.Drawing.SystemColors.ControlText;
             this.panClient.TitleText = "Motor Parameter";
             this.panClient.TitleTextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnSave
-            // 
-            this.btnSave.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.btnSave.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.btnSave.Location = new System.Drawing.Point(1091, 826);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(104, 43);
-            this.btnSave.TabIndex = 1563;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // dgMotorParameter
             // 
@@ -134,7 +122,7 @@
             this.dgMotorParameter.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgMotorParameter.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgMotorParameter.RowTemplate.Height = 28;
-            this.dgMotorParameter.Size = new System.Drawing.Size(1188, 770);
+            this.dgMotorParameter.Size = new System.Drawing.Size(1188, 772);
             this.dgMotorParameter.TabIndex = 1564;
             // 
             // columnAxis
@@ -248,6 +236,18 @@
             this.ColumnLimitP.HeaderText = "Soft Limit (+)";
             this.ColumnLimitP.Name = "ColumnLimitP";
             this.ColumnLimitP.Width = 120;
+            // 
+            // btnSave
+            // 
+            this.btnSave.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btnSave.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.btnSave.Location = new System.Drawing.Point(1091, 827);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(104, 43);
+            this.btnSave.TabIndex = 1563;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // panConfigMotor
             // 

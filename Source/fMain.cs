@@ -468,6 +468,7 @@ namespace LaserCutter
                 ChangeAutoTitle();
 
                 Auto.BringToFront();
+                AutoMenu.tabControlEx1.SelectedIndex = 0;
             }
             else
             if (aButton == btnManual)
@@ -475,6 +476,7 @@ namespace LaserCutter
                 lblMainTitle.Text = "Manual";
 
                 Manual.BringToFront();
+                AutoMenu.tabControlEx1.SelectedIndex = 1;
             }
             else
             if (aButton == btnConfig)
@@ -489,6 +491,7 @@ namespace LaserCutter
                 lblMainTitle.Text = "JobFile";
 
                 JobFile.BringToFront();
+                AutoMenu.tabControlEx1.SelectedIndex = 2;
             }
             else
             if (aButton == btnLog)

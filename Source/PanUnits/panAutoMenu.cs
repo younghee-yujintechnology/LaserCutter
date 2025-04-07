@@ -20,12 +20,24 @@ namespace LaserCutter
 
         private void tabControlEx1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControlEx1.SelectedIndex == 2)
+            ;
+        }
+
+        private void tabControlEx1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (frmMain.StaticInstance.MenuIndex == 10)
             {
-                frmMain.StaticInstance.ChangeMainPanel(frmMain.StaticInstance.btnJobFile);
-            } else
+                e.Cancel = (tabControlEx1.SelectedIndex == 2);
+            }
+            else
+            if (frmMain.StaticInstance.MenuIndex == 11)
             {
-                frmMain.StaticInstance.ChangeMainPanel(frmMain.StaticInstance.btnAuto);
+                e.Cancel = !(tabControlEx1.SelectedIndex == 1);
+            }
+            else
+            if (frmMain.StaticInstance.MenuIndex == 14)
+            {
+                e.Cancel = (tabControlEx1.SelectedIndex == 0);
             }
         }
     }

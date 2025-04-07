@@ -126,7 +126,7 @@ namespace LaserCutter
             this.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.TabControl1.Font = new System.Drawing.Font("Tahoma", 13F);
             this.TabControl1.ImageList = this.imageList1;
-            this.TabControl1.ItemSize = new System.Drawing.Size(590, 36);
+            this.TabControl1.ItemSize = new System.Drawing.Size(600, 36);
             this.TabControl1.Location = new System.Drawing.Point(3, 3);
             this.TabControl1.Name = "TabControl1";
             this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -163,7 +163,7 @@ namespace LaserCutter
             this.tabTable2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tabTable2.Location = new System.Drawing.Point(4, 40);
             this.tabTable2.Name = "tabTable2";
-            this.tabTable2.Size = new System.Drawing.Size(1208, 804);
+            this.tabTable2.Size = new System.Drawing.Size(1208, 886);
             this.tabTable2.TabIndex = 1;
             this.tabTable2.Text = "Tabel #2";
             // 
