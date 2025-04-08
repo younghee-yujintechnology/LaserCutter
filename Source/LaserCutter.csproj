@@ -280,6 +280,18 @@
     <Compile Include="RTC5Wrap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sub\fMotionFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sub\fMotionFile.Designer.cs">
+      <DependentUpon>fMotionFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sub\fProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sub\fProgress.Designer.cs">
+      <DependentUpon>fProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="uGlobal.cs" />
     <Compile Include="uPowerPmac.cs" />
     <Compile Include="uProject.cs" />
@@ -367,6 +379,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sub\fMotionFile.resx">
+      <DependentUpon>fMotionFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sub\fProgress.resx">
+      <DependentUpon>fProgress.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -441,8 +459,6 @@
   <ItemGroup>
     <Content Include="Embeded Dll\YJTECH.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sub\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

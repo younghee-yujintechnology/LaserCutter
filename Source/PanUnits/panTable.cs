@@ -29,6 +29,9 @@ namespace LaserCutter
         public DoublePoint[] TableBasePos = new DoublePoint[5];
         private LoadDir mLoadDir = LoadDir.LeftBottom;
 
+        public int PageCount = 0;
+        public int PageIndex = 0;
+
         public panTable(bool withVision = false)
         {
             InitializeComponent();
@@ -790,6 +793,546 @@ namespace LaserCutter
             LaserProject.SaveToFile(szFileName);
         }
         #endregion
+
+        public int GetFirstPage()
+        {
+            int Result = (0);
+
+            if (tabControl1.SelectedIndex == 1)
+            {
+                Result = Type2.PageList.GetFirstPage();
+            }
+            else
+            if (tabControl1.SelectedIndex == 2)
+            {
+                Result = Type3.PageList.GetFirstPage();
+            }
+
+            return Result;
+        }
+
+        public int GetNextPage(int AIndex)
+        {
+            int Result = (-1);
+
+            if (tabControl1.SelectedIndex == 1)
+            {
+                Result = Type2.PageList.GetNextPage(AIndex);
+            }
+            else
+            if (tabControl1.SelectedIndex == 2)
+            {
+                Result = Type3.PageList.GetNextPage(AIndex);
+            }
+
+            return Result;
+        }
+
+        public int GetTotalPageCount()
+        {
+            int Result = 1;
+
+            if (tabControl1.SelectedIndex == 1)
+            {
+                Result = Type2.PageList.Count;
+            }
+            else
+            if (tabControl1.SelectedIndex == 2)
+            {
+                Result = Type3.PageList.Count;
+            }
+
+            return Result;
+        }
+
+        public void MakeMotionFile(double Angle, DoublePoint AlignShift, bool LaserRun)
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 0:
+                    Type1.MakeMotionFile(TableNo, Angle,
+                                                    LaserProject.Model1.ManualShiftX + AlignShift.x,
+                                                        LaserProject.Model1.ManualShiftY - AlignShift.y, LaserRun);
+                    break;
+
+                case 1:
+                    Type2.MakeMotionFile(TableNo, PageIndex, Angle,
+                                                    LaserProject.Model2.ManualShiftX + AlignShift.x,
+                                                        LaserProject.Model2.ManualShiftY - AlignShift.y, LaserRun);
+                    break;
+
+                case 2:
+                    Type3.MakeMotionFile(TableNo, PageIndex, 0, 0, LaserRun);
+                    break;
+            }
+        }
+
+
+        public DoublePoint MakeRectType(bool LaserRun, ref StringList List, ztRectItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+
+                // yhbyun rr = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)                
+            }
+
+            return rr;
+        }
+
+        public DoublePoint MakeArcType(ztArcItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+                DoublePoint ptC = new DoublePoint { x = OffsetX + pItem.Xc, y = OffsetY - pItem.Yc };
+
+                DoublePoint ptS = new DoublePoint(OffsetX + (pItem.X0 + ptShift.x), OffsetY - (pItem.Y0 + ptShift.y));
+                DoublePoint ptE = new DoublePoint(OffsetX + (pItem.X1 + ptShift.x), OffsetY - (pItem.Y1 + ptShift.y));
+
+                rr = ptS;
+            }
+
+            return rr;
+        }
+
+        public DoublePoint MakeArcType(bool LaserRun, ref StringList List, ztArcItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            //   CodeSite.SendMsg("MakeArcType");
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+                DoublePoint ptCenter = new DoublePoint { x = OffsetX + pItem.Xc, y = OffsetY - pItem.Yc };
+
+                DoublePoint ptStart = new DoublePoint(OffsetX + (pItem.X0 + ptShift.x), OffsetY - (pItem.Y0 + ptShift.y));
+                DoublePoint ptEnd = new DoublePoint(OffsetX + (pItem.X1 + ptShift.x), OffsetY - (pItem.Y1 + ptShift.y));
+
+                rr = ptStart;
+
+                SetSpeed(ref List, Global.chConArcSpeed.AsDouble, 0, 3, ptStart, false);
+
+                WriteArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptStart, ptEnd, ptCenter, !pItem.bCCW);
+            }
+
+            return rr;
+        }
+
+
+        public DoublePoint MakePolylineType(ztPolylineItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                for (int nVertexIndex = 0; nVertexIndex < pItem.GetCount(); nVertexIndex++)
+                {
+                    ztPolylineVertex pVertex = pItem.GetVertex(nVertexIndex);
+                    pVertex.CalculateArcCenter();
+
+                    double dBulge = pItem.GetVertex(nVertexIndex).Bulge;
+                    double dR = 0.0;
+
+                    if (dBulge != 0.0)
+                    {
+                        dR = pItem.GetVertex(nVertexIndex).ArcRad;
+                    }
+
+                    if (nVertexIndex == 0)
+                    {
+                        if (dBulge != 0.0)
+                        {
+                            DoublePoint ptS, ptE;
+                            DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+                            DoublePoint ptC = new DoublePoint(0, 0);// = new DoublePoint { x = pVertex.cX, y = pVertex.cY };
+                            DoublePoint ptTempC = new DoublePoint(0, 0);
+
+                            ptS = new DoublePoint(OffsetX + (pVertex.X + ptShift.x), OffsetY - (pVertex.Y + ptShift.y));
+                            ptE = new DoublePoint((OffsetX + (pVertex.X + pVertex.dX + ptShift.x)), OffsetY - (pVertex.Y + pVertex.dY + ptShift.y));
+
+                            rr = ptS;
+                        }
+                        else
+                        {
+                            DoublePoint ptS = new DoublePoint(OffsetX + (pVertex.X + ShiftX), OffsetY - (pVertex.Y + ShiftY));
+
+                            rr = ptS;
+                        }
+                    }
+                }
+            }
+
+            return rr;
+        }
+
+        public DoublePoint MakePolylineType(bool LaserRun, ref StringList List, ztPolylineItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint ptPrev = new DoublePoint(0, 0);
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                for (int nVertexIndex = 0; nVertexIndex < pItem.GetCount(); nVertexIndex++)
+                {
+                    ztPolylineVertex pVertex = pItem.GetVertex(nVertexIndex);
+                    pVertex.CalculateArcCenter();
+
+                    double dBulge = pItem.GetVertex(nVertexIndex).Bulge;
+                    double dR = 0.0;
+
+                    if (dBulge != 0.0)
+                    {
+                        dR = pItem.GetVertex(nVertexIndex).ArcRad;
+                    }
+
+                    if (nVertexIndex == 0)
+                    {
+                        if (dBulge != 0.0)
+                        {
+                            List.Add("");
+                            List.Add($"    // Arc [{nVertexIndex}/{pItem.GetCount()}]");
+
+                            double cx, cy;
+
+                            DoublePoint ptStart, ptEnd;
+                            DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+                            DoublePoint ptCenter = new DoublePoint(0, 0);
+
+                            ptStart = new DoublePoint(OffsetX + (pVertex.X + ptShift.x), OffsetY - (pVertex.Y + ptShift.y));
+                            ptEnd = new DoublePoint((OffsetX + (pVertex.X + pVertex.dX + ptShift.x)), OffsetY - (pVertex.Y + pVertex.dY + ptShift.y));
+
+                            rr = ptStart;
+
+                            cx = pVertex.cX;
+                            cy = pVertex.cY;
+                            ptCenter = new DoublePoint { x = OffsetX + (pVertex.cX + ptShift.x), y = OffsetY - (pVertex.cY + ptShift.y) };
+                            SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptStart, false);
+
+                            WriteArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptStart, ptEnd, ptCenter, (pVertex.Bulge < 0)); // Bulge값이 음수일때가 CountClock 방향
+                            List.Add($"    DWELL 7");
+                            if (LaserRun)
+                            {
+                                List.Add($"    doLaserTriggerOn==true");// file.WriteLine($"M7122==1"); i/o확인 해야함!!!
+                            }
+                            else
+                            {
+                                List.Add($"    doLaserTriggerOn==false");// DryRun
+                            }
+                            List.Add($"    DWELL 7");
+                        }
+                        else
+                        {
+                            List.Add("");
+                            List.Add($"    // Line [{nVertexIndex}/{pItem.GetCount()}]");
+
+                            DoublePoint ptStart = new DoublePoint(OffsetX + (pVertex.X + ShiftX), OffsetY - (pVertex.Y + ShiftY));
+
+                            rr = ptStart;
+
+                            SetSpeed(ref List, Global.chConJumpSpeed.AsDouble, Global.chConJumpTA.AsDouble, 20, ptStart, false);
+                            List.Add($"    DWELL 7");
+                            if (LaserRun)
+                            {
+                                List.Add($"    doLaserTriggerOn==true");
+                            }
+                            else
+                            {
+                                List.Add($"    doLaserTriggerOn==false"); // DryRun
+                            }
+                            List.Add($"    DWELL 7");
+
+                            List.Add("");
+                            DoublePoint ptEnd = new DoublePoint(OffsetX + (pVertex.X + pVertex.dX + ShiftX), OffsetY - (pVertex.Y + pVertex.dY + ShiftY));
+
+                            SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptEnd, false);
+                        }
+                    }
+                    else
+                    if (nVertexIndex < (pItem.GetCount() - 1))
+                    {
+                        if (dBulge != 0.0)
+                        {
+                            List.Add("");
+                            List.Add($"    // Arc [{nVertexIndex}/{pItem.GetCount()}]");
+
+                            DoublePoint ptStart, ptEnd;
+                            DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+                            DoublePoint ptCenter = new DoublePoint(0, 0);
+
+                            pVertex.CalculateArcCenter();
+
+                            double cx, cy;
+                            cx = pVertex.cX;
+                            cy = pVertex.cY;
+
+                            ptStart = new DoublePoint(OffsetX + (pVertex.X + ptShift.x), OffsetY - (pVertex.Y + ptShift.y));
+                            ptEnd = new DoublePoint((OffsetX + (pVertex.X + pVertex.dX + ptShift.x)), OffsetY - (pVertex.Y + pVertex.dY + ptShift.y));
+
+                            ptCenter = new DoublePoint { x = OffsetX + (pVertex.cX + ptShift.x), y = OffsetY - (pVertex.cY + ptShift.y) };
+
+                            ptPrev = ptEnd;
+                            WriteArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptStart, ptEnd, ptCenter, (pVertex.Bulge < 0)); // Bulge값이 음수일때가 CountClock 방향
+                        }
+                        else
+                        {
+                            List.Add("");
+                            List.Add($"    // Line [{nVertexIndex}/{pItem.GetCount()}]");
+
+                            DoublePoint ptS = new DoublePoint(OffsetX + (pVertex.X + pVertex.dX + ShiftX), OffsetY - (pVertex.Y + pVertex.dY + ShiftY));
+
+                            SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptS, false);
+                        }
+                    }
+                    else
+                    if (nVertexIndex == (pItem.GetCount() - 1))
+                    {
+                        if (pItem.Closed)
+                        {
+                            if (dBulge != 0.0)
+                            {
+                                List.Add("");
+                                List.Add($"    // Arc [{nVertexIndex}/{pItem.GetCount()}]");
+                                double cx, cy;
+                                DoublePoint ptStart, ptEnd;
+                                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+                                DoublePoint ptCenter = new DoublePoint(0, 0);
+
+                                pVertex.CalculateArcCenter();
+                                cx = pVertex.cX;
+                                cy = pVertex.cY;
+                                ptStart = new DoublePoint(OffsetX + (pVertex.X + ptShift.x), OffsetY - (pVertex.Y + ptShift.y));
+                                ptEnd = new DoublePoint((OffsetX + (pVertex.X + pVertex.dX + ptShift.x)), OffsetY - (pVertex.Y + pVertex.dY + ptShift.y));
+                                ptCenter = new DoublePoint { x = OffsetX + (pVertex.cX + ptShift.x), y = OffsetY - (pVertex.cY + ptShift.y) };
+
+                                WriteArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptStart, ptEnd, ptCenter, (pVertex.Bulge < 0)); // Bulge값이 음수일때가 CountClock 방향
+                            }
+                            else
+                            {
+                                List.Add("");
+                                List.Add($"    // Line [{nVertexIndex}/{pItem.GetCount()}]");
+
+                                DoublePoint ptEnd = new DoublePoint(OffsetX + (pVertex.X + pVertex.dX + ShiftX), OffsetY - (pVertex.Y + pVertex.dY + ShiftY));
+
+                                DoublePoint ptEnd2 = ExtendLine(ptPrev, ptEnd, 0.004);
+
+                                SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptEnd2, false);
+
+                                List.Add("");
+                                List.Add($"    DWELL 7");
+                                List.Add($"    doLaserTriggerOn==false");// file.WriteLine($"M7122==1"); i/o확인 해야함!!!
+                                List.Add($"    DWELL 7");
+                            }
+                        }
+                        else
+                        {
+                            List.Add($"    // Polyline.Open!!");
+                        }
+                    }
+                }
+            }
+
+            return rr;
+        }
+
+        public DoublePoint MakeLineType(ztLineItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptS = new DoublePoint(OffsetX + (pItem.X0 + ShiftX), OffsetY - (pItem.Y0 + ShiftY));
+                DoublePoint ptE = new DoublePoint(OffsetX + (pItem.X1 + ShiftX), OffsetY - (pItem.Y1 + ShiftY));
+
+                rr = ptS;
+            }
+
+            return rr;
+        }
+
+        public DoublePoint MakeLineType(bool LaserRun, ref StringList List, ztLineItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptS = new DoublePoint(OffsetX + (pItem.X0 + ShiftX), OffsetY - (pItem.Y0 + ShiftY));
+                DoublePoint ptE = new DoublePoint(OffsetX + (pItem.X1 + ShiftX), OffsetY - (pItem.Y1 + ShiftY));
+
+                rr = ptS;
+
+                if (List != null)
+                {
+                    SetSpeed(ref List, Global.chConJumpSpeed.AsDouble, Global.chConJumpTA.AsDouble, 20, ptS, false);
+                    List.Add($"    DWELL 7");
+                    if (LaserRun)
+                    {
+                        List.Add($"    doLaserTriggerOn==true");// file.WriteLine($"M7122==1"); i/o확인 해야함!!!
+                    }
+                    else
+                    {
+                        List.Add($"    doLaserTriggerOn==false"); // DryRun
+                    }
+                    List.Add($"    DWELL 7");
+                    List.Add("");
+
+                    SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptE, true);
+                    List.Add($"    DWELL 7");
+                    List.Add($"    doLaserTriggerOn==false");// file.WriteLine($"M7122==0"); i/o확인 해야함!!!
+                    List.Add($"    DWELL 7");
+                }
+            }
+
+            return rr;
+        }
+
+        public DoublePoint MakeCircleType(ztCircleItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+
+                rr = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)                
+            }
+
+            return rr;
+        }
+
+        public DoublePoint MakeCircleType(bool LaserRun, ref StringList List, ztCircleItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptStart, ptEnd;
+                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+
+                DoublePoint ptCenter = new DoublePoint { x = OffsetX + pItem.CenterX + ptShift.x, y = OffsetY - (pItem.CenterY + ptShift.y) };
+                ptStart = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)                
+
+                rr = ptStart;
+
+                pItem.StartAngle = pItem.StartAngle + 180.0;
+                DoublePoint ptHalf = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)               
+
+                // Overlap 하는 거리만큼을 각으로 산출하여
+                double additionalDistance = 0.00; // 원하는 추가 거리 (10 µm = 0.01 mm)
+                double radius = pItem.R;     // pItem의 반지름 값
+
+                // 추가 각도 계산 (라디안)
+                double additionalAngle = additionalDistance / radius; // 라디안 값
+
+                if (pItem.DirCW)
+                {
+                    pItem.StartAngle = pItem.StartAngle + 180 - additionalAngle * (180 / Math.PI);
+                }
+                else
+                {
+                    pItem.StartAngle = pItem.StartAngle + 180 + additionalAngle * (180 / Math.PI);
+                }
+
+                ptEnd = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)
+
+                SetSpeed(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 20, ptStart, false);
+                List.Add("");
+                List.Add($"    DWELL 7");
+                if (LaserRun)
+                {
+                    List.Add($"    doLaserTriggerOn==true");
+                }
+                else
+                {
+                    List.Add($"    doLaserTriggerOn==false"); // DryRun
+                }
+                List.Add($"    DWELL 7");
+                List.Add("");
+                WriteCircleToArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptStart, ptHalf, ptCenter, pItem.DirCW);
+                List.Add("");
+
+                // 두 번째 반원
+                WriteCircleToArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptHalf, ptEnd, ptCenter, pItem.DirCW);
+
+                List.Add($"    DWELL 7");
+                List.Add($"    doLaserTriggerOn==false");
+                List.Add($"    DWELL 7");
+            }
+
+            return rr;
+        }
+
+
+        private void WriteArcGCode(ref StringList List, double f, double ta, int ts, DoublePoint ptStart, DoublePoint ptEnd, DoublePoint ptCenter, bool ClockWiseDir)//arc인경우 ptE값은 ptS값임!!!!!
+        {
+            double i, j;
+
+            i = ptCenter.x - ptStart.x;
+            j = ptCenter.y - ptStart.y;
+
+            string command = ClockWiseDir ? "CIRCLE2" : "CIRCLE1";//"CIRCLE1" : "CIRCLE2";
+            List.Add($"    F({f}) TA({ta}) TS({ts})");
+            if (ClockWiseDir)
+            {
+                List.Add($"    {command} X{ptEnd.x:F3} Y{ptEnd.y:F3} i{i:F3} j{j:F3} // ClockWise, EndX, EndY, CenterX, CenterY");
+            }
+            else
+            {
+                List.Add($"    {command} X{ptEnd.x:F3} Y{ptEnd.y:F3} i{i:F3} j{j:F3} // CountClockWise, EndX, EndY, CenterX, CenterY");
+            }
+        }
+
+        private void WriteCircleToArcGCode(ref StringList List, double f, double ta, int ts, DoublePoint ptStart, DoublePoint ptEnd, DoublePoint ptCenter, bool ClockWiseDir)//arc인경우 ptE값은 ptS값임!!!!!
+        {
+            double i, j;
+
+            i = ptCenter.x - ptStart.x;
+            j = ptCenter.y - ptStart.y;
+
+            string command = ClockWiseDir ? "CIRCLE2" : "CIRCLE1";//"CIRCLE1" : "CIRCLE2";
+            List.Add($"    F({f}) TA({ta}) TS({ts})");
+            if (ClockWiseDir)
+            {
+                List.Add($"    {command} X{ptEnd.x:F3} Y{ptEnd.y:F3} i{i:F3} j{j:F3} // ClockWise, EndX, EndY, CenterX, CenterY");
+            }
+            else
+            {
+                List.Add($"    {command} X{ptEnd.x:F3} Y{ptEnd.y:F3} i{i:F3} j{j:F3} // CountClockWise, EndX, EndY, CenterX, CenterY");
+            }
+        }
+
+
+        public void SetSpeed(ref StringList List, double f, double ta, int ts, DoublePoint pt, bool isRapid)
+        {
+            List.Add($"    F({f}) TA({ta}) TS({ts})");
+            List.Add($"    X{pt.x:F3} Y{pt.y:F3} // StartX, StartY");
+        }
+
+        public DoublePoint ExtendLine(DoublePoint ptStart, DoublePoint ptEnd, double extendLength)
+        {
+            // ptStart에서 ptEnd까지의 차이를 구함
+            double dx = ptEnd.x - ptStart.x;
+            double dy = ptEnd.y - ptStart.y;
+
+            // 두 점 사이의 거리를 계산
+            double distance = Math.Sqrt(dx * dx + dy * dy);
+
+            // 새로운 거리 = 기존 거리 + 연장하고 싶은 길이 (예: 1mm)
+            double newDistance = distance + extendLength;
+
+            // 기울기를 유지하면서 새 점을 계산 (단위 벡터로 방향 유지)
+            double scale = newDistance / distance;
+
+            // ptEnd 위치를 확장된 거리만큼 이동
+            double newX = ptStart.x + dx * scale;
+            double newY = ptStart.y + dy * scale;
+
+            return new DoublePoint(newX, newY);
+        }
 
     }
 

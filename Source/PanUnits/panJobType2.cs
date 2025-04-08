@@ -1164,7 +1164,143 @@ namespace LaserCutter
             edManualShiftY.Cancel();
             edGlassSizeX.Cancel();
             edGlassSizeY.Cancel();
+        }
 
+        public void MakeMotionFile(TableNo tableNo, int ACellIndex, double Angle, double shiftX, double shiftY, bool LaserRun)
+        {
+            GetWorkCenter(ACellIndex);
+
+            yjTech.StringList szList = new yjTech.StringList();
+
+            szList.Add("undefine all");
+
+            if (tableNo == TableNo.Table1)
+            {
+                szList.Add($"&1 #1->{Const.XY_LINEAR_SCALE}X #2->{Const.XY_LINEAR_SCALE}Y");
+            }
+            if (tableNo == TableNo.Table2)
+            {
+                szList.Add($"&1 #1->{Const.XY_LINEAR_SCALE}X #3->{Const.XY_LINEAR_SCALE}Y");
+            }
+
+            szList.Add("delete lookahead");
+            szList.Add("define lookahead 7000");
+
+            szList.Add("");
+            szList.Add($"Motor[1].JogSpeed = {Const.XY_LINEAR_SCALE / 10}"); //{m_pPmacData[i].dLineSpd:F3}");
+            szList.Add($"Motor[1].JogTa = 50");
+            szList.Add($"Motor[1].JogTs = 50");
+
+            if (tableNo == TableNo.Table1)
+            {
+                szList.Add("");
+                szList.Add($"Motor[2].JogSpeed = {Const.XY_LINEAR_SCALE / 10}"); //{m_pPmacData[i].dLineSpd:F3}");
+                szList.Add($"Motor[2].JogTa = 50");
+                szList.Add($"Motor[2].JogTs = 50");
+            }
+            else
+            if (tableNo == TableNo.Table2)
+            {
+                szList.Add("");
+                szList.Add($"Motor[3].JogSpeed = {Const.XY_LINEAR_SCALE / 10}"); //{m_pPmacData[i].dLineSpd:F3}");
+                szList.Add($"Motor[3].JogTa = 50");
+                szList.Add($"Motor[3].JogTs = 50");
+            }
+
+            double offsetX = WorkCenter.x - CenterPos.x;
+            double offsetY = WorkCenter.y + CenterPos.y;
+
+            if (AutoMenu.btnLaserRun.LED.Value)
+            {
+                offsetX += Common.edTable2NozzleXOffset.Value;
+                offsetY += Common.edTable2NozzleYOffset.Value;
+            }
+
+            //       SetGrid2Value();
+
+            Cad2.Open(Table.GetModelPath() + lblDxfPath.Text);
+            SetGrid2Value();
+            Cad2.Rotate(CenterPos.x, CenterPos.y, Angle);
+
+            int nIndex = 0;
+            for (nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
+            {
+                if (LaserProject.Model2.Layers[nIndex].Used)
+                {
+                    cad2Data.Clear();
+                    Cad2.CurLayerName = LaserProject.Model2.Layers[nIndex].Name;
+                    Cad2.GetPage(cad2Data);
+
+                    if (cad2Data.Count <= 0) continue;
+
+                    szList.Add("");
+                    szList.Add(String.Format("Open Prog {0}", nIndex + 100 * (int)tableNo));
+
+                    szList.Add("Linear");
+                    szList.Add("ABS");
+                    szList.Add("Frax(X,Y)");
+
+                    //      cad2Data.Rotate(CenterPos.x, CenterPos.y, Angle);
+
+                    var pMarkPage = cad2Data;
+
+                    if (pMarkPage.MarkList.Count > 0)
+                    {
+                        // logger.SendMsg(String.Format("LayerName=\"{0}\" Entity.Count = {1}", Cad2.CurLayerName, nCount));
+
+                        szList.Add("");
+                        szList.Add("// ================================================================================");
+                        szList.Add($"// LayerName:[{LaserProject.Model2.Layers[nIndex].Name}]");
+                        szList.Add($"//     EntityCount:{pMarkPage.MarkList.Count}");
+                        szList.Add("// --------------------------------------------------------------------------------");
+
+                        for (int nEntityIndex = 0; nEntityIndex < pMarkPage.Count; nEntityIndex++)
+                        {
+                            ztMarkData pMarkData = pMarkPage[nEntityIndex];
+                            int nType = pMarkPage.GetData(nEntityIndex).Type;
+                            ztVertexItem pItem = pMarkData.Vertices[0];
+
+                            szList.Add("");
+
+                            switch (nType)
+                            {
+                                case Lcad.LC_ENT_LINE:
+                                    szList.Add($"// Line {nEntityIndex}");
+                                    Table.MakeLineType(LaserRun, ref szList, (ztLineItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_POLYLINE:
+                                    szList.Add($"// Polyline {nEntityIndex}");
+                                    Table.MakePolylineType(LaserRun, ref szList, (ztPolylineItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_ARC:
+                                    szList.Add($"// Arc {nEntityIndex}");
+                                    Table.MakeArcType(LaserRun, ref szList, (ztArcItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_CIRCLE:
+                                    szList.Add($"// Circle {nEntityIndex}");
+                                    Table.MakeCircleType(LaserRun, ref szList, (ztCircleItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_RECT:
+                                    szList.Add($"// Rect {nEntityIndex}");
+                                    Table.MakeRectType(LaserRun, ref szList, (ztRectItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+                            }
+                        }
+                    }
+
+                    szList.Add("Close");
+                }
+            }
+
+            Cad2.CurLayerName = "";
+
+            String szStr = String.Format("{0}Program{1}.pmc", yjCommon.AppPath(), (int)tableNo);
+            szList.SaveToFile(szStr);
+            szList.Clear();
         }
     }
 }

@@ -30,6 +30,8 @@ namespace LaserCutter
         CodeSiteLogger logger;
 
         public frmChannelSpy frmChannelSpy;
+        private frmProgress frmProgress = new frmProgress();
+        private frmMotionFile frmMotionFile = new frmMotionFile();
 
         public panAuto Auto;
         public panAutoMenu AutoMenu;
@@ -65,6 +67,7 @@ namespace LaserCutter
         private ushort atomChannelSpy;
         private ushort atomCarbide;
         private ushort atomDownload;
+
         #endregion
 
         // 정적 필드로 싱글톤 인스턴스를 저장
@@ -233,6 +236,46 @@ namespace LaserCutter
         {
             base.WndProc(ref m);
 
+            if (m.Msg == PowerPMac.WM_MESSAGE_DOWNLOAD)
+            {
+                var cds = (CopyDataStruct)Marshal.PtrToStructure(m.LParam, typeof(CopyDataStruct));
+
+                switch (cds.dwData.ToInt32())
+                {
+                    case PowerPMac.DT_Progress:
+
+                        if (cds.cbData == 0)
+                        {
+                            frmProgress.Show();
+                        }
+                        else
+                        if (cds.cbData == 100)
+                        {
+                            frmProgress.Close();
+                        }
+
+                        frmProgress.progressBar1.Value = cds.cbData;
+                        frmProgress.lblMessage.Text = String.Format("Downloading..{0}", cds.cbData);
+
+                        // logger.SendMsg(frmProgress.lblMessage.Text);
+                        break;
+
+                    case PowerPMac.DT_StringA:
+                        string s = Marshal.PtrToStringAnsi(cds.lpData);
+                        s = yjCommon.RemoveCRLF(s);
+                        frmMotionFile.Memo1.AppendText(s + Environment.NewLine);
+                        logger.SendMsg(s + Environment.NewLine);
+                        break;
+
+                    case PowerPMac.DT_StringW:
+                        // Handle wide string case if needed
+                        break;
+                }
+
+                frmMotionFile.MessageQueue.Add(m.WParam.ToInt32());
+            }
+
+
             switch (m.Msg)
             {
                 case WM_HOTKEY:
@@ -246,6 +289,39 @@ namespace LaserCutter
 
                         frmChannelSpy.TopMost = true;
                         frmChannelSpy.Show();
+                    }
+                    else
+                    if (m.WParam.ToInt32() == atomDownload)
+                    {
+                        if (Auto.tabControl1.SelectedIndex == 0)
+                        {
+                            Auto.Table1.PageIndex = Auto.Table1.GetFirstPage();
+
+                            Auto.Table1.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
+                            Pmac.DownloadFile1(Handle);
+                        }
+                        else
+                        if (Auto.tabControl1.SelectedIndex == 1)
+                        {
+                            Auto.Table2.PageIndex = Auto.Table2.GetFirstPage();
+
+                            Auto.Table2.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
+                            Pmac.DownloadFile2(Handle);
+                        }
+                    }
+                    else
+                    if (m.WParam.ToInt32() == atomCarbide)
+                    {
+#if _VERSION2
+                        ////if (frmCarbide.Visible)
+                        ////{
+                        ////    frmCarbide.Close();
+                        ////}
+
+                        ////frmCarbide.TopMost = true;
+                        ////frmCarbide.ReadThread.Enabled = true;
+                        ////frmCarbide.Show();
+#endif
                     }
 
                     break;
