@@ -282,21 +282,25 @@ namespace LaserCutter
             panClient.Controls.Add(Auto);
 
             AutoMenu = new panAutoMenu();
+            AutoMenu.frmChannelSpy = frmChannelSpy.StaticInstance;
+
             panClient.Controls.Add(AutoMenu);
             AutoMenu.Location = new Point(Auto.Location.X + Auto.Width - 2, Auto.Location.Y);
 
-            ////Auto.Common = panConfigCommon.StaticInstance;
+            Auto.Common = panConfigCommon.StaticInstance;
             ////Auto.SideMenu = panSideMenu.StaticInstance;
 
-            ////Auto.Table1.JobInfo.Type1.Common = panConfigCommon.StaticInstance;
-            ////Auto.Table1.JobInfo.Type2.Common = panConfigCommon.StaticInstance;
-            ////Auto.Table1.JobInfo.Type3.Common = panConfigCommon.StaticInstance;
+            Auto.Table1.Type1.Common = panConfigCommon.StaticInstance;
+            Auto.Table1.Type2.Common = panConfigCommon.StaticInstance;
+            Auto.Table1.Type3.Common = panConfigCommon.StaticInstance;
+            Auto.Table1.Type4.Common = panConfigCommon.StaticInstance;
 
-            ////Auto.Table2.JobInfo.Type1.Common = panConfigCommon.StaticInstance;
-            ////Auto.Table2.JobInfo.Type2.Common = panConfigCommon.StaticInstance;
-            ////Auto.Table2.JobInfo.Type3.Common = panConfigCommon.StaticInstance;
+            Auto.Table2.Type1.Common = panConfigCommon.StaticInstance;
+            Auto.Table2.Type2.Common = panConfigCommon.StaticInstance;
+            Auto.Table2.Type3.Common = panConfigCommon.StaticInstance;
+            Auto.Table2.Type4.Common = panConfigCommon.StaticInstance;
 
-            ////Auto.ChannelAssign();
+            AutoMenu.ChannelAssign();
 
             /*
             * 2. Manual

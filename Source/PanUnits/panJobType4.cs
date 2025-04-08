@@ -15,7 +15,9 @@ namespace LaserCutter
         public LaserProject LaserProject = null;
 
         public panAuto Auto = null;
-        
+        public panAutoMenu AutoMenu = null;
+        public panConfigCommon Common = null;
+
         public panTable Table;
 
         public ztCad Cad4;
@@ -130,7 +132,10 @@ namespace LaserCutter
 
         private void btnUse_Click(object sender, EventArgs e)
         {
-
+            Table.Type1.btnUse.LED.Value = false;
+            Table.Type2.btnUse.LED.Value = false;
+            Table.Type3.btnUse.LED.Value = false;
+            Table.Type4.btnUse.LED.Value = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

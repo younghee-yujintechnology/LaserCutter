@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 using Raize.CodeSiteLogging;
 using yjTech;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LaserCutter
 {
@@ -16,6 +16,8 @@ namespace LaserCutter
         public LaserProject LaserProject;
 
         public panAuto Auto;
+        public panAutoMenu AutoMenu;
+        public panConfigCommon Common;
 
         public panJobType1 Type1;
         public panJobType2 Type2;
@@ -33,28 +35,35 @@ namespace LaserCutter
 
             SetCodeSitelogger();
 
+            Common = panConfigCommon.StaticInstance;
+            AutoMenu = panAutoMenu.StaticInstance;
+
             LaserProject = new LaserProject();
 
             Type1 = new panJobType1();
             Type1.Auto = panAuto.StaticInstance;
+            Type1.AutoMenu = panAutoMenu.StaticInstance;
             Type1.LaserProject = LaserProject;
             Type1.Table = this;
             Type1.EnableControl(false);
 
             Type2 = new panJobType2();
             Type2.Auto = panAuto.StaticInstance;
+            Type2.AutoMenu = panAutoMenu.StaticInstance;
             Type2.LaserProject = LaserProject;
             Type2.Table = this;
             Type2.EnableControl(false);
 
             Type3 = new panJobType3();
             Type3.Auto = panAuto.StaticInstance;
+            Type3.AutoMenu = panAutoMenu.StaticInstance;
             Type3.LaserProject = LaserProject;
             Type3.Table = this;
             Type3.EnableControl(false);
 
             Type4 = new panJobType4();
             Type4.Auto = panAuto.StaticInstance;
+            Type4.AutoMenu = panAutoMenu.StaticInstance;
             Type4.LaserProject = LaserProject;
             Type4.Table = this;
             Type4.EnableControl(false);
@@ -176,15 +185,15 @@ namespace LaserCutter
                 ////LaserProject.NozzleOffsetX = Global.chTable1NozzleXOffset.AsDouble;
                 ////LaserProject.NozzleOffsetY = Global.chTable1NozzleYOffset.AsDouble;
 
-                ////if (TableNo == TableNo.Table1)
-                ////{
-                ////    Auto.ledTable1JobFileLoad.LED.Value = true;
-                ////}
-                ////else
-                ////if (TableNo == TableNo.Table2)
-                ////{
-                ////    Auto.ledTable2JobFileLoad.LED.Value = true;
-                ////}
+                if (TableNo == TableNo.Table1)
+                {
+                    AutoMenu.ledTable1JobFileLoad.LED.Value = true;
+                }
+                else
+                if (TableNo == TableNo.Table2)
+                {
+                    AutoMenu.ledTable2JobFileLoad.LED.Value = true;
+                }
 
                 ////Vision.DefaultVisionFile = String.Format("{0}CogPMAlignTool(4Align).vpp", frmSelectJob.GetModelPath());
                 ////Vision.ledCogPMAlignTool.LED.Value = yjCommon.FileExists(Vision.DefaultVisionFile);
@@ -523,9 +532,7 @@ namespace LaserCutter
             Type3.edZOffset.Value = 0.0;
             Type3.edPulsePitch.Value = 0.000;
         }
-
         #endregion
-
 
         public void SetEventProc()
         {
@@ -666,6 +673,124 @@ namespace LaserCutter
             frmMain.ChangeAutoTitle();
             SetEventProc();
         }
+
+
+        #region public void SaveJobFile()
+        public void SaveJobFile()
+        {
+            LaserProject.CadFile = Type1.lblDxfPath.Text;
+
+            LaserProject.Model1.LaserPower = Type1.edLaserPower.Value;
+            LaserProject.Model1.ZOffset = Type1.edZOffset.Value;
+
+            if (TableNo == TableNo.Table1)
+            {
+                Type1.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                Type1.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
+            }
+
+            LaserProject.Model1.PulsePitch = Type1.edPulsePitch.Value;
+            LaserProject.Model1.Thickness = Type1.edThickness.Value;
+
+            LaserProject.Model1.ManualShiftX = Type1.edManualShiftX.Value;
+            LaserProject.Model1.ManualShiftY = Type1.edManualShiftY.Value;
+            LaserProject.Model1.StartPoint = (StartPoint)Type1.cbStartPoint.ItemIndex;
+
+            LaserProject.Model1.GlassSizeX = Type1.edGlassSizeX.Value;
+            LaserProject.Model1.GlassSizeY = Type1.edGlassSizeY.Value;
+            LaserProject.Model1.AlignUse = Type1.chkAlignUse.Checked;
+            LaserProject.Model1.AlignMethod = Type1.AlignMethod;
+
+
+            LaserProject.Model2.LaserPower = Type2.edLaserPower.Value;
+            LaserProject.Model2.ZOffset = Type2.edZOffset.Value;
+            LaserProject.Model2.PulsePitch = Type2.edPulsePitch.Value;
+            LaserProject.Model2.Thickness = Type2.edThickness.Value;
+
+            if (TableNo == TableNo.Table1)
+            {
+                Type2.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                Type2.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
+            }
+
+            LaserProject.Model2.XCount = Type2.edXCount.AsInteger;
+            LaserProject.Model2.YCount = Type2.edYCount.AsInteger;
+            LaserProject.Model2.GapX = Type2.edGapX.Value;
+            LaserProject.Model2.GapY = Type2.edGapY.Value;
+
+            LaserProject.Model2.StartPoint = (StartPoint)Type2.cbStartPoint.ItemIndex;
+
+            LaserProject.Model2.GlassSizeX = Type2.edGlassSizeX.Value;
+            LaserProject.Model2.GlassSizeY = Type2.edGlassSizeY.Value;
+            LaserProject.Model2.AlignUse = Type2.chkAlignUse.Checked;
+            LaserProject.Model2.AlignMethod = Type2.AlignMethod;
+            LaserProject.Model2.ManualShiftX = Type2.edManualShiftX.Value;
+            LaserProject.Model2.ManualShiftY = Type2.edManualShiftY.Value;
+
+            LaserProject.Model3.LaserPower = Type3.edLaserPower.Value;
+            LaserProject.Model3.ZOffset = Type3.edZOffset.Value;
+            LaserProject.Model3.PulsePitch = Type3.edPulsePitch.Value;
+            LaserProject.Model3.Thickness = Type3.edThickness.Value;
+
+            if (TableNo == TableNo.Table1)
+            {
+                Type3.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                Type3.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
+            }
+
+            LaserProject.Model3.StartPoint = (StartPoint)Type3.cbStartPoint.ItemIndex;
+
+            LaserProject.Model3.XCount = Type3.edXCount.AsInteger;
+            LaserProject.Model3.YCount = Type3.edYCount.AsInteger;
+            LaserProject.Model3.GapX = Type3.edGapX.Value;
+            LaserProject.Model3.GapY = Type3.edGapY.Value;
+            LaserProject.Model3.GlassSizeX = Type3.edGlassSizeX.Value;
+            LaserProject.Model3.GlassSizeY = Type3.edGlassSizeY.Value;
+            LaserProject.Model3.Width = Type3.edCellWidth.Value;
+            LaserProject.Model3.Height = Type3.edCellHeight.Value;
+
+            /*
+             * Cell은 Radius 없이 만들수 없게 되어있으므로
+             * Radius는 0을 기입할수 없게..
+             */
+            if (Type3.edCellRadius.Value <= 0.0) Type3.edCellRadius.Value = 0.001;
+            LaserProject.Model3.Radius = Type3.edCellRadius.Value;
+
+            LaserProject.Model3.UseBreakingLine = Type3.chkUseBreakLine.Checked;
+            LaserProject.Model3.LineDir = Type3.chkBreakLineOutDir.Checked;
+            LaserProject.Model3.BreakingLineLength = Type3.edBreakLineLength.Value;
+            LaserProject.Model3.BreakingLineOffset = Type3.edBreakLineOffset.Value;
+
+            if (Type3.rdoCell.Checked)
+            {
+                LaserProject.Model3.SelectType = 0;
+            }
+            else
+            if (Type3.rdoCircle.Checked)
+            {
+                LaserProject.Model3.SelectType = 1;
+            }
+
+            String szFileName = String.Empty;
+            szFileName = String.Format("{0}[{1}][{2}][Table{3}].prj", GetModelPath(), GroupName, ModelName, (int)TableNo);
+
+            LaserProject.DateTime = DateTime.Now;
+            LaserProject.SaveToFile(szFileName);
+        }
+        #endregion
+
     }
 
     public struct PageItem
@@ -867,5 +992,4 @@ namespace LaserCutter
             return -1; // 없으면 -1 반환
         }
     }
-
 }

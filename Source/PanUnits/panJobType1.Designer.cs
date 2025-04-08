@@ -1197,6 +1197,7 @@ namespace LaserCutter
             this.btnUse.TabIndex = 1721;
             this.btnUse.Text = "Active";
             this.btnUse.UseVisualStyleBackColor = false;
+            this.btnUse.Click += new System.EventHandler(this.btnUse_Click);
             // 
             // btnMoveUp
             // 
@@ -1322,6 +1323,7 @@ namespace LaserCutter
             this.btnSave.TabIndex = 1716;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panJobType1
             // 

@@ -13,6 +13,8 @@ namespace LaserCutter
         public frmMain frmMain;
         public frmChannelSpy frmChannelSpy;
 
+        public panConfigCommon Common;
+
         public panTable Table1;
         public panTable Table2;
 

@@ -14,6 +14,8 @@ namespace LaserCutter
         public LaserProject LaserProject = null;
 
         public panAuto Auto = null;
+        public panAutoMenu AutoMenu = null;
+        public panConfigCommon Common = null;
 
         public ztCad Cad2;
         public ztMarkPage cad2Data;
@@ -25,6 +27,8 @@ namespace LaserCutter
         public panTable Table;
 
         public PageList PageList;
+
+        private AlignMethod mAlignMethod;
 
         public panJobType2()
         {
@@ -136,12 +140,193 @@ namespace LaserCutter
 
         public void EnableControl(bool bEnabled)
         {
+            Cad2.Enabled = bEnabled;
+            edLaserPower.Enabled = bEnabled;
+            edPulsePitch.Enabled = bEnabled;
+            cbStartPoint.Enabled = bEnabled;
+
+            edManualShiftX.Enabled = bEnabled;
+            edManualShiftY.Enabled = bEnabled;
+
+            edGlassSizeX.Enabled = bEnabled;
+            edGlassSizeY.Enabled = bEnabled;
+
+            edThickness.Enabled = bEnabled;
+
+            dataGridView2.Enabled = bEnabled;
+
+            ledSortMethod1.Enabled = bEnabled;
+            ledSortMethod2.Enabled = bEnabled;
+            ledSortMethod3.Enabled = bEnabled;
+            ledSortMethod4.Enabled = bEnabled;
+
+            edXCount.Enabled = bEnabled;
+            edYCount.Enabled = bEnabled;
+            edGapX.Enabled = bEnabled;
+            edGapY.Enabled = bEnabled;
+
+            cbCellIndex.Enabled = bEnabled;
+
+            btnMoveAlign1Pos.Enabled = bEnabled;
+            btnMoveAlign2Pos.Enabled = bEnabled;
+            btnMoveAlign3Pos.Enabled = bEnabled;
+            btnMoveAlign4Pos.Enabled = bEnabled;
+
+            btnMoveUp.Enabled = bEnabled;
+            btnMoveDown.Enabled = bEnabled;
+
+            edZOffset.Enabled = bEnabled;
+
+            chkAlignUse.Enabled = bEnabled;
+            rdoAlign2P_1_2.Enabled = bEnabled;
+            rdoAlign2P_1_3.Enabled = bEnabled;
+            rdoAlign2P_1_4.Enabled = bEnabled;
+            rdoAlign4P.Enabled = bEnabled;
+
+            btnApply.Enabled = bEnabled;
+            btnSave.Enabled = bEnabled;
+            btnCancel.Enabled = bEnabled;
         }
 
         private void btnUse_Click(object sender, EventArgs e)
         {
-
+            Table.Type1.btnUse.LED.Value = false;
+            Table.Type2.btnUse.LED.Value = true;
+            Table.Type3.btnUse.LED.Value = false;
+            Table.Type4.btnUse.LED.Value = false;
         }
+
+        /*
+* 달리 방법이 없네..
+*/
+        public void SetGrid2Value()
+        {
+            if ((dataGridView2.Rows.Count - 1) != LaserProject.Model2.Layers.Count) return;
+
+            for (int nRowIndex = 0; nRowIndex < LaserProject.Model2.Layers.Count; nRowIndex++)
+            {
+                if (dataGridView2.Rows[nRowIndex].Cells[2].Value.ToString().ToLower() == "true")
+                {
+                    LaserProject.Model2.Layers[nRowIndex].Used = true;
+                }
+                else
+                if (dataGridView2.Rows[nRowIndex].Cells[2].Value.ToString().ToLower() == "false")
+                {
+                    LaserProject.Model2.Layers[nRowIndex].Used = false;
+                }
+
+                // Tool
+                if (dataGridView2.Rows[nRowIndex].Cells[3].Value.ToString().ToLower() == "scanner")
+                {
+                    LaserProject.Model2.Layers[nRowIndex].Tool = Tool.Scanner;
+                }
+                else
+                if (dataGridView2.Rows[nRowIndex].Cells[3].Value.ToString().ToLower() == "nozzle")
+                {
+                    LaserProject.Model2.Layers[nRowIndex].Tool = Tool.Nozzle;
+                }
+
+                // Direction
+                if (dataGridView2.Rows[nRowIndex].Cells[4].Value.ToString().ToLower() == "ccw")
+                {
+                    LaserProject.Model2.Layers[nRowIndex].Direction = Direction.CCW;
+                }
+                else
+                if (dataGridView2.Rows[nRowIndex].Cells[4].Value.ToString().ToLower() == "cw")
+                {
+                    LaserProject.Model2.Layers[nRowIndex].Direction = Direction.CW;
+                }
+
+                LaserProject.Model2.Layers[nRowIndex].LaserPower = yjCommon.StrToDoubleDef(dataGridView2.Rows[nRowIndex].Cells[4].Value.ToString(), 0.0);
+                LaserProject.Model2.Layers[nRowIndex].ZOffset = yjCommon.StrToDoubleDef(dataGridView2.Rows[nRowIndex].Cells[5].Value.ToString(), 0.0);
+            }
+
+            IntPtr hEnt = IntPtr.Zero;
+            int nIndex;
+
+            // 속성을 변경
+            for (nIndex = 0; nIndex < LaserProject.Model2.Layers.Count; nIndex++)
+            {
+                if (LaserProject.Model2.Layers[nIndex].Used)
+                {
+                    /* Laser단위로 설정하고..
+                     * Entity를 불러들여 속성을 변경한다.
+                     * Direction, StartPoint..
+                     */
+
+                    Cad2.CurLayerName = LaserProject.Model2.Layers[nIndex].Name;
+
+                    hEnt = Cad2.GetFirstEntity(false);
+                    while (hEnt != IntPtr.Zero)
+                    {
+                        int nEntType = Lcad.PropGetInt(hEnt, Lcad.LC_PROP_ENT_TYPE);
+                        if (nEntType == Lcad.LC_ENT_POLYLINE)
+                        {
+                            bool CWDir = Lcad.PropGetBool(hEnt, Lcad.LC_PROP_PLINE_CW);
+                            bool CCWDir = Lcad.PropGetBool(hEnt, Lcad.LC_PROP_PLINE_CCW);
+
+                            if ((LaserProject.Model2.Layers[nIndex].Direction == Direction.CW) && CCWDir)
+                            {
+                                Lcad.EntReverse(hEnt);
+                            }
+                            else
+                            if ((LaserProject.Model2.Layers[nIndex].Direction == Direction.CCW) && CWDir)
+                            {
+                                Lcad.EntReverse(hEnt);
+                            }
+                            Lcad.EntUpdate(hEnt);
+
+                            Cad2.SetStartPoint(hEnt, (StartPoint)cbStartPoint.ItemIndex);
+                            Lcad.EntUpdate(hEnt);
+                        }
+                        else
+                        if (nEntType == Lcad.LC_ENT_CIRCLE)
+                        {
+                            bool CWDir = Lcad.PropGetBool(hEnt, Lcad.LC_PROP_CIRCLE_DIRCW);
+
+                            if ((LaserProject.Model2.Layers[nIndex].Direction == Direction.CW) && !CWDir)
+                            {
+                                Lcad.EntReverse(hEnt);
+                            }
+                            else
+                            if ((LaserProject.Model2.Layers[nIndex].Direction == Direction.CCW) && CWDir)
+                            {
+                                Lcad.EntReverse(hEnt);
+                            }
+
+                            switch ((StartPoint)cbStartPoint.ItemIndex)
+                            {
+                                case StartPoint.Left:
+                                    Lcad.PropPutFloat(hEnt, Lcad.LC_PROP_CIRCLE_ANG0, 180.0 / 180.0 * Math.PI);
+                                    break;
+
+                                case StartPoint.Top:
+                                    Lcad.PropPutFloat(hEnt, Lcad.LC_PROP_CIRCLE_ANG0, 90.0 / 180.0 * Math.PI);
+                                    break;
+
+                                case StartPoint.Right:
+                                    Lcad.PropPutFloat(hEnt, Lcad.LC_PROP_CIRCLE_ANG0, 0 / 180.0 * Math.PI);
+                                    break;
+
+                                case StartPoint.Bottom:
+                                    Lcad.PropPutFloat(hEnt, Lcad.LC_PROP_CIRCLE_ANG0, 270.0 / 180.0 * Math.PI);
+                                    break;
+                            }
+
+                            double dd = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_CIRCLE_ANG0) * 180.0 / Math.PI;
+                        }
+
+                        Lcad.PropPutInt(hEnt, Lcad.LC_PROP_ENT_MARK_COUNT, 1);
+                        Lcad.EntUpdate(hEnt);
+
+                        hEnt = Cad2.GetNextEntity(false, hEnt);
+                    }
+                }
+            }
+
+            Cad2.CurLayerName = "";
+        }
+
 
         public void CheckLayerInfo()
         {
@@ -732,7 +917,19 @@ namespace LaserCutter
                 }
             }
         }
+        public AlignMethod AlignMethod
+        {
+            get { return mAlignMethod; }
+            set
+            {
+                mAlignMethod = value;
 
+                rdoAlign2P_1_2.Checked = (value == AlignMethod.Align2P_1_2);
+                rdoAlign2P_1_3.Checked = (value == AlignMethod.Align2P_1_3);
+                rdoAlign2P_1_4.Checked = (value == AlignMethod.Align2P_1_4);
+                rdoAlign4P.Checked = (value == AlignMethod.Align4P);
+            }
+        }
 
         public void btnApply_Click(object sender, EventArgs e)
         {
@@ -907,5 +1104,48 @@ namespace LaserCutter
             }
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SetGrid2Value();
+
+            edLaserPower.Apply();
+            edPulsePitch.Apply();
+
+            edThickness.Apply();
+            edZOffset.Apply();
+
+            edXCount.Apply();
+            edYCount.Apply();
+            edGapX.Apply();
+            edGapY.Apply();
+            edManualShiftX.Apply();
+            edManualShiftY.Apply();
+            edGlassSizeX.Apply();
+            edGlassSizeY.Apply();
+
+            Table.SaveJobFile();
+
+            yjTech.StringList ss = LaserProject.Model2.ToStringList();
+
+            GetWorkCenter(0);
+
+            CodeSite.SendMsg("");
+            CodeSite.SendMsg(String.Format("    {0}.Type2.SaveJobFile()", Table.TableNo, Table.TableNo));
+            for (int nIndex = 0; nIndex < ss.Count; nIndex++)
+            {
+                CodeSite.SendMsg(ss[nIndex]);
+            }
+
+            //String szStr = String.Empty;
+            //for (int nIndex = 0; nIndex < PageList.Count; nIndex++)
+            //{
+            //    if (PageList[nIndex].Used)
+            //    {
+            //        szStr = szStr + String.Format("{0}, ", nIndex + 1);
+            //    }
+            //}
+
+            //CodeSite.SendMsg(String.Format("    PageList.SelectedCount = {0}, {1}", PageList.SelectedCount(), szStr));
+        }
     }
 }
