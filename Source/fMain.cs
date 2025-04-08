@@ -393,11 +393,48 @@ namespace LaserCutter
 
         #region frmMain Event
         private void frmMain_Load(object sender, EventArgs e)
-        {
+        {            //ConfigCommon
+            Config.Common.propSaver1.INIFileName = yjCommon.AppPath() + "Config\\LaserCutter.INI";
+            Config.Common.propSaver1.SaveToRegistry = false;
+            Config.Common.propSaver1.LoadProperty();
+
+            Auto.SetTableBasePos();
+            Config.SetTableBasePos();
+
+            ////Manual.Light.Connect();
+            ////Manual.ADV.Connect();
+            ////Manual.PowerMeter.Connect();
+
+            // panMain.Ini
+            Config.Common.InitControls();
+
+            if (Screen.AllScreens.Length > 1)
+            {
+                Screen sencondScreen = Screen.AllScreens[1];
+
+                ////frmVision.StartPosition = FormStartPosition.Manual;
+                ////frmVision.Location = sencondScreen.WorkingArea.Location;
+                ////frmVision.Left = sencondScreen.WorkingArea.Left;
+                ////frmVision.Top = sencondScreen.WorkingArea.Top;
+
+#if _VISION
+                String visionfile = String.Format("{0}Vision\\CogPMAlignTool(4Align).vpp", dkCommon.AppPath());
+                frmVision.Vision1.cogJobManager = (CogJobManager)CogSerializer.LoadObjectFromFile(visionfile);
+                frmVision.Vision2.cogJobManager = (CogJobManager)CogSerializer.LoadObjectFromFile(visionfile);
+#endif
+            }
+
+#if _VISION
+            frmVision.Show();
+#endif
+
+            //// frmMVS.UpdateThread1.OnExecute += frmVision.Vision1.UpdateThread_OnExecute;
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Config.Common.propSaver1.SaveProperty();
+
             SystemFinalization();
 
             String szStr = String.Format("Application - Close: {0}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));

@@ -161,6 +161,75 @@ namespace LaserCutter
             edAutoRunSpeedStage.ChannelName = "AutoRunSpeedStage";
             edAutoRunSpeedZ.ChannelName = "AutoRunSpeedZ";
 
+            Global.chConHomeOffsetPosX = DataServer.Channels.Find(edHomeOffsetPosX.ChannelName);
+            Global.chConHomeOffsetPosY1 = DataServer.Channels.Find(edHomeOffsetPosY1.ChannelName);
+            Global.chConHomeOffsetPosY2 = DataServer.Channels.Find(edHomeOffsetPosY2.ChannelName);
+            Global.chConHomeOffsetPosZ = DataServer.Channels.Find(edHomeOffsetPosZ.ChannelName);
+            Global.chLoadPosX = DataServer.Channels.Find(edLoadPosX.ChannelName);
+            Global.chTable1LoadPosY = DataServer.Channels.Find(edLoadPosY1.ChannelName);
+            Global.chTable2LoadPosY = DataServer.Channels.Find(edLoadPosY2.ChannelName);
+            Global.chConLoadPosZ = DataServer.Channels.Find(edLoadPosZ.ChannelName);
+            Global.chConTableSizeX = DataServer.Channels.Find(edTableSizeX.ChannelName);
+            Global.chConTableSizeY = DataServer.Channels.Find(edTableSizeY.ChannelName);
+            Global.chConLineSpeed = DataServer.Channels.Find(edLineSpeed.ChannelName);
+            Global.chConLineTA = DataServer.Channels.Find(edLineTA.ChannelName);
+            Global.chConArcSpeed = DataServer.Channels.Find(edArcSpeed.ChannelName);
+            Global.chConArcTA = DataServer.Channels.Find(edArcTA.ChannelName);
+            Global.chConJumpSpeed = DataServer.Channels.Find(edJumpSpeed.ChannelName);
+            Global.chConJumpTA = DataServer.Channels.Find(edJumpTA.ChannelName);
+            Global.chConPowerMeterPosX = DataServer.Channels.Find(edPowerMeterXPos.ChannelName);
+            Global.chConPowerMeterPosZ = DataServer.Channels.Find(edPowerMeterZPos.ChannelName);
+            Global.chConCenterDoorUse = DataServer.Channels.Find(chkDoorAlarmUse.ChannelName);
+            Global.chConVacuumAlarmUse = DataServer.Channels.Find(chkVacAlarmUse.ChannelName);
+            Global.chConVacuumReleaseUse = DataServer.Channels.Find(chkVacuumAutoRelease.ChannelName);
+
+            Global.chTable1LaserZFocus = DataServer.Channels.Find(edTable1LaserZFocus.ChannelName);
+            Global.chTable1VisionZFocus = DataServer.Channels.Find(edTable1VisionZFocus.ChannelName);
+            Global.chTable2LaserZFocus = DataServer.Channels.Find(edTable2LaserZFocus.ChannelName);
+            Global.chTable2VisionZFocus = DataServer.Channels.Find(edTable2VisionZFocus.ChannelName);
+
+            Global.chTable1NozzleXOffset = DataServer.Channels.Find(edTable2NozzleXOffset.ChannelName);
+            Global.chTable1NozzleYOffset = DataServer.Channels.Find(edTable2NozzleYOffset.ChannelName);
+
+            Global.chTable1LeftBottomYPos = DataServer.Channels.Find(edTable1LeftBottomYPos.ChannelName);
+            Global.chTable1LeftBottomXPos = DataServer.Channels.Find(edTable1LeftBottomXPos.ChannelName);
+
+            Global.chTable1LeftTopYPos = DataServer.Channels.Find(edTable1LeftTopYPos.ChannelName);
+            Global.chTable1LeftTopXPos = DataServer.Channels.Find(edTable1LeftTopXPos.ChannelName);
+
+            Global.chTable1RightBottomYPos = DataServer.Channels.Find(edTable1RightBottomYPos.ChannelName);
+            Global.chTable1RightBottomXPos = DataServer.Channels.Find(edTable1RightBottomXPos.ChannelName);
+
+            Global.chTable1RightTopYPos = DataServer.Channels.Find(edTable1RightTopYPos.ChannelName);
+            Global.chTable1RightTopXPos = DataServer.Channels.Find(edTable1RightTopXPos.ChannelName);
+
+            Global.chTable1CenterYPos = DataServer.Channels.Find(edTable1CenterYPos.ChannelName);
+            Global.chTable1CenterXPos = DataServer.Channels.Find(edTable1CenterXPos.ChannelName);
+
+            Global.chTable2LeftBottomYPos = DataServer.Channels.Find(edTable2LeftBottomYPos.ChannelName);
+            Global.chTable2LeftBottomXPos = DataServer.Channels.Find(edTable2LeftBottomXPos.ChannelName);
+
+            Global.chTable2LeftTopYPos = DataServer.Channels.Find(edTable2LeftTopYPos.ChannelName);
+            Global.chTable2LeftTopXPos = DataServer.Channels.Find(edTable2LeftTopXPos.ChannelName);
+
+            Global.chTable2RightTopYPos = DataServer.Channels.Find(edTable2RightTopYPos.ChannelName);
+            Global.chTable2RightTopXPos = DataServer.Channels.Find(edTable2RightTopXPos.ChannelName);
+
+            Global.chTable2RightBottomYPos = DataServer.Channels.Find(edTable2RightBottomYPos.ChannelName);
+            Global.chTable2RightBottomXPos = DataServer.Channels.Find(edTable2RightBottomXPos.ChannelName);
+
+            Global.chTable2CenterYPos = DataServer.Channels.Find(edTable2CenterYPos.ChannelName);
+            Global.chTable2CenterXPos = DataServer.Channels.Find(edTable2CenterXPos.ChannelName);
+
+            Global.chTable1LoadDir = DataServer.Channels.Find(cbTable1LoadDir.ChannelName);
+            Global.chTable2LoadDir = DataServer.Channels.Find(cbTable2LoadDir.ChannelName);
+
+            Global.chAreaSensorUse = DataServer.Channels.Find(chkAreaSensorUse.ChannelName);
+            Global.chAreaSensorVacuumUse = DataServer.Channels.Find(chkAreaSensorVacuumUse.ChannelName);
+            Global.chAccelerationG = DataServer.Channels.Find(edAccelerationG.ChannelName);
+
+            Global.chAutoRunSpeedStage = DataServer.Channels.Find(edAutoRunSpeedStage.ChannelName);
+            Global.chAutoRunSpeedZ = DataServer.Channels.Find(edAutoRunSpeedZ.ChannelName);
 
             //cbManualAlign
 
@@ -222,6 +291,11 @@ namespace LaserCutter
         }
         public void InitControls()
         {
+            Auto.Table1.LaserProject.Model1.UseVacuumCount = yjCommon.StrToIntDef(cbTable1UseVacuumCount.Text, 0);
+            cbTable1UseVacuumCount.SelectedIndex = yjCommon.StrToIntDef(cbTable1UseVacuumCount.Text, 0) - 1;
+
+            Auto.Table2.LaserProject.Model1.UseVacuumCount = yjCommon.StrToIntDef(cbTable2UseVacuumCount.Text, 0);
+            cbTable2UseVacuumCount.SelectedIndex = yjCommon.StrToIntDef(cbTable2UseVacuumCount.Text, 0) - 1;
 
             OptionApply();
         }
@@ -367,7 +441,102 @@ namespace LaserCutter
 
         public void SetVelocity(int nSelectAxis)
         {
+            double dSpeed = 0.0;
+            double dTA = 0.0;
 
+            if (Global.chSelectSpeed.AsInteger == 0)//Low
+            {
+                if (nSelectAxis == Z_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[3].JogSpeedLow * 5;
+                    dTA = Global.MotionParameters[3].JogTALow / 2;
+
+                    Pmac.ZSetSpeed(dSpeed);
+                    Pmac.ZSetTA(dTA);
+                    Pmac.ZSetTS(dTA);
+                }
+                else
+                if (nSelectAxis == X_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[nSelectAxis - 1].JogSpeedLow * Const.XY_LINEAR_SCALE / 1000;//speed * Scale값/1000;
+                    dTA = Global.MotionParameters[nSelectAxis - 1].JogTALow / 2;//TA /2;
+
+                    Pmac.XSetSpeed(dSpeed);
+                    Pmac.XSetTA(dTA);
+                    Pmac.XSetTS(dTA);
+                }
+                else if (nSelectAxis == Y1_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[nSelectAxis - 1].JogSpeedLow * Const.XY_LINEAR_SCALE / 1000;//speed * Scale값/1000;
+                    dTA = Global.MotionParameters[nSelectAxis - 1].JogTALow / 2;//TA /2;
+
+                    Pmac.Y1SetSpeed(dSpeed);
+                    Pmac.Y1SetTA(dTA);
+                    Pmac.Y1SetTS(dTA);
+                }
+                else
+                if (nSelectAxis == Y2_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[nSelectAxis - 1].JogSpeedLow * Const.XY_LINEAR_SCALE / 1000;//speed * Scale값/1000;
+                    dTA = Global.MotionParameters[nSelectAxis - 1].JogTALow / 2;//TA /2;
+
+                    Pmac.Y2SetSpeed(dSpeed);
+                    Pmac.Y2SetTA(dTA);
+                    Pmac.Y2SetTS(dTA);
+                }
+            }
+            else
+            if (Global.chSelectSpeed.AsInteger == 1)//Mid
+            {
+                if (nSelectAxis == Z_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[3].JogSpeedMiddle * 5;
+                    dTA = Global.MotionParameters[3].JogTAMiddle / 2;
+
+                    Pmac.ZSetSpeed(dSpeed);
+                    Pmac.ZSetTA(dTA);
+                    Pmac.ZSetTS(dTA);
+                }
+                else
+                if (nSelectAxis == X_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[nSelectAxis - 1].JogSpeedMiddle * Const.XY_LINEAR_SCALE / 1000;//speed * Scale값/1000;
+                    dTA = Global.MotionParameters[nSelectAxis - 1].JogTAMiddle / 2;//TA /2;
+
+                    Pmac.XSetSpeed(dSpeed);
+                    Pmac.XSetTA(dTA);
+                    Pmac.XSetTS(dTA);
+                }
+                else
+                if (nSelectAxis == Y1_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[nSelectAxis - 1].JogSpeedMiddle * Const.XY_LINEAR_SCALE / 1000;//speed * Scale값/1000;
+                    dTA = Global.MotionParameters[nSelectAxis - 1].JogTAMiddle / 2;//TA /2;
+
+                    Pmac.Y1SetSpeed(dSpeed);
+                    Pmac.Y1SetTA(dTA);
+                    Pmac.Y1SetTS(dTA);
+                }
+                else
+                if (nSelectAxis == Y2_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[nSelectAxis - 1].JogSpeedMiddle * Const.XY_LINEAR_SCALE / 1000;//speed * Scale값/1000;
+                    dTA = Global.MotionParameters[nSelectAxis - 1].JogTAMiddle / 2;//TA /2;
+
+                    Pmac.Y2SetSpeed(dSpeed);
+                    Pmac.Y2SetTA(dTA);
+                    Pmac.Y2SetTS(dTA);
+                }
+            }
+            else
+            if (Global.chSelectSpeed.AsInteger == 2)
+            {
+                if (nSelectAxis == Z_AXIS_NO)
+                {
+                    dSpeed = Global.MotionParameters[3].JogSpeedHigh * 5;
+                    dTA = Global.MotionParameters[3].JogTAHigh / 2;
+                }
+            }
         }
 
         private void btnSetTable1Pos1_Click(object sender, EventArgs e)
@@ -602,6 +771,26 @@ namespace LaserCutter
 
         public void SetTableBasePos()
         {
+            Auto.Table1.LoadDir = (LoadDir)Global.chTable1LoadDir.AsInteger;
+
+            Auto.Table1.TableBasePos[0] = new DoublePoint(Global.chTable1LeftBottomXPos.AsDouble, Global.chTable1LeftBottomYPos.AsDouble);
+            Auto.Table1.TableBasePos[1] = new DoublePoint(Global.chTable1LeftTopXPos.AsDouble, Global.chTable1LeftTopYPos.AsDouble);
+            Auto.Table1.TableBasePos[2] = new DoublePoint(Global.chTable1RightTopXPos.AsDouble, Global.chTable1RightTopYPos.AsDouble);
+            Auto.Table1.TableBasePos[3] = new DoublePoint(Global.chTable1RightBottomXPos.AsDouble, Global.chTable1RightBottomYPos.AsDouble);
+            Auto.Table1.TableBasePos[4] = new DoublePoint(Global.chTable1CenterXPos.AsDouble, Global.chTable1CenterYPos.AsDouble);
+
+            ShowTable1LoadingPos();
+
+            Auto.Table2.LoadDir = (LoadDir)Global.chTable2LoadDir.AsInteger;
+
+            Auto.Table2.TableBasePos[0] = new DoublePoint(Global.chTable2LeftBottomXPos.AsDouble, Global.chTable2LeftBottomYPos.AsDouble);
+            Auto.Table2.TableBasePos[1] = new DoublePoint(Global.chTable2LeftTopXPos.AsDouble, Global.chTable2LeftTopYPos.AsDouble);
+            Auto.Table2.TableBasePos[2] = new DoublePoint(Global.chTable2RightTopXPos.AsDouble, Global.chTable2RightTopYPos.AsDouble);
+            Auto.Table2.TableBasePos[3] = new DoublePoint(Global.chTable2RightBottomXPos.AsDouble, Global.chTable2RightBottomYPos.AsDouble);
+            Auto.Table2.TableBasePos[4] = new DoublePoint(Global.chTable2CenterXPos.AsDouble, Global.chTable2CenterYPos.AsDouble);
+
+            ShowTable2LoadingPos();
+
         }
 
         private void ledLeftTop_Click(object sender, EventArgs e)

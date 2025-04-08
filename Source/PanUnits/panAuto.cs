@@ -128,5 +128,20 @@ namespace LaserCutter
             ////    frmMVS.UpdateThread2.Enabled = (mTabIndex == 1);
             ////}
         }
+
+        public void SetTableBasePos()
+        {
+            Table1.TableBasePos[0] = new DoublePoint(Global.chTable1LeftBottomXPos.AsDouble, Global.chTable1LeftBottomYPos.AsDouble);
+            Table1.TableBasePos[1] = new DoublePoint(Global.chTable1LeftTopXPos.AsDouble, Global.chTable1LeftTopYPos.AsDouble);
+            Table1.TableBasePos[2] = new DoublePoint(Global.chTable1RightTopXPos.AsDouble, Global.chTable1RightTopYPos.AsDouble);
+            Table1.TableBasePos[3] = new DoublePoint(Global.chTable1RightBottomXPos.AsDouble, Global.chTable1RightBottomYPos.AsDouble);
+            Table1.TableBasePos[4] = new DoublePoint(Global.chTable1CenterXPos.AsDouble, Global.chTable1CenterYPos.AsDouble);
+
+            Table2.TableBasePos[0] = new DoublePoint(Global.chTable2LeftBottomXPos.AsDouble, Global.chTable2LeftBottomYPos.AsDouble);
+            Table2.TableBasePos[1] = new DoublePoint(Global.chTable2LeftTopXPos.AsDouble, Global.chTable2LeftTopYPos.AsDouble);
+            Table2.TableBasePos[2] = new DoublePoint(Global.chTable2RightTopXPos.AsDouble, Global.chTable2RightTopYPos.AsDouble);
+            Table2.TableBasePos[3] = new DoublePoint(Global.chTable2RightBottomXPos.AsDouble, Global.chTable2RightBottomYPos.AsDouble);
+            Table2.TableBasePos[4] = new DoublePoint(Global.chTable2CenterXPos.AsDouble, Global.chTable2CenterYPos.AsDouble);
+        }
     }
 }
