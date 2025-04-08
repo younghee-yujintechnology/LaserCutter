@@ -511,6 +511,7 @@ namespace LaserCutter
                 lblMainTitle.Text = "Config";
 
                 Config.BringToFront();
+                AutoMenu.tabControlEx1.SelectedIndex = 1;
 
                 AutoMenu.tabPage1.CancelLine = true;
                 AutoMenu.tabPage2.CancelLine = false;

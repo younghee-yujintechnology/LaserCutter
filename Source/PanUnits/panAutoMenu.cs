@@ -86,9 +86,14 @@ namespace LaserCutter
                 e.Cancel = !(tabControlEx1.SelectedIndex == 1);
             }
             else
+            if (frmMain.StaticInstance.MenuIndex == 12)
+            {
+                e.Cancel = !(tabControlEx1.SelectedIndex == 1);
+            }
+            else
             if (frmMain.StaticInstance.MenuIndex == 14)
             {
-                e.Cancel = (tabControlEx1.SelectedIndex == 0);
+                e.Cancel = !(tabControlEx1.SelectedIndex == 2);
             }
         }
     }
