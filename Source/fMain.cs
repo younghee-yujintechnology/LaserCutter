@@ -20,8 +20,6 @@ using IniParser;
 
 using Raize.CodeSiteLogging;
 using yjTech;
-using LaserCutter.PanUnits;
-using System.Security.Cryptography;
 
 //using IniP
 
@@ -490,6 +488,10 @@ namespace LaserCutter
 
                 Auto.BringToFront();
                 AutoMenu.tabControlEx1.SelectedIndex = 0;
+
+                AutoMenu.tabPage1.CancelLine = false;
+                AutoMenu.tabPage2.CancelLine = false;
+                AutoMenu.tabPage3.CancelLine = true;
             }
             else
             if (aButton == btnManual)
@@ -498,6 +500,10 @@ namespace LaserCutter
 
                 Manual.BringToFront();
                 AutoMenu.tabControlEx1.SelectedIndex = 1;
+
+                AutoMenu.tabPage1.CancelLine = true;
+                AutoMenu.tabPage2.CancelLine = false;
+                AutoMenu.tabPage3.CancelLine = true;
             }
             else
             if (aButton == btnConfig)
@@ -505,6 +511,10 @@ namespace LaserCutter
                 lblMainTitle.Text = "Config";
 
                 Config.BringToFront();
+
+                AutoMenu.tabPage1.CancelLine = true;
+                AutoMenu.tabPage2.CancelLine = false;
+                AutoMenu.tabPage3.CancelLine = true;
             }
             else
             if (aButton == btnJobFile)
@@ -513,6 +523,10 @@ namespace LaserCutter
 
                 JobFile.BringToFront();
                 AutoMenu.tabControlEx1.SelectedIndex = 2;
+
+                AutoMenu.tabPage1.CancelLine = true;
+                AutoMenu.tabPage2.CancelLine = true;
+                AutoMenu.tabPage3.CancelLine = false;
             }
             else
             if (aButton == btnLog)

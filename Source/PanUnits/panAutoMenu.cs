@@ -9,7 +9,6 @@ namespace LaserCutter
     {
         public frmChannelSpy frmChannelSpy;
 
-
         public panAutoMenu()
         {
             InitializeComponent();

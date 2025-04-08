@@ -1147,5 +1147,24 @@ namespace LaserCutter
 
             //CodeSite.SendMsg(String.Format("    PageList.SelectedCount = {0}, {1}", PageList.SelectedCount(), szStr));
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            edLaserPower.Cancel();
+            edPulsePitch.Cancel();
+
+            edThickness.Cancel();
+            edZOffset.Cancel();
+
+            edXCount.Cancel();
+            edYCount.Cancel();
+            edGapX.Cancel();
+            edGapY.Cancel();
+            edManualShiftX.Cancel();
+            edManualShiftY.Cancel();
+            edGlassSizeX.Cancel();
+            edGlassSizeY.Cancel();
+
+        }
     }
 }

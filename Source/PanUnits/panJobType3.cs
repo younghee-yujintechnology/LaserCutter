@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 using Raize.CodeSiteLogging;
@@ -22,12 +23,17 @@ namespace LaserCutter
         public ztCad Cad3;
         public ztMarkPage cad3Data;
 
+        public PageList PageList;
+
+
         public panJobType3()
         {
             InitializeComponent();
 
             InitDataGridViewControl();
             InitializeControl();
+
+            PageList = new PageList();
         }
 
         public void InitializeControl()
@@ -172,17 +178,711 @@ namespace LaserCutter
             btnCancel.Enabled = bEnabled;
         }
 
+        private void ledLabel_Click(object sender, EventArgs e)
+        {
+            LEDLabel ledLabel = (LEDLabel)sender;
+
+            ledLabel.LED.Value = !ledLabel.LED.Value;
+
+            int nIndex = yjCommon.StrToIntDef(ledLabel.Text, -1);
+            if (nIndex > -1)
+            {
+                var Item = PageList[nIndex - 1];
+                Item.Used = ledLabel.LED.Value;
+                PageList[nIndex - 1] = Item;
+            }
+        }
+
+
+        public void CreateArrayButton()
+        {
+            // 패널에 있는 기존 컨트롤(버튼/라벨)을 모두 제거
+            panel2.Controls.Clear();
+
+            int buttonWidth = 50;  // 버튼의 너비
+            int buttonHeight = 50; // 버튼의 높이
+            int padding = 5;       // 버튼 간의 간격
+
+            int totalWidth = buttonWidth + (edXCount.AsInteger * buttonWidth) + ((edXCount.AsInteger - 1) * padding) + buttonWidth;
+            int totalHeight = buttonHeight + (edYCount.AsInteger * buttonHeight) + ((edYCount.AsInteger - 1) * padding) + buttonHeight;
+
+            panel2.ClientSize = new Size(486, 203);
+            panel2.ClientSize = new Size(Math.Max(panel2.ClientSize.Width, totalWidth), Math.Max(panel2.ClientSize.Height, totalHeight));
+
+            // 버튼 배열이 패널 중앙에 위치하도록 시작 위치 계산 (양 끝 공백 포함)
+            int startX = (panel2.ClientSize.Width - totalWidth) / 2 + buttonWidth;
+            int startY = (panel2.ClientSize.Height - totalHeight) / 2 + buttonHeight;
+
+            int nRowIndex = 0, nColIndex = 0;
+
+            int ii = 1;
+            switch (LaserProject.Model3.SortMethod)
+            {
+                case SortMethod.Method1:
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method2:
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + nRowIndex * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method3:
+
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (nRowIndex) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (nRowIndex) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method4:
+
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (edYCount.AsInteger - nRowIndex - 1) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                LEDLabel ledLabel = new LEDLabel();
+                                ledLabel.LED.Size = new Size(10, 10);
+                                ledLabel.LED.Value = true;
+                                ledLabel.Margin2 = 10;
+                                ledLabel.Click += ledLabel_Click;
+                                ledLabel.Width = buttonWidth;
+                                ledLabel.Height = buttonHeight;
+                                ledLabel.Text = ii.ToString();
+
+                                ledLabel.Left = startX + nColIndex * (buttonWidth + padding);
+                                ledLabel.Top = startY + (edYCount.AsInteger - nRowIndex - 1) * (buttonHeight + padding);
+
+                                panel2.Controls.Add(ledLabel);
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
+
+        public void GetPageData()
+        {
+            Cad3.CurLayerName = "";
+            cad3Data.Clear();
+            Cad3.GetPage(cad3Data);
+        }
+
+        public void SetPageSize()
+        {
+            cad3Data.Width = cad3Data.MarkList.Width;
+            cad3Data.Height = cad3Data.MarkList.Height;
+        }
+
+        public void CalcCellPosition()
+        {
+            int nRowIndex = 0, nColIndex = 0;
+
+            SetPageSize();
+
+            int ii = 1;
+            switch (LaserProject.Model3.SortMethod)
+            {
+                case SortMethod.Method1:
+
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method2:
+
+                    for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                    {
+                        if ((nColIndex % 2) == 0)
+                        {
+                            for (nRowIndex = edYCount.AsInteger - 1; nRowIndex >= 0; nRowIndex--)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method3:
+
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * (edYCount.AsInteger - 1) - (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * (edYCount.AsInteger - 1) - (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+
+                case SortMethod.Method4:
+                    for (nRowIndex = 0; nRowIndex < edYCount.AsInteger; nRowIndex++)
+                    {
+                        if ((nRowIndex % 2) == 0)
+                        {
+                            for (nColIndex = 0; nColIndex < edXCount.AsInteger; nColIndex++)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                        else
+                        {
+                            for (nColIndex = edXCount.AsInteger - 1; nColIndex >= 0; nColIndex--)
+                            {
+                                double x = (cad3Data.Width + edGapX.Value) * nColIndex;
+                                double y = (cad3Data.Height + edGapY.Value) * nRowIndex;
+                                PageList.Add(x, y, true);
+
+                                ii = ii + 1;
+                            }
+                        }
+                    }
+                    break;
+            }
+
+            //for (int nIndex = 0; nIndex < CellPos.Count; nIndex++)
+            //{
+            //    CodeSite.SendMsg(String.Format("CellPos[{0}] = {1}", nIndex, CellPos[nIndex].ToString()));
+            //}
+
+            //CodeSite.SendMsg(String.Format("CellPos.XMin, XMax = {0}, {1}", CellPos.XMin, CellPos.XMax));
+            //CodeSite.SendMsg(String.Format("CellPos.YMin, YMax = {0}, {1}", CellPos.YMin, CellPos.YMax));
+            //CodeSite.SendMsg(String.Format("CellPos.Size = {0}, {1}", CellPos.Width, CellPos.Height));
+        }
+
+
         public void btnApply_Click(object sender, System.EventArgs e)
         {
-            ;
+            CreateArrayButton();
+
+            GetPageData();
+
+            PageList.Clear();
+            PageList.PageSize = new DoublePoint(cad3Data.MarkList.Width, cad3Data.MarkList.Height);
+            CalcCellPosition();
+
+            edXCount.Apply();
+            edYCount.Apply();
+            edGapX.Apply();
+            edGapY.Apply();
+            edCellHeight.Apply();
+            edCellWidth.Apply();
+            edCellRadius.Apply();
+
+            edBreakLineLength.Apply();
+            edBreakLineOffset.Apply();
         }
+
+        private void AddBreakLine(double centerX, double centerY, double pointX, double pointY, double offset, double length, bool OutDir)
+        {
+            // Calculate the angle from the bulge center to the point
+            double angle = Math.Atan2(pointY - centerY, pointX - centerX);
+
+            // Adjust offset and length based on OutDir
+            if (!OutDir)
+            {
+                offset = offset + length;
+                length = -length;
+            }
+
+            // Calculate the start point of the break line
+            double startX = pointX + offset * Math.Cos(angle);
+            double startY = pointY + offset * Math.Sin(angle);
+
+            // Calculate the end point of the break line
+            double endX = startX + length * Math.Cos(angle);
+            double endY = startY + length * Math.Sin(angle);
+
+            // Draw the break line
+            IntPtr hEnt = Cad3.AddLine(startX, startY, endX, endY);
+            Lcad.PropPutStr(hEnt, Lcad.LC_PROP_ENT_LAYER, "BreakLine");
+        }
+
+        private void AddBulge(IntPtr polyline, double x, double y, double bulge)
+        {
+            IntPtr hVertex = Cad3.AddPolylineVertex(x, y);
+            Lcad.PropPutFloat(hVertex, Lcad.LC_PROP_VER_BULGE, bulge);
+        }
+
+        private void AddVertex(IntPtr polyline, double x, double y)
+        {
+            Cad3.AddPolylineVertex(x, y);
+        }
+
+        private void DrawPolylineForCell(double x, double y, double width, double height, double radius, double dBulge, bool Breakline, double offset, double length, bool OutDir = true)
+        {
+            IntPtr hPolyLine = Cad3.AddPolyline();
+
+            // Set color and layer for the polyline
+            Lcad.PropPutStr(hPolyLine, Lcad.LC_PROP_ENT_COLOR, "0, 255, 0");
+            Lcad.PropPutStr(hPolyLine, Lcad.LC_PROP_ENT_LAYER, "Cell");
+
+            // Add vertices with bulge for rounded corners
+            AddBulge(hPolyLine, x + radius, y, -dBulge);                  // #0 Bottom-left corner
+            AddVertex(hPolyLine, x, y + radius);                          // #1 Left side
+
+            if (Breakline)
+            {
+                AddBreakLine(x + radius, y + radius, x + radius, y, offset, length, OutDir);
+                AddBreakLine(x + radius, y + radius, x, y + radius, offset, length, OutDir);
+            }
+
+            AddBulge(hPolyLine, x, y + height - radius, -dBulge);         // #2 Top-left corner\
+            AddVertex(hPolyLine, x + radius, y + height);                 // #3 Top-left side
+
+            if (Breakline)
+            {
+                AddBreakLine(x + radius, y + height - radius, x, y + height - radius, offset, length, OutDir);
+                AddBreakLine(x + radius, y + height - radius, x + radius, y + height, offset, length, OutDir);
+            }
+
+            AddBulge(hPolyLine, x + width - radius, y + height, -dBulge); // #4 Top-right corner
+            AddVertex(hPolyLine, x + width, y + height - radius);         // #5 Right side
+
+            if (Breakline)
+            {
+                AddBreakLine(x + width - radius, y + height - radius, x + width - radius, y + height, offset, length, OutDir);
+                AddBreakLine(x + width - radius, y + height - radius, x + width, y + height - radius, offset, length, OutDir);
+            }
+
+            AddBulge(hPolyLine, x + width, y + radius, -dBulge);          // #6 Bottom-right corner
+            AddVertex(hPolyLine, x + width - radius, y);                  // #7 Bottom-right side
+
+            if (Breakline)
+            {
+                AddBreakLine(x + width - radius, y + radius, x + width, y + radius, offset, length, OutDir);
+                AddBreakLine(x + width - radius, y + radius, x + width - radius, y, offset, length, OutDir);
+            }
+
+            // End polyline
+            Cad3.EndPolyline();
+        }
+
+        double CalculateBulge(double angleInDegrees)
+        {
+            // 각도를 라디안으로 변환
+            double angleInRadians = angleInDegrees * (Math.PI / 180.0);
+
+            // Bulge 값 계산
+            double bulge = Math.Tan(angleInRadians / 4.0);
+
+            return bulge;
+        }
+
+
+        private void MakeCell()
+        {
+            IntPtr hLayer = IntPtr.Zero;
+            double dBulge;
+
+            double angle = 90.0;
+            dBulge = CalculateBulge(angle);
+
+            Cad3.Clear();
+
+            hLayer = Lcad.DrwAddLayer(Cad3.GetDrwHandle(), "Cell", "0, 255, 0", IntPtr.Zero, 0);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_VISIBLE, true);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_LOCKED, false);
+            Lcad.PropPutStr(hLayer, Lcad.LC_PROP_LAYER_DESC, "");
+
+            if (chkUseBreakLine.Checked)
+            {
+                hLayer = Lcad.DrwAddLayer(Cad3.GetDrwHandle(), "BreakLine", "255, 255, 0", IntPtr.Zero, 0);
+                Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_VISIBLE, true);
+                Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_LOCKED, false);
+                Lcad.PropPutStr(hLayer, Lcad.LC_PROP_LAYER_DESC, "");
+            }
+
+            DrawPolylineForCell(0, 0, edCellWidth.Value, edCellHeight.Value, edCellRadius.Value, dBulge, chkUseBreakLine.Checked, edBreakLineOffset.Value, edBreakLineLength.Value, chkBreakLineOutDir.Checked);
+        }
+
+        void DrawCircle(double x, double y, double Radius, bool Breakline, double offset, double length, bool OutDir = true)
+        {
+            IntPtr hCircle = Cad3.AddCircle(x, y, Radius);
+            Lcad.PropPutStr(hCircle, Lcad.LC_PROP_ENT_COLOR, "0, 255, 0");
+            Lcad.PropPutStr(hCircle, Lcad.LC_PROP_ENT_LAYER, "Circle");
+
+            // Adjust offset and length if the direction is inward
+            if (!OutDir)
+            {
+                offset += length; // Offset을 length만큼 확장
+                length = -length; // 길이를 반대로 설정
+            }
+
+            // Define angles for 0°, 90°, 180°, 270°
+            double[] angles = { 0, Math.PI / 2, Math.PI, 3 * Math.PI / 2 };
+
+            if (Breakline)
+            {
+                IntPtr hEnt = IntPtr.Zero;
+                // Draw lines at each angle
+                foreach (double angle in angles)
+                {
+                    // Calculate the starting point for the line with offset
+                    double startX = x + (Radius + offset) * Math.Cos(angle);
+                    double startY = y + (Radius + offset) * Math.Sin(angle);
+
+                    // Calculate the end point for the line with length
+                    double endX = startX + length * Math.Cos(angle);
+                    double endY = startY + length * Math.Sin(angle);
+
+                    // Draw the line
+                    hEnt = Cad3.AddLine(startX, startY, endX, endY);
+                    Lcad.PropPutStr(hEnt, Lcad.LC_PROP_ENT_LAYER, "BreakLine");
+                }
+            }
+        }
+
+
+        private void MakeCircle()
+        {
+            IntPtr hLayer = IntPtr.Zero;
+
+            Cad3.Clear();
+
+            hLayer = Lcad.DrwAddLayer(Cad3.GetDrwHandle(), "Circle", "0, 255, 0", IntPtr.Zero, 0);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_VISIBLE, true);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_LOCKED, false);
+            Lcad.PropPutStr(hLayer, Lcad.LC_PROP_LAYER_DESC, "");
+
+            if (chkUseBreakLine.Checked)
+            {
+                hLayer = Lcad.DrwAddLayer(Cad3.GetDrwHandle(), "BreakLine", "255, 255, 0", IntPtr.Zero, 0);
+                Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_VISIBLE, true);
+                Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_LOCKED, false);
+                Lcad.PropPutStr(hLayer, Lcad.LC_PROP_LAYER_DESC, "");
+            }
+
+            DrawCircle(0, 0, edCellRadius.Value, chkUseBreakLine.Checked, edBreakLineOffset.Value, edBreakLineLength.Value, true);
+        }
+
+        public void LoadLayerInfo()
+        {
+            ztCadLayerList list = new ztCadLayerList();
+
+            // 도면을 새로 불러오면 기존 Data를 지운다
+            LaserProject.Model3.Layers.Clear();
+
+            LayerInfo layerInfo;
+
+            Cad3.GetLayers(list);
+
+            dataGridView3.Rows.Clear();
+            for (int i = 0; i < list.Count; i++)
+            {
+                // Layer를 생성하고..
+                layerInfo = new LayerInfo();
+                layerInfo.Name = list[i].Name;
+                layerInfo.szColor = list[i].szColor;
+                layerInfo.Direction = Direction.CW;
+                layerInfo.Used = !(layerInfo.Name == "0");
+                layerInfo.LaserPower = 10.0;
+                layerInfo.PulsePitch = 1.0;
+                layerInfo.ZOffset = 0.0;
+
+                LaserProject.Model3.Layers.Add(layerInfo);
+
+                // GridRow Data를 생성하고..
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView3);
+                row.Cells[1].Value = layerInfo.Name;
+                row.Cells[2].Value = layerInfo.Used.ToString();
+                row.Cells[3].Value = layerInfo.Tool.ToString();
+                row.Cells[4].Value = layerInfo.Direction.ToString();
+                row.Cells[5].Value = layerInfo.LaserPower.ToString("F3");
+                row.Cells[6].Value = layerInfo.ZOffset.ToString("F3");
+                dataGridView3.Rows.Add(row);
+            }
+        }
+
+
 
         public void CreateUserCell()
         {
+            if (rdoCell.Checked)
+            {
+                MakeCell();
+            }
+            else
+            if (rdoCircle.Checked)
+            {
+                MakeCircle();
+            }
+
+            LoadLayerInfo();
+
+            /*
+             * 2. Cad1 도면 전체를 데이타를 불러들인다.
+             */
+            cad3Data.Clear();
+
+            Table.Type3.Cad3.GetPage(cad3Data);
+            Table.Type3.SetPageSize();
+
+            Cad3.BlockUpdate();
+            Cad3.ZoomExtend();
+            Cad3.ZoomScale(0.8);
         }
 
         public void CheckLayerInfo()
         {
+            bool error1 = false;
+
+            ztCadLayerList list = new ztCadLayerList();
+            Table.Type3.Cad3.GetLayers(list);
+
+            // Layer 갯수가 같은지 체크
+            error1 = (list.Count != LaserProject.Model3.Layers.Count);
+
+            // Layer의 이름이 다른지 체크
+            int ii = 0;
+            for (int nIndex = 0; nIndex < LaserProject.Model3.Layers.Count; nIndex++)
+            {
+                var szName = LaserProject.Model3.Layers[nIndex].Name;
+
+                for (int nIndex2 = 0; nIndex2 < list.Count; nIndex2++)
+                {
+                    if (szName.ToLower() == list[nIndex2].Name.ToLower())
+                    {
+                        cad3Data.Clear();
+                        Cad3.CurLayerName = szName;
+                        Cad3.GetPage(cad3Data);
+
+                        LaserProject.Model3.Layers[nIndex].Count = cad3Data.Count;
+                        //  CodeSite.SendMsg(String.Format("Type3.Cad3.Layer[{0}] = {1}", szName, cad3Data.Count));
+
+                        ii = ii + 1;
+                        break;
+                    }
+                }
+            }
+
+            if (error1 || LaserProject.Model3.Layers.Count == 0)
+            {
+                ;
+            }
+            else
+            {
+                CreateArrayButton();
+                if (rdoCell.Checked)
+                {
+                    MakeCell();
+                }
+                else
+                if (rdoCircle.Checked)
+                {
+                    MakeCircle();
+                }
+            }
+
+            for (int nIndex = 0; nIndex < LaserProject.Model3.Layers.Count; nIndex++)
+            {
+                LaserProject.Model3.Layers[nIndex].szColor = list.GetColor(LaserProject.Model3.Layers[nIndex].Name);
+            }
         }
 
         public void GetWorkCenter(int APageIndex)
@@ -235,8 +935,8 @@ namespace LaserCutter
         }
 
         /*
-* 달리 방법이 없네..
-*/
+        * 달리 방법이 없네..
+        */
         public void SetGrid3Value()
         {
             if ((dataGridView3.Rows.Count - 1) != LaserProject.Model3.Layers.Count) return;
@@ -415,6 +1115,30 @@ namespace LaserCutter
 
             //CodeSite.SendMsg(String.Format("    PageList.SelectedCount = {0}, {1}", PageList.SelectedCount(), szStr));
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            edLaserPower.Cancel();
+            edPulsePitch.Cancel();
+
+            edThickness.Cancel();
+            edZOffset.Cancel();
+
+            edXCount.Cancel();
+            edYCount.Cancel();
+            edGapX.Cancel();
+            edGapY.Cancel();
+
+            edCellHeight.Cancel();
+            edCellWidth.Cancel();
+            edCellRadius.Cancel();
+
+            edGlassSizeX.Cancel();
+            edGlassSizeY.Cancel();
+
+            edBreakLineLength.Cancel();
+            edBreakLineOffset.Cancel();
         }
     }
 }
