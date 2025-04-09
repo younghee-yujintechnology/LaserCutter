@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 using yjTech;
@@ -94,6 +95,273 @@ namespace LaserCutter
             if (frmMain.StaticInstance.MenuIndex == 14)
             {
                 e.Cancel = !(tabControlEx1.SelectedIndex == 2);
+            }
+        }
+
+        private void btnAddGroup_Click(object sender, EventArgs e)
+        {
+            String szDir;
+            frmGroupName frmGroupName = new frmGroupName();
+
+            frmGroupName.Text = "추가할 그룹의 이름을 입력합니다.";
+            frmGroupName.edName.Text = "새 그룹";
+
+            frmGroupName.StartPosition = FormStartPosition.CenterScreen;
+            if (frmGroupName.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    szDir = String.Format("{0}Model\\{1}", yjCommon.AppPath(), frmGroupName.edName.Text);
+                    Directory.CreateDirectory(szDir);
+
+                    TreeNode rootNode;
+
+                    rootNode = new TreeNode(frmGroupName.edName.Text);
+                    rootNode.ImageIndex = 15;
+                    rootNode.SelectedImageIndex = 16;
+
+                    tvModel.Nodes.Add(rootNode);
+                }
+
+                catch (Exception)
+                {
+                    yjCommon.Warning("그룹 폴더를 생성하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
+                }
+
+                finally { }
+            }
+        }
+
+        private void btnDeleteGroup_Click(object sender, EventArgs e)
+        {
+            // 트리뷰에서 선택된 노드를 가져옵니다.
+            TreeNode selectedNode = tvModel.SelectedNode;
+
+            // 선택된 노드가 없는 경우 경고 메시지를 표시합니다.
+            if (selectedNode == null)
+            {
+                yjCommon.Warning("삭제할 그룹을 선택하세요.", yjCommon.MESSAGE_BOX_TITLE);
+                return;
+            }
+
+            // 사용자에게 삭제 확인 메시지를 표시합니다.
+            DialogResult result = MessageBox.Show("정말로 선택한 그룹을 삭제하시겠습니까?", "그룹 삭제", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                String groupName = selectedNode.Text;
+                String groupDir = String.Format("{0}Model\\{1}", yjCommon.AppPath(), groupName);
+
+                try
+                {
+                    // 트리 노드 삭제
+                    tvModel.Nodes.Remove(selectedNode);
+
+                    // 폴더 삭제
+                    if (Directory.Exists(groupDir))
+                    {
+                        Directory.Delete(groupDir, true); // true는 하위 디렉토리 및 파일도 삭제
+                    }
+                }
+                catch (Exception)
+                {
+                    yjCommon.Warning("그룹 폴더를 삭제하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
+                }
+                finally { }
+            }
+        }
+
+        private void btnAddModel_Click(object sender, EventArgs e)
+        {
+            String szGroupName = "", szFileName = "";
+            String szDir;
+
+            frmModelName frmModelName = new frmModelName();
+
+            frmModelName.Text = "추가할 모델의 이름을 입력합니다.";
+            frmModelName.edName.Text = "새 모델";
+
+            if (tvModel.SelectedNode != null)
+            {
+                if (tvModel.SelectedNode.Level == 0)
+                {
+                    // 그룹이 선택되어 있음 ok..
+                    szGroupName = tvModel.SelectedNode.Text;
+                }
+                else
+                if (tvModel.SelectedNode.Level == 1)
+                {
+                    // 모델이 선택되어 있음 그룹으로 변경
+                    tvModel.SelectedNode = tvModel.SelectedNode.Parent;
+                    szGroupName = tvModel.SelectedNode.Text;
+                }
+
+                frmModelName.Group = szGroupName;
+
+                frmModelName.StartPosition = FormStartPosition.CenterScreen;
+                if (frmModelName.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        /*
+                         * 1. Project파일 생성
+                         */
+                        szDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        Directory.CreateDirectory(szDir);
+
+                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table1", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        //Directory.CreateDirectory(szDir);
+
+                        szFileName = String.Format("{0}\\[{1}][{2}][Table1].prj", szDir, szGroupName, frmModelName.edName.Text);
+
+                        LaserProject tmpProject1 = new LaserProject();
+
+                        tmpProject1.SaveToFile(szFileName);
+
+                        TreeNode rootNode;
+
+                        rootNode = new TreeNode(frmModelName.edName.Text);
+                        rootNode.ImageIndex = 17;
+                        rootNode.SelectedImageIndex = 17;
+
+                        tvModel.SelectedNode.Nodes.Add(rootNode);
+
+                        /*
+                         * 1. Project파일 생성
+                         */
+                        //szDir = String.Format("{0}Model\\{1}\\{2}\\Table2", dkCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+                        //Directory.CreateDirectory(szDir);
+
+                        szFileName = String.Format("{0}\\[{1}][{2}][Table2].prj", szDir, szGroupName, frmModelName.edName.Text);
+
+                        LaserProject tmpProject2 = new LaserProject();
+
+                        tmpProject2.SaveToFile(szFileName);
+
+                        /*
+                         * 2. Vision 파일을 복사, 가져오기
+                         */
+                        szDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), szGroupName, frmModelName.edName.Text);
+
+                        string srcPath = String.Format("{0}Vision\\CogPMAlignTool(4Align).vpp", yjCommon.AppPath());
+                        string DestPath = String.Format("{0}\\CogPMAlignTool(4Align).vpp", szDir);
+
+                        File.Copy(srcPath, DestPath, true);
+                    }
+
+                    catch (Exception)
+                    {
+                        yjCommon.Warning("모델 폴더를 생성하는 과정에서 에러가 발생했습니다.", yjCommon.MESSAGE_BOX_TITLE);
+                    }
+
+                    finally { }
+                }
+            }
+            else
+            {
+                yjCommon.Warning("먼저 모델을 등록할 그룹을 선택합니다.", yjCommon.MESSAGE_BOX_TITLE);
+            }
+        }
+
+        private void btnRenameModel_Click(object sender, EventArgs e)
+        {
+            // 트리뷰에서 선택된 노드를 가져옵니다.
+            TreeNode selectedNode = tvModel.SelectedNode;
+
+            // 선택된 노드가 없는 경우 경고 메시지를 표시합니다.
+            if (selectedNode == null || selectedNode.Level != 1)
+            {
+                yjCommon.Warning("이름을 변경할 모델을 선택하세요.", yjCommon.MESSAGE_BOX_TITLE);
+                return;
+            }
+
+            // 현재 모델의 그룹 이름과 모델 이름을 가져옵니다.
+            String groupName = selectedNode.Parent.Text;
+            String oldModelName = selectedNode.Text;
+            String oldDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), groupName, oldModelName);
+
+            // 새로운 모델 이름을 입력받기 위해 폼을 엽니다.
+            frmModelName frmModelName = new frmModelName();
+            frmModelName.Text = "변경할 모델의 이름을 입력합니다.";
+            frmModelName.edName.Text = oldModelName;
+            frmModelName.Group = groupName;
+
+            frmModelName.StartPosition = FormStartPosition.CenterScreen;
+            if (frmModelName.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    String newModelName = frmModelName.edName.Text;
+                    String newDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), groupName, newModelName);
+
+                    // 프로젝트 파일 이름을 변경합니다.
+                    String oldFileName = String.Format("{0}\\[{1}][{2}][Table1].prj", oldDir, groupName, oldModelName);
+                    String newFileName = String.Format("{0}\\[{1}][{2}][Table1].prj", oldDir, groupName, newModelName);
+                    if (File.Exists(oldFileName))
+                    {
+                        File.Move(oldFileName, newFileName);
+                    }
+
+                    // 프로젝트 파일 이름을 변경합니다.
+                    oldFileName = String.Format("{0}\\[{1}][{2}][Table2].prj", oldDir, groupName, oldModelName);
+                    newFileName = String.Format("{0}\\[{1}][{2}][Table2].prj", oldDir, groupName, newModelName);
+                    if (File.Exists(oldFileName))
+                    {
+                        File.Move(oldFileName, newFileName);
+                    }
+
+                    // 폴더 이름을 변경합니다.
+                    if (Directory.Exists(oldDir))
+                    {
+                        Directory.Move(oldDir, newDir);
+                    }
+                    // 트리 노드 이름을 변경합니다.
+                    selectedNode.Text = newModelName;
+                }
+                catch (Exception)
+                {
+                    yjCommon.Warning("모델 폴더 이름을 변경하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
+                }
+                finally { }
+            }
+        }
+
+        private void btnDeleteModel_Click(object sender, EventArgs e)
+        {
+            // 트리뷰에서 선택된 노드를 가져옵니다.
+            TreeNode selectedNode = tvModel.SelectedNode;
+
+            // 선택된 노드가 없는 경우 또는 선택된 노드가 그룹 노드인 경우 경고 메시지를 표시합니다.
+            if (selectedNode == null || selectedNode.Level != 1)
+            {
+                yjCommon.Warning("삭제할 모델을 선택하세요.", yjCommon.MESSAGE_BOX_TITLE);
+                return;
+            }
+
+            // 현재 모델의 그룹 이름과 모델 이름을 가져옵니다.
+            String groupName = selectedNode.Parent.Text;
+            String modelName = selectedNode.Text;
+            String modelDir = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), groupName, modelName);
+
+            // 사용자에게 삭제 확인 메시지를 표시합니다.
+            DialogResult result = MessageBox.Show("정말로 선택한 모델을 삭제하시겠습니까?", "모델 삭제", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    // 트리 노드 삭제
+                    tvModel.Nodes.Remove(selectedNode);
+
+                    // 모델 폴더와 파일 삭제
+                    if (Directory.Exists(modelDir))
+                    {
+                        Directory.Delete(modelDir, true); // true는 하위 디렉토리 및 파일도 삭제
+                    }
+                }
+                catch (Exception)
+                {
+                    yjCommon.Warning("모델 폴더를 삭제하는데 실패했습니다.", yjCommon.MESSAGE_BOX_TITLE);
+                }
+                finally { }
             }
         }
     }

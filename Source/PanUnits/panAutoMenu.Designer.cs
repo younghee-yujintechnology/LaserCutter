@@ -28,29 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "[현대자동차][쏘나타][2차]",
             "2024-06-22, 오후 3:06"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem(new string[] {
             "2",
             "[삼성자동차][르노]"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem(new string[] {
             "3",
             "[현대자동차][쏘나타]"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem(new string[] {
             "4",
             "[현대자동차][갤로퍼]"}, -1);
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("4차");
@@ -72,6 +73,7 @@
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("BMW");
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FORD");
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("대우");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(panAutoMenu));
             this.tabControlEx1 = new yjTech.TabControlEx();
             this.tabPage1 = new yjTech.TabPageEx();
             this.panRight = new LaserCutter.sjPanel();
@@ -251,6 +253,7 @@
             this.btnDeleteGroup = new yjTech.BitBtn();
             this.btnRenameGroup = new yjTech.BitBtn();
             this.btnAddGroup = new yjTech.BitBtn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControlEx1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panRight.SuspendLayout();
@@ -1783,12 +1786,12 @@
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6});
+            listViewItem41,
+            listViewItem42,
+            listViewItem43,
+            listViewItem44,
+            listViewItem45,
+            listViewItem46});
             this.listView1.Location = new System.Drawing.Point(12, 283);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
@@ -3280,10 +3283,10 @@
             this.lvRecentModel.FullRowSelect = true;
             this.lvRecentModel.HideSelection = false;
             this.lvRecentModel.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem47,
+            listViewItem48,
+            listViewItem49,
+            listViewItem50});
             this.lvRecentModel.Location = new System.Drawing.Point(4, 3);
             this.lvRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.lvRecentModel.Name = "lvRecentModel";
@@ -3347,6 +3350,8 @@
             // 
             this.tvModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tvModel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvModel.ImageIndex = 0;
+            this.tvModel.ImageList = this.imageList1;
             this.tvModel.Location = new System.Drawing.Point(0, 0);
             this.tvModel.Margin = new System.Windows.Forms.Padding(0);
             this.tvModel.Name = "tvModel";
@@ -3380,6 +3385,7 @@
             treeNode10,
             treeNode11,
             treeNode12});
+            this.tvModel.SelectedImageIndex = 0;
             this.tvModel.Size = new System.Drawing.Size(510, 749);
             this.tvModel.TabIndex = 1369;
             // 
@@ -3411,6 +3417,7 @@
             this.btnCopyModel.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnCopyModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnCopyModel.ImageIndex = 8;
+            this.btnCopyModel.ImageList = this.imageList1;
             this.btnCopyModel.Location = new System.Drawing.Point(206, 67);
             this.btnCopyModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCopyModel.Name = "btnCopyModel";
@@ -3457,12 +3464,14 @@
             this.btnDeleteModel.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnDeleteModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDeleteModel.ImageKey = "7.bmp";
+            this.btnDeleteModel.ImageList = this.imageList1;
             this.btnDeleteModel.Location = new System.Drawing.Point(243, 31);
             this.btnDeleteModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeleteModel.Name = "btnDeleteModel";
             this.btnDeleteModel.Size = new System.Drawing.Size(32, 30);
             this.btnDeleteModel.TabIndex = 1370;
             this.btnDeleteModel.UseVisualStyleBackColor = false;
+            this.btnDeleteModel.Click += new System.EventHandler(this.btnDeleteModel_Click);
             // 
             // btnRenameModel
             // 
@@ -3473,12 +3482,14 @@
             this.btnRenameModel.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnRenameModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRenameModel.ImageKey = "13.bmp";
+            this.btnRenameModel.ImageList = this.imageList1;
             this.btnRenameModel.Location = new System.Drawing.Point(205, 31);
             this.btnRenameModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRenameModel.Name = "btnRenameModel";
             this.btnRenameModel.Size = new System.Drawing.Size(32, 30);
             this.btnRenameModel.TabIndex = 1369;
             this.btnRenameModel.UseVisualStyleBackColor = false;
+            this.btnRenameModel.Click += new System.EventHandler(this.btnRenameModel_Click);
             // 
             // btnAddModel
             // 
@@ -3489,12 +3500,14 @@
             this.btnAddModel.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnAddModel.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnAddModel.ImageIndex = 8;
+            this.btnAddModel.ImageList = this.imageList1;
             this.btnAddModel.Location = new System.Drawing.Point(166, 31);
             this.btnAddModel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAddModel.Name = "btnAddModel";
             this.btnAddModel.Size = new System.Drawing.Size(32, 30);
             this.btnAddModel.TabIndex = 1368;
             this.btnAddModel.UseVisualStyleBackColor = false;
+            this.btnAddModel.Click += new System.EventHandler(this.btnAddModel_Click);
             // 
             // btnDeleteGroup
             // 
@@ -3504,12 +3517,14 @@
             this.btnDeleteGroup.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnDeleteGroup.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDeleteGroup.ImageKey = "7.bmp";
+            this.btnDeleteGroup.ImageList = this.imageList1;
             this.btnDeleteGroup.Location = new System.Drawing.Point(98, 31);
             this.btnDeleteGroup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDeleteGroup.Name = "btnDeleteGroup";
             this.btnDeleteGroup.Size = new System.Drawing.Size(32, 30);
             this.btnDeleteGroup.TabIndex = 1367;
             this.btnDeleteGroup.UseVisualStyleBackColor = false;
+            this.btnDeleteGroup.Click += new System.EventHandler(this.btnDeleteGroup_Click);
             // 
             // btnRenameGroup
             // 
@@ -3520,6 +3535,7 @@
             this.btnRenameGroup.Enabled = false;
             this.btnRenameGroup.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRenameGroup.ImageKey = "13.bmp";
+            this.btnRenameGroup.ImageList = this.imageList1;
             this.btnRenameGroup.Location = new System.Drawing.Point(59, 31);
             this.btnRenameGroup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnRenameGroup.Name = "btnRenameGroup";
@@ -3535,12 +3551,45 @@
             this.btnAddGroup.CaptionStyle.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnAddGroup.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnAddGroup.ImageIndex = 8;
+            this.btnAddGroup.ImageList = this.imageList1;
             this.btnAddGroup.Location = new System.Drawing.Point(20, 31);
             this.btnAddGroup.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnAddGroup.Name = "btnAddGroup";
             this.btnAddGroup.Size = new System.Drawing.Size(32, 30);
             this.btnAddGroup.TabIndex = 1365;
             this.btnAddGroup.UseVisualStyleBackColor = false;
+            this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Magenta;
+            this.imageList1.Images.SetKeyName(0, "0.bmp");
+            this.imageList1.Images.SetKeyName(1, "1.bmp");
+            this.imageList1.Images.SetKeyName(2, "2.bmp");
+            this.imageList1.Images.SetKeyName(3, "3.bmp");
+            this.imageList1.Images.SetKeyName(4, "4.bmp");
+            this.imageList1.Images.SetKeyName(5, "5.bmp");
+            this.imageList1.Images.SetKeyName(6, "6.bmp");
+            this.imageList1.Images.SetKeyName(7, "7.bmp");
+            this.imageList1.Images.SetKeyName(8, "8.bmp");
+            this.imageList1.Images.SetKeyName(9, "9.bmp");
+            this.imageList1.Images.SetKeyName(10, "10.bmp");
+            this.imageList1.Images.SetKeyName(11, "11.bmp");
+            this.imageList1.Images.SetKeyName(12, "12.bmp");
+            this.imageList1.Images.SetKeyName(13, "13.bmp");
+            this.imageList1.Images.SetKeyName(14, "14.bmp");
+            this.imageList1.Images.SetKeyName(15, "15.bmp");
+            this.imageList1.Images.SetKeyName(16, "16.bmp");
+            this.imageList1.Images.SetKeyName(17, "17.bmp");
+            this.imageList1.Images.SetKeyName(18, "18.bmp");
+            this.imageList1.Images.SetKeyName(19, "19.bmp");
+            this.imageList1.Images.SetKeyName(20, "20.bmp");
+            this.imageList1.Images.SetKeyName(21, "21.bmp");
+            this.imageList1.Images.SetKeyName(22, "22.bmp");
+            this.imageList1.Images.SetKeyName(23, "23.bmp");
+            this.imageList1.Images.SetKeyName(24, "24.bmp");
+            this.imageList1.Images.SetKeyName(25, "25.bmp");
             // 
             // panAutoMenu
             // 
@@ -3748,5 +3797,6 @@
         public yjTech.TabPageEx tabPage1;
         public yjTech.TabPageEx tabPage2;
         public yjTech.TabPageEx tabPage3;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
