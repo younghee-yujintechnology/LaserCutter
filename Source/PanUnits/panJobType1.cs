@@ -789,8 +789,6 @@ namespace LaserCutter
                 offsetY += Common.edTable2NozzleYOffset.Value;
             }
 
-            //       SetGrid1Value();
-
             Cad1.Open(Table.GetModelPath() + lblDxfPath.Text);
             SetGrid1Value();
             Cad1.Rotate(CenterPos.x, CenterPos.y, Angle);
@@ -874,5 +872,133 @@ namespace LaserCutter
             szList.Clear();
         }
 
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            if (lblDxfPath.Text != "")
+            {
+                if (System.Windows.Forms.DialogResult.Yes != yjCommon.Confirm("도면 파일을 변경 하면 기존 데이타를 삭제합니다. 진행하시겠습니까?.", "확인"))
+                {
+                    return;
+                }
+            }
+
+            // 현재
+            String szFileName;
+            if (Cad1.Open(""))
+            {
+                Cad1.ZoomExtend();
+                Cad1.ZoomScale(0.8);
+
+                Cad1.Visible = true;
+
+                szFileName = yjCommon.ExtractFileName(Cad1.FileName);
+
+                String szNewPath = String.Format("{0}{1}", Table.GetModelPath(), szFileName);
+
+                if (Cad1.FileName != szNewPath)
+                {
+                    System.IO.File.Copy(Cad1.FileName, szNewPath, true);
+                }
+
+                lblDxfPath.Text = szFileName;
+
+                if (Cad1.Open(szNewPath))
+                {
+                    Cad1.ZoomExtend();
+                    Cad1.ZoomScale(0.8);
+                }
+
+                CheckLayerInfo();
+
+                DisplayLayerInfo();
+
+                if (Table.Type2.Cad2.Open(szNewPath))
+                {
+                    Table.Type2.Cad2.ZoomExtend();
+                    Table.Type2.Cad2.ZoomScale(0.8);
+                }
+
+                Table.Type2.lblDxfPath.Text = szFileName;
+                Table.Type2.CheckLayerInfo();
+                Table.Type2.DisplayLayerInfo();
+            }
+        }
+
+        private bool MoveUp(int ASelectedIndex)
+        {
+            // 선택된 행이 없는 경우
+            if (ASelectedIndex <= 0 || ASelectedIndex >= dataGridView1.Rows.Count) return false;
+
+            // 행 이동 처리
+            DataGridViewRow selectedRow = dataGridView1.Rows[ASelectedIndex];
+            dataGridView1.Rows.RemoveAt(ASelectedIndex);
+            dataGridView1.Rows.Insert(ASelectedIndex - 1, selectedRow);
+
+            // 선택 상태 유지
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[ASelectedIndex - 1].Selected = true;
+
+            return true; // 성공적으로 이동
+        }
+
+
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return;
+
+            int nIndex = dataGridView1.SelectedRows[0].Index;
+
+            if (MoveUp(nIndex))
+            {
+                LaserProject.Model1.Layers.MoveUp(nIndex);
+                DisplayLayerInfo();
+                dataGridView1.Rows[nIndex - 1].Selected = true;
+
+                //logger.SendMsg("");
+                //for (int i = 0; i < LaserProject.Model1.Layers.Count; i++)
+                //{
+                //    logger.SendMsg($"{LaserProject.Model1.Layers[i]}");
+                //}
+            }
+        }
+
+        private bool MoveDown(int ASelectedIndex)
+        {
+            // 선택된 행이 없는 경우
+            if (ASelectedIndex < 0 || ASelectedIndex >= dataGridView1.Rows.Count - 2) return false;
+
+            // 행 이동 처리
+            DataGridViewRow selectedRow = dataGridView1.Rows[ASelectedIndex];
+            dataGridView1.Rows.RemoveAt(ASelectedIndex);
+            dataGridView1.Rows.Insert(ASelectedIndex + 1, selectedRow);
+
+            // 선택 상태 유지
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[ASelectedIndex + 1].Selected = true;
+
+            return true; // 성공적으로 이동
+        }
+
+
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0) return;
+
+            int nIndex = dataGridView1.SelectedRows[0].Index;
+
+            if (MoveDown(nIndex))
+            {
+                LaserProject.Model1.Layers.MoveDown(nIndex);
+                DisplayLayerInfo();
+                dataGridView1.Rows[nIndex + 1].Selected = true;
+
+                //logger.SendMsg("");
+                //for (int i = 0; i < LaserProject.Model1.Layers.Count; i++)
+                //{
+                //    logger.SendMsg($"{LaserProject.Model1.Layers[i]}");
+                //}
+            }
+
+        }
     }
 }

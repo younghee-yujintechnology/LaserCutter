@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.SystemColors.WindowText, System.Drawing.SystemColors.Window, new System.Drawing.Font("Tahoma", 12F));
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "1",
             "[현대자동차][쏘나타][2차]",
             "2024-06-22, 오후 3:06"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "2",
             "[삼성자동차][르노]"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "3",
             "[현대자동차][쏘나타]"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "4",
             "[현대자동차][갤로퍼]"}, -1);
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("4차");
@@ -243,6 +243,7 @@
             this.bitBtn3 = new yjTech.BitBtn();
             this.tabPageRegisteredModel = new System.Windows.Forms.TabPage();
             this.tvModel = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCopyModel = new yjTech.BitBtn();
             this.label7 = new yjTech.Label();
@@ -253,7 +254,8 @@
             this.btnDeleteGroup = new yjTech.BitBtn();
             this.btnRenameGroup = new yjTech.BitBtn();
             this.btnAddGroup = new yjTech.BitBtn();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlEx1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panRight.SuspendLayout();
@@ -267,6 +269,7 @@
             this.panel1.SuspendLayout();
             this.tabPageRegisteredModel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlEx1
@@ -1786,12 +1789,12 @@
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem41,
-            listViewItem42,
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.listView1.Location = new System.Drawing.Point(12, 283);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
@@ -3283,10 +3286,10 @@
             this.lvRecentModel.FullRowSelect = true;
             this.lvRecentModel.HideSelection = false;
             this.lvRecentModel.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem47,
-            listViewItem48,
-            listViewItem49,
-            listViewItem50});
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
             this.lvRecentModel.Location = new System.Drawing.Point(4, 3);
             this.lvRecentModel.Margin = new System.Windows.Forms.Padding(0);
             this.lvRecentModel.Name = "lvRecentModel";
@@ -3388,6 +3391,38 @@
             this.tvModel.SelectedImageIndex = 0;
             this.tvModel.Size = new System.Drawing.Size(510, 749);
             this.tvModel.TabIndex = 1369;
+            this.tvModel.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvModel_NodeMouseClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Magenta;
+            this.imageList1.Images.SetKeyName(0, "0.bmp");
+            this.imageList1.Images.SetKeyName(1, "1.bmp");
+            this.imageList1.Images.SetKeyName(2, "2.bmp");
+            this.imageList1.Images.SetKeyName(3, "3.bmp");
+            this.imageList1.Images.SetKeyName(4, "4.bmp");
+            this.imageList1.Images.SetKeyName(5, "5.bmp");
+            this.imageList1.Images.SetKeyName(6, "6.bmp");
+            this.imageList1.Images.SetKeyName(7, "7.bmp");
+            this.imageList1.Images.SetKeyName(8, "8.bmp");
+            this.imageList1.Images.SetKeyName(9, "9.bmp");
+            this.imageList1.Images.SetKeyName(10, "10.bmp");
+            this.imageList1.Images.SetKeyName(11, "11.bmp");
+            this.imageList1.Images.SetKeyName(12, "12.bmp");
+            this.imageList1.Images.SetKeyName(13, "13.bmp");
+            this.imageList1.Images.SetKeyName(14, "14.bmp");
+            this.imageList1.Images.SetKeyName(15, "15.bmp");
+            this.imageList1.Images.SetKeyName(16, "16.bmp");
+            this.imageList1.Images.SetKeyName(17, "17.bmp");
+            this.imageList1.Images.SetKeyName(18, "18.bmp");
+            this.imageList1.Images.SetKeyName(19, "19.bmp");
+            this.imageList1.Images.SetKeyName(20, "20.bmp");
+            this.imageList1.Images.SetKeyName(21, "21.bmp");
+            this.imageList1.Images.SetKeyName(22, "22.bmp");
+            this.imageList1.Images.SetKeyName(23, "23.bmp");
+            this.imageList1.Images.SetKeyName(24, "24.bmp");
+            this.imageList1.Images.SetKeyName(25, "25.bmp");
             // 
             // panel2
             // 
@@ -3560,36 +3595,18 @@
             this.btnAddGroup.UseVisualStyleBackColor = false;
             this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
             // 
-            // imageList1
+            // contextMenuStrip1
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Magenta;
-            this.imageList1.Images.SetKeyName(0, "0.bmp");
-            this.imageList1.Images.SetKeyName(1, "1.bmp");
-            this.imageList1.Images.SetKeyName(2, "2.bmp");
-            this.imageList1.Images.SetKeyName(3, "3.bmp");
-            this.imageList1.Images.SetKeyName(4, "4.bmp");
-            this.imageList1.Images.SetKeyName(5, "5.bmp");
-            this.imageList1.Images.SetKeyName(6, "6.bmp");
-            this.imageList1.Images.SetKeyName(7, "7.bmp");
-            this.imageList1.Images.SetKeyName(8, "8.bmp");
-            this.imageList1.Images.SetKeyName(9, "9.bmp");
-            this.imageList1.Images.SetKeyName(10, "10.bmp");
-            this.imageList1.Images.SetKeyName(11, "11.bmp");
-            this.imageList1.Images.SetKeyName(12, "12.bmp");
-            this.imageList1.Images.SetKeyName(13, "13.bmp");
-            this.imageList1.Images.SetKeyName(14, "14.bmp");
-            this.imageList1.Images.SetKeyName(15, "15.bmp");
-            this.imageList1.Images.SetKeyName(16, "16.bmp");
-            this.imageList1.Images.SetKeyName(17, "17.bmp");
-            this.imageList1.Images.SetKeyName(18, "18.bmp");
-            this.imageList1.Images.SetKeyName(19, "19.bmp");
-            this.imageList1.Images.SetKeyName(20, "20.bmp");
-            this.imageList1.Images.SetKeyName(21, "21.bmp");
-            this.imageList1.Images.SetKeyName(22, "22.bmp");
-            this.imageList1.Images.SetKeyName(23, "23.bmp");
-            this.imageList1.Images.SetKeyName(24, "24.bmp");
-            this.imageList1.Images.SetKeyName(25, "25.bmp");
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(190, 22);
+            this.toolStripMenuItem1.Text = "탐색기에서 폴더 열기";
             // 
             // panAutoMenu
             // 
@@ -3598,6 +3615,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9F);
             this.Name = "panAutoMenu";
             this.Size = new System.Drawing.Size(569, 932);
+            this.Load += new System.EventHandler(this.panAutoMenu_Load);
             this.tabControlEx1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.panRight.ResumeLayout(false);
@@ -3613,6 +3631,7 @@
             this.panel1.ResumeLayout(false);
             this.tabPageRegisteredModel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3798,5 +3817,7 @@
         public yjTech.TabPageEx tabPage2;
         public yjTech.TabPageEx tabPage3;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

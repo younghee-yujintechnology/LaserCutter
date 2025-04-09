@@ -342,8 +342,8 @@ namespace LaserCutter
             CheckSystemFile();
 
             /*
-  * 1. Auto
-  */
+              * 1. Auto
+              */
             Auto = new panAuto();
             Auto.frmChannelSpy = frmChannelSpy.StaticInstance;
             ////Auto.frmVision = frmVision.StaticInstance;
@@ -356,6 +356,7 @@ namespace LaserCutter
             panClient.Controls.Add(Auto);
 
             AutoMenu = new panAutoMenu();
+            AutoMenu.frmMain = this;
             AutoMenu.frmChannelSpy = frmChannelSpy.StaticInstance;
 
             panClient.Controls.Add(AutoMenu);

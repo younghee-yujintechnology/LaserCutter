@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Documents;
 using System.Windows.Forms;
 
 using yjTech;
@@ -9,6 +10,7 @@ namespace LaserCutter
     public partial class panAutoMenu: UserControl
     {
         public frmChannelSpy frmChannelSpy;
+        public frmMain frmMain;
 
         public panAutoMenu()
         {
@@ -364,5 +366,106 @@ namespace LaserCutter
                 finally { }
             }
         }
+
+        private void panAutoMenu_Load(object sender, EventArgs e)
+        {
+            LoadModelList();
+        }
+
+        public void LoadModelList()
+        {
+            tvModel.BeginUpdate();
+            tvModel.Nodes.Clear();
+
+            string modelPath = String.Format("{0}Model", yjCommon.AppPath());
+            string[] szDirectories = Directory.GetDirectories(modelPath);
+
+            foreach (string szDir in szDirectories)
+            {
+                string szDirName = Path.GetFileName(szDir);
+                TreeNode node = tvModel.Nodes.Add(szDirName);
+                node.ImageIndex = 15;
+                node.SelectedImageIndex = 16;
+
+                string[] subDirectories = Directory.GetDirectories(szDir);
+                foreach (string subDir in subDirectories)
+                {
+                    string szSubDirName = Path.GetFileName(subDir);
+                    string szDBName1 = Path.Combine(szDir, $"{szSubDirName}", $"[{szDirName}][{szSubDirName}][Table1].prj");
+                    string szDBName2 = Path.Combine(szDir, $"{szSubDirName}", $"[{szDirName}][{szSubDirName}][Table2].prj");
+
+                    if (File.Exists(szDBName1) && File.Exists(szDBName2))
+                    {
+                        TreeNode childNode = node.Nodes.Add(szSubDirName);
+
+                        childNode.ImageIndex = 17;
+                        childNode.SelectedImageIndex = 17;
+                    }
+                }
+
+                tvModel.EndUpdate();
+            }
+        }
+
+        private void tvModel_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Node.Parent == null)
+                {
+                    GroupName = e.Node.Text;
+                    ModelName = "";
+                }
+                else
+                {
+                    GroupName = e.Node.Parent.Text;
+                    ModelName = e.Node.Text;
+                }
+
+                frmMain.JobFile.Table1.lblGroupName.Text = GroupName;
+                frmMain.JobFile.Table1.lblModelName.Text = ModelName;
+                frmMain.JobFile.Table1.GroupName = GroupName;
+                frmMain.JobFile.Table1.ModelName = ModelName;
+
+                frmMain.JobFile.Table2.lblGroupName.Text = GroupName;
+                frmMain.JobFile.Table2.lblModelName.Text = ModelName;
+                frmMain.JobFile.Table2.GroupName = GroupName;
+                frmMain.JobFile.Table2.ModelName = ModelName;
+            }
+            else
+            if (e.Button == MouseButtons.Right)
+            {
+                // 클릭된 노드를 선택 상태로 변경
+                tvModel.SelectedNode = e.Node;
+
+                // 팝업 메뉴를 클릭 위치에 표시
+                contextMenuStrip1.Show(tvModel, e.Location);
+            }
+        }
+
+        #region property public string GroupName
+        private String mGroupName;
+        public string GroupName
+        {
+            get { return mGroupName; }
+            set
+            {
+                mGroupName = value;
+            }
+        }
+        #endregion
+
+        #region property public string ModelName
+        private String mModelName;
+
+        public string ModelName
+        {
+            get { return mModelName; }
+            set
+            {
+                mModelName = value;
+            }
+        }
+        #endregion
     }
 }

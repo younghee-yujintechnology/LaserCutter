@@ -403,9 +403,7 @@
     <EmbeddedResource Include="Embeded Dll\Newtonsoft.Json.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Embeded Dll\Raize.CodeSiteLogging.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="Embeded Dll\Raize.CodeSiteLogging.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Embeded Dll\System.Runtime.CompilerServices.Unsafe.dll" />
@@ -457,7 +455,7 @@
     <None Include="Resources\Image12.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Embeded Dll\YJTECH.dll" />
+    <EmbeddedResource Include="Embeded Dll\YJTECH.dll" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
