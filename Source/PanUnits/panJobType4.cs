@@ -126,8 +126,31 @@ namespace LaserCutter
         }
         #endregion
 
+        public void ClearControlValue()
+        {
+            lblDxfPath.Text = "";
+            Cad4.Clear();
+            Cad4.ReDraw();
+
+            edLaserPower.Value = 0.0;
+            edPulsePitch.Value = 0.0;
+            //  dataGridView1.IEnabled = bEnabled;
+
+            edZOffset.Value = 0.0;
+            edThickness.Value = 0.0;
+
+            btnUse.LED.Value = false;
+
+            dataGridView4.Rows.Clear();
+        }
+
+
         public void EnableControl(bool bEnabled)
         {
+            Cad4.Enabled = bEnabled;
+
+            btnSave.Enabled = bEnabled;
+            btnCancel.Enabled = bEnabled;
         }
 
         public void CheckLayerInfo()
@@ -273,6 +296,15 @@ namespace LaserCutter
 
             edThickness.Apply();
             edZOffset.Apply();
+
+            edGuideLength.Apply();
+            edGuidePitch.Apply();
+
+            edXLength.Apply();
+            edXPitch.Apply();   
+
+            edYLength.Apply();
+            edYPitch.Apply();
 
             Table.SaveJobFile();
 

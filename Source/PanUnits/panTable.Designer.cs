@@ -105,6 +105,7 @@
             this.btnClose.TabIndex = 796;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnOpenJobFile
             // 
