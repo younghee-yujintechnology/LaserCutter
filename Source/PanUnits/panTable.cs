@@ -929,6 +929,12 @@ namespace LaserCutter
             return rr;
         }
 
+                // yhbyun rr = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)                
+            }
+
+            return rr;
+        }
+
         public DoublePoint MakeRectType(bool LaserRun, ref StringList List, ztRectItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
         {
             DoublePoint rr = new DoublePoint(0, 0);
