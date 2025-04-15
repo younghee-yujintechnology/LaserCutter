@@ -145,6 +145,7 @@
             this.dataGridView3.RowTemplate.Height = 23;
             this.dataGridView3.Size = new System.Drawing.Size(1056, 249);
             this.dataGridView3.TabIndex = 1697;
+            this.dataGridView3.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView3_CellFormatting);
             // 
             // ColumnColor
             // 
@@ -1280,6 +1281,7 @@
             this.btnMoveUp.TabIndex = 1725;
             this.btnMoveUp.Text = "△";
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
@@ -1291,6 +1293,7 @@
             this.btnMoveDown.TabIndex = 1724;
             this.btnMoveDown.Text = "▼";
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // btnSave
             // 

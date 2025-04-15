@@ -86,7 +86,7 @@ namespace LaserCutter
 
             // 3. Use
             DataGridViewCheckBoxColumn ColumnCheckBox = new DataGridViewCheckBoxColumn();
-            ColumnCheckBox.ReadOnly = true;
+            ColumnCheckBox.ReadOnly = false;
             ColumnCheckBox.Name = "Use";
             ColumnCheckBox.HeaderText = "Use";
             ColumnCheckBox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -181,6 +181,118 @@ namespace LaserCutter
             btnCancel.Enabled = bEnabled;
         }
 
+        public void ClearControlValue()
+        {
+            Cad3.Clear();
+            Cad3.ReDraw();
+
+            edLaserPower.Value = 0.0;
+            edPulsePitch.Value = 0.0;
+
+            edZOffset.Value = 0.0;
+
+            edXCount.AsInteger = 0;
+            edYCount.AsInteger = 0;
+            edGapX.Value = 0.0;
+            edGapY.Value = 0.0;
+
+            edCellWidth.Value = 0.0;
+            edCellHeight.Value = 0.0;
+            edCellRadius.Value = 0.0;
+
+            chkBreakLineOutDir.Checked = false;
+            chkUseBreakLine.Checked = false;
+
+            edBreakLineLength.Value = 0.0;
+            edBreakLineOffset.Value = 0.0;
+
+            btnUse.LED.Value = false;
+
+            dataGridView3.Rows.Clear();
+        }
+
+        public void LoadLayerInfo()
+        {
+            ztCadLayerList list = new ztCadLayerList();
+
+            // 도면을 새로 불러오면 기존 Data를 지운다
+            LaserProject.Model3.Layers.Clear();
+
+            LayerInfo layerInfo;
+
+            Cad3.GetLayers(list);
+
+            dataGridView3.Rows.Clear();
+            for (int i = 0; i < list.Count; i++)
+            {
+                // Layer를 생성하고..
+                layerInfo = new LayerInfo();
+                layerInfo.Name = list[i].Name;
+                layerInfo.szColor = list[i].szColor;
+                layerInfo.Direction = Direction.CW;
+                layerInfo.Used = !(layerInfo.Name == "0");
+                layerInfo.LaserPower = 10.0;
+                layerInfo.PulsePitch = 1.0;
+                layerInfo.ZOffset = 0.0;
+
+                LaserProject.Model3.Layers.Add(layerInfo);
+
+                // GridRow Data를 생성하고..
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView3);
+                row.Cells[1].Value = layerInfo.Name;
+                row.Cells[2].Value = layerInfo.Used.ToString();
+                row.Cells[3].Value = layerInfo.Tool.ToString();
+                row.Cells[4].Value = layerInfo.Direction.ToString();
+                row.Cells[5].Value = layerInfo.LaserPower.ToString("F3");
+                row.Cells[6].Value = layerInfo.ZOffset.ToString("F3");
+                dataGridView3.Rows.Add(row);
+            }
+        }
+
+        public void UpdateLayerInfo()
+        {
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            {
+                // 유효한 행인지 확인
+                if (i < LaserProject.Model3.Layers.Count)
+                {
+                    // 현재 행의 데이터 가져오기
+                    DataGridViewRow row = dataGridView3.Rows[i];
+
+                    // LaserProject의 LayerInfo 업데이트
+                    LaserProject.Model3.Layers[i].Name = row.Cells[1].Value?.ToString(); // 레이어 이름
+                    LaserProject.Model3.Layers[i].Used = Convert.ToBoolean(row.Cells[2].Value); // 사용 여부
+                    LaserProject.Model3.Layers[i].szColor = row.Cells[3].Value?.ToString(); // 색상 정보
+                    LaserProject.Model3.Layers[i].Direction = (Direction)Enum.Parse(typeof(Direction), row.Cells[4].Value?.ToString()); // 방향
+                }
+            }
+        }
+
+        public void DisplayLayerInfo()
+        {
+            LayerInfo layerInfo;
+
+            dataGridView3.Rows.Clear();
+            for (int nIndex = 0; nIndex < LaserProject.Model3.Layers.Count; nIndex++)
+            {
+                layerInfo = LaserProject.Model3.Layers[nIndex];
+
+                // GridRow Data를 생성하고..
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView3);
+                //  row.Cells[0].Value = nIndex.ToString();
+                row.Cells[1].Value = layerInfo.Name;
+                row.Cells[2].Value = layerInfo.Used.ToString();
+                row.Cells[3].Value = layerInfo.Tool.ToString();
+                row.Cells[4].Value = layerInfo.Direction.ToString();
+                row.Cells[5].Value = layerInfo.LaserPower.ToString("F3");
+                row.Cells[6].Value = layerInfo.ZOffset.ToString("F3");
+                row.Cells[7].Value = layerInfo.PulsePitch.ToString("F3");
+                dataGridView3.Rows.Add(row);
+            }
+        }
+        
         private void ledLabel_Click(object sender, EventArgs e)
         {
             LEDLabel ledLabel = (LEDLabel)sender;
@@ -762,48 +874,6 @@ namespace LaserCutter
 
             DrawCircle(0, 0, edCellRadius.Value, chkUseBreakLine.Checked, edBreakLineOffset.Value, edBreakLineLength.Value, true);
         }
-
-        public void LoadLayerInfo()
-        {
-            ztCadLayerList list = new ztCadLayerList();
-
-            // 도면을 새로 불러오면 기존 Data를 지운다
-            LaserProject.Model3.Layers.Clear();
-
-            LayerInfo layerInfo;
-
-            Cad3.GetLayers(list);
-
-            dataGridView3.Rows.Clear();
-            for (int i = 0; i < list.Count; i++)
-            {
-                // Layer를 생성하고..
-                layerInfo = new LayerInfo();
-                layerInfo.Name = list[i].Name;
-                layerInfo.szColor = list[i].szColor;
-                layerInfo.Direction = Direction.CW;
-                layerInfo.Used = !(layerInfo.Name == "0");
-                layerInfo.LaserPower = 10.0;
-                layerInfo.PulsePitch = 1.0;
-                layerInfo.ZOffset = 0.0;
-
-                LaserProject.Model3.Layers.Add(layerInfo);
-
-                // GridRow Data를 생성하고..
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dataGridView3);
-                row.Cells[1].Value = layerInfo.Name;
-                row.Cells[2].Value = layerInfo.Used.ToString();
-                row.Cells[3].Value = layerInfo.Tool.ToString();
-                row.Cells[4].Value = layerInfo.Direction.ToString();
-                row.Cells[5].Value = layerInfo.LaserPower.ToString("F3");
-                row.Cells[6].Value = layerInfo.ZOffset.ToString("F3");
-                dataGridView3.Rows.Add(row);
-            }
-        }
-
-
-
         public void CreateUserCell()
         {
             if (rdoCell.Checked)
@@ -890,36 +960,29 @@ namespace LaserCutter
 
         public void GetWorkCenter(int APageIndex)
         {
-        }
+            GetPageData();
 
-        public void ClearControlValue()
-        {
-            Cad3.Clear();
-            Cad3.ReDraw();
+            double xShift = 0.0, yShift = 0.0;
+            if (edGlassSizeX.Value > (PageList.Width))
+            {
+                xShift = (edGlassSizeX.Value - PageList.Width) / 2.0;
+            }
+            ;
 
-            edLaserPower.Value = 0.0;
-            edPulsePitch.Value = 0.0;
+            if (edGlassSizeY.Value > (PageList.Width))
+            {
+                yShift = (edGlassSizeY.Value - PageList.Height) / 2.0;
+            }
 
-            edZOffset.Value = 0.0;
+            CenterPos = new DoublePoint(cad3Data.CenterX, cad3Data.CenterY);
+            // CodeSite.SendMsg(String.Format("    Type3.cadData.Center = {0:F3}, {1:F3}", cad3Data.CenterX, cad3Data.CenterY));
 
-            edXCount.AsInteger = 0;
-            edYCount.AsInteger = 0;
-            edGapX.Value = 0.0;
-            edGapY.Value = 0.0;
+            double offsetX = 0.0;
+            double offsetY = 0.0;
+            Table.GetTableBaseOffset(PageList, APageIndex, xShift, yShift, cad3Data, ref offsetX, ref offsetY);
 
-            edCellWidth.Value = 0.0;
-            edCellHeight.Value = 0.0;
-            edCellRadius.Value = 0.0;
-
-            chkBreakLineOutDir.Checked = false;
-            chkUseBreakLine.Checked = false;
-
-            edBreakLineLength.Value = 0.0;
-            edBreakLineOffset.Value = 0.0;
-
-            btnUse.LED.Value = false;
-
-            dataGridView3.Rows.Clear();
+            WorkCenter.x = offsetX; WorkCenter.y = offsetY;
+            //CodeSite.SendMsg(String.Format("        Type3.WorkCenter[{0}] = {1:F3}, {2:F3}", APageIndex, WorkCenter.x, WorkCenter.y));
         }
 
         public void UpdateCellTypeUI(bool bCell)
@@ -1277,5 +1340,92 @@ namespace LaserCutter
             szList.Clear();
         }
 
+        private void dataGridView3_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if ((LaserProject != null) && (LaserProject.Model3.Layers.Count > 0))
+            {
+                int bRGB, iColor, R, G, B;
+
+                if (e.RowIndex < LaserProject.Model3.Layers.Count)
+                {
+                    if (dataGridView.Columns[e.ColumnIndex].Name == "Color")
+                    {
+                        String szColor = LaserProject.Model3.Layers[e.RowIndex].szColor;
+
+                        if (!String.IsNullOrEmpty(szColor))
+                        {
+                            Lcad.ColorToVal(szColor, out bRGB, out iColor, out R, out G, out B);
+
+                            e.CellStyle.BackColor = Color.FromArgb(R, G, B);
+                            e.CellStyle.ForeColor = e.CellStyle.BackColor;
+                        }
+                    }
+                }
+            }
+        }
+
+        private bool MoveUp(int ASelectedIndex)
+        {
+            // 선택된 행이 없는 경우
+            if (ASelectedIndex <= 0 || ASelectedIndex >= dataGridView3.Rows.Count) return false;
+
+            // 행 이동 처리
+            DataGridViewRow selectedRow = dataGridView3.Rows[ASelectedIndex];
+            dataGridView3.Rows.RemoveAt(ASelectedIndex);
+            dataGridView3.Rows.Insert(ASelectedIndex - 1, selectedRow);
+
+            // 선택 상태 유지
+            dataGridView3.ClearSelection();
+            dataGridView3.Rows[ASelectedIndex - 1].Selected = true;
+
+            return true; // 성공적으로 이동
+        }
+
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.SelectedRows.Count == 0) return;
+
+            int nIndex = dataGridView3.SelectedRows[0].Index;
+
+            if (MoveUp(nIndex))
+            {
+                LaserProject.Model3.Layers.MoveUp(nIndex);
+                DisplayLayerInfo();
+                dataGridView3.Rows[nIndex - 1].Selected = true;
+            }
+        }
+
+        private bool MoveDown(int ASelectedIndex)
+        {
+            // 선택된 행이 없는 경우
+            if (ASelectedIndex < 0 || ASelectedIndex >= dataGridView3.Rows.Count - 2) return false;
+
+            // 행 이동 처리
+            DataGridViewRow selectedRow = dataGridView3.Rows[ASelectedIndex];
+            dataGridView3.Rows.RemoveAt(ASelectedIndex);
+            dataGridView3.Rows.Insert(ASelectedIndex + 1, selectedRow);
+
+            // 선택 상태 유지
+            dataGridView3.ClearSelection();
+            dataGridView3.Rows[ASelectedIndex + 1].Selected = true;
+
+            return true; // 성공적으로 이동
+        }
+
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.SelectedRows.Count == 0) return;
+
+            int nIndex = dataGridView3.SelectedRows[0].Index;
+
+            if (MoveDown(nIndex))
+            {
+                LaserProject.Model3.Layers.MoveDown(nIndex);
+                DisplayLayerInfo();
+                dataGridView3.Rows[nIndex + 1].Selected = true;
+            }
+        }
     }
 }

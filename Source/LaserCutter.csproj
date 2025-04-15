@@ -119,6 +119,7 @@
     <Reference Include="YJTECH, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Embeded Dll\YJTECH.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,12 @@
     </Compile>
     <Compile Include="fModelName.Designer.cs">
       <DependentUpon>fModelName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fPreview.Designer.cs">
+      <DependentUpon>fPreview.cs</DependentUpon>
     </Compile>
     <Compile Include="fRunStatus.cs">
       <SubType>Form</SubType>
@@ -314,6 +321,9 @@
     <EmbeddedResource Include="fModelName.resx">
       <DependentUpon>fModelName.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fPreview.resx">
+      <DependentUpon>fPreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fRunStatus.resx">
       <DependentUpon>fRunStatus.cs</DependentUpon>
     </EmbeddedResource>
@@ -457,6 +467,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Embeded Dll\YJTECH.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\BeadCut1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

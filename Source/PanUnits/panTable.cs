@@ -176,7 +176,6 @@ namespace LaserCutter
             frmSelectJob.StartPosition = FormStartPosition.CenterScreen;
             if (frmSelectJob.ShowDialog() == DialogResult.OK)
             {
-
                 logger.SendMsg(String.Format("{0}.Open([{1}][{2}])", TableNo.ToString(), frmSelectJob.GroupName, frmSelectJob.ModelName));
 
                 lblGroupName.Text = frmSelectJob.GroupName;

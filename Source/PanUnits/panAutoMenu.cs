@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Documents;
 using System.Windows.Forms;
 
 using yjTech;
@@ -407,6 +406,46 @@ namespace LaserCutter
             }
         }
 
+        #region private void LoadRecentList(string filePath)
+        /*
+         * Load.RecentList
+         */
+        public void LoadRecentList(System.Windows.Forms.ListView listview, TableNo tableNo)
+        {
+            String szStr = String.Format("{0}RecentList{1}.txt", yjCommon.AppPath(), (int)tableNo);
+            LoadRecentList(listview, szStr);
+        }
+
+        public void LoadRecentList(System.Windows.Forms.ListView listview, string filePath)
+        {
+            listview.Items.Clear();
+
+            if (File.Exists(filePath))
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    int count = 1;
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        ListViewItem item = new ListViewItem(count.ToString()); // 첫 번째 열: Count
+                        item.SubItems.Add(line); // 두 번째 열: 파일 내용
+                        listview.Items.Add(item);
+
+                        count++; // Count 증가
+                    }
+                }
+
+                // 모든 항목의 번호를 갱신
+                for (int i = 0; i < listview.Items.Count; i++)
+                {
+                    listview.Items[i].Text = (i + 1).ToString();
+                }
+            }
+        }
+        #endregion
+
         private void tvModel_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -422,15 +461,21 @@ namespace LaserCutter
                     ModelName = e.Node.Text;
                 }
 
-                frmMain.JobFile.Table1.lblGroupName.Text = GroupName;
-                frmMain.JobFile.Table1.lblModelName.Text = ModelName;
-                frmMain.JobFile.Table1.GroupName = GroupName;
-                frmMain.JobFile.Table1.ModelName = ModelName;
-
-                frmMain.JobFile.Table2.lblGroupName.Text = GroupName;
-                frmMain.JobFile.Table2.lblModelName.Text = ModelName;
-                frmMain.JobFile.Table2.GroupName = GroupName;
-                frmMain.JobFile.Table2.ModelName = ModelName;
+                if (frmMain.JobFile.tabControl1.SelectedIndex == 0)
+                {
+                    frmMain.JobFile.Table1.lblGroupName.Text = GroupName;
+                    frmMain.JobFile.Table1.lblModelName.Text = ModelName;
+                    frmMain.JobFile.Table1.GroupName = GroupName;
+                    frmMain.JobFile.Table1.ModelName = ModelName;
+                } 
+                else
+                if (frmMain.JobFile.tabControl1.SelectedIndex == 1)
+                {
+                    frmMain.JobFile.Table2.lblGroupName.Text = GroupName;
+                    frmMain.JobFile.Table2.lblModelName.Text = ModelName;
+                    frmMain.JobFile.Table2.GroupName = GroupName;
+                    frmMain.JobFile.Table2.ModelName = ModelName;
+                }
             }
             else
             if (e.Button == MouseButtons.Right)
@@ -467,5 +512,74 @@ namespace LaserCutter
             }
         }
         #endregion
+
+        private void lvRecentModel_DoubleClick(object sender, EventArgs e)
+        {
+            ;
+        }
+
+        private void lvRecentModel_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Delete) && (lvRecentModel.SelectedItems.Count > 0))
+            {
+                if (yjCommon.Confirm("삭제 합니다.", "확인") == DialogResult.Yes)
+                {
+                    // 선택된 모든 항목 삭제
+                    foreach (ListViewItem selectedItem in lvRecentModel.SelectedItems)
+                    {
+                        lvRecentModel.Items.Remove(selectedItem);
+                    }
+
+                    frmMain.JobFile.SaveRecentList(lvRecentModel, (TableNo)frmMain.JobFile.tabControl1.SelectedIndex + 1);
+                }
+            }
+        }
+
+        private void lvRecentModel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ListViewHitTestInfo hit = lvRecentModel.HitTest(e.Location);
+                if (hit.Item != null)
+                {
+                    string itemText = hit.Item.Text;
+                    string subItemText = hit.Item.SubItems[1].Text; // Assuming the row has at least one subitem
+
+                    subItemText = subItemText.Substring(1, subItemText.Length - 2);
+                    subItemText = subItemText.Replace("][", "@");
+
+                    string szGroupName = yjCommon.GetWord(subItemText, 0, '@');
+                    string szModelName = yjCommon.GetWord(subItemText, 1, '@');
+
+                    String szPath = String.Format("{0}Model\\{1}\\{2}", yjCommon.AppPath(), szGroupName, szModelName);
+
+                    if (yjCommon.DirectoryExists(szPath))
+                    {
+                        GroupName = szGroupName;
+                        ModelName = szModelName;
+
+                        if (frmMain.JobFile.tabControl1.SelectedIndex == 0)
+                        {
+                            frmMain.JobFile.Table1.lblGroupName.Text = szGroupName;
+                            frmMain.JobFile.Table1.lblModelName.Text = szModelName;
+                            frmMain.JobFile.Table1.GroupName = GroupName;
+                            frmMain.JobFile.Table1.ModelName = ModelName;
+                        }
+                        else
+                        if (frmMain.JobFile.tabControl1.SelectedIndex == 1)
+                        {
+                            frmMain.JobFile.Table2.lblGroupName.Text = szGroupName;
+                            frmMain.JobFile.Table2.lblModelName.Text = szModelName;
+                            frmMain.JobFile.Table2.GroupName = GroupName;
+                            frmMain.JobFile.Table2.ModelName = ModelName;
+                        }
+                    }
+                    else
+                    {
+                        yjCommon.Warning("해당 디렉토리가 존재하지 않습니다.", "오류");
+                    }
+                }
+            }
+        }
     }
 }

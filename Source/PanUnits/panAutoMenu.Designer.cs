@@ -3297,6 +3297,9 @@
             this.lvRecentModel.TabIndex = 1366;
             this.lvRecentModel.UseCompatibleStateImageBehavior = false;
             this.lvRecentModel.View = System.Windows.Forms.View.Details;
+            this.lvRecentModel.DoubleClick += new System.EventHandler(this.lvRecentModel_DoubleClick);
+            this.lvRecentModel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvRecentModel_KeyDown);
+            this.lvRecentModel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvRecentModel_MouseDown);
             // 
             // columnHeader1
             // 
@@ -3600,7 +3603,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(191, 26);
             // 
             // toolStripMenuItem1
             // 

@@ -293,20 +293,23 @@ namespace LaserCutter
                     else
                     if (m.WParam.ToInt32() == atomDownload)
                     {
-                        if (Auto.tabControl1.SelectedIndex == 0)
+                        if (MenuIndex == 10)
                         {
-                            Auto.Table1.PageIndex = Auto.Table1.GetFirstPage();
+                            if (Auto.tabControl1.SelectedIndex == 0)
+                            {
+                                Auto.Table1.PageIndex = Auto.Table1.GetFirstPage();
 
-                            Auto.Table1.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
-                            Pmac.DownloadFile1(Handle);
-                        }
-                        else
-                        if (Auto.tabControl1.SelectedIndex == 1)
-                        {
-                            Auto.Table2.PageIndex = Auto.Table2.GetFirstPage();
+                                Auto.Table1.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
+                                Pmac.DownloadFile1(Handle);
+                            }
+                            else
+                            if (Auto.tabControl1.SelectedIndex == 1)
+                            {
+                                Auto.Table2.PageIndex = Auto.Table2.GetFirstPage();
 
-                            Auto.Table2.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
-                            Pmac.DownloadFile2(Handle);
+                                Auto.Table2.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
+                                Pmac.DownloadFile2(Handle);
+                            }
                         }
                     }
                     else
@@ -396,6 +399,7 @@ namespace LaserCutter
             * 4. JobFile
             */
             JobFile = new panJobFile();
+            JobFile.frmMain = this;
             panClient.Controls.Add(JobFile);
 
             /*
@@ -637,6 +641,16 @@ namespace LaserCutter
                 lblMainTitle.Text = "JobFile";
 
                 JobFile.BringToFront();
+
+                if (JobFile.tabControl1.SelectedIndex == 0)
+                {
+                    AutoMenu.LoadRecentList(AutoMenu.lvRecentModel, TableNo.Table1);
+                } else
+                if (JobFile.tabControl1.SelectedIndex == 0)
+                {
+                    AutoMenu.LoadRecentList(AutoMenu.lvRecentModel, TableNo.Table2);
+                }
+
                 AutoMenu.tabControlEx1.SelectedIndex = 2;
 
                 AutoMenu.tabPage1.CancelLine = true;
@@ -789,5 +803,9 @@ namespace LaserCutter
         }
         #endregion
 
+        private void btnJobFile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

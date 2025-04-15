@@ -45,8 +45,8 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new yjTech.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label7 = new yjTech.Label();
@@ -133,7 +133,6 @@ namespace LaserCutter
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.edGuideLength);
             this.tabPage1.Controls.Add(this.edXLength);
             this.tabPage1.Controls.Add(this.edYLength);
@@ -153,6 +152,7 @@ namespace LaserCutter
             this.tabPage1.Controls.Add(this.LabelZOffset);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.pictureBox5);
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -196,7 +196,7 @@ namespace LaserCutter
             this.label4.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
             this.label4.Font = new System.Drawing.Font("Tahoma", 10F);
             this.label4.Frame.Visible = false;
-            this.label4.Location = new System.Drawing.Point(448, 258);
+            this.label4.Location = new System.Drawing.Point(457, 258);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.label4.Name = "label4";
             this.label4.ShowAccelChar = false;
@@ -358,6 +358,7 @@ namespace LaserCutter
             this.chkShowJumpline.TabIndex = 1838;
             this.chkShowJumpline.Text = "Show Jump Line";
             this.chkShowJumpline.UseVisualStyleBackColor = true;
+            this.chkShowJumpline.CheckedChanged += new System.EventHandler(this.chkShowJumpline_CheckedChanged);
             // 
             // viLaserFocus
             // 
@@ -565,6 +566,7 @@ namespace LaserCutter
             // 
             // pictureBox5
             // 
+            this.pictureBox5.BackgroundImage = global::LaserCutter.Properties.Resources.BeadCut1;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox5.Location = new System.Drawing.Point(89, 226);
@@ -611,6 +613,7 @@ namespace LaserCutter
             this.btnPreView.TabIndex = 1839;
             this.btnPreView.Text = "미리보기";
             this.btnPreView.UseVisualStyleBackColor = false;
+            this.btnPreView.Click += new System.EventHandler(this.btnPreView_Click);
             // 
             // panel2
             // 
@@ -708,6 +711,7 @@ namespace LaserCutter
             this.btnMoveUp.TabIndex = 1698;
             this.btnMoveUp.Text = "△";
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
@@ -719,22 +723,23 @@ namespace LaserCutter
             this.btnMoveDown.TabIndex = 1697;
             this.btnMoveDown.Text = "▼";
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // dataGridView4
             // 
             this.dataGridView4.AllowUserToResizeColumns = false;
             this.dataGridView4.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView4.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView4.ColumnHeadersHeight = 40;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnColor,
@@ -896,7 +901,6 @@ namespace LaserCutter
             this.bitBtn1.Size = new System.Drawing.Size(77, 32);
             this.bitBtn1.TabIndex = 1690;
             this.bitBtn1.UseVisualStyleBackColor = false;
-            this.bitBtn1.Click += new System.EventHandler(this.bitBtn1_Click);
             // 
             // panJobType4
             // 

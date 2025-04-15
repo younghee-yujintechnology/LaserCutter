@@ -12,6 +12,7 @@ namespace LaserCutter
 {
     public partial class panJobFile : UserControl
     {
+        public frmMain frmMain;
         public panTable Table1;
         public panTable Table2;
 
@@ -119,6 +120,45 @@ namespace LaserCutter
         }
         #endregion
 
+        #region public void AddRecentList(String aGroupName, String aModelName)
+        public void AddRecentList()
+        {
+            if ((!GroupName.IsNullOrEmpty()) && (!ModelName.IsNullOrEmpty()))
+            {
+                AddRecentList(frmMain.AutoMenu.lvRecentModel, GroupName, ModelName);
+                SaveRecentList(frmMain.AutoMenu.lvRecentModel, (TableNo)tabControl1.SelectedIndex + 1);
+            }
+        }
+
+        public void AddRecentList(System.Windows.Forms.ListView listview, String aGroupName, String aModelName)
+        {
+            string itemText = $"[{aGroupName}][{aModelName}]";
+
+            // 기존에 동일한 항목이 있는지 확인하고 있다면 삭제
+            foreach (ListViewItem item in listview.Items)
+            {
+                if (item.SubItems[1].Text == itemText)
+                {
+                    listview.Items.Remove(item);
+                    break;
+                }
+            }
+
+            // 첫 번째 컬럼에는 현재 Count, 두 번째 컬럼에는 "[aGroupName][aModelName]"을 설정
+            ListViewItem newItem = new ListViewItem((listview.Items.Count + 1).ToString());
+            newItem.SubItems.Add(itemText);
+
+            // 새로운 항목을 리스트의 제일 위에 추가
+            listview.Items.Insert(0, newItem);
+
+            // 모든 항목의 번호를 갱신
+            for (int i = 0; i < listview.Items.Count; i++)
+            {
+                listview.Items[i].Text = (i + 1).ToString();
+            }
+        }
+        #endregion
+
         #region property public string GroupName
         private String mGroupName;
         public string GroupName
@@ -187,9 +227,9 @@ namespace LaserCutter
 
         #endregion
 
-
-       private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadRecentList(frmMain.AutoMenu.lvRecentModel, (TableNo)tabControl1.SelectedIndex + 1);
         }
     }
 }

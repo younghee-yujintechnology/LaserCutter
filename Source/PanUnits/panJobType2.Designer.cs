@@ -1619,6 +1619,7 @@
             this.btnMoveUp.TabIndex = 1710;
             this.btnMoveUp.Text = "△";
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
@@ -1630,6 +1631,7 @@
             this.btnMoveDown.TabIndex = 1709;
             this.btnMoveDown.Text = "▼";
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // dataGridView2
             // 
@@ -1662,6 +1664,7 @@
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(1056, 249);
             this.dataGridView2.TabIndex = 1708;
+            this.dataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView2_CellFormatting);
             // 
             // ColumnColor
             // 

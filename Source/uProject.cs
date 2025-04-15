@@ -4,6 +4,7 @@ using System.ComponentModel;
 
 using yjTech;
 using Raize.CodeSiteLogging;
+using System.Reflection;
 
 namespace LaserCutter
 {
@@ -1224,12 +1225,156 @@ namespace LaserCutter
     }
     #endregion
 
+    #region public class Model4
+    public class Model4
+    {
+        private LayerCollection layerCollection = new LayerCollection();
+
+        //0이면 cell, 1이면 Circle
+        public Model4()
+        {
+        }
+
+        public void Clear()
+        {
+            // LayerCollection을 비우고 각 LayerInfo의 Dispose를 호출
+            layerCollection.Clear();
+
+            // 다른 멤버 변수들을 기본값으로 초기화
+            mCadFile = string.Empty;
+            mLaserPower = 0;
+            mPulsePitch = 0;
+            mRepeatCount = 1;
+            mZOffset = 0;
+
+            mSelectType = 0;
+        }
+
+        #region property public LayerCollection Layers 
+        //      [Browsable(true)]
+        //      [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public LayerCollection Layers
+        {
+            get { return layerCollection; }
+            set { layerCollection = value; }
+        }
+        #endregion
+
+        #region property public string CadFile
+        private string mCadFile;
+
+        [Browsable(true)]
+        public string CadFile
+        {
+            get { return mCadFile; }
+            set { mCadFile = value; }
+        }
+        #endregion
+
+        #region property public double LaserPower
+        private double mLaserPower;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double LaserPower
+        {
+            get { return mLaserPower; }
+            set { mLaserPower = value; }
+        }
+        #endregion
+
+        #region property public double PulsePitch
+        private double mPulsePitch;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double PulsePitch
+        {
+            get { return mPulsePitch; }
+            set { mPulsePitch = value; }
+        }
+        #endregion
+
+        #region property public int RepeatCount
+        private int mRepeatCount;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public int RepeatCount
+        {
+            get
+            {
+                if (mRepeatCount <= 0) mRepeatCount = 1;
+                return mRepeatCount;
+            }
+            set { mRepeatCount = value; }
+        }
+        #endregion
+
+        #region property public int SelectType
+        private int mSelectType;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public int SelectType
+        {
+            get { return mSelectType; }
+            set { mSelectType = value; }
+        }
+        #endregion
+
+        #region property public Thickness
+        private double mThickness;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double Thickness
+        {
+            get
+            {
+                if (mThickness <= 0) mThickness = 1;
+                return mThickness;
+            }
+            set { mThickness = value; }
+        }
+        #endregion
+
+        #region property public double ZOffset
+        private double mZOffset;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double ZOffset
+        {
+            get { return mZOffset; }
+            set { mZOffset = value; }
+        }
+        #endregion
+
+        public StringList ToStringList()
+        {
+            StringList Result = new StringList();
+
+            Result.Add(String.Format("    Model4"));
+            Result.Add("    {");
+            Result.Add(String.Format("        LaserPower = {0:F3}", LaserPower));
+            Result.Add(String.Format("        PulsePitch = {0:F3}", PulsePitch));
+            Result.Add(String.Format("        Thickness = {0:F3}", Thickness));
+            Result.Add(String.Format("        ZOffset = {0:F3}", ZOffset));
+            Result.Add("    }");
+
+            return Result;
+        }
+    }
+    #endregion
+
     #region public class LaserProject : dkProject 
     public class LaserProject : yjProject
     {
         private Model1 mModel1 = new Model1();
         private Model2 mModel2 = new Model2();
         private Model3 mModel3 = new Model3();
+        private Model4 mModel4 = new Model4();
 
         public LaserProject ()
         {
@@ -1325,7 +1470,17 @@ namespace LaserCutter
             set { mModel3 = value; }
         }
         #endregion
+
+        #region property public Model4 Model4
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public Model4 Model4
+        {
+            get { return mModel4; }
+            set { mModel4 = value; }
+        }
+        #endregion
     }
-#endregion
+    #endregion
 }
 

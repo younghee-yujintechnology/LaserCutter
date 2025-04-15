@@ -53,6 +53,9 @@ namespace LaserCutter
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            JobFile.AddRecentList(lvRecentModel, GroupName, ModelName);
+            JobFile.SaveRecentList(lvRecentModel, (TableNo)TableNo);
+            
             DialogResult = DialogResult.OK;
         }
 

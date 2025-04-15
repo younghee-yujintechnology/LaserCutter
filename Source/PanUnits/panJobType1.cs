@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using yjTech;
 using Raize.CodeSiteLogging;
+using System.Drawing;
 
 namespace LaserCutter
 {
@@ -85,7 +86,7 @@ namespace LaserCutter
 
             // 3. Use
             DataGridViewCheckBoxColumn ColumnCheckBox = new DataGridViewCheckBoxColumn();
-            ColumnCheckBox.ReadOnly = true;
+            ColumnCheckBox.ReadOnly = false;
             ColumnCheckBox.Name = "Use";
             ColumnCheckBox.HeaderText = "Use";
             ColumnCheckBox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -553,11 +554,6 @@ namespace LaserCutter
             btnCancel.Enabled = bEnabled;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnUse_Click(object sender, EventArgs e)
         {
             Table.Type1.btnUse.LED.Value = true;
@@ -736,9 +732,9 @@ namespace LaserCutter
         }
 
         /*
- * Table1: 100 부터 ~ 시작
- * Table2: 200 부터 ~ 시작
- */
+         * Table1: 100 부터 ~ 시작
+         * Table2: 200 부터 ~ 시작
+         */
         public void MakeMotionFile(TableNo tableNo, double Angle, double shiftX, double shiftY, bool LaserRun)
         {
             GetWorkCenter();
@@ -941,7 +937,6 @@ namespace LaserCutter
             return true; // 성공적으로 이동
         }
 
-
         private void btnMoveUp_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0) return;
@@ -997,6 +992,33 @@ namespace LaserCutter
                 //{
                 //    logger.SendMsg($"{LaserProject.Model1.Layers[i]}");
                 //}
+            }
+
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if ((LaserProject != null) && (LaserProject.Model1.Layers.Count > 0))
+            {
+                int bRGB, iColor, R, G, B;
+
+                if (e.RowIndex < LaserProject.Model1.Layers.Count)
+                {
+                    if (dataGridView.Columns[e.ColumnIndex].Name == "Color")
+                    {
+                        String szColor = LaserProject.Model1.Layers[e.RowIndex].szColor;
+
+                        if (!String.IsNullOrEmpty(szColor))
+                        {
+                            Lcad.ColorToVal(szColor, out bRGB, out iColor, out R, out G, out B);
+
+                            e.CellStyle.BackColor = Color.FromArgb(R, G, B);
+                            e.CellStyle.ForeColor = e.CellStyle.BackColor;
+                        }
+                    }
+                }
             }
 
         }

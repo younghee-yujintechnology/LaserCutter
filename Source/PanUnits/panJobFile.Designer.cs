@@ -55,12 +55,12 @@ namespace LaserCutter
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panClient = new yjTech.Panel();
-            this.TabControl1 = new yjTech.TabControl();
+            this.tabControl1 = new yjTech.TabControl();
             this.tabTable1 = new System.Windows.Forms.TabPage();
             this.tabTable2 = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1.SuspendLayout();
             this.panClient.SuspendLayout();
-            this.TabControl1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -109,7 +109,7 @@ namespace LaserCutter
             // 
             // panClient
             // 
-            this.panClient.Controls.Add(this.TabControl1);
+            this.panClient.Controls.Add(this.tabControl1);
             this.panClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panClient.FrameInner.Visible = false;
             this.panClient.FrameOuter.Visible = false;
@@ -119,34 +119,34 @@ namespace LaserCutter
             this.panClient.Size = new System.Drawing.Size(1223, 939);
             this.panClient.TabIndex = 1381;
             // 
-            // TabControl1
+            // tabControl1
             // 
-            this.TabControl1.Controls.Add(this.tabTable1);
-            this.TabControl1.Controls.Add(this.tabTable2);
-            this.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.TabControl1.Font = new System.Drawing.Font("Tahoma", 13F);
-            this.TabControl1.ImageList = this.imageList1;
-            this.TabControl1.ItemSize = new System.Drawing.Size(600, 36);
-            this.TabControl1.Location = new System.Drawing.Point(3, 3);
-            this.TabControl1.Name = "TabControl1";
-            this.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TabControl1.ShowActiveCloseButton = false;
-            this.TabControl1.ShowCloseButton = false;
-            this.TabControl1.Size = new System.Drawing.Size(1216, 930);
-            this.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.TabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.TabControl1.TabIndex = 1422;
-            this.TabControl1.TabSelectedColor = System.Drawing.Color.Lime;
-            this.TabControl1.TabSelectedForeColor = System.Drawing.Color.Black;
-            this.TabControl1.TabSelectedHighColor = System.Drawing.Color.Red;
-            this.TabControl1.TabSelectedHighColorSize = 4;
-            this.TabControl1.TabUnSelectedForeColor = System.Drawing.Color.Gray;
-            this.TabControl1.TabVisible = true;
-            this.TabControl1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TabControl1.TipsColor = System.Drawing.Color.Red;
-            this.TabControl1.TipsFont = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabControl1.TipsForeColor = System.Drawing.Color.White;
-            this.TabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
+            this.tabControl1.Controls.Add(this.tabTable1);
+            this.tabControl1.Controls.Add(this.tabTable2);
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 13F);
+            this.tabControl1.ImageList = this.imageList1;
+            this.tabControl1.ItemSize = new System.Drawing.Size(600, 36);
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tabControl1.ShowActiveCloseButton = false;
+            this.tabControl1.ShowCloseButton = false;
+            this.tabControl1.Size = new System.Drawing.Size(1216, 930);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.TabBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.tabControl1.TabIndex = 1422;
+            this.tabControl1.TabSelectedColor = System.Drawing.Color.Lime;
+            this.tabControl1.TabSelectedForeColor = System.Drawing.Color.Black;
+            this.tabControl1.TabSelectedHighColor = System.Drawing.Color.Red;
+            this.tabControl1.TabSelectedHighColorSize = 4;
+            this.tabControl1.TabUnSelectedForeColor = System.Drawing.Color.Gray;
+            this.tabControl1.TabVisible = true;
+            this.tabControl1.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabControl1.TipsColor = System.Drawing.Color.Red;
+            this.tabControl1.TipsFont = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.TipsForeColor = System.Drawing.Color.White;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabTable1
             // 
@@ -177,7 +177,7 @@ namespace LaserCutter
             this.Size = new System.Drawing.Size(1223, 939);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panClient.ResumeLayout(false);
-            this.TabControl1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -187,7 +187,7 @@ namespace LaserCutter
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private yjTech.Panel panClient;
-        public yjTech.TabControl TabControl1;
+        public yjTech.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabTable1;
         private System.Windows.Forms.TabPage tabTable2;
     }

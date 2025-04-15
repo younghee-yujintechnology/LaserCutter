@@ -242,6 +242,7 @@
             this.btnJobFile.Name = "btnJobFile";
             this.btnJobFile.Tag = "14";
             this.btnJobFile.UseVisualStyleBackColor = false;
+            this.btnJobFile.Click += new System.EventHandler(this.btnJobFile_Click);
             // 
             // btnConfig
             // 

@@ -88,7 +88,7 @@ namespace LaserCutter
 
             // 3. Use
             DataGridViewCheckBoxColumn ColumnCheckBox = new DataGridViewCheckBoxColumn();
-            ColumnCheckBox.ReadOnly = true;
+            ColumnCheckBox.ReadOnly = false;
             ColumnCheckBox.Name = "Use";
             ColumnCheckBox.HeaderText = "Use";
             ColumnCheckBox.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -1301,6 +1301,102 @@ namespace LaserCutter
             String szStr = String.Format("{0}Program{1}.pmc", yjCommon.AppPath(), (int)tableNo);
             szList.SaveToFile(szStr);
             szList.Clear();
+        }
+
+        private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if ((LaserProject != null) && (LaserProject.Model2.Layers.Count > 0))
+            {
+                int bRGB, iColor, R, G, B;
+
+                if (e.RowIndex < LaserProject.Model2.Layers.Count)
+                {
+                    if (dataGridView.Columns[e.ColumnIndex].Name == "Color")
+                    {
+                        String szColor = LaserProject.Model2.Layers[e.RowIndex].szColor;
+
+                        if (!String.IsNullOrEmpty(szColor))
+                        {
+                            Lcad.ColorToVal(szColor, out bRGB, out iColor, out R, out G, out B);
+
+                            e.CellStyle.BackColor = Color.FromArgb(R, G, B);
+                            e.CellStyle.ForeColor = e.CellStyle.BackColor;
+                        }
+                    }
+                }
+            }
+        }
+
+        private bool MoveUp(int ASelectedIndex)
+        {
+            // 선택된 행이 없는 경우
+            if (ASelectedIndex <= 0 || ASelectedIndex >= dataGridView2.Rows.Count) return false;
+
+            // 행 이동 처리
+            DataGridViewRow selectedRow = dataGridView2.Rows[ASelectedIndex];
+            dataGridView2.Rows.RemoveAt(ASelectedIndex);
+            dataGridView2.Rows.Insert(ASelectedIndex - 1, selectedRow);
+
+            // 선택 상태 유지
+            dataGridView2.ClearSelection();
+            dataGridView2.Rows[ASelectedIndex - 1].Selected = true;
+
+            return true; // 성공적으로 이동
+        }
+
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count == 0) return;
+
+            int nIndex = dataGridView2.SelectedRows[0].Index;
+
+            if (MoveUp(nIndex))
+            {
+                LaserProject.Model2.Layers.MoveUp(nIndex);
+                DisplayLayerInfo();
+                dataGridView2.Rows[nIndex - 1].Selected = true;
+
+                // forDebug
+                //logger.SendMsg("");
+                //for (int i = 0; i < LaserProject.Model2.Layers.Count; i++)
+                //{
+                //    logger.SendMsg($"{LaserProject.Model2.Layers[i]}");
+                //}
+            }
+        }
+
+        private bool MoveDown(int ASelectedIndex)
+        {
+            // 선택된 행이 없는 경우
+            if (ASelectedIndex < 0 || ASelectedIndex >= dataGridView2.Rows.Count - 2) return false;
+
+            // 행 이동 처리
+            DataGridViewRow selectedRow = dataGridView2.Rows[ASelectedIndex];
+            dataGridView2.Rows.RemoveAt(ASelectedIndex);
+            dataGridView2.Rows.Insert(ASelectedIndex + 1, selectedRow);
+
+            // 선택 상태 유지
+            dataGridView2.ClearSelection();
+            dataGridView2.Rows[ASelectedIndex + 1].Selected = true;
+
+            return true; // 성공적으로 이동
+        }
+
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (dataGridView2.SelectedRows.Count == 0) return;
+
+            int nIndex = dataGridView2.SelectedRows[0].Index;
+
+            if (MoveDown(nIndex))
+            {
+                LaserProject.Model2.Layers.MoveDown(nIndex);
+                DisplayLayerInfo();
+                dataGridView2.Rows[nIndex + 1].Selected = true;
+            }
+
         }
     }
 }
