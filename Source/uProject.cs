@@ -1351,6 +1351,79 @@ namespace LaserCutter
         }
         #endregion
 
+        #region property public double GuideLength
+        private double mGuideLength;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double GuideLength
+        {
+            get { return mGuideLength; }
+            set { mGuideLength = value; }
+        }
+        #endregion
+
+        #region property public double GuidePitch
+        private double mGuidePitch;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double GuidePitch
+        {
+            get { return mGuidePitch; }
+            set { mGuidePitch = value; }
+        }
+        #endregion
+
+        #region property public double XLength
+        private double mXLength;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double XLength
+        {
+            get { return mXLength; }
+            set { mXLength = value; }
+        }
+        #endregion
+
+        #region property public double XPitch
+        private double mXPitch;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double XPitch
+        {
+            get { return mXPitch; }
+            set { mXPitch = value; }
+        }
+        #endregion
+
+
+        #region property public double YLength
+        private double mYLength;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double YLength
+        {
+            get { return mYLength; }
+            set { mYLength = value; }
+        }
+        #endregion
+
+        #region property public double YPitch
+        private double mYPitch;
+
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public double YPitch
+        {
+            get { return mYPitch; }
+            set { mYPitch = value; }
+        }
+        #endregion
+
         public StringList ToStringList()
         {
             StringList Result = new StringList();

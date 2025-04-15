@@ -115,15 +115,13 @@ namespace LaserCutter
         }
         #endregion
 
+
         public void EnableControl(bool enable)
         {
-            //        btnOpenJobFile.Enabled = enable;
-            //        btnClose.Enabled = enable;
-
-            // JobInfo.TabControl2.Enabled = enable;
-            //// JobInfo.Type1.EnableControl(enable);
-            //// JobInfo.Type2.EnableControl(enable);
-            //// JobInfo.Type3.EnableControl(enable);
+            Type1.EnableControl(enable);
+            Type2.EnableControl(enable);
+            Type3.EnableControl(enable);
+            Type4.EnableControl(enable);
         }
 
 
@@ -184,8 +182,8 @@ namespace LaserCutter
                 GroupName = frmSelectJob.GroupName;
                 ModelName = frmSelectJob.ModelName;
 
-                ////LaserProject.NozzleOffsetX = Global.chTable1NozzleXOffset.AsDouble;
-                ////LaserProject.NozzleOffsetY = Global.chTable1NozzleYOffset.AsDouble;
+                LaserProject.NozzleOffsetX = Global.chTable1NozzleXOffset.AsDouble;
+                LaserProject.NozzleOffsetY = Global.chTable1NozzleYOffset.AsDouble;
 
                 if (TableNo == TableNo.Table1)
                 {
@@ -225,6 +223,14 @@ namespace LaserCutter
                 }
 
                 ss = LaserProject.Model3.ToStringList();
+
+                CodeSite.SendMsg("");
+                for (int nIndex = 0; nIndex < ss.Count; nIndex++)
+                {
+                    CodeSite.SendMsg(ss[nIndex]);
+                }
+
+                ss = LaserProject.Model4.ToStringList();
 
                 CodeSite.SendMsg("");
                 for (int nIndex = 0; nIndex < ss.Count; nIndex++)
@@ -327,7 +333,7 @@ namespace LaserCutter
             Type1.edZOffset.BackColor = Color.White;
             Type1.edZOffset.Frame.FlatColor = Color.FromArgb(80, 160, 255);
 
-            // Type1.viRepeatCount.AsInteger = LaserProject.Model1.RepeatCount;
+            //Type1.viRepeatCount.AsInteger = LaserProject.Model1.RepeatCount;
             Type1.edManualShiftX.Value = LaserProject.Model1.ManualShiftX;
             Type1.edManualShiftY.Value = LaserProject.Model1.ManualShiftY;
             Type1.edLaserPower.Value = LaserProject.Model1.LaserPower;
@@ -338,12 +344,12 @@ namespace LaserCutter
 
             if (TableNo == TableNo.Table1)
             {
-                ////Type1.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
+                Type1.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
             }
             else
             if (TableNo == TableNo.Table2)
             {
-                ////Type1.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
+                Type1.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model1.ZOffset + Type1.edThickness.Value);
             }
 
             Type1.chkAlignUse.Checked = LaserProject.Model1.AlignUse;
@@ -407,12 +413,12 @@ namespace LaserCutter
 
             if (TableNo == TableNo.Table1)
             {
-                ////Type2.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
+                Type2.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
             }
             else
             if (TableNo == TableNo.Table2)
             {
-                ////Type2.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
+                Type2.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model2.ZOffset + Type2.edThickness.Value);
             }
 
             Type2.edManualShiftX.Value = LaserProject.Model2.ManualShiftX;
@@ -445,12 +451,12 @@ namespace LaserCutter
 
             if (TableNo == TableNo.Table1)
             {
-                ////Type3.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
+                Type3.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
             }
             else
             if (TableNo == TableNo.Table2)
             {
-                ////Type3.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
+                Type3.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model3.ZOffset + Type3.edThickness.Value);
             }
 
             Type3.rdoCell.Checked = (LaserProject.Model3.SelectType == 0);
@@ -494,6 +500,19 @@ namespace LaserCutter
             Type3.CheckLayerInfo();
             Type3.btnApply_Click(null, null);
             Type3.GetWorkCenter(0);
+
+            tabControl1.SelectedIndex = 3;
+            Type4.ClearControlValue();
+            Type4.edLaserPower.Value = LaserProject.Model4.LaserPower;
+            Type4.edPulsePitch.Value = LaserProject.Model4.PulsePitch;
+            Type4.edThickness.Value = LaserProject.Model4.Thickness;
+            Type4.edZOffset.Value = LaserProject.Model4.ZOffset;
+
+            // Type4.edGuideLength.Value = LaserProject.Model4.Gui
+
+            Type4.EnableControl(true);
+            Type4.CheckLayerInfo();
+            Type4.GetWorkCenter(0);
 
             tabControl1.SelectedIndex = Old;
 
@@ -682,6 +701,7 @@ namespace LaserCutter
         {
             LaserProject.CadFile = Type1.lblDxfPath.Text;
 
+            // Model #1
             LaserProject.Model1.LaserPower = Type1.edLaserPower.Value;
             LaserProject.Model1.ZOffset = Type1.edZOffset.Value;
 
@@ -707,7 +727,7 @@ namespace LaserCutter
             LaserProject.Model1.AlignUse = Type1.chkAlignUse.Checked;
             LaserProject.Model1.AlignMethod = Type1.AlignMethod;
 
-
+            // Model #2
             LaserProject.Model2.LaserPower = Type2.edLaserPower.Value;
             LaserProject.Model2.ZOffset = Type2.edZOffset.Value;
             LaserProject.Model2.PulsePitch = Type2.edPulsePitch.Value;
@@ -737,6 +757,7 @@ namespace LaserCutter
             LaserProject.Model2.ManualShiftX = Type2.edManualShiftX.Value;
             LaserProject.Model2.ManualShiftY = Type2.edManualShiftY.Value;
 
+            // Model #3
             LaserProject.Model3.LaserPower = Type3.edLaserPower.Value;
             LaserProject.Model3.ZOffset = Type3.edZOffset.Value;
             LaserProject.Model3.PulsePitch = Type3.edPulsePitch.Value;
@@ -784,6 +805,29 @@ namespace LaserCutter
             {
                 LaserProject.Model3.SelectType = 1;
             }
+
+            // Model #4
+            LaserProject.Model4.LaserPower = Type4.edLaserPower.Value;
+            LaserProject.Model4.ZOffset = Type4.edZOffset.Value;
+            LaserProject.Model4.PulsePitch = Type4.edPulsePitch.Value;
+            LaserProject.Model4.Thickness = Type4.edThickness.Value;
+
+            if (TableNo == TableNo.Table1)
+            {
+                Type4.viLaserFocus.AsDouble = Common.edTable1LaserZFocus.Value - (LaserProject.Model4.ZOffset + Type4.edThickness.Value);
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                Type4.viLaserFocus.AsDouble = Common.edTable2LaserZFocus.Value - (LaserProject.Model4.ZOffset + Type4.edThickness.Value);
+            }
+
+            LaserProject.Model4.GuideLength = Type4.edGuideLength.Value;
+            LaserProject.Model4.GuidePitch = Type4.edGuidePitch.Value;
+            LaserProject.Model4.XLength = Type4.edXLength.Value;
+            LaserProject.Model4.XPitch = Type4.edXPitch.Value;
+            LaserProject.Model4.YLength = Type4.edYLength.Value;
+            LaserProject.Model4.YPitch = Type4.edYPitch.Value;
 
             String szFileName = String.Empty;
             szFileName = String.Format("{0}[{1}][{2}][Table{3}].prj", GetModelPath(), GroupName, ModelName, (int)TableNo);
@@ -866,6 +910,19 @@ namespace LaserCutter
             }
         }
 
+        public DoublePoint MakeRectType(ztRectItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
+        {
+            DoublePoint rr = new DoublePoint(0, 0);
+
+            if (pItem != null)
+            {
+                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+
+                // yhbyun rr = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)                
+            }
+
+            return rr;
+        }
 
         public DoublePoint MakeRectType(bool LaserRun, ref StringList List, ztRectItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
         {
@@ -880,6 +937,7 @@ namespace LaserCutter
 
             return rr;
         }
+
 
         public DoublePoint MakeArcType(ztArcItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
         {
@@ -1333,6 +1391,28 @@ namespace LaserCutter
             return new DoublePoint(newX, newY);
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (TableNo == TableNo.Table1)
+            {
+                AutoMenu.ledTable1JobFileLoad.LED.Value = false;
+            }
+            else
+            if (TableNo == TableNo.Table2)
+            {
+                AutoMenu.ledTable2JobFileLoad.LED.Value = false;
+            }
+
+            Type1.EnableControl(false);
+            Type2.EnableControl(false);
+            Type3.EnableControl(false);
+            Type4.EnableControl(false);
+
+            Type1.ClearControlValue();
+            Type2.ClearControlValue();
+            Type3.ClearControlValue();
+            Type4.ClearControlValue();
+        }
     }
 
     public struct PageItem

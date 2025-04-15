@@ -45,13 +45,12 @@ namespace LaserCutter
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new yjTech.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label7 = new yjTech.Label();
             this.label6 = new yjTech.Label();
-            this.label4 = new yjTech.Label();
             this.edGuideLength = new yjTech.KeypadEdit();
             this.edXLength = new yjTech.KeypadEdit();
             this.edYLength = new yjTech.KeypadEdit();
@@ -71,6 +70,7 @@ namespace LaserCutter
             this.LabelZOffset = new yjTech.Label();
             this.label5 = new yjTech.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label4 = new yjTech.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPreView = new yjTech.BitBtn();
@@ -190,21 +190,6 @@ namespace LaserCutter
             this.label6.Text = "Y Line";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label4.Frame.Visible = false;
-            this.label4.Location = new System.Drawing.Point(457, 258);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.label4.Name = "label4";
-            this.label4.ShowAccelChar = false;
-            this.label4.Size = new System.Drawing.Size(61, 29);
-            this.label4.TabIndex = 1846;
-            this.label4.Text = "Guide";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // edGuideLength
             // 
             this.edGuideLength.BackColor = System.Drawing.Color.White;
@@ -216,7 +201,7 @@ namespace LaserCutter
             this.edGuideLength.Hint = "Guide line length";
             this.edGuideLength.Location = new System.Drawing.Point(242, 235);
             this.edGuideLength.Margin = new System.Windows.Forms.Padding(4);
-            this.edGuideLength.Max = 100D;
+            this.edGuideLength.Max = 600D;
             this.edGuideLength.Min = 0D;
             this.edGuideLength.MinimumSize = new System.Drawing.Size(1, 1);
             this.edGuideLength.Name = "edGuideLength";
@@ -240,7 +225,7 @@ namespace LaserCutter
             this.edXLength.Hint = "X line length";
             this.edXLength.Location = new System.Drawing.Point(242, 291);
             this.edXLength.Margin = new System.Windows.Forms.Padding(4);
-            this.edXLength.Max = 100D;
+            this.edXLength.Max = 600D;
             this.edXLength.Min = 0D;
             this.edXLength.MinimumSize = new System.Drawing.Size(1, 1);
             this.edXLength.Name = "edXLength";
@@ -264,7 +249,7 @@ namespace LaserCutter
             this.edYLength.Hint = "Y line length";
             this.edYLength.Location = new System.Drawing.Point(398, 341);
             this.edYLength.Margin = new System.Windows.Forms.Padding(4);
-            this.edYLength.Max = 100D;
+            this.edYLength.Max = 500D;
             this.edYLength.Min = 0D;
             this.edYLength.MinimumSize = new System.Drawing.Size(1, 1);
             this.edYLength.Name = "edYLength";
@@ -288,7 +273,7 @@ namespace LaserCutter
             this.edXPitch.Hint = "X line pitch";
             this.edXPitch.Location = new System.Drawing.Point(242, 393);
             this.edXPitch.Margin = new System.Windows.Forms.Padding(4);
-            this.edXPitch.Max = 100D;
+            this.edXPitch.Max = 600D;
             this.edXPitch.Min = 0D;
             this.edXPitch.MinimumSize = new System.Drawing.Size(1, 1);
             this.edXPitch.Name = "edXPitch";
@@ -312,7 +297,7 @@ namespace LaserCutter
             this.edGuidePitch.Hint = "Guide pitch";
             this.edGuidePitch.Location = new System.Drawing.Point(14, 340);
             this.edGuidePitch.Margin = new System.Windows.Forms.Padding(4);
-            this.edGuidePitch.Max = 100D;
+            this.edGuidePitch.Max = 500D;
             this.edGuidePitch.Min = 0D;
             this.edGuidePitch.MinimumSize = new System.Drawing.Size(1, 1);
             this.edGuidePitch.Name = "edGuidePitch";
@@ -336,7 +321,7 @@ namespace LaserCutter
             this.edYPitch.Hint = "Y line pitch";
             this.edYPitch.Location = new System.Drawing.Point(14, 385);
             this.edYPitch.Margin = new System.Windows.Forms.Padding(4);
-            this.edYPitch.Max = 100D;
+            this.edYPitch.Max = 500D;
             this.edYPitch.Min = 0D;
             this.edYPitch.MinimumSize = new System.Drawing.Size(1, 1);
             this.edYPitch.Name = "edYPitch";
@@ -575,6 +560,21 @@ namespace LaserCutter
             this.pictureBox5.TabIndex = 1839;
             this.pictureBox5.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.CaptionStyle.OutlineFillColor = System.Drawing.SystemColors.Window;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label4.Frame.Visible = false;
+            this.label4.Location = new System.Drawing.Point(457, 258);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.label4.Name = "label4";
+            this.label4.ShowAccelChar = false;
+            this.label4.Size = new System.Drawing.Size(61, 29);
+            this.label4.TabIndex = 1846;
+            this.label4.Text = "Guide";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
@@ -729,17 +729,17 @@ namespace LaserCutter
             // 
             this.dataGridView4.AllowUserToResizeColumns = false;
             this.dataGridView4.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView4.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView4.ColumnHeadersHeight = 40;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnColor,
