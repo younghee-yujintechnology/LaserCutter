@@ -32,22 +32,22 @@
             this.panClient = new System.Windows.Forms.Panel();
             this.lblSelectedMenu = new System.Windows.Forms.Label();
             this.bitBtn6 = new yjTech.BitBtn();
-            this.btnLogIn = new yjTech.BitBtn();
-            this.bitBtn4 = new yjTech.BitBtn();
             this.btnExit = new yjTech.BitBtn();
-            this.btnLog = new yjTech.BitBtn();
-            this.btnVision = new yjTech.BitBtn();
             this.panTop = new yjTech.Panel();
             this.lblMainTitle = new yjTech.GradientLabel();
             this.lblBuildVersion = new yjTech.Label();
             this.lblDateTime = new yjTech.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnLogIn = new yjTech.BitBtn();
+            this.bitBtn4 = new yjTech.BitBtn();
             this.btnAuto = new yjTech.BitBtn();
             this.btnManual = new yjTech.BitBtn();
-            this.btnJobFile = new yjTech.BitBtn();
             this.btnConfig = new yjTech.BitBtn();
-            this.AutoThread = new yjTech.Thread();
+            this.btnJobFile = new yjTech.BitBtn();
+            this.btnVision = new yjTech.BitBtn();
+            this.btnLog = new yjTech.BitBtn();
             this.btnAlarm = new yjTech.BitBtn();
+            this.AutoThread = new yjTech.Thread();
             this.panTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -77,32 +77,6 @@
             this.bitBtn6.Tag = "10";
             this.bitBtn6.UseVisualStyleBackColor = false;
             // 
-            // btnLogIn
-            // 
-            this.btnLogIn.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnLogIn.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogIn.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
-            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnLogIn, "btnLogIn");
-            this.btnLogIn.ForeColor = System.Drawing.Color.Black;
-            this.btnLogIn.Image = global::LaserCutter.Properties.Resources.LogN;
-            this.btnLogIn.Margin2 = 10;
-            this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Tag = "20";
-            this.btnLogIn.UseVisualStyleBackColor = false;
-            // 
-            // bitBtn4
-            // 
-            this.bitBtn4.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.bitBtn4.BackColor = System.Drawing.Color.Transparent;
-            this.bitBtn4.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.bitBtn4, "bitBtn4");
-            this.bitBtn4.ForeColor = System.Drawing.Color.Black;
-            this.bitBtn4.Margin2 = 10;
-            this.bitBtn4.Name = "bitBtn4";
-            this.bitBtn4.Tag = "10";
-            this.bitBtn4.UseVisualStyleBackColor = false;
-            // 
             // btnExit
             // 
             this.btnExit.AdjustImageLocation = new System.Drawing.Point(0, 0);
@@ -116,30 +90,6 @@
             this.btnExit.Tag = "17";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnLog
-            // 
-            this.btnLog.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnLog.BackColor = System.Drawing.Color.Transparent;
-            this.btnLog.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
-            this.btnLog.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnLog, "btnLog");
-            this.btnLog.ForeColor = System.Drawing.Color.Black;
-            this.btnLog.Image = global::LaserCutter.Properties.Resources.Log;
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Tag = "16";
-            this.btnLog.UseVisualStyleBackColor = false;
-            // 
-            // btnVision
-            // 
-            this.btnVision.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnVision.BackColor = System.Drawing.Color.Transparent;
-            this.btnVision.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
-            this.btnVision.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnVision, "btnVision");
-            this.btnVision.ForeColor = System.Drawing.Color.Black;
-            this.btnVision.Name = "btnVision";
-            this.btnVision.UseVisualStyleBackColor = false;
             // 
             // panTop
             // 
@@ -205,6 +155,32 @@
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
+            // btnLogIn
+            // 
+            this.btnLogIn.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnLogIn.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogIn.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
+            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnLogIn, "btnLogIn");
+            this.btnLogIn.ForeColor = System.Drawing.Color.Black;
+            this.btnLogIn.Image = global::LaserCutter.Properties.Resources.LogN;
+            this.btnLogIn.Margin2 = 10;
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Tag = "20";
+            this.btnLogIn.UseVisualStyleBackColor = false;
+            // 
+            // bitBtn4
+            // 
+            this.bitBtn4.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.bitBtn4.BackColor = System.Drawing.Color.Transparent;
+            this.bitBtn4.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.bitBtn4, "bitBtn4");
+            this.bitBtn4.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn4.Margin2 = 10;
+            this.bitBtn4.Name = "bitBtn4";
+            this.bitBtn4.Tag = "10";
+            this.bitBtn4.UseVisualStyleBackColor = false;
+            // 
             // btnAuto
             // 
             this.btnAuto.AdjustImageLocation = new System.Drawing.Point(0, 0);
@@ -230,6 +206,18 @@
             this.btnManual.Tag = "11";
             this.btnManual.UseVisualStyleBackColor = false;
             // 
+            // btnConfig
+            // 
+            this.btnConfig.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnConfig.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfig.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
+            this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnConfig, "btnConfig");
+            this.btnConfig.ForeColor = System.Drawing.Color.Black;
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Tag = "12";
+            this.btnConfig.UseVisualStyleBackColor = false;
+            // 
             // btnJobFile
             // 
             this.btnJobFile.AdjustImageLocation = new System.Drawing.Point(0, 0);
@@ -244,23 +232,29 @@
             this.btnJobFile.UseVisualStyleBackColor = false;
             this.btnJobFile.Click += new System.EventHandler(this.btnJobFile_Click);
             // 
-            // btnConfig
+            // btnVision
             // 
-            this.btnConfig.AdjustImageLocation = new System.Drawing.Point(0, 0);
-            this.btnConfig.BackColor = System.Drawing.Color.Transparent;
-            this.btnConfig.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
-            this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnConfig, "btnConfig");
-            this.btnConfig.ForeColor = System.Drawing.Color.Black;
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Tag = "12";
-            this.btnConfig.UseVisualStyleBackColor = false;
+            this.btnVision.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnVision.BackColor = System.Drawing.Color.Transparent;
+            this.btnVision.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
+            this.btnVision.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnVision, "btnVision");
+            this.btnVision.ForeColor = System.Drawing.Color.Black;
+            this.btnVision.Name = "btnVision";
+            this.btnVision.UseVisualStyleBackColor = false;
             // 
-            // AutoThread
+            // btnLog
             // 
-            this.AutoThread.Enabled = false;
-            this.AutoThread.Interval = 100;
-            this.AutoThread.OnExecute += new System.EventHandler(this.AutoThread_OnExecute);
+            this.btnLog.AdjustImageLocation = new System.Drawing.Point(0, 0);
+            this.btnLog.BackColor = System.Drawing.Color.Transparent;
+            this.btnLog.CaptionStyle.TextStyle = yjTech.TextStyle.Outline;
+            this.btnLog.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnLog, "btnLog");
+            this.btnLog.ForeColor = System.Drawing.Color.Black;
+            this.btnLog.Image = global::LaserCutter.Properties.Resources.Log;
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Tag = "16";
+            this.btnLog.UseVisualStyleBackColor = false;
             // 
             // btnAlarm
             // 
@@ -274,6 +268,12 @@
             this.btnAlarm.Name = "btnAlarm";
             this.btnAlarm.Tag = "13";
             this.btnAlarm.UseVisualStyleBackColor = false;
+            // 
+            // AutoThread
+            // 
+            this.AutoThread.Enabled = false;
+            this.AutoThread.Interval = 100;
+            this.AutoThread.OnExecute += new System.EventHandler(this.AutoThread_OnExecute);
             // 
             // frmMain
             // 
