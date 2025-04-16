@@ -19,8 +19,6 @@ namespace LaserCutter
         public TableNo TableNo;
         public panJobFile()
         {
-            CodeSite.SendMsg("panJobFile.Create()");
-
             InitializeComponent();
 
             Table1 = new panTable();

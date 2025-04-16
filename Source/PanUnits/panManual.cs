@@ -20,8 +20,6 @@ namespace LaserCutter
 
         public panManual()
         {
-            CodeSite.SendMsg("panManual.Create()");
-
             InitializeComponent();
 
             staticInstance = this;

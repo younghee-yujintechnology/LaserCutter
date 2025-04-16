@@ -22,8 +22,6 @@ namespace LaserCutter
 
         public panAuto()
         {
-            CodeSite.SendMsg("panAuto.Create()");
-
             InitializeComponent();
 
             SetCodeSitelogger();
