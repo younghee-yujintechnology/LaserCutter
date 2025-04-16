@@ -310,6 +310,10 @@ namespace LaserCutter
                                 Auto.Table2.MakeMotionFile(0, new DoublePoint(0.0, 0.0), false);
                                 Pmac.DownloadFile2(Handle);
                             }
+                        } 
+                        else
+                        {
+                            yjCommon.Inform("자동 운전 모드에서 사용 가능합니다.", "확인");
                         }
                     }
                     else

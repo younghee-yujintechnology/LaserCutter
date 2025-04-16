@@ -180,6 +180,9 @@
   <data name="bitBtn6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14.25pt, style=Bold</value>
   </data>
+  <data name="bitBtn6.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="bitBtn6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -209,78 +212,6 @@
   </data>
   <data name="&gt;&gt;bitBtn6.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="btnLogIn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 14.25pt, style=Bold</value>
-  </data>
-  <data name="btnLogIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnLogIn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 249</value>
-  </data>
-  <data name="btnLogIn.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 1</value>
-  </data>
-  <data name="btnLogIn.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 3</value>
-  </data>
-  <data name="btnLogIn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 78</value>
-  </data>
-  <data name="btnLogIn.TabIndex" type="System.Int32, mscorlib">
-    <value>1140</value>
-  </data>
-  <data name="btnLogIn.Text" xml:space="preserve">
-    <value>User</value>
-  </data>
-  <data name="&gt;&gt;btnLogIn.Name" xml:space="preserve">
-    <value>btnLogIn</value>
-  </data>
-  <data name="&gt;&gt;btnLogIn.Type" xml:space="preserve">
-    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnLogIn.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnLogIn.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="bitBtn4.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="bitBtn4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 14.25pt, style=Bold</value>
-  </data>
-  <data name="bitBtn4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="bitBtn4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 331</value>
-  </data>
-  <data name="bitBtn4.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 1</value>
-  </data>
-  <data name="bitBtn4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 3</value>
-  </data>
-  <data name="bitBtn4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 78</value>
-  </data>
-  <data name="bitBtn4.TabIndex" type="System.Int32, mscorlib">
-    <value>1139</value>
-  </data>
-  <data name="&gt;&gt;bitBtn4.Name" xml:space="preserve">
-    <value>bitBtn4</value>
-  </data>
-  <data name="&gt;&gt;bitBtn4.Type" xml:space="preserve">
-    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;bitBtn4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;bitBtn4.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="btnExit.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14.25pt, style=Bold</value>
@@ -343,77 +274,77 @@ Exit</value>
   <data name="&gt;&gt;btnExit.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="btnLog.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 14.25pt, style=Bold</value>
+  <data name="&gt;&gt;lblMainTitle.Name" xml:space="preserve">
+    <value>lblMainTitle</value>
   </data>
-  <data name="btnLog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;lblMainTitle.Type" xml:space="preserve">
+    <value>yjTech.GradientLabel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="btnLog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 863</value>
+  <data name="&gt;&gt;lblMainTitle.Parent" xml:space="preserve">
+    <value>panTop</value>
   </data>
-  <data name="btnLog.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 1</value>
+  <data name="&gt;&gt;lblMainTitle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="btnLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 3</value>
+  <data name="&gt;&gt;lblBuildVersion.Name" xml:space="preserve">
+    <value>lblBuildVersion</value>
   </data>
-  <data name="btnLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 78</value>
+  <data name="&gt;&gt;lblBuildVersion.Type" xml:space="preserve">
+    <value>yjTech.Label, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="btnLog.TabIndex" type="System.Int32, mscorlib">
-    <value>1134</value>
+  <data name="&gt;&gt;lblBuildVersion.Parent" xml:space="preserve">
+    <value>panTop</value>
   </data>
-  <data name="btnLog.Text" xml:space="preserve">
-    <value>Log</value>
+  <data name="&gt;&gt;lblBuildVersion.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;btnLog.Name" xml:space="preserve">
-    <value>btnLog</value>
+  <data name="&gt;&gt;lblDateTime.Name" xml:space="preserve">
+    <value>lblDateTime</value>
   </data>
-  <data name="&gt;&gt;btnLog.Type" xml:space="preserve">
-    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;lblDateTime.Type" xml:space="preserve">
+    <value>yjTech.Label, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;btnLog.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblDateTime.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;lblDateTime.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
+    <value>pictureBox1</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1920, 82</value>
+  </data>
+  <data name="panTop.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panTop.Name" xml:space="preserve">
+    <value>panTop</value>
+  </data>
+  <data name="&gt;&gt;panTop.Type" xml:space="preserve">
+    <value>yjTech.Panel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnLog.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="btnVision.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 14.25pt, style=Bold</value>
-  </data>
-  <data name="btnVision.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnVision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1795, 781</value>
-  </data>
-  <data name="btnVision.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 1</value>
-  </data>
-  <data name="btnVision.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 3</value>
-  </data>
-  <data name="btnVision.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 78</value>
-  </data>
-  <data name="btnVision.TabIndex" type="System.Int32, mscorlib">
-    <value>1133</value>
-  </data>
-  <data name="btnVision.Text" xml:space="preserve">
-    <value>Vision</value>
-  </data>
-  <data name="&gt;&gt;btnVision.Name" xml:space="preserve">
-    <value>btnVision</value>
-  </data>
-  <data name="&gt;&gt;btnVision.Type" xml:space="preserve">
-    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnVision.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnVision.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;panTop.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="lblMainTitle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 30pt, style=Bold</value>
@@ -544,29 +475,80 @@ Exit</value>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="panTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="btnLogIn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
   </data>
-  <data name="panTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="btnLogIn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="panTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1920, 82</value>
+  <data name="btnLogIn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1795, 249</value>
   </data>
-  <data name="panTop.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="btnLogIn.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
   </data>
-  <data name="&gt;&gt;panTop.Name" xml:space="preserve">
-    <value>panTop</value>
+  <data name="btnLogIn.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
   </data>
-  <data name="&gt;&gt;panTop.Type" xml:space="preserve">
-    <value>yjTech.Panel, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="btnLogIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 78</value>
   </data>
-  <data name="&gt;&gt;panTop.Parent" xml:space="preserve">
+  <data name="btnLogIn.TabIndex" type="System.Int32, mscorlib">
+    <value>1140</value>
+  </data>
+  <data name="btnLogIn.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Name" xml:space="preserve">
+    <value>btnLogIn</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Type" xml:space="preserve">
+    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLogIn.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panTop.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;btnLogIn.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="bitBtn4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="bitBtn4.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="bitBtn4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="bitBtn4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1795, 331</value>
+  </data>
+  <data name="bitBtn4.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="bitBtn4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="bitBtn4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 78</value>
+  </data>
+  <data name="bitBtn4.TabIndex" type="System.Int32, mscorlib">
+    <value>1139</value>
+  </data>
+  <data name="bitBtn4.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="&gt;&gt;bitBtn4.Name" xml:space="preserve">
+    <value>bitBtn4</value>
+  </data>
+  <data name="&gt;&gt;bitBtn4.Type" xml:space="preserve">
+    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bitBtn4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;bitBtn4.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="btnAuto.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14.25pt, style=Bold</value>
@@ -705,76 +687,6 @@ Exit</value>
   <data name="&gt;&gt;btnManual.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="btnJobFile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 14.25pt, style=Bold</value>
-  </data>
-  <data name="btnJobFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="btnJobFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnJobFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1796, 700</value>
-  </data>
-  <data name="btnJobFile.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 1</value>
-  </data>
-  <data name="btnJobFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 3</value>
-  </data>
-  <data name="btnJobFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 78</value>
-  </data>
-  <data name="btnJobFile.TabIndex" type="System.Int32, mscorlib">
-    <value>1129</value>
-  </data>
-  <data name="btnJobFile.Text" xml:space="preserve">
-    <value>Job Files</value>
-  </data>
-  <data name="btnJobFile.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
-  </data>
-  <data name="&gt;&gt;btnJobFile.Name" xml:space="preserve">
-    <value>btnJobFile</value>
-  </data>
-  <data name="&gt;&gt;btnJobFile.Type" xml:space="preserve">
-    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnJobFile.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnJobFile.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="btnConfig.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14.25pt, style=Bold</value>
   </data>
@@ -854,9 +766,151 @@ Exit</value>
   <data name="&gt;&gt;btnConfig.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <metadata name="AutoThread.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="btnJobFile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnJobFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="btnJobFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnJobFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1796, 700</value>
+  </data>
+  <data name="btnJobFile.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnJobFile.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnJobFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 78</value>
+  </data>
+  <data name="btnJobFile.TabIndex" type="System.Int32, mscorlib">
+    <value>1129</value>
+  </data>
+  <data name="btnJobFile.Text" xml:space="preserve">
+    <value>Job Files</value>
+  </data>
+  <data name="btnJobFile.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Name" xml:space="preserve">
+    <value>btnJobFile</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Type" xml:space="preserve">
+    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnJobFile.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="btnVision.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnVision.Image" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="btnVision.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnVision.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1795, 781</value>
+  </data>
+  <data name="btnVision.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnVision.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnVision.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 78</value>
+  </data>
+  <data name="btnVision.TabIndex" type="System.Int32, mscorlib">
+    <value>1133</value>
+  </data>
+  <data name="btnVision.Text" xml:space="preserve">
+    <value>Vision</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Name" xml:space="preserve">
+    <value>btnVision</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Type" xml:space="preserve">
+    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnVision.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnVision.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="btnLog.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 14.25pt, style=Bold</value>
+  </data>
+  <data name="btnLog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnLog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1795, 863</value>
+  </data>
+  <data name="btnLog.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="btnLog.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 3</value>
+  </data>
+  <data name="btnLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 78</value>
+  </data>
+  <data name="btnLog.TabIndex" type="System.Int32, mscorlib">
+    <value>1134</value>
+  </data>
+  <data name="btnLog.Text" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Name" xml:space="preserve">
+    <value>btnLog</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Type" xml:space="preserve">
+    <value>yjTech.BitBtn, YJTECH, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLog.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnLog.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <data name="btnAlarm.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14.25pt, style=Bold</value>
   </data>
@@ -893,6 +947,9 @@ Exit</value>
   <data name="&gt;&gt;btnAlarm.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <metadata name="AutoThread.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -904,6 +961,9 @@ Exit</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
