@@ -23,6 +23,12 @@ namespace LaserCutter
         public ztCad Cad4;
         public ztMarkPage cad4Data;
 
+        bool is1stReadyPos = false;
+        public DoublePoint ReadyPos = new DoublePoint(-30, -30);
+
+        public DoublePoint CenterPos = new DoublePoint();
+        public DoublePoint WorkCenter = new DoublePoint(0, 0);
+
         public panJobType4()
         {
             InitializeComponent();
@@ -126,32 +132,114 @@ namespace LaserCutter
         }
         #endregion
 
+        public void EnableControl(bool bEnabled)
+        {
+            Cad4.Enabled = bEnabled;
+            edLaserPower.Enabled = bEnabled;
+            edPulsePitch.Enabled = bEnabled;
+
+            dataGridView4.Enabled = bEnabled;
+
+            btnMoveUp.Enabled = bEnabled;
+            btnMoveDown.Enabled = bEnabled;
+
+            edThickness.Enabled = bEnabled;
+            edZOffset.Enabled = bEnabled;
+            edGuideLength.Enabled = bEnabled;
+            edGuidePitch.Enabled = bEnabled;
+            edXLength.Enabled = bEnabled;
+            edYPitch.Enabled = bEnabled;
+            edYLength.Enabled = bEnabled;
+            edXPitch.Enabled = bEnabled;
+
+            btnSave.Enabled = bEnabled;
+            btnCancel.Enabled = bEnabled;
+        }
+
         public void ClearControlValue()
         {
-            lblDxfPath.Text = "";
             Cad4.Clear();
             Cad4.ReDraw();
 
             edLaserPower.Value = 0.0;
             edPulsePitch.Value = 0.0;
-            //  dataGridView1.IEnabled = bEnabled;
 
             edZOffset.Value = 0.0;
-            edThickness.Value = 0.0;
+            edGuideLength.Value = 0.0;
+            edGuidePitch.Value = 0.0;
+            edXLength.Value = 0.0;
+            edYPitch.Value = 0.0;
+            edYLength.Value = 0.0;
+            edXPitch.Value = 0.0;
 
             btnUse.LED.Value = false;
 
             dataGridView4.Rows.Clear();
+
         }
 
-
-        public void EnableControl(bool bEnabled)
+        public void LoadLayerInfo()
         {
-            Cad4.Enabled = bEnabled;
+            ztCadLayerList list = new ztCadLayerList();
 
-            btnSave.Enabled = bEnabled;
-            btnCancel.Enabled = bEnabled;
+            // 도면을 새로 불러오면 기존 Data를 지운다
+            LaserProject.Model4.Layers.Clear();
+
+            LayerInfo layerInfo;
+
+            Cad4.GetLayers(list);
+
+            dataGridView4.Rows.Clear();
+            for (int i = 0; i < list.Count; i++)
+            {
+                // Layer를 생성하고..
+                layerInfo = new LayerInfo();
+                layerInfo.Name = list[i].Name;
+                layerInfo.szColor = list[i].szColor;
+                layerInfo.Direction = Direction.CW;
+                layerInfo.Used = !(layerInfo.Name == "0");
+                layerInfo.LaserPower = 10.0;
+                layerInfo.ZOffset = 1.1;
+                layerInfo.PulsePitch = 1.2;
+
+                LaserProject.Model4.Layers.Add(layerInfo);
+
+                // GridRow Data를 생성하고..
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView4);
+                row.Cells[1].Value = layerInfo.Name;
+                row.Cells[2].Value = layerInfo.Used.ToString();
+                row.Cells[3].Value = layerInfo.Tool.ToString();
+                row.Cells[4].Value = layerInfo.Direction.ToString();
+                row.Cells[5].Value = layerInfo.LaserPower.ToString("F3");
+                row.Cells[6].Value = layerInfo.ZOffset.ToString("F3");
+                row.Cells[7].Value = layerInfo.PulsePitch.ToString("F3");
+                dataGridView4.Rows.Add(row);
+            }
         }
+
+        public void UpdateLayerInfo()
+        {
+            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+            {
+                // 유효한 행인지 확인
+                if (i < LaserProject.Model4.Layers.Count)
+                {
+                    // 현재 행의 데이터 가져오기
+                    DataGridViewRow row = dataGridView4.Rows[i];
+
+                    // LaserProject의 LayerInfo 업데이트
+                    LaserProject.Model4.Layers[i].Name = row.Cells[1].Value?.ToString(); // 레이어 이름
+                    LaserProject.Model4.Layers[i].Used = Convert.ToBoolean(row.Cells[2].Value); // 사용 여부
+                    LaserProject.Model4.Layers[i].szColor = row.Cells[3].Value?.ToString(); // 색상 정보
+                    LaserProject.Model4.Layers[i].Direction = (Direction)Enum.Parse(typeof(Direction), row.Cells[4].Value?.ToString()); // 방향
+                    LaserProject.Model4.Layers[i].LaserPower = yjCommon.StrToDoubleDef(row.Cells[5].Value?.ToString(), 0.0);
+                    LaserProject.Model4.Layers[i].ZOffset = yjCommon.StrToDoubleDef(row.Cells[6].Value?.ToString(), 0.0);
+                    LaserProject.Model4.Layers[i].PulsePitch = yjCommon.StrToDoubleDef(row.Cells[7].Value?.ToString(), 0.0);
+                }
+            }
+        }
+
 
         public void CheckLayerInfo()
         {
@@ -225,18 +313,253 @@ namespace LaserCutter
             }
         }
 
-
-        private void btnUse_Click(object sender, EventArgs e)
+        public void GetReadyPos()
         {
-            Table.Type1.btnUse.LED.Value = false;
-            Table.Type2.btnUse.LED.Value = false;
-            Table.Type3.btnUse.LED.Value = false;
-            Table.Type4.btnUse.LED.Value = true;
+            is1stReadyPos = true;
+
+            /*
+             * 현재 도면의 Min, Max..
+             */
+            DoublePoint tempReadyPos = new DoublePoint(0, 0);
+
+            SetGrid4Value();
+
+            double offsetX = WorkCenter.x - CenterPos.x;
+            double offsetY = WorkCenter.y + CenterPos.y;
+
+            if (AutoMenu.btnLaserRun.LED.Value)
+            {
+                offsetX += Common.edTable2NozzleXOffset.Value;
+                offsetY += Common.edTable2NozzleYOffset.Value;
+            }
+
+            int nIndex = 0;
+            for (nIndex = 0; nIndex < LaserProject.Model4.Layers.Count; nIndex++)
+            {
+                if (LaserProject.Model4.Layers[nIndex].Used)
+                {
+                    cad4Data.Clear();
+                    Cad4.CurLayerName = LaserProject.Model4.Layers[nIndex].Name;
+                    Cad4.GetPage(cad4Data);
+
+                    var pMarkPage = cad4Data;
+
+                    if (pMarkPage.MarkList.Count > 0)
+                    {
+                        for (int nEntityIndex = 0; nEntityIndex < pMarkPage.Count; nEntityIndex++)
+                        {
+                            ztMarkData pMarkData = pMarkPage[nEntityIndex];
+                            int nType = pMarkPage.GetData(nEntityIndex).Type;
+                            ztVertexItem pItem = pMarkData.Vertices[0];
+
+                            switch (nType)
+                            {
+                                case Lcad.LC_ENT_LINE:
+                                    tempReadyPos = Table.MakeLineType((ztLineItem)pItem, 0, 0, offsetX, offsetY);
+
+                                    if (is1stReadyPos)
+                                    {
+                                        is1stReadyPos = false;
+
+                                        ReadyPos = tempReadyPos;
+                                    }
+                                    break;
+
+                                case Lcad.LC_ENT_POLYLINE:
+                                    tempReadyPos = Table.MakePolylineType((ztPolylineItem)pItem, 0, 0, offsetX, offsetY);
+
+                                    if (is1stReadyPos)
+                                    {
+                                        is1stReadyPos = false;
+
+                                        ReadyPos = tempReadyPos;
+                                    }
+                                    break;
+
+                                case Lcad.LC_ENT_ARC:
+                                    tempReadyPos = Table.MakeArcType((ztArcItem)pItem, 0, 0, offsetX, offsetY);
+
+                                    if (is1stReadyPos)
+                                    {
+                                        is1stReadyPos = false;
+
+                                        ReadyPos = tempReadyPos;
+                                    }
+                                    break;
+
+                                case Lcad.LC_ENT_CIRCLE:
+                                    tempReadyPos = Table.MakeCircleType((ztCircleItem)pItem, 0, 0, offsetX, offsetY);
+
+                                    if (is1stReadyPos)
+                                    {
+                                        is1stReadyPos = false;
+
+                                        ReadyPos = tempReadyPos;
+                                    }
+                                    break;
+
+                                case Lcad.LC_ENT_RECT:
+                                    tempReadyPos = Table.MakeRectType((ztRectItem)pItem, 0, 0, offsetX, offsetY);
+
+                                    if (is1stReadyPos)
+                                    {
+                                        is1stReadyPos = false;
+
+                                        ReadyPos = tempReadyPos;
+                                    }
+                                    break;
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            cad4Data.Clear();
+            Cad4.CurLayerName = "";
+            Cad4.GetPage(cad4Data);
+        }
+
+        public void GetWorkCenter(int APageIndex)
+        {
+        }
+
+        public void MakeMotionFile(TableNo tableNo, int ACellIndex, double shiftX, double shiftY, bool LaserRun)
+        {
+            GetWorkCenter(ACellIndex);
+
+            yjTech.StringList szList = new yjTech.StringList();
+
+            szList.Add("undefine all");
+
+            if (tableNo == TableNo.Table1)
+            {
+                szList.Add($"&1 #1->{Const.XY_LINEAR_SCALE}X #2->{Const.XY_LINEAR_SCALE}Y");
+            }
+            if (tableNo == TableNo.Table2)
+            {
+                szList.Add($"&1 #1->{Const.XY_LINEAR_SCALE}X #3->{Const.XY_LINEAR_SCALE}Y");
+            }
+
+            szList.Add("delete lookahead");
+            szList.Add("define lookahead 7000");
+
+            szList.Add("");
+            szList.Add($"Motor[1].JogSpeed = {Const.XY_LINEAR_SCALE / 10}"); //{m_pPmacData[i].dLineSpd:F3}");
+            szList.Add($"Motor[1].JogTa = 50");
+            szList.Add($"Motor[1].JogTs = 50");
+
+            if (tableNo == TableNo.Table1)
+            {
+                szList.Add("");
+                szList.Add($"Motor[2].JogSpeed = {Const.XY_LINEAR_SCALE / 10}"); //{m_pPmacData[i].dLineSpd:F3}");
+                szList.Add($"Motor[2].JogTa = 50");
+                szList.Add($"Motor[2].JogTs = 50");
+            }
+            else
+            if (tableNo == TableNo.Table2)
+            {
+                szList.Add("");
+                szList.Add($"Motor[3].JogSpeed = {Const.XY_LINEAR_SCALE / 10}"); //{m_pPmacData[i].dLineSpd:F3}");
+                szList.Add($"Motor[3].JogTa = 50");
+                szList.Add($"Motor[3].JogTs = 50");
+            }
+
+            double offsetX = WorkCenter.x - CenterPos.x;
+            double offsetY = WorkCenter.y + CenterPos.y;
+
+            if (AutoMenu.btnLaserRun.LED.Value)
+            {
+                offsetX += Common.edTable2NozzleXOffset.Value;
+                offsetY += Common.edTable2NozzleYOffset.Value;
+            }
+
+            SetGrid4Value();
+
+            int nIndex = 0;
+            for (nIndex = 0; nIndex < LaserProject.Model4.Layers.Count; nIndex++)
+            {
+                if (LaserProject.Model4.Layers[nIndex].Used)
+                {
+                    cad4Data.Clear();
+                    Cad4.CurLayerName = LaserProject.Model4.Layers[nIndex].Name;
+                    Cad4.GetPage(cad4Data);
+
+                    if (cad4Data.Count <= 0) continue;
+
+                    szList.Add("");
+                    szList.Add(String.Format("Open Prog {0}", nIndex + 100 * (int)tableNo));
+
+                    szList.Add("Linear");
+                    szList.Add("ABS");
+                    szList.Add("Frax(X,Y)");
+
+                    cad4Data.Rotate(CenterPos.x, CenterPos.y, 0);
+
+                    var pMarkPage = cad4Data;
+
+                    if (pMarkPage.MarkList.Count > 0)
+                    {
+                        // logger.SendMsg(String.Format("LayerName=\"{0}\" Entity.Count = {1}", Cad2.CurLayerName, nCount));
+
+                        szList.Add("");
+                        szList.Add("// ================================================================================");
+                        szList.Add($"// LayerName:[{LaserProject.Model2.Layers[nIndex].Name}]");
+                        szList.Add($"//     EntityCount:{pMarkPage.MarkList.Count}");
+                        szList.Add("// --------------------------------------------------------------------------------");
+
+                        for (int nEntityIndex = 0; nEntityIndex < pMarkPage.Count; nEntityIndex++)
+                        {
+                            ztMarkData pMarkData = pMarkPage[nEntityIndex];
+                            int nType = pMarkPage.GetData(nEntityIndex).Type;
+                            ztVertexItem pItem = pMarkData.Vertices[0];
+
+                            szList.Add("");
+
+                            switch (nType)
+                            {
+                                case Lcad.LC_ENT_LINE:
+                                    szList.Add($"// Line {nEntityIndex}");
+                                    Table.MakeLineType(LaserRun, ref szList, (ztLineItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_POLYLINE:
+                                    szList.Add($"// Polyline {nEntityIndex}");
+                                    Table.MakePolylineType(LaserRun, ref szList, (ztPolylineItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_ARC:
+                                    szList.Add($"// Arc {nEntityIndex}");
+                                    Table.MakeArcType(LaserRun, ref szList, (ztArcItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_CIRCLE:
+                                    szList.Add($"// Circle {nEntityIndex}");
+                                    Table.MakeCircleType(LaserRun, ref szList, (ztCircleItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+
+                                case Lcad.LC_ENT_RECT:
+                                    szList.Add($"// Rect {nEntityIndex}");
+                                    Table.MakeRectType(LaserRun, ref szList, (ztRectItem)pItem, shiftX, shiftY, offsetX, offsetY);
+                                    break;
+                            }
+                        }
+                    }
+
+                    szList.Add("Close");
+                }
+            }
+
+            Cad4.CurLayerName = "";
+
+            String szStr = String.Format("{0}Program{1}.pmc", yjCommon.AppPath(), (int)tableNo);
+            szList.SaveToFile(szStr);
+            szList.Clear();
         }
 
         /*
-* 달리 방법이 없네..
-*/
+        * 달리 방법이 없네..
+        */
         public void SetGrid4Value()
         {
             if ((dataGridView4.Rows.Count - 1) != LaserProject.Model4.Layers.Count) return;
@@ -282,15 +605,8 @@ namespace LaserCutter
             Cad4.CurLayerName = "";
         }
 
-        public void GetWorkCenter(int APageIndex)
-        {
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CheckLayerInfo();
-            SetGrid4Value();
-
             edLaserPower.Apply();
             edPulsePitch.Apply();
 
@@ -299,12 +615,14 @@ namespace LaserCutter
 
             edGuideLength.Apply();
             edGuidePitch.Apply();
-
             edXLength.Apply();
-            edXPitch.Apply();   
-
             edYLength.Apply();
             edYPitch.Apply();
+            edXPitch.Apply();
+
+            CreateUserCell();
+            CheckLayerInfo();
+            SetGrid4Value();
 
             Table.SaveJobFile();
 
@@ -329,29 +647,186 @@ namespace LaserCutter
             //}
 
             //CodeSite.SendMsg(String.Format("    PageList.SelectedCount = {0}, {1}", PageList.SelectedCount(), szStr));
-
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        public void btnApply_Click(object sender, EventArgs e)
         {
-            edLaserPower.Cancel();
-            edPulsePitch.Cancel();
-
-            edThickness.Cancel();
-            edZOffset.Cancel();
         }
 
-        private void chkShowJumpline_CheckedChanged(object sender, EventArgs e)
+        public void MakeBeadCut()
         {
-            Cad4.ShowJumpLine = chkShowJumpline.Checked;
+            IntPtr hLayer = IntPtr.Zero;
+
+            Cad4.Clear();
+
+            hLayer = Lcad.DrwAddLayer(Cad4.GetDrwHandle(), "Guide Line", "0, 255, 0", IntPtr.Zero, 0);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_VISIBLE, true);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_LOCKED, false);
+            Lcad.PropPutStr(hLayer, Lcad.LC_PROP_LAYER_DESC, "");
+
+            hLayer = Lcad.DrwAddLayer(Cad4.GetDrwHandle(), "X Line", "255, 0, 0", IntPtr.Zero, 0);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_VISIBLE, true);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_LOCKED, false);
+            Lcad.PropPutStr(hLayer, Lcad.LC_PROP_LAYER_DESC, "");
+
+            hLayer = Lcad.DrwAddLayer(Cad4.GetDrwHandle(), "Y Line", "0, 0, 255", IntPtr.Zero, 0);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_VISIBLE, true);
+            Lcad.PropPutBool(hLayer, Lcad.LC_PROP_LAYER_LOCKED, false);
+            Lcad.PropPutStr(hLayer, Lcad.LC_PROP_LAYER_DESC, "");
+
+            // GuideLine Top
+            double x1 = 0.0, x2 = 0.0, y1 = 0.0, y2 = 0.0;
+
+            x1 = -edGuideLength.Value / 2.0;
+            x2 = edGuideLength.Value / 2.0;
+
+            y1 = edGuidePitch.Value / 2.0;
+            y2 = edGuidePitch.Value / 2.0;
+
+            IntPtr hLine = Cad4.AddLine(x1, y1, x2, y2);
+
+            // Set color and layer for the polyline
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_COLOR, "0, 255, 0");
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_LAYER, "Guide Line");
+
+            // GuideLine Bottom
+            x1 = -edGuideLength.Value / 2.0;
+            x2 = edGuideLength.Value / 2.0;
+
+            y1 = -edGuidePitch.Value / 2.0;
+            y2 = -edGuidePitch.Value / 2.0;
+
+            hLine = Cad4.AddLine(x1, y1, x2, y2);
+
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_COLOR, "0, 255, 0");
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_LAYER, "Guide Line");
+
+            // X Line
+            x1 = -edXLength.Value / 2.0;
+            x2 = edXLength.Value / 2.0;
+
+            y1 = edXPitch.Value / 2.0;
+            y2 = edXPitch.Value / 2.0;
+
+            hLine = Cad4.AddLine(x1, y1, x2, y2);
+
+            // Set color and layer for the polyline
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_COLOR, "255, 0, 0");
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_LAYER, "X Line");
+
+            // GuideLine Bottom
+            x1 = -edXLength.Value / 2.0;
+            x2 = edXLength.Value / 2.0;
+
+            y1 = -edXPitch.Value / 2.0;
+            y2 = -edXPitch.Value / 2.0;
+
+            hLine = Cad4.AddLine(x1, y1, x2, y2);
+
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_COLOR, "255, 0, 0");
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_LAYER, "X Line");
+
+            // Y Line
+            y1 = edYLength.Value / 2.0;
+            y2 = -edYLength.Value / 2.0;
+
+            x1 = -edYPitch.Value / 2.0;
+            x2 = -edYPitch.Value / 2.0;
+
+            hLine = Cad4.AddLine(x1, y1, x2, y2);
+
+            // Set color and layer for the polyline
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_COLOR, "0, 0, 255");
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_LAYER, "Y Line");
+
+            // GuideLine Bottom
+            y1 = edYLength.Value / 2.0;
+            y2 = -edYLength.Value / 2.0;
+
+            x1 = edYPitch.Value / 2.0;
+            x2 = edYPitch.Value / 2.0;
+
+            hLine = Cad4.AddLine(x1, y1, x2, y2);
+
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_COLOR, "0, 0, 255");
+            Lcad.PropPutStr(hLine, Lcad.LC_PROP_ENT_LAYER, "Y Line");
         }
 
-        private void btnPreView_Click(object sender, EventArgs e)
+        public void CreateUserCell()
         {
-            frmPreview frmPreview = frmPreview.StaticInstance;
+            MakeBeadCut();
 
-            if (frmPreview.ShowDialog() == DialogResult.OK)
+            LoadLayerInfo();
+
+            /*
+             * 2. Cad1 도면 전체를 데이타를 불러들인다.
+             */
+            cad4Data.Clear();
+
+            Table.Type4.Cad4.GetPage(cad4Data);
+            Table.Type4.SetPageSize();
+
+            Cad4.BlockUpdate();
+            Cad4.ZoomExtend();
+            Cad4.ZoomScale(0.8);
+        }
+
+        public void SetPageSize()
+        {
+            cad4Data.Width = cad4Data.MarkList.Width;
+            cad4Data.Height = cad4Data.MarkList.Height;
+        }
+
+        private void dataGridView4_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (LaserProject == null) return;
+            // 셀이 유효한지 확인
+            if (e.RowIndex >= 0 && e.ColumnIndex == 2) // CheckBox 열이 2번 컬럼이라 가정
             {
+                int rowIndex = e.RowIndex;
+
+                // CheckBox 값 처리 (true 또는 false)
+                bool isUsed = Convert.ToBoolean(dataGridView4.Rows[rowIndex].Cells[2].Value);
+                LaserProject.Model4.Layers[rowIndex].Used = isUsed;
+            }
+
+            UpdateLayerInfo();
+        }
+
+        private void dataGridView4_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridView4.IsCurrentCellDirty && dataGridView4.CurrentCell.ColumnIndex == 2) // CheckBox 열만 처리
+            {
+                // 셀 값이 변경되었을 때 즉시 커밋하여 CellValueChanged 이벤트를 발생시킴
+                dataGridView4.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+
+            UpdateLayerInfo();
+        }
+
+        private void dataGridView4_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if ((LaserProject != null) && (LaserProject.Model4.Layers.Count > 0))
+            {
+                int bRGB, iColor, R, G, B;
+
+                if (e.RowIndex < LaserProject.Model4.Layers.Count)
+                {
+                    if (dataGridView.Columns[e.ColumnIndex].Name == "Color")
+                    {
+                        String szColor = LaserProject.Model4.Layers[e.RowIndex].szColor;
+
+                        if (!String.IsNullOrEmpty(szColor))
+                        {
+                            Lcad.ColorToVal(szColor, out bRGB, out iColor, out R, out G, out B);
+
+                            e.CellStyle.BackColor = Color.FromArgb(R, G, B);
+                            e.CellStyle.ForeColor = e.CellStyle.BackColor;
+                        }
+                    }
+                }
             }
         }
 
@@ -403,7 +878,6 @@ namespace LaserCutter
             return true; // 성공적으로 이동
         }
 
-
         private void btnMoveDown_Click(object sender, EventArgs e)
         {
             if (dataGridView4.SelectedRows.Count == 0) return;
@@ -417,5 +891,48 @@ namespace LaserCutter
                 dataGridView4.Rows[nIndex + 1].Selected = true;
             }
         }
+
+        private void btnUse_Click(object sender, EventArgs e)
+        {
+            Table.LaserProject.MenuIndex = 3;
+
+            Table.Type1.btnUse.LED.Value = false;
+            Table.Type2.btnUse.LED.Value = false;
+            Table.Type3.btnUse.LED.Value = false;
+            Table.Type4.btnUse.LED.Value = true;
+
+            Table.SaveJobFile();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            edLaserPower.Cancel();
+            edPulsePitch.Cancel();
+
+            edThickness.Cancel();
+            edZOffset.Cancel();
+
+            edGuideLength.Cancel();
+            edGuidePitch.Cancel();
+            edXLength.Cancel();
+            edYPitch.Cancel();
+            edYLength.Cancel();
+            edXPitch.Cancel();
+        }
+
+        private void chkShowJumpline_CheckedChanged(object sender, EventArgs e)
+        {
+            Cad4.ShowJumpLine = chkShowJumpline.Checked;
+        }
+
+        private void btnPreView_Click(object sender, EventArgs e)
+        {
+            frmPreview frmPreview = frmPreview.StaticInstance;
+
+            if (frmPreview.ShowDialog() == DialogResult.OK)
+            {
+            }
+        }
+
     }
 }

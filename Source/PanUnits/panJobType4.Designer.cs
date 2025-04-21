@@ -605,6 +605,7 @@ namespace LaserCutter
             this.btnPreView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPreView.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnPreView.ForeColor = System.Drawing.Color.Black;
+            this.btnPreView.Image = null;
             this.btnPreView.Location = new System.Drawing.Point(11, 101);
             this.btnPreView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnPreView.MinimumSize = new System.Drawing.Size(1, 1);
@@ -672,6 +673,7 @@ namespace LaserCutter
             this.btnCancel.Enabled = false;
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.Image = null;
             this.btnCancel.Location = new System.Drawing.Point(1104, 764);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.MinimumSize = new System.Drawing.Size(1, 1);
@@ -691,6 +693,7 @@ namespace LaserCutter
             this.btnSave.Enabled = false;
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.Image = null;
             this.btnSave.Location = new System.Drawing.Point(1104, 696);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.MinimumSize = new System.Drawing.Size(1, 1);
@@ -756,6 +759,9 @@ namespace LaserCutter
             this.dataGridView4.RowTemplate.Height = 23;
             this.dataGridView4.Size = new System.Drawing.Size(1056, 249);
             this.dataGridView4.TabIndex = 1696;
+            this.dataGridView4.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView4_CellFormatting);
+            this.dataGridView4.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellValueChanged);
+            this.dataGridView4.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView4_CurrentCellDirtyStateChanged);
             // 
             // ColumnColor
             // 
@@ -808,6 +814,7 @@ namespace LaserCutter
             this.btnClear.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnClear.Enabled = false;
+            this.btnClear.Image = null;
             this.btnClear.Location = new System.Drawing.Point(595, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(39, 29);
@@ -823,6 +830,7 @@ namespace LaserCutter
             this.btnOpenFile.Enabled = false;
             this.btnOpenFile.Font = new System.Drawing.Font("굴림", 9F);
             this.btnOpenFile.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenFile.Image = null;
             this.btnOpenFile.Location = new System.Drawing.Point(554, 4);
             this.btnOpenFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenFile.MinimumSize = new System.Drawing.Size(1, 1);
@@ -894,6 +902,7 @@ namespace LaserCutter
             this.bitBtn1.Enabled = false;
             this.bitBtn1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.bitBtn1.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn1.Image = null;
             this.bitBtn1.Location = new System.Drawing.Point(1104, 730);
             this.bitBtn1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bitBtn1.MinimumSize = new System.Drawing.Size(1, 1);

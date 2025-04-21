@@ -1,14 +1,17 @@
 ﻿/*
- * 
- * 
+ * 1. 도면을 불러들이고
+ * 2. 도면의 Center를 TableCenter에 위치한다.
+ * 3. TabelCenter를 TableBasePos[]에 따라 조정한다.
+ * 4. 가공한다.
  */
 
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 using yjTech;
 using Raize.CodeSiteLogging;
-using System.Drawing;
 
 namespace LaserCutter
 {
@@ -34,6 +37,9 @@ namespace LaserCutter
         public LaserProject LaserProject = null;
 
         private AlignMethod mAlignMethod;
+
+        private TreeNode draggedNode; // 드래그 중인 노드를 저장하는 변수
+        private int originalIndex = -1;   // 드래그 시작 시 노드의 원래 위치 
 
         public panJobType1()
         {            
@@ -138,30 +144,6 @@ namespace LaserCutter
         }
         #endregion
 
-
-        private void btnUse_Click(object sender, EventArgs e)
-        {
-            Table.Type1.btnUse.LED.Value = true;
-            Table.Type2.btnUse.LED.Value = false;
-            Table.Type3.btnUse.LED.Value = false;
-            Table.Type4.btnUse.LED.Value = false;
-        }
-
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            edLaserPower.Cancel();
-            edPulsePitch.Cancel();
-
-            edThickness.Cancel();
-            edZOffset.Cancel();
-            edManualShiftX.Cancel();
-            edManualShiftY.Cancel();
-            edGlassSizeX.Cancel();
-            edGlassSizeY.Cancel();
-        }
-
-
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             if (lblDxfPath.Text != "")
@@ -224,7 +206,7 @@ namespace LaserCutter
             {
                 xShift = (edGlassSizeX.Value - cad1Data.MarkList.Width) / 2.0;
             }
-    ;
+;
 
             if (edGlassSizeY.Value > (cad1Data.MarkList.Height))
             {
@@ -603,6 +585,7 @@ namespace LaserCutter
                 row.Cells[4].Value = layerInfo.Direction.ToString();
                 row.Cells[5].Value = layerInfo.LaserPower.ToString("F3");
                 row.Cells[6].Value = layerInfo.ZOffset.ToString("F3");
+                row.Cells[7].Value = layerInfo.PulsePitch.ToString("F3");
                 dataGridView1.Rows.Add(row);
             }
 
@@ -721,9 +704,9 @@ namespace LaserCutter
         }
 
         /*
- * Table1: 100 부터 ~ 시작
- * Table2: 200 부터 ~ 시작
- */
+         * Table1: 100 부터 ~ 시작
+         * Table2: 200 부터 ~ 시작
+         */
         public void MakeMotionFile(TableNo tableNo, double Angle, double shiftX, double shiftY, bool LaserRun)
         {
             GetWorkCenter();
@@ -775,6 +758,8 @@ namespace LaserCutter
             }
 
             Cad1.Open(Table.GetModelPath() + lblDxfPath.Text);
+            Cad1.ZoomExtend();
+            Cad1.ZoomScale(0.8);
             SetGrid1Value();
             Cad1.Rotate(CenterPos.x, CenterPos.y, Angle);
 
@@ -857,6 +842,9 @@ namespace LaserCutter
             szList.Clear();
         }
 
+        /*
+         * 달리 방법이 없네..
+         */
         public void SetGrid1Value()
         {
             if ((dataGridView1.Rows.Count - 1) != LaserProject.Model1.Layers.Count) return;
@@ -972,6 +960,40 @@ namespace LaserCutter
                             }
 
                             double dd = Lcad.PropGetFloat(hEnt, Lcad.LC_PROP_CIRCLE_ANG0) * 180.0 / Math.PI;
+                        }
+                        else
+                        if (nEntType == Lcad.LC_ENT_RECT)
+                        {
+                            bool CWDir = Lcad.PropGetBool(hEnt, Lcad.LC_PROP_RECT_DIRCW);
+
+                            if ((LaserProject.Model1.Layers[nIndex].Direction == Direction.CW) && !CWDir)
+                            {
+                                Lcad.PropPutBool(hEnt, Lcad.LC_PROP_RECT_DIRCW, true);
+                            }
+                            else
+                            if ((LaserProject.Model1.Layers[nIndex].Direction == Direction.CCW) && CWDir)
+                            {
+                                Lcad.PropPutBool(hEnt, Lcad.LC_PROP_RECT_DIRCW, false);
+                            }
+
+                            switch ((StartPoint)cbStartPoint.ItemIndex)
+                            {
+                                case StartPoint.Left:
+                                    Lcad.PropPutInt(hEnt, Lcad.LC_PROP_RECT_START, 5); // Middle Left
+                                    break;
+
+                                case StartPoint.Top:
+                                    Lcad.PropPutInt(hEnt, Lcad.LC_PROP_RECT_START, 6); // Middle Top
+                                    break;
+
+                                case StartPoint.Right:
+                                    Lcad.PropPutInt(hEnt, Lcad.LC_PROP_RECT_START, 7); // Middle Right
+                                    break;
+
+                                case StartPoint.Bottom:
+                                    Lcad.PropPutInt(hEnt, Lcad.LC_PROP_RECT_START, 4); // Middle Bottom
+                                    break;
+                            }
                         }
 
                         Lcad.PropPutInt(hEnt, Lcad.LC_PROP_ENT_MARK_COUNT, 1);
@@ -1118,7 +1140,6 @@ namespace LaserCutter
                 //    logger.SendMsg($"{LaserProject.Model1.Layers[i]}");
                 //}
             }
-
         }
 
         private void btnMoveAlign1Pos_Click(object sender, EventArgs e)
@@ -1274,5 +1295,182 @@ namespace LaserCutter
 
             ledUseVision.LED.Value = !chkAlignUse.Checked;
         }
+
+
+        private void btnUse_Click(object sender, EventArgs e)
+        {
+            Table.Type1.btnUse.LED.Value = true;
+            Table.Type2.btnUse.LED.Value = false;
+            Table.Type3.btnUse.LED.Value = false;
+            Table.Type4.btnUse.LED.Value = false;
+        }
+
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            edLaserPower.Cancel();
+            edPulsePitch.Cancel();
+
+            edThickness.Cancel();
+            edZOffset.Cancel();
+            edManualShiftX.Cancel();
+            edManualShiftY.Cancel();
+            edGlassSizeX.Cancel();
+            edGlassSizeY.Cancel();
+        }
+
+        private void chkShowJumpline_CheckedChanged(object sender, EventArgs e)
+        {
+            Cad1.ShowJumpLine = chkShowJumpline.Checked;
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (LaserProject == null) return;
+            // 셀이 유효한지 확인
+            if (e.RowIndex >= 0 && e.ColumnIndex == 2) // CheckBox 열이 2번 컬럼이라 가정
+            {
+                int rowIndex = e.RowIndex;
+
+                // CheckBox 값 처리 (true 또는 false)
+                bool isUsed = Convert.ToBoolean(dataGridView1.Rows[rowIndex].Cells[2].Value);
+                LaserProject.Model3.Layers[rowIndex].Used = isUsed;
+            }
+
+            UpdateLayerInfo();
+        }
+
+        public void UpdateLayerInfo()
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                // 유효한 행인지 확인
+                if (i < LaserProject.Model1.Layers.Count)
+                {
+                    // 현재 행의 데이터 가져오기
+                    DataGridViewRow row = dataGridView1.Rows[i];
+
+                    // LaserProject의 LayerInfo 업데이트
+                    LaserProject.Model1.Layers[i].Name = row.Cells[1].Value?.ToString(); // 레이어 이름
+                    LaserProject.Model1.Layers[i].Used = Convert.ToBoolean(row.Cells[2].Value); // 사용 여부
+                    LaserProject.Model1.Layers[i].szColor = row.Cells[3].Value?.ToString(); // 색상 정보
+                    LaserProject.Model1.Layers[i].Direction = (Direction)Enum.Parse(typeof(Direction), row.Cells[4].Value?.ToString()); // 방향
+                    LaserProject.Model1.Layers[i].LaserPower = yjCommon.StrToDoubleDef(row.Cells[5].Value?.ToString(), 0.0);
+                    LaserProject.Model1.Layers[i].ZOffset = yjCommon.StrToDoubleDef(row.Cells[6].Value?.ToString(), 0.0);
+                    LaserProject.Model1.Layers[i].PulsePitch = yjCommon.StrToDoubleDef(row.Cells[7].Value?.ToString(), 0.0);
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // RoundRect의 중심점과 치수
+            double centerX = 100; // 중심점 X
+            double centerY = 100; // 중심점 Y
+            double width = 200;   // 너비
+            double height = 100;  // 높이
+            double cornerRadius = 20; // 코너 반지름
+
+            // 시작점과 방향 설정
+            string start = "E"; // 시작점: "N", "E", "W", "S"
+            string direction = "CW"; // 방향: "CW" 또는 "CCW"
+
+            // 좌표 계산
+            var points = CalculateRoundRectPath(centerX, centerY, width, height, cornerRadius, start, direction);
+
+            CodeSite.SendMsg($"Line ({points[0].X}, {points[0].Y}, {points[1].X}, {points[1].Y})");
+            CodeSite.SendMsg($" arc ({points[1].X}, {points[1].Y}, {points[2].X}, {points[2].Y})");
+            CodeSite.SendMsg($"Line ({points[2].X}, {points[2].Y}, {points[3].X}, {points[3].Y})");
+            CodeSite.SendMsg($"Line ({points[3].X}, {points[3].Y}, {points[4].X}, {points[4].Y})");
+            CodeSite.SendMsg($" arc ({points[4].X}, {points[4].Y}, {points[5].X}, {points[5].Y})");
+            CodeSite.SendMsg($"Line ({points[5].X}, {points[5].Y}, {points[6].X}, {points[6].Y})");
+            CodeSite.SendMsg($"Line ({points[6].X}, {points[6].Y}, {points[7].X}, {points[7].Y})");
+            CodeSite.SendMsg($" arc ({points[7].X}, {points[7].Y}, {points[8].X}, {points[8].Y})");
+            CodeSite.SendMsg($"Line ({points[8].X}, {points[8].Y}, {points[9].X}, {points[9].Y})");
+            CodeSite.SendMsg($"Line ({points[9].X}, {points[9].Y}, {points[10].X}, {points[10].Y})");
+            CodeSite.SendMsg($" arc ({points[10].X}, {points[10].Y}, {points[11].X}, {points[11].Y})");
+            CodeSite.SendMsg($"Line ({points[11].X}, {points[11].Y}, {points[0].X}, {points[0].Y})");
+        }
+
+        static List<(double X, double Y, String Type)> CalculateRoundRectPath(double centerX, double centerY, double width, double height, double radius, string start, string direction)
+        {
+            // 사각형 네 변의 중심 좌표
+            double left = centerX - (width / 2);
+            double right = centerX + (width / 2);
+            double top = centerY + (height / 2);
+            double bottom = centerY - (height / 2);
+
+            // 모든 좌표를 순서대로 정의 (시계방향 기준)
+            var points = new List<(double X, double Y, string Type)>
+            {
+                (left + radius, bottom, "0"), // 0
+                (left, bottom + radius, "1"), // 1
+                (left, centerY, "2"),         // 2
+                (left, top - radius, "3"),    // 3
+                (left + radius, top, "4"),    // 4
+                (centerX, top, "5"),          // 5
+                (right - radius, top, "6"),   // 6
+                (right, top - radius, "7"),   // 7
+                (right, centerY, "8"),        // 8
+                (right, bottom + radius, "9"),// 9
+                (right - radius, bottom, "10"),// 10
+                (centerX, bottom, "11")       // 11
+            };
+
+            // 시작점 인덱스 설정
+            int startIndex;
+            switch (start)
+            {
+                case "S":
+                case "s":
+                    startIndex = 11;
+                    break;
+
+                case "N":
+                case "n":
+                    startIndex = 5;
+                    break;
+
+                case "E":
+                case "e":
+                    startIndex = 8;
+                    break;
+
+                case "W":
+                case "w":
+                    startIndex = 2;
+                    break;
+
+                default:
+                    throw new Exception("Invalid start point");
+            }
+
+            // 방향에 따른 정렬
+            var orderedPoints = new List<(double X, double Y, String Type)>();
+
+            if ((direction == "CW") || (direction == "cw"))
+            {
+                for (int i = startIndex; i < points.Count; i++) // 현재에서 끝까지
+                    orderedPoints.Add(points[i]);
+                for (int i = 0; i < startIndex; i++) // 0부터 시작점 전까지
+                    orderedPoints.Add(points[i]);
+            }
+            else
+            if ((direction == "CCW") || (direction == "ccw"))
+            {
+                for (int i = startIndex; i >= 0; i--) // 현재에서 처음까지
+                    orderedPoints.Add(points[i]);
+                for (int i = points.Count - 1; i > startIndex; i--) // 끝에서 시작점 바로 앞까지
+                    orderedPoints.Add(points[i]);
+            }
+            else
+            {
+                throw new Exception("Invalid direction");
+            }
+
+            return orderedPoints;
+        }
+
+
     }
 }

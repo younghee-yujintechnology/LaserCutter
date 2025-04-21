@@ -912,6 +912,10 @@ namespace LaserCutter
                 case 2:
                     Type3.MakeMotionFile(TableNo, PageIndex, 0, 0, LaserRun);
                     break;
+
+                case 3:
+                    Type4.MakeMotionFile(TableNo, PageIndex, 0, 0, LaserRun);
+                    break;
             }
         }
 
@@ -932,16 +936,235 @@ namespace LaserCutter
 
         public DoublePoint MakeRectType(bool LaserRun, ref StringList List, ztRectItem pItem, double ShiftX, double ShiftY, double OffsetX, double OffsetY)
         {
+            DoublePoint ptPrev = new DoublePoint(0, 0);
             DoublePoint rr = new DoublePoint(0, 0);
 
-            if (pItem != null)
-            {
-                DoublePoint ptShift = new DoublePoint(ShiftX, ShiftY);
+            string start = "E"; // 시작점: "N", "E", "W", "S"
+            string direction = "CCW"; // 방향: "CW" 또는 "CCW"
 
-                // yhbyun rr = new DoublePoint(OffsetX + (pItem.StartX + ptShift.x), OffsetY - (pItem.StartY + ptShift.y)); // 원의 시작점(0도)                
+            /*
+             * Rect StartCorner
+             * 4:middle - bottom
+             * 5:middle - left
+             * 6:middle - top
+             * 7:middle - right
+             */
+
+            switch (pItem.StartCorner)
+            {
+                case 4: start = "S"; break;
+                case 5: start = "W"; break;
+                case 6: start = "N"; break;
+                case 7: start = "E"; break;
             }
 
+            direction = (pItem.ClockWise) ? "CW" : "CCW";
+
+            var points = CalculateRoundRectPath(pItem.X, pItem.Y, pItem.W, pItem.H, pItem.CornerRadius, start, direction);
+
+            List.Add("");
+            List.Add($"    // Line [0/9]");
+
+            DoublePoint ptStart = new DoublePoint(OffsetX + (points[0].X + ShiftX), OffsetY - (points[0].Y + ShiftY));
+
+            rr = ptStart;
+
+            SetSpeed(ref List, Global.chConJumpSpeed.AsDouble, Global.chConJumpTA.AsDouble, 20, ptStart, false);
+            List.Add($"    DWELL 7");
+            if (LaserRun)
+            {
+                List.Add($"    doLaserTriggerOn==true");
+            }
+            else
+            {
+                List.Add($"    doLaserTriggerOn==false"); // DryRun
+            }
+            List.Add($"    DWELL 7");
+
+            List.Add("");
+            DoublePoint ptEnd = new DoublePoint(OffsetX + (points[1].X + ShiftX), OffsetY - (points[1].Y + ShiftY));
+
+            SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptEnd, false);
+
+            int iii = 0;
+
+            DoublePoint ptCenter = new DoublePoint(0.0, 0.0);
+
+            for (int nIndex = 1; nIndex <= 7; nIndex += 3)
+            {
+                iii = iii + 1;
+                List.Add("");
+                List.Add($"    // Arc [{iii}/9]");
+
+                ptStart = new DoublePoint(OffsetX + (points[nIndex].X + ShiftX), OffsetY - (points[nIndex].Y + ShiftY));
+                ptEnd = new DoublePoint((OffsetX + (points[nIndex + 1].X + ShiftX)), OffsetY - (points[nIndex + 1].Y + ShiftY));
+
+                ptCenter = CalculateArcCenterPos(new DoublePoint(points[nIndex].X, points[nIndex].Y), new DoublePoint(points[nIndex + 1].X, points[nIndex + 1].Y), new DoublePoint(pItem.X, pItem.Y));
+                ptCenter = new DoublePoint { x = OffsetX + (ptCenter.x + ShiftX), y = OffsetY - (ptCenter.y + ShiftY) };
+                WriteArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptStart, ptEnd, ptCenter, pItem.ClockWise); // Bulge값이 음수일때가 CountClock 방향
+
+                iii = iii + 1;
+                List.Add("");
+                List.Add($"    // Line [{iii}/9]");
+                ptEnd = new DoublePoint(OffsetX + (points[nIndex + 3].X + ShiftX), OffsetY - (points[nIndex + 3].Y + ShiftY));
+
+                SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptEnd, false);
+            }
+
+            iii = iii + 1;
+            List.Add("");
+            List.Add($"    // Arc [7/9]");
+            ptCenter = new DoublePoint(0, 0);
+
+            ptStart = new DoublePoint(OffsetX + (points[10].X + ShiftX), OffsetY - (points[10].Y + ShiftY));
+            ptEnd = new DoublePoint((OffsetX + (points[11].X + ShiftX)), OffsetY - (points[11].Y + ShiftY));
+            ptPrev = ptEnd;
+
+            ptCenter = CalculateArcCenterPos(new DoublePoint(points[10].X, points[10].Y), new DoublePoint(points[11].X, points[11].Y), new DoublePoint(pItem.X, pItem.Y));
+            ptCenter = new DoublePoint { x = OffsetX + (ptCenter.x + ShiftX), y = OffsetY - (ptCenter.y + ShiftY) };
+            WriteArcGCode(ref List, Global.chConArcSpeed.AsDouble, Global.chConArcTA.AsDouble, 3, ptStart, ptEnd, ptCenter, pItem.ClockWise); // Bulge값이 음수일때가 CountClock 방향
+
+            iii = iii + 1;
+            List.Add("");
+            List.Add($"    // Line [{iii}/9]");
+            ptEnd = new DoublePoint(OffsetX + (points[0].X + ShiftX), OffsetY - (points[0].Y + ShiftY));
+
+            DoublePoint ptEnd2 = ExtendLine(ptPrev, ptEnd, 0.004);
+
+            SetSpeed(ref List, Global.chConLineSpeed.AsDouble, Global.chConLineTA.AsDouble, 3, ptEnd2, false);
+
+            List.Add("");
+            List.Add($"    DWELL 7");
+            if (LaserRun)
+            {
+                List.Add($"    doLaserTriggerOn==true");
+            }
+            else
+            {
+                List.Add($"    doLaserTriggerOn==false"); // DryRun
+            }
+            List.Add($"    DWELL 7");
+
             return rr;
+        }
+
+
+        public static DoublePoint CalculateArcCenterPos(DoublePoint ptStart, DoublePoint ptEnd, DoublePoint ptCenter)
+        {
+            // 시작점과 끝점을 90도 회전
+            double mx = (ptStart.x + ptEnd.x) / 2;
+            double my = (ptStart.y + ptEnd.y) / 2;
+
+            // 중점을 기준으로 두 후보 중심점 계산 (CCW 및 CW 방향)
+            DoublePoint rotatedStart = RotatePoint(ptStart, mx, my, 90); // CCW
+            DoublePoint rotatedEnd = RotatePoint(ptStart, mx, my, -90); // CW
+
+            // 참조 중심점과의 거리 계산
+            double distToStart = Distance(ptCenter, rotatedStart);
+            double distToEnd = Distance(ptCenter, rotatedEnd);
+
+            // 더 가까운 중심점 반환
+            return distToStart < distToEnd ? rotatedStart : rotatedEnd;
+        }
+
+        public static DoublePoint RotatePoint(DoublePoint point, double centerX, double centerY, double angle)
+        {
+            // 각도를 라디안으로 변환
+            double radians = angle * Math.PI / 180;
+
+            // 점(point)을 회전 중심(centerX, centerY) 기준으로 회전
+            double translatedX = point.x - centerX;
+            double translatedY = point.y - centerY;
+
+            double rotatedX = translatedX * Math.Cos(radians) - translatedY * Math.Sin(radians);
+            double rotatedY = translatedX * Math.Sin(radians) + translatedY * Math.Cos(radians);
+
+            // 회전된 점을 원래 위치로 변환
+            return new DoublePoint(rotatedX + centerX, rotatedY + centerY);
+        }
+
+        public static double Distance(DoublePoint p1, DoublePoint p2)
+        {
+            return Math.Sqrt(Math.Pow(p1.x - p2.x, 2) + Math.Pow(p1.y - p2.y, 2));
+        }
+
+        static List<(double X, double Y, String Type)> CalculateRoundRectPath(double centerX, double centerY, double width, double height, double radius, string start, string direction)
+        {
+            // 사각형 네 변의 중심 좌표
+            double left = centerX - (width / 2);
+            double right = centerX + (width / 2);
+            double top = centerY + (height / 2);
+            double bottom = centerY - (height / 2);
+
+            // 모든 좌표를 순서대로 정의 (시계방향 기준)
+            var points = new List<(double X, double Y, string Type)>
+            {
+                (left + radius, bottom, "0"), // 0
+                (left, bottom + radius, "1"), // 1
+                (left, centerY, "2"),         // 2
+                (left, top - radius, "3"),    // 3
+                (left + radius, top, "4"),    // 4
+                (centerX, top, "5"),          // 5
+                (right - radius, top, "6"),   // 6
+                (right, top - radius, "7"),   // 7
+                (right, centerY, "8"),        // 8
+                (right, bottom + radius, "9"),// 9
+                (right - radius, bottom, "10"),// 10
+                (centerX, bottom, "11")       // 11
+            };
+
+            // 시작점 인덱스 설정
+            int startIndex;
+            switch (start)
+            {
+                case "S":
+                case "s":
+                    startIndex = 11;
+                    break;
+
+                case "N":
+                case "n":
+                    startIndex = 5;
+                    break;
+
+                case "E":
+                case "e":
+                    startIndex = 8;
+                    break;
+
+                case "W":
+                case "w":
+                    startIndex = 2;
+                    break;
+
+                default:
+                    throw new Exception("Invalid start point");
+            }
+
+            // 방향에 따른 정렬
+            var orderedPoints = new List<(double X, double Y, String Type)>();
+
+            if ((direction == "CW") || (direction == "cw"))
+            {
+                for (int i = startIndex; i < points.Count; i++) // 현재에서 끝까지
+                    orderedPoints.Add(points[i]);
+                for (int i = 0; i < startIndex; i++) // 0부터 시작점 전까지
+                    orderedPoints.Add(points[i]);
+            }
+            else
+            if ((direction == "CCW") || (direction == "ccw"))
+            {
+                for (int i = startIndex; i >= 0; i--) // 현재에서 처음까지
+                    orderedPoints.Add(points[i]);
+                for (int i = points.Count - 1; i > startIndex; i--) // 끝에서 시작점 바로 앞까지
+                    orderedPoints.Add(points[i]);
+            }
+            else
+            {
+                throw new Exception("Invalid direction");
+            }
+
+            return orderedPoints;
         }
 
 

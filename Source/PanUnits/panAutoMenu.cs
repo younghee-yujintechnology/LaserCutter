@@ -581,5 +581,15 @@ namespace LaserCutter
                 }
             }
         }
+
+        private void btnRenameGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCopyModel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(panJobType3));
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,17 +118,17 @@
             // 
             this.dataGridView3.AllowUserToResizeColumns = false;
             this.dataGridView3.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView3.ColumnHeadersHeight = 40;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnColor,
@@ -436,6 +436,7 @@
             this.rdoCircle.TabIndex = 1819;
             this.rdoCircle.Text = "Circle";
             this.rdoCircle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rdoCircle.Click += new System.EventHandler(this.rdoCircle_Click);
             // 
             // chkBreakLineOutDir
             // 
@@ -460,6 +461,7 @@
             this.chkBreakLineOutDir.TabIndex = 1830;
             this.chkBreakLineOutDir.Text = "Line Direction (In -> Out)";
             this.chkBreakLineOutDir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chkBreakLineOutDir.Click += new System.EventHandler(this.chkUseBreakingLine_CheckedChanged);
             // 
             // chkUseBreakLine
             // 
@@ -658,6 +660,7 @@
             this.rdoCell.TabIndex = 1818;
             this.rdoCell.Text = "Cell";
             this.rdoCell.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rdoCell.Click += new System.EventHandler(this.rdoCell_Click);
             // 
             // cbStartPoint
             // 
@@ -875,6 +878,7 @@
             this.btnPreView.Enabled = false;
             this.btnPreView.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnPreView.ForeColor = System.Drawing.Color.Black;
+            this.btnPreView.Image = null;
             this.btnPreView.Location = new System.Drawing.Point(11, 101);
             this.btnPreView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnPreView.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1097,6 +1101,7 @@
             this.btnApply.Enabled = false;
             this.btnApply.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnApply.ForeColor = System.Drawing.Color.Black;
+            this.btnApply.Image = null;
             this.btnApply.Location = new System.Drawing.Point(364, 27);
             this.btnApply.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnApply.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1244,6 +1249,7 @@
             this.bitBtn1.Enabled = false;
             this.bitBtn1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.bitBtn1.ForeColor = System.Drawing.Color.Black;
+            this.bitBtn1.Image = null;
             this.bitBtn1.Location = new System.Drawing.Point(1104, 730);
             this.bitBtn1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bitBtn1.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1304,6 +1310,7 @@
             this.btnSave.Enabled = false;
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSave.Image = null;
             this.btnSave.Location = new System.Drawing.Point(1104, 696);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1323,6 +1330,7 @@
             this.btnCancel.Enabled = false;
             this.btnCancel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.Image = null;
             this.btnCancel.Location = new System.Drawing.Point(1104, 764);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1349,6 +1357,7 @@
             this.btnClear.AdjustImageLocation = new System.Drawing.Point(0, 0);
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.btnClear.Enabled = false;
+            this.btnClear.Image = null;
             this.btnClear.Location = new System.Drawing.Point(595, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(39, 29);
@@ -1364,6 +1373,7 @@
             this.btnOpenFile.Enabled = false;
             this.btnOpenFile.Font = new System.Drawing.Font("굴림", 9F);
             this.btnOpenFile.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenFile.Image = null;
             this.btnOpenFile.Location = new System.Drawing.Point(554, 4);
             this.btnOpenFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenFile.MinimumSize = new System.Drawing.Size(1, 1);
